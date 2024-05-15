@@ -1,0 +1,221 @@
+[gd_scene load_steps=7 format=3 uid="uid://vqmou3q71vox"]
+
+[ext_resource type="Script" path="res://Modules/Debug/View/DebugView.cs" id="1_7hao7"]
+[ext_resource type="Script" path="res://Modules/Debug/View/DebugContentSearch.cs" id="2_fggti"]
+[ext_resource type="Script" path="res://Modules/Debug/View/DebugContentList.cs" id="3_42i5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v5jt"]
+bg_color = Color(0, 0.345098, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f0ys"]
+bg_color = Color(0.2, 0.546667, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqpwc"]
+bg_color = Color(0, 0.303333, 0.7, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="DebugView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7hao7")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 350
+dragger_visibility = 1
+
+[node name="Left" type="Control" parent="Main/HSplitContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="Main/HSplitContainer/Left"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 25
+
+[node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Left/Buttons/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="CategoryPrefab" type="Label" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "CATEGORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPrefab" type="Button" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8v5jt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6f0ys")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lqpwc")
+text = "PREFAB"
+
+[node name="Right" type="Control" parent="Main/HSplitContainer"]
+layout_mode = 2
+
+[node name="Content" type="Control" parent="Main/HSplitContainer/Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Right/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Right/Content/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ContentContainer" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ContentSearch" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fggti")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 75
+dragger_visibility = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SearchField" type="LineEdit" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Search..."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResultButtonPrefab" type="Button" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "PREFAB"
+
+[node name="ContentList" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_42i5k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+text = "Text"
+autowrap_mode = 2

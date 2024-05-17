@@ -35,8 +35,15 @@ public partial class Scene : NodeScript
     #region SCENE
     public static Scene Goto(string scene_name)
     {
-        Debug.Log($"Scene.Goto: {scene_name}");
+        Debug.LogMethod(scene_name);
         Debug.Indent++;
+
+        if (string.IsNullOrEmpty(scene_name))
+        {
+            Debug.LogError("Scene name was empty");
+            Debug.Indent--;
+            return Current;
+        }
 
         if (Current != null)
         {

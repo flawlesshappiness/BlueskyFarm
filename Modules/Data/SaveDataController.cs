@@ -35,19 +35,23 @@ public partial class SaveDataController : Node
         }
         else
         {
+            Debug.LogMethod(typeof(T));
+            Debug.Indent++;
+
             var filename = typeof(T).Name;
             var path = $"user://{filename}.save";
 
             EnsureFileExists(path);
 
             var json = FileAccess.GetFileAsString(path);
-            Debug.Log("json: " + json);
+            Debug.Log(json);
 
             T data = string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json);
             data_objects.Add(typeof(T), data);
 
             Save<T>();
 
+            Debug.Indent--;
             return data;
         }
     }
@@ -74,12 +78,21 @@ public partial class SaveDataController : Node
 
     public void Save(Type type)
     {
+        Debug.LogMethod(type.Name);
+        Debug.Indent++;
+
         var data = data_objects[type];
+        data.Update();
+
         var json = JsonSerializer.Serialize(data);
+        Debug.Log(json);
+
         var filename = type.Name;
         var path = $"user://{filename}.save";
         using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
         file.StoreLine(json);
+
+        Debug.Indent--;
     }
 
     private void EnsureFileExists(string path)

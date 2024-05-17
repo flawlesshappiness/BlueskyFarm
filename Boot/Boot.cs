@@ -25,12 +25,13 @@ public partial class Boot : Node
 
     private void Initialize()
     {
-        _initialized = true;
         InitializeScene();
         LoadScene();
         Debug.Initialize();
 
         SaveDataController.Instance.SaveAll();
+
+        _initialized = true;
     }
 
     private void InitializeScene()
@@ -51,7 +52,8 @@ public partial class Boot : Node
         Debug.LogMethod();
         Debug.Indent++;
 
-        var data = Data.Game;
+        Data.Game.Scene ??= "farm.tscn";
+        Scene.Goto(Data.Game.Scene);
 
         Debug.Indent--;
     }

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ApplicationInfo" load_steps=2 format=3 uid="uid://cfwqmeioi1y7v"]
+
+[ext_resource type="Script" path="res://Modules/Application/ApplicationInfo.cs" id="1_8pp41"]
+
+[resource]
+script = ExtResource("1_8pp41")
+Version = "0.0.1"

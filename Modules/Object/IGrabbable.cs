@@ -1,0 +1,9 @@
+using Godot;
+
+public interface IGrabbable
+{
+    public Node3D Node { get; }
+    public void Grabbed();
+    public void Released();
+    public void SetPosition(Vector3 position);
+}

@@ -46,7 +46,7 @@ public static partial class NodeExtensions
 
     public static Node GetNodeInChildren(this Node node, Type type)
     {
-        if (IsSameOrSubclass(type, node.GetType())) return node;
+        if (IsNodeOfType(node, type)) return node;
 
         foreach (var child in node.GetChildren())
         {
@@ -58,12 +58,20 @@ public static partial class NodeExtensions
         return null;
     }
 
+    private static bool IsNodeOfType(Node node, Type type)
+    {
+        var node_type = node.GetType();
+        if (IsSameOrSubclass(type, node_type)) return true;
+        if (node_type.GetInterface(type.Name) != null) return true;
+        return false;
+    }
+
     private static bool IsSameOrSubclass(Type potentialBase, Type potentialDescendant)
     {
         return potentialDescendant.IsSubclassOf(potentialBase) || potentialDescendant == potentialBase;
     }
 
-    public static List<T> GetNodesInChildren<T>(this Node node) where T : Node
+    public static List<T> GetNodesInChildren<T>(this Node node) where T : class
     {
         var list = new List<T>();
         Recursive(node);
@@ -71,10 +79,7 @@ public static partial class NodeExtensions
 
         void Recursive(Node current)
         {
-            if (current.TryGetNode<T>(out var result))
-            {
-                list.Add(result);
-            }
+            if (current is T) list.Add(current as T);
 
             foreach (var child in current.GetChildren())
             {
@@ -83,33 +88,25 @@ public static partial class NodeExtensions
         }
     }
 
-    public static T GetNodeInParents<T>(this Node node) where T : Node
+    public static T GetNodeInParents<T>(this Node node) where T : class
     {
         var current = node;
         while (current != null)
         {
-            if (current.TryGetNode(out T script))
-            {
-                return script;
-            }
-
+            if (current is T) return current as T;
             current = current.GetParent();
         }
 
         return null;
     }
 
-    public static List<T> GetNodesInParents<T>(this Node node) where T : Node
+    public static List<T> GetNodesInParents<T>(this Node node) where T : class
     {
         var list = new List<T>();
         var current = node;
         while (current != null)
         {
-            if (current.TryGetNode(out T script))
-            {
-                list.Add(script);
-            }
-
+            if (current is T) list.Add(current as T);
             current = current.GetParent();
         }
 

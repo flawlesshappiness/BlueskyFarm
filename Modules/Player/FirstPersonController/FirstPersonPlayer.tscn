@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://doq3o5nc1388a"]
+
+[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/FirstPersonController.cs" id="1_2k6r2"]
+[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Interact/FirstPersonInteract.cs" id="2_ctqgn"]
+[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Grab/FirstPersonGrab.cs" id="3_30dn4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xb1f"]
+radius = 0.229386
+
+[node name="FirstPersonPlayer" type="CharacterBody3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+script = ExtResource("1_2k6r2")
+JumpHorizontalSpeed = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0xb1f")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47242, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+
+[node name="Interact" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_ctqgn")
+
+[node name="Grab" type="Node3D" parent="Neck/Camera3D"]
+script = ExtResource("3_30dn4")
+
+[node name="Position" type="Node3D" parent="Neck/Camera3D/Grab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="Equipment" type="Node3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="EquipLeft" type="Node3D" parent="Neck/Camera3D/Equipment"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.625, 0, -1.25)
+
+[node name="EquipRight" type="Node3D" parent="Neck/Camera3D/Equipment"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.625, 0, -1.25)

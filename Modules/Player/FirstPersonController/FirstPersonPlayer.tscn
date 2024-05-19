@@ -24,9 +24,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47242, 0)
 [node name="Interact" type="RayCast3D" parent="Neck/Camera3D"]
 target_position = Vector3(0, 0, -2)
 script = ExtResource("2_ctqgn")
+SearchRadius = 1.0
 
 [node name="Grab" type="Node3D" parent="Neck/Camera3D"]
 script = ExtResource("3_30dn4")
+GrabPositionOffsetMax = 2.0
 
 [node name="Position" type="Node3D" parent="Neck/Camera3D/Grab"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)

@@ -39,6 +39,12 @@ public partial class FirstPersonController : CharacterBody3D
         InputMouse(@event);
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_Cursor();
+    }
+
     private void InputMouse(InputEvent @event)
     {
         var e = @event as InputEventMouseButton;
@@ -121,5 +127,26 @@ public partial class FirstPersonController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    private void Process_Cursor()
+    {
+        if (Interact?.CurrentInteractable == null)
+        {
+            Cursor.Hide();
+        }
+        else if (Grab?.IsGrabbing ?? false)
+        {
+            Cursor.Hide();
+        }
+        else if (Interact?.CurrentInteractable is IGrabbable)
+        {
+            Cursor.Position(Interact.CurrentInteractable.Node);
+            Cursor.Show(CursorType.Grab);
+        }
+        else
+        {
+            Cursor.Hide();
+        }
     }
 }

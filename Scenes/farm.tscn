@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=25 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_sl3h0"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
+[ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="2_qorhh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_u50wq"]
@@ -21,13 +22,30 @@ albedo_color = Color(0.168627, 0.478431, 0.0901961, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_usjpn"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6kv4w"]
-friction = 0.25
-bounce = 0.9
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r0jko"]
+bounce = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g002r"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_pgmve"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6kv4w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhr64"]
+size = Vector3(1.3, 1.3, 1.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6koeb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyow4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebab5"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqgaw"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
+size = Vector3(31, 50, 31)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
 panorama = ExtResource("1_u4lhc")
@@ -119,8 +137,9 @@ mesh = SubResource("BoxMesh_usjpn")
 
 [node name="Ball" type="RigidBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78409, 0)
-physics_material_override = SubResource("PhysicsMaterial_6kv4w")
+physics_material_override = SubResource("PhysicsMaterial_r0jko")
 script = ExtResource("1_sl3h0")
+MaxThrowVelocity = 12.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ball"]
 shape = SubResource("SphereShape3D_g002r")
@@ -128,6 +147,70 @@ shape = SubResource("SphereShape3D_g002r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ball"]
 mesh = SubResource("SphereMesh_pgmve")
 skeleton = NodePath("")
+
+[node name="Box" type="RigidBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00496, -2)
+physics_material_override = SubResource("PhysicsMaterial_6kv4w")
+script = ExtResource("1_sl3h0")
+MaxThrowVelocity = 12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Box"]
+shape = SubResource("BoxShape3D_qhr64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Box"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_6koeb")
+skeleton = NodePath("")
+
+[node name="Box2" type="RigidBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27322, -2)
+physics_material_override = SubResource("PhysicsMaterial_6kv4w")
+script = ExtResource("1_sl3h0")
+MaxThrowVelocity = 12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Box2"]
+shape = SubResource("BoxShape3D_wyow4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Box2"]
+mesh = SubResource("BoxMesh_6koeb")
+skeleton = NodePath("")
+
+[node name="Box3" type="RigidBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49037, -2)
+physics_material_override = SubResource("PhysicsMaterial_6kv4w")
+script = ExtResource("1_sl3h0")
+MaxThrowVelocity = 12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Box3"]
+shape = SubResource("BoxShape3D_ebab5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Box3"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("BoxMesh_6koeb")
+skeleton = NodePath("")
+
+[node name="Box4" type="RigidBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22063, -2)
+physics_material_override = SubResource("PhysicsMaterial_6kv4w")
+script = ExtResource("1_sl3h0")
+MaxThrowVelocity = 12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Box4"]
+shape = SubResource("BoxShape3D_uqgaw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Box4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_6koeb")
+skeleton = NodePath("")
+
+[node name="Bounds" type="Node" parent="World"]
+script = ExtResource("2_muofh")
+
+[node name="Area3D" type="Area3D" parent="World/Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bounds/Area3D"]
+shape = SubResource("BoxShape3D_ujqkt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")
@@ -137,4 +220,4 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 light_color = Color(1, 1, 0.811765, 1)
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("2_qorhh")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.5, 0, 7.65013)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.153132, 0, 3.18489)

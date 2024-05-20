@@ -62,6 +62,13 @@ public partial class CurrencyController : Node
             Text = "Clear ALL currency data",
             Action = DebugClearAllCurrencyData
         });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Adjust currency",
+            Action = DebugAdjustCurrency
+        });
     }
 
     private void DebugClearAllCurrencyData(DebugView view)
@@ -69,5 +76,39 @@ public partial class CurrencyController : Node
         Data.Game.Currencies.Clear();
         Data.Game.Save();
         Scene.Tree.Quit();
+    }
+
+    private void DebugAdjustCurrency(DebugView view)
+    {
+        view.HideContent();
+        view.Content.Show();
+        view.ContentSearch.Show();
+        view.ContentSearch.ClearItems();
+
+        foreach (var currency in Data.Game.Currencies)
+        {
+            view.ContentSearch.AddItem(currency.Type.Id, () => DebugAdjustCurrency(view, currency.Type));
+        }
+
+        view.ContentSearch.UpdateButtons();
+    }
+
+    private void DebugAdjustCurrency(DebugView view, CurrencyType type)
+    {
+        view.HideContent();
+        view.Content.Show();
+        view.ContentSearch.Show();
+        view.ContentSearch.ClearItems();
+
+        view.ContentSearch.AddItem("-100", () => AddValue(type, -100));
+        view.ContentSearch.AddItem("-10", () => AddValue(type, -10));
+        view.ContentSearch.AddItem("-5", () => AddValue(type, -5));
+        view.ContentSearch.AddItem("-1", () => AddValue(type, -1));
+        view.ContentSearch.AddItem("+1", () => AddValue(type, 1));
+        view.ContentSearch.AddItem("+5", () => AddValue(type, 5));
+        view.ContentSearch.AddItem("+10", () => AddValue(type, 10));
+        view.ContentSearch.AddItem("+100", () => AddValue(type, 100));
+
+        view.ContentSearch.UpdateButtons();
     }
 }

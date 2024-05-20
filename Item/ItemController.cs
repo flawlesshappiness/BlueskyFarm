@@ -1,5 +1,6 @@
 using Godot;
 using System.IO;
+using System.Linq;
 
 public partial class ItemController : ResourceController<ItemCollection, ItemInfo>
 {
@@ -21,15 +22,23 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     private void RegisterDebugActions()
     {
         var category = "ITEMS";
+
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Spawn",
-            Action = DebugCreateAndThrowItem
+            Text = "Spawn item",
+            Action = DebugSpawnItem
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Spawn seed",
+            Action = DebugSpawnSeed
         });
     }
 
-    private void DebugCreateAndThrowItem(DebugView view)
+    private void DebugSpawnItem(DebugView view)
     {
         view.Content.Show();
         view.ContentSearch.Show();
@@ -44,8 +53,30 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
         void SelectItem(string path)
         {
-            var item = CreateItem(path) as RigidBody3D;
-            FarmBounds.Instance.ThrowObject(item, FirstPersonController.Instance.GlobalPosition);
+            var item = CreateItem(path);
+            FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
+        }
+    }
+
+    private void DebugSpawnSeed(DebugView view)
+    {
+        view.Content.Show();
+        view.ContentSearch.Show();
+
+        view.ContentSearch.ClearItems();
+        foreach (var resource in Collection.Resources)
+        {
+            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource.Path));
+        }
+
+        view.ContentSearch.UpdateButtons();
+
+        void SelectItem(string path)
+        {
+            var item = CreateItem(Collection.Resources.FirstOrDefault(x => x.Path.Contains("seed", System.StringComparison.OrdinalIgnoreCase)).Path);
+            var seed = item.GetNodeInChildren<Seed>();
+            seed.PlantPath = path;
+            FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
         }
     }
 }

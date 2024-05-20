@@ -1,10 +1,12 @@
 using Godot;
-using System.Linq;
+using System.Collections;
 
 public partial class PlantArea : Area3D
 {
     [NodeName("SeedPosition")]
     public Node3D SeedPosition;
+
+    public Seed CurrentSeed { get; private set; }
 
     public override void _Ready()
     {
@@ -43,29 +45,70 @@ public partial class PlantArea : Area3D
             return;
         }
 
-        seed.Planted = true;
+        CurrentSeed = seed;
+        CurrentSeed.Planted = true;
 
-        ReparentSeed(node);
+        ReparentPlantedItem(node);
+        BeginGrowing(CurrentSeed);
 
         Debug.Indent--;
     }
 
-    private void ReparentSeed(Node3D node)
+    private void ReparentPlantedItem(Node3D node)
     {
-        var grabbable = node as IGrabbable;
-        if (grabbable != null)
-        {
-            grabbable.IsGrabbable = false;
-        }
+        var interactable = node as IInteractable;
+        interactable.SetCollisionMode(InteractCollisionMode.None);
 
-        grabbable.Node.GetNodesInChildren<CollisionShape3D>()
-            .ToList()
-            .ForEach(x => x.Disabled = true);
-
-        var rig = grabbable as RigidBody3D;
+        var rig = interactable as RigidBody3D;
         rig.Freeze = true;
 
         node.GlobalTransform = SeedPosition.GlobalTransform;
         node.SetParent(SeedPosition);
+    }
+
+    private void BeginGrowing(Seed seed)
+    {
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(2f);
+
+            FullyGrowSeed(seed);
+        }
+    }
+
+    private void FullyGrowSeed(Seed seed)
+    {
+        // Create plant
+        var plant = SpawnPlantFromSeed(seed);
+        var grabbable = plant as IGrabbable;
+        var interactable = plant as IInteractable;
+
+        // Destroy seed
+        var parent = seed.GetParent();
+        parent.QueueFree();
+
+        // Setup plant
+        interactable.SetCollisionMode(InteractCollisionMode.Interact);
+        grabbable.OnGrabbed += OnGrabbedPlant;
+
+        void OnGrabbedPlant()
+        {
+            var rig = grabbable as RigidBody3D;
+            rig.Freeze = false;
+
+            interactable.SetCollisionMode(InteractCollisionMode.All);
+            grabbable.OnGrabbed -= OnGrabbedPlant;
+
+            grabbable.Node.SetParent(Scene.Root);
+        }
+    }
+
+    private Node3D SpawnPlantFromSeed(Seed seed)
+    {
+        var plant = GDHelper.Instantiate<Node3D>(seed.PlantPath);
+        ReparentPlantedItem(plant);
+
+        return plant;
     }
 }

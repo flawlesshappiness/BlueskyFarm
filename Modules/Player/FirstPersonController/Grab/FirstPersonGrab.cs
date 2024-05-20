@@ -121,7 +121,6 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     public bool CanGrab(IGrabbable grabbable)
     {
         if (grabbable == null) return false;
-        if (!grabbable.IsGrabbable) return false;
         return true;
     }
 }

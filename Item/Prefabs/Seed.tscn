@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8je4rfhnur5t"]
 
-[ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_rv6ks"]
-[ext_resource type="PackedScene" uid="uid://b2mfb2q37j8f6" path="res://Assets/KenneyNL/Food/avocado.glb" id="2_euvhh"]
-[ext_resource type="Script" path="res://Farming/Seed.cs" id="3_wl03k"]
+[ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_1631a"]
+[ext_resource type="PackedScene" uid="uid://b2mfb2q37j8f6" path="res://Assets/KenneyNL/Food/avocado.glb" id="2_dxukr"]
+[ext_resource type="Script" path="res://Farming/Seed.cs" id="3_1bvna"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pb7np"]
 friction = 5.0
@@ -12,15 +12,16 @@ height = 0.229913
 radius = 0.0869211
 
 [node name="Seed" type="RigidBody3D"]
+collision_layer = 5
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_pb7np")
-script = ExtResource("1_rv6ks")
+script = ExtResource("1_1631a")
 
-[node name="avocado2" parent="." instance=ExtResource("2_euvhh")]
+[node name="avocado2" parent="." instance=ExtResource("2_dxukr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100058, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_whh86")
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("3_wl03k")
+[node name="Seed" type="Node" parent="."]
+script = ExtResource("3_1bvna")

@@ -17,6 +17,8 @@ public static class Cursor
 
     public static void Position(Node3D node)
     {
+        if (node == null) return;
+
         var viewport_position = node.GetViewport().GetCamera3D().UnprojectPosition(node.GlobalPosition);
         View.SetCursorPosition(viewport_position);
     }

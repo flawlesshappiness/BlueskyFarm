@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://gpdwk15vfxgn"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_6cw6x"]
+
+[resource]
+script = ExtResource("1_6cw6x")
+Path = "res://Item/Prefabs/Radish.tscn"

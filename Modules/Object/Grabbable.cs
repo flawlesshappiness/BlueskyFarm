@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
 {
@@ -7,7 +8,9 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
 
     public Node3D Node => this;
     public bool IsGrabbed => is_grabbed;
-    public bool IsGrabbable { get; set; } = true;
+
+    public event Action OnGrabbed;
+    public event Action OnReleased;
 
     private bool is_grabbed;
     private Vector3 target_position;
@@ -48,6 +51,8 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         is_grabbed = true;
         GravityScale = 0;
+
+        OnGrabbed?.Invoke();
     }
 
     public void Released()
@@ -59,6 +64,8 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
         {
             LinearVelocity = LinearVelocity.Normalized() * MaxThrowVelocity;
         }
+
+        OnReleased?.Invoke();
     }
 
     public void SetPosition(Vector3 position)
@@ -70,4 +77,28 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         target_rotation = rotation;
     }
+
+    public void SetCollisionMode(InteractCollisionMode mode)
+    {
+        CollisionLayer = mode switch
+        {
+            InteractCollisionMode.All => CollisionMaskHelper.Create(1, 3),
+            InteractCollisionMode.Collision => CollisionMaskHelper.Create(1),
+            InteractCollisionMode.Interact => CollisionMaskHelper.Create(3),
+            _ => 0
+        };
+
+        CollisionMask = mode switch
+        {
+            InteractCollisionMode.All => CollisionMaskHelper.Create(1),
+            InteractCollisionMode.Collision => CollisionMaskHelper.Create(1),
+            InteractCollisionMode.Interact => CollisionMaskHelper.Create(1),
+            _ => 0
+        };
+    }
+}
+
+public enum InteractCollisionMode
+{
+    None, All, Collision, Interact
 }

@@ -2,6 +2,8 @@ using Godot;
 
 public partial class FirstPersonController : CharacterBody3D
 {
+    public static FirstPersonController Instance { get; private set; }
+
     [Export]
     public float MoveSpeed = 5.0f;
 
@@ -29,6 +31,7 @@ public partial class FirstPersonController : CharacterBody3D
     public override void _Ready()
     {
         base._Ready();
+        Instance = this;
         NodeScript.FindNodesFromAttribute(this, GetType());
     }
 

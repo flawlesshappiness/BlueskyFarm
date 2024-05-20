@@ -3,6 +3,8 @@ using System.Collections;
 
 public partial class FarmBounds : NodeScript
 {
+    public static FarmBounds Instance { get; private set; }
+
     [NodeType(typeof(Area3D))]
     public Area3D Bounds;
 
@@ -15,6 +17,7 @@ public partial class FarmBounds : NodeScript
     public override void _Ready()
     {
         base._Ready();
+        Instance = this;
         Bounds.BodyExited += BodyExited;
     }
 
@@ -41,7 +44,7 @@ public partial class FarmBounds : NodeScript
         }
     }
 
-    private void ThrowObject(RigidBody3D body, Vector3 position)
+    public void ThrowObject(RigidBody3D body, Vector3 position)
     {
         // Calculate sign
         var center = Bounds.GlobalPosition;

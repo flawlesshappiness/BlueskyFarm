@@ -40,15 +40,7 @@ public partial class DebugContentSearch : ControlScript
 
     private void OnTextChanged(string text)
     {
-        ClearButtons();
-
-        var items = _items.Where(item => item.Key.ToLower().Contains(text.ToLower()));
-        foreach (var item in items)
-        {
-            var button = CreateButton();
-            button.Text = item.Key;
-            button.Pressed += item.Value;
-        }
+        UpdateButtons();
     }
 
     private Button CreateButton()
@@ -68,6 +60,19 @@ public partial class DebugContentSearch : ControlScript
         }
 
         _buttons.Clear();
+    }
+
+    public void UpdateButtons()
+    {
+        ClearButtons();
+
+        var items = _items.Where(item => item.Key.ToLower().Contains(SearchField.Text?.ToLower()));
+        foreach (var item in items)
+        {
+            var button = CreateButton();
+            button.Text = item.Key;
+            button.Pressed += item.Value;
+        }
     }
 
     public void AddItem(string text, Action action)

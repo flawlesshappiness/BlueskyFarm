@@ -28,6 +28,7 @@ public partial class Boot : Node
         InitializeScene();
         LoadScene();
         Debug.Initialize();
+        _ = ItemController.Instance;
 
         SaveDataController.Instance.SaveAll();
 

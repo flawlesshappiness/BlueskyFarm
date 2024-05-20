@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c6ulbtni5dxrg" path="res://Assets/KenneyNL/Food/radish.glb" id="1_f812j"]
 [ext_resource type="Script" path="res://Item/Item.cs" id="3_pjj4y"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxxpt"]
-radius = 0.0563021
-height = 0.211347
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yi1c"]
+size = Vector3(0.110352, 0.209961, 0.107422)
 
 [node name="Radish" type="RigidBody3D"]
 collision_layer = 5
@@ -17,7 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182436, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0820418, 0)
-shape = SubResource("CapsuleShape3D_lxxpt")
+shape = SubResource("BoxShape3D_6yi1c")
 
 [node name="Item" type="Node" parent="."]
 script = ExtResource("3_pjj4y")

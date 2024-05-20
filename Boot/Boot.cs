@@ -29,6 +29,8 @@ public partial class Boot : Node
         LoadScene();
         Debug.Initialize();
         _ = ItemController.Instance;
+        View.LoadSingleton<GameView>();
+        View.Show<GameView>();
 
         SaveDataController.Instance.SaveAll();
 

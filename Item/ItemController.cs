@@ -87,4 +87,15 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
             FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
         }
     }
+
+    public void SellItem(ItemInfo info)
+    {
+        Debug.LogMethod($"{info}");
+        Debug.Indent++;
+
+        CurrencyController.Instance.AddValue(CurrencyType.Money, info.SellValue);
+        Data.Game.Save();
+
+        Debug.Indent--;
+    }
 }

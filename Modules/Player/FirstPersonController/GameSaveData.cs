@@ -1,7 +1,9 @@
-using Godot;
-
 public partial class GameSaveData
 {
-    public Vector3 PlayerCameraRotation { get; set; }
-    public Vector3 PlayerNeckRotation { get; set; }
+    public float PlayerPositionX { get; set; }
+    public float PlayerPositionY { get; set; }
+    public float PlayerPositionZ { get; set; }
+
+    public float PlayerCameraRotation { get; set; }
+    public float PlayerNeckRotation { get; set; }
 }

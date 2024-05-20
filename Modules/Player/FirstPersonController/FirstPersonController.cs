@@ -33,6 +33,8 @@ public partial class FirstPersonController : CharacterBody3D
         base._Ready();
         Instance = this;
         NodeScript.FindNodesFromAttribute(this, GetType());
+
+        LoadData();
     }
 
     public override void _Input(InputEvent @event)
@@ -105,6 +107,7 @@ public partial class FirstPersonController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
+        UpdateData();
     }
 
     private void Process_Cursor()
@@ -151,5 +154,21 @@ public partial class FirstPersonController : CharacterBody3D
 
         Grab.Grab(grabbable);
         return true;
+    }
+
+    public void UpdateData()
+    {
+        Data.Game.PlayerPositionX = GlobalPosition.X;
+        Data.Game.PlayerPositionY = GlobalPosition.Y;
+        Data.Game.PlayerPositionZ = GlobalPosition.Z;
+        Data.Game.PlayerCameraRotation = Camera.Rotation.X;
+        Data.Game.PlayerNeckRotation = Neck.Rotation.Y;
+    }
+
+    public void LoadData()
+    {
+        GlobalPosition = new Vector3(Data.Game.PlayerPositionX, Data.Game.PlayerPositionY, Data.Game.PlayerPositionZ);
+        Camera.Rotation = new Vector3(Data.Game.PlayerCameraRotation, 0, 0);
+        Neck.Rotation = new Vector3(0, Data.Game.PlayerNeckRotation, 0);
     }
 }

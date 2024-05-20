@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=21 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_sl3h0"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="2_qorhh"]
+[ext_resource type="PackedScene" uid="uid://dco4343is4u26" path="res://Assets/KenneyNL/Furniture/bedSingle.glb" id="5_pss1d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
 size = Vector3(31, 50, 31)
@@ -32,6 +33,9 @@ bounce = 0.8
 [sub_resource type="SphereShape3D" id="SphereShape3D_g002r"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_pgmve"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hsid"]
+size = Vector3(0.583984, 0.387695, 1.14258)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
 panorama = ExtResource("1_u4lhc")
@@ -135,10 +139,9 @@ shape = SubResource("BoxShape3D_53lfa")
 
 [node name="Ball" type="RigidBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.78409, 1)
+collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_r0jko")
 script = ExtResource("1_sl3h0")
-MaxThrowVelocity = null
-InitialCollisionMode = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ball"]
 shape = SubResource("SphereShape3D_g002r")
@@ -146,6 +149,18 @@ shape = SubResource("SphereShape3D_g002r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ball"]
 mesh = SubResource("SphereMesh_pgmve")
 skeleton = NodePath("")
+
+[node name="Bed" type="Node3D" parent="World"]
+transform = Transform3D(0.78201, 0, 0.623266, 0, 1, 0, -0.623266, 0, 0.78201, 11.4148, 0.376467, -2.87758)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Bed"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bed/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_2hsid")
+
+[node name="bedSingle" parent="World/Bed" instance=ExtResource("5_pss1d")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.3272, -0.376083, 1.10367)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")

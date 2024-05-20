@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdco18oe37rhc"]
+
+[ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
+[ext_resource type="Theme" uid="uid://duexivwgqnb01" path="res://Themes/Main.tres" id="2_y4u7j"]
+
+[node name="GameView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ml3m")
+
+[node name="Money" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
+offset_top = 19.0
+offset_right = -21.0
+offset_bottom = 62.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Money"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_y4u7j")
+
+[node name="MarginContainer" type="MarginContainer" parent="Money/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MoneyLabel" type="Label" parent="Money/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_y4u7j")
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true

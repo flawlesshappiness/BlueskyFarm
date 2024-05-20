@@ -130,7 +130,11 @@ public static class Debug
         {
             Text = "Quit",
             Category = category,
-            Action = _ => Scene.Tree.Quit()
+            Action = _ =>
+            {
+                Data.Game.Save();
+                Scene.Tree.Quit();
+            }
         });
 
         Debug.RegisterAction(new DebugAction

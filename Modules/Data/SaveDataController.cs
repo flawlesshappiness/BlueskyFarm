@@ -38,18 +38,31 @@ public partial class SaveDataController : Node
             Debug.LogMethod(typeof(T));
             Debug.Indent++;
 
-            var filename = typeof(T).Name;
-            var path = $"user://{filename}.save";
+            T data = null;
 
-            EnsureFileExists(path);
+            try
+            {
 
-            var json = FileAccess.GetFileAsString(path);
-            Debug.Log(json);
+                var filename = typeof(T).Name;
+                var path = $"user://{filename}.save";
 
-            T data = string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json);
-            data_objects.Add(typeof(T), data);
+                EnsureFileExists(path);
 
-            Save<T>();
+                var json = FileAccess.GetFileAsString(path);
+                Debug.Log(json);
+
+                data = string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to load data: {e.Message}");
+                data = new T();
+            }
+            finally
+            {
+                data_objects.Add(typeof(T), data);
+                Save<T>();
+            }
 
             Debug.Indent--;
             return data;
@@ -84,7 +97,7 @@ public partial class SaveDataController : Node
         var data = data_objects[type];
         data.Update();
 
-        var json = JsonSerializer.Serialize(data);
+        var json = JsonSerializer.Serialize(data, data.GetType(), new JsonSerializerOptions { WriteIndented = true, IncludeFields = true });
         Debug.Log(json);
 
         var filename = type.Name;

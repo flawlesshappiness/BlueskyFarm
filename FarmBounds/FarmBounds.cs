@@ -26,7 +26,7 @@ public partial class FarmBounds : NodeScript
         var item = body.GetNodeInChildren<Item>();
         if (item != null && item.Info.CanSell)
         {
-            Sell(body, item.Info.SellValue);
+            Sell(body, item.Info);
         }
         else
         {
@@ -34,7 +34,7 @@ public partial class FarmBounds : NodeScript
         }
     }
 
-    private void Sell(Node3D body, int value)
+    private void Sell(Node3D body, ItemInfo info)
     {
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -44,7 +44,7 @@ public partial class FarmBounds : NodeScript
                 yield return null;
             }
 
-            Debug.Log($"Sold for {value}");
+            ItemController.Instance.SellItem(info);
             body.QueueFree();
         }
     }

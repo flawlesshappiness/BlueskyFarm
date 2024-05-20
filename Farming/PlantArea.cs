@@ -111,7 +111,17 @@ public partial class PlantArea : Area3D
     {
         var plant = ItemController.Instance.CreateItem(seed.PlantInfoPath);
         ReparentPlantedItem(plant);
+        AnimatePlantAppear(plant);
 
         return plant;
+    }
+
+    private void AnimatePlantAppear(Node3D node)
+    {
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            yield return LerpEnumerator.Lerp01(0.25f, f => node.Scale = Lerp.Vector(Vector3.One * 1.25f, Vector3.One, Curves.EaseOutBack.Evaluate(f)));
+        }
     }
 }

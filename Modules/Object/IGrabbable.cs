@@ -7,4 +7,5 @@ public interface IGrabbable
     public void Grabbed();
     public void Released();
     public void SetPosition(Vector3 position);
+    public void SetRotation(Vector3 rotation);
 }

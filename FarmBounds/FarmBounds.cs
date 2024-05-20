@@ -10,6 +10,7 @@ public partial class FarmBounds : NodeScript
     public CollisionShape3D Shape;
 
     public Vector3 Size => (Shape.Shape as BoxShape3D).Size;
+    public Vector3 HalfSize => Size * 0.5f;
 
     public override void _Ready()
     {
@@ -23,24 +24,12 @@ public partial class FarmBounds : NodeScript
         ThrowObjectBack(body);
     }
 
-    private Coroutine ThrowObjectBack(Node3D body)
+    private void ThrowObjectBack(Node3D body)
     {
         var rig = body as RigidBody3D;
-        var center = Bounds.GlobalPosition;
-        var exit_position = body.GlobalPosition;
-        var direction = exit_position - center;
-        var x_is_bigger = Mathf.Abs(direction.X) > Mathf.Abs(direction.Z);
-        var x_sign = !x_is_bigger ? 0 : direction.X > 0 ? 1 : -1;
-        var z_sign = x_is_bigger ? 0 : direction.Z > 0 ? 1 : -1;
+        if (rig == null) return;
 
-        var x_position = exit_position.X + 4f * x_sign;
-        var z_position = exit_position.Z + 4f * z_sign;
-        var y_position = 2f;
-        var throw_position = new Vector3(x_position, y_position, z_position);
-
-        var throw_velocity = new Vector3(-x_sign, 1.5f, -z_sign) * 6f;
-
-        return Coroutine.Start(Cr);
+        Coroutine.Start(Cr);
         IEnumerator Cr()
         {
             while (body.GlobalPosition.Y > 0)
@@ -48,8 +37,35 @@ public partial class FarmBounds : NodeScript
                 yield return null;
             }
 
-            body.GlobalPosition = throw_position;
-            rig.LinearVelocity = throw_velocity;
+            ThrowObject(rig, rig.Position);
         }
+    }
+
+    private void ThrowObject(RigidBody3D body, Vector3 position)
+    {
+        // Calculate sign
+        var center = Bounds.GlobalPosition;
+        var direction = position - center;
+        var x_is_bigger = Mathf.Abs(direction.X) > Mathf.Abs(direction.Z);
+        var x_sign = !x_is_bigger ? 0 : direction.X > 0 ? 1 : -1;
+        var z_sign = x_is_bigger ? 0 : direction.Z > 0 ? 1 : -1;
+
+        // Clamp position
+        var max = HalfSize * 0.9f;
+        var x = !x_is_bigger ? Mathf.Clamp(position.X, -max.X, max.X) : HalfSize.X * x_sign;
+        var z = x_is_bigger ? Mathf.Clamp(position.Z, -max.Z, max.Z) : HalfSize.Z * z_sign;
+        var y = position.Y;
+        position = new Vector3(x, y, z);
+
+        // Calculate position and velocity
+        var x_position = position.X + 4f * x_sign;
+        var z_position = position.Z + 4f * z_sign;
+        var y_position = 2f;
+        var throw_position = new Vector3(x_position, y_position, z_position);
+        var throw_velocity = new Vector3(-x_sign, 1.5f, -z_sign) * 6f;
+
+        // Throw
+        body.GlobalPosition = throw_position;
+        body.LinearVelocity = throw_velocity;
     }
 }

@@ -6,31 +6,58 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     public float GrabPositionOffsetMax;
 
     [NodeName("Position")]
-    public Node3D GrabNode;
+    public Node3D PositionNode;
+
+    [NodeName("Rotation")]
+    public Node3D RotationNode;
 
     public IGrabbable Target { get; private set; }
-    public Vector3 GrabPosition => GrabNode.GlobalPosition + GrabOffset;
-    public Vector3 GrabOffset => GrabNode.GlobalBasis * Vector3.Forward * GrabOffsetLength;
+    public Vector3 GrabPosition => PositionNode.GlobalPosition + GrabOffset;
+    public Vector3 GrabOffset => PositionNode.GlobalBasis * Vector3.Forward * GrabOffsetLength;
     public float GrabOffsetLength { get; private set; }
+    public Vector3 GrabRotation => RotationNode.GlobalRotation;
     public bool IsGrabbing => Target != null;
+    public bool IsRotating => IsGrabbing && PlayerInput.Rotate.Held;
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-        InputScrollOffset(@event);
+        Input_Rotate(@event);
     }
 
-    private void InputScrollOffset(InputEvent @event)
+    private void Input_Rotate(InputEvent e)
     {
-        var e = @event as InputEventMouseButton;
-        if (e == null) return;
-        if (!e.Pressed) return;
+        if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
+        if (e is not InputEventMouseMotion) return;
+        if (!IsRotating) return;
 
-        if (e.ButtonIndex == MouseButton.WheelUp)
+        var motion = e as InputEventMouseMotion;
+        var x = motion.Relative.X * 0.005f;
+        var y = motion.Relative.Y * 0.005f;
+
+        RotationNode.GlobalRotate(PositionNode.GlobalBasis[1], x);
+        RotationNode.GlobalRotate(PositionNode.GlobalBasis[0], y);
+    }
+
+    private void CalculateGrabRotationOffset(IGrabbable target)
+    {
+        RotationNode.GlobalRotation = target.Node.GlobalRotation;
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_Target();
+        Process_GrabOffset();
+    }
+
+    private void Process_GrabOffset()
+    {
+        if (PlayerInput.ZoomIn.Pressed)
         {
             SetGrabOffset(GrabOffsetLength + 0.2f);
         }
-        else if (e.ButtonIndex == MouseButton.WheelDown)
+        else if (PlayerInput.ZoomOut.Pressed)
         {
             SetGrabOffset(GrabOffsetLength - 0.2f);
         }
@@ -43,22 +70,17 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
 
     private void CalculateGrabOffset(IGrabbable target)
     {
-        var distance = GrabNode.GlobalPosition.DistanceTo(target.Node.GlobalPosition);
+        var distance = PositionNode.GlobalPosition.DistanceTo(target.Node.GlobalPosition);
         SetGrabOffset(distance);
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        ProcessTarget();
-    }
-
-    private void ProcessTarget()
+    private void Process_Target()
     {
         if (Target == null) return;
-        if (GrabNode == null) return;
+        if (PositionNode == null) return;
 
         Target.SetPosition(GrabPosition);
+        Target.SetRotation(GrabRotation);
     }
 
     public void SetTarget(IGrabbable grabbable)
@@ -66,6 +88,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         if (grabbable == null) return;
 
         CalculateGrabOffset(grabbable);
+        CalculateGrabRotationOffset(grabbable);
 
         Target = grabbable;
         Target.Grabbed();

@@ -35,50 +35,21 @@ public partial class FirstPersonController : CharacterBody3D
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-        RotateView(@event);
-        InputMouse(@event);
+        Input_RotateView(@event);
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
+        Process_Interact();
         Process_Cursor();
     }
 
-    private void InputMouse(InputEvent @event)
-    {
-        var e = @event as InputEventMouseButton;
-        if (e == null) return;
-        if (e.ButtonIndex == MouseButton.Left)
-        {
-            if (e.IsPressed())
-            {
-                var interactable = Interact.CurrentInteractable;
-                if (TryGrab(interactable)) return;
-            }
-            else if (e.IsReleased())
-            {
-                Grab?.Release();
-            }
-        }
-    }
-
-    private bool TryGrab(IInteractable interactable)
-    {
-        if (Grab == null) return false;
-        if (interactable == null) return false;
-
-        var grabbable = interactable as IGrabbable;
-        if (grabbable == null) return false;
-
-        Grab.Grab(grabbable);
-        return true;
-    }
-
-    private void RotateView(InputEvent e)
+    private void Input_RotateView(InputEvent e)
     {
         if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
         if (e is not InputEventMouseMotion) return;
+        if (Grab?.IsRotating ?? false) return;
 
         var motion = e as InputEventMouseMotion;
         Neck.RotateY(-motion.Relative.X * 0.001f);
@@ -98,8 +69,12 @@ public partial class FirstPersonController : CharacterBody3D
             velocity.Y -= gravity * (float)delta;
 
         // Get the input direction and handle the movement/deceleration.
-        // As good practice, you should replace UI actions with custom gameplay actions.
-        Vector2 inputDir = Input.GetVector("Left", "Right", "Forward", "Back");
+        Vector2 inputDir = Input.GetVector(
+            PlayerInput.Left.Name,
+            PlayerInput.Right.Name,
+            PlayerInput.Forward.Name,
+            PlayerInput.Back.Name);
+
         Vector3 direction = (Neck.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
         if (grounded)
@@ -117,7 +92,7 @@ public partial class FirstPersonController : CharacterBody3D
             }
 
             // Handle Jump.
-            if (Input.IsActionJustPressed("Jump"))
+            if (PlayerInput.Jump.Pressed)
             {
                 var dir = new Vector3(direction.X, 0, direction.Z).Normalized() * JumpHorizontalSpeed;
                 var jump_vel = new Vector3(dir.X, JumpUpSpeed, dir.Z);
@@ -148,5 +123,30 @@ public partial class FirstPersonController : CharacterBody3D
         {
             Cursor.Hide();
         }
+    }
+
+    private void Process_Interact()
+    {
+        if (PlayerInput.Interact.Pressed)
+        {
+            var interactable = Interact.CurrentInteractable;
+            if (TryGrab(interactable)) return;
+        }
+        else if (PlayerInput.Interact.Released)
+        {
+            Grab?.Release();
+        }
+    }
+
+    private bool TryGrab(IInteractable interactable)
+    {
+        if (Grab == null) return false;
+        if (interactable == null) return false;
+
+        var grabbable = interactable as IGrabbable;
+        if (grabbable == null) return false;
+
+        Grab.Grab(grabbable);
+        return true;
     }
 }

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
 {
@@ -11,8 +10,7 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
 
     private bool is_grabbed;
     private Vector3 target_position;
-    private Vector3 previous_position;
-    private Vector3 intended_velocity;
+    private Vector3 target_rotation;
 
     public override void _Ready()
     {
@@ -23,12 +21,11 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        var f_delta = Convert.ToSingle(delta);
-        PhysicsProcess_MoveWhenGrabbed(f_delta);
-        PhysicsProcess_CalculateVelocity(f_delta);
+        PhysicsProcess_MoveWhenGrabbed();
+        PhysicsProcess_RotateWhenGrabbed();
     }
 
-    private void PhysicsProcess_MoveWhenGrabbed(float delta)
+    private void PhysicsProcess_MoveWhenGrabbed()
     {
         if (!IsGrabbed) return;
 
@@ -38,17 +35,12 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
         LinearVelocity = velocity;
     }
 
-    private void PhysicsProcess_CalculateVelocity(float delta)
+    private void PhysicsProcess_RotateWhenGrabbed()
     {
         if (!IsGrabbed) return;
 
-        var p = GlobalPosition;
-        var dir = p - previous_position;
-        var d = previous_position.DistanceTo(p);
-        var v = d / delta;
-
-        intended_velocity = dir.Normalized() * v;
-        previous_position = p;
+        GlobalRotation = target_rotation;
+        AngularVelocity = Vector3.Zero;
     }
 
     public void Grabbed()
@@ -61,7 +53,6 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         is_grabbed = false;
         GravityScale = 1;
-        //LinearVelocity = intended_velocity;
 
         if (MaxThrowVelocity > 0 && LinearVelocity.Length() > MaxThrowVelocity)
         {
@@ -72,5 +63,10 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     public void SetPosition(Vector3 position)
     {
         target_position = position;
+    }
+
+    public void SetRotation(Vector3 rotation)
+    {
+        target_rotation = rotation;
     }
 }

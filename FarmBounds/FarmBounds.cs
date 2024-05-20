@@ -23,8 +23,30 @@ public partial class FarmBounds : NodeScript
 
     private void BodyExited(Node3D body)
     {
-        // Default
-        ThrowObjectBack(body);
+        var item = body.GetNodeInChildren<Item>();
+        if (item != null && item.Info.CanSell)
+        {
+            Sell(body, item.Info.SellValue);
+        }
+        else
+        {
+            ThrowObjectBack(body);
+        }
+    }
+
+    private void Sell(Node3D body, int value)
+    {
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            while (body.GlobalPosition.Y > 0)
+            {
+                yield return null;
+            }
+
+            Debug.Log($"Sold for {value}");
+            body.QueueFree();
+        }
     }
 
     private void ThrowObjectBack(Node3D body)

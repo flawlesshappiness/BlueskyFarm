@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://pmtc5tmu8sv5"]
+[gd_scene load_steps=5 format=3 uid="uid://pmtc5tmu8sv5"]
 
 [ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_5rvc8"]
 [ext_resource type="PackedScene" uid="uid://c6ulbtni5dxrg" path="res://Assets/KenneyNL/Food/radish.glb" id="1_f812j"]
+[ext_resource type="Script" path="res://Item/Item.cs" id="3_pjj4y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxxpt"]
 radius = 0.0563021
@@ -17,3 +18,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182436, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0820418, 0)
 shape = SubResource("CapsuleShape3D_lxxpt")
+
+[node name="Item" type="Node" parent="."]
+script = ExtResource("3_pjj4y")

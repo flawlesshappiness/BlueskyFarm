@@ -21,6 +21,7 @@ public partial class PlantArea : Area3D
         var seed = body.GetNodeInChildren<Seed>();
         if (seed == null) return;
         if (seed.Planted) return;
+        if (CurrentSeed != null) return;
 
         PlantSeed(body);
     }
@@ -101,12 +102,14 @@ public partial class PlantArea : Area3D
             grabbable.OnGrabbed -= OnGrabbedPlant;
 
             grabbable.Node.SetParent(Scene.Root);
+
+            CurrentSeed = null;
         }
     }
 
     private Node3D SpawnPlantFromSeed(Seed seed)
     {
-        var plant = GDHelper.Instantiate<Node3D>(seed.PlantPath);
+        var plant = ItemController.Instance.CreateItem(seed.PlantInfoPath);
         ReparentPlantedItem(plant);
 
         return plant;

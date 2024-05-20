@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_6cw6x")
 Path = "res://Item/Prefabs/Radish.tscn"
+CanSell = true
+SellValue = 5

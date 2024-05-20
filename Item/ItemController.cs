@@ -13,10 +13,18 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         RegisterDebugActions();
     }
 
+    public Node3D CreateItem(ItemInfo info)
+    {
+        var node = GDHelper.Instantiate<Node3D>(info.Path);
+        var item = node.GetNodeInChildren<Item>();
+        item.Info = info;
+        return node;
+    }
+
     public Node3D CreateItem(string path)
     {
-        var item = GDHelper.Instantiate<Node3D>(path);
-        return item;
+        var info = Collection.Resources.FirstOrDefault(x => x.ResourcePath == path);
+        return CreateItem(info);
     }
 
     private void RegisterDebugActions()
@@ -46,14 +54,14 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         view.ContentSearch.ClearItems();
         foreach (var resource in Collection.Resources)
         {
-            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource.Path));
+            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource));
         }
 
         view.ContentSearch.UpdateButtons();
 
-        void SelectItem(string path)
+        void SelectItem(ItemInfo info)
         {
-            var item = CreateItem(path);
+            var item = CreateItem(info);
             FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
         }
     }
@@ -66,16 +74,16 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         view.ContentSearch.ClearItems();
         foreach (var resource in Collection.Resources)
         {
-            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource.Path));
+            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource.ResourcePath));
         }
 
         view.ContentSearch.UpdateButtons();
 
         void SelectItem(string path)
         {
-            var item = CreateItem(Collection.Resources.FirstOrDefault(x => x.Path.Contains("seed", System.StringComparison.OrdinalIgnoreCase)).Path);
+            var item = CreateItem(Collection.Resources.FirstOrDefault(x => x.Path.Contains("seed", System.StringComparison.OrdinalIgnoreCase)));
             var seed = item.GetNodeInChildren<Seed>();
-            seed.PlantPath = path;
+            seed.PlantInfoPath = path;
             FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
         }
     }

@@ -8,7 +8,6 @@
 radius = 0.229386
 
 [node name="FirstPersonPlayer" type="CharacterBody3D"]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 collision_mask = 3
 script = ExtResource("1_2k6r2")
 JumpHorizontalSpeed = 2.0

@@ -6,6 +6,9 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     [Export]
     public float MaxThrowVelocity = 12;
 
+    [Export]
+    public InteractCollisionMode InitialCollisionMode = InteractCollisionMode.All;
+
     public Node3D Node => this;
     public bool IsGrabbed => is_grabbed;
 
@@ -20,6 +23,8 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         base._Ready();
         NodeScript.FindNodesFromAttribute(this, GetType());
+
+        SetCollisionMode(InitialCollisionMode);
     }
 
     public override void _PhysicsProcess(double delta)

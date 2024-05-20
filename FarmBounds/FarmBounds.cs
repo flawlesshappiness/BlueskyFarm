@@ -18,7 +18,7 @@ public partial class FarmBounds : NodeScript
     {
         base._Ready();
         Instance = this;
-        Bounds.BodyExited += BodyExited;
+        Bounds.BodyExited += body => CallDeferred(nameof(BodyExited), body);
     }
 
     private void BodyExited(Node3D body)
@@ -29,8 +29,23 @@ public partial class FarmBounds : NodeScript
 
     private void ThrowObjectBack(Node3D body)
     {
+        Debug.LogMethod(body);
+        Debug.Indent++;
+
         var rig = body as RigidBody3D;
-        if (rig == null) return;
+        if (rig == null)
+        {
+            Debug.Indent--;
+            return;
+        }
+
+        if (rig.Freeze)
+        {
+            Debug.Indent--;
+            return;
+        }
+
+        Debug.Indent--;
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -46,6 +61,9 @@ public partial class FarmBounds : NodeScript
 
     public void ThrowObject(RigidBody3D body, Vector3 position)
     {
+        Debug.LogMethod($"{body}, {position}");
+        Debug.Indent++;
+
         // Calculate sign
         var center = Bounds.GlobalPosition;
         var direction = position - center;
@@ -70,5 +88,10 @@ public partial class FarmBounds : NodeScript
         // Throw
         body.GlobalPosition = throw_position;
         body.LinearVelocity = throw_velocity;
+
+        var rng = new RandomNumberGenerator();
+        body.AngularVelocity = new Vector3(rng.Randf() * 5, rng.Randf() * 5, rng.Randf() * 5);
+
+        Debug.Indent--;
     }
 }

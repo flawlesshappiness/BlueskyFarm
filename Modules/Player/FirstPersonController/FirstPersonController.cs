@@ -117,7 +117,7 @@ public partial class FirstPersonController : CharacterBody3D
         {
             Cursor.Hide();
         }
-        else if (Interact?.CurrentInteractable is IGrabbable)
+        else if (Grab?.CanGrab(Interact?.CurrentInteractable as IGrabbable) ?? false)
         {
             Cursor.Position(Interact.CurrentInteractable.Node);
             Cursor.Show(CursorType.Grab);

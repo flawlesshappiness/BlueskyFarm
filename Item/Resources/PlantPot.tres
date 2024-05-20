@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://j8hcks2l70er"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_pk05a"]
+
+[resource]
+script = ExtResource("1_pk05a")
+Path = "res://Item/Prefabs/PlantPot.tscn"

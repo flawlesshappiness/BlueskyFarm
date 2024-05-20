@@ -78,6 +78,11 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     {
         if (Target == null) return;
         if (PositionNode == null) return;
+        if (!CanGrab(Target))
+        {
+            Release();
+            return;
+        }
 
         Target.SetPosition(GrabPosition);
         Target.SetRotation(GrabRotation);
@@ -86,6 +91,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     public void SetTarget(IGrabbable grabbable)
     {
         if (grabbable == null) return;
+        if (!CanGrab(grabbable)) return;
 
         CalculateGrabOffset(grabbable);
         CalculateGrabRotationOffset(grabbable);
@@ -110,5 +116,12 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     public void Release()
     {
         RemoveTarget();
+    }
+
+    public bool CanGrab(IGrabbable grabbable)
+    {
+        if (grabbable == null) return false;
+        if (!grabbable.IsGrabbable) return false;
+        return true;
     }
 }

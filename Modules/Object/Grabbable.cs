@@ -3,10 +3,11 @@ using Godot;
 public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
 {
     [Export]
-    public float MaxThrowVelocity;
+    public float MaxThrowVelocity = 12;
 
     public Node3D Node => this;
     public bool IsGrabbed => is_grabbed;
+    public bool IsGrabbable { get; set; } = true;
 
     private bool is_grabbed;
     private Vector3 target_position;

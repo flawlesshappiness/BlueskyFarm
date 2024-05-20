@@ -14,8 +14,8 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     public Node3D CreateItem(string path)
     {
-        var node = GDHelper.Instantiate<Node3D>(path);
-        return node;
+        var item = GDHelper.Instantiate<Node3D>(path);
+        return item;
     }
 
     private void RegisterDebugActions()
@@ -24,7 +24,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Test",
+            Text = "Spawn",
             Action = DebugCreateAndThrowItem
         });
     }

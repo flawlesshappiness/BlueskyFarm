@@ -1,7 +1,14 @@
 using Godot;
 
-public partial class Seed : Node
+public class Seed
 {
-    public bool Planted { get; set; }
-    public string PlantInfoPath { get; set; }
+    public ItemInfo PlantInfo { get; set; }
+    public int GrowTicksStart { get; set; }
+    public int GrowTicksEnd { get; set; }
+    public Node3D SeedModel { get; set; }
+    public Node3D PlantModel { get; set; }
+    public IInteractable InteractablePlant => PlantModel as IInteractable;
+    public IGrabbable GrabbablePlant => PlantModel as IGrabbable;
+    public IInteractable InteractableSeed => SeedModel as IInteractable;
+    public IGrabbable GrabbableSeed => SeedModel as IGrabbable;
 }

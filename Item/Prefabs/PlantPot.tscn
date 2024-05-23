@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://csjfk37qgwke3"]
+[gd_scene load_steps=6 format=3 uid="uid://csjfk37qgwke3"]
 
-[ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_en85w"]
 [ext_resource type="PackedScene" uid="uid://bd1ibmvo3nl2o" path="res://Assets/FlawLizArt/PlantPot.glb" id="2_khbk4"]
 [ext_resource type="Script" path="res://Farming/PlantArea.cs" id="3_26l6i"]
 [ext_resource type="Script" path="res://Item/Item.cs" id="4_jfl88"]
@@ -15,7 +14,8 @@ radius = 0.32058
 [node name="PlantPot" type="RigidBody3D"]
 collision_layer = 5
 mass = 10.0
-script = ExtResource("1_en85w")
+script = ExtResource("4_jfl88")
+HoverText = "Pot"
 
 [node name="PlantPot" parent="." instance=ExtResource("2_khbk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.369206, 0)
@@ -32,6 +32,3 @@ script = ExtResource("3_26l6i")
 shape = SubResource("SphereShape3D_v8pix")
 
 [node name="SeedPosition" type="Node3D" parent="PlantArea"]
-
-[node name="Item" type="Node" parent="."]
-script = ExtResource("4_jfl88")

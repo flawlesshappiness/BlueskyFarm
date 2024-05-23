@@ -28,6 +28,9 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeType(typeof(IPlayerGrab))]
     public IPlayerGrab Grab;
 
+    public MultiLock InteractLock = new MultiLock();
+    public MultiLock MovementLock = new MultiLock();
+
     public override void _Ready()
     {
         base._Ready();
@@ -81,6 +84,7 @@ public partial class FirstPersonController : CharacterBody3D
             PlayerInput.Back.Name);
 
         Vector3 direction = (Neck.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+        if (MovementLock.IsLocked) direction *= 0;
 
         if (grounded)
         {
@@ -112,9 +116,18 @@ public partial class FirstPersonController : CharacterBody3D
 
     private void Process_Cursor()
     {
-        if (Interact?.CurrentInteractable == null)
+        if (InteractLock.IsLocked)
         {
             Cursor.Hide();
+        }
+        else if (Interact?.CurrentInteractable == null)
+        {
+            Cursor.Hide();
+        }
+        else if ((Interact?.CurrentInteractable as ITouchable) != null)
+        {
+            Cursor.Position(Interact.CurrentInteractable.Node);
+            Cursor.Show(CursorType.Look, Interact.CurrentInteractable.InteractableText);
         }
         else if (Grab?.IsGrabbing ?? false)
         {
@@ -123,7 +136,7 @@ public partial class FirstPersonController : CharacterBody3D
         else if (Grab?.CanGrab(Interact?.CurrentInteractable as IGrabbable) ?? false)
         {
             Cursor.Position(Interact.CurrentInteractable.Node);
-            Cursor.Show(CursorType.Grab);
+            Cursor.Show(CursorType.Grab, Interact.CurrentInteractable.InteractableText);
         }
         else
         {
@@ -133,10 +146,13 @@ public partial class FirstPersonController : CharacterBody3D
 
     private void Process_Interact()
     {
+        if (InteractLock.IsLocked) return;
+
         if (PlayerInput.Interact.Pressed)
         {
             var interactable = Interact.CurrentInteractable;
             if (TryGrab(interactable)) return;
+            if (TryTouch(interactable)) return;
         }
         else if (PlayerInput.Interact.Released)
         {
@@ -153,6 +169,17 @@ public partial class FirstPersonController : CharacterBody3D
         if (grabbable == null) return false;
 
         Grab.Grab(grabbable);
+        return true;
+    }
+
+    private bool TryTouch(IInteractable interactable)
+    {
+        if (interactable == null) return false;
+
+        var touchable = interactable as ITouchable;
+        if (touchable == null) return false;
+
+        touchable.Touch();
         return true;
     }
 

@@ -9,8 +9,13 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     [Export]
     public InteractCollisionMode InitialCollisionMode = InteractCollisionMode.All;
 
+    [Export]
+    public string HoverText;
+
     public Node3D Node => this;
     public bool IsGrabbed => is_grabbed;
+
+    public string InteractableText => HoverText;
 
     public event Action OnGrabbed;
     public event Action OnReleased;
@@ -101,9 +106,4 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
             _ => 0
         };
     }
-}
-
-public enum InteractCollisionMode
-{
-    None, All, Collision, Interact
 }

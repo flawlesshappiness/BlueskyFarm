@@ -2,20 +2,19 @@ using Godot;
 
 public partial class GameView : View
 {
-    [NodeName(nameof(MoneyLabel))]
-    public Label MoneyLabel;
+    [NodeName(nameof(ColorRectOverlay))]
+    public ColorRect ColorRectOverlay;
 
     public override void _Ready()
     {
         base._Ready();
-
-        var data = CurrencyController.Instance.GetData(CurrencyType.Money);
-        data.OnValueChanged += OnMoneyChanged;
-        OnMoneyChanged(data.Value);
+        SetOverlayAlpha(0);
     }
 
-    private void OnMoneyChanged(int value)
+    public void SetOverlayAlpha(float alpha)
     {
-        MoneyLabel.Text = value.ToString();
+        var color = ColorRectOverlay.Color;
+        var new_color = new Color(color.R, color.G, color.B, alpha);
+        ColorRectOverlay.Color = new_color;
     }
 }

@@ -11,4 +11,10 @@ public partial class ItemInfo : Resource
 
     [Export]
     public int SellValue;
+
+    [Export]
+    public bool CanPlant;
+
+    [Export]
+    public int GrowTicks;
 }

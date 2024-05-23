@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=22 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_sl3h0"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="2_qorhh"]
+[ext_resource type="Script" path="res://Sleep/Sleepable.cs" id="3_6mn48"]
 [ext_resource type="PackedScene" uid="uid://dco4343is4u26" path="res://Assets/KenneyNL/Furniture/bedSingle.glb" id="5_pss1d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
@@ -150,17 +151,19 @@ shape = SubResource("SphereShape3D_g002r")
 mesh = SubResource("SphereMesh_pgmve")
 skeleton = NodePath("")
 
-[node name="Bed" type="Node3D" parent="World"]
+[node name="Bed" type="StaticBody3D" parent="World"]
 transform = Transform3D(0.78201, 0, 0.623266, 0, 1, 0, -0.623266, 0, 0.78201, 11.4148, 0.376467, -2.87758)
+collision_layer = 5
+script = ExtResource("3_6mn48")
+SleepTicks = 10
+HoverText = "Pass out"
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Bed"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bed/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bed"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_2hsid")
 
 [node name="bedSingle" parent="World/Bed" instance=ExtResource("5_pss1d")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.3272, -0.376083, 1.10367)
+transform = Transform3D(2, 0, -5.96046e-08, 0, 2, 0, 5.96046e-08, 0, 2, -1.3272, -0.376083, 1.10367)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")

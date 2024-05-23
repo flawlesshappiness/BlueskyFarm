@@ -13,18 +13,11 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         RegisterDebugActions();
     }
 
-    public Node3D CreateItem(ItemInfo info)
+    public Item CreateItem(ItemInfo info)
     {
-        var node = GDHelper.Instantiate<Node3D>(info.Path);
-        var item = node.GetNodeInChildren<Item>();
+        var item = GDHelper.Instantiate<Item>(info.Path);
         item.Info = info;
-        return node;
-    }
-
-    public Node3D CreateItem(string path)
-    {
-        var info = Collection.Resources.FirstOrDefault(x => x.ResourcePath == path);
-        return CreateItem(info);
+        return item;
     }
 
     private void RegisterDebugActions()
@@ -82,8 +75,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         void SelectItem(string path)
         {
             var item = CreateItem(Collection.Resources.FirstOrDefault(x => x.Path.Contains("seed", System.StringComparison.OrdinalIgnoreCase)));
-            var seed = item.GetNodeInChildren<Seed>();
-            seed.PlantInfoPath = path;
+            item.PlantInfo = GD.Load<ItemInfo>(path);
             FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
         }
     }

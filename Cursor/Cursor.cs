@@ -4,9 +4,9 @@ public static class Cursor
 {
     public static CursorView View => Singleton.Load<CursorView>($"Cursor/View/{nameof(CursorView)}.tscn");
 
-    public static void Show(CursorType type)
+    public static void Show(CursorType type, string text = "")
     {
-        View.SetCursor(type);
+        View.SetCursor(type, text);
         View.Show();
     }
 

@@ -2,8 +2,11 @@ using Godot;
 
 public partial class CursorView : View
 {
-    [NodeName("Cursor")]
+    [NodeName(nameof(Cursor))]
     public TextureRect Cursor;
+
+    [NodeName(nameof(Label))]
+    public Label Label;
 
     [Export(PropertyHint.File, nameof(Texture2D))]
     public Texture2D GrabTexture;
@@ -23,9 +26,10 @@ public partial class CursorView : View
         Hide();
     }
 
-    public void SetCursor(CursorType type)
+    public void SetCursor(CursorType type, string text = "")
     {
         Cursor.Texture = GetTexture(type);
+        Label.Text = text;
     }
 
     public void SetCursorPosition(Vector2 position)

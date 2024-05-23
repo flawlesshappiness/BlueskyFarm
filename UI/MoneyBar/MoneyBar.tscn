@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://ces2w5eg2difr"]
+
+[ext_resource type="Theme" uid="uid://duexivwgqnb01" path="res://Themes/Money.tres" id="1_4q6cx"]
+[ext_resource type="Script" path="res://UI/MoneyBar/MoneyBar.cs" id="1_clbhs"]
+
+[node name="MoneyBar" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
+offset_top = 19.0
+offset_right = -21.0
+offset_bottom = 62.0
+grow_horizontal = 0
+script = ExtResource("1_clbhs")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4q6cx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MoneyLabel" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_4q6cx")
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true

@@ -5,3 +5,7 @@
 [resource]
 script = ExtResource("1_a3g06")
 Path = "res://Item/Prefabs/Seed.tscn"
+CanSell = false
+SellValue = 0
+CanPlant = true
+GrowTicks = 0

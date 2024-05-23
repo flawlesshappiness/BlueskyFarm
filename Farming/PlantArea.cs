@@ -1,5 +1,5 @@
 using Godot;
-using System.Collections;
+using System;
 
 public partial class PlantArea : Area3D
 {
@@ -14,43 +14,58 @@ public partial class PlantArea : Area3D
         NodeScript.FindNodesFromAttribute(this, GetType());
 
         BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
+        SleepController.Instance.OnTicksChanged += OnSleep;
     }
 
     private void OnBodyEntered(Node3D body)
     {
-        var seed = body.GetNodeInChildren<Seed>();
-        if (seed == null) return;
-        if (seed.Planted) return;
         if (CurrentSeed != null) return;
 
-        PlantSeed(body);
+        var item = body.GetNodeInChildren<Item>();
+        if (item == null) return;
+        if (!item.Info.CanPlant) return;
+        if (item.PlantInfo == null) return;
+
+        try
+        {
+            PlantSeed(item);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Exception occured when body entered PlantArea");
+            Debug.LogError(e.Message);
+            Debug.LogError(e.StackTrace);
+        }
     }
 
-    public void PlantSeed(Node3D node, Seed seed = null)
+    public void PlantSeed(Item item)
     {
-        Debug.LogMethod($"{node}, {seed}");
+        Debug.LogMethod($"{item}");
         Debug.Indent++;
 
-        if (node == null)
+        if (item == null)
         {
-            Debug.LogError("Node was null");
+            Debug.LogError("Item was null");
             Debug.Indent--;
             return;
         }
 
-        seed ??= node.GetNodeInChildren<Seed>();
-        if (seed == null)
+        if (item.PlantInfo == null)
         {
-            Debug.LogError("Tried to find Seed on node, but found nothing");
+            Debug.LogError("item.PlantInfo was null");
             Debug.Indent--;
             return;
         }
 
-        CurrentSeed = seed;
-        CurrentSeed.Planted = true;
+        CurrentSeed = new Seed
+        {
+            PlantInfo = item.PlantInfo,
+            GrowTicksStart = SleepController.Instance.CurrentTicks,
+            GrowTicksEnd = SleepController.Instance.CurrentTicks + item.PlantInfo.GrowTicks,
+            SeedModel = item
+        };
 
-        ReparentPlantedItem(node);
-        BeginGrowing(CurrentSeed);
+        ReparentPlantedItem(item);
 
         Debug.Indent--;
     }
@@ -60,37 +75,46 @@ public partial class PlantArea : Area3D
         var interactable = node as IInteractable;
         interactable.SetCollisionMode(InteractCollisionMode.None);
 
-        var rig = interactable as RigidBody3D;
+        var rig = node as RigidBody3D;
         rig.Freeze = true;
 
         node.GlobalTransform = SeedPosition.GlobalTransform;
         node.SetParent(SeedPosition);
     }
 
-    private void BeginGrowing(Seed seed)
+    private void DespawnSeedModel(Seed seed)
     {
-        Coroutine.Start(Cr);
-        IEnumerator Cr()
-        {
-            yield return new WaitForSeconds(2f);
-
-            FullyGrowSeed(seed);
-        }
+        Debug.LogMethod();
+        seed.SeedModel.QueueFree();
+        seed.SeedModel = null;
     }
 
-    private void FullyGrowSeed(Seed seed)
+    public void SpawnPlantModel(Seed seed)
     {
-        // Create plant
-        var plant = SpawnPlantFromSeed(seed);
-        var grabbable = plant as IGrabbable;
-        var interactable = plant as IInteractable;
+        Debug.LogMethod();
+        Debug.Indent++;
 
-        // Destroy seed
-        var parent = seed.GetParent();
-        parent.QueueFree();
+        if (seed == null)
+        {
+            Debug.LogError("Seed was null");
+            Debug.Indent--;
+            return;
+        }
 
-        // Setup plant
-        interactable.SetCollisionMode(InteractCollisionMode.Interact);
+        seed.PlantModel = ItemController.Instance.CreateItem(seed.PlantInfo);
+        ReparentPlantedItem(seed.PlantModel);
+        SetupPlantGrabbable(seed);
+
+        Debug.Indent--;
+    }
+
+    private void SetupPlantGrabbable(Seed seed)
+    {
+        if (seed == null) return;
+
+        var grabbable = seed.GrabbablePlant;
+        var interactable = seed.InteractablePlant;
+
         grabbable.OnGrabbed += OnGrabbedPlant;
 
         void OnGrabbedPlant()
@@ -107,21 +131,48 @@ public partial class PlantArea : Area3D
         }
     }
 
-    private Node3D SpawnPlantFromSeed(Seed seed)
+    public void SetPlantGrowing(Seed seed)
     {
-        var plant = ItemController.Instance.CreateItem(seed.PlantInfoPath);
-        ReparentPlantedItem(plant);
-        AnimatePlantAppear(plant);
+        if (seed == null) return;
 
-        return plant;
+        seed.InteractablePlant.SetCollisionMode(InteractCollisionMode.None);
+        seed.PlantModel.Scale = Vector3.One * 0.5f;
     }
 
-    private void AnimatePlantAppear(Node3D node)
+    public void SetPlantFullyGrown(Seed seed)
     {
-        Coroutine.Start(Cr);
-        IEnumerator Cr()
+        if (seed == null) return;
+
+        seed.PlantModel.Scale = Vector3.One * 1f;
+        seed.InteractablePlant.SetCollisionMode(InteractCollisionMode.Interact);
+    }
+
+    private void OnSleep()
+    {
+        if (CurrentSeed == null) return;
+
+        Debug.LogMethod();
+        Debug.Indent++;
+
+        if (CurrentSeed.SeedModel != null)
         {
-            yield return LerpEnumerator.Lerp01(0.25f, f => node.Scale = Lerp.Vector(Vector3.One * 1.25f, Vector3.One, Curves.EaseOutBack.Evaluate(f)));
+            DespawnSeedModel(CurrentSeed);
         }
+
+        if (CurrentSeed.PlantModel == null)
+        {
+            SpawnPlantModel(CurrentSeed);
+        }
+
+        if (SleepController.Instance.CurrentTicks >= CurrentSeed.GrowTicksEnd)
+        {
+            SetPlantFullyGrown(CurrentSeed);
+        }
+        else
+        {
+            SetPlantGrowing(CurrentSeed);
+        }
+
+        Debug.Indent--;
     }
 }

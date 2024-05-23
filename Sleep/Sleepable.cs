@@ -30,16 +30,18 @@ public partial class Sleepable : Touchable
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            var view = View.Get<GameView>();
+
             FirstPersonController.Instance.MovementLock.AddLock(nameof(Sleepable));
             FirstPersonController.Instance.InteractLock.AddLock(nameof(Sleepable));
 
-            var view = View.Get<GameView>();
-            view.SetOverlayAlpha(1);
-            yield return new WaitForSeconds(1f);
-            view.SetOverlayAlpha(0);
+            yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(0, 1, f)));
+            yield return new WaitForSeconds(0.5f);
 
             FirstPersonController.Instance.MovementLock.RemoveLock(nameof(Sleepable));
             FirstPersonController.Instance.InteractLock.RemoveLock(nameof(Sleepable));
+
+            yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(1, 0, f)));
         }
     }
 }

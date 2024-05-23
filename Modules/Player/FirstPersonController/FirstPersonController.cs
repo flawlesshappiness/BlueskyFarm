@@ -55,6 +55,7 @@ public partial class FirstPersonController : CharacterBody3D
 
     private void Input_RotateView(InputEvent e)
     {
+        if (MovementLock.IsLocked) return;
         if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
         if (e is not InputEventMouseMotion) return;
         if (Grab?.IsRotating ?? false) return;

@@ -11,9 +11,9 @@ collision_layer = 5
 script = ExtResource("3_pjj4y")
 HoverText = "Radish"
 
-[node name="radish2" parent="." instance=ExtResource("1_f812j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182436, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0820418, 0)
 shape = SubResource("BoxShape3D_6yi1c")
+
+[node name="radish2" parent="CollisionShape3D" instance=ExtResource("1_f812j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100394, 0)

@@ -1,6 +1,5 @@
 using Godot;
 using System.IO;
-using System.Linq;
 
 public partial class ItemController : ResourceController<ItemCollection, ItemInfo>
 {
@@ -18,6 +17,37 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         var item = GDHelper.Instantiate<Item>(info.Path);
         item.Info = info;
         return item;
+    }
+
+    public Item CreateItem(string info_path)
+    {
+        var info = GD.Load<ItemInfo>(info_path);
+        return CreateItem(info);
+    }
+
+    public Item SpawnCoin()
+    {
+        var item = CreateItem(Collection.Coin);
+        item.OnGrabbed += PickCoin;
+        return item;
+
+        void PickCoin()
+        {
+            CurrencyController.Instance.AddValue(CurrencyType.Money, 1);
+            Particle.PlayOneShot(ParticleType.SmokePuffSmall, item.Node.GlobalPosition);
+            item.Node.QueueFree();
+        }
+    }
+
+    public void SellItem(ItemInfo info)
+    {
+        Debug.LogMethod($"{info}");
+        Debug.Indent++;
+
+        CurrencyController.Instance.AddValue(CurrencyType.Money, info.SellValue);
+        Data.Game.Save();
+
+        Debug.Indent--;
     }
 
     private void RegisterDebugActions()
@@ -74,20 +104,9 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
         void SelectItem(string path)
         {
-            var item = CreateItem(Collection.Resources.FirstOrDefault(x => x.Path.Contains("seed", System.StringComparison.OrdinalIgnoreCase)));
+            var item = CreateItem(Collection.Seed);
             item.PlantInfo = GD.Load<ItemInfo>(path);
             FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
         }
-    }
-
-    public void SellItem(ItemInfo info)
-    {
-        Debug.LogMethod($"{info}");
-        Debug.Indent++;
-
-        CurrencyController.Instance.AddValue(CurrencyType.Money, info.SellValue);
-        Data.Game.Save();
-
-        Debug.Indent--;
     }
 }

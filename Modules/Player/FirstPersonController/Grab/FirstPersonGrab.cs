@@ -121,6 +121,8 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     public bool CanGrab(IGrabbable grabbable)
     {
         if (grabbable == null) return false;
+        if (!IsInstanceValid(grabbable.Node)) return false;
+        if (grabbable.Node.IsQueuedForDeletion()) return false;
         return true;
     }
 }

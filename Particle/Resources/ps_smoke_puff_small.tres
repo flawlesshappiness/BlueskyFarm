@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ParticleInfo" load_steps=2 format=3 uid="uid://dlrb10k5kkdnl"]
+
+[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="1_cgtvp"]
+
+[resource]
+script = ExtResource("1_cgtvp")
+Path = "res://Particle/Prefabs/ps_smoke_puff_small.tscn"

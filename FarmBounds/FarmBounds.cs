@@ -18,15 +18,21 @@ public partial class FarmBounds : NodeScript
     {
         base._Ready();
         Instance = this;
-        Bounds.BodyExited += body => CallDeferred(nameof(BodyExited), body);
+        Bounds.BodyExited += BodyExited;
     }
 
     private void BodyExited(Node3D body)
     {
+        if (body.IsQueuedForDeletion()) return;
+        CallDeferred(nameof(BodyExitedDeferred), body);
+    }
+
+    private void BodyExitedDeferred(Node3D body)
+    {
         var item = body.GetNodeInChildren<Item>();
         if (item != null && item.Info.CanSell)
         {
-            Sell(body, item.Info);
+            Sell(item);
         }
         else
         {
@@ -34,18 +40,29 @@ public partial class FarmBounds : NodeScript
         }
     }
 
-    private void Sell(Node3D body, ItemInfo info)
+    private void Sell(Item item)
     {
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            while (body.GlobalPosition.Y > 0)
+            while (item.GlobalPosition.Y > 0)
             {
                 yield return null;
             }
 
-            ItemController.Instance.SellItem(info);
-            body.QueueFree();
+            item.QueueFree();
+
+            ThrowCoins(item.Info.SellValue);
+        }
+    }
+
+    private void ThrowCoins(int count)
+    {
+        var position = FirstPersonController.Instance.GlobalPosition;
+        for (int i = 0; i < count; i++)
+        {
+            var coin = ItemController.Instance.SpawnCoin();
+            ThrowObject(coin, position);
         }
     }
 

@@ -4,3 +4,5 @@
 
 [resource]
 script = ExtResource("1_ui6y8")
+Seed = "res://Item/Resources/Seed.tres"
+Coin = "res://Item/Resources/Coin.tres"

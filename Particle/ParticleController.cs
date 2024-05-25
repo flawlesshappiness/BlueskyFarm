@@ -3,8 +3,8 @@ using System.Linq;
 
 public partial class ParticleController : ResourceController<ParticleCollection, ParticleInfo>
 {
-    public static ParticleController Instance => GetController<ParticleController>("Particle");
-    public ParticleCollection Collection => GetCollection("Particle/Resources/ParticleCollection.tres");
+    public static ParticleController Instance => Singleton.Get<ParticleController>();
+    public override string Directory => "Particle";
 
     public GpuParticles3D CreateParticle(ParticleType type)
     {

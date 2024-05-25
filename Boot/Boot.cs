@@ -25,19 +25,21 @@ public partial class Boot : Node
 
     private void Initialize()
     {
-        InitializeScene();
+        Debug.LogMethod();
+        Debug.Indent++;
+
+        InitializeTree();
+        SingletonController.CreateAll();
+        View.CreateAll();
         LoadScene();
-        Debug.Initialize();
-        _ = ItemController.Instance;
-        View.LoadSingleton<GameView>();
-        View.Show<GameView>();
 
         SaveDataController.Instance.SaveAll();
 
         _initialized = true;
+        Debug.Indent--;
     }
 
-    private void InitializeScene()
+    private void InitializeTree()
     {
         Debug.LogMethod();
         Debug.Indent++;

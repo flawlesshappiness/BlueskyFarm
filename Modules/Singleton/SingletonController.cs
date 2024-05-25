@@ -1,12 +1,27 @@
 using Godot;
+using System;
 
-public partial class SingletonController : Node
+public abstract partial class SingletonController : Node, IComparable<SingletonController>
 {
-    protected static T GetController<T>(string directory) where T : SingletonController => Singleton.TryGet<T>(out var instance) ? instance : Create<T>(directory);
-    private static T Create<T>(string directory) where T : SingletonController => Singleton.Create<T>($"{directory}/{typeof(T).Name}");
+    public abstract string Directory { get; }
+    public SingletonController Create() => Singleton.GetOrCreate($"{Directory}/{GetType().Name}", GetType()) as SingletonController;
+
+    public static void CreateAll()
+    {
+        var singletons = ReflectiveEnumerator.GetEnumerableOfType<SingletonController>();
+        foreach (var singleton in singletons)
+        {
+            singleton.Create();
+        }
+    }
+
+    public int CompareTo(SingletonController other)
+    {
+        return GetType().Name.CompareTo(other.GetType().Name);
+    }
 
     public virtual void Initialize()
     {
-        Debug.TraceMethod(this.GetType());
+        Debug.TraceMethod(GetType());
     }
 }

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 public static class Singleton
@@ -7,16 +8,7 @@ public static class Singleton
 
     private static T CreateInstance<T>(string script_path) where T : Node
     {
-        var node = new Node();
-        node.Name = typeof(T).Name;
-
-        script_path = $"res://{script_path}.cs";
-        var script = GD.Load<Script>(script_path);
-        var node_id = node.GetInstanceId();
-        node.SetScript(script);
-        node = Node.InstanceFromId(node_id) as Node;
-
-        Scene.Root.AddChild(node);
+        var node = CreateInstance(script_path, typeof(T));
 
         if (node.TryGetNode<T>(out var instance))
         {
@@ -27,43 +19,70 @@ public static class Singleton
         throw new System.NullReferenceException("Failed to get script instance on node");
     }
 
-    public static T Create<T>(string script_path) where T : Node
+    private static Node CreateInstance(string script_path, Type type)
     {
-        if (!TryGet<T>(out var singleton))
-        {
-            var type = typeof(T).Name;
-            singleton = CreateInstance<T>(script_path);
-            _singletons.Add(type, singleton);
+        var node = new Node();
+        node.Name = type.Name;
 
-            Debug.Log($"Created singleton: {typeof(T).Name}");
+        script_path = $"res://{script_path}.cs";
+        var script = GD.Load<Script>(script_path);
+        var node_id = node.GetInstanceId();
+        node.SetScript(script);
+        node = Node.InstanceFromId(node_id) as Node;
+
+        Scene.Root.AddChild(node);
+
+        return node;
+    }
+
+    public static T GetOrCreate<T>(string script_path) where T : Node => GetOrCreate(script_path, typeof(T)) as T;
+    public static Node GetOrCreate(string script_path, Type type)
+    {
+        if (!TryGet(type, out var singleton))
+        {
+            Debug.LogMethod($"{script_path}, {type.Name}");
+            Debug.Indent++;
+
+            singleton = CreateInstance(script_path, type);
+            _singletons.Add(type.Name, singleton);
+
+            Debug.Log($"Created singleton: {type.Name}");
+            Debug.Indent--;
         }
 
         return singleton;
     }
 
-    public static T Load<T>(string scene_path) where T : Node
+    public static T LoadScene<T>(string scene_path) where T : Node => LoadScene(scene_path, typeof(T)) as T;
+    public static Node LoadScene(string scene_path, Type type)
     {
-        if (!TryGet<T>(out var singleton))
+        if (!TryGet(type, out var singleton))
         {
-            var type = typeof(T).Name;
-            singleton = GDHelper.Instantiate<T>(scene_path);
-            _singletons.Add(type, singleton);
+            singleton = GDHelper.Instantiate(scene_path, type);
+            _singletons.Add(type.Name, singleton);
         }
 
         return singleton;
     }
 
-    public static T Get<T>() where T : Node
+    public static T Get<T>() where T : Node => Get(typeof(T)) as T;
+    public static Node Get(Type type)
     {
-        var type = typeof(T).Name;
-        return _singletons.ContainsKey(type) ? _singletons[type] as T : throw new System.Exception($"Failed to get singleton with type: {type}");
+        var name = type.Name;
+        return _singletons.ContainsKey(name) ? _singletons[name] : throw new Exception($"Failed to get singleton with type: {type}");
     }
 
     public static bool TryGet<T>(out T result) where T : Node
     {
+        var success = TryGet(typeof(T), out var node_result);
+        result = node_result as T;
+        return success;
+    }
+    public static bool TryGet(Type type, out Node result)
+    {
         try
         {
-            result = Get<T>();
+            result = Get(type);
             return true;
         }
         catch

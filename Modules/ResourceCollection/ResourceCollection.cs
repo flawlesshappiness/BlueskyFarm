@@ -14,7 +14,7 @@ public partial class ResourceCollection<T> : Resource where T : Resource
 
         var collection = GD.Load<C>(path);
         var filename_collection = Path.GetFileName(path);
-        var path_dir = path.Replace(filename_collection, "");
+        var path_dir = "res://" + path.Replace(filename_collection, "");
         var dir = DirAccess.Open(path_dir);
         var files = dir.GetFiles();
 

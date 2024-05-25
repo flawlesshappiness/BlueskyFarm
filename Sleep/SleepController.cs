@@ -3,7 +3,7 @@ using System;
 
 public partial class SleepController : Node
 {
-    public static SleepController Instance => Singleton.Create<SleepController>($"Sleep/{nameof(SleepController)}");
+    public static SleepController Instance => Singleton.GetOrCreate<SleepController>($"Sleep/{nameof(SleepController)}");
 
     public int CurrentTicks => Data.Game.SleepTicks;
 

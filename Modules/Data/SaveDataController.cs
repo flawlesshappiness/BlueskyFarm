@@ -5,7 +5,7 @@ using System.Text.Json;
 
 public partial class SaveDataController : Node
 {
-    public static SaveDataController Instance => Singleton.Create<SaveDataController>($"{Paths.Modules}/Data/{nameof(SaveDataController)}");
+    public static SaveDataController Instance => Singleton.GetOrCreate<SaveDataController>($"{Paths.Modules}/Data/{nameof(SaveDataController)}");
 
     private Dictionary<Type, SaveData> data_objects = new();
 

@@ -17,11 +17,6 @@ public static class Debug
 
     private static List<LogMessage> _logs = new();
 
-    public static void Initialize()
-    {
-        Singleton.Load<DebugView>("Modules/Debug/View/DebugView.tscn");
-    }
-
     public static void Log(object o)
     {
         var message = o == null ? "null" : o.ToString();

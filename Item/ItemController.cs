@@ -3,8 +3,8 @@ using System.IO;
 
 public partial class ItemController : ResourceController<ItemCollection, ItemInfo>
 {
-    public static ItemController Instance => GetController<ItemController>("Item");
-    public ItemCollection Collection => GetCollection("Item/Resources/ItemCollection.tres");
+    public static ItemController Instance => Singleton.Get<ItemController>();
+    public override string Directory => "Item";
 
     public override void _Ready()
     {
@@ -71,6 +71,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     private void DebugSpawnItem(DebugView view)
     {
+        view.HideContent();
         view.Content.Show();
         view.ContentSearch.Show();
 
@@ -85,12 +86,13 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         void SelectItem(ItemInfo info)
         {
             var item = CreateItem(info);
-            FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(item, FirstPersonController.Instance.GlobalPosition);
         }
     }
 
     private void DebugSpawnSeed(DebugView view)
     {
+        view.HideContent();
         view.Content.Show();
         view.ContentSearch.Show();
 
@@ -106,7 +108,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         {
             var item = CreateItem(Collection.Seed);
             item.PlantInfo = GD.Load<ItemInfo>(path);
-            FarmBounds.Instance.ThrowObject(item as RigidBody3D, FirstPersonController.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(item, FirstPersonController.Instance.GlobalPosition);
         }
     }
 }

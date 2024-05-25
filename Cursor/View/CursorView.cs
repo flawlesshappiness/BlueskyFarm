@@ -20,6 +20,8 @@ public partial class CursorView : View
     [Export(PropertyHint.File, nameof(Texture2D))]
     public Texture2D LookTexture;
 
+    public override string Directory => $"Cursor/View";
+
     public override void _Ready()
     {
         base._Ready();

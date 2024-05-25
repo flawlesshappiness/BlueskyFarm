@@ -3,7 +3,7 @@ using System.Linq;
 
 public partial class CurrencyController : Node
 {
-    public static CurrencyController Instance => Singleton.Create<CurrencyController>($"{Paths.Modules}/Currency/{nameof(CurrencyController)}");
+    public static CurrencyController Instance => Singleton.GetOrCreate<CurrencyController>($"{Paths.Modules}/Currency/{nameof(CurrencyController)}");
 
     public override void _Ready()
     {

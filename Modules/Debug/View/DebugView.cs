@@ -23,6 +23,8 @@ public partial class DebugView : View
 
     private Dictionary<string, Label> _categories = new();
 
+    public override string Directory => $"{Paths.Modules}/Debug/View";
+
     public override void _Ready()
     {
         base._Ready();

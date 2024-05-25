@@ -1,5 +1,19 @@
-public partial class View : ControlScript
+using System;
+
+public abstract partial class View : ControlScript, IComparable<View>
 {
+    public abstract string Directory { get; }
+    private void Create() => Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType());
+
+    public static void CreateAll()
+    {
+        var views = ReflectiveEnumerator.GetEnumerableOfType<View>();
+        foreach (var view in views)
+        {
+            view.Create();
+        }
+    }
+
     public override void _Ready()
     {
         base._Ready();
@@ -7,19 +21,6 @@ public partial class View : ControlScript
         Visible = false;
         VisibilityChanged += OnVisibilityChanged;
     }
-
-    private static string GetPath<T>() where T : View
-    {
-        var type = typeof(T).Name;
-        var path = $"{Paths.ViewDirectory}/{type}/{type}";
-        return path;
-    }
-
-    public static T Instantiate<T>() where T : View =>
-        GDHelper.Instantiate<T>(GetPath<T>());
-
-    public static T LoadSingleton<T>() where T : View =>
-        Singleton.Load<T>(GetPath<T>());
 
     public static T Get<T>() where T : View =>
         Singleton.Get<T>();
@@ -41,4 +42,9 @@ public partial class View : ControlScript
 
     protected virtual void OnShow() { }
     protected virtual void OnHide() { }
+
+    public int CompareTo(View other)
+    {
+        return GetType().Name.CompareTo(other.GetType().Name);
+    }
 }

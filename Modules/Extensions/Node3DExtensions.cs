@@ -3,6 +3,29 @@ using System.Collections.Generic;
 
 public static class Node3DExtensions
 {
+    public static void SetEnabled(this Node3D node, bool enabled)
+    {
+        Rec(node);
+        node.Visible = enabled;
+
+        void Rec(Node3D parent)
+        {
+            if (parent == null) return;
+
+            var shape = parent as CollisionShape3D;
+            if (shape != null)
+            {
+                shape.Disabled = !enabled;
+            }
+
+            var children = parent.GetChildren();
+            foreach (var child in children)
+            {
+                Rec(child as Node3D);
+            }
+        }
+    }
+
     #region RAYCAST
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 direction, float length, uint collision_mask, out RaycastResult3D result) => node.TryRaycast(start, start + direction * length, collision_mask, out result);
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 end, uint collision_mask, out RaycastResult3D result)

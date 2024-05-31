@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqqfts07rm4oe"]
+
+[ext_resource type="PackedScene" uid="uid://d1cuj0q0dtdm7" path="res://Assets/KayLousberg/Dungeon/floorDecoration_tilesLarge.gltf.glb" id="1_dard0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1l5t0"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bwwn1"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o42e"]
+albedo_color = Color(0.345098, 0.364706, 0.388235, 1)
+
+[node name="Floor_Basement_001" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1l5t0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0.5, 0)
+mesh = SubResource("PlaneMesh_bwwn1")
+surface_material_override/0 = SubResource("StandardMaterial3D_5o42e")
+
+[node name="floorDecoration_tilesLarge_gltf" parent="." instance=ExtResource("1_dard0")]
+transform = Transform3D(0.675, 0, 0, 0, 0.5, 0, 0, 0, 0.675, 0, 0, 0)

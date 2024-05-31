@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=2 format=3 uid="uid://g0xibfmoc2cu"]
+
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_0gd7u"]
+
+[resource]
+script = ExtResource("1_0gd7u")
+Path = "res://Basement/Room/Prefabs/Corridor_001.tscn"

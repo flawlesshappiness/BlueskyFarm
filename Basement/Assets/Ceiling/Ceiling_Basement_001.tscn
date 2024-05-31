@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyi1fb0cs5vm2"]
+
+[ext_resource type="PackedScene" uid="uid://b2d6hrtjg3yvb" path="res://Assets/KayLousberg/Dungeon/scaffold_low.gltf.glb" id="1_b6vxo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1l5t0"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6mwjn"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq1gs"]
+albedo_color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="Ceiling" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_1l5t0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_6mwjn")
+surface_material_override/0 = SubResource("StandardMaterial3D_qq1gs")
+
+[node name="scaffold_low_gltf" parent="." instance=ExtResource("1_b6vxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0830514, 0)

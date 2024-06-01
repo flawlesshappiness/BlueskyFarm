@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2d6hrtjg3yvb"
-path="res://.godot/imported/scaffold_low.gltf.glb-f1c4687e2e3ba869a546b1a1a985d66a.scn"
+uid="uid://k5riog6fx7rl"
+path="res://.godot/imported/wallSingle_windowGate.gltf.glb-da1843c4b2cb9b7f1508cfe2989ca139.scn"
 
 [deps]
 
-source_file="res://Assets/KayLousberg/Dungeon/scaffold_low.gltf.glb"
-dest_files=["res://.godot/imported/scaffold_low.gltf.glb-f1c4687e2e3ba869a546b1a1a985d66a.scn"]
+source_file="res://Assets/KayLousberg/Dungeon/wallSingle_windowGate.gltf.glb"
+dest_files=["res://.godot/imported/wallSingle_windowGate.gltf.glb-da1843c4b2cb9b7f1508cfe2989ca139.scn"]
 
 [params]
 
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"WoodDark": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/KayLousberg/Dungeon/Materials/scaffold_low.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

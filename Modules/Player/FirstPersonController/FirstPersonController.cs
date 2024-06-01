@@ -184,6 +184,12 @@ public partial class FirstPersonController : CharacterBody3D
         return true;
     }
 
+    public void SetLookRotation(Node3D node)
+    {
+        Camera.Rotation = new Vector3(node.GlobalRotation.X, 0, 0);
+        Neck.Rotation = new Vector3(0, node.GlobalRotation.Y, 0);
+    }
+
     public void UpdateData()
     {
         Data.Game.PlayerPositionX = GlobalPosition.X;

@@ -58,7 +58,7 @@ public static class Singleton
     {
         if (!TryGet(type, out var singleton))
         {
-            singleton = GDHelper.Instantiate(scene_path, type);
+            singleton = GDHelper.Instantiate(scene_path);
             _singletons.Add(type.Name, singleton);
         }
 

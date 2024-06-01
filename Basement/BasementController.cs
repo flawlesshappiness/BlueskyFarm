@@ -4,6 +4,7 @@ using System.Linq;
 public partial class BasementController : SingletonController
 {
     public override string Directory => "Basement";
+    public static BasementController Instance => Singleton.Get<BasementController>();
 
     public override void _Ready()
     {
@@ -44,7 +45,7 @@ public partial class BasementController : SingletonController
         Debug.TraceMethod();
         Debug.Indent++;
 
-        var offset = new Vector3(300, 0, 0);
+        var offset = new Vector3(0, 0, 0);
         var room_size = new Vector3(28, 4, 28);
 
         var elements = grid.Elements;
@@ -56,7 +57,7 @@ public partial class BasementController : SingletonController
             var position = offset + new Vector3(x, 0, z);
 
             var info = GetRandomRoomInfo(element);
-            var room = GDHelper.Instantiate<BasementRoom>(info.Path);
+            var room = GDHelper.Instantiate<BasementRoom>(info.Path, Scene.Current);
             room.GlobalPosition = position;
 
             room.North.SetOpen(element.HasNorth);

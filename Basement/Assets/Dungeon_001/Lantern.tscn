@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck0uqs7j413k6"]
+
+[ext_resource type="PackedScene" uid="uid://c7i0y6wmypkre" path="res://Assets/KayLousberg/Halloween/lantern_hanging.fbx" id="1_1g20d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gudds"]
+size = Vector3(0.8, 1.3, 0.8)
+
+[node name="Lantern" type="Node3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_1g20d")]
+
+[node name="lantern_hanging" parent="Root Scene/RootNode" index="0"]
+cast_shadow = 0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.68824, 0)
+shape = SubResource("BoxShape3D_gudds")
+
+[editable path="Root Scene"]

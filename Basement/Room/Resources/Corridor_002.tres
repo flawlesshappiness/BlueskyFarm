@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_5srvt")
 Path = "res://Basement/Room/Prefabs/Corridor_002.tscn"
+IsStartRoom = false

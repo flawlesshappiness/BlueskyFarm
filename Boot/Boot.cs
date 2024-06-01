@@ -57,7 +57,7 @@ public partial class Boot : Node
         Debug.LogMethod();
         Debug.Indent++;
 
-        Data.Game.Scene ??= "farm.tscn";
+        Data.Game.Scene ??= "basement.tscn";
         Scene.Goto(Data.Game.Scene);
 
         Debug.Indent--;

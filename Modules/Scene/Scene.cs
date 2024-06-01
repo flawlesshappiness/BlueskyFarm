@@ -56,6 +56,8 @@ public partial class Scene : NodeScript
         }
 
         Current = Instantiate<Scene>($"Scenes/{scene_name}");
+        Debug.TraceMethod($"Current: {Current}");
+
         // Load
 
         Debug.Indent--;

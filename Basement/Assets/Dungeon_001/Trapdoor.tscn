@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://castmw65ijigk"]
+
+[ext_resource type="PackedScene" uid="uid://cirjx7mfugoni" path="res://Assets/KayLousberg/Dungeon/trapdoor.gltf.glb" id="1_j7jdy"]
+[ext_resource type="Script" path="res://SceneDoor/SceneDoor.cs" id="1_rguyj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_506dw"]
+size = Vector3(1.88965, 0.185303, 1.89063)
+
+[node name="Trapdoor" type="StaticBody3D"]
+collision_layer = 5
+script = ExtResource("1_rguyj")
+
+[node name="trapdoor_gltf" parent="." instance=ExtResource("1_j7jdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0926514, 0)
+shape = SubResource("BoxShape3D_506dw")

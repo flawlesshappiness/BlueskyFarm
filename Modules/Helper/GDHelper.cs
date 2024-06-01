@@ -1,11 +1,10 @@
 using Godot;
-using System;
 using System.Text;
 
 public partial class GDHelper
 {
-    public static T Instantiate<T>(string scene_path) where T : Node => Instantiate(scene_path, typeof(T)) as T;
-    public static Node Instantiate(string scene_path, Type type)
+    public static T Instantiate<T>(string scene_path, Node parent = null) where T : Node => Instantiate(scene_path, parent) as T;
+    public static Node Instantiate(string scene_path, Node parent = null)
     {
         Debug.TraceMethod(scene_path);
 
@@ -18,14 +17,15 @@ public partial class GDHelper
         var path = sb.ToString();
 
         var packed_scene = GD.Load(path) as PackedScene;
-        return Instantiate(packed_scene);
+        return Instantiate(packed_scene, parent);
     }
 
-    public static T Instantiate<T>(PackedScene packed_scene) where T : Node => Instantiate(packed_scene) as T;
-    public static Node Instantiate(PackedScene packed_scene)
+    public static T Instantiate<T>(PackedScene packed_scene, Node parent = null) where T : Node => Instantiate(packed_scene, parent) as T;
+    public static Node Instantiate(PackedScene packed_scene, Node parent = null)
     {
         var node = packed_scene.Instantiate();
-        Scene.Root.AddChild(node);
+        parent ??= Scene.Root;
+        parent.AddChild(node);
         return node;
     }
 }

@@ -11,11 +11,11 @@ public static class BasementGridGenerator
 
         var grid = new Grid<BasementRoomElement>();
         var root = new BasementRoomElement();
+        root.IsStart = true;
 
         grid.Set(0, 0, root);
 
         var remaining_rooms = settings.MaxRooms - 1;
-        var is_start = true;
         while (remaining_rooms > 0)
         {
             var current = grid.Elements.ToList().Random();
@@ -29,7 +29,6 @@ public static class BasementGridGenerator
                 var next = new BasementRoomElement
                 {
                     Coordinates = coords,
-                    IsStart = is_start,
                 };
 
                 grid.Set(coords, next);
@@ -39,7 +38,6 @@ public static class BasementGridGenerator
 
                 current = next;
 
-                is_start = false;
                 remaining_rooms--;
                 depth++;
             }

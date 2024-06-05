@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://sg081u4ctj3u"]
+
+[ext_resource type="Script" path="res://Basement/Room/BasementRoom.cs" id="1_sat65"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_osv8p"]
+size = Vector3(28, 4, 28)
+
+[node name="Room_Base" type="Node3D"]
+script = ExtResource("1_sat65")
+
+[node name="North" type="Node3D" parent="."]
+
+[node name="Closed" type="Node3D" parent="North"]
+
+[node name="Open" type="Node3D" parent="North"]
+
+[node name="East" type="Node3D" parent="."]
+
+[node name="Closed" type="Node3D" parent="East"]
+
+[node name="Open" type="Node3D" parent="East"]
+
+[node name="South" type="Node3D" parent="."]
+
+[node name="Closed" type="Node3D" parent="South"]
+
+[node name="Open" type="Node3D" parent="South"]
+
+[node name="West" type="Node3D" parent="."]
+
+[node name="Closed" type="Node3D" parent="West"]
+
+[node name="Open" type="Node3D" parent="West"]
+
+[node name="RoomArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_osv8p")

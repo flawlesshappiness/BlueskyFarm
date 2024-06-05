@@ -1,10 +1,16 @@
 using Godot;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class BasementController : SingletonController
 {
     public override string Directory => "Basement";
     public static BasementController Instance => Singleton.Get<BasementController>();
+
+    public Action<Grid<BasementRoomElement>> OnGridGenerated;
+
+    private Grid<BasementRoomElement> current_grid { get; set; }
 
     public override void _Ready()
     {
@@ -29,15 +35,18 @@ public partial class BasementController : SingletonController
     {
         var settings = new BasementSettings
         {
-            MaxRooms = 10,
+            MaxRooms = 25,
             MaxCorridorDepth = 7,
         };
 
-        var grid = BasementGridGenerator.Generate(settings);
+        current_grid = BasementGridGenerator.Generate(settings);
 
-        BasementGridGenerator.LogGrid(grid);
+        BasementGridGenerator.LogGrid(current_grid);
 
-        GenerateRooms(grid);
+        GenerateRooms(current_grid);
+        GenerateItems(current_grid);
+
+        OnGridGenerated?.Invoke(current_grid);
     }
 
     private void GenerateRooms(Grid<BasementRoomElement> grid)
@@ -72,6 +81,35 @@ public partial class BasementController : SingletonController
         FirstPersonController.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;
 
         Debug.Indent--;
+    }
+
+    private void GenerateItems(Grid<BasementRoomElement> grid)
+    {
+        // Find positions
+        var item_positions = new List<Node3D>();
+        foreach (var element in grid.Elements)
+        {
+            var items_nodes = element.Room.GetNodesInChildren<Node3D>(n => n.Name == "Items");
+
+            foreach (var items_node in items_nodes)
+            {
+                var positions = items_node.GetChildren().Cast<Node3D>();
+                item_positions.AddRange(positions);
+            }
+        }
+
+        // Spawn
+        var item_count = 10;
+        while (item_positions.Count > 0 && item_count > 0)
+        {
+            var position = item_positions.Random();
+            item_positions.Remove(position);
+
+            var item = ItemController.Instance.SpawnCoin();
+            item.GlobalPosition = position.GlobalPosition;
+
+            item_count--;
+        }
     }
 
     private BasementRoomInfo GetRandomRoomInfo(BasementRoomElement element)

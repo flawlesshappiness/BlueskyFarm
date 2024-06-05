@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static partial class NodeExtensions
 {
@@ -71,15 +72,22 @@ public static partial class NodeExtensions
         return potentialDescendant.IsSubclassOf(potentialBase) || potentialDescendant == potentialBase;
     }
 
-    public static List<T> GetNodesInChildren<T>(this Node node) where T : class
+    public static IEnumerable<T> GetNodesInChildren<T>(this Node node, Func<Node, bool> predicate = null) where T : class
     {
-        var list = new List<T>();
+        return node
+            .GetNodesInChildren(n => (n as T != null) && (predicate?.Invoke(n) ?? true))
+            .Select(n => n as T);
+    }
+
+    public static List<Node> GetNodesInChildren(this Node node, Func<Node, bool> predicate = null)
+    {
+        var list = new List<Node>();
         Recursive(node);
         return list;
 
         void Recursive(Node current)
         {
-            if (current is T) list.Add(current as T);
+            if (predicate?.Invoke(current) ?? true) list.Add(current);
 
             foreach (var child in current.GetChildren())
             {

@@ -6,3 +6,10 @@
 script = ExtResource("1_0gd7u")
 Path = "res://Basement/Room/Prefabs/Corridor_001.tscn"
 IsStartRoom = false
+RoomLayout = "000N000
+000N110
+0011110
+WW111EE
+0111100
+011S000
+000S000"

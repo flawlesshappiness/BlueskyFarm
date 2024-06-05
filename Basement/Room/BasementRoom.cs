@@ -2,6 +2,9 @@ using Godot;
 
 public partial class BasementRoom : Node3DScript
 {
+    public const int SECTION_SIZE = 4;
+    public const int SECTION_COUNT = 7;
+
     public Section North { get; private set; }
     public Section East { get; private set; }
     public Section South { get; private set; }
@@ -12,6 +15,8 @@ public partial class BasementRoom : Node3DScript
         public Node3D Root { get; set; }
         public Node3D Open { get; set; }
         public Node3D Closed { get; set; }
+
+        public bool IsOpen => Open.Visible;
 
         public void SetOpen(bool open)
         {

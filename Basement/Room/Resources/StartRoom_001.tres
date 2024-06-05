@@ -6,3 +6,10 @@
 script = ExtResource("1_marbv")
 Path = "res://Basement/Room/Prefabs/StartRoom_001.tscn"
 IsStartRoom = true
+RoomLayout = "000N000
+0111110
+0111110
+W11111E
+0111110
+0111110
+000S000"

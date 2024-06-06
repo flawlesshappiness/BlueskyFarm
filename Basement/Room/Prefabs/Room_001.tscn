@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://doilm286x2wr7"]
+[gd_scene load_steps=11 format=3 uid="uid://doilm286x2wr7"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_p78vl"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon_001/Lantern.tscn" id="2_bd73f"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon_001/Pillar.tscn" id="5_3sp31"]
 [ext_resource type="PackedScene" uid="uid://dgwacocaootjc" path="res://Basement/Assets/Dungeon_001/Window.tscn" id="6_oe0ma"]
 [ext_resource type="PackedScene" uid="uid://ushvc4v1oc0j" path="res://Basement/Assets/Dungeon_001/Doorway.tscn" id="7_0cvjb"]
+[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/Boocase_Broken.tscn" id="9_u2xqn"]
+[ext_resource type="PackedScene" uid="uid://d2svb82x6jbwc" path="res://Basement/Assets/Dungeon_001/Bookcase.tscn" id="10_gjeg8"]
 
 [node name="Room_001" instance=ExtResource("1_p78vl")]
 
@@ -314,3 +316,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0,
 
 [node name="Wall_Basement_002" parent="Walls" index="30" instance=ExtResource("7_0cvjb")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -1)
+
+[node name="Furniture" type="Node3D" parent="." index="9"]
+
+[node name="Bookcase_Broken" parent="Furniture" index="0" instance=ExtResource("9_u2xqn")]
+transform = Transform3D(0.0332228, 0, -1.24956, 0, 1.25, 0, 1.24956, 0, 0.0332228, -1.0063, 0, -4.32405)
+
+[node name="Bookcase" parent="Furniture" index="1" instance=ExtResource("10_gjeg8")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.253246, -4.76837e-07, 3.14403)

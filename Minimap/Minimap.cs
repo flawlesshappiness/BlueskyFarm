@@ -15,6 +15,9 @@ public partial class Minimap : ControlScript
     [NodeName(nameof(Player))]
     public Control Player;
 
+    [NodeName(nameof(ItemTemplate))]
+    public ColorRect ItemTemplate;
+
     public static int RoomSectionWorldSize => BasementRoom.SECTION_SIZE;
     public static int RoomSectionCount => BasementRoom.SECTION_COUNT;
     public static int RoomWorldSize => RoomSectionCount * RoomSectionWorldSize;
@@ -33,27 +36,33 @@ public partial class Minimap : ControlScript
         base._Ready();
 
         RoomTemplate.Visible = false;
+        ItemTemplate.Visible = false;
 
-        BasementController.Instance.OnGridGenerated += GridCreated;
+        BasementController.Instance.OnBasementGenerated += BasementGenerated;
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
 
-        var pos_player = -FirstPersonController.Instance.GlobalPosition / RoomSectionWorldSize * RoomSectionMapSize;
-        Scroll.Position = new Vector2(pos_player.X, pos_player.Z) + Player.Position;
+        var pos_player = WorldToMinimapPosition(-FirstPersonController.Instance.GlobalPosition);
+        Scroll.Position = pos_player + Player.Position;
 
         Rotate.Rotation = FirstPersonController.Instance.Neck.Rotation.Y;
     }
 
-    private void GridCreated(Grid<BasementRoomElement> grid)
+    private void BasementGenerated(Basement basement)
     {
         var minimap_rooms = new List<MinimapRoom>();
-        foreach (var element in grid.Elements)
+        foreach (var element in basement.Grid.Elements)
         {
             var minimap_room = CreateMinimapRoom(element);
             minimap_rooms.Add(minimap_room);
+        }
+
+        foreach (var item in basement.Items)
+        {
+            CreateItemControl(item);
         }
     }
 
@@ -107,6 +116,26 @@ public partial class Minimap : ControlScript
         }
 
         return control;
+    }
+
+    private Control CreateItemControl(Item item)
+    {
+        var control = ItemTemplate.Duplicate() as ColorRect;
+        control.SetParent(ItemTemplate.GetParent());
+        control.Visible = true;
+
+        control.Position = WorldToMinimapPosition(item.GlobalPosition);
+
+        return control;
+    }
+
+    private Vector2 WorldToMinimapPosition(Vector3 world_pos)
+    {
+        var x = world_pos.X;
+        var y = world_pos.Z;
+        var pos = new Vector2(x, y);
+        pos = pos / RoomSectionWorldSize * RoomSectionMapSize;
+        return pos;
     }
 
     private bool IsSectionActiveInLayout(string layout, int i, BasementRoomElement element)

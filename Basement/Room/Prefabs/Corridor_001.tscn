@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://do4a5egt7737j"]
+[gd_scene load_steps=8 format=3 uid="uid://do4a5egt7737j"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0qd33"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon_001/Wall.tscn" id="2_brpqe"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon_001/Lantern.tscn" id="4_152mh"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="5_mkup5"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon_001/Floor.tscn" id="6_1eqlk"]
+[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/Boocase_Broken.tscn" id="7_l36b1"]
 
 [node name="Corridor_001" instance=ExtResource("1_0qd33")]
 
@@ -305,3 +306,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
 
 [node name="Pillar5" parent="Walls" index="36" instance=ExtResource("3_0ltca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="Furniture" type="Node3D" parent="." index="9"]
+
+[node name="Bookcase_Broken" parent="Furniture" index="0" instance=ExtResource("7_l36b1")]
+transform = Transform3D(-0.0165583, 0, 1.24989, 0, 1.25, 0, -1.24989, 0, -0.0165583, 4.71473, 0, 1.93064)
+
+[node name="Bookcase_Broken2" parent="Furniture" index="1" instance=ExtResource("7_l36b1")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -3.19737, 0, -4.90527)

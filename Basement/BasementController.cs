@@ -8,9 +8,9 @@ public partial class BasementController : SingletonController
     public override string Directory => "Basement";
     public static BasementController Instance => Singleton.Get<BasementController>();
 
-    public Action<Grid<BasementRoomElement>> OnGridGenerated;
+    public Action<Basement> OnBasementGenerated;
 
-    private Grid<BasementRoomElement> current_grid { get; set; }
+    public Basement CurrentBasement { get; set; }
 
     public override void _Ready()
     {
@@ -33,23 +33,27 @@ public partial class BasementController : SingletonController
 
     public void DebugGenerateBasement()
     {
-        var settings = new BasementSettings
-        {
-            MaxRooms = 25,
-            MaxCorridorDepth = 7,
-        };
-
-        current_grid = BasementGridGenerator.Generate(settings);
-
-        BasementGridGenerator.LogGrid(current_grid);
-
-        GenerateRooms(current_grid);
-        GenerateItems(current_grid);
-
-        OnGridGenerated?.Invoke(current_grid);
+        CurrentBasement = new Basement();
+        GenerateGrid(CurrentBasement);
+        OnBasementGenerated?.Invoke(CurrentBasement);
     }
 
-    private void GenerateRooms(Grid<BasementRoomElement> grid)
+    private void GenerateGrid(Basement basement)
+    {
+        var settings = new BasementSettings
+        {
+            MaxRooms = 5,
+            MaxCorridorDepth = 3,
+        };
+
+        var grid = BasementGridGenerator.Generate(settings);
+        basement.Grid = grid;
+
+        GenerateRooms(basement);
+        GenerateItems(basement);
+    }
+
+    private void GenerateRooms(Basement basement)
     {
         Debug.TraceMethod();
         Debug.Indent++;
@@ -57,7 +61,7 @@ public partial class BasementController : SingletonController
         var offset = new Vector3(0, 0, 0);
         var room_size = new Vector3(28, 4, 28);
 
-        var elements = grid.Elements;
+        var elements = basement.Grid.Elements;
         foreach (var element in elements)
         {
             var coords = element.Coordinates;
@@ -83,11 +87,11 @@ public partial class BasementController : SingletonController
         Debug.Indent--;
     }
 
-    private void GenerateItems(Grid<BasementRoomElement> grid)
+    private void GenerateItems(Basement basement)
     {
         // Find positions
         var item_positions = new List<Node3D>();
-        foreach (var element in grid.Elements)
+        foreach (var element in basement.Grid.Elements)
         {
             var items_nodes = element.Room.GetNodesInChildren<Node3D>(n => n.Name == "Items");
 
@@ -107,6 +111,8 @@ public partial class BasementController : SingletonController
 
             var item = ItemController.Instance.SpawnCoin();
             item.GlobalPosition = position.GlobalPosition;
+
+            basement.Items.Add(item);
 
             item_count--;
         }

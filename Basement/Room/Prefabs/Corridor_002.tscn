@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://yw46fucsi7ng"]
+[gd_scene load_steps=8 format=3 uid="uid://yw46fucsi7ng"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_jvper"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon_001/Lantern.tscn" id="2_cajw0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon_001/Wall.tscn" id="3_r818p"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="3_vnc8n"]
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon_001/Pillar.tscn" id="5_vysew"]
+[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/Boocase_Broken.tscn" id="7_skv0w"]
 
 [node name="Corridor_002" instance=ExtResource("1_jvper")]
 
@@ -48,7 +49,7 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51935, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
 shadow_enabled = true
 omni_range = 8.40261
@@ -57,7 +58,7 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53708, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
 shadow_enabled = true
 omni_range = 8.40261
@@ -345,3 +346,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
 
 [node name="Pillar8" parent="Walls" index="47" instance=ExtResource("5_vysew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+
+[node name="Furniture" type="Node3D" parent="." index="9"]
+
+[node name="Bookcase_Broken" parent="Furniture" index="0" instance=ExtResource("7_skv0w")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 3.76764, 0, 0.869929)
+
+[node name="Bookcase_Broken2" parent="Furniture" index="1" instance=ExtResource("7_skv0w")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -3.77682, 0, -0.778127)

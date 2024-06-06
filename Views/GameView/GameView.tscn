@@ -120,6 +120,14 @@ custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
+[node name="ItemTemplate" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 48.0
+offset_right = 72.0
+offset_bottom = 52.0
+color = Color(1, 0.760784, 0, 1)
+
 [node name="Player" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip"]
 layout_mode = 1
 anchors_preset = 8

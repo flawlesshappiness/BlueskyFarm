@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=21 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Modules/Scene/Scene.cs" id="1_8imcd"]
-[ext_resource type="Script" path="res://Modules/Object/Grabbable.cs" id="1_sl3h0"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="2_qorhh"]
@@ -31,13 +30,6 @@ albedo_color = Color(0.168627, 0.478431, 0.0901961, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53lfa"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r0jko"]
-bounce = 0.8
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_g002r"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_pgmve"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_2hsid"]
 size = Vector3(0.583984, 0.387695, 1.14258)
 
@@ -61,6 +53,8 @@ script = ExtResource("2_muofh")
 
 [node name="Area3D" type="Area3D" parent="World/Bounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bounds/Area3D"]
 shape = SubResource("BoxShape3D_ujqkt")
@@ -69,7 +63,6 @@ shape = SubResource("BoxShape3D_ujqkt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/SkyBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
@@ -85,6 +78,8 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cn8fx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Ground/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
@@ -99,6 +94,8 @@ mesh = SubResource("BoxMesh_nh3o1")
 surface_material_override/0 = SubResource("StandardMaterial3D_43qyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Bush_N/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_N/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_53lfa")
@@ -112,6 +109,8 @@ mesh = SubResource("BoxMesh_nh3o1")
 surface_material_override/0 = SubResource("StandardMaterial3D_43qyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Bush_S/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_S/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_53lfa")
@@ -125,6 +124,8 @@ mesh = SubResource("BoxMesh_nh3o1")
 surface_material_override/0 = SubResource("StandardMaterial3D_43qyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Bush_E/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_E/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_53lfa")
@@ -138,26 +139,16 @@ mesh = SubResource("BoxMesh_nh3o1")
 surface_material_override/0 = SubResource("StandardMaterial3D_43qyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Bush_W/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_W/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_53lfa")
 
-[node name="Ball" type="RigidBody3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.78409, 1)
-collision_layer = 5
-physics_material_override = SubResource("PhysicsMaterial_r0jko")
-script = ExtResource("1_sl3h0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ball"]
-shape = SubResource("SphereShape3D_g002r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ball"]
-mesh = SubResource("SphereMesh_pgmve")
-skeleton = NodePath("")
-
 [node name="Bed" type="StaticBody3D" parent="World"]
 transform = Transform3D(0.78201, 0, 0.623266, 0, 1, 0, -0.623266, 0, 0.78201, 11.4148, 0.376467, -2.87758)
-collision_layer = 5
+collision_layer = 7
+collision_mask = 0
 script = ExtResource("3_6mn48")
 SleepTicks = 10
 HoverText = "Pass out"

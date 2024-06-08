@@ -26,6 +26,15 @@ public static class Node3DExtensions
         }
     }
 
+    public static void SetCollisionEnabled(this Node3D node, bool enabled)
+    {
+        var children = node.GetNodesInChildren<CollisionShape3D>();
+        foreach (var child in children)
+        {
+            child.Disabled = !enabled;
+        }
+    }
+
     #region RAYCAST
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 direction, float length, uint collision_mask, out RaycastResult3D result) => node.TryRaycast(start, start + direction * length, collision_mask, out result);
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 end, uint collision_mask, out RaycastResult3D result)

@@ -104,7 +104,11 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     {
         if (Target == null) return;
 
-        Target.Released();
+        if (IsInstanceValid(Target as Node))
+        {
+            Target.Released();
+        }
+
         Target = null;
     }
 

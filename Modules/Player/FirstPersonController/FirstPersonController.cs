@@ -16,8 +16,11 @@ public partial class FirstPersonController : CharacterBody3D
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-    [NodeName("Neck")]
+    [NodeName(nameof(Neck))]
     public Node3D Neck;
+
+    [NodeName(nameof(Mid))]
+    public Node3D Mid;
 
     [NodeName("Camera3D")]
     public Camera3D Camera;

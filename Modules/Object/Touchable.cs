@@ -6,6 +6,9 @@ public partial class Touchable : StaticBody3D, IInteractable, ITouchable
     [Export]
     public string HoverText;
 
+    [Export]
+    public InteractCollisionMode StartCollisionMode = InteractCollisionMode.All;
+
     public Node3D Node => this;
     public string InteractableText => HoverText;
 
@@ -15,23 +18,21 @@ public partial class Touchable : StaticBody3D, IInteractable, ITouchable
     {
         base._Ready();
         NodeScript.FindNodesFromAttribute(this, GetType());
+        SetCollisionMode(StartCollisionMode);
     }
 
     public void SetCollisionMode(InteractCollisionMode mode)
     {
         CollisionLayer = mode switch
         {
-            InteractCollisionMode.All => CollisionMaskHelper.Create(1, 3),
-            InteractCollisionMode.Collision => CollisionMaskHelper.Create(1),
-            InteractCollisionMode.Interact => CollisionMaskHelper.Create(3),
+            InteractCollisionMode.All => CollisionMaskHelper.Create(CollisionMaskName.Player, CollisionMaskName.Item, CollisionMaskName.Interact),
+            InteractCollisionMode.Collision => CollisionMaskHelper.Create(CollisionMaskName.Player, CollisionMaskName.Item),
+            InteractCollisionMode.Interact => CollisionMaskHelper.Create(CollisionMaskName.Interact),
             _ => 0
         };
 
         CollisionMask = mode switch
         {
-            InteractCollisionMode.All => CollisionMaskHelper.Create(1),
-            InteractCollisionMode.Collision => CollisionMaskHelper.Create(1),
-            InteractCollisionMode.Interact => CollisionMaskHelper.Create(1),
             _ => 0
         };
     }

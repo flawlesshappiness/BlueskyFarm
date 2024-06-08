@@ -30,7 +30,10 @@ public partial class FarmBounds : NodeScript
     private void BodyExitedDeferred(Node3D body)
     {
         var item = body.GetNodeInChildren<Item>();
-        if (item != null && item.Info.CanSell)
+
+        if (item?.IsBeingHandled ?? false) return;
+
+        if (item?.Info.CanSell ?? false)
         {
             Sell(item);
         }

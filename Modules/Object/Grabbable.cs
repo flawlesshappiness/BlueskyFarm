@@ -7,7 +7,7 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     public float MaxThrowVelocity = 12;
 
     [Export]
-    public InteractCollisionMode InitialCollisionMode = InteractCollisionMode.All;
+    public InteractCollisionMode StartCollisionMode = InteractCollisionMode.All;
 
     [Export]
     public string HoverText;
@@ -28,8 +28,7 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         base._Ready();
         NodeScript.FindNodesFromAttribute(this, GetType());
-
-        SetCollisionMode(InitialCollisionMode);
+        SetCollisionMode(StartCollisionMode);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -92,18 +91,16 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         CollisionLayer = mode switch
         {
-            InteractCollisionMode.All => CollisionMaskHelper.Create(1, 3),
-            InteractCollisionMode.Collision => CollisionMaskHelper.Create(1),
-            InteractCollisionMode.Interact => CollisionMaskHelper.Create(3),
+            InteractCollisionMode.All => CollisionMaskHelper.Create(CollisionMaskName.Item, CollisionMaskName.Interact),
+            InteractCollisionMode.Collision => CollisionMaskHelper.Create(CollisionMaskName.Item),
+            InteractCollisionMode.Interact => CollisionMaskHelper.Create(CollisionMaskName.Interact),
             _ => 0
         };
 
         CollisionMask = mode switch
         {
-            InteractCollisionMode.All => CollisionMaskHelper.Create(1),
-            InteractCollisionMode.Collision => CollisionMaskHelper.Create(1),
-            InteractCollisionMode.Interact => CollisionMaskHelper.Create(1),
-            _ => 0
+            InteractCollisionMode.Interact => 0, // Collide with nothing if only interactable
+            _ => CollisionMaskHelper.Create(CollisionMaskName.Item) // Collide with other items
         };
     }
 }

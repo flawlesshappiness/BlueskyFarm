@@ -7,7 +7,9 @@
 size = Vector3(0.110352, 0.209961, 0.107422)
 
 [node name="Radish" type="RigidBody3D"]
-collision_layer = 5
+collision_layer = 13
+collision_mask = 9
+mass = 10.0
 script = ExtResource("3_pjj4y")
 HoverText = "Radish"
 

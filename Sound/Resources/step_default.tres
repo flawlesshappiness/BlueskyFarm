@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://dps2vfldehhg7"]
+
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_4anry"]
+
+[resource]
+script = ExtResource("1_4anry")
+SoundName = 1
+Path = "res://Sound/Sounds/step_grass_001.wav"

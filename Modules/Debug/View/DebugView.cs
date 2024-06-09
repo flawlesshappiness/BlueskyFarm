@@ -3,23 +3,32 @@ using Godot.Collections;
 
 public partial class DebugView : View
 {
-    [NodeName("Main")]
+    [NodeName(nameof(Main))]
     public Control Main;
 
-    [NodeName("Content")]
+    [NodeName(nameof(Content))]
     public Control Content;
 
-    [NodeName("ButtonPrefab")]
+    [NodeName(nameof(ButtonPrefab))]
     public Button ButtonPrefab;
 
-    [NodeName("CategoryPrefab")]
+    [NodeName(nameof(CategoryPrefab))]
     public Label CategoryPrefab;
 
-    [NodeName("ContentSearch")]
+    [NodeName(nameof(ContentSearch))]
     public DebugContentSearch ContentSearch;
 
-    [NodeName("ContentList")]
+    [NodeName(nameof(ContentList))]
     public DebugContentList ContentList;
+
+    [NodeName(nameof(SfxClick))]
+    public AudioStreamPlayer SfxClick;
+
+    [NodeName(nameof(SfxHover))]
+    public AudioStreamPlayer SfxHover;
+
+    [NodeName(nameof(SfxOpen))]
+    public AudioStreamPlayer SfxOpen;
 
     private Dictionary<string, Label> _categories = new();
 
@@ -48,6 +57,7 @@ public partial class DebugView : View
             if (Input.IsActionJustPressed("ui_text_indent"))
             {
                 ToggleVisible();
+                SfxOpen.Play();
             }
         }
     }
@@ -74,6 +84,7 @@ public partial class DebugView : View
             parent.MoveChild(this, 0);
 
             HideContent();
+
         }
     }
 
@@ -107,7 +118,17 @@ public partial class DebugView : View
     {
         var button = CreateActionButton();
         button.Text = debug_action.Text;
-        button.Pressed += () => debug_action.Action(this);
+
+        button.Pressed += () =>
+        {
+            debug_action.Action(this);
+            SfxClick.Play();
+        };
+
+        button.MouseEntered += () =>
+        {
+            SfxHover.Play();
+        };
 
         TryCreateCategory(debug_action);
         OrderActionButton(button, debug_action);

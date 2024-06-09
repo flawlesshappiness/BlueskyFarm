@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://vqmou3q71vox"]
+[gd_scene load_steps=10 format=3 uid="uid://vqmou3q71vox"]
 
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugView.cs" id="1_7hao7"]
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugContentSearch.cs" id="2_fggti"]
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugContentList.cs" id="3_42i5k"]
+[ext_resource type="AudioStream" uid="uid://uh3r80m3q205" path="res://Modules/Debug/Sounds/debug_click.wav" id="4_dnfps"]
+[ext_resource type="AudioStream" uid="uid://b244yejtrn8we" path="res://Modules/Debug/Sounds/debug_hover.wav" id="5_btliy"]
+[ext_resource type="AudioStream" uid="uid://buhvd6b65dmdo" path="res://Modules/Debug/Sounds/debug_open.wav" id="5_pe50f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v5jt"]
 bg_color = Color(0, 0.345098, 0.8, 1)
@@ -219,3 +222,12 @@ custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 text = "Text"
 autowrap_mode = 2
+
+[node name="SfxClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dnfps")
+
+[node name="SfxHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_btliy")
+
+[node name="SfxOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pe50f")

@@ -16,7 +16,7 @@ public partial class BasementController : SingletonController
     {
         base._Ready();
 
-        RegisterDebugActions();
+        //RegisterDebugActions();
     }
 
     private void RegisterDebugActions()

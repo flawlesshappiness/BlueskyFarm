@@ -5,11 +5,28 @@ using System.Reflection;
 
 public partial class NodeScript : Node
 {
+    private bool _initialized = false;
+
     public override void _Ready()
     {
         FindNodesFromAttribute(this, GetType());
 
         base._Ready();
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (!_initialized)
+        {
+            _initialized = true;
+            Initialize();
+        }
+    }
+
+    protected virtual void Initialize()
+    {
     }
 
     public static void FindNodesFromAttribute(Node root, Type type)

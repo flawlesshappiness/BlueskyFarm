@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvxlenqmx8s03"]
 
 [ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_4o6kx"]
-[ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="2_novnh"]
+[ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="2_38ywq"]
 
 [sub_resource type="Environment" id="Environment_83lvk"]
 ambient_light_source = 2
@@ -10,11 +10,7 @@ ambient_light_color = Color(0.1, 0.085, 0.085, 1)
 [node name="Basement" type="Node3D"]
 script = ExtResource("1_4o6kx")
 
-[node name="FirstPersonPlayer" parent="." instance=ExtResource("2_novnh")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="FirstPersonPlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-light_color = Color(0.15, 0.15, 0.15, 1)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_83lvk")
+
+[node name="FirstPersonPlayer" parent="." instance=ExtResource("2_38ywq")]

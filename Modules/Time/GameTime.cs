@@ -3,11 +3,13 @@ using System;
 
 public partial class GameTime : Node
 {
-    public static float delta_time { get; private set; }
+    public static float DeltaTime { get; private set; }
+    public static float Time { get; private set; }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-        delta_time = Convert.ToSingle(delta);
+        DeltaTime = Convert.ToSingle(delta);
+        Time += Scene.PauseLock.IsFree ? DeltaTime : 0;
     }
 }

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Modules/Scene/Scene.cs" id="1_8imcd"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
-[ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="2_qorhh"]
 [ext_resource type="Script" path="res://Sleep/Sleepable.cs" id="3_6mn48"]
 [ext_resource type="PackedScene" uid="uid://dco4343is4u26" path="res://Assets/KenneyNL/Furniture/bedSingle.glb" id="5_pss1d"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon_001/Trapdoor.tscn" id="8_je3mm"]
+[ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="9_t030q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
@@ -168,9 +168,6 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 light_color = Color(1, 1, 0.811765, 1)
 shadow_enabled = true
 
-[node name="FirstPersonPlayer" parent="." instance=ExtResource("2_qorhh")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.153132, 0, 6.73701)
-
 [node name="Ceiling" parent="." instance=ExtResource("9_t030q")]
 transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.55894, 13.1053)
 
@@ -181,3 +178,5 @@ HoverText = "Basement"
 
 [node name="StartBasement" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.721)
+
+[node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]

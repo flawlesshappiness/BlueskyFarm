@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class FirstPersonController : CharacterBody3D
 {
@@ -22,7 +23,7 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeName(nameof(Mid))]
     public Node3D Mid;
 
-    [NodeName("Camera3D")]
+    [NodeName(nameof(Camera))]
     public Camera3D Camera;
 
     [NodeType(typeof(IPlayerInteract))]
@@ -31,8 +32,15 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeType(typeof(IPlayerGrab))]
     public IPlayerGrab Grab;
 
+    [NodeType(typeof(FirstPersonStep))]
+    public FirstPersonStep Step;
+
     public MultiLock InteractLock = new MultiLock();
     public MultiLock MovementLock = new MultiLock();
+
+    private bool jumping;
+
+    public Action OnJump, OnLand;
 
     public override void _Ready()
     {
@@ -92,6 +100,12 @@ public partial class FirstPersonController : CharacterBody3D
 
         if (grounded)
         {
+            if (jumping)
+            {
+                jumping = false;
+                OnLand?.Invoke();
+            }
+
             var has_direction = direction != Vector3.Zero;
             if (has_direction)
             {
@@ -104,12 +118,16 @@ public partial class FirstPersonController : CharacterBody3D
                 velocity.Z = Mathf.MoveToward(Velocity.Z, 0, MoveSpeed);
             }
 
-            // Handle Jump.
+            // Handle Jump
             if (PlayerInput.Jump.Pressed)
             {
                 var dir = new Vector3(direction.X, 0, direction.Z).Normalized() * JumpHorizontalSpeed;
                 var jump_vel = new Vector3(dir.X, JumpUpSpeed, dir.Z);
                 velocity += jump_vel;
+
+                jumping = true;
+
+                OnJump?.Invoke();
             }
         }
 

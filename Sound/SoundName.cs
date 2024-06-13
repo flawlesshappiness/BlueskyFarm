@@ -1,5 +1,7 @@
 public enum SoundName
 {
     None,
-    Step_Default
+    Step_Default,
+    Land_Default,
+    Pickup,
 }

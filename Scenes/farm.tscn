@@ -1,10 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=18 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Modules/Scene/Scene.cs" id="1_8imcd"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
-[ext_resource type="Script" path="res://Sleep/Sleepable.cs" id="3_6mn48"]
-[ext_resource type="PackedScene" uid="uid://dco4343is4u26" path="res://Assets/KenneyNL/Furniture/bedSingle.glb" id="5_pss1d"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon_001/Trapdoor.tscn" id="8_je3mm"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="9_t030q"]
@@ -29,9 +27,6 @@ size = Vector3(1, 1, 0.5)
 albedo_color = Color(0.168627, 0.478431, 0.0901961, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53lfa"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2hsid"]
-size = Vector3(0.583984, 0.387695, 1.14258)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
 panorama = ExtResource("1_u4lhc")
@@ -144,21 +139,6 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_W/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_53lfa")
-
-[node name="Bed" type="StaticBody3D" parent="World"]
-transform = Transform3D(0.78201, 0, 0.623266, 0, 1, 0, -0.623266, 0, 0.78201, 11.4148, 0.376467, -2.87758)
-collision_layer = 7
-collision_mask = 0
-script = ExtResource("3_6mn48")
-SleepTicks = 10
-HoverText = "Pass out"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bed"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("BoxShape3D_2hsid")
-
-[node name="bedSingle" parent="World/Bed" instance=ExtResource("5_pss1d")]
-transform = Transform3D(2, 0, -5.96046e-08, 0, 2, 0, 5.96046e-08, 0, 2, -1.3272, -0.376083, 1.10367)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")

@@ -7,7 +7,8 @@
 [node name="FirstPersonPlayer" instance=ExtResource("1_pwey1")]
 
 [node name="Step" parent="." index="1"]
-StepTime = 0.5
+StepTime = 0.4
+StepBounce = 0.15
 
 [node name="StepSounds" type="Node3D" parent="." index="3"]
 script = ExtResource("2_k52kp")
@@ -16,4 +17,10 @@ script = ExtResource("2_k52kp")
 volume_db = -20.0
 script = ExtResource("3_7ahbp")
 SoundName = 1
+PitchMin = 0.8
+
+[node name="SfxLand" type="AudioStreamPlayer" parent="StepSounds" index="1"]
+volume_db = -20.0
+script = ExtResource("3_7ahbp")
+SoundName = 2
 PitchMin = 0.8

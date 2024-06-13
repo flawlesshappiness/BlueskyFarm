@@ -7,6 +7,9 @@ public partial class FirstPersonStep : Node3D
     [Export]
     public float StepTime = 0.7f;
 
+    [Export]
+    public float StepBounce = 0.2f;
+
     private FirstPersonController Player { get; set; }
 
     private bool moving;
@@ -87,7 +90,7 @@ public partial class FirstPersonStep : Node3D
         {
             var duration = StepTime * 0.4f;
             var current_position = Position;
-            var mid_position = current_position + Vector3.Down * 0.2f;
+            var mid_position = current_position + Vector3.Down * StepBounce;
             var end_position = start_position;
 
             yield return LerpEnumerator.Lerp01(duration, f =>
@@ -111,7 +114,8 @@ public partial class FirstPersonStep : Node3D
         IEnumerator Cr()
         {
             var current_position = Position;
-            yield return LerpEnumerator.Lerp01(0.1f, f =>
+            var duration = StepTime * 0.2f;
+            yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 Position = current_position.Lerp(start_position, Curves.EaseInOutQuad.Evaluate(f));
             });

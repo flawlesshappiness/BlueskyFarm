@@ -84,6 +84,8 @@ public partial class InventoryController : SingletonController
         if (item == null) return;
 
         Add(item.Info);
+        PlayPickupSoundFx();
+
         Coroutine.Start(Cr);
 
         IEnumerator Cr()
@@ -113,8 +115,6 @@ public partial class InventoryController : SingletonController
         Debug.LogMethod();
         Debug.Indent++;
 
-        var dir = Player.Camera.GlobalBasis * Vector3.Forward;
-        var vel = Player.Velocity;
         var items = CurrentInventoryItems.ToList();
         CurrentInventoryItems.Clear();
         Coroutine.Start(DropAllCr);
@@ -127,12 +127,26 @@ public partial class InventoryController : SingletonController
             {
                 for (int i = 0; i < inv_item.Count; i++)
                 {
+                    var dir = Player.Camera.GlobalBasis * Vector3.Forward;
+                    var vel = Player.Velocity;
                     var item = ItemController.Instance.CreateItem(inv_item.Info);
                     item.GlobalPosition = Player.Mid.GlobalPosition;
                     item.LinearVelocity = vel + dir * 5;
+
+                    PlayPickupSoundFx();
+
                     yield return new WaitForSeconds(0.05f);
                 }
             }
         }
+    }
+
+    private void PlayPickupSoundFx()
+    {
+        SoundController.Instance.Play(SoundName.Pickup, new PlaySoundSettings
+        {
+            PitchMin = 0.8f,
+            PitchMax = 1.2f
+        });
     }
 }

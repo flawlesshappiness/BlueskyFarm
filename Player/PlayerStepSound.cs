@@ -3,6 +3,9 @@ public partial class PlayerStepSound : NodeScript
     [NodeName(nameof(SfxStep))]
     public Sound SfxStep;
 
+    [NodeName(nameof(SfxLand))]
+    public Sound SfxLand;
+
     private FirstPersonController Player => FirstPersonController.Instance;
     private FirstPersonStep Step => Player.Step;
 
@@ -39,7 +42,7 @@ public partial class PlayerStepSound : NodeScript
 
     private void Land()
     {
-        SfxStep.Play();
+        SfxLand.Play();
         Step.ResetStepTime();
     }
 }

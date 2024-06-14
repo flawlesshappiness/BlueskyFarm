@@ -15,20 +15,6 @@ public partial class Scene : NodeScript
     protected virtual void OnInitialize() { }
     protected virtual void OnDestroy() { }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        if (!_initialized)
-            Initialize();
-    }
-
-    private void Initialize()
-    {
-        _initialized = true;
-        OnInitialize();
-    }
-
     public static T Instantiate<T>(string path) where T : Scene =>
         GDHelper.Instantiate<T>(path);
 

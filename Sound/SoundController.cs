@@ -9,7 +9,7 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
 
     public SoundInfo GetInfo(SoundName name) => Collection.Resources.FirstOrDefault(x => x.SoundName == name);
 
-    public void Play(SoundName name, PlaySoundSettings settings = null)
+    public void Play(SoundName name, SoundSettings settings = null)
     {
         var info = GetInfo(name);
         var sound = new AudioStreamPlayer();
@@ -27,18 +27,31 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
             sound.QueueFree();
         }
     }
-
-
 }
 
-public class PlaySoundSettings
+public abstract class SoundSettingsBase
 {
+    protected RandomNumberGenerator RNG { get; private set; } = new RandomNumberGenerator();
     public float PitchMin { get; set; } = 1;
     public float PitchMax { get; set; } = 1;
+    public float RandomPitch => RNG.RandfRange(PitchMin, PitchMax);
+}
 
+public class SoundSettings : SoundSettingsBase
+{
     public void ModifySound(AudioStreamPlayer sound)
     {
-        var rng = new RandomNumberGenerator();
-        sound.PitchScale = rng.RandfRange(PitchMin, PitchMax);
+        sound.PitchScale = RandomPitch;
+    }
+}
+
+public class SoundSettings3D : SoundSettingsBase
+{
+    public Vector3 Position { get; set; }
+
+    public void ModifySound(AudioStreamPlayer3D sound)
+    {
+        sound.GlobalPosition = Position;
+        sound.PitchScale = RandomPitch;
     }
 }

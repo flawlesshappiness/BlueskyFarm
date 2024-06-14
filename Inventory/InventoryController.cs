@@ -143,7 +143,7 @@ public partial class InventoryController : SingletonController
 
     private void PlayPickupSoundFx()
     {
-        SoundController.Instance.Play(SoundName.Pickup, new PlaySoundSettings
+        SoundController.Instance.Play(SoundName.Pickup, new SoundSettings
         {
             PitchMin = 0.8f,
             PitchMax = 1.2f

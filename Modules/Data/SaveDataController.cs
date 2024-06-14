@@ -61,7 +61,6 @@ public partial class SaveDataController : Node
             finally
             {
                 data_objects.Add(typeof(T), data);
-                Save<T>();
             }
 
             Debug.Indent--;

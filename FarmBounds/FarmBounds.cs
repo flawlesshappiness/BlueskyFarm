@@ -61,11 +61,12 @@ public partial class FarmBounds : NodeScript
 
     private void ThrowCoins(int count)
     {
+        var path_coin = ItemController.Instance.Collection.Coin;
         var position = FirstPersonController.Instance.GlobalPosition;
         for (int i = 0; i < count; i++)
         {
-            var coin = ItemController.Instance.SpawnCoin();
-            ThrowObject(coin, position);
+            var item = ItemController.Instance.CreateItem(path_coin);
+            ThrowObject(item, position);
         }
     }
 

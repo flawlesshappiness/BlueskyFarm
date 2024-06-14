@@ -40,13 +40,14 @@ public partial class BasementController : SingletonController
 
     private void GenerateGrid(Basement basement)
     {
-        var settings = new BasementSettings
+        basement.Settings = new BasementSettings
         {
             MaxRooms = 5,
             MaxCorridorDepth = 3,
+            SpawnItemPaths = new List<string> { ItemController.Instance.Collection.Seed }
         };
 
-        var grid = BasementGridGenerator.Generate(settings);
+        var grid = BasementGridGenerator.Generate(basement.Settings);
         basement.Grid = grid;
 
         GenerateRooms(basement);
@@ -109,7 +110,8 @@ public partial class BasementController : SingletonController
             var position = item_positions.Random();
             item_positions.Remove(position);
 
-            var item = ItemController.Instance.SpawnCoin();
+            var item_path = basement.Settings.SpawnItemPaths.Random();
+            var item = ItemController.Instance.CreateItem(item_path);
             item.GlobalPosition = position.GlobalPosition;
 
             basement.Items.Add(item);

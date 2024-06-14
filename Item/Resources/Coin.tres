@@ -9,3 +9,5 @@ CanSell = false
 SellValue = 0
 CanPlant = false
 GrowTicks = 0
+IsMoney = true
+MoneyAmount = 1

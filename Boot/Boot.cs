@@ -33,8 +33,6 @@ public partial class Boot : Node
         View.CreateAll();
         LoadScene();
 
-        SaveDataController.Instance.SaveAll();
-
         _initialized = true;
         Debug.Indent--;
     }
@@ -57,8 +55,8 @@ public partial class Boot : Node
         Debug.LogMethod();
         Debug.Indent++;
 
-        Data.Game.Scene ??= "farm.tscn";
-        Scene.Goto(Data.Game.Scene);
+        // TODO: Current scene should not be loaded on boot
+        Scene.Goto(Data.Game.CurrentScene ?? "farm.tscn");
 
         Debug.Indent--;
     }

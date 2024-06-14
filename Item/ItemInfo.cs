@@ -17,4 +17,10 @@ public partial class ItemInfo : Resource
 
     [Export]
     public int GrowTicks;
+
+    [Export]
+    public bool IsMoney;
+
+    [Export]
+    public int MoneyAmount;
 }

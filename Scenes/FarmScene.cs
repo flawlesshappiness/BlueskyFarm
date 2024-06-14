@@ -4,6 +4,7 @@ public partial class FarmScene : Scene
     {
         base.Initialize();
         Data.Game.OnBeforeSave += OnBeforeSave;
+        Data.Game.Save();
     }
 
     protected override void OnDestroy()
@@ -16,5 +17,6 @@ public partial class FarmScene : Scene
     {
         FirstPersonController.Instance.UpdateData();
         InventoryController.Instance.UpdateData();
+        ItemController.Instance.UpdateData();
     }
 }

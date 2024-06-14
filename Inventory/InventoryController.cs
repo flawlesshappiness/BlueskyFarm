@@ -16,7 +16,6 @@ public partial class InventoryController : SingletonController
     {
         base.Initialize();
         CurrentInventoryItems = Data.Game.InventoryItems.ToList();
-        Debug.LogError($"{CurrentInventoryItems.Count()}");
     }
 
     public override void _Process(double delta)
@@ -66,10 +65,16 @@ public partial class InventoryController : SingletonController
         Debug.LogMethod($"{info.Path}: {count}");
         Debug.Indent++;
 
-        var item = Get(info);
-        item.Count += count;
-
-        Debug.Log("Current count: " + item.Count);
+        if (info.IsMoney)
+        {
+            CurrencyController.Instance.AddValue(CurrencyType.Money, info.MoneyAmount * count);
+        }
+        else
+        {
+            var item = Get(info);
+            item.Count += count;
+            Debug.Log("Current count: " + item.Count);
+        }
 
         Debug.Indent--;
     }
@@ -90,6 +95,7 @@ public partial class InventoryController : SingletonController
         if (item == null) return;
 
         Add(item.Info);
+        ItemController.Instance.UntrackItem(item);
         PlayPickupSoundFx();
 
         Coroutine.Start(Cr);

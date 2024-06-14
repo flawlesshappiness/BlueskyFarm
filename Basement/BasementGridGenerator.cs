@@ -73,6 +73,7 @@ public class BasementSettings
 {
     public int MaxCorridorDepth { get; set; }
     public int MaxRooms { get; set; }
+    public List<string> SpawnItemPaths { get; set; }
 }
 
 public class BasementRoomElement

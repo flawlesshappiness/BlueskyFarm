@@ -1,5 +1,5 @@
 public class InventoryItem
 {
-    public ItemInfo Info { get; set; }
+    public string InfoPath { get; set; }
     public int Count { get; set; }
 }

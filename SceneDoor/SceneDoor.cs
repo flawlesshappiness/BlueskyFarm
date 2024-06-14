@@ -34,6 +34,9 @@ public partial class SceneDoor : Touchable
 
     private void ChangeScene()
     {
+        // Save
+        Data.Game.Save();
+
         // Load scene
         Scene.Goto(SceneName);
 

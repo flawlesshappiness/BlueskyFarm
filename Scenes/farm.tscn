@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cdgomd3h4hi00"]
 
-[ext_resource type="Script" path="res://Modules/Scene/Scene.cs" id="1_8imcd"]
+[ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon_001/Trapdoor.tscn" id="8_je3mm"]
@@ -39,7 +39,7 @@ background_mode = 2
 sky = SubResource("Sky_b8lqf")
 
 [node name="farm" type="Node3D"]
-script = ExtResource("1_8imcd")
+script = ExtResource("1_mng5r")
 
 [node name="World" type="Node" parent="."]
 

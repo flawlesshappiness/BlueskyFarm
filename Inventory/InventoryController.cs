@@ -12,6 +12,13 @@ public partial class InventoryController : SingletonController
 
     private FirstPersonController Player => FirstPersonController.Instance;
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        CurrentInventoryItems = Data.Game.InventoryItems.ToList();
+        Debug.LogError($"{CurrentInventoryItems.Count()}");
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -36,19 +43,18 @@ public partial class InventoryController : SingletonController
         }
     }
 
-    public void CommitToData()
+    public void UpdateData()
     {
         Data.Game.InventoryItems = CurrentInventoryItems;
-        Data.Game.Save();
     }
 
     public InventoryItem Get(ItemInfo info)
     {
-        var item = CurrentInventoryItems.FirstOrDefault(x => x.Info.Path == info.Path);
+        var item = CurrentInventoryItems.FirstOrDefault(x => x.InfoPath == info.ResourcePath);
 
         if (item == null)
         {
-            item = new InventoryItem { Info = info };
+            item = new InventoryItem { InfoPath = info.ResourcePath };
             CurrentInventoryItems.Add(item);
         }
 
@@ -117,6 +123,8 @@ public partial class InventoryController : SingletonController
 
         var items = CurrentInventoryItems.ToList();
         CurrentInventoryItems.Clear();
+        Data.Game.Save();
+
         Coroutine.Start(DropAllCr);
 
         Debug.Indent--;
@@ -129,7 +137,7 @@ public partial class InventoryController : SingletonController
                 {
                     var dir = Player.Camera.GlobalBasis * Vector3.Forward;
                     var vel = Player.Velocity;
-                    var item = ItemController.Instance.CreateItem(inv_item.Info);
+                    var item = ItemController.Instance.CreateItem(inv_item.InfoPath);
                     item.GlobalPosition = Player.Mid.GlobalPosition;
                     item.LinearVelocity = vel + dir * 5;
 

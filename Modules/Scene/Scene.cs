@@ -12,7 +12,6 @@ public partial class Scene : NodeScript
     public static MultiLock PauseLock { get; } = new();
     public static bool AutoSave { get; set; } = true;
 
-    protected virtual void OnInitialize() { }
     protected virtual void OnDestroy() { }
 
     public static T Instantiate<T>(string path) where T : Scene =>
@@ -38,7 +37,7 @@ public partial class Scene : NodeScript
                 // Save
             }
 
-            Current.QueueFree();
+            Current.Destroy();
         }
 
         Current = Instantiate<Scene>($"Scenes/{scene_name}");

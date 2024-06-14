@@ -1,8 +1,8 @@
 public partial class BasementScene : Scene
 {
-    protected override void OnInitialize()
+    protected override void Initialize()
     {
-        base.OnInitialize();
+        base.Initialize();
         BasementController.Instance.DebugGenerateBasement();
     }
 }

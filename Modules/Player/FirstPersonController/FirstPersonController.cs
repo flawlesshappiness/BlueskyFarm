@@ -133,7 +133,6 @@ public partial class FirstPersonController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
-        UpdateData();
     }
 
     private void Process_Cursor()

@@ -1,7 +1,6 @@
-using Godot;
 using System;
 
-public abstract partial class SingletonController : Node, IComparable<SingletonController>
+public abstract partial class SingletonController : NodeScript, IComparable<SingletonController>
 {
     public abstract string Directory { get; }
     public SingletonController Create() => Singleton.GetOrCreate($"{Directory}/{GetType().Name}", GetType()) as SingletonController;
@@ -20,8 +19,9 @@ public abstract partial class SingletonController : Node, IComparable<SingletonC
         return GetType().Name.CompareTo(other.GetType().Name);
     }
 
-    public virtual void Initialize()
+    protected override void Initialize()
     {
+        base.Initialize();
         Debug.TraceMethod(GetType());
     }
 }

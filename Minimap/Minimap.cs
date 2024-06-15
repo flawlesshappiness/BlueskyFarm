@@ -24,6 +24,8 @@ public partial class Minimap : ControlScript
     public static int RoomSectionMapSize => MinimapRoom.SECTION_SIZE;
     public static int RoomMapSize => RoomSectionCount * MinimapRoom.SECTION_SIZE;
 
+    private List<Control> MinimapControls { get; set; } = new();
+
     private class MinimapRoom
     {
         public const int SECTION_SIZE = 8;
@@ -51,8 +53,20 @@ public partial class Minimap : ControlScript
         Rotate.Rotation = FirstPersonController.Instance.Neck.Rotation.Y;
     }
 
+    public void Clear()
+    {
+        foreach (var control in MinimapControls)
+        {
+            control.QueueFree();
+        }
+
+        MinimapControls.Clear();
+    }
+
     private void BasementGenerated(Basement basement)
     {
+        Clear();
+
         var minimap_rooms = new List<MinimapRoom>();
         foreach (var element in basement.Grid.Elements)
         {
@@ -93,6 +107,7 @@ public partial class Minimap : ControlScript
         var control = RoomTemplate.Duplicate() as Control;
         control.SetParent(RoomTemplate.GetParent());
         control.Visible = true;
+        MinimapControls.Add(control);
 
         var section_template = control.GetNodeInChildren<ColorRect>("SectionTemplate");
         section_template.Visible = false;
@@ -123,9 +138,8 @@ public partial class Minimap : ControlScript
         var control = ItemTemplate.Duplicate() as ColorRect;
         control.SetParent(ItemTemplate.GetParent());
         control.Visible = true;
-
         control.Position = WorldToMinimapPosition(item.GlobalPosition);
-
+        MinimapControls.Add(control);
         return control;
     }
 

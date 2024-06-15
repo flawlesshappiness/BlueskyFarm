@@ -23,4 +23,7 @@ public partial class ItemInfo : Resource
 
     [Export]
     public int MoneyAmount;
+
+    [Export]
+    public bool CanPickUp;
 }

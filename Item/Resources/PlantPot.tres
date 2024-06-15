@@ -5,3 +5,10 @@
 [resource]
 script = ExtResource("1_pk05a")
 Path = "res://Item/Prefabs/PlantPot.tscn"
+CanSell = false
+SellValue = 0
+CanPlant = false
+GrowTicks = 0
+IsMoney = false
+MoneyAmount = 0
+CanPickUp = false

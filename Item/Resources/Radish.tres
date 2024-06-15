@@ -9,3 +9,6 @@ CanSell = true
 SellValue = 5
 CanPlant = false
 GrowTicks = 20
+IsMoney = false
+MoneyAmount = 0
+CanPickUp = true

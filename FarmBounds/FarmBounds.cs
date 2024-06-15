@@ -53,6 +53,7 @@ public partial class FarmBounds : NodeScript
                 yield return null;
             }
 
+            ItemController.Instance.UntrackItem(item);
             item.QueueFree();
 
             ThrowCoins(item.Info.SellValue);

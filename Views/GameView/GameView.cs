@@ -5,6 +5,9 @@ public partial class GameView : View
     [NodeName(nameof(ColorRectOverlay))]
     public ColorRect ColorRectOverlay;
 
+    [NodeType(typeof(Minimap))]
+    public Minimap Minimap;
+
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
 
     public override void _Ready()

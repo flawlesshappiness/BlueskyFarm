@@ -48,7 +48,6 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
         foreach (var data in datas)
         {
-            Debug.LogError(data.InfoPath);
             CreateItemFromData(data);
         }
 

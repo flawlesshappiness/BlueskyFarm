@@ -26,6 +26,8 @@ shape = SubResource("CylinderShape3D_24be2")
 
 [node name="PlantArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.307565, 0)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3_26l6i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlantArea"]

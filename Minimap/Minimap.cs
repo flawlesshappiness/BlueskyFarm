@@ -36,6 +36,7 @@ public partial class Minimap : ControlScript
     public override void _Ready()
     {
         base._Ready();
+        RegisterDebugActions();
 
         RoomTemplate.Visible = false;
         ItemTemplate.Visible = false;
@@ -51,6 +52,18 @@ public partial class Minimap : ControlScript
         Scroll.Position = pos_player + Player.Position;
 
         Rotate.Rotation = FirstPersonController.Instance.Neck.Rotation.Y;
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "MINIMAP";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Toggle minimap",
+            Action = v => Visible = !Visible
+        });
     }
 
     public void Clear()

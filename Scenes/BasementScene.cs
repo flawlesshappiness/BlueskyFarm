@@ -4,8 +4,5 @@ public partial class BasementScene : Scene
     {
         base.Initialize();
         BasementController.Instance.DebugGenerateBasement();
-
-        var view = View.Get<GameView>();
-        view.Minimap.Show();
     }
 }

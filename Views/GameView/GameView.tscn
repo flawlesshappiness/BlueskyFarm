@@ -53,6 +53,7 @@ offset_right = 0.0
 offset_bottom = 43.0
 
 [node name="Minimap" type="Control" parent="MarginContainer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_right = 168.0

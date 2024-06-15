@@ -29,6 +29,8 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
         base._Ready();
         NodeScript.FindNodesFromAttribute(this, GetType());
         SetCollisionMode(StartCollisionMode);
+
+        CanSleep = false;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -60,7 +62,6 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         is_grabbed = true;
         GravityScale = 0;
-        CanSleep = false;
 
         OnGrabbed?.Invoke();
     }
@@ -69,7 +70,6 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         is_grabbed = false;
         GravityScale = 1;
-        CanSleep = true;
 
         if (MaxThrowVelocity > 0 && LinearVelocity.Length() > MaxThrowVelocity)
         {

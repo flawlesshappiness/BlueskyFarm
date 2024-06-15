@@ -93,6 +93,7 @@ public partial class InventoryController : SingletonController
     public void PickUpItem(Item item)
     {
         if (item == null) return;
+        if (!item.Info.CanPickUp) return;
 
         Add(item.Info);
         ItemController.Instance.UntrackItem(item);

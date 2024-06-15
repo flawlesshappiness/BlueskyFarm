@@ -14,6 +14,8 @@ public partial class DebugContentSearch : ControlScript
     [NodeName("ResultButtonPrefab")]
     public Button ResultButtonPrefab;
 
+    private DebugView View { get; set; }
+
     public string Title { set => TitleLabel.Text = value; }
 
     private Dictionary<string, Action> _items = new();
@@ -23,6 +25,8 @@ public partial class DebugContentSearch : ControlScript
     public override void _Ready()
     {
         base._Ready();
+
+        View = this.GetNodeInParents<DebugView>();
 
         VisibilityChanged += OnVisibilityChanged;
         SearchField.TextChanged += OnTextChanged;
@@ -72,6 +76,8 @@ public partial class DebugContentSearch : ControlScript
             var button = CreateButton();
             button.Text = item.Key;
             button.Pressed += item.Value;
+            button.Pressed += () => View.SfxClick.Play();
+            button.MouseEntered += () => View.SfxHover.Play();
         }
     }
 

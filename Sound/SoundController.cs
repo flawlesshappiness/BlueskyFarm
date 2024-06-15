@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Linq;
 
@@ -11,19 +12,38 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
 
     public void Play(SoundName name, SoundSettings settings = null)
     {
-        var info = GetInfo(name);
         var sound = new AudioStreamPlayer();
         sound.SetParent(Scene.Root);
 
+        var info = GetInfo(name);
         sound.Stream = GD.Load<AudioStream>(info.Path);
         settings?.ModifySound(sound);
         sound.Play();
 
+        var duration = Convert.ToSingle(sound.Stream.GetLength());
+        DestroyDelay(sound, duration);
+    }
+
+    public void Play(SoundName name, SoundSettings3D settings = null)
+    {
+        var sound = new AudioStreamPlayer3D();
+        sound.SetParent(Scene.Root);
+
+        var info = GetInfo(name);
+        sound.Stream = GD.Load<AudioStream>(info.Path);
+        settings?.ModifySound(sound);
+        sound.Play();
+
+        var duration = Convert.ToSingle(sound.Stream.GetLength());
+        DestroyDelay(sound, duration);
+    }
+
+    private void DestroyDelay(Node sound, float delay)
+    {
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            var duration = sound.Stream.GetLength();
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(delay);
             sound.QueueFree();
         }
     }
@@ -35,6 +55,7 @@ public abstract class SoundSettingsBase
     public float PitchMin { get; set; } = 1;
     public float PitchMax { get; set; } = 1;
     public float RandomPitch => RNG.RandfRange(PitchMin, PitchMax);
+    public float Volume { get; set; }
 }
 
 public class SoundSettings : SoundSettingsBase
@@ -42,6 +63,7 @@ public class SoundSettings : SoundSettingsBase
     public void ModifySound(AudioStreamPlayer sound)
     {
         sound.PitchScale = RandomPitch;
+        sound.VolumeDb = Volume;
     }
 }
 
@@ -53,5 +75,6 @@ public class SoundSettings3D : SoundSettingsBase
     {
         sound.GlobalPosition = Position;
         sound.PitchScale = RandomPitch;
+        sound.VolumeDb = Volume;
     }
 }

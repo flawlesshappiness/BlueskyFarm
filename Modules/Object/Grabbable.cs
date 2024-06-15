@@ -60,6 +60,7 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         is_grabbed = true;
         GravityScale = 0;
+        CanSleep = false;
 
         OnGrabbed?.Invoke();
     }
@@ -68,6 +69,7 @@ public partial class Grabbable : RigidBody3D, IGrabbable, IInteractable
     {
         is_grabbed = false;
         GravityScale = 1;
+        CanSleep = true;
 
         if (MaxThrowVelocity > 0 && LinearVelocity.Length() > MaxThrowVelocity)
         {

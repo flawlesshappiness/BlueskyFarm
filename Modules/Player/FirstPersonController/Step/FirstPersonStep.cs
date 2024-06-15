@@ -90,7 +90,7 @@ public partial class FirstPersonStep : Node3D
         {
             var duration = StepTime * 0.4f;
             var current_position = Position;
-            var mid_position = current_position + Vector3.Down * StepBounce;
+            var mid_position = start_position + Vector3.Down * StepBounce;
             var end_position = start_position;
 
             yield return LerpEnumerator.Lerp01(duration, f =>

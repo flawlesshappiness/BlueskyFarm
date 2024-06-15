@@ -149,39 +149,39 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
-[node name="Bush_N2" type="Node3D" parent="World"]
+[node name="Bush_S" type="Node3D" parent="World"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -15.5)
 
-[node name="Bush" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
 
-[node name="Bush2" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush2" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 2)
 
-[node name="Bush3" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush3" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
 
-[node name="Bush4" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush4" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
 
-[node name="Bush5" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush5" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 14)
 
-[node name="Bush6" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush6" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
 
-[node name="Bush7" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush7" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
 
-[node name="Bush8" parent="World/Bush_N2" instance=ExtResource("3_pkptg")]
+[node name="Bush8" parent="World/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -14)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Bush_N2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Bush_S"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_N2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_S/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
@@ -220,6 +220,38 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bush_W/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
+
+[node name="TutorialText" type="Node" parent="World"]
+
+[node name="LabelMove" type="Label3D" parent="World/TutorialText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110256, 2.76717, -14.851)
+text = "[WASD]: Move"
+font_size = 200
+
+[node name="LabelLook" type="Label3D" parent="World/TutorialText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-07, 1.47275, -14.851)
+text = "[MOUSE]: Look"
+font_size = 200
+
+[node name="LabelInteract" type="Label3D" parent="World/TutorialText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.39641, 2.76717, -14.851)
+text = "[LMB]: Interact"
+font_size = 200
+
+[node name="LabelRotate" type="Label3D" parent="World/TutorialText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45427, 1.47275, -14.851)
+text = "[R]: Rotate"
+font_size = 200
+
+[node name="LabelPickUp" type="Label3D" parent="World/TutorialText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5204, 2.76717, -14.851)
+text = "[E]: Pick up"
+font_size = 200
+
+[node name="LabelDropInventory" type="Label3D" parent="World/TutorialText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.62178, 1.47275, -14.851)
+text = "[Q]: Drop inventory"
+font_size = 200
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")

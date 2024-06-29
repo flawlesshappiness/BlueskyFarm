@@ -29,6 +29,14 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         }
     }
 
+    public void TrackItem(Item item)
+    {
+        if (!ActiveItems.Contains(item))
+        {
+            ActiveItems.Add(item);
+        }
+    }
+
     public void UpdateData()
     {
         ActiveItems.ForEach(item => item.UpdateData());

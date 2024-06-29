@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 using System.Linq;
 
 public partial class PlantArea : Area3D
@@ -121,6 +122,7 @@ public partial class PlantArea : Area3D
 
         var seed_item_path = ItemController.Instance.Collection.Seed;
         var seed_item = ItemController.Instance.CreateItem(seed_item_path);
+        ItemController.Instance.UntrackItem(seed_item);
         ReparentItem(seed_item);
 
         CurrentSeed = new Seed
@@ -221,11 +223,12 @@ public partial class PlantArea : Area3D
             rig.Freeze = false;
 
             interactable.SetCollisionMode(InteractCollisionMode.All);
+            grabbable.Node.SetParent(Scene.Root);
             grabbable.OnGrabbed -= OnGrabbedPlant;
 
-            grabbable.Node.SetParent(Scene.Root);
-
             RemoveData(CurrentSeed.Data.ItemId);
+
+            ItemController.Instance.TrackItem(interactable as Item);
 
             CurrentSeed = null;
         }
@@ -248,6 +251,7 @@ public partial class PlantArea : Area3D
         {
             DespawnSeedModel(CurrentSeed);
             SpawnPlantModel(CurrentSeed);
+            AnimatePlantAppear(CurrentSeed);
         }
     }
 
@@ -255,5 +259,34 @@ public partial class PlantArea : Area3D
     {
         if (CurrentSeed == null) return;
         CurrentSeed.UpdateData();
+    }
+
+    private void AnimatePlantAppear(Seed seed)
+    {
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            var duration = 0.05f;
+            var plant = seed.PlantModel;
+            var scale_A = Vector3.One * 1.1f;
+            var scale_B = Vector3.One * 1.2f;
+            var scale_C = Vector3.One * 0.9f;
+            var scale_D = Vector3.One * 1.0f;
+
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                plant.Scale = Lerp.Vector(scale_A, scale_B, Curves.EaseOutQuad.Evaluate(f));
+            });
+
+            yield return LerpEnumerator.Lerp01(duration * 0.9f, f =>
+            {
+                plant.Scale = Lerp.Vector(scale_B, scale_C, Curves.EaseInOutQuad.Evaluate(f));
+            });
+
+            yield return LerpEnumerator.Lerp01(duration * 0.8f, f =>
+            {
+                plant.Scale = Lerp.Vector(scale_C, scale_D, Curves.EaseInOutQuad.Evaluate(f));
+            });
+        }
     }
 }

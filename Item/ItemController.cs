@@ -58,10 +58,10 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     {
         var info = GD.Load<ItemInfo>(data.InfoPath);
         var item = GDHelper.Instantiate<Item>(info.Path);
-        item.SetParent(Scene.Current);
 
         item.Info = info;
         item.Data = data;
+        item.SetParent(Scene.Current);
         item.LoadFromData();
         ActiveItems.Add(item);
         return item;
@@ -156,7 +156,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         void SelectItem(string path)
         {
             var item = CreateItem(Collection.Seed);
-            item.PlantInfo = GD.Load<ItemInfo>(path);
+            item.Data.PlantInfoPath = path;
             FarmBounds.Instance.ThrowObject(item, FirstPersonController.Instance.GlobalPosition);
         }
     }

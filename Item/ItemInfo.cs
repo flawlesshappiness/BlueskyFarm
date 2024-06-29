@@ -16,7 +16,7 @@ public partial class ItemInfo : Resource
     public bool CanPlant;
 
     [Export]
-    public int GrowTicks;
+    public int GrowTimeInSeconds;
 
     [Export]
     public bool IsMoney;

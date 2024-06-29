@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class Item : Grabbable
 {
@@ -6,9 +7,10 @@ public partial class Item : Grabbable
     public SoundName ImpactSound = SoundName.Step_Default;
 
     public ItemInfo Info { get; set; }
-    public ItemInfo PlantInfo { get; set; }
     public ItemData Data { get; set; }
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
+
+    public Action OnUpdateData;
 
     public override void _Ready()
     {
@@ -40,6 +42,8 @@ public partial class Item : Grabbable
         Data.X_Rotation = r.X;
         Data.Y_Rotation = r.Y;
         Data.Z_Rotation = r.Z;
+
+        OnUpdateData?.Invoke();
     }
 
     public void LoadFromData()

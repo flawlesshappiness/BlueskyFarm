@@ -8,7 +8,7 @@ public partial class InventoryController : SingletonController
     public override string Directory => "Inventory";
     public static InventoryController Instance => Singleton.Get<InventoryController>();
 
-    public List<InventoryItem> CurrentInventoryItems { get; set; } = new();
+    public List<ItemData> CurrentInventoryItems { get; set; } = new();
 
     private FirstPersonController Player => FirstPersonController.Instance;
 
@@ -47,45 +47,26 @@ public partial class InventoryController : SingletonController
         Data.Game.InventoryItems = CurrentInventoryItems;
     }
 
-    public InventoryItem Get(ItemInfo info)
+    public bool HasItem(ItemData item)
     {
-        var item = CurrentInventoryItems.FirstOrDefault(x => x.InfoPath == info.ResourcePath);
-
-        if (item == null)
-        {
-            item = new InventoryItem { InfoPath = info.ResourcePath };
-            CurrentInventoryItems.Add(item);
-        }
-
-        return item;
+        return CurrentInventoryItems.Any(x => x.Id == item.Id);
     }
 
-    public void Add(ItemInfo info, int count = 1)
+    public void Add(Item item)
     {
-        Debug.LogMethod($"{info.Path}: {count}");
+        if (HasItem(item.Data)) return;
+
+        Debug.LogMethod(item.Data.InfoPath);
         Debug.Indent++;
 
-        if (info.IsMoney)
+        if (item.Info.IsMoney)
         {
-            CurrencyController.Instance.AddValue(CurrencyType.Money, info.MoneyAmount * count);
+            CurrencyController.Instance.AddValue(CurrencyType.Money, 1);
         }
         else
         {
-            var item = Get(info);
-            item.Count += count;
-            Debug.Log("Current count: " + item.Count);
+            CurrentInventoryItems.Add(item.Data);
         }
-
-        Debug.Indent--;
-    }
-
-    public void Remove(ItemInfo info, int count = 1)
-    {
-        Debug.LogMethod($"{info.Path}: {count}");
-        Debug.Indent++;
-
-        var item = Get(info);
-        item.Count -= count;
 
         Debug.Indent--;
     }
@@ -95,7 +76,7 @@ public partial class InventoryController : SingletonController
         if (item == null) return;
         if (!item.Info.CanPickUp) return;
 
-        Add(item.Info);
+        Add(item);
         ItemController.Instance.UntrackItem(item);
         PlayPickupSoundFx();
 
@@ -140,18 +121,15 @@ public partial class InventoryController : SingletonController
         {
             foreach (var inv_item in items)
             {
-                for (int i = 0; i < inv_item.Count; i++)
-                {
-                    var dir = Player.Camera.GlobalBasis * Vector3.Forward;
-                    var vel = Player.Velocity;
-                    var item = ItemController.Instance.CreateItem(inv_item.InfoPath);
-                    item.GlobalPosition = Player.Mid.GlobalPosition;
-                    item.LinearVelocity = vel + dir * 5;
+                var dir = Player.Camera.GlobalBasis * Vector3.Forward;
+                var vel = Player.Velocity;
+                var item = ItemController.Instance.CreateItemFromData(inv_item);
+                item.GlobalPosition = Player.Mid.GlobalPosition;
+                item.LinearVelocity = vel + dir * 5;
 
-                    PlayPickupSoundFx();
+                PlayPickupSoundFx();
 
-                    yield return new WaitForSeconds(0.05f);
-                }
+                yield return new WaitForSeconds(0.05f);
             }
         }
     }

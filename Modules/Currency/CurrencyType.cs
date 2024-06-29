@@ -19,4 +19,9 @@ public partial class CurrencyType
         if (Id == null) return false;
         return Id == (obj as CurrencyType)?.Id;
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

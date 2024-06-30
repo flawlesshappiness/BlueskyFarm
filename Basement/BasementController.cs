@@ -43,7 +43,8 @@ public partial class BasementController : SingletonController
         {
             MaxRooms = 5,
             MaxCorridorDepth = 3,
-            SpawnItemPaths = new List<string> { ItemController.Instance.Collection.Seed }
+            SpawnItemInfoPaths = new List<string> { ItemController.Instance.Collection.Seed },
+            SeedPlantInfoPaths = new List<string> { ItemController.Instance.Collection.Radish }
         };
 
         var grid = BasementGridGenerator.Generate(basement.Settings);
@@ -109,14 +110,23 @@ public partial class BasementController : SingletonController
             var position = item_positions.Random();
             item_positions.Remove(position);
 
-            var item_path = basement.Settings.SpawnItemPaths.Random();
+            var item_path = basement.Settings.SpawnItemInfoPaths.Random();
             var item = ItemController.Instance.CreateItem(item_path);
             item.GlobalPosition = position.GlobalPosition;
+            SetupSeedItem(item, basement);
 
             basement.Items.Add(item);
 
             item_count--;
         }
+    }
+
+    private void SetupSeedItem(Item item, Basement basement)
+    {
+        if (!item.Info.CanPlant) return;
+
+        var plant_info_path = basement.Settings.SeedPlantInfoPaths.Random();
+        item.Data.PlantInfoPath = plant_info_path;
     }
 
     private BasementRoomInfo GetRandomRoomInfo(BasementRoomElement element)

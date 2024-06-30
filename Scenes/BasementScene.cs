@@ -1,3 +1,4 @@
+using Godot;
 using System.Linq;
 
 public partial class BasementScene : Scene
@@ -8,14 +9,26 @@ public partial class BasementScene : Scene
     {
         base.Initialize();
         time_scene_started = GameTime.Time;
+
+        // Basement
         BasementController.Instance.DebugGenerateBasement();
+
+        // Data
         Data.Game.OnBeforeSave += OnBeforeSave;
+
+        // Audio
+        SetAudioEffectEnabled(true);
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
+
+        // Data
         Data.Game.OnBeforeSave -= OnBeforeSave;
+
+        // Audio
+        SetAudioEffectEnabled(false);
     }
 
     private void OnBeforeSave()
@@ -32,5 +45,10 @@ public partial class BasementScene : Scene
         {
             plant_area.TimeLeft -= time_passed;
         }
+    }
+
+    private void SetAudioEffectEnabled(bool enabled)
+    {
+        SoundController.Instance.SetBusEffectEnabled<AudioEffectReverb>(SoundBus.SFX, enabled);
     }
 }

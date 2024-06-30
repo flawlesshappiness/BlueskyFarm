@@ -252,6 +252,12 @@ public partial class PlantArea : Area3D
             DespawnSeedModel(CurrentSeed);
             SpawnPlantModel(CurrentSeed);
             AnimatePlantAppear(CurrentSeed);
+
+            SoundController.Instance.Play(SoundName.Pickup, new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition
+            });
         }
     }
 

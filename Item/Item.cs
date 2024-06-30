@@ -77,6 +77,7 @@ public partial class Item : Grabbable
             PitchMin = pitch,
             PitchMax = pitch,
             Volume = volume,
+            Bus = SoundBus.SFX
         });
     }
 }

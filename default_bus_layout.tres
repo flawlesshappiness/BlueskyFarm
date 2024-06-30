@@ -1,4 +1,11 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://dyfupqdpl4ge7"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dyfupqdpl4ge7"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_d2k65"]
+resource_name = "Reverb"
+room_size = 0.4
+damping = 0.3
+spread = 0.2
+wet = 0.3
 
 [resource]
 bus/1/name = &"SFX"
@@ -7,6 +14,8 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_d2k65")
+bus/1/effect/0/enabled = false
 bus/2/name = &"BGM"
 bus/2/solo = false
 bus/2/mute = false

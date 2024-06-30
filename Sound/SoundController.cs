@@ -28,6 +28,7 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
     {
         var sound = new AudioStreamPlayer3D();
         sound.SetParent(Scene.Root);
+        sound.Bus = settings.Bus.ToString();
 
         var info = GetInfo(name);
         sound.Stream = GD.Load<AudioStream>(info.Path);
@@ -47,6 +48,47 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
             sound.QueueFree();
         }
     }
+
+    public int GetBusIndex(SoundBus bus)
+    {
+        return AudioServer.GetBusIndex(bus.ToString());
+    }
+
+    public int GetBusEffectIndex<T>(SoundBus bus) where T : AudioEffect
+    {
+        var idx = GetBusIndex(bus);
+        var count = AudioServer.GetBusEffectCount(idx);
+        for (int i = 0; i < count; i++)
+        {
+            var effect = AudioServer.GetBusEffect(idx, i) as T;
+            if (effect != null) return i;
+        }
+
+        return -1;
+    }
+
+    public T GetBusEffect<T>(SoundBus bus) where T : AudioEffect
+    {
+        var idx = GetBusIndex(bus);
+        var count = AudioServer.GetBusEffectCount(idx);
+        for (int i = 0; i < count; i++)
+        {
+            var effect = AudioServer.GetBusEffect(idx, i) as T;
+            if (effect != null) return effect;
+        }
+
+        return null;
+    }
+
+    public void SetBusEffectEnabled<T>(SoundBus bus, bool enabled) where T : AudioEffect
+    {
+        var idx_effect = GetBusEffectIndex<T>(bus);
+        if (idx_effect >= 0)
+        {
+            var idx_bus = GetBusIndex(bus);
+            AudioServer.SetBusEffectEnabled(idx_bus, idx_effect, enabled);
+        }
+    }
 }
 
 public abstract class SoundSettingsBase
@@ -56,6 +98,7 @@ public abstract class SoundSettingsBase
     public float PitchMax { get; set; } = 1;
     public float RandomPitch => RNG.RandfRange(PitchMin, PitchMax);
     public float Volume { get; set; }
+    public SoundBus Bus { get; set; } = SoundBus.Master;
 }
 
 public class SoundSettings : SoundSettingsBase

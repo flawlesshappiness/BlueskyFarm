@@ -15,12 +15,14 @@ script = ExtResource("2_k52kp")
 
 [node name="SfxStep" type="AudioStreamPlayer" parent="StepSounds" index="0"]
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_7ahbp")
 SoundName = 1
 PitchMin = 0.8
 
 [node name="SfxLand" type="AudioStreamPlayer" parent="StepSounds" index="1"]
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_7ahbp")
 SoundName = 2
 PitchMin = 0.8

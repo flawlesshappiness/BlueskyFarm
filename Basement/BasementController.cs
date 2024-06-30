@@ -7,10 +7,9 @@ public partial class BasementController : SingletonController
 {
     public override string Directory => "Basement";
     public static BasementController Instance => Singleton.Get<BasementController>();
+    public Basement CurrentBasement { get; set; }
 
     public Action<Basement> OnBasementGenerated;
-
-    public Basement CurrentBasement { get; set; }
 
     public override void _Ready()
     {

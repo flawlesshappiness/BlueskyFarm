@@ -95,7 +95,7 @@ public partial class FirstPersonStep : Node3D
 
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
-                Position = start_position.Lerp(mid_position, Curves.EaseOutQuad.Evaluate(f));
+                Position = current_position.Lerp(mid_position, Curves.EaseOutQuad.Evaluate(f));
             });
 
             current_position = Position;

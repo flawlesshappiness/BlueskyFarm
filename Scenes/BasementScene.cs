@@ -49,6 +49,7 @@ public partial class BasementScene : Scene
 
     private void SetAudioEffectEnabled(bool enabled)
     {
-        SoundController.Instance.SetBusEffectEnabled<AudioEffectReverb>(SoundBus.SFX, enabled);
+        var bus = AudioBus.Get("SFX");
+        bus.SetEffectEnabled<AudioEffectReverb>(enabled);
     }
 }

@@ -1,0 +1,6 @@
+public partial class GameSaveData
+{
+    public float VolumeMaster { get; set; } = 0.5f;
+    public float VolumeSFX { get; set; } = 1.0f;
+    public float VolumeBGM { get; set; } = 1.0f;
+}

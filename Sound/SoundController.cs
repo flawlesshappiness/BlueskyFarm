@@ -48,47 +48,6 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
             sound.QueueFree();
         }
     }
-
-    public int GetBusIndex(SoundBus bus)
-    {
-        return AudioServer.GetBusIndex(bus.ToString());
-    }
-
-    public int GetBusEffectIndex<T>(SoundBus bus) where T : AudioEffect
-    {
-        var idx = GetBusIndex(bus);
-        var count = AudioServer.GetBusEffectCount(idx);
-        for (int i = 0; i < count; i++)
-        {
-            var effect = AudioServer.GetBusEffect(idx, i) as T;
-            if (effect != null) return i;
-        }
-
-        return -1;
-    }
-
-    public T GetBusEffect<T>(SoundBus bus) where T : AudioEffect
-    {
-        var idx = GetBusIndex(bus);
-        var count = AudioServer.GetBusEffectCount(idx);
-        for (int i = 0; i < count; i++)
-        {
-            var effect = AudioServer.GetBusEffect(idx, i) as T;
-            if (effect != null) return effect;
-        }
-
-        return null;
-    }
-
-    public void SetBusEffectEnabled<T>(SoundBus bus, bool enabled) where T : AudioEffect
-    {
-        var idx_effect = GetBusEffectIndex<T>(bus);
-        if (idx_effect >= 0)
-        {
-            var idx_bus = GetBusIndex(bus);
-            AudioServer.SetBusEffectEnabled(idx_bus, idx_effect, enabled);
-        }
-    }
 }
 
 public abstract class SoundSettingsBase
@@ -105,6 +64,7 @@ public class SoundSettings : SoundSettingsBase
 {
     public void ModifySound(AudioStreamPlayer sound)
     {
+        sound.Bus = Bus.ToString();
         sound.PitchScale = RandomPitch;
         sound.VolumeDb = Volume;
     }

@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuq3tmolqjujr"]
+
+[ext_resource type="Script" path="res://Modules/Options/View/OptionsView.cs" id="1_dqdy7"]
+
+[node name="OptionsView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dqdy7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+offset_left = 356.0
+offset_top = 70.0
+offset_right = 796.0
+offset_bottom = 144.0
+
+[node name="Audio" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFXLabel" type="Label" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="BGMLabel" type="Label" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "BGM"
+
+[node name="BGMSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Video" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Video"]
+layout_mode = 2
+text = "test"
+
+[node name="Keys" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Keys"]
+layout_mode = 2
+text = "test"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 585.0
+offset_right = 608.0
+offset_bottom = 630.0
+text = "Back"

@@ -1,0 +1,81 @@
+using Godot;
+
+public partial class PauseView : View
+{
+    public override string Directory => $"{Paths.ViewDirectory}/{nameof(PauseView)}";
+
+    [NodeName(nameof(ResumeButton))]
+    public Button ResumeButton;
+
+    [NodeName(nameof(OptionsButton))]
+    public Button OptionsButton;
+
+    [NodeName(nameof(MainMenuButton))]
+    public Button MainMenuButton;
+
+    private OptionsView OptionsView { get; set; }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        ResumeButton.Pressed += ResumePressed;
+        OptionsButton.Pressed += OptionsPressed;
+        MainMenuButton.Pressed += MainMenuPressed;
+
+        OptionsView = Get<OptionsView>();
+        OptionsView.OnBack += OptionsBackPressed;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (PlayerInput.Pause.Pressed)
+        {
+            if (Visible)
+            {
+                Hide();
+            }
+            else
+            {
+                Show();
+            }
+        }
+    }
+
+    protected override void OnShow()
+    {
+        base.OnShow();
+        Scene.PauseLock.AddLock(nameof(PauseView));
+        MouseVisibility.Instance.Lock.AddLock(nameof(PauseView));
+    }
+
+    protected override void OnHide()
+    {
+        base.OnHide();
+        Scene.PauseLock.RemoveLock(nameof(PauseView));
+        MouseVisibility.Instance.Lock.RemoveLock(nameof(PauseView));
+    }
+
+    private void ResumePressed()
+    {
+        Hide();
+    }
+
+    private void OptionsPressed()
+    {
+        Hide();
+        OptionsView.Show();
+    }
+
+    private void OptionsBackPressed()
+    {
+        Show();
+    }
+
+    private void MainMenuPressed()
+    {
+        Data.Game.Save();
+        Scene.Tree.Quit();
+    }
+}

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class OptionsController : SingletonController
 {
@@ -41,6 +42,12 @@ public partial class OptionsController : SingletonController
         30, 60, 120, 144, 0
     };
 
+    public override void _Ready()
+    {
+        base._Ready();
+        Data.Game.OnBeforeSave += BeforeSave;
+    }
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -48,8 +55,26 @@ public partial class OptionsController : SingletonController
         LoadData();
     }
 
+    private void BeforeSave()
+    {
+        var view = View.Get<OptionsView>();
+        var keys = view.Keys;
+        var key_overrides = keys.Rebinds
+            .Select(x => x?.Data as InputEventKeyData)
+            .Where(x => x != null)
+            .ToList();
+        var mouse_button_overrides = keys.Rebinds
+            .Select(x => x?.Data as InputEventMouseButtonData)
+            .Where(x => x != null)
+            .ToList();
+
+        Data.Game.KeyOverrides = key_overrides;
+        Data.Game.MouseButtonOverrides = mouse_button_overrides;
+    }
+
     private void LoadData()
     {
+        LoadActionOverrides();
         UpdateVolume("Master", Data.Game.VolumeMaster);
         UpdateVolume("SFX", Data.Game.VolumeSFX);
         UpdateVolume("BGM", Data.Game.VolumeBGM);
@@ -62,6 +87,19 @@ public partial class OptionsController : SingletonController
         }
 
         UpdateWindowMode(Data.Game.WindowMode);
+    }
+
+    private void LoadActionOverrides()
+    {
+        foreach (var action_override in Data.Game.KeyOverrides)
+        {
+            UpdateKeyOverride(action_override);
+        }
+
+        foreach (var action_override in Data.Game.MouseButtonOverrides)
+        {
+            UpdateMouseButtonOverride(action_override);
+        }
     }
 
     public void UpdateVolume(string name, float value)
@@ -104,5 +142,31 @@ public partial class OptionsController : SingletonController
     {
         var mode = FPSLimits.GetClamped(i);
         Engine.MaxFps = mode;
+    }
+
+    public void UpdateActionOverride(string action, InputEvent e)
+    {
+        InputMap.ActionEraseEvents(action);
+        InputMap.ActionAddEvent(action, e);
+    }
+
+    public void UpdateKeyOverride(InputEventKeyData data)
+    {
+        Debug.LogMethod($"{data.Action}: {data.Key}");
+        Debug.Indent++;
+
+        UpdateActionOverride(data.Action, data.ToEvent());
+
+        Debug.Indent--;
+    }
+
+    public void UpdateMouseButtonOverride(InputEventMouseButtonData data)
+    {
+        Debug.LogMethod($"{data.Action}: {data.Button}");
+        Debug.Indent++;
+
+        UpdateActionOverride(data.Action, data.ToEvent());
+
+        Debug.Indent--;
     }
 }

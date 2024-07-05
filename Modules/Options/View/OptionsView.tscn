@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuq3tmolqjujr"]
+[gd_scene load_steps=4 format=3 uid="uid://cuq3tmolqjujr"]
 
 [ext_resource type="Script" path="res://Modules/Options/View/OptionsView.cs" id="1_dqdy7"]
+[ext_resource type="Script" path="res://Modules/Options/View/OptionsKeys.cs" id="2_sqdsg"]
+[ext_resource type="Script" path="res://Modules/Options/View/OptionsKeyRebindControl.cs" id="2_v7qew"]
 
 [node name="OptionsView" type="Control"]
 layout_mode = 3
@@ -37,7 +39,7 @@ theme_override_constants/separation = 25
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-current_tab = 1
+current_tab = 2
 
 [node name="Audio" type="MarginContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -78,6 +80,7 @@ max_value = 1.0
 step = 0.01
 
 [node name="Video" type="MarginContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -91,15 +94,19 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode"]
-layout_mode = 2
-text = "Window Mode"
-
-[node name="Space" type="Control" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode"]
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WindowModeDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode/Left"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowModeDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/WindowMode/Right"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -107,15 +114,19 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution"]
-layout_mode = 2
-text = "Resolution"
-
-[node name="Space" type="Control" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution"]
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResolutionDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution/Left"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResolutionDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Resolution/Right"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -123,15 +134,19 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync"]
-layout_mode = 2
-text = "VSync"
-
-[node name="Space" type="Control" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync"]
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSyncDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync/Left"]
+layout_mode = 2
+text = "VSync"
+
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSyncDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/VSync/Right"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -139,25 +154,66 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit"]
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit/Left"]
 layout_mode = 2
 text = "FPS Limit"
 
-[node name="Space" type="Control" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit"]
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FPSLimitDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit"]
+[node name="FPSLimitDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/FPSLimit/Right"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Keys" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
+[node name="Keys" type="MarginContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("2_sqdsg")
+Actions = PackedStringArray("Forward", "Left", "Back", "Right", "Jump", "Interact", "Rotate", "PickUp", "DropInventory")
+
+[node name="MarginContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="KeyRebindTemp" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_v7qew")
+
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RebindLabel" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp/Left"]
+layout_mode = 2
+text = "Temp"
+
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RebindButton" type="Button" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="WaitingForInputLabel" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp/Right"]
 visible = false
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys"]
-layout_mode = 2
-text = "test"
+size_flags_horizontal = 3
+text = "Waiting for input..."
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

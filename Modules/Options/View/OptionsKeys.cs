@@ -1,0 +1,148 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public partial class OptionsKeys : NodeScript
+{
+    [Export]
+    public string[] Actions;
+
+    [NodeType(typeof(OptionsKeyRebindControl))]
+    public OptionsKeyRebindControl TempKeyRebindControl;
+
+    public List<Rebind> Rebinds { get; set; } = new();
+    private Rebind _current_rebind;
+
+    public Action OnRebindStart, OnRebindEnd;
+
+    public bool IsRebinding => _current_rebind != null;
+
+    public class Rebind
+    {
+        public InputEventData Data { get; set; }
+        public OptionsKeyRebindControl Control { get; set; }
+        public string Action { get; set; }
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        CreateKeys();
+        UpdateAllKeyStrings();
+    }
+
+    private void CreateKeys()
+    {
+        TempKeyRebindControl.Visible = false;
+
+        var parent = TempKeyRebindControl.GetParent();
+        foreach (var action in Actions)
+        {
+            var control = TempKeyRebindControl.Duplicate() as OptionsKeyRebindControl;
+            control.SetParent(parent);
+            control.Visible = true;
+            control.RebindLabel.Text = action;
+            control.SetWaitingForInput(false);
+
+            var data_key = Data.Game.KeyOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
+            var data_mouse = Data.Game.MouseButtonOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
+            var data = data_key ?? data_mouse;
+
+            var rebind = new Rebind
+            {
+                Control = control,
+                Action = action,
+                Data = data
+            };
+
+            Rebinds.Add(rebind);
+
+            control.RebindButton.Pressed += () => PressRebind(rebind);
+        }
+    }
+
+    public void UpdateAllKeyStrings()
+    {
+        Rebinds.ForEach(x => UpdateKeyString(x));
+    }
+
+    private void UpdateKeyString(Rebind rebind)
+    {
+        var e = InputMap.ActionGetEvents(rebind.Action).First();
+        var text = e.AsText().Replace("(Physical)", "").Trim();
+        rebind.Control.RebindButton.Text = text;
+    }
+
+    private void PressRebind(Rebind rebind)
+    {
+        if (_current_rebind != null) return;
+
+        _current_rebind = rebind;
+        _current_rebind.Control.SetWaitingForInput(true);
+        SetButtonsEnabled(false);
+
+        OnRebindStart?.Invoke();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (_current_rebind == null) return;
+
+        if (IsCancelEvent(@event))
+        {
+            StopRebinding();
+        }
+        else if (@event is InputEventKey)
+        {
+            OverrideKey(@event as InputEventKey);
+            StopRebinding();
+        }
+        else if (@event is InputEventMouseButton)
+        {
+            OverrideMouseButton(@event as InputEventMouseButton);
+            StopRebinding();
+        }
+    }
+
+    private void OverrideKey(InputEventKey e)
+    {
+        var data = InputEventKeyData.Create(_current_rebind.Action, e);
+        _current_rebind.Data = data;
+        OptionsController.Instance.UpdateKeyOverride(data);
+    }
+
+    private void OverrideMouseButton(InputEventMouseButton e)
+    {
+        var data = InputEventMouseButtonData.Create(_current_rebind.Action, e);
+        _current_rebind.Data = data;
+        OptionsController.Instance.UpdateMouseButtonOverride(data);
+    }
+
+    private bool IsCancelEvent(InputEvent e)
+    {
+        var key_event = e as InputEventKey;
+        if (key_event == null) return false;
+        return key_event.KeyLabel == Key.Escape;
+    }
+
+    private void StopRebinding()
+    {
+        _current_rebind.Control.SetWaitingForInput(false);
+        _current_rebind = null;
+        UpdateAllKeyStrings();
+        SetButtonsEnabled(true);
+
+        OnRebindEnd?.Invoke();
+    }
+
+    private void SetButtonsEnabled(bool enabled)
+    {
+        foreach (var rebind in Rebinds)
+        {
+            rebind.Control.RebindButton.Disabled = !enabled;
+        }
+    }
+}

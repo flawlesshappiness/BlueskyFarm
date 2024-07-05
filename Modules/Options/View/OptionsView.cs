@@ -8,6 +8,9 @@ public partial class OptionsView : View
     [NodeName(nameof(BackButton))]
     public Button BackButton;
 
+    [NodeType(typeof(TabContainer))]
+    public TabContainer Tabs;
+
     [NodeName(nameof(MasterSlider))]
     public Slider MasterSlider;
 
@@ -31,6 +34,9 @@ public partial class OptionsView : View
 
     [NodeName(nameof(FPSLimitDropdown))]
     public OptionButton FPSLimitDropdown;
+
+    [NodeType(typeof(OptionsKeys))]
+    public OptionsKeys Keys;
 
     public Action OnBack;
 
@@ -60,6 +66,9 @@ public partial class OptionsView : View
         ResolutionDropdown.ItemSelected += Resolution_SelectionChanged;
         VSyncDropdown.ItemSelected += VSync_SelectionChanged;
         FPSLimitDropdown.ItemSelected += FPSLimit_SelectionChanged;
+
+        Keys.OnRebindStart += RebindStart;
+        Keys.OnRebindEnd += RebindEnd;
     }
 
     protected override void OnShow()
@@ -67,6 +76,9 @@ public partial class OptionsView : View
         base.OnShow();
         Scene.PauseLock.AddLock(nameof(OptionsView));
         MouseVisibility.Instance.Lock.AddLock(nameof(OptionsView));
+
+        Tabs.CurrentTab = 0;
+        Keys.UpdateAllKeyStrings();
     }
 
     protected override void OnHide()
@@ -74,19 +86,6 @@ public partial class OptionsView : View
         base.OnHide();
         Scene.PauseLock.RemoveLock(nameof(OptionsView));
         MouseVisibility.Instance.Lock.RemoveLock(nameof(OptionsView));
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-
-        if (PlayerInput.Pause.Pressed)
-        {
-            if (Visible)
-            {
-                BackPressed();
-            }
-        }
     }
 
     private void BackPressed()
@@ -123,7 +122,7 @@ public partial class OptionsView : View
             var item = mode switch
             {
                 Window.ModeEnum.Windowed => "Windowed",
-                Window.ModeEnum.ExclusiveFullscreen => "Borderless",
+                Window.ModeEnum.ExclusiveFullscreen => "Fullscreen",
                 _ => ""
             };
 
@@ -206,5 +205,25 @@ public partial class OptionsView : View
         var i = (int)index;
         OptionsController.Instance.UpdateFPSLimit(i);
         Data.Game.FPSLimit = i;
+    }
+
+    private void RebindStart()
+    {
+        BackButton.Disabled = true;
+        SetTabsEnabled(false);
+    }
+
+    private void RebindEnd()
+    {
+        BackButton.Disabled = false;
+        SetTabsEnabled(true);
+    }
+
+    private void SetTabsEnabled(bool enabled)
+    {
+        for (int i = 0; i < Tabs.GetTabCount(); i++)
+        {
+            Tabs.SetTabDisabled(i, !enabled);
+        }
     }
 }

@@ -21,6 +21,11 @@ MouseVisibility="*res://Modules/Input/MouseVisibility.cs"
 GameTime="*res://Modules/Time/GameTime.cs"
 PlayerInput="*res://Modules/Input/PlayerInput.cs"
 
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="BlueskyFarm"

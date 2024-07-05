@@ -32,9 +32,10 @@ public partial class PauseView : View
 
         if (PlayerInput.Pause.Pressed)
         {
+            if (Get<OptionsView>().Visible) return;
             if (Visible)
             {
-                Hide();
+                ResumePressed();
             }
             else
             {
@@ -64,8 +65,8 @@ public partial class PauseView : View
 
     private void OptionsPressed()
     {
-        Hide();
         OptionsView.Show();
+        Hide();
     }
 
     private void OptionsBackPressed()

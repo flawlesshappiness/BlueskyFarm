@@ -11,6 +11,10 @@ public partial class OptionsKeys : NodeScript
     [NodeType(typeof(OptionsKeyRebindControl))]
     public OptionsKeyRebindControl TempKeyRebindControl;
 
+    [NodeName(nameof(ResetAllButton))]
+    public Button ResetAllButton;
+
+    public Dictionary<string, InputEvent> DefaultBindings { get; set; } = new();
     public List<Rebind> Rebinds { get; set; } = new();
     private Rebind _current_rebind;
 
@@ -30,6 +34,20 @@ public partial class OptionsKeys : NodeScript
         base._Ready();
         CreateKeys();
         UpdateAllKeyStrings();
+
+        ResetAllButton.Pressed += PressResetAllRebinds;
+    }
+
+    public void PersistDefaultBindings()
+    {
+        DefaultBindings.Clear();
+        var actions = InputMap.GetActions();
+        foreach (var action in actions)
+        {
+            var e = InputMap.ActionGetEvents(action).FirstOrDefault();
+            if (e == null) continue;
+            DefaultBindings.Add(action, e);
+        }
     }
 
     private void CreateKeys()
@@ -59,6 +77,7 @@ public partial class OptionsKeys : NodeScript
             Rebinds.Add(rebind);
 
             control.RebindButton.Pressed += () => PressRebind(rebind);
+            control.ResetButton.Pressed += () => PressResetRebind(rebind);
         }
     }
 
@@ -83,6 +102,36 @@ public partial class OptionsKeys : NodeScript
         SetButtonsEnabled(false);
 
         OnRebindStart?.Invoke();
+    }
+
+    private void PressResetAllRebinds()
+    {
+        ResetAllRebinds();
+        Data.Game.Save();
+    }
+
+    private void PressResetRebind(Rebind rebind)
+    {
+        ResetRebind(rebind);
+        Data.Game.Save();
+    }
+
+    private void ResetAllRebinds()
+    {
+        foreach (var rebind in Rebinds)
+        {
+            ResetRebind(rebind);
+        }
+    }
+
+    private void ResetRebind(Rebind rebind)
+    {
+        var binding = DefaultBindings[rebind.Action];
+        InputMap.ActionEraseEvents(rebind.Action);
+        InputMap.ActionAddEvent(rebind.Action, binding);
+        rebind.Data = null;
+
+        UpdateKeyString(rebind);
     }
 
     public override void _Input(InputEvent @event)

@@ -11,9 +11,13 @@ public partial class OptionsKeyRebindControl : ControlScript
     [NodeName(nameof(RebindButton))]
     public Button RebindButton;
 
+    [NodeName(nameof(ResetButton))]
+    public Button ResetButton;
+
     public void SetWaitingForInput(bool waiting)
     {
         RebindButton.Visible = !waiting;
         WaitingForInputLabel.Visible = waiting;
+        ResetButton.Disabled = waiting;
     }
 }

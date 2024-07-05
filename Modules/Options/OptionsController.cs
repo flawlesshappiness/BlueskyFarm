@@ -91,6 +91,9 @@ public partial class OptionsController : SingletonController
 
     private void LoadActionOverrides()
     {
+        var view = View.Get<OptionsView>();
+        view.Keys.PersistDefaultBindings();
+
         foreach (var action_override in Data.Game.KeyOverrides)
         {
             UpdateKeyOverride(action_override);

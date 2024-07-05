@@ -37,7 +37,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 current_tab = 2
 
@@ -179,41 +179,57 @@ theme_override_constants/margin_bottom = 25
 script = ExtResource("2_sqdsg")
 Actions = PackedStringArray("Forward", "Left", "Back", "Right", "Jump", "Interact", "Rotate", "PickUp", "DropInventory")
 
-[node name="MarginContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="KeyRebindTemp" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer"]
+[node name="KeyRebindTemp" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
 script = ExtResource("2_v7qew")
 
-[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp"]
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2/KeyRebindTemp"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RebindLabel" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp/Left"]
+[node name="RebindLabel" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2/KeyRebindTemp/Left"]
 layout_mode = 2
 text = "Temp"
 
-[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp"]
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2/KeyRebindTemp"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RebindButton" type="Button" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp/Right"]
+[node name="RebindButton" type="Button" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2/KeyRebindTemp/Right"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "A"
 
-[node name="WaitingForInputLabel" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys/MarginContainer/VBoxContainer/KeyRebindTemp/Right"]
+[node name="WaitingForInputLabel" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2/KeyRebindTemp/Right"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Waiting for input..."
 horizontal_alignment = 1
+
+[node name="ResetButton" type="Button" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer2/KeyRebindTemp"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "X"
+
+[node name="ResetAllButton" type="Button" parent="CenterContainer/VBoxContainer/TabContainer/Keys/VBoxContainer"]
+layout_mode = 2
+text = "Reset all"
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

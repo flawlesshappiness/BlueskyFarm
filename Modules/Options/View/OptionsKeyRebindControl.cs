@@ -2,16 +2,19 @@ using Godot;
 
 public partial class OptionsKeyRebindControl : ControlScript
 {
-    [NodeName(nameof(RebindLabel))]
+    [NodeName]
     public Label RebindLabel;
 
-    [NodeName(nameof(WaitingForInputLabel))]
+    [NodeName]
     public Label WaitingForInputLabel;
 
-    [NodeName(nameof(RebindButton))]
+    [NodeName]
+    public Label DuplicateWarningLabel;
+
+    [NodeName]
     public Button RebindButton;
 
-    [NodeName(nameof(ResetButton))]
+    [NodeName]
     public Button ResetButton;
 
     public void SetWaitingForInput(bool waiting)

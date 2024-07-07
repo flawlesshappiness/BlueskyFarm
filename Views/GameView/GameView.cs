@@ -2,10 +2,10 @@ using Godot;
 
 public partial class GameView : View
 {
-    [NodeName(nameof(ColorRectOverlay))]
+    [NodeName]
     public ColorRect ColorRectOverlay;
 
-    [NodeType(typeof(Minimap))]
+    [NodeType]
     public Minimap Minimap;
 
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";

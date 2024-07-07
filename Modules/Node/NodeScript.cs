@@ -65,7 +65,8 @@ public partial class NodeScript : Node
         }
         else if (Attribute.GetCustomAttribute(field, typeof(NodeNameAttribute)) as NodeNameAttribute is var nodeNameAtt && nodeNameAtt != null)
         {
-            var node = root.GetNodeInChildren<Node>(nodeNameAtt.Value);
+            var value = string.IsNullOrEmpty(nodeNameAtt.Value) ? field.Name : nodeNameAtt.Value;
+            var node = root.GetNodeInChildren<Node>(value);
             _ = node ?? throw new NullReferenceException("Node was null");
 
             field.SetValue(root, node);
@@ -73,7 +74,7 @@ public partial class NodeScript : Node
         }
         else if (Attribute.GetCustomAttribute(field, typeof(NodeTypeAttribute)) as NodeTypeAttribute is var nodeTypeAtt && nodeTypeAtt != null)
         {
-            var node = root.GetNodeInChildren(nodeTypeAtt.Type);
+            var node = root.GetNodeInChildren(field.FieldType);
             _ = node ?? throw new NullReferenceException("Node was null");
 
             field.SetValue(root, node);
@@ -81,7 +82,6 @@ public partial class NodeScript : Node
         }
 
         return null;
-        //throw new NullReferenceException($"No valid attribute was found");
     }
 
     public bool IsVisibleInTree()

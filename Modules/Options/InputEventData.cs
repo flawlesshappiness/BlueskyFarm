@@ -18,7 +18,7 @@ public class InputEventKeyData : InputEventData
     {
         return new InputEventKey
         {
-            Keycode = Key,
+            PhysicalKeycode = Key,
         };
     }
 }

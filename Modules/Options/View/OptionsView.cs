@@ -5,37 +5,37 @@ public partial class OptionsView : View
 {
     public override string Directory => $"{Paths.Modules}/Options/View";
 
-    [NodeName(nameof(BackButton))]
+    [NodeName]
     public Button BackButton;
 
-    [NodeType(typeof(TabContainer))]
+    [NodeType]
     public TabContainer Tabs;
 
-    [NodeName(nameof(MasterSlider))]
+    [NodeName]
     public Slider MasterSlider;
 
-    [NodeName(nameof(SFXSlider))]
+    [NodeName]
     public Slider SFXSlider;
 
-    [NodeName(nameof(BGMSlider))]
+    [NodeName]
     public Slider BGMSlider;
 
-    [NodeName(nameof(WindowModeDropdown))]
+    [NodeName]
     public OptionButton WindowModeDropdown;
 
-    [NodeName(nameof(Resolution))]
+    [NodeName]
     public Control Resolution;
 
-    [NodeName(nameof(ResolutionDropdown))]
+    [NodeName]
     public OptionButton ResolutionDropdown;
 
-    [NodeName(nameof(VSyncDropdown))]
+    [NodeName]
     public OptionButton VSyncDropdown;
 
-    [NodeName(nameof(FPSLimitDropdown))]
+    [NodeName]
     public OptionButton FPSLimitDropdown;
 
-    [NodeType(typeof(OptionsKeys))]
+    [NodeType]
     public OptionsKeys Keys;
 
     public Action OnBack;
@@ -79,6 +79,7 @@ public partial class OptionsView : View
 
         Tabs.CurrentTab = 0;
         Keys.UpdateAllKeyStrings();
+        Keys.UpdateDuplicateWarnings();
     }
 
     protected override void OnHide()

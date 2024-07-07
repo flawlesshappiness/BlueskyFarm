@@ -4,13 +4,13 @@ public partial class PauseView : View
 {
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(PauseView)}";
 
-    [NodeName(nameof(ResumeButton))]
+    [NodeName]
     public Button ResumeButton;
 
-    [NodeName(nameof(OptionsButton))]
+    [NodeName]
     public Button OptionsButton;
 
-    [NodeName(nameof(MainMenuButton))]
+    [NodeName]
     public Button MainMenuButton;
 
     private OptionsView OptionsView { get; set; }

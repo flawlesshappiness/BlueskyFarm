@@ -5,10 +5,10 @@ public partial class FarmBounds : NodeScript
 {
     public static FarmBounds Instance { get; private set; }
 
-    [NodeType(typeof(Area3D))]
+    [NodeType]
     public Area3D Bounds;
 
-    [NodeType(typeof(CollisionShape3D))]
+    [NodeType]
     public CollisionShape3D Shape;
 
     public Vector3 Size => (Shape.Shape as BoxShape3D).Size;

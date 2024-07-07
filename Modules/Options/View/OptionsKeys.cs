@@ -8,10 +8,10 @@ public partial class OptionsKeys : NodeScript
     [Export]
     public string[] Actions;
 
-    [NodeType(typeof(OptionsKeyRebindControl))]
+    [NodeType]
     public OptionsKeyRebindControl TempKeyRebindControl;
 
-    [NodeName(nameof(ResetAllButton))]
+    [NodeName]
     public Button ResetAllButton;
 
     public Dictionary<string, InputEvent> DefaultBindings { get; set; } = new();
@@ -33,7 +33,6 @@ public partial class OptionsKeys : NodeScript
     {
         base._Ready();
         CreateKeys();
-        UpdateAllKeyStrings();
 
         ResetAllButton.Pressed += PressResetAllRebinds;
     }
@@ -93,6 +92,29 @@ public partial class OptionsKeys : NodeScript
         rebind.Control.RebindButton.Text = text;
     }
 
+    public void UpdateDuplicateWarnings()
+    {
+        foreach (var current in Rebinds)
+        {
+            var current_input = InputMap.ActionGetEvents(current.Action).FirstOrDefault();
+            if (current_input == null) continue;
+
+            var found_duplicate = false;
+
+            foreach (var other in Rebinds)
+            {
+                if (current == other) continue;
+
+                var other_input = InputMap.ActionGetEvents(other.Action).FirstOrDefault();
+                if (other_input == null) continue;
+
+                var same = current_input.AsText() == other_input.AsText();
+                found_duplicate = same || found_duplicate;
+                current.Control.DuplicateWarningLabel.Visible = found_duplicate;
+            }
+        }
+    }
+
     private void PressRebind(Rebind rebind)
     {
         if (_current_rebind != null) return;
@@ -107,12 +129,14 @@ public partial class OptionsKeys : NodeScript
     private void PressResetAllRebinds()
     {
         ResetAllRebinds();
+        UpdateDuplicateWarnings();
         Data.Game.Save();
     }
 
     private void PressResetRebind(Rebind rebind)
     {
         ResetRebind(rebind);
+        UpdateDuplicateWarnings();
         Data.Game.Save();
     }
 
@@ -182,6 +206,7 @@ public partial class OptionsKeys : NodeScript
         _current_rebind.Control.SetWaitingForInput(false);
         _current_rebind = null;
         UpdateAllKeyStrings();
+        UpdateDuplicateWarnings();
         SetButtonsEnabled(true);
 
         OnRebindEnd?.Invoke();

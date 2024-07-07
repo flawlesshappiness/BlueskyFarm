@@ -26,13 +26,13 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeName(nameof(Camera))]
     public Camera3D Camera;
 
-    [NodeType(typeof(IPlayerInteract))]
+    [NodeType]
     public IPlayerInteract Interact;
 
-    [NodeType(typeof(IPlayerGrab))]
+    [NodeType]
     public IPlayerGrab Grab;
 
-    [NodeType(typeof(FirstPersonStep))]
+    [NodeType]
     public FirstPersonStep Step;
 
     public MultiLock InteractLock = new MultiLock();

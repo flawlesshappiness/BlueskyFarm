@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmyptfwnoeids"]
+[gd_scene load_steps=8 format=3 uid="uid://cmyptfwnoeids"]
 
 [ext_resource type="Script" path="res://Cursor/View/CursorView.cs" id="1_llbif"]
 [ext_resource type="Texture2D" uid="uid://wcqr4s875aa5" path="res://Assets/KenneyNL/Icons/hand_open.png" id="2_lfi1m"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Icons/door.png" id="4_xw8nm"]
 [ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Icons/look_c.png" id="5_6ucl7"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="6_76q5m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_850dx"]
+font_size = 35
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CursorView" type="Control"]
 layout_mode = 3
@@ -48,5 +53,6 @@ offset_right = 130.0
 offset_bottom = -3.0
 grow_horizontal = 2
 theme = ExtResource("6_76q5m")
+label_settings = SubResource("LabelSettings_850dx")
 horizontal_alignment = 1
 vertical_alignment = 1

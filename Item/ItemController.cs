@@ -75,7 +75,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         return item;
     }
 
-    public Item CreateItem(ItemInfo info)
+    public Item CreateItem(ItemInfo info, bool track_item = true)
     {
         var item = GDHelper.Instantiate<Item>(info.Path);
         item.SetParent(Scene.Current);
@@ -86,14 +86,18 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
             InfoPath = info.ResourcePath
         };
 
-        ActiveItems.Add(item);
+        if (track_item)
+        {
+            ActiveItems.Add(item);
+        }
+
         return item;
     }
 
-    public Item CreateItem(string info_path)
+    public Item CreateItem(string info_path, bool track_item = true)
     {
         var info = GD.Load<ItemInfo>(info_path);
-        return CreateItem(info);
+        return CreateItem(info, track_item);
     }
 
     public void SellItem(ItemInfo info)

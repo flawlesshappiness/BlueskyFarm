@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 MouseVisibility="*res://Modules/Input/MouseVisibility.cs"
 GameTime="*res://Modules/Time/GameTime.cs"
-PlayerInput="*res://Modules/Input/PlayerInput.cs"
 
 [display]
 

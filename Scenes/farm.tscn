@@ -1,14 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=39 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="PackedScene" uid="uid://bki8lnpr3jq2m" path="res://Assets/FlawLizArt/bush.tscn" id="3_pkptg"]
+[ext_resource type="Script" path="res://Shop/Combination/CombinationShop.cs" id="6_84bec"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="7_avkjm"]
+[ext_resource type="Script" path="res://Shop/Combination/CombinationSelector.cs" id="7_b3t1i"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon_001/Trapdoor.tscn" id="8_je3mm"]
 [ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="8_q5w4g"]
+[ext_resource type="Script" path="res://Shop/Combination/CombinationInput.cs" id="8_r1guf"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
+[ext_resource type="Texture2D" uid="uid://bgqsjptnx6rf1" path="res://Assets/KenneyNL/UI/red_cross.png" id="9_6fr4v"]
+[ext_resource type="Texture2D" uid="uid://dqmfia4tnm3kn" path="res://Assets/KenneyNL/UI/green_checkmark.png" id="9_rbi8r"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="9_t030q"]
 [ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
+[ext_resource type="Script" path="res://Shop/Combination/CombinationDisplay.cs" id="10_nqguy"]
+[ext_resource type="Script" path="res://Shop/Combination/CombinationDisplayObject.cs" id="11_cw1lb"]
+[ext_resource type="Script" path="res://Shop/Combination/CombinationPrice.cs" id="14_kjn2q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
 size = Vector3(31, 50, 31)
@@ -26,6 +35,41 @@ size = Vector3(1, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53lfa"]
 size = Vector3(1, 4, 32)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k4jgx"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4fre"]
+albedo_color = Color(0.46, 0.46, 0.46, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nu2wh"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq17w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lgfgc"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c57l0"]
+albedo_color = Color(1, 0.3, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekomc"]
+albedo_color = Color(0.270588, 1, 0.282353, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhobw"]
+albedo_color = Color(0.25098, 0.65098, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sledq"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljx6o"]
+albedo_color = Color(0.101961, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_be0vd"]
+albedo_color = Color(0.25098, 0.698039, 1, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
 panorama = ExtResource("1_u4lhc")
@@ -255,6 +299,132 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.62178, 1.47275, -14.851)
 text = "[Q]: Drop inventory"
 font_size = 200
 
+[node name="Ceiling" parent="World" instance=ExtResource("9_t030q")]
+transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435387, 13.1053)
+
+[node name="Trapdoor" parent="World/Ceiling" instance=ExtResource("8_je3mm")]
+transform = Transform3D(1, 0, 0, 0, -0.999958, -0.00921533, 0, 0.00921533, -0.999958, 0, -0.0844181, 0.306818)
+SceneName = "basement"
+HoverText = "Basement"
+
+[node name="StartBasement" type="Node3D" parent="World/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, -0.977412, 0.211342, 0, -0.211342, -0.977412, 0, -0.289693, 3.39987)
+
+[node name="CombinationShop" type="Node3D" parent="World"]
+script = ExtResource("6_84bec")
+
+[node name="Platform" type="Node3D" parent="World/CombinationShop"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Platform"]
+mesh = SubResource("CylinderMesh_k4jgx")
+surface_material_override/0 = SubResource("StandardMaterial3D_a4fre")
+
+[node name="Selector" type="Node3D" parent="World/CombinationShop"]
+script = ExtResource("7_b3t1i")
+CombinationLength = 6
+
+[node name="InputCancel" type="StaticBody3D" parent="World/CombinationShop/Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20724, 0.007, 1.21758)
+script = ExtResource("7_avkjm")
+HoverText = "Cancel"
+StartCollisionMode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputCancel"]
+mesh = SubResource("BoxMesh_nu2wh")
+surface_material_override/0 = SubResource("StandardMaterial3D_dq17w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/CombinationShop/Selector/InputCancel"]
+shape = SubResource("BoxShape3D_lgfgc")
+
+[node name="Sprite3D" type="Sprite3D" parent="World/CombinationShop/Selector/InputCancel"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0.100444, 0)
+texture = ExtResource("9_6fr4v")
+
+[node name="InputAccept" type="StaticBody3D" parent="World/CombinationShop/Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14756, 0.007, 1.21758)
+script = ExtResource("7_avkjm")
+HoverText = "Accept"
+StartCollisionMode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputAccept"]
+mesh = SubResource("BoxMesh_nu2wh")
+surface_material_override/0 = SubResource("StandardMaterial3D_dq17w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/CombinationShop/Selector/InputAccept"]
+shape = SubResource("BoxShape3D_lgfgc")
+
+[node name="Sprite3D" type="Sprite3D" parent="World/CombinationShop/Selector/InputAccept"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0.101425, 0)
+texture = ExtResource("9_rbi8r")
+
+[node name="InputRed" type="StaticBody3D" parent="World/CombinationShop/Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 1.6)
+script = ExtResource("8_r1guf")
+Input = "R"
+StartCollisionMode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputRed"]
+mesh = SubResource("BoxMesh_nu2wh")
+surface_material_override/0 = SubResource("StandardMaterial3D_c57l0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/CombinationShop/Selector/InputRed"]
+shape = SubResource("BoxShape3D_lgfgc")
+
+[node name="InputGreen" type="StaticBody3D" parent="World/CombinationShop/Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6)
+script = ExtResource("8_r1guf")
+Input = "G"
+StartCollisionMode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputGreen"]
+mesh = SubResource("BoxMesh_nu2wh")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekomc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/CombinationShop/Selector/InputGreen"]
+shape = SubResource("BoxShape3D_lgfgc")
+
+[node name="InputBlue" type="StaticBody3D" parent="World/CombinationShop/Selector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 1.6)
+script = ExtResource("8_r1guf")
+Input = "B"
+StartCollisionMode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputBlue"]
+mesh = SubResource("BoxMesh_nu2wh")
+surface_material_override/0 = SubResource("StandardMaterial3D_dhobw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/CombinationShop/Selector/InputBlue"]
+shape = SubResource("BoxShape3D_lgfgc")
+
+[node name="Display" type="Node3D" parent="World/CombinationShop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355696, 0)
+script = ExtResource("10_nqguy")
+CombinationLength = 6
+MaxDisplayWidth = 2.0
+
+[node name="DisplayObject" type="Node3D" parent="World/CombinationShop/Display"]
+script = ExtResource("11_cw1lb")
+
+[node name="Red" type="MeshInstance3D" parent="World/CombinationShop/Display/DisplayObject"]
+mesh = SubResource("SphereMesh_sledq")
+surface_material_override/0 = SubResource("StandardMaterial3D_c57l0")
+
+[node name="Green" type="MeshInstance3D" parent="World/CombinationShop/Display/DisplayObject"]
+mesh = SubResource("SphereMesh_sledq")
+surface_material_override/0 = SubResource("StandardMaterial3D_ljx6o")
+
+[node name="Blue" type="MeshInstance3D" parent="World/CombinationShop/Display/DisplayObject"]
+mesh = SubResource("SphereMesh_sledq")
+surface_material_override/0 = SubResource("StandardMaterial3D_be0vd")
+
+[node name="Price" type="Node3D" parent="World/CombinationShop"]
+script = ExtResource("14_kjn2q")
+
+[node name="PriceLabel" type="Label3D" parent="World/CombinationShop/Price"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.383014, 0)
+text = "9999"
+font_size = 100
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")
 
@@ -263,23 +433,14 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 light_color = Color(1, 1, 0.811765, 1)
 shadow_enabled = true
 
-[node name="Ceiling" parent="." instance=ExtResource("9_t030q")]
-transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435387, 13.1053)
-
-[node name="Trapdoor" parent="Ceiling" instance=ExtResource("8_je3mm")]
-transform = Transform3D(1, 0, 0, 0, -0.999958, -0.00921533, 0, 0.00921533, -0.999958, 0, -0.0844181, 0.306818)
-SceneName = "basement"
-HoverText = "Basement"
-
-[node name="StartBasement" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.721)
-
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_q5w4g")
 autoplay = true
+bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_xc34j")
 autoplay = true
+bus = &"BGM"

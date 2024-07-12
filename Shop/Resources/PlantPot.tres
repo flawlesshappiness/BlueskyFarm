@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopItemInfo" load_steps=2 format=3 uid="uid://boni1abvc8xr0"]
+
+[ext_resource type="Script" path="res://Shop/ShopItemInfo.cs" id="1_fc8iw"]
+
+[resource]
+script = ExtResource("1_fc8iw")
+ItemInfoPath = "res://Item/Resources/PlantPot.tres"
+Combination = "R"
+Price = 125

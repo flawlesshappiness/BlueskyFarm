@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=40 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Shop/Combination/CombinationDisplay.cs" id="10_nqguy"]
 [ext_resource type="Script" path="res://Shop/Combination/CombinationDisplayObject.cs" id="11_cw1lb"]
 [ext_resource type="Script" path="res://Shop/Combination/CombinationPrice.cs" id="14_kjn2q"]
+[ext_resource type="PackedScene" uid="uid://cjnbjy1lkvaej" path="res://Assets/FlawLizArt/sign.glb" id="19_llvw5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
 size = Vector3(31, 50, 31)
@@ -418,6 +419,7 @@ mesh = SubResource("SphereMesh_sledq")
 surface_material_override/0 = SubResource("StandardMaterial3D_be0vd")
 
 [node name="Price" type="Node3D" parent="World/CombinationShop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0240717, -1.19209e-07, -0.00269985)
 script = ExtResource("14_kjn2q")
 
 [node name="PriceLabel" type="Label3D" parent="World/CombinationShop/Price"]
@@ -444,3 +446,6 @@ bus = &"SFX"
 stream = ExtResource("9_xc34j")
 autoplay = true
 bus = &"BGM"
+
+[node name="sign2" parent="." instance=ExtResource("19_llvw5")]
+transform = Transform3D(0.766549, 0, 0.642186, 0, 1, 0, -0.642186, 0, 0.766549, -3.74038, 0, 0.809774)

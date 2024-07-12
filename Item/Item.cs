@@ -4,7 +4,7 @@ using System;
 public partial class Item : Grabbable
 {
     [Export]
-    public SoundName ImpactSound = SoundName.Step_Default;
+    public SoundName ImpactSound = SoundName.Impact_Default;
 
     public ItemInfo Info { get; set; }
     public ItemData Data { get; set; }

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://cpeovdog8jwll"]
+
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_4566f"]
+
+[resource]
+script = ExtResource("1_4566f")
+SoundName = 4
+Path = "res://Assets/KenneyNL/Audio/doorOpen.ogg"

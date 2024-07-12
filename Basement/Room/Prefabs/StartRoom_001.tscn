@@ -420,4 +420,6 @@ transform = Transform3D(1.47027e-07, 0, 1, 0, 1, 0, -1, 0, 1.47027e-07, 5.5, 0, 
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 3.92304, 0)
 SceneName = "farm"
 StartNode = "StartBasement"
+OpenSound = 4
+CloseSound = 5
 HoverText = "Exit"

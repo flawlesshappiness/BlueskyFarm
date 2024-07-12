@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_w24or")
 SoundName = 2
-Path = "res://Sound/Sounds/land_default_001.wav"
+Path = "res://Assets/KenneyNL/Audio/stepLand.ogg"

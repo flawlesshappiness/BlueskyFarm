@@ -4,4 +4,7 @@ public enum SoundName
     Step_Default,
     Land_Default,
     Pickup,
+    Basement_Open,
+    Basement_Close,
+    Impact_Default,
 }

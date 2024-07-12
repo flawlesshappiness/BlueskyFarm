@@ -16,6 +16,8 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         sound.SetParent(Scene.Root);
 
         var info = GetInfo(name);
+        if (info == null) return;
+
         sound.Stream = GD.Load<AudioStream>(info.Path);
         settings?.ModifySound(sound);
         sound.Play();

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=44 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Shop/Combination/CombinationDisplayObject.cs" id="11_cw1lb"]
 [ext_resource type="Script" path="res://Shop/Combination/CombinationPrice.cs" id="14_kjn2q"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
+[ext_resource type="Texture2D" uid="uid://e74ckvdsb6ex" path="res://Assets/Quaternius/Icons/Coin.png" id="17_q6lju"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
 [ext_resource type="PackedScene" uid="uid://4ip3ioyn2hgm" path="res://Assets/Quaternius/Nature/CommonTree_Dead_1.obj" id="22_6h8wj"]
@@ -438,7 +439,7 @@ modulate = Color(0.4, 0.596078, 1, 1)
 texture = ExtResource("20_uqr56")
 
 [node name="PotSign" parent="World" instance=ExtResource("19_up103")]
-transform = Transform3D(-0.496823, 0, 0.867852, 0, 1, 0, -0.867852, 0, -0.496823, -12.2181, 0, 12.377)
+transform = Transform3D(0.853105, 0, 0.52174, 0, 1, 0, -0.52174, 0, 0.853105, -3.09263, 0, -0.366166)
 
 [node name="Label3D" type="Label3D" parent="World/PotSign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
@@ -454,6 +455,27 @@ texture = ExtResource("20_uqr56")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.119944, 0.577809, 0.0859871)
 modulate = Color(1, 0.4, 0.4, 1)
 texture = ExtResource("20_uqr56")
+
+[node name="SellSign" parent="World" instance=ExtResource("19_up103")]
+transform = Transform3D(0.990273, 0, 0.139139, 0, 1, 0, -0.139139, 0, 0.990273, -7.68352, 0, -14.1985)
+
+[node name="Label3D" type="Label3D" parent="World/SellSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-06, 0.771515, 0.0826511)
+text = "Sell crops"
+outline_size = 0
+
+[node name="Label3D2" type="Label3D" parent="World/SellSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43051e-06, 0.604406, 0.0826511)
+text = "Toss them over"
+font_size = 23
+outline_size = 0
+
+[node name="CoinSign" parent="World" instance=ExtResource("19_up103")]
+transform = Transform3D(0.989062, 0, -0.147498, 0, 1, 0, 0.147498, 0, 0.989062, -6.48455, 0, -14.1723)
+
+[node name="Sprite3D" type="Sprite3D" parent="World/CoinSign"]
+transform = Transform3D(0.04, 0, 2.79397e-09, 0, 0.04, 0, -2.79397e-09, 0, 0.04, 0.00172138, 0.67801, 0.0882454)
+texture = ExtResource("17_q6lju")
 
 [node name="Grass" type="Node3D" parent="World"]
 

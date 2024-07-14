@@ -16,6 +16,11 @@ environment = SubResource("Environment_83lvk")
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("2_38ywq")]
 
+[node name="OmniLight3D" type="OmniLight3D" parent="FirstPersonPlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44942, 0)
+light_color = Color(0.15, 0.15, 0.15, 1)
+omni_range = 7.0
+
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vekss")
 autoplay = true

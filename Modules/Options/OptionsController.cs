@@ -109,11 +109,6 @@ public partial class OptionsController : SingletonController
     {
         var bus = AudioBus.Get(name);
         bus.SetVolume(PercentageToDecibel(value));
-
-        SoundController.Instance.Play(SoundName.Step_Default, new SoundSettings
-        {
-            Bus = SoundBus.SFX,
-        });
     }
 
     public float PercentageToDecibel(float value)

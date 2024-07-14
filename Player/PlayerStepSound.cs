@@ -42,7 +42,7 @@ public partial class PlayerStepSound : NodeScript
 
     private void Land()
     {
-        SfxLand.Play();
         Step.ResetStepTime();
+        SfxLand.Play();
     }
 }

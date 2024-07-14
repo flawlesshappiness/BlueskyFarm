@@ -3,12 +3,19 @@ public partial class FarmScene : Scene
     protected override void Initialize()
     {
         base.Initialize();
-        Data.Game.OnBeforeSave += OnBeforeSave;
-        Data.Game.Save();
 
         var view = View.Get<GameView>();
         view.Minimap.Clear();
         view.Minimap.Hide();
+
+        if (Data.Game.FirstTimeBoot)
+        {
+            CurrencyController.Instance.AddValue(CurrencyType.Money, 10);
+            Data.Game.FirstTimeBoot = false;
+        }
+
+        Data.Game.OnBeforeSave += OnBeforeSave;
+        Data.Game.Save();
     }
 
     protected override void OnDestroy()

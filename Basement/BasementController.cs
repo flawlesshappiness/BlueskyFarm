@@ -133,13 +133,15 @@ public partial class BasementController : SingletonController
     {
         if (element.IsStart)
         {
-            var room = BasementRoomController.Instance.Collection.Resources.FirstOrDefault(x => x.IsStartRoom);
+            var room = BasementRoomController.Instance.Collection.Resources
+                .Where(x => !x.Disabled)
+                .FirstOrDefault(x => x.IsStartRoom);
             return room;
         }
         else
         {
             var room = BasementRoomController.Instance.Collection.Resources
-                .Where(x => !x.IsStartRoom)
+                .Where(x => !x.Disabled && !x.IsStartRoom)
                 .ToList().Random();
 
             return room;

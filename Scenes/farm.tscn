@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=43 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -18,7 +18,10 @@
 [ext_resource type="Script" path="res://Shop/Combination/CombinationDisplay.cs" id="10_nqguy"]
 [ext_resource type="Script" path="res://Shop/Combination/CombinationDisplayObject.cs" id="11_cw1lb"]
 [ext_resource type="Script" path="res://Shop/Combination/CombinationPrice.cs" id="14_kjn2q"]
-[ext_resource type="PackedScene" uid="uid://cjnbjy1lkvaej" path="res://Assets/FlawLizArt/sign.glb" id="19_llvw5"]
+[ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
+[ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
+[ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
+[ext_resource type="PackedScene" uid="uid://4ip3ioyn2hgm" path="res://Assets/Quaternius/Nature/CommonTree_Dead_1.obj" id="22_6h8wj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
 size = Vector3(31, 50, 31)
@@ -26,10 +29,11 @@ size = Vector3(31, 50, 31)
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(31, 4, 31)
 
-[sub_resource type="QuadMesh" id="QuadMesh_u50wq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlevm"]
+albedo_color = Color(0.384314, 0.658824, 0.419608, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cn8fx"]
-albedo_color = Color(0.372549, 0.682353, 0.301961, 1)
+[sub_resource type="QuadMesh" id="QuadMesh_u50wq"]
+material = SubResource("StandardMaterial3D_jlevm")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ko2qb"]
 size = Vector3(1, 1, 0.5)
@@ -113,8 +117,6 @@ transform = Transform3D(32, 0, 0, 0, 1.067, 0, 0, 0, 32, 0, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_u50wq")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_cn8fx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Ground/MeshInstance3D"]
 collision_layer = 3
@@ -268,49 +270,17 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
-[node name="TutorialText" type="Node" parent="World"]
-
-[node name="LabelMove" type="Label3D" parent="World/TutorialText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110256, 2.76717, -14.851)
-text = "[WASD]: Move"
-font_size = 200
-
-[node name="LabelLook" type="Label3D" parent="World/TutorialText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-07, 1.47275, -14.851)
-text = "[MOUSE]: Look"
-font_size = 200
-
-[node name="LabelInteract" type="Label3D" parent="World/TutorialText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.39641, 2.76717, -14.851)
-text = "[LMB]: Interact"
-font_size = 200
-
-[node name="LabelRotate" type="Label3D" parent="World/TutorialText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45427, 1.47275, -14.851)
-text = "[R]: Rotate"
-font_size = 200
-
-[node name="LabelPickUp" type="Label3D" parent="World/TutorialText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5204, 2.76717, -14.851)
-text = "[E]: Pick up"
-font_size = 200
-
-[node name="LabelDropInventory" type="Label3D" parent="World/TutorialText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.62178, 1.47275, -14.851)
-text = "[Q]: Drop inventory"
-font_size = 200
-
-[node name="Ceiling" parent="World" instance=ExtResource("9_t030q")]
+[node name="Basement" parent="World" instance=ExtResource("9_t030q")]
 transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435387, 13.1053)
 
-[node name="Trapdoor" parent="World/Ceiling" instance=ExtResource("8_je3mm")]
+[node name="Trapdoor" parent="World/Basement" instance=ExtResource("8_je3mm")]
 transform = Transform3D(1, 0, 0, 0, -0.999958, -0.00921533, 0, 0.00921533, -0.999958, 0, -0.0844181, 0.306818)
 SceneName = "basement"
 OpenSound = 4
 CloseSound = 5
 HoverText = "Basement"
 
-[node name="StartBasement" type="Node3D" parent="World/Ceiling"]
+[node name="StartBasement" type="Node3D" parent="World/Basement"]
 transform = Transform3D(1, 0, 0, 0, -0.977412, 0.211342, 0, -0.211342, -0.977412, 0, -0.289693, 3.39987)
 
 [node name="CombinationShop" type="Node3D" parent="World"]
@@ -429,6 +399,115 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.383014, 0)
 text = "9999"
 font_size = 100
 
+[node name="DebtSign" parent="World" instance=ExtResource("19_up103")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0592008, 0, -2.18457)
+
+[node name="Label3D" type="Label3D" parent="World/DebtSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
+text = "Debt: 500"
+outline_size = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="World/DebtSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.381479, 0.577809, 0.0859873)
+modulate = Color(1, 0.4, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D2" type="Sprite3D" parent="World/DebtSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.234094, 0.577809, 0.0859873)
+modulate = Color(0.4, 0.596078, 1, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D3" type="Sprite3D" parent="World/DebtSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0704236, 0.577809, 0.0859873)
+modulate = Color(1, 0.4, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D4" type="Sprite3D" parent="World/DebtSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0807574, 0.577809, 0.0859873)
+modulate = Color(0.4, 1, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D5" type="Sprite3D" parent="World/DebtSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.227382, 0.577809, 0.0859873)
+modulate = Color(0.4, 1, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D6" type="Sprite3D" parent="World/DebtSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.382671, 0.577809, 0.0859873)
+modulate = Color(0.4, 0.596078, 1, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="PotSign" parent="World" instance=ExtResource("19_up103")]
+transform = Transform3D(-0.496823, 0, 0.867852, 0, 1, 0, -0.867852, 0, -0.496823, -12.2181, 0, 12.377)
+
+[node name="Label3D" type="Label3D" parent="World/PotSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
+text = "Pot: 10"
+outline_size = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="World/PotSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0612478, 0.577809, 0.085988)
+modulate = Color(1, 0.4, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D2" type="Sprite3D" parent="World/PotSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.119944, 0.577809, 0.0859871)
+modulate = Color(1, 0.4, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Grass" type="Node3D" parent="World"]
+
+[node name="Grass_Short" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26637, 0, -8.79061)
+
+[node name="Grass_Short2" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82901, 0, -12.1156)
+
+[node name="Grass_Short3" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74148, 0, -8.13845)
+
+[node name="Grass_Short4" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38516, 0, -2.67196)
+
+[node name="Grass_Short5" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01564, 0, 4.16537)
+
+[node name="Grass_Short6" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93413, 0, 8.19257)
+
+[node name="Grass_Short7" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58333, 0, 8.81956)
+
+[node name="Grass_Short8" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4731, 0, 6.00204)
+
+[node name="Grass_Short9" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2186, 0, 1.69152)
+
+[node name="Grass_Short10" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4762, 0, -3.78012)
+
+[node name="Grass_Short11" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.774, 0, -12.7488)
+
+[node name="Grass_Short12" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3698, 0, -3.35599)
+
+[node name="Grass_Short13" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1302, 0, -7.85599)
+
+[node name="Grass_Short14" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0756, 0, -11.4631)
+
+[node name="Grass_Short15" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88317, 0, 12.0864)
+
+[node name="Grass_Short16" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45425, 0, 11.5706)
+
+[node name="CommonTree_Dead_1" parent="World" instance=ExtResource("22_6h8wj")]
+transform = Transform3D(2.50846, 0, 1.64549, 0, 3, 0, -1.64549, 0, 2.50846, 11.7734, 0, -10.8444)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hgua")
 
@@ -438,6 +517,7 @@ light_color = Color(1, 1, 0.811765, 1)
 shadow_enabled = true
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.07958)
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_q5w4g")
@@ -448,6 +528,3 @@ bus = &"SFX"
 stream = ExtResource("9_xc34j")
 autoplay = true
 bus = &"BGM"
-
-[node name="sign2" parent="." instance=ExtResource("19_llvw5")]
-transform = Transform3D(0.766549, 0, 0.642186, 0, 1, 0, -0.642186, 0, 0.766549, -3.74038, 0, 0.809774)

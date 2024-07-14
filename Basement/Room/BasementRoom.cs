@@ -5,6 +5,15 @@ public partial class BasementRoom : Node3DScript
     public const int SECTION_SIZE = 4;
     public const int SECTION_COUNT = 7;
 
+    [NodeName]
+    public Node3D Ceiling;
+
+    [NodeName]
+    public Node3D Floor;
+
+    [NodeName]
+    public Node3D Walls;
+
     public Section North { get; private set; }
     public Section East { get; private set; }
     public Section South { get; private set; }
@@ -33,6 +42,10 @@ public partial class BasementRoom : Node3DScript
         East = FindSection(nameof(East));
         South = FindSection(nameof(South));
         West = FindSection(nameof(West));
+
+        Ceiling.Visible = true;
+        Floor.Visible = true;
+        Walls.Visible = true;
     }
 
     private Section FindSection(string name)

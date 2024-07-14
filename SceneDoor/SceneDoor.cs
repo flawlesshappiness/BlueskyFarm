@@ -67,7 +67,8 @@ public partial class SceneDoor : Touchable
 
             SoundController.Instance.Play(OpenSound, new SoundSettings
             {
-                Volume = -12
+                Volume = -12,
+                Bus = SoundBus.SFX
             });
 
             yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(0, 1, f)));
@@ -80,7 +81,8 @@ public partial class SceneDoor : Touchable
 
             SoundController.Instance.Play(CloseSound, new SoundSettings
             {
-                Volume = -12
+                Volume = -12,
+                Bus = SoundBus.SFX
             });
 
             yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(1, 0, f)));

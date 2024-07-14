@@ -7,19 +7,22 @@ public static class Lerp
         add_func(mul_func(1 - t, v1), mul_func(t, v2));
 
     public static float Float(float v1, float v2, float t) =>
-        _Lerp(v1, v2, t, (a, b) => a * b, (a, b) => a + b);
+        Mathf.Lerp(v1, v2, t);
 
     public static Vector3 Vector(Vector3 v1, Vector3 v2, float t) =>
-        _Lerp(v1, v2, t, (a, b) => a * b, (a, b) => a + b);
+        v1.Lerp(v2, t);
 
     public static Vector2 Vector(Vector2 v1, Vector2 v2, float t) =>
-        _Lerp(v1, v2, t, (a, b) => a * b, (a, b) => a + b);
+        v1.Lerp(v2, t);
 
     public static Transform3D Transform(Transform3D v1, Transform3D v2, float t) =>
         v1.InterpolateWith(v2, t);
 
     public static Transform2D Transform(Transform2D v1, Transform2D v2, float t) =>
         v1.InterpolateWith(v2, t);
+
+    public static Color Color(Color v1, Color v2, float t) =>
+        v1.Lerp(v2, t);
 
     public static Variant Variant(Variant v1, Variant v2, float t)
     {
@@ -42,6 +45,9 @@ public static class Lerp
 
             case Godot.Variant.Type.Transform3D:
                 return Transform(v1.AsTransform3D(), v2.AsTransform3D(), t);
+
+            case Godot.Variant.Type.Color:
+                return Color(v1.AsColor(), v2.AsColor(), t);
 
             default:
                 throw new ArgumentException($"Failed to Lerp variant of type: {v1.VariantType}");

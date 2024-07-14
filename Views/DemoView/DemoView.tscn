@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://c23svudsrxj61"]
+
+[ext_resource type="Script" path="res://Views/DemoView/DemoView.cs" id="1_llf7q"]
+[ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_sq0o3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbv2t"]
+font_size = 76
+
+[sub_resource type="LabelSettings" id="LabelSettings_ofd40"]
+font_size = 25
+
+[node name="DemoView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_llf7q")
+
+[node name="Banner" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Label" type="Label" parent="Banner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_sq0o3")
+text = "DEBT FREE"
+label_settings = SubResource("LabelSettings_hbv2t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Banner"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 28.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_sq0o3")
+text = "End of demo"
+label_settings = SubResource("LabelSettings_ofd40")
+horizontal_alignment = 1
+vertical_alignment = 1

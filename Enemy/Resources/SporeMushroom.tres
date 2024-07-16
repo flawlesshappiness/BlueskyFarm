@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=2 format=3 uid="uid://ctfrhxa3btku0"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_is5rn"]
+
+[resource]
+script = ExtResource("1_is5rn")
+Path = "res://Enemy/SporeMushroom/SporeMushroom.tscn"

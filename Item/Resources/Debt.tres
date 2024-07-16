@@ -12,3 +12,4 @@ GrowTimeInSeconds = 0
 IsMoney = false
 MoneyAmount = 0
 CanPickUp = false
+Untrack = true

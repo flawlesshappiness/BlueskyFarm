@@ -86,7 +86,8 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
             InfoPath = info.ResourcePath
         };
 
-        if (track_item)
+        var track = !info.Untrack && track_item;
+        if (track)
         {
             ActiveItems.Add(item);
         }

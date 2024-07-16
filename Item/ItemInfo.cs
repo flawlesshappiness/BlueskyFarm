@@ -26,4 +26,7 @@ public partial class ItemInfo : Resource
 
     [Export]
     public bool CanPickUp;
+
+    [Export]
+    public bool Untrack;
 }

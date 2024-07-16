@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://do4a5egt7737j"]
+[gd_scene load_steps=9 format=3 uid="uid://do4a5egt7737j"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0qd33"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon_001/Wall.tscn" id="2_brpqe"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="5_mkup5"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon_001/Floor.tscn" id="6_1eqlk"]
 [ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/Boocase_Broken.tscn" id="7_l36b1"]
+[ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="8_6ahy3"]
 
 [node name="Corridor_001" instance=ExtResource("1_0qd33")]
 
@@ -55,6 +56,7 @@ shadow_enabled = true
 omni_range = 8.40261
 
 [node name="Ceiling" type="Node3D" parent="." index="6"]
+visible = false
 
 [node name="Ceiling" parent="Ceiling" index="0" instance=ExtResource("5_mkup5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 0)
@@ -314,3 +316,44 @@ transform = Transform3D(-0.0165583, 0, 1.24989, 0, 1.25, 0, -1.24989, 0, -0.0165
 
 [node name="Bookcase_Broken2" parent="Furniture" index="1" instance=ExtResource("7_l36b1")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -3.19737, 0, -4.90527)
+
+[node name="Mushrooms" type="Node3D" parent="." index="10"]
+
+[node name="SporeMushroomCluster" parent="Mushrooms" index="0" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8075, 0, -0.879381)
+
+[node name="SporeMushroomCluster2" parent="Mushrooms" index="1" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -9.72743, 0, 0.712007)
+
+[node name="SporeMushroomCluster3" parent="Mushrooms" index="2" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -5.98173, 0, 3.38845)
+
+[node name="SporeMushroomCluster4" parent="Mushrooms" index="3" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -2.03744, 4.76837e-07, 4.43944)
+
+[node name="SporeMushroomCluster5" parent="Mushrooms" index="4" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -1.48898, 4.76837e-07, 0.0182981)
+
+[node name="SporeMushroomCluster6" parent="Mushrooms" index="5" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 0.607606, 4.76837e-07, -4.43631)
+
+[node name="SporeMushroomCluster7" parent="Mushrooms" index="6" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 4.44515, 4.76837e-07, -0.814283)
+
+[node name="SporeMushroomCluster8" parent="Mushrooms" index="7" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 5.84891, 4.76837e-07, -3.64866)
+
+[node name="SporeMushroomCluster9" parent="Mushrooms" index="8" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 9.82677, 4.76837e-07, -0.677825)
+
+[node name="SporeMushroomCluster10" parent="Mushrooms" index="9" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -0.514427, 4.76837e-07, -7.48704)
+
+[node name="SporeMushroomCluster11" parent="Mushrooms" index="10" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 0.478012, 4.76837e-07, -11.9978)
+
+[node name="SporeMushroomCluster12" parent="Mushrooms" index="11" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 0.525983, 4.76837e-07, 7.4546)
+
+[node name="SporeMushroomCluster13" parent="Mushrooms" index="12" instance=ExtResource("8_6ahy3")]
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -0.675136, 4.76837e-07, 12.6027)

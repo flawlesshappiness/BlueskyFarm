@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7e153e2kx8aq"]
+
+[ext_resource type="PackedScene" uid="uid://c1k1rlakk2w8e" path="res://Assets/Quaternius/Nature/Mushroom_3.obj" id="1_cqxyw"]
+[ext_resource type="Script" path="res://Enemy/SporeMushroom/SporeMushroomCluster.cs" id="1_m2gfq"]
+[ext_resource type="PackedScene" uid="uid://cvmdod4k2nxl5" path="res://Particle/Prefabs/ps_mushroom_smoke.tscn" id="3_olt0t"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_geq5l"]
+
+[node name="SporeMushroomCluster" type="Node3D"]
+script = ExtResource("1_m2gfq")
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Mushroom_3" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0362122, 0)
+
+[node name="Mushroom_4" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.119465, -0.0362122, 0.0248601)
+
+[node name="Mushroom_5" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0772993, -0.0362122, 0.10215)
+
+[node name="Mushroom_6" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.00751974, -0.0362122, 0.0941393)
+
+[node name="Mushroom_7" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.107676, -0.0362122, -0.0525581)
+
+[node name="Mushroom_8" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0998182, -0.0362122, -0.0610473)
+
+[node name="Mushroom_9" parent="Scale" instance=ExtResource("1_cqxyw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0339797, -0.0362122, -0.0997382)
+
+[node name="ps_mushroom_smoke" parent="." instance=ExtResource("3_olt0t")]
+
+[node name="Trigger" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_geq5l")

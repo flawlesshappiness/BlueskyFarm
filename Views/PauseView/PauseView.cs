@@ -13,6 +13,9 @@ public partial class PauseView : View
     [NodeName]
     public Button MainMenuButton;
 
+    [NodeName]
+    public Control Buttons;
+
     private OptionsView OptionsView { get; set; }
 
     public override void _Ready()
@@ -65,13 +68,13 @@ public partial class PauseView : View
 
     private void OptionsPressed()
     {
+        Buttons.Visible = false;
         OptionsView.Show();
-        Hide();
     }
 
     private void OptionsBackPressed()
     {
-        Show();
+        Buttons.Visible = true;
     }
 
     private void MainMenuPressed()

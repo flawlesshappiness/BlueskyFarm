@@ -1,30 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1m3wg25xw3p2"]
+[gd_scene load_steps=6 format=3 uid="uid://b1m3wg25xw3p2"]
 
 [ext_resource type="Script" path="res://Views/ScreenEffectsView/ScreenEffectsView.cs" id="1_g7exa"]
-[ext_resource type="Shader" path="res://Shaders/BlurVignette.gdshader" id="2_ofrpy"]
-[ext_resource type="Texture2D" uid="uid://e74ckvdsb6ex" path="res://Assets/Quaternius/Icons/Coin.png" id="2_oi008"]
-[ext_resource type="Shader" path="res://Shaders/GaussianBlur.gdshader" id="4_eto6o"]
-[ext_resource type="Shader" path="res://Shaders/DistortFilterPerlinNoise.gdshader" id="5_kxmfe"]
+[ext_resource type="Shader" path="res://Shaders/AnimatedFog.gdshader" id="7_03fp1"]
+[ext_resource type="Shader" path="res://Shaders/CombinedScreenEffects.gdshader" id="8_d0gx5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ax6b"]
-shader = ExtResource("4_eto6o")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rpfn"]
+shader = ExtResource("8_d0gx5")
+shader_parameter/strength = 0.2
+shader_parameter/speed = 0.25
+shader_parameter/disp = Vector2(3, 1)
 shader_parameter/blur_type = 0
 shader_parameter/blur_amount = 16
 shader_parameter/blur_radius = 1.0
 shader_parameter/blur_direction = Vector2(1, 1)
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.02
+shader_parameter/sampling_count = 25
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ch265"]
-shader = ExtResource("2_ofrpy")
-shader_parameter/blur_radius = 0.2
-shader_parameter/blur_amount = 1.0
-shader_parameter/blur_inner = 0.6
-shader_parameter/blur_outer = 0.66
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_58geq"]
-shader = ExtResource("5_kxmfe")
-shader_parameter/strength = 0.2
-shader_parameter/speed = 0.25
-shader_parameter/disp = Vector2(3, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5ypa"]
+shader = ExtResource("7_03fp1")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = false
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(1, 1)
+shader_parameter/scroll_noise_tex = false
+shader_parameter/noise_scroll_direction = Vector2(1, 0)
 
 [node name="ScreenEffectsView" type="Control"]
 layout_mode = 3
@@ -36,18 +37,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_g7exa")
 
-[node name="TestImage" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -163.0
-offset_top = -165.0
-offset_right = 837.0
-offset_bottom = 835.0
-texture = ExtResource("2_oi008")
-
-[node name="GaussianBlur" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_5ax6b")
+[node name="Combined" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6rpfn")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,20 +47,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BlurVignette" type="ColorRect" parent="."]
+[node name="AnimatedFog" type="ColorRect" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_ch265")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="DistortFilterPerlinNoise" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_58geq")
+material = SubResource("ShaderMaterial_r5ypa")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

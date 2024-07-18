@@ -1,16 +1,38 @@
+using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public abstract partial class View : ControlScript, IComparable<View>
 {
+    [Export]
+    public int ChildOrder;
+
     public abstract string Directory { get; }
-    private void Create() => Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType());
+    private View Create() => Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType()) as View;
 
     public static void CreateAll()
     {
-        var views = ReflectiveEnumerator.GetEnumerableOfType<View>();
-        foreach (var view in views)
+        var types = ReflectiveEnumerator.GetEnumerableOfType<View>();
+        var views = new List<View>();
+
+        // Create views
+        foreach (var type in types)
         {
-            view.Create();
+            var v = type.Create();
+            views.Add(v);
+        }
+
+        // Order views
+        var ordered_views = views.OrderBy(x => x.ChildOrder).ToList();
+        var child_count = Scene.Root.GetChildCount();
+        var idx_start = child_count - views.Count - 1;
+
+        for (int i = 0; i < ordered_views.Count; i++)
+        {
+            var idx = idx_start + i;
+            var view = ordered_views[i];
+            Scene.Root.MoveChild(view, idx);
         }
     }
 

@@ -35,6 +35,9 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeType]
     public FirstPersonStep Step;
 
+    public float MoveSpeedMultiplier { get; set; } = 1f;
+    public float LookSpeedMultiplier { get; set; } = 1f;
+
     public MultiLock InteractLock = new MultiLock();
     public MultiLock MovementLock = new MultiLock();
 
@@ -71,9 +74,10 @@ public partial class FirstPersonController : CharacterBody3D
         if (e is not InputEventMouseMotion) return;
         if (Grab?.IsRotating ?? false) return;
 
+        var factor = 0.001f;
         var motion = e as InputEventMouseMotion;
-        Neck.RotateY(-motion.Relative.X * 0.001f);
-        Camera.RotateX(-motion.Relative.Y * 0.001f);
+        Neck.RotateY(-motion.Relative.X * factor * LookSpeedMultiplier);
+        Camera.RotateX(-motion.Relative.Y * factor * LookSpeedMultiplier);
 
         var x = Mathf.Clamp(Camera.Rotation.X, Mathf.DegToRad(-70), Mathf.DegToRad(70));
         Camera.Rotation = Rotation with { X = x };
@@ -109,13 +113,13 @@ public partial class FirstPersonController : CharacterBody3D
             var has_direction = direction != Vector3.Zero;
             if (has_direction)
             {
-                velocity.X = direction.X * MoveSpeed;
-                velocity.Z = direction.Z * MoveSpeed;
+                velocity.X = direction.X * MoveSpeed * MoveSpeedMultiplier;
+                velocity.Z = direction.Z * MoveSpeed * MoveSpeedMultiplier;
             }
             else
             {
-                velocity.X = Mathf.MoveToward(Velocity.X, 0, MoveSpeed);
-                velocity.Z = Mathf.MoveToward(Velocity.Z, 0, MoveSpeed);
+                velocity.X = Mathf.MoveToward(Velocity.X, 0, MoveSpeed * MoveSpeedMultiplier);
+                velocity.Z = Mathf.MoveToward(Velocity.Z, 0, MoveSpeed * MoveSpeedMultiplier);
             }
 
             // Handle Jump

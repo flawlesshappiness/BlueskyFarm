@@ -34,9 +34,9 @@ public partial class ScreenEffectsView : View
         set => CombinedMaterial.SetShaderParameter("blur_type", value);
     }
 
-    public int Blur_Amount
+    public float Blur_Amount
     {
-        get => CombinedMaterial.GetShaderParameter("blur_amount").AsInt32();
+        get => CombinedMaterial.GetShaderParameter("blur_amount").AsSingle();
         set => CombinedMaterial.SetShaderParameter("blur_amount", value);
     }
 

@@ -52,7 +52,7 @@ vec2 DistortUV(vec2 SPS, vec2 uv){
 ///////////////////
 
 const int gaussian_blur_type = 0;
-uniform int blur_amount = 16;
+uniform float blur_amount = 16;
 const float blur_radius = 1.0;
 const vec2 blur_direction = vec2(1, 1);
 uniform int blur_iterations = 16;
@@ -148,22 +148,22 @@ vec4 texture_nodevgaussian_multipass(sampler2D tex, vec2 uv, vec2 pixel_size, fl
 vec4 GaussianBlur(vec2 SPS, vec2 uv){
 	if (gaussian_blur_type == 0) 
 	{
-		vec4 xorgaussian = texture_xorgaussian(screen_texture, uv, SPS, float(blur_amount), blur_iterations, blur_quality);
+		vec4 xorgaussian = texture_xorgaussian(screen_texture, uv, SPS, blur_amount, blur_iterations, blur_quality);
 		return xorgaussian;
 	} 
 	else if (gaussian_blur_type == 1) 
 	{
-		vec4 monksgaussian_multipass = texture_monksgaussian_multipass(screen_texture, uv, SPS, blur_amount, blur_direction);
+		vec4 monksgaussian_multipass = texture_monksgaussian_multipass(screen_texture, uv, SPS, int(blur_amount), blur_direction);
 		return monksgaussian_multipass;
 	} 
 	else if (gaussian_blur_type == 2) 
 	{
-		vec4 nodevgaussian_singlepass = texture_nodevgaussian_singlepass(screen_texture, uv, SPS, float(blur_amount), blur_radius);
+		vec4 nodevgaussian_singlepass = texture_nodevgaussian_singlepass(screen_texture, uv, SPS, blur_amount, blur_radius);
 		return nodevgaussian_singlepass;
 	} 
 	else if (gaussian_blur_type == 3) 
 	{
-		vec4 nodevgaussian_multipass = texture_nodevgaussian_multipass(screen_texture, uv, SPS, float(blur_amount), blur_direction);
+		vec4 nodevgaussian_multipass = texture_nodevgaussian_multipass(screen_texture, uv, SPS, blur_amount, blur_direction);
 		return nodevgaussian_multipass;
 	} 
 	else 
@@ -199,12 +199,12 @@ void fragment() {
 	vec2 uv = UV;
 	
 	if(distort_strength > 0.0){
-		DistortUV(SCREEN_PIXEL_SIZE, UV);
+		uv = DistortUV(SCREEN_PIXEL_SIZE, UV);
 	}
 	
 	vec3 col = texture(screen_texture, uv).rgb;
 	
-	if(blur_type == 0 && blur_amount > 0){
+	if(blur_type == 0 && blur_amount > 0.0){
 		col = GaussianBlur(SCREEN_PIXEL_SIZE, uv).rgb;
 	}
 	else if(blur_type == 1 && radial_strength > 0.0){

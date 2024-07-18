@@ -8,10 +8,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6rpfn"]
 shader = ExtResource("8_d0gx5")
 shader_parameter/blur_type = 1
-shader_parameter/distort_strength = 1.0
+shader_parameter/distort_strength = 0.05
 shader_parameter/distort_speed = 0.25
-shader_parameter/distort_displacement = Vector2(3, 1)
-shader_parameter/blur_amount = 16
+shader_parameter/distort_displacement = Vector2(1, 1)
+shader_parameter/blur_amount = 16.0
 shader_parameter/blur_iterations = 16
 shader_parameter/blur_quality = 8
 shader_parameter/radial_center = Vector2(0.5, 0.5)
@@ -42,10 +42,10 @@ ChildOrder = -1
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 102.0
-offset_top = -140.0
-offset_right = 1102.0
-offset_bottom = 860.0
+offset_left = 449.0
+offset_top = -149.0
+offset_right = 1449.0
+offset_bottom = 851.0
 texture = ExtResource("2_itnkx")
 
 [node name="Combined" type="ColorRect" parent="."]

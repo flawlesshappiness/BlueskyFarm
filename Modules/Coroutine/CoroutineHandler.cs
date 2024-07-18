@@ -21,6 +21,7 @@ public partial class CoroutineHandler : Node
     public override void _Process(double delta)
     {
         base._Process(delta);
+        if (Scene.PauseLock.IsLocked) return;
 
         foreach (var coroutine in _coroutines.Values.ToList())
         {

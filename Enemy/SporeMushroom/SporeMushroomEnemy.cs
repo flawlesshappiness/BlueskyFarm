@@ -15,7 +15,7 @@ public partial class SporeMushroomEnemy : Enemy
     private class SpawnPosition
     {
         public BasementRoomElement Element { get; set; }
-        public Node3D Node { get; set; } = new();
+        public SporeMushroomCluster Node { get; set; } = new();
     }
 
     public override void _Ready()
@@ -79,6 +79,7 @@ public partial class SporeMushroomEnemy : Enemy
         {
             _current_cluster_position = next;
             _current_cluster_position.Node.Show();
+            _current_cluster_position.Node.AnimateAppear();
         }
     }
 

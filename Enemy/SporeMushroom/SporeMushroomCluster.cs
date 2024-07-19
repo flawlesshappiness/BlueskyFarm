@@ -1,5 +1,7 @@
 using Godot;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class SporeMushroomCluster : Node3DScript
 {
@@ -11,10 +13,14 @@ public partial class SporeMushroomCluster : Node3DScript
 
     private bool _triggered;
 
+    private List<SporeMushroomModel> _models;
+
     public override void _Ready()
     {
         base._Ready();
         Hide();
+
+        _models = this.GetNodesInChildren<SporeMushroomModel>().ToList();
 
         Trigger.BodyEntered += TriggerEntered;
     }
@@ -31,6 +37,21 @@ public partial class SporeMushroomCluster : Node3DScript
         PsSmoke.PlayPuff();
         PsSmoke.PlayIdle();
         _triggered = true;
+    }
+
+    public void AnimateAppear()
+    {
+        var ordered_models = _models.OrderBy(x => x.Scale.Length()).ToList();
+        Coroutine.Start(Cr);
+
+        IEnumerator Cr()
+        {
+            foreach (var model in ordered_models)
+            {
+                model.AnimateAppear();
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
     }
 
     private void AnimateMoveSpeed()

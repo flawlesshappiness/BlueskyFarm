@@ -17,7 +17,6 @@ vec2 GetGradient(vec2 intPos, float t) {
     return vec2(cos(angle), sin(angle));
 }
 
-
 float Pseudo3dNoise(vec3 pos) {
     vec2 i = floor(pos.xy);
     vec2 f = pos.xy - i;
@@ -41,9 +40,10 @@ vec2 DistortUV(vec2 SPS, vec2 uv){
 	float ratio = SPS.x / SPS.y;
 	vec2 noise_uv = uv / vec2(ratio, 1.0);
     float noiseVal = 0.5 + 0.5 * Pseudo3dNoise(vec3(noise_uv * 10.0 * distort_strength, TIME * distort_speed));
-    float noiseWeight = 0.05;
-    uv.x += noiseVal * noiseWeight * distort_displacement.x - distort_displacement.x * 0.025;
-    uv.y += noiseVal * noiseWeight * distort_displacement.y - distort_displacement.y * 0.025;
+    float xNoiseMul = 1.0 - abs((uv.x - 0.5) / 0.5);
+	float yNoiseMul = 1.0 - abs((uv.y - 0.5) / 0.5);
+	uv.x += (noiseVal * distort_displacement.x - distort_displacement.x * 0.5) * xNoiseMul;
+    uv.y += (noiseVal * distort_displacement.y - distort_displacement.y * 0.5) * yNoiseMul;
 	return uv;
 }
 

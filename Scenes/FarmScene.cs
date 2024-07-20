@@ -1,4 +1,4 @@
-public partial class FarmScene : Scene
+public partial class FarmScene : GameScene
 {
     protected override void Initialize()
     {

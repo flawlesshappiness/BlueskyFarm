@@ -1,7 +1,7 @@
 using Godot;
 using System.Linq;
 
-public partial class BasementScene : Scene
+public partial class BasementScene : GameScene
 {
     private float time_scene_started;
 

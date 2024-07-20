@@ -47,4 +47,6 @@ public class AudioBus
         var idx = GetEffectIndex<T>();
         AudioServer.SetBusEffectEnabled(Index, idx, enabled);
     }
+
+    public void SetMuted(bool muted) => AudioServer.SetBusMute(Index, muted);
 }

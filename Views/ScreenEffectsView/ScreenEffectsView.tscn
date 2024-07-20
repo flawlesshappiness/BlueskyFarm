@@ -1,21 +1,21 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1m3wg25xw3p2"]
 
 [ext_resource type="Script" path="res://Views/ScreenEffectsView/ScreenEffectsView.cs" id="1_g7exa"]
-[ext_resource type="Texture2D" uid="uid://e74ckvdsb6ex" path="res://Assets/Quaternius/Icons/Coin.png" id="2_itnkx"]
+[ext_resource type="Texture2D" uid="uid://btlji6foe6gsx" path="res://Assets/OpenGameArt/Grass Texture 4.jpg" id="2_y2cwb"]
 [ext_resource type="Shader" path="res://Shaders/AnimatedFog.gdshader" id="7_03fp1"]
 [ext_resource type="Shader" path="res://Shaders/CombinedScreenEffects.gdshader" id="8_d0gx5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6rpfn"]
 shader = ExtResource("8_d0gx5")
-shader_parameter/blur_type = 1
+shader_parameter/blur_type = 0
 shader_parameter/distort_strength = 0.05
 shader_parameter/distort_speed = 0.25
-shader_parameter/distort_displacement = Vector2(1, 1)
-shader_parameter/blur_amount = 16.0
+shader_parameter/distort_displacement = Vector2(0.1, 0.05)
+shader_parameter/blur_amount = 0.0
 shader_parameter/blur_iterations = 16
 shader_parameter/blur_quality = 8
 shader_parameter/radial_center = Vector2(0.5, 0.5)
-shader_parameter/radial_strength = 0.01
+shader_parameter/radial_strength = 0.0
 shader_parameter/radial_sampling = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5ypa"]
@@ -41,12 +41,19 @@ ChildOrder = -1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 449.0
-offset_top = -149.0
-offset_right = 1449.0
-offset_bottom = 851.0
-texture = ExtResource("2_itnkx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -518.0
+offset_top = -255.0
+offset_right = -518.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_y2cwb")
+stretch_mode = 1
 
 [node name="Combined" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6rpfn")

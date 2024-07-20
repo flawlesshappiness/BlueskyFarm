@@ -7,10 +7,10 @@ public partial class SporeMushroomEnemy : Enemy
 {
     private List<Node3D> _clusters = new();
     private List<SpawnPosition> _spawn_positions = new();
-
+    private SpawnPosition _current_cluster_position;
     private Coroutine _cr_spawn;
 
-    private SpawnPosition _current_cluster_position;
+    private int _clusters_triggered;
 
     private class SpawnPosition
     {
@@ -23,6 +23,13 @@ public partial class SporeMushroomEnemy : Enemy
         base._Ready();
         InitializeClusters();
         BeginSpawning();
+
+        TreeExiting += OnDestroy;
+    }
+
+    private void OnDestroy()
+    {
+        Coroutine.Stop(_cr_spawn);
     }
 
     private void InitializeClusters()
@@ -39,9 +46,42 @@ public partial class SporeMushroomEnemy : Enemy
                     Node = node
                 };
 
+                position.Node.OnPlayerTrigger += PlayerTriggeredCluster;
                 position.Node.Hide();
                 _spawn_positions.Add(position);
             }
+        }
+    }
+
+    private void PlayerTriggeredCluster()
+    {
+        _clusters_triggered++;
+
+        if (_clusters_triggered == 1)
+        {
+            ScreenEffects.Instance.Distort_Strength = 0.05f;
+            ScreenEffects.Instance.Distort_Speed = 0.2f;
+            ScreenEffects.Instance.Distort_Displacement = new Vector2(0.2f, 0.1f);
+        }
+        else if (_clusters_triggered == 2)
+        {
+            ScreenEffects.Instance.Distort_Strength = 0.05f;
+            ScreenEffects.Instance.Distort_Speed = 0.3f;
+            ScreenEffects.Instance.Distort_Displacement = new Vector2(0.3f, 0.1f);
+        }
+        else if (_clusters_triggered >= 3)
+        {
+            KillPlayer();
+        }
+    }
+
+    private void KillPlayer()
+    {
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(1);
+            GameScene.Current.KillPlayer();
         }
     }
 

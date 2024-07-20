@@ -4,7 +4,7 @@ using System.Collections;
 public static class ScreenEffects
 {
     private static ScreenEffectsView _view;
-    private static ScreenEffectsView Instance => _view ?? (_view = View.Get<ScreenEffectsView>());
+    public static ScreenEffectsView Instance => _view ?? (_view = View.Get<ScreenEffectsView>());
 
     private enum BlurType
     {
@@ -15,6 +15,18 @@ public static class ScreenEffects
     private static Coroutine _cr_blur;
     private static Coroutine _cr_radial;
     private static Coroutine _cr_distort;
+
+    public static void Reset()
+    {
+        Coroutine.Stop(_cr_blur);
+        Coroutine.Stop(_cr_radial);
+        Coroutine.Stop(_cr_distort);
+
+        Instance.Blur_Type = -1;
+        Instance.Blur_Amount = 0;
+        Instance.Radial_Strength = 0;
+        Instance.Distort_Strength = 0;
+    }
 
     private static void SetBlurType(BlurType blur_type)
     {

@@ -76,6 +76,8 @@ public partial class SceneDoor : Touchable
 
             ChangeScene();
 
+            yield return new WaitForSeconds(0.5f);
+
             FirstPersonController.Instance.MovementLock.RemoveLock(nameof(Sleepable));
             FirstPersonController.Instance.InteractLock.RemoveLock(nameof(Sleepable));
 
@@ -84,6 +86,7 @@ public partial class SceneDoor : Touchable
                 Volume = -12,
                 Bus = SoundBus.SFX
             });
+
 
             yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(1, 0, f)));
         }

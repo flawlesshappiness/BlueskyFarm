@@ -12,6 +12,9 @@ public partial class SporeMushroomCluster : Node3DScript
     [NodeName]
     public Area3D Trigger;
 
+    [NodeName]
+    public Sound3D SfxPuff;
+
     public event Action OnPlayerTrigger;
 
     private bool _triggered;
@@ -40,6 +43,7 @@ public partial class SporeMushroomCluster : Node3DScript
         ScreenEffects.AnimateBlur(20, 0.2f, 0f, 15f);
         AnimateMoveSpeed();
 
+        SfxPuff.Play();
         PsSmoke.PlayPuff();
         PsSmoke.PlayIdle();
         _triggered = true;

@@ -5,6 +5,12 @@ public partial class Sound3D : AudioStreamPlayer3D
     [Export]
     public SoundName SoundName;
 
+    [Export]
+    public float PitchMin = 1;
+
+    [Export]
+    public float PitchMax = 1;
+
     public override void _Ready()
     {
         base._Ready();
@@ -17,5 +23,18 @@ public partial class Sound3D : AudioStreamPlayer3D
         if (info == null) return;
 
         Stream = GD.Load<AudioStream>(info.Path);
+    }
+
+    public void Play()
+    {
+        RandomizePitch();
+        base.Play();
+    }
+
+    private void RandomizePitch()
+    {
+        var rng = new RandomNumberGenerator();
+        var pitch = rng.RandfRange(PitchMin, PitchMax);
+        PitchScale = pitch;
     }
 }

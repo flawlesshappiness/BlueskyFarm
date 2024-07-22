@@ -15,6 +15,12 @@ public partial class SporeMushroomCluster : Node3DScript
     [NodeName]
     public Sound3D SfxPuff;
 
+    [NodeName]
+    public Sound3D SfxAppear;
+
+    [NodeName]
+    public Sound3D SfxRoots;
+
     public event Action OnPlayerTrigger;
 
     private bool _triggered;
@@ -58,6 +64,7 @@ public partial class SporeMushroomCluster : Node3DScript
 
         IEnumerator Cr()
         {
+            SfxAppear.Play();
             _roots.AnimateAppear();
             foreach (var model in ordered_models)
             {

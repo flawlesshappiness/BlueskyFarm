@@ -1,22 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbohvdmbbl2nq"]
+[gd_scene load_steps=8 format=3 uid="uid://bbohvdmbbl2nq"]
 
 [ext_resource type="Script" path="res://Enemy/SporeMushroom/SporeMushroomRoots.cs" id="1_h2h8r"]
 [ext_resource type="PackedScene" uid="uid://bo8lrqqc6uw4p" path="res://Assets/FlawLizArt/roots_mushroom.glb" id="1_vrog5"]
-
-[sub_resource type="Animation" id="Animation_47814"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim_Scale:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
+[ext_resource type="Script" path="res://Sound/Sound3D.cs" id="3_wmvxb"]
 
 [sub_resource type="Animation" id="Animation_0nh2q"]
 length = 0.001
@@ -49,6 +35,21 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.5, 0.5, 0.5), Vector3(1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_47814"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Scale:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oprgi"]
 _data = {
 "RESET": SubResource("Animation_0nh2q"),
@@ -67,3 +68,10 @@ script = ExtResource("1_h2h8r")
 libraries = {
 "": SubResource("AnimationLibrary_oprgi")
 }
+
+[node name="SfxRoots" type="AudioStreamPlayer3D" parent="."]
+unit_size = 2.0
+bus = &"SFX"
+script = ExtResource("3_wmvxb")
+SoundName = 9
+PitchMax = 0.9

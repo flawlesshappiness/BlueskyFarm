@@ -47,6 +47,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_geq5l")
 
 [node name="SfxPuff" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
 script = ExtResource("5_ic6ym")
 SoundName = 7
+PitchMin = 0.9
+
+[node name="SfxAppear" type="AudioStreamPlayer3D" parent="."]
+volume_db = -10.0
+unit_size = 1.0
+bus = &"SFX"
+script = ExtResource("5_ic6ym")
+SoundName = 8
 PitchMin = 0.9

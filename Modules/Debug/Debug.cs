@@ -82,11 +82,6 @@ public static class Debug
         };
 
         _logs.Add(log);
-
-        if (PRINT_ENABLED)
-        {
-            GD.Print(log.GetDebugMessage());
-        }
     }
 
     public static void TraceMethod(object obj = null, [CallerFilePath] string file = "", [CallerMemberName] string caller = "")

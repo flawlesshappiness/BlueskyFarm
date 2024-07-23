@@ -28,8 +28,6 @@ public partial class SporeMushroomCluster : Node3DScript
     private List<SporeMushroomModel> _models;
     private SporeMushroomRoots _roots;
 
-    private Coroutine _cr_move_speed;
-
     public override void _Ready()
     {
         base._Ready();
@@ -47,6 +45,7 @@ public partial class SporeMushroomCluster : Node3DScript
         if (_triggered) return;
 
         ScreenEffects.AnimateBlur(20, 0.2f, 0f, 15f);
+        ScreenEffects.AnimateFog(1f, new Color(0.25f, 0.25f, 0.25f, 0.75f), new Vector2(0, 2), 2f, 0f, 15f);
         AnimateMoveSpeed();
 
         SfxPuff.Play();
@@ -60,8 +59,7 @@ public partial class SporeMushroomCluster : Node3DScript
     public void AnimateAppear()
     {
         var ordered_models = _models.OrderBy(x => x.Scale.Length()).ToList();
-        Coroutine.Start(Cr);
-
+        StartCoroutine(Cr, nameof(AnimateAppear));
         IEnumerator Cr()
         {
             SfxAppear.Play();
@@ -76,8 +74,8 @@ public partial class SporeMushroomCluster : Node3DScript
 
     private void AnimateMoveSpeed()
     {
-        Coroutine.Stop(_cr_move_speed);
-        _cr_move_speed = Coroutine.Start(Cr);
+        var id = $"{nameof(SporeMushroomCluster)}.{nameof(AnimateMoveSpeed)}";
+        Coroutine.Start(Cr, id);
         IEnumerator Cr()
         {
             FirstPersonController.Instance.MoveSpeedMultiplier = 0.25f;

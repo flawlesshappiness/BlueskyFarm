@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +17,8 @@ public partial class CoroutineHandler : Node
     {
         base._Ready();
         ProcessMode = ProcessModeEnum.Always;
+
+        RegisterDebugActions();
     }
 
     public override void _Process(double delta)
@@ -25,13 +28,32 @@ public partial class CoroutineHandler : Node
 
         foreach (var coroutine in _coroutines.Values.ToList())
         {
-            coroutine.UpdateFrame();
-
-            if (coroutine.HasCompleted)
+            if (CoroutineShouldBeRemoved(coroutine))
             {
                 RemoveCoroutine(coroutine);
             }
+            else
+            {
+                coroutine.UpdateFrame();
+            }
         }
+    }
+
+    private bool CoroutineShouldBeRemoved(Coroutine coroutine)
+    {
+        if (coroutine.HasCompleted) return true;
+        if (coroutine.HasEnded) return true;
+        if (CoroutineHasLostConnection(coroutine)) return true;
+        return false;
+    }
+
+    private bool CoroutineHasLostConnection(Coroutine coroutine)
+    {
+        if (!coroutine.HasConnectedNode) return false;
+        if (coroutine.ConnectedNode == null) return true;
+        if (!IsInstanceValid(coroutine.ConnectedNode)) return true;
+        if (coroutine.ConnectedNode.IsQueuedForDeletion()) return true;
+        return false;
     }
 
     public void AddCoroutine(Coroutine coroutine)
@@ -42,12 +64,110 @@ public partial class CoroutineHandler : Node
             return;
         }
 
+        RemoveCoroutineWithStringId(coroutine.StringId);
+
         coroutine.Id = Guid.NewGuid();
         _coroutines.Add(coroutine.Id, coroutine);
     }
 
+    private void RemoveCoroutineWithStringId(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return;
+
+        var coroutine = _coroutines.Values.FirstOrDefault(x => x.StringId == id);
+        RemoveCoroutine(coroutine);
+    }
+
     public void RemoveCoroutine(Coroutine coroutine)
     {
+        if (coroutine == null) return;
+
+        coroutine.HasEnded = true;
         _coroutines.Remove(coroutine.Id);
+    }
+
+    // TESTS //
+    private void RegisterDebugActions()
+    {
+        var category = "COROUTINES";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test: Connection",
+            Action = DebugTestConnection
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test: Id",
+            Action = DebugTestId
+        });
+    }
+
+    private void DebugTestConnection(DebugView view)
+    {
+        view.SetVisible(false);
+
+        Debug.LogMethod();
+
+        var node = new Node();
+        var cr = Coroutine.Start(Cr, node);
+        var cr_control = Coroutine.Start(CrControl);
+
+        IEnumerator Cr()
+        {
+            while (true)
+            {
+                Debug.Log("Test: Coroutine is running...");
+                yield return null;
+            }
+        }
+
+        IEnumerator CrControl()
+        {
+            Debug.Log("Test: Started");
+            while (cr == null)
+            {
+                yield return null;
+            }
+
+            node.QueueFree();
+
+            yield return cr;
+
+            Debug.Log("Test: Completed");
+        }
+    }
+
+    private void DebugTestId(DebugView view)
+    {
+        view.SetVisible(false);
+
+        Debug.LogMethod();
+
+        var i = 0;
+        var id = "test id";
+
+        Coroutine.Start(Cr, id);
+
+        IEnumerator Cr()
+        {
+            Debug.Log("Test: Started");
+
+            i++;
+            var i_local = i;
+
+            if (i < 4)
+            {
+                Coroutine.Start(Cr, id);
+                Debug.Log("Test: Restarting coroutine " + i_local);
+            }
+
+            yield return null;
+
+            Debug.Log("Test: Completed " + i_local);
+        }
     }
 }

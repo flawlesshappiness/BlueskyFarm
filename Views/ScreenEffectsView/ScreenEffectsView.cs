@@ -7,8 +7,23 @@ public partial class ScreenEffectsView : View
     [NodeName]
     public ColorRect Combined;
 
+    [NodeName]
+    public ColorRect AnimatedFog;
+
     public ShaderMaterial CombinedMaterial => _mat_combined ?? (_mat_combined = Combined.Material as ShaderMaterial);
     private ShaderMaterial _mat_combined;
+
+    public ShaderMaterial FogMaterial => _mat_fog ?? (_mat_fog = AnimatedFog.Material as ShaderMaterial);
+    private ShaderMaterial _mat_fog;
+
+    public void Reset()
+    {
+        Blur_Type = -1;
+        Blur_Amount = 0;
+        Radial_Strength = 0;
+        Distort_Strength = 0;
+        Fog_Alpha = 0;
+    }
 
     public float Distort_Strength
     {
@@ -58,13 +73,28 @@ public partial class ScreenEffectsView : View
         set => CombinedMaterial.SetShaderParameter("radial_sampling", value);
     }
 
+    public float Fog_Alpha
+    {
+        get => Fog_Color.A;
+        set => Fog_Color = new Color(Fog_Color.R, Fog_Color.G, Fog_Color.B, value);
+    }
+
+    public Color Fog_Color
+    {
+        get => FogMaterial.GetShaderParameter("color").AsColor();
+        set => FogMaterial.SetShaderParameter("color", value);
+    }
+
+    public Vector2 Fog_Direction
+    {
+        get => CombinedMaterial.GetShaderParameter("fog_direction").AsVector2();
+        set => CombinedMaterial.SetShaderParameter("fog_direction", value);
+    }
+
     public override void _Ready()
     {
         base._Ready();
         Visible = true;
-
-        Distort_Strength = 0;
-        Blur_Amount = 0;
-        Radial_Strength = 0;
+        Reset();
     }
 }

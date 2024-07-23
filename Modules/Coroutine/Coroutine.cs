@@ -1,15 +1,16 @@
+using Godot;
 using System;
 using System.Collections;
 
 public class Coroutine : CustomYieldInstruction
 {
     public Guid Id { get; set; }
-
+    public string StringId { get; set; }
     public IEnumerator Enumerator { get; set; }
-
     public bool HasCompleted { get; set; }
     public bool HasEnded { get; set; }
-
+    public Node ConnectedNode { get; private set; }
+    public bool HasConnectedNode { get; private set; }
     public override bool KeepWaiting => !HasEnded;
 
     public Coroutine(IEnumerator enumerator)
@@ -17,23 +18,23 @@ public class Coroutine : CustomYieldInstruction
         Enumerator = enumerator;
     }
 
-    public static Coroutine Start(IEnumerator enumerator)
+    private static Coroutine Start(IEnumerator enumerator, string id = null, Node connection = null)
     {
         var coroutine = new Coroutine(enumerator);
+        coroutine.SetId(id);
+        coroutine.SetConnection(connection);
         CoroutineHandler.Instance.AddCoroutine(coroutine);
         return coroutine;
     }
 
-    public static Coroutine Start(Func<IEnumerator> enumerator) =>
-        Start(enumerator());
+    public static Coroutine Start(Func<IEnumerator> enumerator, string id) => Start(enumerator(), id: id);
+    public static Coroutine Start(Func<IEnumerator> enumerator, Node connection) => Start(enumerator(), connection: connection);
+    public static Coroutine Start(Func<IEnumerator> enumerator, Node connection, string id) => Start(enumerator(), connection: connection, id: id);
+    public static Coroutine Start(Func<IEnumerator> enumerator) => Start(enumerator());
 
-    public static bool Stop(Coroutine coroutine)
+    public static void Stop(Coroutine coroutine)
     {
-        if (coroutine == null) return true;
-
-        coroutine.HasEnded = true;
         CoroutineHandler.Instance.RemoveCoroutine(coroutine);
-        return true;
     }
 
     public void UpdateFrame()
@@ -59,4 +60,16 @@ public class Coroutine : CustomYieldInstruction
         return enumerator.MoveNext();
     }
 
+    public Coroutine SetConnection(Node node)
+    {
+        ConnectedNode = node;
+        HasConnectedNode = node != null;
+        return this;
+    }
+
+    public Coroutine SetId(string id)
+    {
+        StringId = id;
+        return this;
+    }
 }

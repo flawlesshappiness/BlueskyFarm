@@ -14,6 +14,7 @@ public partial class GameScene : Scene
         base._Ready();
         _player_is_dying = false;
 
+        ScreenEffects.Reset();
         RegisterDebugActions();
     }
 

@@ -51,7 +51,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     public void LoadItems(List<ItemData> datas)
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         foreach (var data in datas)
@@ -103,7 +103,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     public void SellItem(ItemInfo info)
     {
-        Debug.LogMethod($"{info}");
+        Debug.TraceMethod($"{info}");
         Debug.Indent++;
 
         CurrencyController.Instance.AddValue(CurrencyType.Money, info.SellValue);

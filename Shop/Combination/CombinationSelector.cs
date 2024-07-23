@@ -40,7 +40,7 @@ public partial class CombinationSelector : NodeScript
 
     private void SetCombination(string combination)
     {
-        Debug.LogMethod(CurrentCombination);
+        Debug.TraceMethod(CurrentCombination);
 
         CurrentCombination = combination ?? string.Empty;
         CurrentCombination = CurrentCombination.Length > CombinationLength ? CurrentCombination.Substring(0, CombinationLength) : CurrentCombination;

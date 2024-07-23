@@ -35,7 +35,7 @@ public partial class SaveDataController : Node
         }
         else
         {
-            Debug.LogMethod(typeof(T));
+            Debug.TraceMethod(typeof(T));
             Debug.Indent++;
 
             T data = null;
@@ -49,7 +49,7 @@ public partial class SaveDataController : Node
                 EnsureFileExists(path);
 
                 var json = FileAccess.GetFileAsString(path);
-                Debug.Log(json);
+                Debug.Trace(json);
 
                 data = string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json);
             }
@@ -70,7 +70,7 @@ public partial class SaveDataController : Node
 
     public void SaveAll()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         foreach (var kvp in data_objects)
@@ -97,7 +97,7 @@ public partial class SaveDataController : Node
         data.Update();
 
         var json = JsonSerializer.Serialize(data, data.GetType(), new JsonSerializerOptions { WriteIndented = true, IncludeFields = true });
-        Debug.Log(json);
+        Debug.Trace(json);
 
         var filename = type.Name;
         var path = $"user://{filename}.save";

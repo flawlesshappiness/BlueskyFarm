@@ -40,13 +40,13 @@ public static class Singleton
     {
         if (!TryGet(type, out var singleton))
         {
-            Debug.LogMethod($"{script_path}, {type.Name}");
+            Debug.TraceMethod($"{script_path}, {type.Name}");
             Debug.Indent++;
 
             singleton = CreateInstance(script_path, type);
             _singletons.Add(type.Name, singleton);
 
-            Debug.Log($"Created singleton: {type.Name}");
+            Debug.Trace($"Created singleton: {type.Name}");
             Debug.Indent--;
         }
 

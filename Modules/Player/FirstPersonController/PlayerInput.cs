@@ -9,4 +9,5 @@ public partial class PlayerInput : Node
     public static CustomInputAction Jump = new CustomInputAction("Jump");
     public static CustomInputAction Interact = new CustomInputAction("Interact");
     public static CustomInputAction Pause = new CustomInputAction("Pause");
+    public static CustomInputAction Run = new CustomInputAction("Run");
 }

@@ -5,11 +5,15 @@ using System.Collections;
 public partial class FirstPersonStep : Node3D
 {
     [Export]
-    public float StepTime = 0.7f;
+    public float WalkStepTime = 0.7f;
+
+    [Export]
+    public float RunStepTime = 0.7f;
 
     [Export]
     public float StepBounce = 0.2f;
 
+    private float DesiredStepTime => Player.IsRunning ? RunStepTime : WalkStepTime;
     private float StepTimeMultiplier => Player.MoveSpeedMultiplier == 0 ? 0 : (1f / Player.MoveSpeedMultiplier);
 
     private FirstPersonController Player { get; set; }
@@ -61,7 +65,7 @@ public partial class FirstPersonStep : Node3D
 
     public void ResetStepTime()
     {
-        timeNextStep = GameTime.Time + StepTime * StepTimeMultiplier;
+        timeNextStep = GameTime.Time + DesiredStepTime * StepTimeMultiplier;
     }
 
     private void MoveStep()
@@ -90,7 +94,7 @@ public partial class FirstPersonStep : Node3D
 
         IEnumerator Cr()
         {
-            var duration = StepTime * 0.4f * StepTimeMultiplier;
+            var duration = DesiredStepTime * 0.4f * StepTimeMultiplier;
             var current_position = Position;
             var mid_position = start_position + Vector3.Down * StepBounce;
             var end_position = start_position;
@@ -116,7 +120,7 @@ public partial class FirstPersonStep : Node3D
         IEnumerator Cr()
         {
             var current_position = Position;
-            var duration = StepTime * 0.2f;
+            var duration = 0.15f;
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 Position = current_position.Lerp(start_position, Curves.EaseInOutQuad.Evaluate(f));

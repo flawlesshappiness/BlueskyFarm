@@ -6,7 +6,10 @@ public partial class FirstPersonController : CharacterBody3D
     public static FirstPersonController Instance { get; private set; }
 
     [Export]
-    public float MoveSpeed = 5.0f;
+    public float WalkSpeed = 2.5f;
+
+    [Export]
+    public float RunSpeed = 5.0f;
 
     [Export]
     public float JumpUpSpeed = 3f;
@@ -37,6 +40,8 @@ public partial class FirstPersonController : CharacterBody3D
 
     public float MoveSpeedMultiplier { get; set; } = 1f;
     public float LookSpeedMultiplier { get; set; } = 1f;
+    public bool IsRunning => PlayerInput.Run.Held;
+    public float DesiredMoveSpeed => IsRunning ? RunSpeed : WalkSpeed;
 
     public MultiLock InteractLock = new MultiLock();
     public MultiLock MovementLock = new MultiLock();
@@ -113,13 +118,13 @@ public partial class FirstPersonController : CharacterBody3D
             var has_direction = direction != Vector3.Zero;
             if (has_direction)
             {
-                velocity.X = direction.X * MoveSpeed * MoveSpeedMultiplier;
-                velocity.Z = direction.Z * MoveSpeed * MoveSpeedMultiplier;
+                velocity.X = direction.X * DesiredMoveSpeed * MoveSpeedMultiplier;
+                velocity.Z = direction.Z * DesiredMoveSpeed * MoveSpeedMultiplier;
             }
             else
             {
-                velocity.X = Mathf.MoveToward(Velocity.X, 0, MoveSpeed * MoveSpeedMultiplier);
-                velocity.Z = Mathf.MoveToward(Velocity.Z, 0, MoveSpeed * MoveSpeedMultiplier);
+                velocity.X = Mathf.MoveToward(Velocity.X, 0, DesiredMoveSpeed * MoveSpeedMultiplier);
+                velocity.Z = Mathf.MoveToward(Velocity.Z, 0, DesiredMoveSpeed * MoveSpeedMultiplier);
             }
 
             // Handle Jump

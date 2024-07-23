@@ -7,7 +7,7 @@
 [node name="FirstPersonPlayer" instance=ExtResource("1_pwey1")]
 
 [node name="Step" parent="." index="1"]
-StepTime = 0.4
+RunStepTime = 0.35
 StepBounce = 0.15
 
 [node name="StepSounds" type="Node3D" parent="." index="3"]

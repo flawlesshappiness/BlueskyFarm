@@ -14,18 +14,13 @@ public partial class FarmScene : GameScene
             Data.Game.FirstTimeBoot = false;
         }
 
-        Data.Game.OnBeforeSave += OnBeforeSave;
         Data.Game.Save();
     }
 
-    protected override void OnDestroy()
+    protected override void BeforeSave()
     {
-        base.OnDestroy();
-        Data.Game.OnBeforeSave -= OnBeforeSave;
-    }
+        base.BeforeSave();
 
-    private void OnBeforeSave()
-    {
         FirstPersonController.Instance.UpdateData();
         InventoryController.Instance.UpdateData();
         ItemController.Instance.UpdateData();

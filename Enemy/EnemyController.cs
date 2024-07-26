@@ -5,7 +5,6 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     public override void _Ready()
     {
         base._Ready();
-
         BasementController.Instance.OnBasementGenerated += BasementGenerated;
     }
 
@@ -17,6 +16,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     private Enemy CreateEnemy(EnemyInfo info)
     {
         var enemy = GDHelper.Instantiate<Enemy>(info.Path, Scene.Current);
+        enemy.SetParent(Scene.Current);
         return enemy;
     }
 
@@ -24,6 +24,5 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     {
         var info = GetRandomEnemyInfo();
         var enemy = CreateEnemy(info);
-        enemy.SetParent(Scene.Current);
     }
 }

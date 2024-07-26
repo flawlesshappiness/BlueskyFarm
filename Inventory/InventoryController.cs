@@ -44,7 +44,7 @@ public partial class InventoryController : SingletonController
 
     public void UpdateData()
     {
-        Data.Game.InventoryItems = CurrentInventoryItems;
+        Data.Game.InventoryItems = CurrentInventoryItems.ToList();
     }
 
     public bool HasItem(ItemData item)
@@ -56,7 +56,7 @@ public partial class InventoryController : SingletonController
     {
         if (HasItem(item.Data)) return;
 
-        Debug.LogMethod(item.Data.InfoPath);
+        Debug.TraceMethod(item.Data.InfoPath);
         Debug.Indent++;
 
         if (item.Info.IsMoney)
@@ -106,7 +106,7 @@ public partial class InventoryController : SingletonController
 
     public void DropInventory()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         var items = CurrentInventoryItems.ToList();

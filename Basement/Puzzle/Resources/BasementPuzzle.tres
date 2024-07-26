@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BasementPuzzleInfo" load_steps=2 format=3 uid="uid://fc2cqihonkx1"]
+
+[ext_resource type="Script" path="res://Basement/Puzzle/BasementPuzzleInfo.cs" id="1_6wy1i"]
+
+[resource]
+script = ExtResource("1_6wy1i")
+Path = "res://Basement/Puzzle/ChestPuzzle/ChestPuzzle.tscn"

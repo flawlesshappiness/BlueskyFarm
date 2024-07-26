@@ -5,7 +5,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnbom"]
 
 [node name="Crate" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0)
 collision_layer = 3
 
 [node name="crateDark_gltf" parent="." instance=ExtResource("1_rd131")]
@@ -14,8 +13,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506317, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504659, 0)
 shape = SubResource("BoxShape3D_pnbom")
-
-[node name="Items" type="Node3D" parent="."]
-
-[node name="Position" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159168, 1.01337, 0.101464)

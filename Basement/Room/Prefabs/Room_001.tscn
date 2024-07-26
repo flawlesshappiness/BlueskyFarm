@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon_001/Pillar.tscn" id="5_3sp31"]
 [ext_resource type="PackedScene" uid="uid://dgwacocaootjc" path="res://Basement/Assets/Dungeon_001/Window.tscn" id="6_oe0ma"]
 [ext_resource type="PackedScene" uid="uid://ushvc4v1oc0j" path="res://Basement/Assets/Dungeon_001/Doorway.tscn" id="7_0cvjb"]
-[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/Boocase_Broken.tscn" id="9_u2xqn"]
-[ext_resource type="PackedScene" uid="uid://d2svb82x6jbwc" path="res://Basement/Assets/Dungeon_001/Bookcase.tscn" id="10_gjeg8"]
+[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/BoocaseWide_Broken.tscn" id="9_u2xqn"]
+[ext_resource type="PackedScene" uid="uid://d2svb82x6jbwc" path="res://Basement/Assets/Dungeon_001/BookcaseWide.tscn" id="10_gjeg8"]
 [ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="11_erda0"]
 
 [node name="Room_001" instance=ExtResource("1_p78vl")]

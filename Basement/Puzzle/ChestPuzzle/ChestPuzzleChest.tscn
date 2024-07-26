@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0yqnsy43lglw"]
+
+[ext_resource type="Script" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleChest.cs" id="1_32npn"]
+[ext_resource type="PackedScene" uid="uid://bodxnfcn1wkgc" path="res://Assets/Quaternius/RPG/Chest_Closed.obj" id="1_ulhik"]
+[ext_resource type="PackedScene" uid="uid://drfxno32kggbh" path="res://Assets/Quaternius/RPG/Chest_Open.obj" id="2_a4gnh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_splgd"]
+size = Vector3(1.09155, 0.875488, 1)
+
+[node name="Chest" type="StaticBody3D"]
+script = ExtResource("1_32npn")
+KeyItemId = "ChestPuzzleKey"
+HoverText = "Chest"
+
+[node name="Closed" parent="." instance=ExtResource("1_ulhik")]
+
+[node name="Open" parent="." instance=ExtResource("2_a4gnh")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431152, -0.071863)
+shape = SubResource("BoxShape3D_splgd")
+
+[node name="ItemSpawnPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0.537717, 0.100841)

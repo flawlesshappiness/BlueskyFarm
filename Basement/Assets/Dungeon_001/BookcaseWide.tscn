@@ -11,7 +11,7 @@ size = Vector3(1.58105, 0.0915527, 0.433838)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvpqg"]
 size = Vector3(1.99023, 0.172485, 0.549072)
 
-[node name="Bookcase" type="Node3D"]
+[node name="BookcaseWide" type="Node3D"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
 [node name="bookcaseWide_gltf" parent="." instance=ExtResource("1_csgdd")]
@@ -42,32 +42,3 @@ shape = SubResource("BoxShape3D_xvpqg")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91729, 0)
 shape = SubResource("BoxShape3D_xvpqg")
-
-[node name="Items" type="Node3D" parent="."]
-
-[node name="Position" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.566291, 0.28987, 0)
-
-[node name="Position2" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00730715, 0.28987, 0)
-
-[node name="Position3" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57858, 0.28987, 0)
-
-[node name="Position4" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.566291, 0.803874, 0)
-
-[node name="Position5" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00730715, 0.803874, 0)
-
-[node name="Position6" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57858, 0.803874, 0)
-
-[node name="Position7" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.566291, 1.41332, 0)
-
-[node name="Position8" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00730715, 1.41332, 0)
-
-[node name="Position9" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57858, 1.41332, 0)

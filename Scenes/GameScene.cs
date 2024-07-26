@@ -18,6 +18,24 @@ public partial class GameScene : Scene
         RegisterDebugActions();
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        Data.Game.OnBeforeSave += BeforeSave;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        Data.Game.OnBeforeSave -= BeforeSave;
+    }
+
+    protected virtual void BeforeSave()
+    {
+
+    }
+
     private void RegisterDebugActions()
     {
         if (_registered_debug_actions) return;

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdco18oe37rhc"]
+[gd_scene load_steps=5 format=3 uid="uid://bdco18oe37rhc"]
 
 [ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
 [ext_resource type="PackedScene" uid="uid://ces2w5eg2difr" path="res://UI/MoneyBar/MoneyBar.tscn" id="2_0bxlp"]
 [ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
+[ext_resource type="PackedScene" uid="uid://u4x4nxc1afaf" path="res://UI/KeyItemBar/KeyItemBar.tscn" id="4_ruths"]
 
 [node name="GameView" type="Control"]
 layout_mode = 3
@@ -47,10 +48,14 @@ layout_mode = 2
 
 [node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_0bxlp")]
 layout_mode = 1
-offset_left = -151.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 43.0
+anchors_preset = 3
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -49.0
+offset_right = -30.0
+offset_bottom = -6.0
+grow_vertical = 0
 
 [node name="Minimap" type="Control" parent="MarginContainer/Control"]
 visible = false
@@ -142,3 +147,14 @@ offset_right = 2.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="KeyItemBar" parent="MarginContainer/Control" instance=ExtResource("4_ruths")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = -71.0
+grow_horizontal = 0

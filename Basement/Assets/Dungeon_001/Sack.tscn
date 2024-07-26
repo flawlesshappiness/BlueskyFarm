@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmrgylcd2u6i1"]
+
+[ext_resource type="PackedScene" uid="uid://qgi10c3ag66l" path="res://Assets/KayLousberg/Dungeon/lootSackA.gltf.glb" id="1_lpg71"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6hxyw"]
+radius = 0.552257
+height = 1.28268
+
+[node name="Sack" type="StaticBody3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498043, 0)
+shape = SubResource("CapsuleShape3D_6hxyw")
+
+[node name="lootSackA_gltf" parent="." instance=ExtResource("1_lpg71")]

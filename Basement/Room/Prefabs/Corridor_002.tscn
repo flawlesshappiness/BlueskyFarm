@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon_001/Wall.tscn" id="3_r818p"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="3_vnc8n"]
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon_001/Pillar.tscn" id="5_vysew"]
-[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/Boocase_Broken.tscn" id="7_skv0w"]
+[ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Dungeon_001/BoocaseWide_Broken.tscn" id="7_skv0w"]
 
 [node name="Corridor_002" instance=ExtResource("1_jvper")]
 

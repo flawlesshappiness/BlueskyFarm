@@ -13,9 +13,6 @@ public partial class BasementScene : GameScene
         // Basement
         BasementController.Instance.DebugGenerateBasement();
 
-        // Data
-        Data.Game.OnBeforeSave += OnBeforeSave;
-
         // Audio
         SetAudioEffectEnabled(true);
     }
@@ -24,15 +21,16 @@ public partial class BasementScene : GameScene
     {
         base.OnDestroy();
 
-        // Data
-        Data.Game.OnBeforeSave -= OnBeforeSave;
+        // Key items
+        KeyItemInventoryController.Instance.Clear();
 
         // Audio
         SetAudioEffectEnabled(false);
     }
 
-    private void OnBeforeSave()
+    protected override void BeforeSave()
     {
+        base.BeforeSave();
         ApplyTimePassed();
     }
 

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://u4x4nxc1afaf"]
+
+[ext_resource type="Script" path="res://UI/KeyItemBar/KeyItemBar.cs" id="1_78vv7"]
+[ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="2_ruppm"]
+
+[node name="KeyItemBar" type="MarginContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 25.0
+offset_right = 25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_78vv7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="IconTemplate" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_ruppm")
+expand_mode = 1
+stretch_mode = 4

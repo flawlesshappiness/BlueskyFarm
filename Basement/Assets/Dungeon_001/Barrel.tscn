@@ -6,7 +6,6 @@
 height = 1.02873
 
 [node name="Barrel" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07465, 0, 0)
 collision_layer = 3
 
 [node name="barrelDark_gltf" parent="." instance=ExtResource("1_p3q4o")]
@@ -15,8 +14,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404221, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498043, 0)
 shape = SubResource("CylinderShape3D_t2qjp")
-
-[node name="Items" type="Node3D" parent="."]
-
-[node name="Position" type="Node3D" parent="Items"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0639644, 1.02135, 0.0802211)

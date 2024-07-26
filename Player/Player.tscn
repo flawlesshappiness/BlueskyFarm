@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://Sound/Sound.cs" id="3_7ahbp"]
 
 [node name="FirstPersonPlayer" instance=ExtResource("1_pwey1")]
+JumpUpSpeed = 4.0
+JumpHorizontalSpeed = 1.0
 
 [node name="Step" parent="." index="1"]
 RunStepTime = 0.35

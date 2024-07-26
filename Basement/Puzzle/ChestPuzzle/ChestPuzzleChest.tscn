@@ -22,3 +22,8 @@ shape = SubResource("BoxShape3D_splgd")
 
 [node name="ItemSpawnPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0.537717, 0.100841)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.913375, 0.565079)
+light_energy = 0.01
+omni_range = 1.74962

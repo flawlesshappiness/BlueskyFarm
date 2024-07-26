@@ -39,7 +39,7 @@ public partial class Touchable : StaticBody3D, IInteractable, ITouchable
 
     public void Touch()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         OnTouched?.Invoke();

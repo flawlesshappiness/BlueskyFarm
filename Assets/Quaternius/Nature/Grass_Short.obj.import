@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "Green": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Quaternius/Nature/Materials/Grass_Short.tres"
+"use_external/path": "res://Assets/Materials/Grass_Short.tres"
 }
 }
 }

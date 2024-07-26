@@ -33,15 +33,15 @@ _subresources={
 "materials": {
 "DarkMetal": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Quaternius/RPG/Materials/Chest_Metal.tres"
+"use_external/path": "res://Assets/Materials/Metal.tres"
 },
 "Metal": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Quaternius/RPG/Materials/Chest_Metal.tres"
+"use_external/path": "res://Assets/Materials/Metal.tres"
 },
 "Wood": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Quaternius/RPG/Materials/Chest_Wood.tres"
+"use_external/path": "res://Assets/Materials/Wood.tres"
 }
 }
 }

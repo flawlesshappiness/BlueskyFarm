@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "roots": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Quaternius/Nature/Materials/Mushroom_Stalk.tres"
+"use_external/path": "res://Assets/Materials/Mushroom_Stalk.tres"
 }
 }
 }

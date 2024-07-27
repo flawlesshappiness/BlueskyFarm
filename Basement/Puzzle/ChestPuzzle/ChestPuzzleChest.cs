@@ -27,12 +27,34 @@ public partial class ChestPuzzleChest : Touchable
 
     private void Touched()
     {
-        if (_open) return;
-        if (string.IsNullOrEmpty(KeyItemId)) return;
-        if (!KeyItemInventoryController.Instance.HasItem(KeyItemId)) return;
+        if (CanUnlock())
+        {
+            KeyItemInventoryController.Instance.Remove(KeyItemId);
+            Unlock();
+        }
+        else
+        {
+            Locked();
+        }
+    }
 
-        KeyItemInventoryController.Instance.Remove(KeyItemId);
-        Unlock();
+    private bool CanUnlock()
+    {
+        if (_open) return false;
+        if (string.IsNullOrEmpty(KeyItemId)) return false;
+        if (!KeyItemInventoryController.Instance.HasItem(KeyItemId)) return false;
+
+        return true;
+    }
+
+    private void Locked()
+    {
+        SoundController.Instance.Play("sfx_chest_locked", new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = GlobalPosition,
+            Volume = -30
+        });
     }
 
     public void Unlock()

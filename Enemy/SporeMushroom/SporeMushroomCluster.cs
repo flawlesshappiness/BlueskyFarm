@@ -36,7 +36,15 @@ public partial class SporeMushroomCluster : Node3DScript
         _models = this.GetNodesInChildren<SporeMushroomModel>().ToList();
         _roots = this.GetNodeInChildren<SporeMushroomRoots>();
 
+        RandomizeRotation();
+
         Trigger.BodyEntered += TriggerEntered;
+    }
+
+    private void RandomizeRotation()
+    {
+        var rng = new RandomNumberGenerator();
+        GlobalRotation = new Vector3(0, rng.RandfRange(0, 360), 0);
     }
 
     private void TriggerEntered(Node3D body)

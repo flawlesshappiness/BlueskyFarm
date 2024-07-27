@@ -30,7 +30,7 @@ public partial class CurrencyController : Node
 
     public void AddValue(CurrencyType type, int value)
     {
-        Debug.LogMethod($"{type}, {value}");
+        Debug.TraceMethod($"{type}, {value}");
         Debug.Indent++;
 
         var data = GetData(type);
@@ -41,7 +41,7 @@ public partial class CurrencyController : Node
 
     public void SetValue(CurrencyType type, int value)
     {
-        Debug.LogMethod($"{type}, {value}");
+        Debug.TraceMethod($"{type}, {value}");
         Debug.Indent++;
 
         var data = GetData(type);

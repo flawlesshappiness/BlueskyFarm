@@ -92,6 +92,7 @@ shadow_enabled = true
 omni_range = 8.40261
 
 [node name="Ceiling" type="Node3D" parent="." index="6"]
+visible = false
 
 [node name="Ceiling" parent="Ceiling" index="0" instance=ExtResource("3_dkg7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 0)
@@ -390,28 +391,16 @@ transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 5.5, 0, 
 [node name="Pillar8" parent="Walls" index="39" instance=ExtResource("6_k1yih")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 3, 0, -5.5)
 
-[node name="Doorway" parent="Walls" index="40" instance=ExtResource("7_p03ve")]
-transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0, 5.5)
-
-[node name="Doorway5" parent="Walls" index="41" instance=ExtResource("7_p03ve")]
+[node name="Doorway5" parent="Walls" index="40" instance=ExtResource("7_p03ve")]
 transform = Transform3D(1, 0, -2.78181e-08, 0, 1, 0, 2.78181e-08, 0, 1, 0, 0, 5.5)
 
-[node name="Doorway2" parent="Walls" index="42" instance=ExtResource("7_p03ve")]
+[node name="Doorway2" parent="Walls" index="41" instance=ExtResource("7_p03ve")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -5.5, 0, 0)
 
-[node name="Doorway8" parent="Walls" index="43" instance=ExtResource("7_p03ve")]
-transform = Transform3D(1.47027e-07, 0, -1, 0, 1, 0, 1, 0, 1.47027e-07, -5.5, 0, 0)
-
-[node name="Doorway3" parent="Walls" index="44" instance=ExtResource("7_p03ve")]
+[node name="Doorway3" parent="Walls" index="42" instance=ExtResource("7_p03ve")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
 
-[node name="Doorway7" parent="Walls" index="45" instance=ExtResource("7_p03ve")]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 0, -5.5)
-
-[node name="Doorway4" parent="Walls" index="46" instance=ExtResource("7_p03ve")]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 5.5, 0, 0)
-
-[node name="Doorway6" parent="Walls" index="47" instance=ExtResource("7_p03ve")]
+[node name="Doorway6" parent="Walls" index="43" instance=ExtResource("7_p03ve")]
 transform = Transform3D(1.47027e-07, 0, 1, 0, 1, 0, -1, 0, 1.47027e-07, 5.5, 0, 0)
 
 [node name="Interior" type="Node3D" parent="." index="9"]

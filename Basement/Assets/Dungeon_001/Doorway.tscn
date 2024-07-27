@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://ushvc4v1oc0j"]
 
-[ext_resource type="PackedScene" uid="uid://cjcoqx4os8jtq" path="res://Assets/KayLousberg/Dungeon/wallSingle_door.gltf.glb" id="1_nqvue"]
+[ext_resource type="PackedScene" uid="uid://cueux51r45dkf" path="res://Assets/KayLousberg/Dungeon/wall_door.gltf.glb" id="2_0ixls"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_olsi5"]
-size = Vector3(2, 4, 0.5)
+size = Vector3(2, 4, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cqfq"]
-size = Vector3(2, 4, 0.5)
+size = Vector3(2, 4, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7tqwk"]
-size = Vector3(2, 1.5, 0.5)
+size = Vector3(2, 1.5, 1)
 
 [node name="Doorway" type="Node3D"]
 
@@ -17,15 +17,15 @@ size = Vector3(2, 1.5, 0.5)
 collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
 shape = SubResource("BoxShape3D_olsi5")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
 shape = SubResource("BoxShape3D_6cqfq")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
 shape = SubResource("BoxShape3D_7tqwk")
 
-[node name="wallSingle_door_gltf" parent="." instance=ExtResource("1_nqvue")]
+[node name="wall_door_gltf" parent="." instance=ExtResource("2_0ixls")]

@@ -21,6 +21,9 @@ public partial class OptionsView : View
     public Slider BGMSlider;
 
     [NodeName]
+    public Slider BrightnessSlider;
+
+    [NodeName]
     public OptionButton WindowModeDropdown;
 
     [NodeName]
@@ -53,6 +56,7 @@ public partial class OptionsView : View
         MasterSlider.Value = Data.Game.VolumeMaster;
         SFXSlider.Value = Data.Game.VolumeSFX;
         BGMSlider.Value = Data.Game.VolumeBGM;
+        BrightnessSlider.Value = Data.Game.Brightness;
         WindowModeDropdown.Selected = Data.Game.WindowMode;
         ResolutionDropdown.Selected = Data.Game.Resolution;
         VSyncDropdown.Selected = Data.Game.VSync;
@@ -62,6 +66,7 @@ public partial class OptionsView : View
         MasterSlider.ValueChanged += MasterSlider_ValueChanged;
         SFXSlider.ValueChanged += SFXSlider_ValueChanged;
         BGMSlider.ValueChanged += BGMSlider_ValueChanged;
+        BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
         WindowModeDropdown.ItemSelected += WindowMode_SelectionChanged;
         ResolutionDropdown.ItemSelected += Resolution_SelectionChanged;
         VSyncDropdown.ItemSelected += VSync_SelectionChanged;
@@ -114,6 +119,13 @@ public partial class OptionsView : View
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateVolume("BGM", f);
         Data.Game.VolumeBGM = f;
+    }
+
+    private void BrightnessSlider_ValueChanged(double v)
+    {
+        var f = Convert.ToSingle(v);
+        OptionsController.Instance.UpdateBrightness(f);
+        Data.Game.Brightness = f;
     }
 
     private void WindowMode_AddItems()

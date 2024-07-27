@@ -10,6 +10,8 @@ public partial class OptionsController : SingletonController
     public static Window.ModeEnum CurrentWindowMode => WindowModes.GetClamped(Data.Game.WindowMode);
     public static DisplayServer.VSyncMode CurrentVSyncMode => VSyncModes.GetClamped(Data.Game.VSync);
 
+    public event Action OnBrightnessChanged;
+
     public static readonly List<Window.ModeEnum> WindowModes = new()
     {
         Window.ModeEnum.Windowed,
@@ -80,6 +82,7 @@ public partial class OptionsController : SingletonController
         UpdateVolume("BGM", Data.Game.VolumeBGM);
         UpdateVsync(Data.Game.VSync);
         UpdateFPSLimit(Data.Game.FPSLimit);
+        UpdateBrightness(Data.Game.Brightness);
 
         if (CurrentWindowMode == Window.ModeEnum.Windowed)
         {
@@ -166,5 +169,10 @@ public partial class OptionsController : SingletonController
         UpdateActionOverride(data.Action, data.ToEvent());
 
         Debug.Indent--;
+    }
+
+    public void UpdateBrightness(float value)
+    {
+        OnBrightnessChanged?.Invoke();
     }
 }

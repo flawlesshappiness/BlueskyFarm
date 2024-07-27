@@ -5,6 +5,9 @@ public partial class GameScene : Scene
 {
     public static GameScene Current => Scene.Current as GameScene;
 
+    [NodeType]
+    public WorldEnvironment WorldEnvironment;
+
     private bool _player_is_dying;
 
     private static bool _registered_debug_actions;
@@ -16,6 +19,18 @@ public partial class GameScene : Scene
 
         ScreenEffects.Reset();
         RegisterDebugActions();
+
+        WorldEnvironment.Environment.AdjustmentEnabled = true;
+        UpdateBrightness();
+
+        OptionsController.Instance.OnBrightnessChanged += UpdateBrightness;
+    }
+
+    private void UpdateBrightness()
+    {
+        if (!IsInstanceValid(WorldEnvironment)) return;
+
+        WorldEnvironment.Environment.AdjustmentBrightness = Data.Game.Brightness;
     }
 
     protected override void Initialize()

@@ -35,7 +35,7 @@ theme_override_constants/separation = 25
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
-current_tab = 2
+current_tab = 1
 
 [node name="Audio" type="MarginContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -76,7 +76,6 @@ max_value = 1.0
 step = 0.01
 
 [node name="Video" type="MarginContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -166,7 +165,31 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Brightness" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Brightness/Left"]
+layout_mode = 2
+text = "Brightness"
+
+[node name="Right" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BrightnessSlider" type="HSlider" parent="CenterContainer/VBoxContainer/TabContainer/Video/HBoxContainer/Brightness/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.1
+
 [node name="Keys" type="MarginContainer" parent="CenterContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25

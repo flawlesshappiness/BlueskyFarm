@@ -9,6 +9,7 @@ public partial class GameSaveData
     public int Resolution { get; set; } = 4;
     public int VSync { get; set; } = 2;
     public int FPSLimit { get; set; } = 4;
+    public float Brightness { get; set; } = 1.0f;
     public List<InputEventKeyData> KeyOverrides { get; set; } = new();
     public List<InputEventMouseButtonData> MouseButtonOverrides { get; set; } = new();
 }

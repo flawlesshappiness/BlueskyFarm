@@ -55,6 +55,8 @@ public partial class ChestPuzzleChest : Touchable
             Position = GlobalPosition,
             Volume = -30
         });
+
+        View.Get<TextView>().DisplayText("The chest is locked");
     }
 
     public void Unlock()

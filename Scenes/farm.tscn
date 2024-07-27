@@ -298,7 +298,6 @@ CombinationLength = 6
 [node name="InputCancel" type="StaticBody3D" parent="World/CombinationShop/Selector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20724, 0.007, 1.21758)
 script = ExtResource("7_avkjm")
-HoverText = "Cancel"
 StartCollisionMode = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputCancel"]
@@ -315,7 +314,6 @@ texture = ExtResource("9_6fr4v")
 [node name="InputAccept" type="StaticBody3D" parent="World/CombinationShop/Selector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14756, 0.007, 1.21758)
 script = ExtResource("7_avkjm")
-HoverText = "Accept"
 StartCollisionMode = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/CombinationShop/Selector/InputAccept"]

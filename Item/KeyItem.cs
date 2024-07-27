@@ -23,7 +23,8 @@ public partial class KeyItem : Touchable
 
         SoundController.Instance.Play("sfx_pickup_key_item", new SoundSettings
         {
-            Bus = SoundBus.SFX
+            Bus = SoundBus.SFX,
+            Volume = 10
         });
 
         QueueFree();

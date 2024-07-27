@@ -60,8 +60,8 @@ public partial class Item : Grabbable
 
         var vel_min = 0f;
         var vel_max = 5f;
-        var vol_min = -36f;
-        var vol_max = 0f;
+        var vol_min = 0f;
+        var vol_max = 30f;
         var pitch_min = 0.5f;
         var pitch_max = 1.5f;
 

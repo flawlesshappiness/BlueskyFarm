@@ -6,9 +6,10 @@
 
 [sub_resource type="Environment" id="Environment_83lvk"]
 ambient_light_source = 2
-ambient_light_color = Color(0.1, 0.085, 0.085, 1)
+ambient_light_color = Color(0.15, 0.1275, 0.1275, 1)
 ssao_enabled = true
 ssao_radius = 0.5
+adjustment_enabled = true
 
 [node name="Basement" type="Node3D"]
 script = ExtResource("1_4o6kx")
@@ -25,4 +26,6 @@ omni_range = 7.0
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vekss")
+volume_db = 15.0
 autoplay = true
+bus = &"SFX"

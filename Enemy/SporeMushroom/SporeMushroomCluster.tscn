@@ -50,13 +50,14 @@ shape = SubResource("CylinderShape3D_geq5l")
 
 [node name="SfxPuff" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_cun5x")
+volume_db = 20.0
 bus = &"SFX"
 script = ExtResource("5_ic6ym")
 PitchMin = 0.9
 
 [node name="SfxAppear" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_8l7xp")
-volume_db = -10.0
+volume_db = 10.0
 unit_size = 1.0
 bus = &"SFX"
 script = ExtResource("5_ic6ym")

@@ -53,10 +53,10 @@ public partial class ChestPuzzleChest : Touchable
         {
             Bus = SoundBus.SFX,
             Position = GlobalPosition,
-            Volume = -30
+            Volume = 0
         });
 
-        View.Get<TextView>().DisplayText("The chest is locked");
+        View.Get<TextView>().DisplayText("The chest is locked.\nI need to find the key.");
     }
 
     public void Unlock()
@@ -65,7 +65,7 @@ public partial class ChestPuzzleChest : Touchable
         {
             Bus = SoundBus.SFX,
             Position = GlobalPosition,
-            Volume = -20
+            Volume = 0
         });
 
         Closed.Hide();

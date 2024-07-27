@@ -1,18 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbowyttubfi37"]
+[gd_scene load_steps=3 format=3 uid="uid://bbowyttubfi37"]
 
 [ext_resource type="PackedScene" uid="uid://bhl5wintt2oue" path="res://Assets/KayLousberg/Dungeon/bookcaseFilled.gltf.glb" id="1_rfxj4"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hwp30"]
-size = Vector3(0.119385, 2, 0.465088)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bmd8k"]
-size = Vector3(0.119385, 2, 0.465088)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gm522"]
-size = Vector3(0.716431, 0.0915527, 0.433838)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6xjn4"]
-size = Vector3(1.02734, 0.172485, 0.549072)
+size = Vector3(1.02734, 2.01114, 0.549072)
 
 [node name="BookcaseShort_Filled" type="Node3D"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
@@ -20,28 +11,8 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344369, 1, 0)
-shape = SubResource("BoxShape3D_hwp30")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.348328, 1, 0)
-shape = SubResource("BoxShape3D_bmd8k")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00896984, 1.32868, 0)
-shape = SubResource("BoxShape3D_gm522")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00896984, 0.737642, 0)
-shape = SubResource("BoxShape3D_gm522")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91729, 0)
-shape = SubResource("BoxShape3D_6xjn4")
-
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163184, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989157, 0)
 shape = SubResource("BoxShape3D_6xjn4")
 
 [node name="bookcaseFilled_gltf" parent="." instance=ExtResource("1_rfxj4")]

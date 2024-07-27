@@ -73,7 +73,7 @@ public partial class FarmBounds : NodeScript
 
     private void ThrowObjectBack(Node3D body)
     {
-        Debug.LogMethod(body);
+        Debug.TraceMethod(body);
         Debug.Indent++;
 
         var rig = body as RigidBody3D;
@@ -105,7 +105,7 @@ public partial class FarmBounds : NodeScript
 
     public void ThrowObject(RigidBody3D body, Vector3 position)
     {
-        Debug.LogMethod($"{body}, {position}");
+        Debug.TraceMethod($"{body}, {position}");
         Debug.Indent++;
 
         // Calculate sign

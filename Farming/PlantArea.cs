@@ -221,12 +221,14 @@ public partial class PlantArea : Area3D
 
         void OnGrabbedPlant()
         {
+            grabbable.OnGrabbed -= OnGrabbedPlant;
+            item.OnAddedToInventory -= OnGrabbedPlant;
+
             var rig = grabbable as RigidBody3D;
             rig.Freeze = false;
 
             interactable.SetCollisionMode(InteractCollisionMode.All);
             grabbable.Node.SetParent(Scene.Root);
-            grabbable.OnGrabbed -= OnGrabbedPlant;
 
             RemoveData(CurrentSeed.Data.ItemId);
 

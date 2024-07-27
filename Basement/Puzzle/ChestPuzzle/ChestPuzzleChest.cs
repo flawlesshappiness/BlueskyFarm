@@ -37,6 +37,13 @@ public partial class ChestPuzzleChest : Touchable
 
     public void Unlock()
     {
+        SoundController.Instance.Play("sfx_chest_open", new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = GlobalPosition,
+            Volume = -20
+        });
+
         Closed.Hide();
         Open.Show();
         _open = true;

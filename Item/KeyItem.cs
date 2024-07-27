@@ -20,6 +20,12 @@ public partial class KeyItem : Touchable
     private void Touched()
     {
         KeyItemInventoryController.Instance.Add(this);
+
+        SoundController.Instance.Play("sfx_pickup_key_item", new SoundSettings
+        {
+            Bus = SoundBus.SFX
+        });
+
         QueueFree();
     }
 }

@@ -70,6 +70,7 @@ public class SoundSettings3D : SoundSettingsBase
 
     public void ModifySound(AudioStreamPlayer3D sound)
     {
+        sound.Bus = Bus.ToString();
         sound.GlobalPosition = Position;
         sound.PitchScale = RandomPitch;
         sound.VolumeDb = Volume;

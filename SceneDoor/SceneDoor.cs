@@ -65,7 +65,7 @@ public partial class SceneDoor : Touchable
             FirstPersonController.Instance.MovementLock.AddLock(nameof(Sleepable));
             FirstPersonController.Instance.InteractLock.AddLock(nameof(Sleepable));
 
-            SoundController.Instance.Play(OpenSound.ResourcePath, new SoundSettings
+            SoundController.Instance.Play(OpenSound?.ResourcePath, new SoundSettings
             {
                 Volume = -12,
                 Bus = SoundBus.SFX
@@ -81,7 +81,7 @@ public partial class SceneDoor : Touchable
             FirstPersonController.Instance.MovementLock.RemoveLock(nameof(Sleepable));
             FirstPersonController.Instance.InteractLock.RemoveLock(nameof(Sleepable));
 
-            SoundController.Instance.Play(CloseSound.ResourcePath, new SoundSettings
+            SoundController.Instance.Play(CloseSound?.ResourcePath, new SoundSettings
             {
                 Volume = -12,
                 Bus = SoundBus.SFX

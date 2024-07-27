@@ -1,15 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2svb82x6jbwc"]
+[gd_scene load_steps=3 format=3 uid="uid://d2svb82x6jbwc"]
 
 [ext_resource type="PackedScene" uid="uid://wikpye4u4if0" path="res://Assets/KayLousberg/Dungeon/bookcaseWide.gltf.glb" id="1_csgdd"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ypc7r"]
-size = Vector3(0.119385, 2, 0.465088)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ggarp"]
-size = Vector3(1.58105, 0.0915527, 0.433838)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvpqg"]
-size = Vector3(1.99023, 0.172485, 0.549072)
+size = Vector3(1.99023, 1.99991, 0.549072)
 
 [node name="BookcaseWide" type="Node3D"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
@@ -19,26 +13,6 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.845447, 1, 0)
-shape = SubResource("BoxShape3D_ypc7r")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.834736, 1, 0)
-shape = SubResource("BoxShape3D_ypc7r")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32868, 0)
-shape = SubResource("BoxShape3D_ggarp")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73374, 0)
-shape = SubResource("BoxShape3D_ggarp")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160564, 0)
-shape = SubResource("BoxShape3D_xvpqg")
-
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91729, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00358, 0)
 shape = SubResource("BoxShape3D_xvpqg")

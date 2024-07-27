@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://ngb7o70ebse0"]
-
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_0lmpi"]
-
-[resource]
-script = ExtResource("1_0lmpi")
-SoundName = 7
-Path = "res://Sound/Sounds/sfx_mushroom_puff2.wav"

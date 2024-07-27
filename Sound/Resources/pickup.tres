@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://bt0ic4ulxunfi"]
-
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_mbokw"]
-
-[resource]
-script = ExtResource("1_mbokw")
-SoundName = 3
-Path = "res://Sound/Sounds/pickup_001.wav"

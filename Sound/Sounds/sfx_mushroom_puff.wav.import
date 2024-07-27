@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cxlunuyo3cen5"
-path="res://.godot/imported/sfx_mushroom_puff2.wav-d3abee859ef7ac934598eead9378bbce.sample"
+path="res://.godot/imported/sfx_mushroom_puff.wav-155b2db999cea0a3055168ba80b1658d.sample"
 
 [deps]
 
-source_file="res://Sound/Sounds/sfx_mushroom_puff2.wav"
-dest_files=["res://.godot/imported/sfx_mushroom_puff2.wav-d3abee859ef7ac934598eead9378bbce.sample"]
+source_file="res://Sound/Sounds/sfx_mushroom_puff.wav"
+dest_files=["res://.godot/imported/sfx_mushroom_puff.wav-155b2db999cea0a3055168ba80b1658d.sample"]
 
 [params]
 

@@ -1,24 +1,18 @@
 using Godot;
 using System;
 using System.Collections;
-using System.Linq;
 
 public partial class SoundController : ResourceController<SoundCollection, SoundInfo>
 {
     public override string Directory => "Sound";
     public static SoundController Instance => Singleton.Get<SoundController>();
 
-    public SoundInfo GetInfo(SoundName name) => Collection.Resources.FirstOrDefault(x => x.SoundName == name);
-
-    public void Play(SoundName name, SoundSettings settings = null)
+    public void Play(string name, SoundSettings settings = null)
     {
         var sound = new AudioStreamPlayer();
         sound.SetParent(Scene.Root);
 
-        var info = GetInfo(name);
-        if (info == null) return;
-
-        sound.Stream = GD.Load<AudioStream>(info.Path);
+        sound.Stream = Collection.GetSound(name);
         settings?.ModifySound(sound);
         sound.Play();
 
@@ -26,14 +20,12 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         DestroyDelay(sound, duration);
     }
 
-    public void Play(SoundName name, SoundSettings3D settings = null)
+    public void Play(string name, SoundSettings3D settings = null)
     {
         var sound = new AudioStreamPlayer3D();
         sound.SetParent(Scene.Root);
-        sound.Bus = settings.Bus.ToString();
 
-        var info = GetInfo(name);
-        sound.Stream = GD.Load<AudioStream>(info.Path);
+        sound.Stream = Collection.GetSound(name);
         settings?.ModifySound(sound);
         sound.Play();
 

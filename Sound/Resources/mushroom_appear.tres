@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://ddwjbdgiiogrr"]
-
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_vb62w"]
-
-[resource]
-script = ExtResource("1_vb62w")
-SoundName = 8
-Path = "res://Sound/Sounds/sfx_mushroom_appear.wav"

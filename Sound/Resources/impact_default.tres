@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://cnxmhyej2l0gk"]
-
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_n5pvk"]
-
-[resource]
-script = ExtResource("1_n5pvk")
-SoundName = 6
-Path = "res://Sound/Sounds/step_default_001.wav"

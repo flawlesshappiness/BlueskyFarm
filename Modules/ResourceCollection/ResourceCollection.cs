@@ -2,7 +2,8 @@ using Godot;
 using System.Collections.Generic;
 using System.IO;
 
-public partial class ResourceCollection<T> : Resource where T : Resource
+public partial class ResourceCollection<T> : Resource
+    where T : Resource
 {
     private List<T> _resources;
     public List<T> Resources => _resources;
@@ -36,9 +37,15 @@ public partial class ResourceCollection<T> : Resource where T : Resource
         }
 
         collection.SetResources(resources);
+        collection.OnLoad();
         Debug.Indent--;
         return collection;
     }
 
     private void SetResources(List<T> resources) => _resources = resources;
+
+    protected virtual void OnLoad()
+    {
+
+    }
 }

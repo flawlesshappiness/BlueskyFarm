@@ -3,9 +3,6 @@ using System;
 
 public partial class Item : Grabbable
 {
-    [Export]
-    public SoundName ImpactSound = SoundName.Impact_Default;
-
     public ItemInfo Info { get; set; }
     public ItemData Data { get; set; }
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
@@ -72,7 +69,7 @@ public partial class Item : Grabbable
         var volume = Mathf.Lerp(vol_min, vol_max, t_vel);
         var pitch = Mathf.Lerp(pitch_max, pitch_min, t_vel);
 
-        SoundController.Instance.Play(ImpactSound, new SoundSettings3D
+        SoundController.Instance.Play("sfx_impact_default", new SoundSettings3D
         {
             Position = GlobalPosition,
             PitchMin = pitch,

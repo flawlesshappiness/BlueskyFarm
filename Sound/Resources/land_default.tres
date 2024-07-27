@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://cowwci6ory4or"]
-
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="1_w24or"]
-
-[resource]
-script = ExtResource("1_w24or")
-SoundName = 2
-Path = "res://Assets/KenneyNL/Audio/stepLand.ogg"

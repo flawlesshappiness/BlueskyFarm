@@ -10,7 +10,8 @@ public partial class Item : Grabbable
     public ItemData Data { get; set; }
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
 
-    public Action OnUpdateData;
+    public event Action OnUpdateData;
+    public event Action OnAddedToInventory;
 
     public override void _Ready()
     {
@@ -79,5 +80,10 @@ public partial class Item : Grabbable
             Volume = volume,
             Bus = SoundBus.SFX
         });
+    }
+
+    public void AddedToInventory()
+    {
+        OnAddedToInventory?.Invoke();
     }
 }

@@ -214,8 +214,10 @@ public partial class PlantArea : Area3D
 
         var grabbable = seed.GrabbablePlant;
         var interactable = seed.InteractablePlant;
+        var item = seed.ItemPlant;
 
         grabbable.OnGrabbed += OnGrabbedPlant;
+        item.OnAddedToInventory += OnGrabbedPlant;
 
         void OnGrabbedPlant()
         {

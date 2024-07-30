@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxfgevkl7ilyk"]
+
+[ext_resource type="PackedScene" uid="uid://didgtw3eg0k52" path="res://Assets/FlawLizArt/RootMimic/root_mimic.glb" id="1_jsqvk"]
+
+[node name="RootMimic" type="Node3D"]
+
+[node name="root_mimic" parent="." instance=ExtResource("1_jsqvk")]
+
+[node name="Skeleton3D" parent="root_mimic/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/7/rotation = Quaternion(0.70269, 0.104279, -0.103229, 0.696201)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.00463194, -6.19005e-05, 0.300504, 0.953769)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-3.54764e-05, 2.53366e-07, -0.335532, 0.942029)
+bones/10/rotation = Quaternion(-0.103229, -0.696201, 0.70269, -0.104278)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.00463195, 6.18359e-05, -0.300504, 0.953769)
+bones/12/rotation = Quaternion(-3.54516e-05, -2.22173e-07, 0.335532, 0.942029)
+bones/13/rotation = Quaternion(0.70269, 0.104279, -0.103229, 0.696201)
+bones/14/rotation = Quaternion(-0.00463198, -6.20502e-05, 0.300504, 0.953769)
+bones/15/rotation = Quaternion(-3.54848e-05, 2.56144e-07, -0.335532, 0.942029)
+bones/16/rotation = Quaternion(-0.103229, -0.696201, 0.70269, -0.104279)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.00463202, 6.20598e-05, -0.300504, 0.953769)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-3.54567e-05, -2.16339e-07, 0.335532, 0.942029)
+bones/19/rotation = Quaternion(0.70269, 0.104279, -0.103229, 0.696201)
+bones/20/rotation = Quaternion(-0.004632, -6.21377e-05, 0.300504, 0.953769)
+bones/21/rotation = Quaternion(-3.5492e-05, 2.54762e-07, -0.335532, 0.942029)
+bones/22/rotation = Quaternion(-0.103229, -0.696201, 0.70269, -0.104279)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.00463202, 6.20598e-05, -0.300504, 0.953769)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-3.54567e-05, -2.16339e-07, 0.335532, 0.942029)
+bones/25/rotation = Quaternion(3.9086e-07, 9.25703e-10, 0.99052, 0.137371)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(7.48113e-08, -3.62841e-07, 0.0994158, 0.995046)
+bones/27/rotation = Quaternion(1.97044e-07, 3.45421e-07, 0.259443, 0.965759)
+bones/28/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="ik_leg1_R" type="SkeletonIK3D" parent="root_mimic/Armature/Skeleton3D" index="1"]
+process_priority = 1
+root_bone = &"leg1.R.001"
+tip_bone = &"leg1.R.003"
+override_tip_basis = false
+target_node = NodePath("../../../../Leg1_R_Target")
+
+[node name="Leg1_R_Target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97403, 0, 0.495404)
+
+[editable path="root_mimic"]

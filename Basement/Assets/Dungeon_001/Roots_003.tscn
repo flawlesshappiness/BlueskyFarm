@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://litevesi34j0"]
+
+[ext_resource type="PackedScene" uid="uid://bbpuaycu18q8l" path="res://Assets/FlawLizArt/roots_005.glb" id="1_xjso1"]
+[ext_resource type="PackedScene" uid="uid://ynujaevxx7k2" path="res://Assets/FlawLizArt/roots_001.glb" id="2_bja5k"]
+[ext_resource type="PackedScene" uid="uid://bfy6xstm2urbn" path="res://Assets/FlawLizArt/roots_003.glb" id="3_kmgut"]
+
+[node name="Roots_003" type="Node3D"]
+
+[node name="roots_005" parent="." instance=ExtResource("1_xjso1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.256864, 0, 0)
+
+[node name="roots_001" parent="." instance=ExtResource("2_bja5k")]
+transform = Transform3D(1.33815, 0, -0.677765, 0, 1.5, 0, 0.677765, 0, 1.33815, -0.0901323, 0, 0.184377)
+
+[node name="roots_003" parent="." instance=ExtResource("3_kmgut")]
+transform = Transform3D(1.44859, 0, 0.389341, 0, 1.5, 0, -0.389341, 0, 1.44859, -0.0962268, 0, -0.141731)

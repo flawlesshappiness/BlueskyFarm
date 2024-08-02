@@ -73,8 +73,7 @@ public class BasementSettings
 {
     public int MaxCorridorDepth { get; set; }
     public int MaxRooms { get; set; }
-    public List<string> SpawnItemInfoPaths { get; set; }
-    public List<string> SeedPlantInfoPaths { get; set; }
+    public Node RoomParent { get; set; }
 }
 
 public class BasementRoomElement

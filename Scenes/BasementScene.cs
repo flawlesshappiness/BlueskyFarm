@@ -3,6 +3,9 @@ using System.Linq;
 
 public partial class BasementScene : GameScene
 {
+    [NodeType]
+    public NavigationRegion3D NavRegion;
+
     private float time_scene_started;
 
     protected override void Initialize()
@@ -11,10 +14,18 @@ public partial class BasementScene : GameScene
         time_scene_started = GameTime.Time;
 
         // Basement
-        BasementController.Instance.DebugGenerateBasement();
+        BasementController.Instance.GenerateBasement(new BasementSettings
+        {
+            MaxRooms = 5,
+            MaxCorridorDepth = 3,
+            RoomParent = NavRegion,
+        });
 
         // Audio
         SetAudioEffectEnabled(true);
+
+        // Navigation
+        NavRegion.BakeNavigationMesh();
     }
 
     protected override void OnDestroy()

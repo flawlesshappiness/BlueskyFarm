@@ -22,7 +22,9 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
     private void BasementGenerated(Basement basement)
     {
-        var info = GetRandomEnemyInfo();
-        var enemy = CreateEnemy(info);
+        foreach (var info in Collection.Resources)
+        {
+            var enemy = CreateEnemy(info);
+        }
     }
 }

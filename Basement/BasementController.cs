@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class BasementController : SingletonController
@@ -11,47 +10,20 @@ public partial class BasementController : SingletonController
 
     public Action<Basement> OnBasementGenerated;
 
-    public override void _Ready()
-    {
-        base._Ready();
-
-        //RegisterDebugActions();
-    }
-
-    private void RegisterDebugActions()
-    {
-        var category = "Basement";
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Generate",
-            Action = _ => DebugGenerateBasement()
-        });
-    }
-
-    public void DebugGenerateBasement()
+    public void GenerateBasement(BasementSettings settings)
     {
         CurrentBasement = new Basement();
+        CurrentBasement.Settings = settings;
         GenerateGrid(CurrentBasement);
         OnBasementGenerated?.Invoke(CurrentBasement);
     }
 
     private void GenerateGrid(Basement basement)
     {
-        basement.Settings = new BasementSettings
-        {
-            MaxRooms = 5,
-            MaxCorridorDepth = 3,
-            SpawnItemInfoPaths = new List<string> { ItemController.Instance.Collection.Seed },
-            SeedPlantInfoPaths = new List<string> { ItemController.Instance.Collection.Radish }
-        };
-
         var grid = BasementGridGenerator.Generate(basement.Settings);
         basement.Grid = grid;
 
         GenerateRooms(basement);
-        GenerateItems(basement);
     }
 
     private void GenerateRooms(Basement basement)
@@ -71,7 +43,8 @@ public partial class BasementController : SingletonController
             var position = offset + new Vector3(x, 0, z);
 
             var info = GetRandomRoomInfo(element);
-            var room = GDHelper.Instantiate<BasementRoom>(info.Path, Scene.Current);
+            var parent = IsInstanceValid(basement.Settings.RoomParent) ? basement.Settings.RoomParent : Scene.Current;
+            var room = GDHelper.Instantiate<BasementRoom>(info.Path, parent);
             room.GlobalPosition = position;
 
             room.North.SetOpen(element.HasNorth);
@@ -86,47 +59,6 @@ public partial class BasementController : SingletonController
         FirstPersonController.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;
 
         Debug.Indent--;
-    }
-
-    private void GenerateItems(Basement basement)
-    {
-        // Find positions
-        var item_positions = new List<Node3D>();
-        foreach (var element in basement.Grid.Elements)
-        {
-            var items_nodes = element.Room.GetNodesInChildren<Node3D>(n => n.Name == "Items");
-
-            foreach (var items_node in items_nodes)
-            {
-                var positions = items_node.GetChildren().Cast<Node3D>();
-                item_positions.AddRange(positions);
-            }
-        }
-
-        // Spawn
-        var item_count = 10;
-        while (item_positions.Count > 0 && item_count > 0)
-        {
-            var position = item_positions.Random();
-            item_positions.Remove(position);
-
-            var item_path = basement.Settings.SpawnItemInfoPaths.Random();
-            var item = ItemController.Instance.CreateItem(item_path);
-            item.GlobalPosition = position.GlobalPosition;
-            SetupSeedItem(item, basement);
-
-            basement.Items.Add(item);
-
-            item_count--;
-        }
-    }
-
-    private void SetupSeedItem(Item item, Basement basement)
-    {
-        if (!item.Info.CanPlant) return;
-
-        var plant_info_path = basement.Settings.SeedPlantInfoPaths.Random();
-        item.Data.PlantInfoPath = plant_info_path;
     }
 
     private BasementRoomInfo GetRandomRoomInfo(BasementRoomElement element)

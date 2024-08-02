@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvxlenqmx8s03"]
+[gd_scene load_steps=6 format=3 uid="uid://dvxlenqmx8s03"]
 
 [ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_4o6kx"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="2_38ywq"]
@@ -13,6 +13,12 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.15
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 adjustment_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hft8w"]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4294967291
+agent_height = 0.5
+agent_radius = 0.2
 
 [node name="Basement" type="Node3D"]
 script = ExtResource("1_4o6kx")
@@ -32,3 +38,6 @@ stream = ExtResource("3_vekss")
 volume_db = 15.0
 autoplay = true
 bus = &"SFX"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_hft8w")

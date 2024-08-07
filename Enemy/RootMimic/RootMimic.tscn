@@ -7,6 +7,7 @@
 script = ExtResource("1_t6yvr")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
 path_postprocessing = 1
 
 [node name="root_mimic" parent="." instance=ExtResource("1_jsqvk")]
@@ -39,7 +40,6 @@ bones/25/scale = Vector3(1, 1, 1)
 bones/26/rotation = Quaternion(-0.0994158, 7.7342e-22, 2.20747e-17, 0.995046)
 bones/27/rotation = Quaternion(-0.259443, -9.11325e-22, 5.76077e-17, 0.965759)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="ik_leg1_R" type="SkeletonIK3D" parent="root_mimic/Armature/Skeleton3D" index="1"]
 process_priority = 1
@@ -77,6 +77,12 @@ root_bone = &"leg3.L.001"
 tip_bone = &"leg3.L.003"
 target_node = NodePath("../../../../Leg3_L/Leg3_L_Target")
 
+[node name="ik_neck" type="SkeletonIK3D" parent="root_mimic/Armature/Skeleton3D" index="7"]
+process_priority = 1
+root_bone = &"hip.004"
+tip_bone = &"neck.001"
+target_node = NodePath("../../../../Neck/Neck_Target")
+
 [node name="Leg1_R" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.78352, 0.000461402, -0.832622)
 
@@ -112,5 +118,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71186, 0.000461519, 1.00517
 
 [node name="Leg3_L_Target" type="Node3D" parent="Leg3_L"]
 transform = Transform3D(0.0762965, 0.99644, -0.035855, -0.0435864, 0.0392585, 0.998278, 0.996132, -0.0746023, 0.0464265, 0, 0, 0)
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.108698, 1.4244)
+
+[node name="Neck_Target" type="Node3D" parent="Neck"]
+transform = Transform3D(-1, 8.74227e-08, 0, -7.10543e-15, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -2.29922e-08, 0.150088, -0.263001)
+
+[node name="Poses" type="Node3D" parent="."]
+
+[node name="Neck_WalkPosition" type="Node3D" parent="Poses"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125212, 1.40486)
+
+[node name="Neck_WaitPosition" type="Node3D" parent="Poses"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0.125212, 1.40486)
+
+[node name="Neck_ThreatPosition" type="Node3D" parent="Poses"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 1.04179, 0.666146)
+
+[node name="Leg3_L_ThreatPosition" type="Node3D" parent="Poses"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1)
+
+[node name="Leg3_R_ThreatPosition" type="Node3D" parent="Poses"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 1)
 
 [editable path="root_mimic"]

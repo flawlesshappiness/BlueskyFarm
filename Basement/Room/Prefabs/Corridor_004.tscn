@@ -93,6 +93,7 @@ shadow_enabled = true
 omni_range = 8.40261
 
 [node name="Ceiling" type="Node3D" parent="." index="6"]
+visible = false
 
 [node name="Ceiling" parent="Ceiling" index="0" instance=ExtResource("6_auaqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 0)
@@ -655,3 +656,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.177, 5.96046e-07, -6.2338)
 
 [node name="Barrel8" parent="InteriorGroups/Group 4/Interior 2" index="7" instance=ExtResource("14_3ur7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25545, 5.96046e-07, -7.34293)
+
+[node name="EnemySpawn" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12908, 0, -5.97894)

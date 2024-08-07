@@ -11,6 +11,14 @@ public static class VectorExtensions
         return v;
     }
 
+    public static Vector3 Add(this Vector3 v, float? x = null, float? y = null, float? z = null)
+    {
+        v.X += x ?? 0;
+        v.Y += y ?? 0;
+        v.Z += z ?? 0;
+        return v;
+    }
+
     public static Vector2 ToVector2(this Vector3 v)
     {
         return new Vector2 { X = v.X, Y = v.Y };

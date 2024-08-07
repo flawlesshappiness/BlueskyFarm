@@ -26,6 +26,9 @@ public partial class BasementScene : GameScene
 
         // Navigation
         NavRegion.BakeNavigationMesh();
+
+        // Enemies
+        EnemyController.Instance.SpawnEnemies();
     }
 
     protected override void OnDestroy()

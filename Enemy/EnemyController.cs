@@ -1,12 +1,7 @@
 public partial class EnemyController : ResourceController<EnemyInfoCollection, EnemyInfo>
 {
+    public static EnemyController Instance => Singleton.Get<EnemyController>();
     public override string Directory => $"Enemy";
-
-    public override void _Ready()
-    {
-        base._Ready();
-        BasementController.Instance.OnBasementGenerated += BasementGenerated;
-    }
 
     private EnemyInfo GetRandomEnemyInfo()
     {
@@ -20,7 +15,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
         return enemy;
     }
 
-    private void BasementGenerated(Basement basement)
+    public void SpawnEnemies()
     {
         foreach (var info in Collection.Resources)
         {

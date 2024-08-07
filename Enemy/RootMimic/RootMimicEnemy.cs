@@ -6,6 +6,12 @@ using System.Linq;
 public partial class RootMimicEnemy : NavEnemy
 {
     [NodeName]
+    public AudioStreamPlayer3D SfxThreat;
+
+    [NodeName]
+    public AudioStreamPlayer3D SfxGrowl;
+
+    [NodeName]
     public SkeletonIK3D ik_leg1_R;
 
     [NodeName]
@@ -62,7 +68,7 @@ public partial class RootMimicEnemy : NavEnemy
     [NodeName]
     public Node3D Leg3_R_ThreatPosition;
 
-    private enum State { Wander, Waiting, Threat, Fleeing }
+    private enum State { Wander, Waiting, Threat, Fleeing, Attacking }
 
     private State _state;
     private float _time_step_sfx;
@@ -78,8 +84,8 @@ public partial class RootMimicEnemy : NavEnemy
     private const float CHANCE_WANDER = 0.5f;
     private const float DIST_WAIT_NEAR = 24;
     private const float DIST_WAIT_FAR = 28;
-    private const float DIST_THREAT = 6;
-    private const float DIST_THREAT_ATTACK = 3;
+    private const float DIST_THREAT = 5;
+    private const float DIST_THREAT_ATTACK = 2;
 
     private class Limb
     {
@@ -90,7 +96,6 @@ public partial class RootMimicEnemy : NavEnemy
         public Vector3 TargetPosition { get; set; }
         public float MaxDistance { get; set; }
         public float TargetSpeed { get; set; }
-        public bool Ignored { get; set; }
 
         private float _init_max_distance;
         private RandomNumberGenerator _rng = new RandomNumberGenerator();
@@ -102,7 +107,7 @@ public partial class RootMimicEnemy : NavEnemy
             LocalPosition = Target.Position;
             LocalRotation = Target.Rotation;
             MaxDistance = 1f;
-            TargetSpeed = 30f;
+            TargetSpeed = 7f;
 
             _init_max_distance = MaxDistance;
         }
@@ -230,6 +235,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Waiting()
     {
+        StopNavigation();
         AnimatePose_Wait();
 
         while (true)
@@ -240,7 +246,7 @@ public partial class RootMimicEnemy : NavEnemy
                 break;
             }
 
-            if (DistanceToPlayer < DIST_THREAT)
+            if (DistanceToPlayer < DIST_THREAT && CanSeePlayer())
             {
                 if (_rng.RandfRange(0, 1) < CHANCE_THREAT)
                 {
@@ -260,7 +266,11 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Threat()
     {
+        StopNavigation();
         AnimatePose_Threat();
+
+        SfxThreat.Play();
+        SfxGrowl.Play();
 
         var time_wait = GameTime.Time + 4f;
         while (GameTime.Time < time_wait && DistanceToPlayer > DIST_THREAT_ATTACK)
@@ -319,9 +329,17 @@ public partial class RootMimicEnemy : NavEnemy
     {
         foreach (var limb in _limbs)
         {
-            if (limb.Ignored) continue;
-            Process_Limb_Walk(limb);
+            if (IsThreatLimb(limb))
+            {
+                Process_Limb_Threat(limb);
+            }
+            else
+            {
+                Process_Limb_Walk(limb);
+            }
         }
+
+        bool IsThreatLimb(Limb limb) => _state == State.Threat && (limb.Target == Leg3_L || limb.Target == Leg3_R);
     }
 
     private void Process_Limb_Walk(Limb limb)
@@ -338,6 +356,15 @@ public partial class RootMimicEnemy : NavEnemy
             PlayStepSfx(limb.TargetPosition);
         }
 
+        limb.UpdateTargetPosition();
+    }
+
+    private void Process_Limb_Threat(Limb limb)
+    {
+        var L = limb.Target == Leg3_L;
+        var new_position = L ? Leg3_L_ThreatPosition : Leg3_R_ThreatPosition;
+        limb.TargetPosition = new_position.GlobalPosition;
+        limb.Target.GlobalRotation = new_position.GlobalRotation;
         limb.UpdateTargetPosition();
     }
 
@@ -358,12 +385,6 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void AnimatePose_Threat()
     {
-        var leg_L = _limbs.FirstOrDefault(x => x.Target == Leg3_L);
-        var leg_R = _limbs.FirstOrDefault(x => x.Target == Leg3_R);
-
-        leg_L.Ignored = true;
-        leg_R.Ignored = true;
-
         StartCoroutine(Cr, "pose");
         IEnumerator Cr()
         {
@@ -374,16 +395,12 @@ public partial class RootMimicEnemy : NavEnemy
             {
                 Neck.Position = start_position.Lerp(Neck_ThreatPosition.Position, curve.Evaluate(f));
                 Neck.Rotation = start_rotation.Lerp(Neck_ThreatPosition.Rotation, curve.Evaluate(f));
-                leg_L.Target.Position = leg_L.Target.Position.Lerp(Leg3_L_ThreatPosition.Position, f);
-                leg_R.Target.Position = leg_R.Target.Position.Lerp(Leg3_R_ThreatPosition.Position, f);
             });
         }
     }
 
     private void AnimatePose_Walk()
     {
-        _limbs.ForEach(x => x.Ignored = false);
-
         StartCoroutine(Cr, "pose");
         IEnumerator Cr()
         {
@@ -400,8 +417,6 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void AnimatePose_Wait()
     {
-        _limbs.ForEach(x => x.Ignored = false);
-
         StartCoroutine(Cr, "pose");
         IEnumerator Cr()
         {

@@ -11,8 +11,6 @@ public partial class NavEnemy : Enemy
     [Export]
     public float TurnSpeed = 10;
 
-    private bool _navigating;
-
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -24,7 +22,6 @@ public partial class NavEnemy : Enemy
         if (Agent.IsNavigationFinished())
         {
             OnNavigationFinished();
-            _navigating = false;
             return;
         }
 
@@ -61,5 +58,10 @@ public partial class NavEnemy : Enemy
     {
         var y = Mathf.LerpAngle(GlobalRotation.Y, Mathf.Atan2(direction.X, direction.Z), TurnSpeed * GameTime.DeltaTime);
         GlobalRotation = GlobalRotation.Set(y: y);
+    }
+
+    protected void StopNavigation()
+    {
+        Agent.TargetPosition = GlobalPosition;
     }
 }

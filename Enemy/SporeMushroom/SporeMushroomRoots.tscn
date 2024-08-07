@@ -73,7 +73,7 @@ libraries = {
 [node name="SfxRoots" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_jbiep")
 volume_db = 20.0
-unit_size = 2.0
+max_distance = 8.0
 bus = &"SFX"
 script = ExtResource("3_wmvxb")
 PitchMax = 0.9

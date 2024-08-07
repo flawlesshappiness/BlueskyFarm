@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxfgevkl7ilyk"]
+[gd_scene load_steps=5 format=3 uid="uid://cxfgevkl7ilyk"]
 
 [ext_resource type="PackedScene" uid="uid://didgtw3eg0k52" path="res://Assets/FlawLizArt/RootMimic/root_mimic.glb" id="1_jsqvk"]
 [ext_resource type="Script" path="res://Enemy/RootMimic/RootMimicEnemy.cs" id="1_t6yvr"]
+[ext_resource type="AudioStream" uid="uid://dgasd5dkgxkjl" path="res://Sound/Sounds/sfx_root_mimic_threat.wav" id="3_r62xg"]
+[ext_resource type="AudioStream" uid="uid://daykqqxc32vr6" path="res://Sound/Sounds/sfx_root_mimic_growl.wav" id="4_bv6sv"]
 
 [node name="RootMimic" type="Node3D"]
 script = ExtResource("1_t6yvr")
+MoveSpeed = 6.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5
@@ -137,9 +140,17 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 1.04179, 0.666146)
 
 [node name="Leg3_L_ThreatPosition" type="Node3D" parent="Poses"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
 
 [node name="Leg3_R_ThreatPosition" type="Node3D" parent="Poses"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 1)
+transform = Transform3D(-1, -5.96046e-08, 8.74228e-08, -5.96047e-08, 1, 7.10543e-15, -8.74228e-08, 0, -1, -1, 2, 1)
+
+[node name="SfxThreat" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_r62xg")
+bus = &"SFX"
+
+[node name="SfxGrowl" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_bv6sv")
+bus = &"SFX"
 
 [editable path="root_mimic"]

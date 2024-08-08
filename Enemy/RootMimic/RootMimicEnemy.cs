@@ -75,12 +75,13 @@ public partial class RootMimicEnemy : NavEnemy
     private float _time_move_pause;
     private float _time_move_pause_check;
     private bool _spawned;
+    private bool _ignore_move_pause;
     private RandomNumberGenerator _rng = new RandomNumberGenerator();
     private BasementRoomElement _current_room;
 
     private List<Limb> _limbs = new();
 
-    private const float CHANCE_THREAT = 1f;
+    private const float CHANCE_THREAT = 0.5f;
     private const float CHANCE_WANDER = 0.5f;
     private const float DIST_WAIT_NEAR = 24;
     private const float DIST_WAIT_FAR = 28;
@@ -200,12 +201,15 @@ public partial class RootMimicEnemy : NavEnemy
             case State.Waiting: StartCoroutine(StateCr_Waiting, id); return;
             case State.Threat: StartCoroutine(StateCr_Threat, id); return;
             case State.Fleeing: StartCoroutine(StateCr_Fleeing, id); return;
+            case State.Attacking: StartCoroutine(StateCr_Attacking, id); return;
             default: return;
         }
     }
 
     private IEnumerator StateCr_Wander()
     {
+        _ignore_move_pause = false;
+
         var time_wait = GameTime.Time;
         while (true)
         {
@@ -223,7 +227,7 @@ public partial class RootMimicEnemy : NavEnemy
                         .OrderBy(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
                         .FirstOrDefault();
 
-                    Agent.TargetPosition = _current_room.Room.GlobalPosition;
+                    Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
                 }
 
                 time_wait = GameTime.Time + _rng.RandfRange(2, 10);
@@ -281,8 +285,7 @@ public partial class RootMimicEnemy : NavEnemy
 
         if (DistanceToPlayer < DIST_THREAT)
         {
-            // Attack
-            GameScene.Current.KillPlayer();
+            SetState(State.Attacking);
         }
         else
         {
@@ -293,23 +296,44 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Fleeing()
     {
+        _ignore_move_pause = true;
+
         _current_room = RoomElements
             .OrderByDescending(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
             .FirstOrDefault();
 
-        Agent.TargetPosition = _current_room.Room.GlobalPosition;
+        Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
+
+        SfxThreat.Play();
 
         while (true)
         {
-            if (!Agent.IsNavigationFinished())
+            if (Agent.IsNavigationFinished())
             {
-                yield return null;
-                continue;
+                SetState(State.Wander);
             }
 
-            SetState(State.Wander);
-            break;
+            yield return null;
         }
+    }
+
+    private IEnumerator StateCr_Attacking()
+    {
+        _ignore_move_pause = true;
+
+        var id_lock = nameof(RootMimicEnemy) + GetInstanceId();
+        Player.MovementLock.AddLock(id_lock);
+
+        SfxGrowl.Play();
+
+        while (DistanceToPlayer > DIST_THREAT_ATTACK)
+        {
+            Move(DirectionToPlayer * MoveSpeed * 2);
+            yield return null;
+        }
+
+        Player.MovementLock.RemoveLock(id_lock);
+        GameScene.Current.KillPlayer();
     }
 
     protected override void OnVelocityComputed(Vector3 v)
@@ -320,7 +344,7 @@ public partial class RootMimicEnemy : NavEnemy
             _time_move_pause = GameTime.Time + _rng.RandfRange(0.5f, 1.5f);
         }
 
-        if (GameTime.Time < _time_move_pause) return;
+        if (!_ignore_move_pause && GameTime.Time < _time_move_pause) return;
 
         base.OnVelocityComputed(v);
     }
@@ -339,7 +363,7 @@ public partial class RootMimicEnemy : NavEnemy
             }
         }
 
-        bool IsThreatLimb(Limb limb) => _state == State.Threat && (limb.Target == Leg3_L || limb.Target == Leg3_R);
+        bool IsThreatLimb(Limb limb) => (_state == State.Threat || _state == State.Attacking) && (limb.Target == Leg3_L || limb.Target == Leg3_R);
     }
 
     private void Process_Limb_Walk(Limb limb)
@@ -379,7 +403,8 @@ public partial class RootMimicEnemy : NavEnemy
             PitchMin = 1.85f,
             PitchMax = 1.9f,
             Volume = -10,
-            Position = position
+            Position = position,
+            MaxDistance = 8
         });
     }
 
@@ -429,5 +454,15 @@ public partial class RootMimicEnemy : NavEnemy
                 Neck.Rotation = start_rotation.Lerp(Neck_WaitPosition.Rotation, curve.Evaluate(f));
             });
         }
+    }
+
+    private Vector3 GetRandomPositionInRoom(BasementRoom room)
+    {
+        var room_size = BasementRoom.SECTION_COUNT * BasementRoom.SECTION_SIZE;
+        var min = room_size * 0.5f;
+        var max = room_size;
+        var x = _rng.RandfRange(min, max);
+        var z = _rng.RandfRange(min, max);
+        return room.GlobalPosition + new Vector3(x, 0, z);
     }
 }

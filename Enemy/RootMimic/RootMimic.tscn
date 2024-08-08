@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxfgevkl7ilyk"]
+[gd_scene load_steps=6 format=3 uid="uid://cxfgevkl7ilyk"]
 
 [ext_resource type="PackedScene" uid="uid://didgtw3eg0k52" path="res://Assets/FlawLizArt/RootMimic/root_mimic.glb" id="1_jsqvk"]
 [ext_resource type="Script" path="res://Enemy/RootMimic/RootMimicEnemy.cs" id="1_t6yvr"]
 [ext_resource type="AudioStream" uid="uid://dgasd5dkgxkjl" path="res://Sound/Sounds/sfx_root_mimic_threat.wav" id="3_r62xg"]
 [ext_resource type="AudioStream" uid="uid://daykqqxc32vr6" path="res://Sound/Sounds/sfx_root_mimic_growl.wav" id="4_bv6sv"]
+[ext_resource type="Script" path="res://Sound/Sound3D.cs" id="5_owwka"]
 
 [node name="RootMimic" type="Node3D"]
 script = ExtResource("1_t6yvr")
@@ -148,9 +149,13 @@ transform = Transform3D(-1, -5.96046e-08, 8.74228e-08, -5.96047e-08, 1, 7.10543e
 [node name="SfxThreat" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_r62xg")
 bus = &"SFX"
+script = ExtResource("5_owwka")
+PitchMax = 0.8
 
 [node name="SfxGrowl" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_bv6sv")
 bus = &"SFX"
+script = ExtResource("5_owwka")
+PitchMin = 0.9
 
 [editable path="root_mimic"]

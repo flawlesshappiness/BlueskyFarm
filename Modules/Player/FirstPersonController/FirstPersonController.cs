@@ -45,8 +45,11 @@ public partial class FirstPersonController : CharacterBody3D
 
     public MultiLock InteractLock = new MultiLock();
     public MultiLock MovementLock = new MultiLock();
+    public MultiLock LookLock = new MultiLock();
 
-    private bool jumping;
+    private bool _jumping;
+    private Node3D _look_at_target;
+    private float _look_at_speed;
 
     public Action OnJump, OnLand;
 
@@ -70,10 +73,12 @@ public partial class FirstPersonController : CharacterBody3D
         base._Process(delta);
         Process_Interact();
         Process_Cursor();
+        Process_RotateView();
     }
 
     private void Input_RotateView(InputEvent e)
     {
+        if (LookLock.IsLocked) return;
         if (MovementLock.IsLocked) return;
         if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
         if (e is not InputEventMouseMotion) return;
@@ -86,6 +91,36 @@ public partial class FirstPersonController : CharacterBody3D
 
         var x = Mathf.Clamp(Camera.Rotation.X, Mathf.DegToRad(-70), Mathf.DegToRad(70));
         Camera.Rotation = Rotation with { X = x };
+    }
+
+    private void Process_RotateView()
+    {
+        if (!IsInstanceValid(_look_at_target)) return;
+
+        var target_position = _look_at_target.GlobalPosition;
+        var target_distance = GlobalPosition.DistanceTo(target_position);
+
+        var y_position = target_position.Set(y: Neck.GlobalPosition.Y);
+        var y_dir = y_position.DirectionTo(Neck.GlobalPosition);
+        var y_angle = Mathf.RadToDeg(Neck.GlobalBasis.Z.SignedAngleTo(y_dir, Vector3.Up));
+        var y_angle_lerp = Mathf.Lerp(0, y_angle, _look_at_speed * GameTime.DeltaTime);
+        if (Mathf.Abs(y_angle) > 1f)
+        {
+            Neck.RotateY(y_angle_lerp);
+        }
+
+        /* UNFINISHED
+        var x_position = (Camera.GlobalBasis.Z * target_distance).Set(y: target_position.Y);
+        var x_dir = Camera.GlobalPosition.DirectionTo(x_position);
+        var x_angle = Mathf.RadToDeg(Camera.GlobalBasis.Z.SignedAngleTo(x_dir, Camera.GlobalBasis.X));
+        var x_angle_lerp = Mathf.Lerp(0, x_angle, _look_at_speed * GameTime.DeltaTime);
+        if (Mathf.Abs(x_angle) > 5f)
+        {
+            Camera.RotateX(x_angle_lerp);
+        }
+
+        Debug.Log(x_angle);
+        */
     }
 
     public override void _PhysicsProcess(double delta)
@@ -109,9 +144,9 @@ public partial class FirstPersonController : CharacterBody3D
 
         if (grounded)
         {
-            if (jumping)
+            if (_jumping)
             {
-                jumping = false;
+                _jumping = false;
                 OnLand?.Invoke();
             }
 
@@ -134,7 +169,7 @@ public partial class FirstPersonController : CharacterBody3D
                 var jump_vel = new Vector3(dir.X, JumpUpSpeed, dir.Z);
                 velocity += jump_vel;
 
-                jumping = true;
+                _jumping = true;
 
                 OnJump?.Invoke();
             }
@@ -233,5 +268,16 @@ public partial class FirstPersonController : CharacterBody3D
         GlobalPosition = new Vector3(Data.Game.PlayerPositionX, Data.Game.PlayerPositionY, Data.Game.PlayerPositionZ);
         Camera.Rotation = new Vector3(Data.Game.PlayerCameraRotation, 0, 0);
         Neck.Rotation = new Vector3(0, Data.Game.PlayerNeckRotation, 0);
+    }
+
+    public void StartLookingAt(Node3D target, float speed)
+    {
+        _look_at_target = target;
+        _look_at_speed = speed;
+    }
+
+    public void StopLookingAt()
+    {
+        _look_at_target = null;
     }
 }

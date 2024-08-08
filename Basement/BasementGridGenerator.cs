@@ -71,9 +71,10 @@ public static class BasementGridGenerator
 
 public class BasementSettings
 {
+    public Node RoomParent { get; set; }
     public int MaxCorridorDepth { get; set; }
     public int MaxRooms { get; set; }
-    public Node RoomParent { get; set; }
+    public int PuzzleCount { get; set; }
 }
 
 public class BasementRoomElement

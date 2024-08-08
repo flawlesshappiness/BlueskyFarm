@@ -19,8 +19,10 @@ public partial class ChestPuzzle : BasementPuzzle
 
         var elements = BasementController.Instance.CurrentBasement.Grid.Elements;
         var rooms = elements.Select(x => x.Room);
-        var chests = rooms.SelectMany(x => x.GetNodesInChildren<ChestPuzzleChest>());
-        var boards = rooms.SelectMany(x => x.GetNodesInChildren<ChestPuzzleBoard>());
+        var chests = rooms.SelectMany(x => x.GetNodesInChildren<ChestPuzzleChest>())
+            .Where(x => x.Visible == false);
+        var boards = rooms.SelectMany(x => x.GetNodesInChildren<ChestPuzzleBoard>())
+            .Where(x => x.Visible == false);
         var chest = chests.ToList().Random();
         var boards_ordered = boards
             .OrderByDescending(x => chest.GlobalPosition.DistanceTo(x.GlobalPosition));

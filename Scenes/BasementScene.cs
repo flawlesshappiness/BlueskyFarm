@@ -16,9 +16,10 @@ public partial class BasementScene : GameScene
         // Basement
         BasementController.Instance.GenerateBasement(new BasementSettings
         {
+            RoomParent = NavRegion,
             MaxRooms = 5,
             MaxCorridorDepth = 3,
-            RoomParent = NavRegion,
+            PuzzleCount = 3,
         });
 
         // Audio

@@ -6,4 +6,4 @@
 script = ExtResource("1_m77ef")
 ItemInfoPath = "res://Item/Resources/Debt.tres"
 Combination = "RBRGGB"
-Price = 500
+Price = 100

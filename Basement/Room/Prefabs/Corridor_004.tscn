@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cb4qg5g3x8f85"]
+[gd_scene load_steps=22 format=3 uid="uid://cb4qg5g3x8f85"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_n0ayg"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon_001/Wall.tscn" id="2_08v5d"]
@@ -13,8 +13,14 @@
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="11_lgr8f"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="12_f3s8l"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon_001/Crate.tscn" id="13_jmokm"]
+[ext_resource type="PackedScene" uid="uid://cxudfwv0x6f1" path="res://Basement/Assets/Dungeon_001/Roots_001.tscn" id="14_3ax2l"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon_001/Barrel.tscn" id="14_3ur7p"]
 [ext_resource type="PackedScene" uid="uid://lmtc72pu0dqc" path="res://Basement/Assets/Dungeon_001/Barrel_Big_Horizontal.tscn" id="15_3n860"]
+[ext_resource type="PackedScene" uid="uid://cqtrktvdlfk0e" path="res://Basement/Assets/Dungeon_001/Roots_006.tscn" id="15_e7h6o"]
+[ext_resource type="PackedScene" uid="uid://mmdxnth7s87i" path="res://Basement/Assets/Dungeon_001/Roots_005.tscn" id="15_plmcj"]
+[ext_resource type="PackedScene" uid="uid://bofym4piivjan" path="res://Basement/Assets/Dungeon_001/Roots_002.tscn" id="16_mjvgf"]
+[ext_resource type="PackedScene" uid="uid://litevesi34j0" path="res://Basement/Assets/Dungeon_001/Roots_003.tscn" id="17_6vymu"]
+[ext_resource type="PackedScene" uid="uid://dbtefn1sw1qpl" path="res://Basement/Assets/Dungeon_001/Roots_004.tscn" id="18_58b5t"]
 
 [node name="Corridor_004" instance=ExtResource("1_n0ayg")]
 
@@ -480,6 +486,15 @@ transform = Transform3D(0.98104, 0, 0.193806, 0, 1, 0, -0.193806, 0, 0.98104, 8.
 [node name="Crate3" parent="InteriorGroups/Group 1/Interior 1" index="6" instance=ExtResource("13_jmokm")]
 transform = Transform3D(0.991619, 0, -0.129194, 0, 1, 0, 0.129194, 0, 0.991619, 4.06287, 1.00016, 1.16009)
 
+[node name="Roots_001" parent="InteriorGroups/Group 1/Interior 1" index="7" instance=ExtResource("14_3ax2l")]
+transform = Transform3D(-0.942344, 0, -0.334646, 0, 1, 0, 0.334646, 0, -0.942344, 8.62885, 0, 7.15992)
+
+[node name="Roots_005" parent="InteriorGroups/Group 1/Interior 1" index="8" instance=ExtResource("15_plmcj")]
+transform = Transform3D(2.81174, 0, -1.04601, 0, 3, 0, 1.04601, 0, 2.81174, 3.48555, 0, 2.92174)
+
+[node name="Roots_003" parent="InteriorGroups/Group 1/Interior 1" index="9" instance=ExtResource("17_6vymu")]
+transform = Transform3D(0.0832256, 0, -0.996531, 0, 1, 0, 0.996531, 0, 0.0832256, 6.52595, 0, -1.83843)
+
 [node name="Interior 2" type="Node3D" parent="InteriorGroups/Group 1" index="1"]
 script = ExtResource("12_f3s8l")
 
@@ -503,6 +518,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84214, -4.76837e-07, 2.3118
 
 [node name="Barrel7" parent="InteriorGroups/Group 1/Interior 2" index="6" instance=ExtResource("14_3ur7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78271, -4.76837e-07, 1.26823)
+
+[node name="Roots_004" parent="InteriorGroups/Group 1/Interior 2" index="7" instance=ExtResource("18_58b5t")]
+transform = Transform3D(6.55671e-08, -1.5, -1.31134e-07, -1.5, -6.55671e-08, -1.31134e-07, 1.31134e-07, 1.31134e-07, -1.5, 9.38014, 4, 5.127)
+
+[node name="Roots_002" parent="InteriorGroups/Group 1/Interior 2" index="8" instance=ExtResource("16_mjvgf")]
+transform = Transform3D(0.912549, 0, -0.408968, 0, 1, 0, 0.408968, 0, 0.912549, 3.52083, 0, -0.839339)
 
 [node name="Group 2" type="Node3D" parent="InteriorGroups" index="1"]
 script = ExtResource("11_lgr8f")
@@ -531,6 +552,12 @@ transform = Transform3D(0.999173, 0, -0.0406725, 0, 1, 0, 0.0406725, 0, 0.999173
 [node name="Crate6" parent="InteriorGroups/Group 2/Interior 1" index="6" instance=ExtResource("13_jmokm")]
 transform = Transform3D(0.914932, 0, 0.403609, 0, 1, 0, -0.403609, 0, 0.914932, -1.8337, -4.76837e-07, 4.1343)
 
+[node name="Roots_006" parent="InteriorGroups/Group 2/Interior 1" index="7" instance=ExtResource("15_e7h6o")]
+transform = Transform3D(-1.91121, 0, -1.61161, 0, 2.5, 0, 1.61161, 0, -1.91121, 1.48319, 4.76837e-07, 3.55939)
+
+[node name="Roots_002" parent="InteriorGroups/Group 2/Interior 1" index="8" instance=ExtResource("16_mjvgf")]
+transform = Transform3D(0.314059, 0, -0.949404, 0, 1, 0, 0.949404, 0, 0.314059, -6.83511, -2.38419e-07, 3.5728)
+
 [node name="Interior 2" type="Node3D" parent="InteriorGroups/Group 2" index="1"]
 script = ExtResource("12_f3s8l")
 
@@ -558,6 +585,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82291, 2.38419e-07, 4.042)
 [node name="Barrel8" parent="InteriorGroups/Group 2/Interior 2" index="7" instance=ExtResource("14_3ur7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15365, -2.38419e-07, 8.59901)
 
+[node name="Roots_003" parent="InteriorGroups/Group 2/Interior 2" index="8" instance=ExtResource("17_6vymu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41271, 0, 7.89347)
+
+[node name="Roots_005" parent="InteriorGroups/Group 2/Interior 2" index="9" instance=ExtResource("17_6vymu")]
+transform = Transform3D(0.29969, 0, -0.954037, 0, 1, 0, 0.954037, 0, 0.29969, -6.85008, 0, 3.06193)
+
+[node name="Roots_004" parent="InteriorGroups/Group 2/Interior 2" index="10" instance=ExtResource("18_58b5t")]
+transform = Transform3D(-5.46392e-08, -5.46392e-08, -1.25, -1.25, -5.46392e-08, 5.46392e-08, -5.46392e-08, 1.25, -5.46392e-08, 0, 4, 3.12443)
+
 [node name="Group 3" type="Node3D" parent="InteriorGroups" index="2"]
 script = ExtResource("11_lgr8f")
 
@@ -581,6 +617,15 @@ transform = Transform3D(0.988536, 0, 0.150985, 0, 1, 0, -0.150985, 0, 0.988536, 
 
 [node name="Crate5" parent="InteriorGroups/Group 3/Interior 1" index="5" instance=ExtResource("13_jmokm")]
 transform = Transform3D(0.974004, 0, -0.226532, 0, 1, 0, 0.226532, 0, 0.974004, -6.867, 0, -4.13)
+
+[node name="Roots_006" parent="InteriorGroups/Group 3/Interior 1" index="6" instance=ExtResource("15_e7h6o")]
+transform = Transform3D(1.53482, 0, 1.97341, 0, 2.5, 0, -1.97341, 0, 1.53482, -8.66694, 2.38419e-07, 1.10343)
+
+[node name="Roots_003" parent="InteriorGroups/Group 3/Interior 1" index="7" instance=ExtResource("17_6vymu")]
+transform = Transform3D(-0.754354, 0, 0.656467, 0, 1, 0, -0.656467, 0, -0.754354, -2.98523, 0, -3.36429)
+
+[node name="Roots_005" parent="InteriorGroups/Group 3/Interior 1" index="8" instance=ExtResource("15_plmcj")]
+transform = Transform3D(0.873447, 0, -1.79919, 0, 2, 0, 1.79919, 0, 0.873447, -7.03917, 0.0235701, -8.8968)
 
 [node name="Interior 2" type="Node3D" parent="InteriorGroups/Group 3" index="1"]
 script = ExtResource("12_f3s8l")
@@ -606,6 +651,12 @@ transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 
 [node name="Barrel3" parent="InteriorGroups/Group 3/Interior 2" index="6" instance=ExtResource("15_3n860")]
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -7.69216, 0, -5.32861)
 
+[node name="Roots_002" parent="InteriorGroups/Group 3/Interior 2" index="7" instance=ExtResource("16_mjvgf")]
+transform = Transform3D(0.506726, 0, 0.862107, 0, 1, 0, -0.862107, 0, 0.506726, -8.82925, 0, 1.34885)
+
+[node name="Roots_003" parent="InteriorGroups/Group 3/Interior 2" index="8" instance=ExtResource("17_6vymu")]
+transform = Transform3D(0.307207, 0, -0.951643, 0, 1, 0, 0.951643, 0, 0.307207, -5.62361, 0, -9.40362)
+
 [node name="Group 4" type="Node3D" parent="InteriorGroups" index="3"]
 script = ExtResource("11_lgr8f")
 
@@ -629,6 +680,18 @@ transform = Transform3D(0.999614, 0, 0.027782, 0, 1, 0, -0.027782, 0, 0.999614, 
 
 [node name="Crate6" parent="InteriorGroups/Group 4/Interior 1" index="5" instance=ExtResource("13_jmokm")]
 transform = Transform3D(0.965948, 0, 0.258735, 0, 1, 0, -0.258735, 0, 0.965948, 1.2814, 0, -4.03491)
+
+[node name="Roots_003" parent="InteriorGroups/Group 4/Interior 1" index="6" instance=ExtResource("17_6vymu")]
+transform = Transform3D(-0.979424, 0, -0.201813, 0, 1, 0, 0.201813, 0, -0.979424, 9.267, 0, -8.06638)
+
+[node name="Roots_004" parent="InteriorGroups/Group 4/Interior 1" index="7" instance=ExtResource("18_58b5t")]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 7.60046, 4, -3.13195)
+
+[node name="Roots_005" parent="InteriorGroups/Group 4/Interior 1" index="8" instance=ExtResource("15_plmcj")]
+transform = Transform3D(0.883419, 0, 1.79432, 0, 2, 0, -1.79432, 0, 0.883419, -1.26093, 0, -3.60435)
+
+[node name="Roots_006" parent="InteriorGroups/Group 4/Interior 1" index="9" instance=ExtResource("15_plmcj")]
+transform = Transform3D(2.88313, 0, 0.829177, 0, 3, 0, -0.829177, 0, 2.88313, -1.39239, 0, -7.16955)
 
 [node name="Interior 2" type="Node3D" parent="InteriorGroups/Group 4" index="1"]
 script = ExtResource("12_f3s8l")
@@ -656,6 +719,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.177, 5.96046e-07, -6.2338)
 
 [node name="Barrel8" parent="InteriorGroups/Group 4/Interior 2" index="7" instance=ExtResource("14_3ur7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25545, 5.96046e-07, -7.34293)
+
+[node name="Roots_006" parent="InteriorGroups/Group 4/Interior 2" index="8" instance=ExtResource("15_e7h6o")]
+transform = Transform3D(-2.12404, 0, 1.3185, 0, 2.5, 0, -1.3185, 0, -2.12404, 8.92513, 0, -5.87277)
+
+[node name="Roots_003" parent="InteriorGroups/Group 4/Interior 2" index="9" instance=ExtResource("17_6vymu")]
+transform = Transform3D(0.180227, 0, 0.983625, 0, 1, 0, -0.983625, 0, 0.180227, -0.523093, 0, -3.06717)
 
 [node name="EnemySpawn" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12908, 0, -5.97894)

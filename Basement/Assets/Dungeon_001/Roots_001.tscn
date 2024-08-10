@@ -1,16 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxudfwv0x6f1"]
+[gd_scene load_steps=4 format=3 uid="uid://cxudfwv0x6f1"]
 
 [ext_resource type="PackedScene" uid="uid://bbpuaycu18q8l" path="res://Assets/FlawLizArt/roots_005.glb" id="1_bw6go"]
-[ext_resource type="PackedScene" uid="uid://itsipxjb728v" path="res://Assets/FlawLizArt/roots_004.glb" id="2_f8x6i"]
 [ext_resource type="PackedScene" uid="uid://ynujaevxx7k2" path="res://Assets/FlawLizArt/roots_001.glb" id="3_b66uu"]
-[ext_resource type="PackedScene" uid="uid://bfy6xstm2urbn" path="res://Assets/FlawLizArt/roots_003.glb" id="4_nrorw"]
+[ext_resource type="PackedScene" uid="uid://bqfnys8ri4jjk" path="res://Assets/FlawLizArt/roots_007.glb" id="3_t8wo4"]
 
 [node name="Roots_001" type="Node3D"]
 
 [node name="roots_005" parent="." instance=ExtResource("1_bw6go")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="roots_004" parent="." instance=ExtResource("2_f8x6i")]
+[node name="roots_004" type="Node3D" parent="."]
 transform = Transform3D(-0.799129, 0, -0.60116, 0, 1, 0, 0.60116, 0, -0.799129, 0.0665488, 0, 0.618791)
 
 [node name="roots_001" parent="." instance=ExtResource("3_b66uu")]
@@ -22,17 +21,17 @@ transform = Transform3D(0.0797632, 0, 0.745746, 0, 0.75, 0, -0.745746, 0, 0.0797
 [node name="roots_009" parent="." instance=ExtResource("3_b66uu")]
 transform = Transform3D(-0.664337, 0, -0.348075, 0, 0.75, 0, 0.348075, 0, -0.664337, 0, 0, 0)
 
-[node name="roots_003" parent="." instance=ExtResource("4_nrorw")]
+[node name="roots_003" type="Node3D" parent="."]
 transform = Transform3D(0.118572, 0, 0.485737, 0, 0.5, 0, -0.485737, 0, 0.118572, -0.645387, 1.19209e-07, -0.549275)
 
-[node name="roots_010" parent="." instance=ExtResource("4_nrorw")]
-transform = Transform3D(0.399664, 0, -0.300447, 0, 0.5, 0, 0.300447, 0, 0.399664, 1.17857, 0.0283547, -0.0130509)
-
-[node name="roots_008" parent="." instance=ExtResource("4_nrorw")]
+[node name="roots_008" type="Node3D" parent="."]
 transform = Transform3D(-0.491922, 0, 0.0895127, 0, 0.5, 0, -0.0895127, 0, -0.491922, -0.885446, 1.19209e-07, -1.0804)
 
-[node name="roots_006" parent="." instance=ExtResource("4_nrorw")]
+[node name="roots_006" type="Node3D" parent="."]
 transform = Transform3D(-0.960446, 0, 1.15219, 0, 1.5, 0, -1.15219, 0, -0.960446, 0, 0, 0)
 
-[node name="roots_007" parent="." instance=ExtResource("4_nrorw")]
+[node name="roots_007" type="Node3D" parent="."]
 transform = Transform3D(-0.125517, 0, -1.49474, 0, 1.5, 0, 1.49474, 0, -0.125517, 0, 0, 0)
+
+[node name="roots_010" parent="." instance=ExtResource("3_t8wo4")]
+transform = Transform3D(0.943703, 0, -0.330794, 0, 1, 0, 0.330794, 0, 0.943703, 1.26144, 0, -0.0129864)

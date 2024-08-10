@@ -402,7 +402,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0592008, 0, -2.18457)
 
 [node name="Label3D" type="Label3D" parent="World/DebtSign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
-text = "Debt: 500"
+text = "Debt: 100"
 outline_size = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="World/DebtSign"]

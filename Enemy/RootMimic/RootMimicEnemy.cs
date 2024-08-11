@@ -459,8 +459,8 @@ public partial class RootMimicEnemy : NavEnemy
     private Vector3 GetRandomPositionInRoom(BasementRoom room)
     {
         var room_size = BasementRoom.SECTION_COUNT * BasementRoom.SECTION_SIZE;
-        var min = room_size * 0.5f;
-        var max = room_size;
+        var min = room_size * 0.2f;
+        var max = room_size * 0.8f;
         var x = _rng.RandfRange(min, max);
         var z = _rng.RandfRange(min, max);
         return room.GlobalPosition + new Vector3(x, 0, z);

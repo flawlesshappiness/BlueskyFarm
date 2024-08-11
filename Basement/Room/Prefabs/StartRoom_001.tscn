@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://wr8om1l3rw08"]
+[gd_scene load_steps=19 format=3 uid="uid://wr8om1l3rw08"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_wt0qa"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon_001/Lantern.tscn" id="2_rxsax"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://mmdxnth7s87i" path="res://Basement/Assets/Dungeon_001/Roots_005.tscn" id="13_a05de"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon_001/Crate.tscn" id="14_pffo2"]
 [ext_resource type="PackedScene" uid="uid://bofym4piivjan" path="res://Basement/Assets/Dungeon_001/Roots_002.tscn" id="15_f5lq2"]
+[ext_resource type="PackedScene" uid="uid://dbtefn1sw1qpl" path="res://Basement/Assets/Dungeon_001/Roots_004.tscn" id="16_trjvd"]
+[ext_resource type="PackedScene" uid="uid://litevesi34j0" path="res://Basement/Assets/Dungeon_001/Roots_003.tscn" id="17_5s3s2"]
+[ext_resource type="PackedScene" uid="uid://cqtrktvdlfk0e" path="res://Basement/Assets/Dungeon_001/Roots_006.tscn" id="18_0f45i"]
 
 [node name="StartRoom_001" instance=ExtResource("1_wt0qa")]
 
@@ -483,3 +486,180 @@ transform = Transform3D(1.20462, 0, -0.893812, 0, 1.5, 0, 0.893812, 0, 1.20462, 
 
 [node name="Roots_002" parent="Interior/Group 1/Interior 2" index="8" instance=ExtResource("15_f5lq2")]
 transform = Transform3D(1.20099, 0, 0.898682, 0, 1.5, 0, -0.898682, 0, 1.20099, -4.20376, 0, 2.10273)
+
+[node name="Group 2" type="Node3D" parent="Interior" index="2"]
+script = ExtResource("9_sod5m")
+
+[node name="Interior 1" type="Node3D" parent="Interior/Group 2" index="0"]
+script = ExtResource("10_t5udd")
+
+[node name="Barrel" parent="Interior/Group 2/Interior 1" index="0" instance=ExtResource("11_vegvy")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -5.47726, 0, -5.39089)
+
+[node name="Barrel2" parent="Interior/Group 2/Interior 1" index="1" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.62554, 0, -8.69788)
+
+[node name="Barrel3" parent="Interior/Group 2/Interior 1" index="2" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5711, 0, -8.57328)
+
+[node name="Roots_004" parent="Interior/Group 2/Interior 1" index="3" instance=ExtResource("16_trjvd")]
+transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, -9.38385, 4, -5.4826)
+
+[node name="Roots_003" parent="Interior/Group 2/Interior 1" index="4" instance=ExtResource("17_5s3s2")]
+transform = Transform3D(-0.693804, 0, 0.720164, 0, 1, 0, -0.720164, 0, -0.693804, -3.48615, 2.38419e-07, -6.0545)
+
+[node name="Roots_005" parent="Interior/Group 2/Interior 1" index="5" instance=ExtResource("17_5s3s2")]
+transform = Transform3D(-0.974808, 0, 0.223046, 0, 1, 0, -0.223046, 0, -0.974808, -6.2203, 2.38419e-07, -3.32778)
+
+[node name="Interior 2" type="Node3D" parent="Interior/Group 2" index="1"]
+script = ExtResource("10_t5udd")
+
+[node name="Crate" parent="Interior/Group 2/Interior 2" index="0" instance=ExtResource("14_pffo2")]
+transform = Transform3D(1.9995, 0, 0.0447132, 0, 2, 0, -0.0447132, 0, 1.9995, -8.03109, 0, -8.04243)
+
+[node name="Crate2" parent="Interior/Group 2/Interior 2" index="1" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.929268, 0, 0.369407, 0, 1, 0, -0.369407, 0, 0.929268, -8.44731, 0, -6.27231)
+
+[node name="Crate3" parent="Interior/Group 2/Interior 2" index="2" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.978678, 0, -0.205401, 0, 1, 0, 0.205401, 0, 0.978678, -6.23423, 0, -8.41359)
+
+[node name="Crate4" parent="Interior/Group 2/Interior 2" index="3" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.998564, 0, 0.0535742, 0, 1, 0, -0.0535742, 0, 0.998564, -4.99138, 0, -8.41359)
+
+[node name="Roots_003" parent="Interior/Group 2/Interior 2" index="4" instance=ExtResource("17_5s3s2")]
+transform = Transform3D(-0.63913, 0, 0.769098, 0, 1, 0, -0.769098, 0, -0.63913, -4.45982, 0, -4.40451)
+
+[node name="Group 3" type="Node3D" parent="Interior" index="3"]
+script = ExtResource("9_sod5m")
+
+[node name="Interior 1" type="Node3D" parent="Interior/Group 3" index="0"]
+script = ExtResource("10_t5udd")
+
+[node name="Barrel" parent="Interior/Group 3/Interior 1" index="0" instance=ExtResource("11_vegvy")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 5.56779, 0, -5.52235)
+
+[node name="Barrel2" parent="Interior/Group 3/Interior 1" index="1" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25468, 0, -6.49522)
+
+[node name="Barrel3" parent="Interior/Group 3/Interior 1" index="2" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04777, 0, -8.55912)
+
+[node name="Barrel4" parent="Interior/Group 3/Interior 1" index="3" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.66514, 0, -3.26622)
+
+[node name="Roots_001" parent="Interior/Group 3/Interior 1" index="4" instance=ExtResource("12_xxn1n")]
+transform = Transform3D(-0.355123, 0, -0.934819, 0, 1, 0, 0.934819, 0, -0.355123, 8.66827, 0, -8.87435)
+
+[node name="Roots_005" parent="Interior/Group 3/Interior 1" index="5" instance=ExtResource("13_a05de")]
+transform = Transform3D(1.46333, 0, -1.36333, 0, 2, 0, 1.36333, 0, 1.46333, 3.05181, 0, -8.94009)
+
+[node name="Interior 2" type="Node3D" parent="Interior/Group 3" index="1"]
+script = ExtResource("10_t5udd")
+
+[node name="Crate" parent="Interior/Group 3/Interior 2" index="0" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.752024, 0, -0.659135, 0, 1, 0, 0.659135, 0, 0.752024, 4.49518, 0, -5.40225)
+
+[node name="Crate2" parent="Interior/Group 3/Interior 2" index="1" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.881699, 0, -0.471812, 0, 1, 0, 0.471812, 0, 0.881699, 5.61995, 0, -4.75233)
+
+[node name="Crate3" parent="Interior/Group 3/Interior 2" index="2" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.85661, 0, -0.515965, 0, 1, 0, 0.515965, 0, 0.85661, 5.64686, 0, -6.0294)
+
+[node name="Crate4" parent="Interior/Group 3/Interior 2" index="3" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.998613, 0, -0.0526489, 0, 1, 0, 0.0526489, 0, 0.998613, 8.60874, 0, -8.62928)
+
+[node name="Crate5" parent="Interior/Group 3/Interior 2" index="4" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.992184, 0, 0.12478, 0, 1, 0, -0.12478, 0, 0.992184, 8.60483, 0, -3.52554)
+
+[node name="Roots_006" parent="Interior/Group 3/Interior 2" index="5" instance=ExtResource("18_0f45i")]
+transform = Transform3D(-2.20913, 0, 1.17036, 0, 2.5, 0, -1.17036, 0, -2.20913, 8.70371, 0, -6.04925)
+
+[node name="Group 4" type="Node3D" parent="Interior" index="4"]
+script = ExtResource("9_sod5m")
+
+[node name="Interior 1" type="Node3D" parent="Interior/Group 4" index="0"]
+script = ExtResource("10_t5udd")
+
+[node name="Barrel" parent="Interior/Group 4/Interior 1" index="0" instance=ExtResource("11_vegvy")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.75215, 4.76837e-07, 7.91336)
+
+[node name="Barrel2" parent="Interior/Group 4/Interior 1" index="1" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16715, 4.76837e-07, 8.63102)
+
+[node name="Barrel3" parent="Interior/Group 4/Interior 1" index="2" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.10683, 4.76837e-07, 8.63102)
+
+[node name="Barrel4" parent="Interior/Group 4/Interior 1" index="3" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67081, 4.76837e-07, 3.09494)
+
+[node name="Barrel5" parent="Interior/Group 4/Interior 1" index="4" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30672, 4.76837e-07, 4.63184)
+
+[node name="Roots_002" parent="Interior/Group 4/Interior 1" index="5" instance=ExtResource("15_f5lq2")]
+transform = Transform3D(0.936366, 0, -0.351025, 0, 1, 0, 0.351025, 0, 0.936366, -8.8019, 0, 5.1283)
+
+[node name="Roots_003" parent="Interior/Group 4/Interior 1" index="6" instance=ExtResource("17_5s3s2")]
+transform = Transform3D(-0.239855, 0, 0.970809, 0, 1, 0, -0.970809, 0, -0.239855, -3.75423, 0, 9.34474)
+
+[node name="Interior 2" type="Node3D" parent="Interior/Group 4" index="1"]
+script = ExtResource("10_t5udd")
+
+[node name="Crate" parent="Interior/Group 4/Interior 2" index="0" instance=ExtResource("14_pffo2")]
+transform = Transform3D(1.45932, 0, 1.36762, 0, 2, 0, -1.36762, 0, 1.45932, -5.33054, 0, 5.32785)
+
+[node name="Crate2" parent="Interior/Group 4/Interior 2" index="1" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.503215, 0, 0.864161, 0, 1, 0, -0.864161, 0, 0.503215, -6.32123, 0, 6.95662)
+
+[node name="Crate3" parent="Interior/Group 4/Interior 2" index="2" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.726598, 0, 0.687063, 0, 1, 0, -0.687063, 0, 0.726598, -4.2807, 0, 6.72947)
+
+[node name="Crate4" parent="Interior/Group 4/Interior 2" index="3" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.32324, 0, 0.946317, 0, 1, 0, -0.946317, 0, 0.32324, -5.24736, 2, 5.25404)
+
+[node name="Roots_006" parent="Interior/Group 4/Interior 2" index="4" instance=ExtResource("18_0f45i")]
+transform = Transform3D(-0.904509, 0, -2.33064, 0, 2.5, 0, 2.33064, 0, -0.904509, -6.92406, 0, 3.1477)
+
+[node name="Roots_004" parent="Interior/Group 4/Interior 2" index="5" instance=ExtResource("16_trjvd")]
+transform = Transform3D(-7.81449e-08, -4.69412e-08, 1.5, -1.5, 2.98023e-08, -7.81449e-08, -2.98023e-08, -1.5, -4.69412e-08, -5.583, 4, 9.40334)
+
+[node name="Group 5" type="Node3D" parent="Interior" index="5"]
+script = ExtResource("9_sod5m")
+
+[node name="Interior 1" type="Node3D" parent="Interior/Group 5" index="0"]
+script = ExtResource("10_t5udd")
+
+[node name="Barrel" parent="Interior/Group 5/Interior 1" index="0" instance=ExtResource("11_vegvy")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7.75848, 0, 7.98221)
+
+[node name="Barrel2" parent="Interior/Group 5/Interior 1" index="1" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58621, 0, 4.57043)
+
+[node name="Barrel3" parent="Interior/Group 5/Interior 1" index="2" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69907, 0, 5.35112)
+
+[node name="Barrel4" parent="Interior/Group 5/Interior 1" index="3" instance=ExtResource("11_vegvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13193, 0, 8.63932)
+
+[node name="Roots_003" parent="Interior/Group 5/Interior 1" index="4" instance=ExtResource("17_5s3s2")]
+transform = Transform3D(-0.979392, 0, -0.201967, 0, 1, 0, 0.201967, 0, -0.979392, 9.33065, 0, 5.09685)
+
+[node name="Roots_005" parent="Interior/Group 5/Interior 1" index="5" instance=ExtResource("13_a05de")]
+transform = Transform3D(-0.97706, 0, 1.74509, 0, 2, 0, -1.74509, 0, -0.97706, 5.30939, 0, 8.9872)
+
+[node name="Interior 2" type="Node3D" parent="Interior/Group 5" index="1"]
+script = ExtResource("10_t5udd")
+
+[node name="Crate" parent="Interior/Group 5/Interior 2" index="0" instance=ExtResource("14_pffo2")]
+transform = Transform3D(1.99746, 0, 0.100804, 0, 2, 0, -0.100804, 0, 1.99746, 8.00574, 0, 8.08275)
+
+[node name="Crate2" parent="Interior/Group 5/Interior 2" index="1" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.859621, 0, -0.510933, 0, 1, 0, 0.510933, 0, 0.859621, 5.34774, 0, 4.7741)
+
+[node name="Crate3" parent="Interior/Group 5/Interior 2" index="2" instance=ExtResource("14_pffo2")]
+transform = Transform3D(0.985253, 0, 0.171104, 0, 1, 0, -0.171104, 0, 0.985253, 8.43934, 0, 6.28077)
+
+[node name="Roots_003" parent="Interior/Group 5/Interior 2" index="3" instance=ExtResource("17_5s3s2")]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 4.89084, 4, 9.35807)
+
+[node name="Roots_002" parent="Interior/Group 5/Interior 2" index="4" instance=ExtResource("15_f5lq2")]
+transform = Transform3D(-0.855003, 0, -0.518624, 0, 1, 0, 0.518624, 0, -0.855003, 9.08674, 0, 4.3867)

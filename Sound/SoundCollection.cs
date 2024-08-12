@@ -25,10 +25,10 @@ public partial class SoundCollection : ResourceCollection<SoundInfo>
             {
                 var path_file = $"{path}/{file}";
                 var ext = path_file.GetExtension();
-                if (ext == "import") continue;
+                if (ext != "import") continue;
 
-                var resource = GD.Load<AudioStream>(path_file);
-                var filename = Path.GetFileName(path_file).Replace($".{ext}", "");
+                var resource = GD.Load<AudioStream>(path_file.RemoveExtension());
+                var filename = GetFilename(path_file);
                 _sounds.Add(filename, resource);
             }
             catch
@@ -53,10 +53,6 @@ public partial class SoundCollection : ResourceCollection<SoundInfo>
 
     private string GetFilename(string path)
     {
-        if (string.IsNullOrEmpty(path))
-            return path;
-
-        var ext = path.GetExtension();
-        return Path.GetFileName(path).Replace($".{ext}", "");
+        return Path.GetFileName(path)?.RemoveExtensions();
     }
 }

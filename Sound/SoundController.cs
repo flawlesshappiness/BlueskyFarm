@@ -9,10 +9,12 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
 
     public void Play(string name, SoundSettings settings = null)
     {
+        var stream = Collection.GetSound(name);
+        if (stream == null) return;
+
         var sound = new AudioStreamPlayer();
         sound.SetParent(Scene.Root);
-
-        sound.Stream = Collection.GetSound(name);
+        sound.Stream = stream;
         settings?.ModifySound(sound);
         sound.Play();
 
@@ -22,10 +24,12 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
 
     public void Play(string name, SoundSettings3D settings = null)
     {
+        var stream = Collection.GetSound(name);
+        if (stream == null) return;
+
         var sound = new AudioStreamPlayer3D();
         sound.SetParent(Scene.Root);
-
-        sound.Stream = Collection.GetSound(name);
+        sound.Stream = stream;
         settings?.ModifySound(sound);
         sound.Play();
 

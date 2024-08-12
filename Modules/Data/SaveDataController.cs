@@ -49,8 +49,6 @@ public partial class SaveDataController : Node
                 EnsureFileExists(path);
 
                 var json = FileAccess.GetFileAsString(path);
-                Debug.Trace(json);
-
                 data = string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json);
             }
             catch (Exception e)
@@ -97,8 +95,6 @@ public partial class SaveDataController : Node
         data.Update();
 
         var json = JsonSerializer.Serialize(data, data.GetType(), new JsonSerializerOptions { WriteIndented = true, IncludeFields = true });
-        Debug.Trace(json);
-
         var filename = type.Name;
         var path = $"user://{filename}.save";
         using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);

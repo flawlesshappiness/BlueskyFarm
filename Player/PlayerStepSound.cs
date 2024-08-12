@@ -1,9 +1,12 @@
 public partial class PlayerStepSound : NodeScript
 {
-    [NodeName(nameof(SfxStep))]
-    public Sound SfxStep;
+    [NodeName]
+    public Sound SfxWalk;
 
-    [NodeName(nameof(SfxLand))]
+    [NodeName]
+    public Sound SfxRun;
+
+    [NodeName]
     public Sound SfxLand;
 
     private FirstPersonController Player => FirstPersonController.Instance;
@@ -29,7 +32,8 @@ public partial class PlayerStepSound : NodeScript
     {
         if (!is_first_step)
         {
-            SfxStep.Play();
+            var sfx = Player.IsRunning ? SfxRun : SfxWalk;
+            sfx.Play();
         }
 
         is_first_step = false;
@@ -37,7 +41,7 @@ public partial class PlayerStepSound : NodeScript
 
     private void Jump()
     {
-        SfxStep.Play();
+        SfxRun.Play();
     }
 
     private void Land()

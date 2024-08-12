@@ -17,14 +17,21 @@ StepBounce = 0.15
 [node name="StepSounds" type="Node3D" parent="." index="3"]
 script = ExtResource("2_k52kp")
 
-[node name="SfxStep" type="AudioStreamPlayer" parent="StepSounds" index="0"]
+[node name="SfxWalk" type="AudioStreamPlayer" parent="StepSounds" index="0"]
+stream = ExtResource("3_3s50d")
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("3_7ahbp")
+PitchMin = 0.8
+
+[node name="SfxRun" type="AudioStreamPlayer" parent="StepSounds" index="1"]
 stream = ExtResource("3_3s50d")
 volume_db = -5.0
 bus = &"SFX"
 script = ExtResource("3_7ahbp")
 PitchMin = 0.8
 
-[node name="SfxLand" type="AudioStreamPlayer" parent="StepSounds" index="1"]
+[node name="SfxLand" type="AudioStreamPlayer" parent="StepSounds" index="2"]
 stream = ExtResource("5_mu7uw")
 volume_db = -5.0
 bus = &"SFX"

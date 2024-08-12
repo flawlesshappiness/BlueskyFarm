@@ -62,9 +62,9 @@ public partial class CombinationDisplay : Node3DScript
     {
         var w = MaxDisplayWidth;
         var wh = w * 0.5f;
+        var wper = w / (CombinationLength - 1);
         var start = GlobalPosition.X - wh;
-        var wper = MaxDisplayWidth / (CombinationLength - 1);
         var x = start + wper * index;
-        return GlobalPosition + new Vector3(x, 0, 0);
+        return GlobalPosition + GlobalBasis * new Vector3(x, 0, 0);
     }
 }

@@ -1,5 +1,4 @@
 using Godot;
-using System.Collections;
 
 public partial class CombinationShop : Node3DScript
 {
@@ -27,6 +26,7 @@ public partial class CombinationShop : Node3DScript
         InputCancel.OnTouched += PressCancel;
         InputAccept.OnTouched += PressAccept;
         Selector.OnCombinationChanged += Display.UpdateDisplay;
+        Selector.OnCombinationChanged += _ => Price.Clear();
 
         Clear();
     }
@@ -40,14 +40,21 @@ public partial class CombinationShop : Node3DScript
         }
         else
         {
-            SelectItem(Selector.CurrentCombination);
+            var combination = Selector.CurrentCombination;
             Selector.Clear();
+            SelectItem(combination);
         }
     }
 
     private void PressCancel()
     {
         Clear();
+
+        SoundController.Instance.Play("sfx_shop_cancel", new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = GlobalPosition
+        });
     }
 
     private void Clear()
@@ -64,10 +71,22 @@ public partial class CombinationShop : Node3DScript
         if (_selected_item != null)
         {
             Price.SetPrice(_selected_item.Price);
+
+            SoundController.Instance.Play("sfx_shop_select", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition
+            });
         }
         else
         {
             Clear();
+
+            SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition
+            });
         }
     }
 
@@ -87,50 +106,19 @@ public partial class CombinationShop : Node3DScript
 
             item.GlobalPosition = GlobalPosition + new Vector3(0, 50, 0);
 
-            AnimateCoins();
+            SoundController.Instance.Play("sfx_shop_accept", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition
+            });
         }
         else
         {
-            // Play sound to show it didn't work
-        }
-    }
-
-    private void AnimateCoins()
-    {
-        Coroutine.Start(CoinsCr);
-
-        IEnumerator CoinsCr()
-        {
-            for (int i = 0; i < 10; i++)
+            SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
             {
-                Coroutine.Start(CoinCr);
-                yield return new WaitForSeconds(0.02f);
-            }
-        }
-
-        IEnumerator CoinCr()
-        {
-            var info = ItemController.Instance.Collection.Coin;
-            var coin = ItemController.Instance.CreateItem(info, track_item: false);
-
-            coin.SetCollisionEnabled(false);
-            coin.Freeze = true;
-            coin.GlobalPosition = Price.PriceLabel.GlobalPosition;
-            coin.GlobalRotation = new Vector3(90, 0, 0);
-
-            var rng = new RandomNumberGenerator();
-            var start_position = coin.GlobalPosition + new Vector3(rng.RandfRange(-1, 1), 0, rng.RandfRange(-1, 1));
-            var end_position = start_position + new Vector3(0, 10, 0);
-            var curve = Curves.EaseInOutQuint;
-
-            coin.GlobalPosition = start_position;
-
-            yield return LerpEnumerator.Lerp01(2f, f =>
-            {
-                coin.GlobalPosition = start_position.Lerp(end_position, curve.Evaluate(f));
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition
             });
-
-            coin.QueueFree();
         }
     }
 }

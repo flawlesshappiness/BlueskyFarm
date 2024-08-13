@@ -40,6 +40,14 @@ public partial class GlowStickController : SingletonController
         item.GlobalPosition = Player.GlobalPosition.Add(y: 1);
         item.LinearVelocity = Player.Camera.GlobalBasis * (Vector3.Forward + Vector3.Up * 0.25f).Normalized() * speed;
         item.AngularVelocity = new Vector3(rng.RandfRange(-rot, rot), rng.RandfRange(-rot, rot), rng.RandfRange(-rot, rot));
+
+        SoundController.Instance.Play("sfx_throw_glowstick", new SoundSettings
+        {
+            Bus = SoundBus.SFX,
+            Volume = -10,
+            PitchMin = 0.9f,
+            PitchMax = 1,
+        });
     }
 
     private Item CreateGlowStick()

@@ -42,6 +42,12 @@ public partial class InventoryController : SingletonController
         }
     }
 
+    public void Clear()
+    {
+        Data.Game.InventoryItems.Clear();
+        CurrentInventoryItems.Clear();
+    }
+
     public void UpdateData()
     {
         Data.Game.InventoryItems = CurrentInventoryItems.ToList();

@@ -562,13 +562,13 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6.33178, 0, -8.33416)
 transform = Transform3D(-1.39777, 0, -0.544291, 0, 1.5, 0, 0.544291, 0, -1.39777, 8.29375, -0.238755, -8.46107)
 
 [node name="Barrel4" parent="InteriorGroups/Group 2/Interior 2" index="3" instance=ExtResource("14_k6537")]
-transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 8.6047, -0.238755, -7.13717)
+transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 8.6047, 0, -7.13717)
 
 [node name="Barrel5" parent="InteriorGroups/Group 2/Interior 2" index="4" instance=ExtResource("14_k6537")]
-transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 7.35032, -0.238755, -7.56898)
+transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 7.35032, 0, -7.56898)
 
 [node name="Barrel6" parent="InteriorGroups/Group 2/Interior 2" index="5" instance=ExtResource("14_k6537")]
-transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 2.08538, -0.238755, -5.01395)
+transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 2.085, 0, -5.014)
 
 [node name="Barrel8" parent="InteriorGroups/Group 2/Interior 2" index="6" instance=ExtResource("14_k6537")]
 transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, 6.17161, -0.238755, -4.82048)

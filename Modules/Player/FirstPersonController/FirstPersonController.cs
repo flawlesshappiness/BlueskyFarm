@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class FirstPersonController : CharacterBody3D
 {
@@ -38,6 +39,9 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeType]
     public FirstPersonStep Step;
 
+    [NodeType]
+    public NavigationAgent3D Agent;
+
     public float MoveSpeedMultiplier { get; set; } = 1f;
     public float LookSpeedMultiplier { get; set; } = 1f;
     public bool IsRunning => PlayerInput.Run.Held;
@@ -48,6 +52,7 @@ public partial class FirstPersonController : CharacterBody3D
     public MultiLock LookLock = new MultiLock();
 
     private bool _jumping;
+    private static bool _debug_actions_registered;
     private Node3D _look_at_target;
     private float _look_at_speed;
 
@@ -60,6 +65,38 @@ public partial class FirstPersonController : CharacterBody3D
         NodeScript.FindNodesFromAttribute(this, GetType());
 
         LoadData();
+
+        RegisterDebugActions();
+    }
+
+    private void RegisterDebugActions()
+    {
+        if (_debug_actions_registered) return;
+        _debug_actions_registered = true;
+
+        var category = "Player";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Unstuck",
+            Action = Unstuck
+        });
+    }
+
+    private void Unstuck(DebugView view)
+    {
+        var player = FirstPersonController.Instance;
+        var agent = player.Agent;
+
+        view.SetVisible(false);
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            agent.TargetPosition = player.GlobalPosition;
+            yield return null;
+            player.GlobalPosition = agent.GetNextPathPosition();
+        }
     }
 
     public override void _Input(InputEvent @event)

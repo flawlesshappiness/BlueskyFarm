@@ -76,6 +76,7 @@ public partial class RootMimicEnemy : NavEnemy
     private float _time_move_pause_check;
     private bool _spawned;
     private bool _ignore_move_pause;
+    private bool _state_change_disabled;
     private RandomNumberGenerator _rng = new RandomNumberGenerator();
     private BasementRoomElement _current_room;
 
@@ -142,10 +143,17 @@ public partial class RootMimicEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Teleport to",
-            Action = _ => Player.GlobalPosition = GlobalPosition
-
+            Text = "Teleport to player",
+            Action = _ => DebugTeleportToPlayer()
         });
+    }
+
+    private void DebugTeleportToPlayer()
+    {
+        GlobalPosition = Player.GlobalPosition;
+        Agent.TargetPosition = GlobalPosition;
+        SetState(State.Waiting);
+        _state_change_disabled = true;
     }
 
     private void InitializeLimbs()
@@ -192,6 +200,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void SetState(State state)
     {
+        if (_state_change_disabled) return;
         _state = state;
 
         var id = "state";

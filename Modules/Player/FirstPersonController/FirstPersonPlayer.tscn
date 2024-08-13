@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Grab/FirstPersonGrab.cs" id="3_30dn4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xb1f"]
-radius = 0.229386
 
 [node name="FirstPersonPlayer" type="CharacterBody3D"]
 script = ExtResource("1_2k6r2")
 JumpHorizontalSpeed = 2.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

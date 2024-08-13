@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6b7h0qlcne00"
-path="res://.godot/imported/glow_stick.glb-6d57d8324ed4da9fb4658327b74ef989.scn"
+path="res://.godot/imported/glow_stick.glb-4eaacdd0d78109dca84a2f618c8da74a.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/glow_stick.glb"
-dest_files=["res://.godot/imported/glow_stick.glb-6d57d8324ed4da9fb4658327b74ef989.scn"]
+source_file="res://Assets/FlawLizArt/GlowStick/glow_stick.glb"
+dest_files=["res://.godot/imported/glow_stick.glb-4eaacdd0d78109dca84a2f618c8da74a.scn"]
 
 [params]
 

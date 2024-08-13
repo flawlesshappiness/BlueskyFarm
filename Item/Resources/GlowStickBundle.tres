@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://dkksf8mbi0teq"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_7egvu"]
+
+[resource]
+script = ExtResource("1_7egvu")
+Path = "res://Item/Prefabs/GlowStickBundle.tscn"
+CanSell = false
+SellValue = 0
+CanPlant = false
+GrowTimeInSeconds = 0
+IsMoney = false
+MoneyAmount = 0
+CanPickUp = true
+Untrack = false

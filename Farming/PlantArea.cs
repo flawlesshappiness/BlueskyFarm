@@ -110,7 +110,7 @@ public partial class PlantArea : Area3D
 
     private void PlantSeedFromData(PlantAreaData data)
     {
-        Debug.LogMethod($"{data.ItemInfoPath}");
+        Debug.TraceMethod($"{data.ItemInfoPath}");
         Debug.Indent++;
 
         if (data == null)
@@ -150,7 +150,7 @@ public partial class PlantArea : Area3D
 
     private void DespawnSeedModel(Seed seed)
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
 
         if (seed == null) return;
         if (seed.SeedModel == null) return;
@@ -162,7 +162,7 @@ public partial class PlantArea : Area3D
 
     private void SpawnPlantFromData(PlantAreaData data)
     {
-        Debug.LogMethod($"{data.ItemInfoPath}");
+        Debug.TraceMethod($"{data.ItemInfoPath}");
         Debug.Indent++;
 
         if (data == null)
@@ -186,7 +186,7 @@ public partial class PlantArea : Area3D
 
     public void SpawnPlantModel(Seed seed)
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         if (seed == null)

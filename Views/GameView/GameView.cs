@@ -8,6 +8,12 @@ public partial class GameView : View
     [NodeType]
     public Minimap Minimap;
 
+    [NodeName]
+    public Control GlowStick;
+
+    [NodeName]
+    public Label GlowStickLabel;
+
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
 
     public override void _Ready()
@@ -15,6 +21,16 @@ public partial class GameView : View
         base._Ready();
         SetOverlayAlpha(0);
         Show();
+
+        GlowSticksChanged();
+
+        GlowStickController.Instance.OnGlowSticksChanged += GlowSticksChanged;
+    }
+
+    private void GlowSticksChanged()
+    {
+        GlowStick.Visible = Data.Game.GlowStickCount > 0;
+        GlowStickLabel.Text = Data.Game.GlowStickCount.ToString();
     }
 
     public void SetOverlayAlpha(float alpha)

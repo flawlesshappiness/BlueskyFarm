@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://buxucoj4rkoqt"]
 
-[ext_resource type="PackedScene" uid="uid://c6b7h0qlcne00" path="res://Assets/FlawLizArt/glow_stick.glb" id="1_21i63"]
+[ext_resource type="PackedScene" uid="uid://c6b7h0qlcne00" path="res://Assets/FlawLizArt/GlowStick/glow_stick.glb" id="1_21i63"]
 [ext_resource type="Script" path="res://GlowStick/GlowStick.cs" id="1_54hkd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fw5va"]

@@ -1,10 +1,13 @@
 using Godot;
+using System;
 
 public partial class GlowStickController : SingletonController
 {
     public override string Directory => "GlowStick";
-
+    public static GlowStickController Instance => Singleton.Get<GlowStickController>();
     private FirstPersonController Player => FirstPersonController.Instance;
+
+    public event Action OnGlowSticksChanged;
 
     public override void _Input(InputEvent @event)
     {
@@ -16,8 +19,19 @@ public partial class GlowStickController : SingletonController
         }
     }
 
+    public void AdjustGlowSticks(int count)
+    {
+        Data.Game.GlowStickCount += count;
+        Data.Game.Save();
+
+        OnGlowSticksChanged?.Invoke();
+    }
+
     private void ThrowGlowStick()
     {
+        if (Data.Game.GlowStickCount <= 0) return;
+        AdjustGlowSticks(-1);
+
         var rng = new RandomNumberGenerator();
         var rot = 5;
         var speed = 10;

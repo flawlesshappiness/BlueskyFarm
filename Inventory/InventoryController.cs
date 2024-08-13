@@ -82,8 +82,7 @@ public partial class InventoryController : SingletonController
         if (!IsInstanceValid(item)) return;
         if (!item.Info.CanPickUp) return;
 
-        Add(item);
-        item.AddedToInventory();
+        item.AddToInventory();
         ItemController.Instance.UntrackItem(item);
         PlayPickupSoundFx();
 

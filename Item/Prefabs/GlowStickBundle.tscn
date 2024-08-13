@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d14jlrm3pr0ka"]
+
+[ext_resource type="PackedScene" uid="uid://qgi10c3ag66l" path="res://Assets/KayLousberg/Dungeon/lootSackA.gltf.glb" id="1_nb8u0"]
+[ext_resource type="Script" path="res://GlowStick/GlowStickBundle.cs" id="1_y0bye"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2rqnr"]
+size = Vector3(0.594727, 0.527588, 0.589844)
+
+[node name="GlowStickBundle" type="RigidBody3D"]
+script = ExtResource("1_y0bye")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034202, 0)
+shape = SubResource("BoxShape3D_2rqnr")
+
+[node name="lootSackA_gltf" parent="." instance=ExtResource("1_nb8u0")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.229592, 0)

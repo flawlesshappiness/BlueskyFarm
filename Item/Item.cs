@@ -79,8 +79,9 @@ public partial class Item : Grabbable
         });
     }
 
-    public void AddedToInventory()
+    public virtual void AddToInventory()
     {
+        InventoryController.Instance.Add(this);
         OnAddedToInventory?.Invoke();
     }
 }

@@ -98,7 +98,7 @@ angle_min = -25.0
 angle_max = 25.0
 angle_curve = SubResource("CurveTexture_4b1wq")
 direction = Vector3(0, 0, 0)
-gravity = Vector3(0, -0.04, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 6.0
 scale_curve = SubResource("CurveTexture_w3wi2")
@@ -108,13 +108,10 @@ alpha_curve = SubResource("CurveTexture_lw3wf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ex2u"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("31_2mgum")
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_xkqfr"]
 material = SubResource("StandardMaterial3D_2ex2u")
@@ -137,7 +134,7 @@ curve = SubResource("Curve_y3wu1")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nufg6"]
 lifetime_randomness = 0.4
 direction = Vector3(0, 0, 0)
-gravity = Vector3(0, -0.04, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 6.0
 scale_curve = SubResource("CurveTexture_ylal3")
@@ -150,20 +147,17 @@ load_path = "res://.godot/imported/circle_05.png-c487627d8a846893ebfdb8550595c0d
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7q8t"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("CompressedTexture2D_c3dv4")
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_vnojs"]
 material = SubResource("StandardMaterial3D_p7q8t")
 size = Vector2(3, 0.5)
 
 [sub_resource type="Curve" id="Curve_gwd85"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), -3.51242e-07, -3.51242e-07, 0, 0, Vector2(0.266667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_8cvbo"]
@@ -171,7 +165,7 @@ curve = SubResource("Curve_gwd85")
 
 [sub_resource type="Curve" id="Curve_xyo0u"]
 max_value = 5.0
-_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 1, Vector2(1, 5), 0.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_1lnfu"]
@@ -191,23 +185,20 @@ angle_min = -25.0
 angle_max = 25.0
 angle_curve = SubResource("CurveTexture_1lnfu")
 direction = Vector3(0, 0, 0)
-gravity = Vector3(0, -0.04, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 15.0
 scale_max = 20.0
 scale_curve = SubResource("CurveTexture_lldvd")
 scale_over_velocity_max = 40.1
-color = Color(0.0216667, 0, 0.1, 1)
+color = Color(0.0313726, 0, 0.14902, 1)
 alpha_curve = SubResource("CurveTexture_8cvbo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46s2f"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("31_q1fnc")
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_1007t"]
 material = SubResource("StandardMaterial3D_46s2f")
@@ -231,24 +222,22 @@ curve = SubResource("Curve_ayacb")
 lifetime_randomness = 0.4
 angle_min = -25.0
 angle_max = 25.0
+angle_curve = SubResource("CurveTexture_1lnfu")
 direction = Vector3(0, 0, 0)
-gravity = Vector3(0, -0.04, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 35.0
 scale_max = 40.0
 scale_curve = SubResource("CurveTexture_ovwr7")
 scale_over_velocity_max = 40.1
-color = Color(0.825, 0.65, 1, 0.517647)
+color = Color(0.396078, 0.258824, 1, 0.0980392)
 alpha_curve = SubResource("CurveTexture_k3k28")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1u3r"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("32_hltal")
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_7x72b"]
 material = SubResource("StandardMaterial3D_s1u3r")
@@ -727,6 +716,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.1067)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
 
 [node name="Hole" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 amount = 40
 lifetime = 12.0
 preprocess = 10.0
@@ -736,6 +726,7 @@ process_material = SubResource("ParticleProcessMaterial_fs4br")
 draw_pass_1 = SubResource("QuadMesh_xkqfr")
 
 [node name="Hole2" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 amount = 40
 lifetime = 12.0
 preprocess = 10.0
@@ -745,8 +736,8 @@ process_material = SubResource("ParticleProcessMaterial_nufg6")
 draw_pass_1 = SubResource("QuadMesh_vnojs")
 
 [node name="Waves" type="GPUParticles3D" parent="World/Rift"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
-amount = 10
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, 0)
+amount = 5
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
@@ -755,8 +746,18 @@ process_material = SubResource("ParticleProcessMaterial_pqhdu")
 draw_pass_1 = SubResource("QuadMesh_1007t")
 
 [node name="Shine" type="GPUParticles3D" parent="World/Rift"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
-amount = 10
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, 0)
+amount = 5
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+process_material = SubResource("ParticleProcessMaterial_4ek4j")
+draw_pass_1 = SubResource("QuadMesh_7x72b")
+
+[node name="Shine2" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, 0.866025, -3.78552e-08, 0, 30, 0)
+amount = 5
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60

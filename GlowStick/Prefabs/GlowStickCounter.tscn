@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxd3jeb521lod"]
+
+[ext_resource type="Script" path="res://GlowStick/GlowStickCounter.cs" id="1_3hy1b"]
+[ext_resource type="Texture2D" uid="uid://c7m5wtsr7iwd4" path="res://Assets/FlawLizArt/GlowStick/icon_glow_stick.png" id="2_mxl2b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gkq4d"]
+font_size = 26
+outline_size = 8
+outline_color = Color(0, 0, 0, 0.490196)
+
+[node name="GlowStickCounter" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3hy1b")
+HideWhenInvisible = true
+
+[node name="GlowStick" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+texture = ExtResource("2_mxl2b")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="GlowStickLabel" type="Label" parent="GlowStick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+label_settings = SubResource("LabelSettings_gkq4d")
+horizontal_alignment = 2
+vertical_alignment = 2

@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdco18oe37rhc"]
+[gd_scene load_steps=6 format=3 uid="uid://bdco18oe37rhc"]
 
 [ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
 [ext_resource type="PackedScene" uid="uid://ces2w5eg2difr" path="res://UI/MoneyBar/MoneyBar.tscn" id="2_0bxlp"]
 [ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
-[ext_resource type="Texture2D" uid="uid://c7m5wtsr7iwd4" path="res://Assets/FlawLizArt/GlowStick/icon_glow_stick.png" id="4_g4g0t"]
+[ext_resource type="PackedScene" uid="uid://bxd3jeb521lod" path="res://GlowStick/Prefabs/GlowStickCounter.tscn" id="4_ogemw"]
 [ext_resource type="PackedScene" uid="uid://u4x4nxc1afaf" path="res://UI/KeyItemBar/KeyItemBar.tscn" id="4_ruths"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_gkq4d"]
-font_size = 26
-outline_size = 8
-outline_color = Color(0, 0, 0, 0.490196)
 
 [node name="GameView" type="Control"]
 layout_mode = 3
@@ -181,26 +176,8 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/RightBars/HBoxContainer/OtherBar"]
 layout_mode = 2
 
-[node name="GlowStick" type="TextureRect" parent="MarginContainer/Control/RightBars/HBoxContainer/OtherBar/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+[node name="GlowStickCounter" parent="MarginContainer/Control/RightBars/HBoxContainer/OtherBar/VBoxContainer" instance=ExtResource("4_ogemw")]
 layout_mode = 2
-size_flags_vertical = 2
-texture = ExtResource("4_g4g0t")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="GlowStickLabel" type="Label" parent="MarginContainer/Control/RightBars/HBoxContainer/OtherBar/VBoxContainer/GlowStick"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "99"
-label_settings = SubResource("LabelSettings_gkq4d")
-horizontal_alignment = 2
-vertical_alignment = 2
 
 [node name="KeyItemBar" parent="MarginContainer/Control/RightBars/HBoxContainer" instance=ExtResource("4_ruths")]
 layout_mode = 2

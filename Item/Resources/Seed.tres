@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://b0mawrch4u8cp"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://b0mawrch4u8cp"]
 
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_a3g06"]
+[ext_resource type="Texture2D" uid="uid://dsaqlmh63ddv" path="res://Assets/KenneyNL/Icons/avocado.png" id="1_ueth1"]
 
 [resource]
 script = ExtResource("1_a3g06")
@@ -8,7 +9,7 @@ Path = "res://Item/Prefabs/Seed.tscn"
 CanSell = false
 SellValue = 0
 CanPlant = true
-GrowTicks = 0
-IsMoney = false
-MoneyAmount = 0
+GrowTimeInSeconds = 0
 CanPickUp = true
+Untrack = false
+Icon = ExtResource("1_ueth1")

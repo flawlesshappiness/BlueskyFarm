@@ -55,18 +55,20 @@ public partial class Item : Grabbable
 
     private void OnBodyEntered(Node other)
     {
+        var vel_min = 1f;
+        var vel_max = 5f;
+        var vol_min = 0f;
+        var vol_max = 30f;
+        var pitch_min = 0.5f;
+        var pitch_max = 1.5f;
+
         var rig_other = other as RigidBody3D;
         var vel_other = -rig_other?.LinearVelocity ?? Vector3.Zero;
         var avg_mul = rig_other == null ? 1 : 0.5f;
         var vel = RigidBody.LinearVelocity;
         var vel_avg = (vel + vel_other) * avg_mul;
 
-        var vel_min = 0f;
-        var vel_max = 5f;
-        var vol_min = 0f;
-        var vol_max = 30f;
-        var pitch_min = 0.5f;
-        var pitch_max = 1.5f;
+        if (vel_avg.Length() < vel_min) return;
 
         var t_vel = Mathf.Clamp((vel_avg.Length() - vel_min) / (vel_max - vel_min), 0, 1);
         var volume = Mathf.Lerp(vol_min, vol_max, t_vel);

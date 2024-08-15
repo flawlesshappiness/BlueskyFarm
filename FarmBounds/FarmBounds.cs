@@ -29,7 +29,7 @@ public partial class FarmBounds : NodeScript
 
     private void BodyExitedDeferred(Node3D body)
     {
-        var item = body.GetNodeInChildren<Item>();
+        var item = body.GetNodeInParents<Item>();
 
         if (item?.IsBeingHandled ?? false) return;
 

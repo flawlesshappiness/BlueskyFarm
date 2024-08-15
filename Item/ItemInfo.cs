@@ -19,14 +19,11 @@ public partial class ItemInfo : Resource
     public int GrowTimeInSeconds;
 
     [Export]
-    public bool IsMoney;
-
-    [Export]
-    public int MoneyAmount;
-
-    [Export]
     public bool CanPickUp;
 
     [Export]
     public bool Untrack;
+
+    [Export]
+    public Texture2D Icon;
 }

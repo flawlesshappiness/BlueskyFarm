@@ -762,7 +762,7 @@ amount = 40
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
-visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+visibility_aabb = AABB(-110.118, -94.1289, -14.352, 220.235, 188.258, 28.704)
 process_material = SubResource("ParticleProcessMaterial_fs4br")
 draw_pass_1 = SubResource("QuadMesh_xkqfr")
 
@@ -772,7 +772,7 @@ amount = 40
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
-visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+visibility_aabb = AABB(-129, -132, -14.352, 258, 264, 28.704)
 process_material = SubResource("ParticleProcessMaterial_nufg6")
 draw_pass_1 = SubResource("QuadMesh_vnojs")
 
@@ -782,7 +782,7 @@ amount = 5
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
-visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+visibility_aabb = AABB(-147.5, -123.446, -14.352, 295, 246.891, 28.704)
 process_material = SubResource("ParticleProcessMaterial_pqhdu")
 draw_pass_1 = SubResource("QuadMesh_1007t")
 
@@ -792,7 +792,7 @@ amount = 5
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
-visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+visibility_aabb = AABB(-137, -130.5, -14.352, 274, 261, 28.704)
 process_material = SubResource("ParticleProcessMaterial_j68sx")
 draw_pass_1 = SubResource("QuadMesh_1007t")
 
@@ -802,7 +802,7 @@ amount = 5
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
-visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+visibility_aabb = AABB(-147.5, -129.338, -14.352, 295, 258.677, 28.704)
 process_material = SubResource("ParticleProcessMaterial_4ek4j")
 draw_pass_1 = SubResource("QuadMesh_7x72b")
 
@@ -812,7 +812,7 @@ amount = 5
 lifetime = 12.0
 preprocess = 10.0
 fixed_fps = 60
-visibility_aabb = AABB(-15.5558, -4.8725, -14.352, 31.1116, 9.74499, 28.704)
+visibility_aabb = AABB(-169, -162.801, -14.352, 338, 325.602, 28.704)
 process_material = SubResource("ParticleProcessMaterial_4ek4j")
 draw_pass_1 = SubResource("QuadMesh_7x72b")
 

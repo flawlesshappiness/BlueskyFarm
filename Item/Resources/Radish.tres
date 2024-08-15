@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://gpdwk15vfxgn"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://gpdwk15vfxgn"]
 
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_6cw6x"]
+[ext_resource type="Texture2D" uid="uid://b6modmjdani56" path="res://Assets/KenneyNL/Icons/radish.png" id="1_d47iq"]
 
 [resource]
 script = ExtResource("1_6cw6x")
@@ -9,6 +10,6 @@ CanSell = true
 SellValue = 5
 CanPlant = false
 GrowTimeInSeconds = 3
-IsMoney = false
-MoneyAmount = 0
 CanPickUp = true
+Untrack = false
+Icon = ExtResource("1_d47iq")

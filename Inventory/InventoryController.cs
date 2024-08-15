@@ -1,19 +1,25 @@
 using Godot;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class InventoryController : SingletonController
 {
     public override string Directory => "Inventory";
     public static InventoryController Instance => Singleton.Get<InventoryController>();
-    public List<ItemData> CurrentInventoryItems { get; set; } = new();
+    public ItemData[] CurrentInventoryItems { get; private set; } = new ItemData[MAX_INVENTORY_SIZE];
     private FirstPersonController Player => FirstPersonController.Instance;
+
+    public const int INIT_INVENTORY_SIZE = 5;
+    public const int MAX_INVENTORY_SIZE = 15;
+
+    public event Action<int> OnItemAdded;
+    public event Action<int> OnItemRemoved;
 
     protected override void Initialize()
     {
         base.Initialize();
-        CurrentInventoryItems = Data.Game.InventoryItems.ToList();
+        CurrentInventoryItems = Data.Game.InventoryItems.ToArray();
     }
 
     public override void _Process(double delta)
@@ -40,20 +46,40 @@ public partial class InventoryController : SingletonController
         }
     }
 
-    public void Clear()
+    public void ClearInventory()
     {
-        Data.Game.InventoryItems.Clear();
-        CurrentInventoryItems.Clear();
+        Data.Game.InventoryItems = new ItemData[MAX_INVENTORY_SIZE];
+        ClearCurrentInventory();
+    }
+
+    public void ClearCurrentInventory()
+    {
+        CurrentInventoryItems = new ItemData[MAX_INVENTORY_SIZE];
     }
 
     public void UpdateData()
     {
-        Data.Game.InventoryItems = CurrentInventoryItems.ToList();
+        Data.Game.InventoryItems = CurrentInventoryItems.ToArray();
     }
 
     public bool HasItem(ItemData item)
     {
-        return CurrentInventoryItems.Any(x => x.Id == item.Id);
+        return CurrentInventoryItems.Any(x => x != null && x.Id == item.Id);
+    }
+
+    public int GetItemIndex(ItemData data) => CurrentInventoryItems.ToList().IndexOf(data);
+    public ItemData GetItem(int i) => IsValidItemIndex(i) ? CurrentInventoryItems[i] : null;
+    public bool IsValidItemIndex(int i) => i >= 0 && i < Data.Game.InventorySize && i < CurrentInventoryItems.Length;
+    public bool HasFreeSpace() => GetFreeIndex() > -1;
+
+    private int GetFreeIndex()
+    {
+        for (int i = 0; i < Data.Game.InventorySize; i++)
+        {
+            if (CurrentInventoryItems[i] == null) return i;
+        }
+
+        return -1;
     }
 
     public void Add(Item item)
@@ -63,14 +89,11 @@ public partial class InventoryController : SingletonController
         Debug.TraceMethod(item.Data.InfoPath);
         Debug.Indent++;
 
-        if (item.Info.IsMoney)
-        {
-            CurrencyController.Instance.AddValue(CurrencyType.Money, 1);
-        }
-        else
-        {
-            CurrentInventoryItems.Add(item.Data);
-        }
+        var i = GetFreeIndex();
+        if (i == -1) return;
+
+        CurrentInventoryItems[i] = item.Data;
+        OnItemAdded?.Invoke(i);
 
         Debug.Indent--;
     }
@@ -78,6 +101,7 @@ public partial class InventoryController : SingletonController
     public void PickUpItem(Item item)
     {
         if (!IsInstanceValid(item)) return;
+        if (!HasFreeSpace()) return;
         if (!item.Info.CanPickUp) return;
 
         item.AddToInventory();
@@ -85,7 +109,6 @@ public partial class InventoryController : SingletonController
         PlayPickupSoundFx();
 
         Coroutine.Start(Cr);
-
         IEnumerator Cr()
         {
             var start_position = item.GlobalPosition;
@@ -111,31 +134,41 @@ public partial class InventoryController : SingletonController
     public void DropInventory()
     {
         Debug.TraceMethod();
-        Debug.Indent++;
-
-        var items = CurrentInventoryItems.ToList();
-        CurrentInventoryItems.Clear();
-        Data.Game.Save();
 
         Coroutine.Start(DropAllCr);
-
-        Debug.Indent--;
-
         IEnumerator DropAllCr()
         {
-            foreach (var inv_item in items)
+            for (int i = 0; i < CurrentInventoryItems.Length; i++)
             {
-                var dir = Player.Camera.GlobalBasis * Vector3.Forward;
-                var vel = Player.Velocity;
-                var item = ItemController.Instance.CreateItemFromData(inv_item);
-                item.RigidBody.GlobalPosition = Player.Mid.GlobalPosition;
-                item.RigidBody.LinearVelocity = vel + dir * 5;
-
-                PlayPickupSoundFx();
-
+                DropItem(i);
                 yield return new WaitForSeconds(0.05f);
             }
+
+            ClearCurrentInventory();
+            Data.Game.Save();
         }
+    }
+
+    private void DropItem(int i)
+    {
+        var item = CurrentInventoryItems[i];
+        if (item == null) return;
+
+        DropItem(item);
+        OnItemRemoved?.Invoke(i);
+    }
+
+    private void DropItem(ItemData data)
+    {
+        if (data == null) return;
+
+        var dir = Player.Camera.GlobalBasis * Vector3.Forward;
+        var vel = Player.Velocity;
+        var item = ItemController.Instance.CreateItemFromData(data);
+        item.RigidBody.GlobalPosition = Player.Mid.GlobalPosition;
+        item.RigidBody.LinearVelocity = vel + dir * 5;
+
+        PlayPickupSoundFx();
     }
 
     private void PlayPickupSoundFx()

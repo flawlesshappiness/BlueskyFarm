@@ -18,7 +18,7 @@ public partial class Interactable : Node3DScript
 
         if (!OverrideInitialCollisionMode)
         {
-            SetCollisionWithAll();
+            SetCollision(item: true, interact: true);
         }
     }
 

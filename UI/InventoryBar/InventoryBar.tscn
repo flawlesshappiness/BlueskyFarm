@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://caxidipwbdxhk"]
+
+[ext_resource type="Script" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
+[ext_resource type="Script" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
+[ext_resource type="Script" path="res://UI/DynamicUI/DynamicUI.cs" id="1_5bjdx"]
+[ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="2_85wm7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la47w"]
+bg_color = Color(0, 0, 0, 0.490196)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="InventoryBar" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -55.0
+offset_right = 27.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_3r2to")
+
+[node name="DynamicUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5bjdx")
+
+[node name="GridContainer" type="GridContainer" parent="DynamicUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -55.0
+offset_right = 27.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 15
+
+[node name="InventoryBarElement" type="Control" parent="DynamicUI/GridContainer"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+size_flags_vertical = 8
+script = ExtResource("1_03bnl")
+
+[node name="Panel" type="Panel" parent="DynamicUI/GridContainer/InventoryBarElement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_la47w")
+
+[node name="MarginContainer" type="MarginContainer" parent="DynamicUI/GridContainer/InventoryBarElement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="DynamicUI/GridContainer/InventoryBarElement/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_85wm7")
+expand_mode = 1
+stretch_mode = 4

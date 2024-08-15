@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://bb5qfq2vungdk"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bb5qfq2vungdk"]
 
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_ct5k4"]
+[ext_resource type="Texture2D" uid="uid://e74ckvdsb6ex" path="res://Assets/Quaternius/Icons/Coin.png" id="1_joqq3"]
 
 [resource]
 script = ExtResource("1_ct5k4")
@@ -8,7 +9,7 @@ Path = "res://Item/Prefabs/Coin.tscn"
 CanSell = false
 SellValue = 0
 CanPlant = false
-GrowTicks = 0
-IsMoney = true
-MoneyAmount = 1
+GrowTimeInSeconds = 0
 CanPickUp = true
+Untrack = false
+Icon = ExtResource("1_joqq3")

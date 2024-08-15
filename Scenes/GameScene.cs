@@ -75,7 +75,7 @@ public partial class GameScene : Scene
         if (_player_is_dying) return;
 
         _player_is_dying = true;
-        InventoryController.Instance.Clear();
+        InventoryController.Instance.ClearInventory();
         OnPlayerDeath();
     }
 

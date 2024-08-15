@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class GlowStickController : SingletonController
 {
@@ -7,7 +6,10 @@ public partial class GlowStickController : SingletonController
     public static GlowStickController Instance => Singleton.Get<GlowStickController>();
     private FirstPersonController Player => FirstPersonController.Instance;
 
-    public event Action OnGlowSticksChanged;
+    public int GlowStickCount => GlowStickData?.Count ?? 0;
+    public KeyItemData GlowStickData => KeyItemController.Instance.Get(GlowStickInfo.Id);
+    public KeyItemInfo GlowStickInfo => _glowStickInfo ?? (_glowStickInfo = GD.Load<KeyItemInfo>(KeyItemController.Instance.Collection.GlowStick));
+    private KeyItemInfo _glowStickInfo;
 
     public override void _Input(InputEvent @event)
     {
@@ -19,18 +21,10 @@ public partial class GlowStickController : SingletonController
         }
     }
 
-    public void AdjustGlowSticks(int count)
-    {
-        Data.Game.GlowStickCount += count;
-        Data.Game.Save();
-
-        OnGlowSticksChanged?.Invoke();
-    }
-
     private void ThrowGlowStick()
     {
-        if (Data.Game.GlowStickCount <= 0) return;
-        AdjustGlowSticks(-1);
+        if (GlowStickCount <= 0) return;
+        KeyItemController.Instance.Remove(GlowStickInfo.Id);
 
         var rng = new RandomNumberGenerator();
         var rot = 5;
@@ -38,8 +32,8 @@ public partial class GlowStickController : SingletonController
         var item = CreateGlowStick();
 
         item.GlobalPosition = Player.GlobalPosition.Add(y: 1);
-        item.LinearVelocity = Player.Camera.GlobalBasis * (Vector3.Forward + Vector3.Up * 0.25f).Normalized() * speed;
-        item.AngularVelocity = new Vector3(rng.RandfRange(-rot, rot), rng.RandfRange(-rot, rot), rng.RandfRange(-rot, rot));
+        item.RigidBody.LinearVelocity = Player.Camera.GlobalBasis * (Vector3.Forward + Vector3.Up * 0.25f).Normalized() * speed;
+        item.RigidBody.AngularVelocity = new Vector3(rng.RandfRange(-rot, rot), rng.RandfRange(-rot, rot), rng.RandfRange(-rot, rot));
 
         SoundController.Instance.Play("sfx_throw_glowstick", new SoundSettings
         {

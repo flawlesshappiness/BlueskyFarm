@@ -11,27 +11,28 @@ radius = 0.414695
 [sub_resource type="SphereShape3D" id="SphereShape3D_v8pix"]
 radius = 0.32058
 
-[node name="PlantPot" type="RigidBody3D"]
+[node name="PlantPot" type="Node3D"]
+script = ExtResource("4_jfl88")
+
+[node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6
 collision_mask = 2
 mass = 10.0
-script = ExtResource("4_jfl88")
-HoverText = "Pot"
 
-[node name="PlantPot" parent="." instance=ExtResource("2_khbk4")]
+[node name="PlantPot" parent="Body" instance=ExtResource("2_khbk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.369206, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00289246, 0)
 shape = SubResource("CylinderShape3D_24be2")
 
-[node name="PlantArea" type="Area3D" parent="."]
+[node name="PlantArea" type="Area3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.307565, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_26l6i")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlantArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/PlantArea"]
 shape = SubResource("SphereShape3D_v8pix")
 
-[node name="SeedPosition" type="Node3D" parent="PlantArea"]
+[node name="SeedPosition" type="Node3D" parent="Body/PlantArea"]

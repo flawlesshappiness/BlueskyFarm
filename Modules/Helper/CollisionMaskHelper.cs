@@ -22,7 +22,7 @@ public static class CollisionMaskHelper
     }
 }
 
-public enum CollisionMaskName
+public enum CollisionMaskType
 {
     Player = 1,
     Item = 2,

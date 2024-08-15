@@ -138,11 +138,9 @@ public partial class PlantArea : Area3D
 
     private void ReparentItem(Node3D node)
     {
-        var interactable = node as IInteractable;
-        interactable.SetCollisionMode(InteractCollisionMode.None);
-
-        var rig = node as RigidBody3D;
-        rig.Freeze = true;
+        var grabbable = node as Grabbable;
+        grabbable.SetCollisionNone();
+        grabbable.RigidBody.Freeze = true;
 
         node.GlobalTransform = SeedPosition.GlobalTransform;
         node.SetParent(SeedPosition);
@@ -212,27 +210,22 @@ public partial class PlantArea : Area3D
     {
         if (seed == null) return;
 
-        var grabbable = seed.GrabbablePlant;
-        var interactable = seed.InteractablePlant;
         var item = seed.ItemPlant;
 
-        grabbable.OnGrabbed += OnGrabbedPlant;
+        item.OnGrabbed += OnGrabbedPlant;
         item.OnAddedToInventory += OnGrabbedPlant;
 
         void OnGrabbedPlant()
         {
-            grabbable.OnGrabbed -= OnGrabbedPlant;
+            item.OnGrabbed -= OnGrabbedPlant;
             item.OnAddedToInventory -= OnGrabbedPlant;
-
-            var rig = grabbable as RigidBody3D;
-            rig.Freeze = false;
-
-            interactable.SetCollisionMode(InteractCollisionMode.All);
-            grabbable.Node.SetParent(Scene.Root);
+            item.RigidBody.Freeze = false;
+            item.SetCollisionWithAll();
+            item.Body.SetParent(Scene.Root);
 
             RemoveData(CurrentSeed.Data.ItemId);
 
-            ItemController.Instance.TrackItem(interactable as Item);
+            ItemController.Instance.TrackItem(item);
 
             CurrentSeed = null;
         }
@@ -243,7 +236,7 @@ public partial class PlantArea : Area3D
         if (seed == null) return;
 
         seed.PlantModel.Scale = Vector3.One * 1f;
-        seed.InteractablePlant.SetCollisionMode(InteractCollisionMode.Interact);
+        seed.ItemPlant.SetCollision(interact: true);
     }
 
     private void Process_Grow()

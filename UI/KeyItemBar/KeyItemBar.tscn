@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://u4x4nxc1afaf"]
+[gd_scene load_steps=5 format=3 uid="uid://u4x4nxc1afaf"]
 
 [ext_resource type="Script" path="res://UI/KeyItemBar/KeyItemBar.cs" id="1_78vv7"]
 [ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="2_ruppm"]
+[ext_resource type="Script" path="res://UI/KeyItemBar/KeyItemElement.cs" id="3_m6lj6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4nlm"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 0.490196)
 
 [node name="KeyItemBar" type="Control"]
 custom_minimum_size = Vector2(50, 50)
@@ -26,9 +31,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="IconTemplate" type="TextureRect" parent="VBoxContainer"]
+[node name="ElementTemplate" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+script = ExtResource("3_m6lj6")
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/ElementTemplate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_ruppm")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="CountLabel" type="Label" parent="VBoxContainer/ElementTemplate"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_right = 25.0
+grow_vertical = 0
+text = "99"
+label_settings = SubResource("LabelSettings_y4nlm")
+horizontal_alignment = 1
+vertical_alignment = 1

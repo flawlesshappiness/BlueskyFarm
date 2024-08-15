@@ -148,7 +148,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         void SelectItem(ItemInfo info)
         {
             var item = CreateItem(info);
-            FarmBounds.Instance.ThrowObject(item, FirstPersonController.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
         }
     }
 
@@ -170,7 +170,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         {
             var item = CreateItem(Collection.Seed);
             item.Data.PlantInfoPath = path;
-            FarmBounds.Instance.ThrowObject(item, FirstPersonController.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
         }
     }
 }

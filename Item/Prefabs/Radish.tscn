@@ -6,16 +6,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_6yi1c"]
 size = Vector3(0.151367, 0.312866, 0.156494)
 
-[node name="Radish" type="RigidBody3D"]
+[node name="Radish" type="Node3D"]
+script = ExtResource("3_pjj4y")
+
+[node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6
 collision_mask = 2
 mass = 10.0
-script = ExtResource("3_pjj4y")
-HoverText = "Radish"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0305892, 0)
 shape = SubResource("BoxShape3D_6yi1c")
 
-[node name="radish2" parent="." instance=ExtResource("1_f812j")]
+[node name="radish2" parent="Body" instance=ExtResource("1_f812j")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.182436, 0)

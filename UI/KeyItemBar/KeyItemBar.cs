@@ -4,57 +4,69 @@ using System.Linq;
 
 public partial class KeyItemBar : ControlScript
 {
-    [NodeName]
-    public TextureRect IconTemplate;
+    [NodeType]
+    public KeyItemElement ElementTemplate;
 
-    private List<ItemIcon> _icons = new();
-
-    private class ItemIcon
-    {
-        public string Id { get; set; }
-        public TextureRect Element { get; set; }
-    }
+    private List<KeyItemElement> _elements = new();
 
     public override void _Ready()
     {
         base._Ready();
-        IconTemplate.Hide();
+        ElementTemplate.Hide();
 
-        KeyItemInventoryController.Instance.OnItemAdded += ItemAdded;
-        KeyItemInventoryController.Instance.OnItemRemoved += ItemRemoved;
+        KeyItemController.Instance.OnItemAdded += ItemAdded;
+        KeyItemController.Instance.OnItemRemoved += ItemRemoved;
     }
 
     private void ItemRemoved(string id)
     {
-        RemoveIcon(id);
-    }
+        var e = GetElement(id);
+        if (e == null) return;
 
-    private void ItemAdded(KeyItem item)
-    {
-        CreateIcon(item.Icon, item.Id);
-    }
-
-    private void CreateIcon(Texture2D icon, string id)
-    {
-        var element = IconTemplate.Duplicate() as TextureRect;
-        element.SetParent(IconTemplate.GetParent());
-        element.Show();
-
-        var i = new ItemIcon
+        var data = KeyItemController.Instance.Get(id);
+        if (data != null)
         {
-            Id = id,
-            Element = element
-        };
-
-        _icons.Add(i);
+            e.SetCount(data.Count);
+        }
+        else
+        {
+            RemoveElement(id);
+        }
     }
 
-    private void RemoveIcon(string id)
+    private void ItemAdded(KeyItemInfo info)
     {
-        var i = _icons.FirstOrDefault(x => x.Id == id);
-        if (i == null) return;
+        var e = GetElement(info.Id) ?? CreateElement(info.Icon, info.Id);
+        var data = KeyItemController.Instance.Get(info.Id);
+        e.SetCount(data.Count);
+    }
 
-        _icons.Remove(i);
-        i.Element.QueueFree();
+    private KeyItemElement GetElement(string id)
+    {
+        return _elements.FirstOrDefault(x => x.Id == id);
+    }
+
+    private KeyItemElement CreateElement(Texture2D icon, string id)
+    {
+        var element = ElementTemplate.Duplicate() as KeyItemElement;
+        element.SetParent(ElementTemplate.GetParent());
+        element.Show();
+        element.Id = id;
+        element.Icon = icon;
+        _elements.Add(element);
+        return element;
+    }
+
+    private void RemoveElement(string id)
+    {
+        var e = _elements.FirstOrDefault(x => x.Id == id);
+        if (e == null) return;
+        RemoveElement(e);
+    }
+
+    private void RemoveElement(KeyItemElement e)
+    {
+        _elements.Remove(e);
+        e.QueueFree();
     }
 }

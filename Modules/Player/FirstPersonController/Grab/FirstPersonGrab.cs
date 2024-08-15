@@ -11,7 +11,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
     [NodeName("Rotation")]
     public Node3D RotationNode;
 
-    public IGrabbable Target { get; private set; }
+    public Grabbable Target { get; private set; }
     public Vector3 GrabPosition => PositionNode.GlobalPosition + GrabOffset;
     public Vector3 GrabOffset => PositionNode.GlobalBasis * Vector3.Forward * GrabOffsetLength;
     public float GrabOffsetLength { get; private set; }
@@ -39,9 +39,9 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         RotationNode.GlobalRotate(PositionNode.GlobalBasis[0], y);
     }
 
-    private void CalculateGrabRotationOffset(IGrabbable target)
+    private void CalculateGrabRotationOffset(Grabbable target)
     {
-        RotationNode.GlobalRotation = target.Node.GlobalRotation;
+        RotationNode.GlobalRotation = target.Body.GlobalRotation;
     }
 
     public override void _Process(double delta)
@@ -68,9 +68,9 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         GrabOffsetLength = Mathf.Clamp(offset, 0, GrabPositionOffsetMax);
     }
 
-    private void CalculateGrabOffset(IGrabbable target)
+    private void CalculateGrabOffset(Grabbable target)
     {
-        var distance = PositionNode.GlobalPosition.DistanceTo(target.Node.GlobalPosition);
+        var distance = PositionNode.GlobalPosition.DistanceTo(target.Body.GlobalPosition);
         SetGrabOffset(distance);
     }
 
@@ -88,7 +88,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         Target.SetRotation(GrabRotation);
     }
 
-    public void SetTarget(IGrabbable grabbable)
+    public void SetTarget(Grabbable grabbable)
     {
         if (grabbable == null) return;
         if (!CanGrab(grabbable)) return;
@@ -112,7 +112,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         Target = null;
     }
 
-    public void Grab(IGrabbable grabbable)
+    public void Grab(Grabbable grabbable)
     {
         SetTarget(grabbable);
     }
@@ -122,11 +122,11 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         RemoveTarget();
     }
 
-    public bool CanGrab(IGrabbable grabbable)
+    public bool CanGrab(Grabbable grabbable)
     {
         if (grabbable == null) return false;
-        if (!IsInstanceValid(grabbable.Node)) return false;
-        if (grabbable.Node.IsQueuedForDeletion()) return false;
+        if (!IsInstanceValid(grabbable)) return false;
+        if (grabbable.IsQueuedForDeletion()) return false;
         return true;
     }
 }

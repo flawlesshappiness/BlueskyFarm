@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="KeyItemCollection" load_steps=2 format=3 uid="uid://b7yy7xext8mle"]
+
+[ext_resource type="Script" path="res://KeyItem/KeyItemCollection.cs" id="1_fnurf"]
+
+[resource]
+script = ExtResource("1_fnurf")
+GlowStick = "res://KeyItem/Resources/GlowStick.tres"

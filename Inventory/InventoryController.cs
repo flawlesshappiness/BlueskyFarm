@@ -7,9 +7,7 @@ public partial class InventoryController : SingletonController
 {
     public override string Directory => "Inventory";
     public static InventoryController Instance => Singleton.Get<InventoryController>();
-
     public List<ItemData> CurrentInventoryItems { get; set; } = new();
-
     private FirstPersonController Player => FirstPersonController.Instance;
 
     protected override void Initialize()
@@ -96,13 +94,13 @@ public partial class InventoryController : SingletonController
 
             item.IsBeingHandled = true;
             item.SetCollisionEnabled(false);
-            item.GravityScale = 0;
-            item.LinearVelocity = Vector3.Zero;
+            item.RigidBody.GravityScale = 0;
+            item.RigidBody.LinearVelocity = Vector3.Zero;
 
             yield return LerpEnumerator.Lerp01(0.1f, f =>
             {
-                item.GlobalPosition = start_position.Lerp(Player.Mid.GlobalPosition, f);
-                item.Scale = start_scale.Lerp(end_scale, f);
+                item.RigidBody.GlobalPosition = start_position.Lerp(Player.Mid.GlobalPosition, f);
+                item.RigidBody.Scale = start_scale.Lerp(end_scale, f);
             });
 
             item.SetEnabled(false);
@@ -130,8 +128,8 @@ public partial class InventoryController : SingletonController
                 var dir = Player.Camera.GlobalBasis * Vector3.Forward;
                 var vel = Player.Velocity;
                 var item = ItemController.Instance.CreateItemFromData(inv_item);
-                item.GlobalPosition = Player.Mid.GlobalPosition;
-                item.LinearVelocity = vel + dir * 5;
+                item.RigidBody.GlobalPosition = Player.Mid.GlobalPosition;
+                item.RigidBody.LinearVelocity = vel + dir * 5;
 
                 PlayPickupSoundFx();
 

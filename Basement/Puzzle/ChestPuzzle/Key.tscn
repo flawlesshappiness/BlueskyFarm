@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lvnxfxbildsm"]
 
-[ext_resource type="Script" path="res://Item/KeyItem.cs" id="1_nr27c"]
+[ext_resource type="Script" path="res://KeyItem/KeyItem.cs" id="1_nr27c"]
 [ext_resource type="PackedScene" uid="uid://fnuti5jg81ls" path="res://Assets/Quaternius/RPG/Key1.obj" id="1_q7aj0"]
 [ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="2_qijvx"]
 

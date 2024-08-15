@@ -8,6 +8,9 @@ public partial class GameView : View
     [NodeType]
     public Minimap Minimap;
 
+    [NodeName]
+    public DynamicUI DynamicUI;
+
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
 
     public override void _Ready()
@@ -15,6 +18,16 @@ public partial class GameView : View
         base._Ready();
         SetOverlayAlpha(0);
         Show();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (PlayerInput.ShowUI.Pressed)
+        {
+            DynamicUI.AnimateShow(true);
+        }
     }
 
     public void SetOverlayAlpha(float alpha)

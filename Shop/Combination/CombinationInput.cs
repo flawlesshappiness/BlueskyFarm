@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class CombinationInput : Touchable, ITouchable
+public partial class CombinationInput : Touchable
 {
     [Export]
     public string Input;

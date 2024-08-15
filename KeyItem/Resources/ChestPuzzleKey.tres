@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyItemInfo" load_steps=3 format=3 uid="uid://bu6x7bc54ntn0"]
+
+[ext_resource type="Script" path="res://KeyItem/KeyItemInfo.cs" id="1_55gg7"]
+[ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="1_h45sj"]
+
+[resource]
+script = ExtResource("1_55gg7")
+Id = "ChestPuzzleKey"
+ItemName = "Chest key"
+Count = 1
+Icon = ExtResource("1_h45sj")
+Temporary = false

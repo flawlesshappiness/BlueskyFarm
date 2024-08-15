@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
 [ext_resource type="PackedScene" uid="uid://ces2w5eg2difr" path="res://UI/MoneyBar/MoneyBar.tscn" id="2_0bxlp"]
+[ext_resource type="Script" path="res://UI/DynamicUI/DynamicUI.cs" id="2_lk8ri"]
 [ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
-[ext_resource type="PackedScene" uid="uid://bxd3jeb521lod" path="res://GlowStick/Prefabs/GlowStickCounter.tscn" id="4_ogemw"]
 [ext_resource type="PackedScene" uid="uid://u4x4nxc1afaf" path="res://UI/KeyItemBar/KeyItemBar.tscn" id="4_ruths"]
 
 [node name="GameView" type="Control"]
@@ -32,7 +32,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="DynamicUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_lk8ri")
+
+[node name="MarginContainer" type="MarginContainer" parent="DynamicUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,10 +53,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Control" type="Control" parent="MarginContainer"]
+[node name="Control" type="Control" parent="DynamicUI/MarginContainer"]
 layout_mode = 2
 
-[node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_0bxlp")]
+[node name="MoneyBar" parent="DynamicUI/MarginContainer/Control" instance=ExtResource("2_0bxlp")]
 layout_mode = 1
 anchors_preset = 3
 anchor_top = 1.0
@@ -58,7 +67,7 @@ offset_right = -30.0
 offset_bottom = -6.0
 grow_vertical = 0
 
-[node name="Minimap" type="Control" parent="MarginContainer/Control"]
+[node name="Minimap" type="Control" parent="DynamicUI/MarginContainer/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 0
@@ -66,7 +75,7 @@ offset_right = 168.0
 offset_bottom = 168.0
 script = ExtResource("3_lv1ii")
 
-[node name="Panel" type="Panel" parent="MarginContainer/Control/Minimap"]
+[node name="Panel" type="Panel" parent="DynamicUI/MarginContainer/Control/Minimap"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +83,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Clip" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel"]
+[node name="Clip" type="ColorRect" parent="DynamicUI/MarginContainer/Control/Minimap/Panel"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -83,7 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Rotate" type="Control" parent="MarginContainer/Control/Minimap/Panel/Clip"]
+[node name="Rotate" type="Control" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,11 +101,11 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(84, 84)
 
-[node name="Scroll" type="Control" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate"]
+[node name="Scroll" type="Control" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate"]
 layout_mode = 2
 anchors_preset = 0
 
-[node name="RoomTemplate" type="Control" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
+[node name="RoomTemplate" type="Control" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -108,7 +117,7 @@ offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate"]
+[node name="CenterContainer" type="CenterContainer" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,18 +125,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 7
 
-[node name="SectionTemplate" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer/GridContainer"]
+[node name="SectionTemplate" type="ColorRect" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer/GridContainer"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
-[node name="ItemTemplate" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
+[node name="ItemTemplate" type="ColorRect" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 48.0
@@ -135,7 +144,7 @@ offset_right = 72.0
 offset_bottom = 52.0
 color = Color(1, 0.760784, 0, 1)
 
-[node name="Player" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip"]
+[node name="Player" type="ColorRect" parent="DynamicUI/MarginContainer/Control/Minimap/Panel/Clip"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -149,7 +158,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RightBars" type="Control" parent="MarginContainer/Control"]
+[node name="RightBars" type="Control" parent="DynamicUI/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -160,7 +169,7 @@ offset_bottom = -67.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/RightBars"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DynamicUI/MarginContainer/Control/RightBars"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,15 +178,5 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="OtherBar" type="MarginContainer" parent="MarginContainer/Control/RightBars/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/RightBars/HBoxContainer/OtherBar"]
-layout_mode = 2
-
-[node name="GlowStickCounter" parent="MarginContainer/Control/RightBars/HBoxContainer/OtherBar/VBoxContainer" instance=ExtResource("4_ogemw")]
-layout_mode = 2
-
-[node name="KeyItemBar" parent="MarginContainer/Control/RightBars/HBoxContainer" instance=ExtResource("4_ruths")]
+[node name="KeyItemBar" parent="DynamicUI/MarginContainer/Control/RightBars/HBoxContainer" instance=ExtResource("4_ruths")]
 layout_mode = 2

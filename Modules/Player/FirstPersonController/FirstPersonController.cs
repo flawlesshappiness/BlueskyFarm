@@ -226,18 +226,18 @@ public partial class FirstPersonController : CharacterBody3D
         {
             Cursor.Hide();
         }
-        else if ((Interact?.CurrentInteractable as ITouchable) != null)
+        else if ((Interact?.CurrentInteractable as Touchable) != null)
         {
-            Cursor.Position(Interact.CurrentInteractable.Node);
+            Cursor.Position(Interact.CurrentInteractable.Body);
             Cursor.Show(CursorType.Look, Interact.CurrentInteractable.InteractableText);
         }
         else if (Grab?.IsGrabbing ?? false)
         {
             Cursor.Hide();
         }
-        else if (Grab?.CanGrab(Interact?.CurrentInteractable as IGrabbable) ?? false)
+        else if (Grab?.CanGrab(Interact?.CurrentInteractable as Grabbable) ?? false)
         {
-            Cursor.Position(Interact.CurrentInteractable.Node);
+            Cursor.Position(Interact.CurrentInteractable.Body);
             Cursor.Show(CursorType.Grab, Interact.CurrentInteractable.InteractableText);
         }
         else
@@ -262,23 +262,23 @@ public partial class FirstPersonController : CharacterBody3D
         }
     }
 
-    private bool TryGrab(IInteractable interactable)
+    private bool TryGrab(Interactable interactable)
     {
         if (Grab == null) return false;
         if (interactable == null) return false;
 
-        var grabbable = interactable as IGrabbable;
+        var grabbable = interactable as Grabbable;
         if (grabbable == null) return false;
 
         Grab.Grab(grabbable);
         return true;
     }
 
-    private bool TryTouch(IInteractable interactable)
+    private bool TryTouch(Interactable interactable)
     {
         if (interactable == null) return false;
 
-        var touchable = interactable as ITouchable;
+        var touchable = interactable as Touchable;
         if (touchable == null) return false;
 
         touchable.Touch();

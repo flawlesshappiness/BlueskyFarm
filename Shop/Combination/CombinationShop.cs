@@ -3,10 +3,10 @@ using Godot;
 public partial class CombinationShop : Node3DScript
 {
     [NodeName]
-    public ITouchable InputCancel;
+    public Touchable InputCancel;
 
     [NodeName]
-    public ITouchable InputAccept;
+    public Touchable InputAccept;
 
     [NodeType]
     public CombinationSelector Selector;

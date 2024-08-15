@@ -11,7 +11,7 @@ public partial class Enemy : Node3DScript
 
     public bool CanSeePlayer()
     {
-        if (this.TryRaycast(GlobalPosition.Add(y: 0.25f), PlayerPosition.Add(y: 0.5f), CollisionMaskHelper.Create(CollisionMaskName.Player), out var result))
+        if (this.TryRaycast(GlobalPosition.Add(y: 0.25f), PlayerPosition.Add(y: 0.5f), CollisionMaskHelper.Create(CollisionMaskType.Player), out var result))
         {
             var collider = result.Collider as Node;
             var player = collider.GetNodeInParents<FirstPersonController>();

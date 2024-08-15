@@ -29,7 +29,7 @@ public partial class ChestPuzzleChest : Touchable
     {
         if (CanUnlock())
         {
-            KeyItemInventoryController.Instance.Remove(KeyItemId);
+            KeyItemController.Instance.Remove(KeyItemId);
             Unlock();
         }
         else
@@ -42,7 +42,7 @@ public partial class ChestPuzzleChest : Touchable
     {
         if (_open) return false;
         if (string.IsNullOrEmpty(KeyItemId)) return false;
-        if (!KeyItemInventoryController.Instance.HasItem(KeyItemId)) return false;
+        if (!KeyItemController.Instance.HasItem(KeyItemId)) return false;
 
         return true;
     }
@@ -71,8 +71,7 @@ public partial class ChestPuzzleChest : Touchable
         Closed.Hide();
         Open.Show();
         _open = true;
-        SetCollisionMode(InteractCollisionMode.None);
-        SetCollisionLayerValue(1, true);
+        SetCollisionWithAll();
         SpawnItems();
     }
 
@@ -90,7 +89,7 @@ public partial class ChestPuzzleChest : Touchable
         {
             var seed = CreateSeed();
             seed.GlobalPosition = ItemSpawnPosition.GlobalPosition;
-            seed.LinearVelocity = ItemSpawnPosition.GlobalBasis * Vector3.Back * 3;
+            seed.RigidBody.LinearVelocity = ItemSpawnPosition.GlobalBasis * Vector3.Back * 3;
         }
     }
 

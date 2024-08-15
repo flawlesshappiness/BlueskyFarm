@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyItemInfo" load_steps=3 format=3 uid="uid://dbtofq73l10cr"]
+
+[ext_resource type="Texture2D" uid="uid://c7m5wtsr7iwd4" path="res://Assets/FlawLizArt/GlowStick/icon_glow_stick.png" id="1_hcsua"]
+[ext_resource type="Script" path="res://KeyItem/KeyItemInfo.cs" id="1_qbvei"]
+
+[resource]
+script = ExtResource("1_qbvei")
+Id = "GlowSticks"
+ItemName = "Glow sticks"
+Count = 1
+Icon = ExtResource("1_hcsua")
+Temporary = false

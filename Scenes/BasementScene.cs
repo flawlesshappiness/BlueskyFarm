@@ -36,9 +36,6 @@ public partial class BasementScene : GameScene
     {
         base.OnDestroy();
 
-        // Key items
-        KeyItemInventoryController.Instance.Clear();
-
         // Audio
         SetAudioEffectEnabled(false);
     }

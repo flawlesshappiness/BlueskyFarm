@@ -10,16 +10,17 @@ friction = 5.0
 height = 0.229913
 radius = 0.0869211
 
-[node name="Seed" type="RigidBody3D"]
+[node name="Seed" type="Node3D"]
+script = ExtResource("4_e2n7c")
+
+[node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6
 collision_mask = 2
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_pb7np")
-script = ExtResource("4_e2n7c")
-HoverText = "Seed"
 
-[node name="avocado2" parent="." instance=ExtResource("2_dxukr")]
+[node name="avocado2" parent="Body" instance=ExtResource("2_dxukr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100058, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 shape = SubResource("CylinderShape3D_whh86")

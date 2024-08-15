@@ -67,7 +67,7 @@ public partial class FarmBounds : NodeScript
         for (int i = 0; i < count; i++)
         {
             var item = ItemController.Instance.CreateItem(path_coin);
-            ThrowObject(item, position);
+            ThrowObject(item.RigidBody, position);
         }
     }
 

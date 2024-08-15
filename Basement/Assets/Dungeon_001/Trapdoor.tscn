@@ -8,15 +8,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_506dw"]
 size = Vector3(1.88965, 0.185303, 1.89063)
 
-[node name="Trapdoor" type="StaticBody3D"]
-collision_layer = 5
+[node name="Trapdoor" type="Node3D"]
 script = ExtResource("1_rguyj")
 OpenSound = ExtResource("2_8kcjf")
 CloseSound = ExtResource("3_c8644")
 
-[node name="trapdoor_gltf" parent="." instance=ExtResource("1_j7jdy")]
+[node name="Body" type="StaticBody3D" parent="."]
+collision_layer = 5
+
+[node name="trapdoor_gltf" parent="Body" instance=ExtResource("1_j7jdy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0926514, 0)
 shape = SubResource("BoxShape3D_506dw")

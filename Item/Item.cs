@@ -6,6 +6,9 @@ public partial class Item : Grabbable
     public ItemInfo Info { get; set; }
     public ItemData Data { get; set; }
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
+    public new Vector3 GlobalPosition { get => RigidBody.GlobalPosition; set => RigidBody.GlobalPosition = value; }
+    public new Vector3 GlobalRotation { get => RigidBody.GlobalRotation; set => RigidBody.GlobalRotation = value; }
+    public new Vector3 Scale { get => RigidBody.Scale; set => RigidBody.Scale = value; }
 
     public event Action OnUpdateData;
     public event Action OnAddedToInventory;
@@ -13,30 +16,30 @@ public partial class Item : Grabbable
     public override void _Ready()
     {
         base._Ready();
-        BodyEntered += OnBodyEntered;
+        RigidBody.BodyEntered += OnBodyEntered;
 
-        ContactMonitor = true;
-        MaxContactsReported = 1;
+        RigidBody.ContactMonitor = true;
+        RigidBody.MaxContactsReported = 1;
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
 
-        if (GlobalPosition.Y < -50)
+        if (RigidBody.GlobalPosition.Y < -50)
         {
-            FarmBounds.Instance.ThrowObject(this, FirstPersonController.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(RigidBody, FirstPersonController.Instance.GlobalPosition);
         }
     }
 
     public void UpdateData()
     {
-        var p = GlobalPosition;
+        var p = RigidBody.GlobalPosition;
         Data.X_Position = p.X;
         Data.Y_Position = p.Y;
         Data.Z_Position = p.Z;
 
-        var r = GlobalRotation;
+        var r = RigidBody.GlobalRotation;
         Data.X_Rotation = r.X;
         Data.Y_Rotation = r.Y;
         Data.Z_Rotation = r.Z;
@@ -46,8 +49,8 @@ public partial class Item : Grabbable
 
     public void LoadFromData()
     {
-        GlobalPosition = new Vector3(Data.X_Position, Data.Y_Position, Data.Z_Position);
-        GlobalRotation = new Vector3(Data.X_Rotation, Data.Y_Rotation, Data.Z_Rotation);
+        RigidBody.GlobalPosition = new Vector3(Data.X_Position, Data.Y_Position, Data.Z_Position);
+        RigidBody.GlobalRotation = new Vector3(Data.X_Rotation, Data.Y_Rotation, Data.Z_Rotation);
     }
 
     private void OnBodyEntered(Node other)
@@ -55,7 +58,7 @@ public partial class Item : Grabbable
         var rig_other = other as RigidBody3D;
         var vel_other = -rig_other?.LinearVelocity ?? Vector3.Zero;
         var avg_mul = rig_other == null ? 1 : 0.5f;
-        var vel = LinearVelocity;
+        var vel = RigidBody.LinearVelocity;
         var vel_avg = (vel + vel_other) * avg_mul;
 
         var vel_min = 0f;
@@ -71,7 +74,7 @@ public partial class Item : Grabbable
 
         SoundController.Instance.Play("sfx_impact_default", new SoundSettings3D
         {
-            Position = GlobalPosition,
+            Position = RigidBody.GlobalPosition,
             PitchMin = pitch,
             PitchMax = pitch,
             Volume = volume,

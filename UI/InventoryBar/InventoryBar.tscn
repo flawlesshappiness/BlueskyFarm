@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://caxidipwbdxhk"]
+[gd_scene load_steps=7 format=3 uid="uid://caxidipwbdxhk"]
 
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
 [ext_resource type="Script" path="res://UI/DynamicUI/DynamicUI.cs" id="1_5bjdx"]
 [ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="2_85wm7"]
+[ext_resource type="Texture2D" uid="uid://c48ol1afhicfm" path="res://Assets/KenneyNL/Particles/circle_03.png" id="4_nuabn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la47w"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -65,6 +66,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_la47w")
+
+[node name="Selected" type="TextureRect" parent="DynamicUI/GridContainer/InventoryBarElement"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_nuabn")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="DynamicUI/GridContainer/InventoryBarElement"]
 layout_mode = 1

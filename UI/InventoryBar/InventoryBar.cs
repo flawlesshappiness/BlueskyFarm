@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 public partial class InventoryBar : ControlScript
 {
@@ -17,6 +18,7 @@ public partial class InventoryBar : ControlScript
         InitializeElements();
         InventoryController.Instance.OnItemAdded += ItemAdded;
         InventoryController.Instance.OnItemRemoved += ItemRemoved;
+        InventoryController.Instance.OnSelectedItemChanged += SelectedItemChanged;
     }
 
     private void InitializeElements()
@@ -25,6 +27,10 @@ public partial class InventoryBar : ControlScript
         {
             var e = CreateElement();
             _elements[i] = e;
+
+            var selected_index = InventoryController.Instance.SelectedIndex;
+            if (i == selected_index) e.Select();
+            else e.Deselect();
 
             var data = Data.Game.InventoryItems[i];
             if (data == null) continue;
@@ -67,6 +73,20 @@ public partial class InventoryBar : ControlScript
         e.Icon.Texture = info.Icon;
 
         DynamicUI.AnimateShow(true);
+    }
+
+    private void SelectedItemChanged(int i)
+    {
+        DeselectAllElements();
+        var e = GetElement(i);
+        e.Select();
+
+        DynamicUI.AnimateShow(true);
+    }
+
+    private void DeselectAllElements()
+    {
+        _elements.ToList().ForEach(x => x.Deselect());
     }
 
     private InventoryBarElement GetElement(int i)

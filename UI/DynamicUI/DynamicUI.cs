@@ -10,6 +10,9 @@ public partial class DynamicUI : ControlScript
 
     private List<DynamicUI> _children = new();
 
+    private Coroutine _cr_show;
+    private float _time_hide;
+
     public override void _Ready()
     {
         base._Ready();
@@ -50,7 +53,9 @@ public partial class DynamicUI : ControlScript
             }
         }
 
-        StartCoroutine(Cr, nameof(AnimateShow) + GetInstanceId());
+        _time_hide = GameTime.Time + duration;
+        _cr_show ??= StartCoroutine(Cr, nameof(AnimateShow) + GetInstanceId());
+
         IEnumerator Cr()
         {
             if (HideWhenInvisible)
@@ -65,7 +70,12 @@ public partial class DynamicUI : ControlScript
                 Modulate = start.Lerp(end, f);
             });
 
-            yield return new WaitForSeconds(duration);
+            while (GameTime.Time < _time_hide)
+            {
+                yield return null;
+            }
+
+            _cr_show = null;
 
             start = Modulate;
             end = start.SetA(0);

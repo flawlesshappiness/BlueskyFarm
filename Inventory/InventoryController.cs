@@ -9,28 +9,62 @@ public partial class InventoryController : SingletonController
     public static InventoryController Instance => Singleton.Get<InventoryController>();
     public ItemData[] CurrentInventoryItems { get; private set; } = new ItemData[MAX_INVENTORY_SIZE];
     private FirstPersonController Player => FirstPersonController.Instance;
+    public int SelectedIndex { get; private set; }
 
     public const int INIT_INVENTORY_SIZE = 5;
     public const int MAX_INVENTORY_SIZE = 15;
 
     public event Action<int> OnItemAdded;
     public event Action<int> OnItemRemoved;
+    public event Action<int> OnSelectedItemChanged;
+
+    private bool _dropping_inventory;
+    private float _time_select_index;
+    private float _time_drop_inventory;
 
     protected override void Initialize()
     {
         base.Initialize();
-        CurrentInventoryItems = Data.Game.InventoryItems.ToArray();
+        LoadData();
+        Input_SetInventoryIndex(0);
     }
 
-    public override void _Process(double delta)
+    private void LoadData()
     {
-        base._Process(delta);
-        Process_PickUp();
-        Process_DropInventory();
+        CurrentInventoryItems = Data.Game.InventoryItems.ToList().ToArray();
     }
 
-    private void Process_PickUp()
+    public void UpdateData()
     {
+        Data.Game.InventoryItems = CurrentInventoryItems.ToList().ToArray();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (PlayerInput.NextInventorySlot.Pressed)
+        {
+            Input_SetInventoryIndex(SelectedIndex + 1);
+        }
+        else if (PlayerInput.PreviousInventorySlot.Pressed)
+        {
+            Input_SetInventoryIndex(SelectedIndex - 1);
+        }
+
+        if (PlayerInput.DropInventory.Pressed)
+        {
+            _time_drop_inventory = GameTime.Time + 0.5f;
+        }
+        else if (PlayerInput.DropInventory.Held)
+        {
+            Input_DropInventoryHeld();
+        }
+        else if (PlayerInput.DropInventory.Released)
+        {
+            Input_DropInventoryReleased();
+        }
+
         if (PlayerInput.PickUp.Pressed)
         {
             var item = Player.Interact?.CurrentInteractable as Item;
@@ -38,12 +72,29 @@ public partial class InventoryController : SingletonController
         }
     }
 
-    private void Process_DropInventory()
+    private void Input_SetInventoryIndex(int i)
     {
-        if (PlayerInput.DropInventory.Pressed)
-        {
-            DropInventory();
-        }
+        if (GameTime.Time < _time_select_index) return;
+        _time_select_index = GameTime.Time + 0.01f;
+
+        var next = Mathf.Clamp(i, 0, Data.Game.InventorySize - 1);
+        if (next == SelectedIndex) return;
+
+        SelectedIndex = next;
+        OnSelectedItemChanged?.Invoke(SelectedIndex);
+    }
+
+    private void Input_DropInventoryHeld()
+    {
+        if (GameTime.Time < _time_drop_inventory) return;
+        DropInventory();
+    }
+
+    private void Input_DropInventoryReleased()
+    {
+        if (_dropping_inventory) return;
+
+        DropItem(SelectedIndex);
     }
 
     public void ClearInventory()
@@ -57,11 +108,6 @@ public partial class InventoryController : SingletonController
         CurrentInventoryItems = new ItemData[MAX_INVENTORY_SIZE];
     }
 
-    public void UpdateData()
-    {
-        Data.Game.InventoryItems = CurrentInventoryItems.ToArray();
-    }
-
     public bool HasItem(ItemData item)
     {
         return CurrentInventoryItems.Any(x => x != null && x.Id == item.Id);
@@ -71,6 +117,7 @@ public partial class InventoryController : SingletonController
     public ItemData GetItem(int i) => IsValidItemIndex(i) ? CurrentInventoryItems[i] : null;
     public bool IsValidItemIndex(int i) => i >= 0 && i < Data.Game.InventorySize && i < CurrentInventoryItems.Length;
     public bool HasFreeSpace() => GetFreeIndex() > -1;
+    public bool IsInventoryEmpty() => !CurrentInventoryItems.Any(x => x != null);
 
     private int GetFreeIndex()
     {
@@ -104,8 +151,8 @@ public partial class InventoryController : SingletonController
         if (!HasFreeSpace()) return;
         if (!item.Info.CanPickUp) return;
 
-        item.AddToInventory();
         ItemController.Instance.UntrackItem(item);
+        item.AddToInventory();
         PlayPickupSoundFx();
 
         Coroutine.Start(Cr);
@@ -133,25 +180,37 @@ public partial class InventoryController : SingletonController
 
     public void DropInventory()
     {
+        if (IsInventoryEmpty()) return;
+        if (_dropping_inventory) return;
+
         Debug.TraceMethod();
+
+        _dropping_inventory = true;
+        var items = CurrentInventoryItems.ToList().ToArray();
+        ClearCurrentInventory();
+        Data.Game.Save();
 
         Coroutine.Start(DropAllCr);
         IEnumerator DropAllCr()
         {
-            for (int i = 0; i < CurrentInventoryItems.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                DropItem(i);
+                var item = items[i];
+                if (item == null) continue;
+
+                DropItem(item);
+                OnItemRemoved?.Invoke(i);
                 yield return new WaitForSeconds(0.05f);
             }
 
-            ClearCurrentInventory();
-            Data.Game.Save();
+            _dropping_inventory = false;
         }
     }
 
     private void DropItem(int i)
     {
         var item = CurrentInventoryItems[i];
+        CurrentInventoryItems[i] = null;
         if (item == null) return;
 
         DropItem(item);

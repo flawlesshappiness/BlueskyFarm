@@ -88,7 +88,7 @@ public partial class SaveDataController : Node
 
     public void Save(Type type)
     {
-        Debug.LogMethod(type.Name);
+        Debug.TraceMethod(type.Name);
         Debug.Indent++;
 
         var data = data_objects[type];

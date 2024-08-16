@@ -153,8 +153,6 @@ public partial class InventoryController : SingletonController
         CurrentInventoryItems[i] = item.Data;
         OnItemAdded?.Invoke(i);
 
-        Debug.LogMethod(item.Data.CustomId);
-
         Debug.Indent--;
     }
 
@@ -164,8 +162,8 @@ public partial class InventoryController : SingletonController
         if (!HasFreeSpace()) return;
         if (!item.Info.CanPickUp) return;
 
-        ItemController.Instance.UntrackItem(item);
         item.AddToInventory();
+        ItemController.Instance.UntrackItem(item);
         PlayPickupSoundFx();
 
         Coroutine.Start(Cr);
@@ -239,7 +237,6 @@ public partial class InventoryController : SingletonController
         var item = ItemController.Instance.CreateItemFromData(data);
         item.RigidBody.GlobalPosition = Player.Mid.GlobalPosition;
         item.RigidBody.LinearVelocity = vel + dir * 5;
-        Debug.LogMethod(item.Data.CustomId);
 
         PlayPickupSoundFx();
     }

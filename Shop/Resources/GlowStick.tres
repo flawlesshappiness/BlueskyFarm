@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_xj4e7")
-ItemInfoPath = "res://Item/Resources/GlowStickBundle.tres"
+ItemInfoPath = "res://Item/Resources/GlowStick.tres"
 Combination = "GBB"
 Price = 10

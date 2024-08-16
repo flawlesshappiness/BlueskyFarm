@@ -8,6 +8,7 @@ size = Vector3(0.719742, 0.103516, 0.09375)
 
 [node name="GlowStick" type="Node3D"]
 script = ExtResource("1_54hkd")
+InteractableText = "Glowstick"
 
 [node name="Body" type="RigidBody3D" parent="."]
 

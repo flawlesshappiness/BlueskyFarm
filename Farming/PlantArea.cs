@@ -129,20 +129,20 @@ public partial class PlantArea : Area3D
             Data = data,
             TimeStart = GameTime.Time,
             TimeEnd = GameTime.Time + data.TimeLeft,
-            SeedModel = seed_item
+            SeedItem = seed_item
         };
 
         Debug.Indent--;
     }
 
-    private void ReparentItem(Node3D node)
+    private void ReparentItem(Item item)
     {
-        var grabbable = node as Grabbable;
-        grabbable.SetCollisionNone();
-        grabbable.RigidBody.Freeze = true;
-
-        node.GlobalTransform = SeedPosition.GlobalTransform;
-        node.SetParent(SeedPosition);
+        item.SetCollision_None();
+        item.RigidBody.Freeze = true;
+        item.GlobalTransform = SeedPosition.GlobalTransform;
+        item.SetParent(SeedPosition);
+        item.ResetBodyPosition();
+        item.ResetBodyRotation();
     }
 
     private void DespawnSeedModel(Seed seed)
@@ -150,11 +150,11 @@ public partial class PlantArea : Area3D
         Debug.TraceMethod();
 
         if (seed == null) return;
-        if (seed.SeedModel == null) return;
+        if (seed.SeedItem == null) return;
 
-        ItemController.Instance.UntrackItem(seed.SeedModel as Item);
-        seed.SeedModel.QueueFree();
-        seed.SeedModel = null;
+        ItemController.Instance.UntrackItem(seed.SeedItem);
+        seed.SeedItem.QueueFree();
+        seed.SeedItem = null;
     }
 
     private void SpawnPlantFromData(PlantAreaData data)
@@ -193,8 +193,8 @@ public partial class PlantArea : Area3D
             return;
         }
 
-        seed.PlantModel = ItemController.Instance.CreateItem(seed.Data.ItemInfoPath, track_item: false);
-        ReparentItem(seed.PlantModel);
+        seed.PlantItem = ItemController.Instance.CreateItem(seed.Data.ItemInfoPath, track_item: false);
+        ReparentItem(seed.PlantItem);
         SetupPlantGrabbable(seed);
         SetPlantFullyGrown(CurrentSeed);
 
@@ -205,7 +205,7 @@ public partial class PlantArea : Area3D
     {
         if (seed == null) return;
 
-        var item = seed.ItemPlant;
+        var item = seed.PlantItem;
 
         item.OnGrabbed += OnGrabbedPlant;
         item.OnAddedToInventory += OnGrabbedPlant;
@@ -215,7 +215,7 @@ public partial class PlantArea : Area3D
             item.OnGrabbed -= OnGrabbedPlant;
             item.OnAddedToInventory -= OnGrabbedPlant;
             item.RigidBody.Freeze = false;
-            item.SetCollisionWithAll();
+            item.SetCollision_Item();
             item.SetParent(Scene.Root);
 
             RemoveData(CurrentSeed.Data.ItemId);
@@ -230,14 +230,14 @@ public partial class PlantArea : Area3D
     {
         if (seed == null) return;
 
-        seed.PlantModel.Scale = Vector3.One * 1f;
-        seed.ItemPlant.SetCollision(interact: true);
+        seed.PlantItem.Scale = Vector3.One * 1f;
+        seed.PlantItem.SetCollision_Interactable();
     }
 
     private void Process_Grow()
     {
         if (CurrentSeed == null) return; // No seed
-        if (CurrentSeed.PlantModel != null) return; // Already has plant
+        if (CurrentSeed.PlantItem != null) return; // Already has plant
 
         if (GameTime.Time > CurrentSeed.TimeEnd)
         {
@@ -265,7 +265,7 @@ public partial class PlantArea : Area3D
         IEnumerator Cr()
         {
             var duration = 0.05f;
-            var plant = seed.PlantModel;
+            var plant = seed.PlantItem;
             var scale_A = Vector3.One * 1.1f;
             var scale_B = Vector3.One * 1.2f;
             var scale_C = Vector3.One * 0.9f;

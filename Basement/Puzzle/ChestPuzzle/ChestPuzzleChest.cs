@@ -71,7 +71,7 @@ public partial class ChestPuzzleChest : Touchable
         Closed.Hide();
         Open.Show();
         _open = true;
-        SetCollisionWithAll();
+        SetCollision_All();
         SpawnItems();
     }
 

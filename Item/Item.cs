@@ -89,4 +89,14 @@ public partial class Item : Grabbable
         InventoryController.Instance.Add(this);
         OnAddedToInventory?.Invoke();
     }
+
+    public void ResetBodyPosition()
+    {
+        Body.Position = Vector3.Zero;
+    }
+
+    public void ResetBodyRotation()
+    {
+        Body.Rotation = Vector3.Zero;
+    }
 }

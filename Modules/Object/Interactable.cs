@@ -18,16 +18,51 @@ public partial class Interactable : Node3DScript
 
         if (!OverrideInitialCollisionMode)
         {
-            SetCollision(item: true, interact: true);
+            SetCollision_Item();
         }
     }
 
-    public void SetCollisionWithAll()
+    public void SetCollision_None()
     {
-        Body.CollisionLayer = CollisionMaskHelper.Create(CollisionMaskType.Player, CollisionMaskType.Item, CollisionMaskType.Interact);
+        SetCollisionLayer();
+        SetCollisionMask();
     }
 
-    public void SetCollision(bool player = false, bool item = false, bool interact = false)
+    public void SetCollision_All()
+    {
+        SetCollisionLayer(player: true, item: true, interact: true);
+        SetCollisionMask(player: true, item: true, interact: true);
+    }
+
+    /// <summary>
+    /// Is an interactable item, and collides with other items
+    /// </summary>
+    public void SetCollision_Item()
+    {
+        SetCollisionLayer(item: true, interact: true);
+        SetCollisionMask(item: true);
+    }
+
+    /// <summary>
+    /// Is an interactable, and collides with nothing
+    /// </summary>
+    public void SetCollision_Interactable()
+    {
+        SetCollisionLayer(interact: true);
+        SetCollisionMask();
+    }
+
+    public void SetCollisionLayer(bool player = false, bool item = false, bool interact = false)
+    {
+        Body.CollisionLayer = CreateCollisionMask(player, item, interact);
+    }
+
+    public void SetCollisionMask(bool player = false, bool item = false, bool interact = false)
+    {
+        Body.CollisionMask = CreateCollisionMask(player, item, interact);
+    }
+
+    private uint CreateCollisionMask(bool player = false, bool item = false, bool interact = false)
     {
         var list = new List<System.Enum>();
 
@@ -35,8 +70,6 @@ public partial class Interactable : Node3DScript
         if (item) list.Add(CollisionMaskType.Item);
         if (interact) list.Add(CollisionMaskType.Interact);
 
-        Body.CollisionLayer = CollisionMaskHelper.Create(list.ToArray());
+        return CollisionMaskHelper.Create(list.ToArray());
     }
-
-    public void SetCollisionNone() => SetCollision();
 }

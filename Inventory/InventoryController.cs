@@ -7,8 +7,8 @@ public partial class InventoryController : SingletonController
 {
     public override string Directory => "Inventory";
     public static InventoryController Instance => Singleton.Get<InventoryController>();
-    public ItemData[] CurrentInventoryItems { get; private set; } = new ItemData[MAX_INVENTORY_SIZE];
     private FirstPersonController Player => FirstPersonController.Instance;
+    public ItemData[] CurrentInventoryItems { get; private set; } = new ItemData[MAX_INVENTORY_SIZE];
     public int SelectedIndex { get; private set; }
 
     public const int INIT_INVENTORY_SIZE = 5;
@@ -54,7 +54,7 @@ public partial class InventoryController : SingletonController
 
         if (PlayerInput.DropInventory.Pressed)
         {
-            _time_drop_inventory = GameTime.Time + 0.5f;
+            Input_DropInventoryPressed();
         }
         else if (PlayerInput.DropInventory.Held)
         {
@@ -67,8 +67,7 @@ public partial class InventoryController : SingletonController
 
         if (PlayerInput.PickUp.Pressed)
         {
-            var item = Player.Interact?.CurrentInteractable as Item;
-            PickUpItem(item);
+            Input_PickUpPressed();
         }
     }
 
@@ -84,6 +83,11 @@ public partial class InventoryController : SingletonController
         OnSelectedItemChanged?.Invoke(SelectedIndex);
     }
 
+    private void Input_DropInventoryPressed()
+    {
+        _time_drop_inventory = GameTime.Time + 0.5f;
+    }
+
     private void Input_DropInventoryHeld()
     {
         if (GameTime.Time < _time_drop_inventory) return;
@@ -95,6 +99,12 @@ public partial class InventoryController : SingletonController
         if (_dropping_inventory) return;
 
         DropItem(SelectedIndex);
+    }
+
+    private void Input_PickUpPressed()
+    {
+        var item = Player.Interact?.CurrentInteractable as Item;
+        PickUpItem(item);
     }
 
     public void ClearInventory()
@@ -139,8 +149,11 @@ public partial class InventoryController : SingletonController
         var i = GetFreeIndex();
         if (i == -1) return;
 
+        item.UpdateData();
         CurrentInventoryItems[i] = item.Data;
         OnItemAdded?.Invoke(i);
+
+        Debug.LogMethod(item.Data.CustomId);
 
         Debug.Indent--;
     }
@@ -226,6 +239,7 @@ public partial class InventoryController : SingletonController
         var item = ItemController.Instance.CreateItemFromData(data);
         item.RigidBody.GlobalPosition = Player.Mid.GlobalPosition;
         item.RigidBody.LinearVelocity = vel + dir * 5;
+        Debug.LogMethod(item.Data.CustomId);
 
         PlayPickupSoundFx();
     }

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://chtymo0xmbllk"]
+
+[ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="1_tkvm7"]
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_bwd45"]
+
+[resource]
+script = ExtResource("2_bwd45")
+Path = "res://Item/Prefabs/Key_Brown.tscn"
+CanSell = false
+SellValue = 0
+CanPlant = false
+GrowTimeInSeconds = 0
+CanPickUp = true
+Untrack = false
+Icon = ExtResource("1_tkvm7")

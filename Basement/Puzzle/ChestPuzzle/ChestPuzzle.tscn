@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctgqnifgnsm1d"]
+[gd_scene load_steps=2 format=3 uid="uid://ctgqnifgnsm1d"]
 
 [ext_resource type="Script" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzle.cs" id="1_lsfrt"]
-[ext_resource type="PackedScene" uid="uid://lvnxfxbildsm" path="res://Basement/Puzzle/ChestPuzzle/Key.tscn" id="4_76du1"]
 
 [node name="ChestPuzzle" type="Node3D"]
 script = ExtResource("1_lsfrt")
-
-[node name="Key" parent="." instance=ExtResource("4_76du1")]
-Id = "ChestPuzzleKey"
-ItemName = "Chest key"
-HoverText = "Chest key"

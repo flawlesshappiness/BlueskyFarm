@@ -99,4 +99,24 @@ public partial class Item : Grabbable
     {
         Body.Rotation = Vector3.Zero;
     }
+
+    public void LockPosition(bool x = false, bool y = false, bool z = false)
+    {
+        RigidBody.AxisLockLinearX = x;
+        RigidBody.AxisLockLinearY = y;
+        RigidBody.AxisLockLinearZ = z;
+    }
+
+    public void LockPosition_All() => LockPosition(x: true, y: true, z: true);
+    public void UnlockPosition_All() => LockPosition();
+
+    public void LockRotation(bool x = false, bool y = false, bool z = false)
+    {
+        RigidBody.AxisLockAngularX = x;
+        RigidBody.AxisLockAngularY = y;
+        RigidBody.AxisLockAngularZ = z;
+    }
+
+    public void LockRotation_All() => LockRotation(x: true, y: true, z: true);
+    public void UnlockRotation_All() => LockRotation();
 }

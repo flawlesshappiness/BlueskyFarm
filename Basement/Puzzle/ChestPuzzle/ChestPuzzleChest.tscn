@@ -1,29 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0yqnsy43lglw"]
+[gd_scene load_steps=6 format=3 uid="uid://b0yqnsy43lglw"]
 
 [ext_resource type="Script" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleChest.cs" id="1_32npn"]
 [ext_resource type="PackedScene" uid="uid://bodxnfcn1wkgc" path="res://Assets/Quaternius/RPG/Chest_Closed.obj" id="1_ulhik"]
 [ext_resource type="PackedScene" uid="uid://drfxno32kggbh" path="res://Assets/Quaternius/RPG/Chest_Open.obj" id="2_a4gnh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_splgd"]
-size = Vector3(1.09155, 0.875488, 1)
+size = Vector3(0.955078, 0.813232, 0.907959)
 
-[node name="Chest" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncihl"]
+size = Vector3(1, 1.04797, 1.09741)
+
+[node name="ChestPuzzleChest" type="Node3D"]
 script = ExtResource("1_32npn")
-KeyItemId = "ChestPuzzleKey"
-HoverText = "Chest"
+CustomId = "ChestPuzzleKey"
+InteractableText = "Chest"
 
-[node name="Closed" parent="." instance=ExtResource("1_ulhik")]
+[node name="Chest" type="StaticBody3D" parent="."]
 
-[node name="Open" parent="." instance=ExtResource("2_a4gnh")]
+[node name="Closed" parent="Chest" instance=ExtResource("1_ulhik")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431152, -0.071863)
+[node name="Open" parent="Chest" instance=ExtResource("2_a4gnh")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400024, -0.071863)
 shape = SubResource("BoxShape3D_splgd")
 
-[node name="ItemSpawnPosition" type="Node3D" parent="."]
+[node name="ItemSpawnPosition" type="Node3D" parent="Chest"]
 transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0.537717, 0.100841)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="Chest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.913375, 0.565079)
 light_energy = 0.01
 omni_range = 1.74962
+
+[node name="UnlockArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UnlockArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377116, -0.0710918)
+shape = SubResource("BoxShape3D_ncihl")

@@ -62,8 +62,8 @@ public partial class SceneDoor : Touchable
         {
             var view = View.Get<GameView>();
 
-            FirstPersonController.Instance.MovementLock.AddLock(nameof(Sleepable));
-            FirstPersonController.Instance.InteractLock.AddLock(nameof(Sleepable));
+            FirstPersonController.Instance.MovementLock.AddLock(nameof(SceneDoor));
+            FirstPersonController.Instance.InteractLock.AddLock(nameof(SceneDoor));
 
             SoundController.Instance.Play(OpenSound?.ResourcePath, new SoundSettings
             {
@@ -78,8 +78,8 @@ public partial class SceneDoor : Touchable
 
             yield return new WaitForSeconds(0.5f);
 
-            FirstPersonController.Instance.MovementLock.RemoveLock(nameof(Sleepable));
-            FirstPersonController.Instance.InteractLock.RemoveLock(nameof(Sleepable));
+            FirstPersonController.Instance.MovementLock.RemoveLock(nameof(SceneDoor));
+            FirstPersonController.Instance.InteractLock.RemoveLock(nameof(SceneDoor));
 
             SoundController.Instance.Play(CloseSound?.ResourcePath, new SoundSettings
             {

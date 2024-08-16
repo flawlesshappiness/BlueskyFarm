@@ -3,9 +3,6 @@ using System.Linq;
 
 public partial class ChestPuzzle : BasementPuzzle
 {
-    [NodeName]
-    public KeyItem Key;
-
     public override void _Ready()
     {
         base._Ready();
@@ -14,9 +11,7 @@ public partial class ChestPuzzle : BasementPuzzle
 
     private void SetRandomChestAndKey()
     {
-        Key.Hide();
-        Key.SetCollisionEnabled(false);
-
+        var key = CreateKey();
         var elements = BasementController.Instance.CurrentBasement.Grid.Elements;
         var rooms = elements.Select(x => x.Room);
         var chests = rooms.SelectMany(x => x.GetNodesInChildren<ChestPuzzleChest>())
@@ -36,10 +31,25 @@ public partial class ChestPuzzle : BasementPuzzle
         board.Activate();
 
         var key_position = board.GetRandomKeyPosition();
-        Key.GlobalPosition = key_position.GlobalPosition;
-        Key.GlobalRotation = key_position.GlobalRotation;
+        key.GlobalPosition = key_position.GlobalPosition;
+        key.GlobalRotation = key_position.GlobalRotation;
+        key.Data.CustomId = chest.CustomId;
+        key.LockPosition_All();
+        key.LockRotation_All();
 
-        Key.Show();
-        Key.SetCollisionEnabled(true);
+        key.OnGrabbed += UnlockKey;
+
+        void UnlockKey()
+        {
+            key.UnlockPosition_All();
+            key.UnlockRotation_All();
+            key.OnGrabbed -= UnlockKey;
+        }
+    }
+
+    private Item CreateKey()
+    {
+        var item = ItemController.Instance.CreateItem(ItemController.Instance.Collection.Key_Brown, track_item: false);
+        return item;
     }
 }

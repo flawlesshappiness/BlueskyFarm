@@ -11,19 +11,19 @@ script = ExtResource("1_woad5")
 [node name="KeyPositions" type="Node3D" parent="."]
 
 [node name="Position 1" type="Node3D" parent="KeyPositions"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.792379, -0.262163, 0.169001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.792379, 0.0559805, 0.169001)
 
 [node name="Position 2" type="Node3D" parent="KeyPositions"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.401135, -0.262163, 0.169001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401135, 0.0559805, 0.169001)
 
 [node name="Position 3" type="Node3D" parent="KeyPositions"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.262163, 0.169001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0559805, 0.169001)
 
 [node name="Position 4" type="Node3D" parent="KeyPositions"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.400989, -0.262163, 0.169001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400989, 0.0559805, 0.169001)
 
 [node name="Position 5" type="Node3D" parent="KeyPositions"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.79566, -0.262163, 0.169001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79566, 0.0559805, 0.169001)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0344729, 0.626718)

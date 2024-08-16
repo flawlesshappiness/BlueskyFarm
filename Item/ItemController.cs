@@ -31,6 +31,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     public void TrackItem(Item item)
     {
+        if (!IsInstanceValid(item)) return;
         if (!ActiveItems.Contains(item))
         {
             ActiveItems.Add(item);

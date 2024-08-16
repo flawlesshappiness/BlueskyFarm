@@ -3,6 +3,7 @@ using System;
 public class ItemData
 {
     public Guid Id { get; set; } = Guid.NewGuid();
+    public string CustomId { get; set; }
     public string InfoPath { get; set; }
     public string PlantInfoPath { get; set; }
     public float X_Position { get; set; }

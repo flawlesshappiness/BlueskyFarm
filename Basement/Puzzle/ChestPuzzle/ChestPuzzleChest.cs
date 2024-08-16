@@ -3,7 +3,7 @@ using Godot;
 public partial class ChestPuzzleChest : Touchable
 {
     [Export]
-    public string KeyItemId;
+    public string CustomId;
 
     [NodeName]
     public Node3D Open;
@@ -14,6 +14,9 @@ public partial class ChestPuzzleChest : Touchable
     [NodeName]
     public Node3D ItemSpawnPosition;
 
+    [NodeName]
+    public Area3D UnlockArea;
+
     private bool _open = false;
 
     public override void _Ready()
@@ -23,16 +26,26 @@ public partial class ChestPuzzleChest : Touchable
         this.SetCollisionEnabled(false);
 
         OnTouched += Touched;
+        UnlockArea.BodyEntered += n => CallDeferred(nameof(BodyEntered), n);
+    }
+
+    private void BodyEntered(GodotObject obj)
+    {
+        var n = obj as Node3D;
+        var item = n.GetNodeInParents<Item>();
+        if (item == null) return;
+
+        var valid_key = item.Data.CustomId == CustomId;
+
+        if (CanUnlock() && valid_key)
+        {
+            Unlock();
+        }
     }
 
     private void Touched()
     {
-        if (CanUnlock())
-        {
-            KeyItemController.Instance.Remove(KeyItemId);
-            Unlock();
-        }
-        else
+        if (!_open)
         {
             Locked();
         }
@@ -41,9 +54,7 @@ public partial class ChestPuzzleChest : Touchable
     private bool CanUnlock()
     {
         if (_open) return false;
-        if (string.IsNullOrEmpty(KeyItemId)) return false;
-        if (!KeyItemController.Instance.HasItem(KeyItemId)) return false;
-
+        if (string.IsNullOrEmpty(CustomId)) return false;
         return true;
     }
 

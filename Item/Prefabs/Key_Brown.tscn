@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://lvnxfxbildsm"]
+
+[ext_resource type="Script" path="res://Item/Item.cs" id="1_qwtfx"]
+[ext_resource type="PackedScene" uid="uid://fnuti5jg81ls" path="res://Assets/Quaternius/RPG/Key1.obj" id="2_oq3mm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m35of"]
+size = Vector3(0.295898, 0.113037, 0.808594)
+
+[node name="Key_Brown" type="Node3D"]
+script = ExtResource("1_qwtfx")
+InteractableText = "Chest key"
+
+[node name="Key" type="RigidBody3D" parent="."]
+
+[node name="Model" parent="Key" instance=ExtResource("2_oq3mm")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.291272, -1.27319e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Key"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.278612, -1.21785e-08)
+shape = SubResource("BoxShape3D_m35of")

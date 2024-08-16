@@ -23,13 +23,16 @@ public partial class FarmBounds : NodeScript
 
     private void BodyExited(Node3D body)
     {
-        if (body.IsQueuedForDeletion()) return;
         CallDeferred(nameof(BodyExitedDeferred), body);
     }
 
-    private void BodyExitedDeferred(Node3D body)
+    private void BodyExitedDeferred(GodotObject obj)
     {
-        var item = body.GetNodeInParents<Item>();
+        var node = obj as Node3D;
+        if (!IsInstanceValid(node)) return;
+        if (node.IsQueuedForDeletion()) return;
+
+        var item = node.GetParent<Item>();
 
         if (item?.IsBeingHandled ?? false) return;
 
@@ -39,7 +42,7 @@ public partial class FarmBounds : NodeScript
         }
         else
         {
-            ThrowObjectBack(body);
+            ThrowObjectBack(node);
         }
     }
 

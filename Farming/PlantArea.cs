@@ -46,7 +46,7 @@ public partial class PlantArea : Area3D
     {
         if (CurrentSeed != null) return;
 
-        var item = body.GetNodeInChildren<Item>();
+        var item = body.GetNodeInParents<Item>();
         if (item == null) return;
         if (!item.Info.CanPlant) return;
         if (string.IsNullOrEmpty(item.Data.PlantInfoPath)) return;
@@ -121,8 +121,7 @@ public partial class PlantArea : Area3D
         }
 
         var seed_item_path = ItemController.Instance.Collection.Seed;
-        var seed_item = ItemController.Instance.CreateItem(seed_item_path);
-        ItemController.Instance.UntrackItem(seed_item);
+        var seed_item = ItemController.Instance.CreateItem(seed_item_path, track_item: false);
         ReparentItem(seed_item);
 
         CurrentSeed = new Seed
@@ -194,11 +193,7 @@ public partial class PlantArea : Area3D
             return;
         }
 
-        var plant = ItemController.Instance.CreateItem(seed.Data.ItemInfoPath);
-        ItemController.Instance.UntrackItem(plant);
-
-        seed.PlantModel = plant;
-
+        seed.PlantModel = ItemController.Instance.CreateItem(seed.Data.ItemInfoPath, track_item: false);
         ReparentItem(seed.PlantModel);
         SetupPlantGrabbable(seed);
         SetPlantFullyGrown(CurrentSeed);
@@ -221,7 +216,7 @@ public partial class PlantArea : Area3D
             item.OnAddedToInventory -= OnGrabbedPlant;
             item.RigidBody.Freeze = false;
             item.SetCollisionWithAll();
-            item.Body.SetParent(Scene.Root);
+            item.SetParent(Scene.Root);
 
             RemoveData(CurrentSeed.Data.ItemId);
 

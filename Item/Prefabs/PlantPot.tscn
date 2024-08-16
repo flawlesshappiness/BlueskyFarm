@@ -17,7 +17,7 @@ script = ExtResource("4_jfl88")
 [node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6
 collision_mask = 2
-mass = 10.0
+mass = 20.0
 
 [node name="PlantPot" parent="Body" instance=ExtResource("2_khbk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.369206, 0)

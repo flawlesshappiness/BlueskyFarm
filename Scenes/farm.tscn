@@ -73,7 +73,7 @@ data = PackedVector3Array(-0.0007, 3.1413, -1.0754, 0.4106, 3.1413, -0.9936, -0.
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_lw3wf"]
+[sub_resource type="CurveTexture" id="CurveTexture_3x5i2"]
 curve = SubResource("Curve_qma48")
 
 [sub_resource type="Curve" id="Curve_rw0g7"]
@@ -81,7 +81,7 @@ max_value = 5.0
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_4b1wq"]
+[sub_resource type="CurveTexture" id="CurveTexture_vsbpu"]
 curve = SubResource("Curve_rw0g7")
 
 [sub_resource type="Curve" id="Curve_xhacx"]
@@ -89,24 +89,24 @@ max_value = 3.0
 _data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_w3wi2"]
+[sub_resource type="CurveTexture" id="CurveTexture_4vxwc"]
 curve = SubResource("Curve_xhacx")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fs4br"]
 lifetime_randomness = 0.4
 angle_min = -25.0
 angle_max = 25.0
-angle_curve = SubResource("CurveTexture_4b1wq")
+angle_curve = SubResource("CurveTexture_vsbpu")
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 6.0
-scale_curve = SubResource("CurveTexture_w3wi2")
+scale_curve = SubResource("CurveTexture_4vxwc")
 scale_over_velocity_max = 40.1
 color = Color(0, 0, 0, 1)
-alpha_curve = SubResource("CurveTexture_lw3wf")
+alpha_curve = SubResource("CurveTexture_3x5i2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ex2u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjm45"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -114,7 +114,7 @@ albedo_texture = ExtResource("31_2mgum")
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_xkqfr"]
-material = SubResource("StandardMaterial3D_2ex2u")
+material = SubResource("StandardMaterial3D_tjm45")
 
 [sub_resource type="Curve" id="Curve_0j38a"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

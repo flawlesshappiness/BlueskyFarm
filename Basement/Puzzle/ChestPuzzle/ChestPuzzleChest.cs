@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 
 public partial class ChestPuzzleChest : Touchable
 {
@@ -32,15 +33,14 @@ public partial class ChestPuzzleChest : Touchable
     private void BodyEntered(GodotObject obj)
     {
         var n = obj as Node3D;
-        var item = n.GetNodeInParents<Item>();
-        if (item == null) return;
+        var key = n.GetNodeInParents<PuzzleKey>();
+        if (key == null) return;
 
-        var valid_key = item.Data.CustomId == CustomId;
+        var valid_key = key.Data.CustomId == CustomId;
 
         if (CanUnlock() && valid_key)
         {
-            item.QueueFree();
-            Unlock();
+            AnimateUnlock(key);
         }
     }
 
@@ -69,6 +69,23 @@ public partial class ChestPuzzleChest : Touchable
         });
 
         View.Get<TextView>().DisplayText("The chest is locked.");
+    }
+
+    private void AnimateUnlock(PuzzleKey key)
+    {
+        _open = true;
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            SoundController.Instance.Play("sfx_puzzle_solved", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = key.GlobalPosition,
+            });
+
+            yield return key.AnimateGlowThenDisappear();
+            Unlock();
+        }
     }
 
     public void Unlock()

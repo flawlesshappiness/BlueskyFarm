@@ -76,10 +76,7 @@ public partial class InventoryController : SingletonController
         if (GameTime.Time < _time_select_index) return;
         _time_select_index = GameTime.Time + 0.01f;
 
-        var next = Mathf.Clamp(i, 0, Data.Game.InventorySize - 1);
-        if (next == SelectedIndex) return;
-
-        SelectedIndex = next;
+        SelectedIndex = Mathf.Clamp(i, 0, Data.Game.InventorySize - 1);
         OnSelectedItemChanged?.Invoke(SelectedIndex);
     }
 

@@ -112,6 +112,11 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         Target = null;
     }
 
+    public Grabbable GetCurrentTarget()
+    {
+        return Target;
+    }
+
     public void Grab(Grabbable grabbable)
     {
         SetTarget(grabbable);

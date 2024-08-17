@@ -413,7 +413,7 @@ public partial class RootMimicEnemy : NavEnemy
             PitchMax = 1.0f,
             Volume = -10,
             Position = position,
-            MaxDistance = 28
+            MaxDistance = 28 * 2
         });
     }
 

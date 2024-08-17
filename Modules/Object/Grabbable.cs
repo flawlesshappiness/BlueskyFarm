@@ -69,6 +69,15 @@ public partial class Grabbable : Interactable
         OnReleased?.Invoke();
     }
 
+    public void ReleaseIfGrabbed()
+    {
+        var player = FirstPersonController.Instance;
+        if (player.Grab.GetCurrentTarget() == this)
+        {
+            player.Grab.Release();
+        }
+    }
+
     public void SetPosition(Vector3 position)
     {
         target_position = position;

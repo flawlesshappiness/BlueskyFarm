@@ -39,6 +39,7 @@ public partial class ChestPuzzleChest : Touchable
 
         if (CanUnlock() && valid_key)
         {
+            item.QueueFree();
             Unlock();
         }
     }

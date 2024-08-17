@@ -21,8 +21,6 @@ public partial class FarmScene : GameScene
             Data.Game.FirstTimeBoot = false;
         }
 
-        KeyItemController.Instance.ClearTemporary();
-
         Data.Game.Save();
     }
 

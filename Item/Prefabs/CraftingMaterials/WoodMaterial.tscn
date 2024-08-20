@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1mgexmisx7k2"]
+
+[ext_resource type="Script" path="res://Crafting/CraftingMaterial.cs" id="1_mkrv8"]
+[ext_resource type="Material" uid="uid://20l650k6hgj2" path="res://Assets/Materials/Wood.tres" id="2_ig13l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kqki2"]
+bounce = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_nqdt8"]
+material = ExtResource("2_ig13l")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2yrc4"]
+radius = 0.2
+
+[node name="WoodMaterial" type="Node3D"]
+script = ExtResource("1_mkrv8")
+Type = 2
+
+[node name="Body" type="RigidBody3D" parent="."]
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_kqki2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("SphereMesh_nqdt8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("SphereShape3D_2yrc4")

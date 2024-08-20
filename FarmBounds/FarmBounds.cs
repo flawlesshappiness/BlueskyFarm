@@ -36,42 +36,7 @@ public partial class FarmBounds : NodeScript
 
         if (item?.IsBeingHandled ?? false) return;
 
-        if (item?.Info.CanSell ?? false)
-        {
-            Sell(item);
-        }
-        else
-        {
-            ThrowObjectBack(node);
-        }
-    }
-
-    private void Sell(Item item)
-    {
-        Coroutine.Start(Cr);
-        IEnumerator Cr()
-        {
-            while (item.GlobalPosition.Y > 0)
-            {
-                yield return null;
-            }
-
-            ItemController.Instance.UntrackItem(item);
-            item.QueueFree();
-
-            ThrowCoins(item.Info.SellValue);
-        }
-    }
-
-    private void ThrowCoins(int count)
-    {
-        var path_coin = ItemController.Instance.Collection.Coin;
-        var position = FirstPersonController.Instance.GlobalPosition;
-        for (int i = 0; i < count; i++)
-        {
-            var item = ItemController.Instance.CreateItem(path_coin);
-            ThrowObject(item.RigidBody, position);
-        }
+        ThrowObjectBack(node);
     }
 
     private void ThrowObjectBack(Node3D body)

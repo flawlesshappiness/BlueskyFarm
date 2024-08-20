@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=93 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://dajuhagd33gu" path="res://Assets/Quaternius/RPG/Crystal_Blue.obj" id="16_v0htk"]
 [ext_resource type="FontFile" uid="uid://ol7xd0j1hg3k" path="res://Assets/KenneyNL/Fonts/kenvector_future_thin.ttf" id="17_afbtg"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
-[ext_resource type="Texture2D" uid="uid://e74ckvdsb6ex" path="res://Assets/Quaternius/Icons/Coin.png" id="17_q6lju"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
 [ext_resource type="PackedScene" uid="uid://d18u433iw0eyg" path="res://Assets/FlawLizArt/roots_010.glb" id="21_h5qq5"]
@@ -33,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
+[ext_resource type="Script" path="res://MaterialProcessor/MaterialProcessor.cs" id="33_n5asr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
 panorama = ExtResource("1_u4lhc")
@@ -278,6 +278,29 @@ billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_7x72b"]
 material = SubResource("StandardMaterial3D_s1u3r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bupu0"]
+size = Vector3(2, 3, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_55ved"]
+size = Vector3(2, 3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nv86f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rgn18"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qgfj"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlmjc"]
+albedo_color = Color(0.258824, 0.258824, 0.258824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c6xj8"]
+material = SubResource("StandardMaterial3D_hlmjc")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l57yw"]
+radius = 0.75
 
 [node name="farm" type="Node3D"]
 script = ExtResource("1_mng5r")
@@ -637,6 +660,29 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.382671, 0.577809, 0.0
 modulate = Color(0.4, 0.596078, 1, 1)
 texture = ExtResource("20_uqr56")
 
+[node name="GlowstickSign" parent="World" instance=ExtResource("19_up103")]
+transform = Transform3D(0.0302942, 0, 0.999541, 0, 1, 0, -0.999541, 0, 0.0302942, 3.72291, 0, -0.122144)
+
+[node name="Label3D" type="Label3D" parent="World/GlowstickSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
+text = "Glowstick"
+outline_size = 0
+
+[node name="Sprite3D5" type="Sprite3D" parent="World/GlowstickSign"]
+transform = Transform3D(0.1, 0, 3.72529e-09, 0, 0.1, 0, -3.72529e-09, 0, 0.1, -0.167614, 0.577809, 0.0859873)
+modulate = Color(0.4, 1, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D6" type="Sprite3D" parent="World/GlowstickSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0155556, 0.577809, 0.0859871)
+modulate = Color(0.4, 0.596078, 1, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D7" type="Sprite3D" parent="World/GlowstickSign"]
+transform = Transform3D(0.1, 0, 7.45058e-09, 0, 0.1, 0, -7.45058e-09, 0, 0.1, 0.186802, 0.577809, 0.0859876)
+modulate = Color(0.4, 0.596078, 1, 1)
+texture = ExtResource("20_uqr56")
+
 [node name="PotSign" parent="World" instance=ExtResource("19_up103")]
 transform = Transform3D(0.679378, 0, -0.733789, 0, 1, 0, 0.733789, 0, 0.679378, -3.1084, 0, 2.45581)
 
@@ -654,27 +700,6 @@ texture = ExtResource("20_uqr56")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.119944, 0.577809, 0.0859871)
 modulate = Color(1, 0.4, 0.4, 1)
 texture = ExtResource("20_uqr56")
-
-[node name="SellSign" parent="World" instance=ExtResource("19_up103")]
-transform = Transform3D(0.990273, 0, 0.139139, 0, 1, 0, -0.139139, 0, 0.990273, -7.68352, 0, -14.1985)
-
-[node name="Label3D" type="Label3D" parent="World/SellSign"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-06, 0.771515, 0.0826511)
-text = "Sell crops"
-outline_size = 0
-
-[node name="Label3D2" type="Label3D" parent="World/SellSign"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43051e-06, 0.604406, 0.0826511)
-text = "Toss them over"
-font_size = 23
-outline_size = 0
-
-[node name="CoinSign" parent="World" instance=ExtResource("19_up103")]
-transform = Transform3D(0.989062, 0, -0.147498, 0, 1, 0, 0.147498, 0, 0.989062, -6.48455, 0, -14.1723)
-
-[node name="Sprite3D" type="Sprite3D" parent="World/CoinSign"]
-transform = Transform3D(0.04, 0, 2.79397e-09, 0, 0.04, 0, -2.79397e-09, 0, 0.04, 0.00172138, 0.67801, 0.0882454)
-texture = ExtResource("17_q6lju")
 
 [node name="Grass" type="Node3D" parent="World"]
 
@@ -830,5 +855,91 @@ stream = ExtResource("9_xc34j")
 volume_db = 20.0
 autoplay = true
 bus = &"BGM"
+
+[node name="MaterialProcessor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.859, 0, 0)
+collision_layer = 3
+script = ExtResource("33_n5asr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaterialProcessor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_bupu0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaterialProcessor/CollisionShape3D"]
+mesh = SubResource("BoxMesh_55ved")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MaterialProcessor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.5)
+shape = SubResource("BoxShape3D_nv86f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaterialProcessor/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_rgn18")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="MaterialProcessor/CollisionShape3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.507607, 0, 0)
+text = "Input"
+font_size = 61
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MaterialProcessor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
+shape = SubResource("BoxShape3D_nv86f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaterialProcessor/CollisionShape3D3"]
+mesh = SubResource("BoxMesh_rgn18")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="MaterialProcessor/CollisionShape3D3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.507607, 0, 0)
+text = "Output"
+font_size = 51
+
+[node name="ProcessButton" type="Node3D" parent="MaterialProcessor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.93188, -0.918269)
+script = ExtResource("7_avkjm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MaterialProcessor/ProcessButton"]
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MaterialProcessor/ProcessButton/StaticBody3D"]
+shape = SubResource("BoxShape3D_7qgfj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaterialProcessor/ProcessButton/StaticBody3D/CollisionShape3D4"]
+mesh = SubResource("BoxMesh_c6xj8")
+skeleton = NodePath("../../../..")
+
+[node name="Label3D" type="Label3D" parent="MaterialProcessor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.00707, 0.507353, 2.89896e-09)
+text = "MATERIAL
+PROCESSOR"
+font_size = 73
+
+[node name="InputCountLabel" type="Label3D" parent="MaterialProcessor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.00707, 2.06468, 1.08371)
+text = "999"
+font_size = 73
+
+[node name="Label3D3" type="Label3D" parent="MaterialProcessor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.00707, 2.35467, 1.08371)
+text = "Input count:"
+font_size = 33
+outline_size = 8
+
+[node name="Label3D4" type="Label3D" parent="MaterialProcessor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.00707, 2.35467, -0.870769)
+text = "Begin processing:"
+font_size = 33
+outline_size = 8
+
+[node name="InputArea" type="Area3D" parent="MaterialProcessor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaterialProcessor/InputArea"]
+shape = SubResource("SphereShape3D_l57yw")
+
+[node name="OutputPosition" type="Node3D" parent="MaterialProcessor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3.35731)
 
 [editable path="World/hollow_tree"]

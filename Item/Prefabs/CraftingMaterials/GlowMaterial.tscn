@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvxccm4rbyt4s"]
+
+[ext_resource type="Script" path="res://Crafting/CraftingMaterial.cs" id="1_ydvb0"]
+[ext_resource type="Material" uid="uid://doct65wx6o333" path="res://Assets/Materials/GlowStick.tres" id="2_jmtls"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kqki2"]
+bounce = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_nqdt8"]
+material = ExtResource("2_jmtls")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2yrc4"]
+radius = 0.2
+
+[node name="GlowMaterial" type="Node3D"]
+script = ExtResource("1_ydvb0")
+Type = 3
+
+[node name="Body" type="RigidBody3D" parent="."]
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_kqki2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("SphereMesh_nqdt8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("SphereShape3D_2yrc4")

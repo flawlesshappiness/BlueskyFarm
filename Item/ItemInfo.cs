@@ -7,16 +7,16 @@ public partial class ItemInfo : Resource
     public string Path { get; set; }
 
     [Export]
-    public bool CanSell;
-
-    [Export]
-    public int SellValue;
-
-    [Export]
     public bool CanPlant;
 
     [Export]
     public int GrowTimeInSeconds;
+
+    [Export]
+    public bool CanProcessToMaterial;
+
+    [Export]
+    public CraftingMaterialType MaterialType;
 
     [Export]
     public bool CanPickUp;

@@ -98,19 +98,13 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     public Item CreateItem(string info_path, bool track_item = true)
     {
-        var info = GD.Load<ItemInfo>(info_path);
+        var info = GetInfo(info_path);
         return CreateItem(info, track_item);
     }
 
-    public void SellItem(ItemInfo info)
+    public ItemInfo GetInfo(string path)
     {
-        Debug.TraceMethod($"{info}");
-        Debug.Indent++;
-
-        CurrencyController.Instance.AddValue(CurrencyType.Money, info.SellValue);
-        Data.Game.Save();
-
-        Debug.Indent--;
+        return GD.Load<ItemInfo>(path);
     }
 
     private void RegisterDebugActions()

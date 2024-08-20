@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_6cw6x")
 Path = "res://Item/Prefabs/Radish.tscn"
-CanSell = true
-SellValue = 5
 CanPlant = false
 GrowTimeInSeconds = 3
+CanProcessToMaterial = true
+MaterialType = 0
 CanPickUp = true
 Untrack = false
 Icon = ExtResource("1_d47iq")

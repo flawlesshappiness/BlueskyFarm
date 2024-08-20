@@ -20,4 +20,22 @@ public partial class ItemCollection : ResourceCollection<ItemInfo>
 
     [Export(PropertyHint.File)]
     public string Key_Brown;
+
+    [Export(PropertyHint.File)]
+    public string PlantMaterial;
+
+    [Export(PropertyHint.File)]
+    public string MetalMaterial;
+
+    [Export(PropertyHint.File)]
+    public string WoodMaterial;
+
+    [Export(PropertyHint.File)]
+    public string GlowMaterial;
+
+    [Export(PropertyHint.File)]
+    public string RockMaterial;
+
+    [Export(PropertyHint.File)]
+    public string CrystalMaterial;
 }

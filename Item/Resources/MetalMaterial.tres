@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bihivh3vunggn"]
+
+[ext_resource type="Texture2D" uid="uid://e74ckvdsb6ex" path="res://Assets/Quaternius/Icons/Coin.png" id="1_n3lp6"]
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_eq0ca"]
+
+[resource]
+script = ExtResource("2_eq0ca")
+Path = "res://Item/Prefabs/CraftingMaterials/MetalMaterial.tscn"
+CanSell = false
+SellValue = 0
+CanPlant = false
+GrowTimeInSeconds = 0
+CanPickUp = true
+Untrack = false
+Icon = ExtResource("1_n3lp6")

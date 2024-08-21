@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class FarmScene : GameScene
 {
@@ -19,6 +20,10 @@ public partial class FarmScene : GameScene
         {
             CurrencyController.Instance.AddValue(CurrencyType.Money, 10);
             Data.Game.FirstTimeBoot = false;
+
+            var pot_info = ShopController.Instance.GetShopItem(new List<CraftingMaterialType> { CraftingMaterialType.Plant, CraftingMaterialType.Plant });
+            var pot_item = ShopController.Instance.CreateShopItem(pot_info);
+            FarmBounds.Instance.ThrowObject(pot_item.RigidBody, Vector3.Right);
         }
 
         Data.Game.Save();

@@ -93,8 +93,19 @@ public partial class MaterialProcessor : Node3DScript
 
     private void StartProcessing()
     {
-        var count_materials = Data.Game.MaterialProcessorInputs.Count / 2;
-        var count_leftover = Data.Game.MaterialProcessorInputs.Count - count_materials * 2;
+        if (InputCount == 0)
+        {
+            SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition
+            });
+
+            return;
+        }
+
+        var count_materials = InputCount / 2;
+        var count_leftover = InputCount - count_materials * 2;
         Data.Game.MaterialProcessorInputs.Reverse();
         var leftovers = Data.Game.MaterialProcessorInputs.Take(count_leftover).ToList();
         Clear();

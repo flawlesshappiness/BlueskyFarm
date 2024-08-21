@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx4n62cprybbg"]
+
+[ext_resource type="Script" path="res://Shop/Combination/CombinationPipe.cs" id="1_h74qk"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_seyyd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icbfj"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n3kkc"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k61b6"]
+size = Vector3(0.3, 0.3, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jybfv"]
+size = Vector3(0.3, 0.3, 0.2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ltjsu"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uk574"]
+radius = 0.25
+
+[node name="Pipe" type="Node3D"]
+script = ExtResource("1_h74qk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_icbfj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_n3kkc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458682, -0.175712)
+shape = SubResource("BoxShape3D_k61b6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_jybfv")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3738e-08, 0.453016, -0.284126)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ltjsu")
+
+[node name="Detach" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458332, -0.284065)
+script = ExtResource("2_seyyd")
+InteractableText = "Detach"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Detach"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detach/StaticBody3D"]
+shape = SubResource("SphereShape3D_uk574")

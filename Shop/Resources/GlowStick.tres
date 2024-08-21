@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_xj4e7")
 ItemInfoPath = "res://Item/Resources/GlowStick.tres"
-Combination = "GBB"
-Price = 10
+Combination = Array[int]([0])

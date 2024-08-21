@@ -9,7 +9,8 @@ public partial class Grabbable : Interactable
     public RigidBody3D RigidBody => _rigidBody ??= Body as RigidBody3D;
     private RigidBody3D _rigidBody;
 
-    public bool IsGrabbed { get; set; }
+    public bool IsGrabbable { get; private set; }
+    public bool IsGrabbed { get; private set; }
 
     public event Action OnGrabbed;
     public event Action OnReleased;
@@ -21,6 +22,7 @@ public partial class Grabbable : Interactable
     {
         base._Ready();
         RigidBody.CanSleep = false;
+        IsGrabbable = true;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -86,5 +88,15 @@ public partial class Grabbable : Interactable
     public void SetRotation(Vector3 rotation)
     {
         target_rotation = rotation;
+    }
+
+    public void SetGrabbable(bool grabbable)
+    {
+        IsGrabbable = grabbable;
+
+        if (!IsGrabbable)
+        {
+            ReleaseIfGrabbed();
+        }
     }
 }

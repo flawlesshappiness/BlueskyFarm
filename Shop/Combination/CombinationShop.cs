@@ -1,86 +1,64 @@
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class CombinationShop : Node3DScript
 {
     [NodeName]
-    public Touchable InputCancel;
+    public Touchable Button;
 
     [NodeName]
-    public Touchable InputAccept;
+    public CombinationPipe Pipe1;
 
-    [NodeType]
-    public CombinationSelector Selector;
+    [NodeName]
+    public CombinationPipe Pipe2;
 
-    [NodeType]
-    public CombinationDisplay Display;
+    [NodeName]
+    public CombinationPipe Pipe3;
 
-    [NodeType]
-    public CombinationPrice Price;
+    [NodeName]
+    public CombinationPipe Pipe4;
 
-    private ShopItemInfo _selected_item;
+    public List<CombinationPipe> Pipes => _pipes ?? (_pipes = new() { Pipe1, Pipe2, Pipe3, Pipe4 });
+    private List<CombinationPipe> _pipes;
 
     public override void _Ready()
     {
         base._Ready();
 
-        InputCancel.OnTouched += PressCancel;
-        InputAccept.OnTouched += PressAccept;
-        Selector.OnCombinationChanged += Display.UpdateDisplay;
-        Selector.OnCombinationChanged += _ => Price.Clear();
-
-        Clear();
+        Button.OnTouched += ButtonTouched;
     }
 
-    private void PressAccept()
+    private void ButtonTouched()
     {
-        if (Price.IsShowingPrice)
-        {
-            BuySelectedItem();
-            Clear();
-        }
-        else
-        {
-            var combination = Selector.CurrentCombination;
-            Selector.Clear();
-            SelectItem(combination);
-        }
+        BuyItem();
     }
 
-    private void PressCancel()
+    private List<CraftingMaterialType> GetMaterialCombination()
     {
-        Clear();
-
-        SoundController.Instance.Play("sfx_shop_cancel", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition
-        });
+        return Pipes
+            .Where(x => x.CurrentMaterial != null)
+            .Select(x => x.CurrentMaterial.Type)
+            .ToList();
     }
 
-    private void Clear()
+    private void ConsumeCurrentCombination()
     {
-        _selected_item = null;
-        Selector.Clear();
-        Price.Clear();
+        Pipes.ForEach(x => x.ConsumeMaterial());
     }
 
-    private void SelectItem(string combination)
+    private void DetachCurrentCombination()
     {
-        _selected_item = ShopController.Instance.GetShopItem(combination);
+        Pipes.ForEach(x => x.DetachMaterial());
+    }
 
-        if (_selected_item != null)
+    private void BuyItem()
+    {
+        var combination = GetMaterialCombination();
+        var info = ShopController.Instance.GetShopItem(combination);
+        if (info == null)
         {
-            Price.SetPrice(_selected_item.Price);
-
-            SoundController.Instance.Play("sfx_shop_select", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition
-            });
-        }
-        else
-        {
-            Clear();
+            DetachCurrentCombination();
 
             SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
             {
@@ -88,33 +66,14 @@ public partial class CombinationShop : Node3DScript
                 Position = GlobalPosition
             });
         }
-    }
-
-    private bool CanBuySelectedItem()
-    {
-        if (_selected_item == null) return false;
-        if (!ShopController.Instance.CanAfford(_selected_item)) return false;
-        return true;
-    }
-
-    private void BuySelectedItem()
-    {
-        if (CanBuySelectedItem())
+        else
         {
-            ShopController.Instance.PurchaseShopItem(_selected_item);
-            var item = ShopController.Instance.CreateShopItem(_selected_item);
-
+            var item = ShopController.Instance.CreateShopItem(info);
             item.GlobalPosition = GlobalPosition + new Vector3(0, 50, 0);
 
+            ConsumeCurrentCombination();
+
             SoundController.Instance.Play("sfx_shop_accept", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition
-            });
-        }
-        else
-        {
-            SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
             {
                 Bus = SoundBus.SFX,
                 Position = GlobalPosition

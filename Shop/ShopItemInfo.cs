@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class ShopItemInfo : Resource
@@ -7,8 +8,5 @@ public partial class ShopItemInfo : Resource
     public string ItemInfoPath;
 
     [Export]
-    public string Combination;
-
-    [Export]
-    public int Price;
+    public Array<CraftingMaterialType> Combination;
 }

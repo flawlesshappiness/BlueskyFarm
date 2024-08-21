@@ -1,21 +1,14 @@
+using System.Collections.Generic;
+using System.Linq;
+
 public partial class ShopController : ResourceController<ShopItemInfoCollection, ShopItemInfo>
 {
     public static ShopController Instance => Singleton.Get<ShopController>();
     public override string Directory => "Shop";
 
-    public ShopItemInfo GetShopItem(string combination)
+    public ShopItemInfo GetShopItem(List<CraftingMaterialType> combination)
     {
-        return Collection.Resources.Find(x => x.Combination == combination);
-    }
-
-    public bool CanAfford(ShopItemInfo info)
-    {
-        return CurrencyController.Instance.GetValue(CurrencyType.Money) >= info.Price;
-    }
-
-    public void PurchaseShopItem(ShopItemInfo info)
-    {
-        CurrencyController.Instance.AddValue(CurrencyType.Money, -info.Price);
+        return Collection.Resources.FirstOrDefault(x => x.Combination.SequenceEqual(combination));
     }
 
     public Item CreateShopItem(ShopItemInfo info)

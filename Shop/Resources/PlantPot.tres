@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_fc8iw")
 ItemInfoPath = "res://Item/Resources/PlantPot.tres"
-Combination = "RR"
-Price = 10
+Combination = Array[int]([0, 0])

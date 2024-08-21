@@ -8,6 +8,7 @@ size = Vector3(0.151367, 0.312866, 0.156494)
 
 [node name="Radish" type="Node3D"]
 script = ExtResource("3_pjj4y")
+InteractableText = "Radish"
 
 [node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6

@@ -12,6 +12,7 @@ radius = 0.0869211
 
 [node name="Seed" type="Node3D"]
 script = ExtResource("4_e2n7c")
+InteractableText = "Seed"
 
 [node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6

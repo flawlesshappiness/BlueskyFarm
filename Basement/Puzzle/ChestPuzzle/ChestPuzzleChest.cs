@@ -114,7 +114,7 @@ public partial class ChestPuzzleChest : Touchable
 
     private void SpawnItems()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 1; i++)
         {
             var seed = CreateSeed();
             seed.GlobalPosition = ItemSpawnPosition.GlobalPosition;

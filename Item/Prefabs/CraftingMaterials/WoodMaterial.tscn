@@ -17,6 +17,7 @@ radius = 0.2
 [node name="WoodMaterial" type="Node3D"]
 script = ExtResource("1_mkrv8")
 Type = 2
+InteractableText = "Wood material"
 
 [node name="Body" type="RigidBody3D" parent="."]
 mass = 5.0

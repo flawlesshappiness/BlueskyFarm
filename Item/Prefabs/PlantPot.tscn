@@ -13,6 +13,7 @@ radius = 0.32058
 
 [node name="PlantPot" type="Node3D"]
 script = ExtResource("4_jfl88")
+InteractableText = "Pot"
 
 [node name="Body" type="RigidBody3D" parent="."]
 collision_layer = 6

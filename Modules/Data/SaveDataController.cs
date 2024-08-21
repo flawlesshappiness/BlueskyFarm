@@ -42,7 +42,6 @@ public partial class SaveDataController : Node
 
             try
             {
-
                 var filename = typeof(T).Name;
                 var path = $"user://{filename}.save";
 
@@ -50,6 +49,16 @@ public partial class SaveDataController : Node
 
                 var json = FileAccess.GetFileAsString(path);
                 data = string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json);
+
+                var current_version = Version.Parse(ApplicationInfo.Instance.Version);
+                var data_version = Version.Parse(data.Version);
+                var is_lesser_version = data_version.CompareTo(current_version) < 0;
+
+                if (!data.IsRelease && is_lesser_version)
+                {
+                    Debug.Log($"Data version {data_version} < current version {current_version} - Creating new save");
+                    data = new();
+                }
             }
             catch (Exception e)
             {

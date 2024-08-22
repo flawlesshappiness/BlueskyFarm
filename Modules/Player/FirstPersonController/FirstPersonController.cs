@@ -21,13 +21,16 @@ public partial class FirstPersonController : CharacterBody3D
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-    [NodeName(nameof(Neck))]
-    public Node3D Neck;
+    [NodeName]
+    public Node3D NeckHorizontal;
 
-    [NodeName(nameof(Mid))]
+    [NodeName]
+    public Node3D NeckVertical;
+
+    [NodeName]
     public Node3D Mid;
 
-    [NodeName(nameof(Camera))]
+    [NodeName]
     public Camera3D Camera;
 
     [NodeType]
@@ -123,11 +126,11 @@ public partial class FirstPersonController : CharacterBody3D
 
         var factor = 0.001f;
         var motion = e as InputEventMouseMotion;
-        Neck.RotateY(-motion.Relative.X * factor * LookSpeedMultiplier);
-        Camera.RotateX(-motion.Relative.Y * factor * LookSpeedMultiplier);
+        NeckHorizontal.RotateY(-motion.Relative.X * factor * LookSpeedMultiplier);
+        NeckVertical.RotateX(-motion.Relative.Y * factor * LookSpeedMultiplier);
 
-        var x = Mathf.Clamp(Camera.Rotation.X, Mathf.DegToRad(-70), Mathf.DegToRad(70));
-        Camera.Rotation = Rotation with { X = x };
+        var x = Mathf.Clamp(NeckVertical.Rotation.X, Mathf.DegToRad(-70), Mathf.DegToRad(70));
+        NeckVertical.Rotation = Rotation with { X = x };
     }
 
     private void Process_RotateView()
@@ -137,13 +140,13 @@ public partial class FirstPersonController : CharacterBody3D
         var target_position = _look_at_target.GlobalPosition;
         var target_distance = GlobalPosition.DistanceTo(target_position);
 
-        var y_position = target_position.Set(y: Neck.GlobalPosition.Y);
-        var y_dir = y_position.DirectionTo(Neck.GlobalPosition);
-        var y_angle = Mathf.RadToDeg(Neck.GlobalBasis.Z.SignedAngleTo(y_dir, Vector3.Up));
+        var y_position = target_position.Set(y: NeckHorizontal.GlobalPosition.Y);
+        var y_dir = y_position.DirectionTo(NeckHorizontal.GlobalPosition);
+        var y_angle = Mathf.RadToDeg(NeckHorizontal.GlobalBasis.Z.SignedAngleTo(y_dir, Vector3.Up));
         var y_angle_lerp = Mathf.Lerp(0, y_angle, _look_at_speed * GameTime.DeltaTime);
         if (Mathf.Abs(y_angle) > 1f)
         {
-            Neck.RotateY(y_angle_lerp);
+            NeckHorizontal.RotateY(y_angle_lerp);
         }
 
         /* UNFINISHED
@@ -176,7 +179,7 @@ public partial class FirstPersonController : CharacterBody3D
             PlayerInput.Forward.Name,
             PlayerInput.Back.Name);
 
-        Vector3 direction = (Neck.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+        Vector3 direction = (NeckHorizontal.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
         if (MovementLock.IsLocked) direction *= 0;
 
         if (grounded)
@@ -218,32 +221,44 @@ public partial class FirstPersonController : CharacterBody3D
 
     private void Process_Cursor()
     {
+        var target = Interact?.CurrentInteractable;
+
         if (InteractLock.IsLocked)
         {
             Cursor.Hide();
         }
-        else if (Interact?.CurrentInteractable == null)
+        else if (target == null)
         {
             Cursor.Hide();
         }
-        else if ((Interact?.CurrentInteractable as Touchable) != null)
+        else if (TryHandleCursor_Touch(target))
         {
-            Cursor.Position(Interact.CurrentInteractable.Body);
-            Cursor.Show(CursorType.Look, Interact.CurrentInteractable.InteractableText);
+            // Handled by touch
         }
-        else if (Grab?.IsGrabbing ?? false)
+        else if (Grab?.TryHandleCursor(target) ?? false)
         {
-            Cursor.Hide();
-        }
-        else if (Grab?.CanGrab(Interact?.CurrentInteractable as Grabbable) ?? false)
-        {
-            Cursor.Position(Interact.CurrentInteractable.Body);
-            Cursor.Show(CursorType.Grab, Interact.CurrentInteractable.InteractableText);
+            // Handled by grab
         }
         else
         {
             Cursor.Hide();
         }
+    }
+
+    private bool TryHandleCursor_Touch(Interactable interactable)
+    {
+        var touchable = interactable as Touchable;
+        if (!IsInstanceValid(touchable)) return false;
+
+        Cursor.Show(new CursorSettings
+        {
+            Name = "Touch",
+            OverrideTexture = interactable.OverrideCursorTexture,
+            Text = interactable.InteractableText,
+            Position = interactable.Body.GlobalPosition
+        });
+
+        return true;
     }
 
     private void Process_Interact()
@@ -287,8 +302,8 @@ public partial class FirstPersonController : CharacterBody3D
 
     public void SetLookRotation(Node3D node)
     {
-        Camera.Rotation = new Vector3(node.GlobalRotation.X, 0, 0);
-        Neck.Rotation = new Vector3(0, node.GlobalRotation.Y, 0);
+        NeckVertical.Rotation = new Vector3(node.GlobalRotation.X, 0, 0);
+        NeckHorizontal.Rotation = new Vector3(0, node.GlobalRotation.Y, 0);
     }
 
     public void UpdateData()
@@ -296,15 +311,15 @@ public partial class FirstPersonController : CharacterBody3D
         Data.Game.PlayerPositionX = GlobalPosition.X;
         Data.Game.PlayerPositionY = GlobalPosition.Y;
         Data.Game.PlayerPositionZ = GlobalPosition.Z;
-        Data.Game.PlayerCameraRotation = Camera.Rotation.X;
-        Data.Game.PlayerNeckRotation = Neck.Rotation.Y;
+        Data.Game.PlayerNeckVerticalRotation = NeckVertical.Rotation.X;
+        Data.Game.PlayerNeckHorizontalRotation = NeckHorizontal.Rotation.Y;
     }
 
     public void LoadData()
     {
         GlobalPosition = new Vector3(Data.Game.PlayerPositionX, Data.Game.PlayerPositionY, Data.Game.PlayerPositionZ);
-        Camera.Rotation = new Vector3(Data.Game.PlayerCameraRotation, 0, 0);
-        Neck.Rotation = new Vector3(0, Data.Game.PlayerNeckRotation, 0);
+        NeckVertical.Rotation = new Vector3(Data.Game.PlayerNeckVerticalRotation, 0, 0);
+        NeckHorizontal.Rotation = new Vector3(0, Data.Game.PlayerNeckHorizontalRotation, 0);
     }
 
     public void StartLookingAt(Node3D target, float speed)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhfgb8joq4vnl"
-path="res://.godot/imported/door.png-0456826b5b841822fdbe414206aed7f2.ctex"
+uid="uid://b30h0p7pelwh4"
+path="res://.godot/imported/busy_hourglass_outline.png-ef52397cf787dc635365766415a819e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/KenneyNL/Icons/door.png"
-dest_files=["res://.godot/imported/door.png-0456826b5b841822fdbe414206aed7f2.ctex"]
+source_file="res://Assets/KenneyNL/Cursors/busy_hourglass_outline.png"
+dest_files=["res://.godot/imported/busy_hourglass_outline.png-ef52397cf787dc635365766415a819e4.ctex"]
 
 [params]
 

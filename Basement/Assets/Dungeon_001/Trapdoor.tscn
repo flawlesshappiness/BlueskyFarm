@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://castmw65ijigk"]
+[gd_scene load_steps=7 format=3 uid="uid://castmw65ijigk"]
 
 [ext_resource type="PackedScene" uid="uid://cirjx7mfugoni" path="res://Assets/KayLousberg/Dungeon/trapdoor.gltf.glb" id="1_j7jdy"]
 [ext_resource type="Script" path="res://SceneDoor/SceneDoor.cs" id="1_rguyj"]
 [ext_resource type="AudioStream" uid="uid://bum6rfvqly0cf" path="res://Sound/Sounds/sfx_door_open.ogg" id="2_8kcjf"]
 [ext_resource type="AudioStream" uid="uid://qsdorjv35rlo" path="res://Sound/Sounds/sfx_door_close.ogg" id="3_c8644"]
+[ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="4_wdmqa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_506dw"]
 size = Vector3(1.88965, 0.185303, 1.89063)
@@ -12,6 +13,7 @@ size = Vector3(1.88965, 0.185303, 1.89063)
 script = ExtResource("1_rguyj")
 OpenSound = ExtResource("2_8kcjf")
 CloseSound = ExtResource("3_c8644")
+OverrideCursorTexture = ExtResource("4_wdmqa")
 
 [node name="Body" type="StaticBody3D" parent="."]
 collision_layer = 5

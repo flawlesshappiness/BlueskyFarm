@@ -1,0 +1,28 @@
+using Godot;
+
+public static class Cursor
+{
+    public static CursorView View => Singleton.LoadScene<CursorView>($"Cursor/View/{nameof(CursorView)}.tscn");
+
+    public static void Show(CursorSettings settings)
+    {
+        var texture = settings.OverrideTexture ?? CursorController.Instance.GetCursorTexture(settings.Name);
+        View.SetCursorTexture(texture);
+        View.SetCursorText(settings.Text);
+        View.SetCursorPosition(settings.Position);
+        View.Show();
+    }
+
+    public static void Hide()
+    {
+        View.Hide();
+    }
+}
+
+public class CursorSettings
+{
+    public string Name { get; set; }
+    public Vector3 Position { get; set; }
+    public string Text { get; set; }
+    public Texture2D OverrideTexture { get; set; }
+}

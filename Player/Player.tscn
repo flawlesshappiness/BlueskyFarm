@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdkodwuco1fd1"]
+[gd_scene load_steps=7 format=3 uid="uid://bdkodwuco1fd1"]
 
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="1_pwey1"]
+[ext_resource type="Script" path="res://Player/ItemHold/FirstPersonItemHold.cs" id="2_26tw8"]
 [ext_resource type="Script" path="res://Player/PlayerStepSound.cs" id="2_k52kp"]
 [ext_resource type="AudioStream" uid="uid://ca0ca0m70xdpv" path="res://Sound/Sounds/sfx_step_walk.ogg" id="3_3s50d"]
 [ext_resource type="Script" path="res://Sound/Sound.cs" id="3_7ahbp"]
@@ -10,9 +11,11 @@
 JumpUpSpeed = 4.0
 JumpHorizontalSpeed = 1.0
 
-[node name="Step" parent="." index="1"]
-RunStepTime = 0.35
-StepBounce = 0.15
+[node name="ItemHold" type="Node3D" parent="NeckHorizontal" index="1"]
+script = ExtResource("2_26tw8")
+
+[node name="Position" type="Node3D" parent="NeckHorizontal/ItemHold" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.7, -0.25)
 
 [node name="StepSounds" type="Node3D" parent="." index="3"]
 script = ExtResource("2_k52kp")

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
+public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
 {
     [Export]
     public float GrabPositionOffsetMax;
@@ -133,6 +133,22 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab
         if (!IsInstanceValid(grabbable)) return false;
         if (grabbable.IsQueuedForDeletion()) return false;
         if (!grabbable.IsGrabbable) return false;
+        return true;
+    }
+
+    public bool TryHandleCursor(Interactable interactable)
+    {
+        var grabbable = interactable as Grabbable;
+        if (!IsInstanceValid(grabbable)) return false;
+        if (!CanGrab(grabbable)) return false;
+
+        Cursor.Show(new CursorSettings
+        {
+            Name = "Grab",
+            Text = interactable.InteractableText,
+            Position = interactable.Body.GlobalPosition
+        });
+
         return true;
     }
 }

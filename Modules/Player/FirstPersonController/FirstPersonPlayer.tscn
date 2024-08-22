@@ -17,38 +17,31 @@ JumpHorizontalSpeed = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0xb1f")
 
-[node name="Step" type="Node3D" parent="."]
+[node name="NeckHorizontal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47242, 0)
+
+[node name="NeckVertical" type="Node3D" parent="NeckHorizontal"]
+
+[node name="Step" type="Node3D" parent="NeckHorizontal/NeckVertical"]
 script = ExtResource("2_1v0dj")
 
-[node name="Neck" type="Node3D" parent="Step"]
+[node name="Camera" type="Camera3D" parent="NeckHorizontal/NeckVertical/Step"]
 
-[node name="Camera" type="Camera3D" parent="Step/Neck"]
-
-[node name="Interact" type="RayCast3D" parent="Step/Neck/Camera"]
+[node name="Interact" type="RayCast3D" parent="NeckHorizontal/NeckVertical/Step/Camera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 4
 script = ExtResource("2_ctqgn")
 SearchRadius = 1.0
 
-[node name="Grab" type="Node3D" parent="Step/Neck/Camera"]
+[node name="Grab" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/Camera"]
 script = ExtResource("3_30dn4")
 GrabPositionOffsetMax = 2.0
 
-[node name="Position" type="Node3D" parent="Step/Neck/Camera/Grab"]
+[node name="Position" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/Camera/Grab"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
-[node name="Rotation" type="Node3D" parent="Step/Neck/Camera/Grab"]
+[node name="Rotation" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/Camera/Grab"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-
-[node name="Equipment" type="Node3D" parent="Step/Neck/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="EquipLeft" type="Node3D" parent="Step/Neck/Camera/Equipment"]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.625, 0, -1.25)
-
-[node name="EquipRight" type="Node3D" parent="Step/Neck/Camera/Equipment"]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.625, 0, -1.25)
 
 [node name="Mid" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0094, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

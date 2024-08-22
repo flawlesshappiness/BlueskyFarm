@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CursorInfo" load_steps=3 format=3 uid="uid://drnsubhg8fi7y"]
+
+[ext_resource type="Texture2D" uid="uid://wcqr4s875aa5" path="res://Assets/KenneyNL/Cursors/hand_open.png" id="1_a3cbm"]
+[ext_resource type="Script" path="res://Modules/Cursor/CursorInfo.cs" id="1_dqjy1"]
+
+[resource]
+script = ExtResource("1_dqjy1")
+Name = "Grab"
+Texture = ExtResource("1_a3cbm")

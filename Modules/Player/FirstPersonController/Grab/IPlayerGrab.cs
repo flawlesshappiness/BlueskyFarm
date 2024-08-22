@@ -1,4 +1,4 @@
-public interface IPlayerGrab
+public interface IPlayerGrab : ICursorHandler
 {
     public bool IsGrabbing { get; }
     public bool IsRotating { get; }

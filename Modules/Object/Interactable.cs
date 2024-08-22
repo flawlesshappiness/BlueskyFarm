@@ -9,6 +9,9 @@ public partial class Interactable : Node3DScript
     [Export]
     public bool OverrideInitialCollisionMode;
 
+    [Export]
+    public Texture2D OverrideCursorTexture;
+
     public PhysicsBody3D Body => _body ??= this.GetNodeInChildren<PhysicsBody3D>();
     private PhysicsBody3D _body;
 

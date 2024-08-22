@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="CursorCollection" load_steps=2 format=3 uid="uid://dm75xaeyr8doe"]
+
+[ext_resource type="Script" path="res://Modules/Cursor/CursorCollection.cs" id="1_8ldhd"]
+
+[resource]
+script = ExtResource("1_8ldhd")

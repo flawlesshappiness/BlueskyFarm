@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CursorInfo" load_steps=3 format=3 uid="uid://cwn16iyceruf6"]
+
+[ext_resource type="Texture2D" uid="uid://b8aj30jfo743a" path="res://Assets/KenneyNL/Cursors/hand_point.png" id="1_aduhu"]
+[ext_resource type="Script" path="res://Modules/Cursor/CursorInfo.cs" id="1_sawr0"]
+
+[resource]
+script = ExtResource("1_sawr0")
+Name = "Interact"
+Texture = ExtResource("1_aduhu")

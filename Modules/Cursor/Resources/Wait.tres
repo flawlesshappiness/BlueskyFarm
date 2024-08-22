@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CursorInfo" load_steps=3 format=3 uid="uid://bs7xtu7qfq3t3"]
+
+[ext_resource type="Texture2D" uid="uid://b30h0p7pelwh4" path="res://Assets/KenneyNL/Cursors/busy_hourglass_outline.png" id="1_1dbpa"]
+[ext_resource type="Script" path="res://Modules/Cursor/CursorInfo.cs" id="1_iiyyr"]
+
+[resource]
+script = ExtResource("1_iiyyr")
+Name = "Wait"
+Texture = ExtResource("1_1dbpa")

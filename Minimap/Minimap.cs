@@ -51,7 +51,7 @@ public partial class Minimap : ControlScript
         var pos_player = WorldToMinimapPosition(-FirstPersonController.Instance.GlobalPosition);
         Scroll.Position = pos_player + Player.Position;
 
-        Rotate.Rotation = FirstPersonController.Instance.Neck.Rotation.Y;
+        Rotate.Rotation = FirstPersonController.Instance.NeckHorizontal.Rotation.Y;
     }
 
     private void RegisterDebugActions()

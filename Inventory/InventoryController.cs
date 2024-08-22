@@ -112,7 +112,10 @@ public partial class InventoryController : SingletonController
 
     public void ClearCurrentInventory()
     {
-        CurrentInventoryItems = new ItemData[MAX_INVENTORY_SIZE];
+        for (int i = 0; i < MAX_INVENTORY_SIZE; i++)
+        {
+            RemoveItem(i);
+        }
     }
 
     public bool HasItem(ItemData item)
@@ -222,6 +225,15 @@ public partial class InventoryController : SingletonController
         if (item == null) return;
 
         DropItem(item);
+        OnItemRemoved?.Invoke(i);
+    }
+
+    private void RemoveItem(int i)
+    {
+        var item = CurrentInventoryItems[i];
+        CurrentInventoryItems[i] = null;
+        if (item == null) return;
+
         OnItemRemoved?.Invoke(i);
     }
 

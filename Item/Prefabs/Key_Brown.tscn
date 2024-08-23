@@ -133,10 +133,10 @@ script = ExtResource("1_osxot")
 [node name="Key" type="RigidBody3D" parent="."]
 
 [node name="Model" parent="Key" instance=ExtResource("2_oq3mm")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.291272, -1.27319e-08)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Key"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.278612, -1.21785e-08)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("BoxShape3D_m35of")
 
 [node name="PsGlow" type="GPUParticles3D" parent="Key"]

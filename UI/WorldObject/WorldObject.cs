@@ -9,6 +9,9 @@ public partial class WorldObject : ControlScript
     [NodeName]
     public Node3D Spin;
 
+    [NodeType]
+    public Camera3D Camera;
+
     private Node3D _current;
 
     public void Clear()
@@ -33,6 +36,12 @@ public partial class WorldObject : ControlScript
         var item = ItemController.Instance.CreateItem(info, parent: Origin, track_item: false);
         item.RigidBody.ProcessMode = ProcessModeEnum.Disabled;
         SetObject(item);
+        UpdateCameraFromItemInfo(info);
+    }
+
+    private void UpdateCameraFromItemInfo(ItemInfo info)
+    {
+        Camera.Position = new Vector3(0, 0, info.InventoryItemCameraDistance);
     }
 
     public void StartAnimateSpin()

@@ -23,4 +23,7 @@ public partial class ItemInfo : Resource
 
     [Export]
     public bool Untrack;
+
+    [Export]
+    public float InventoryItemCameraDistance = 0.25f;
 }

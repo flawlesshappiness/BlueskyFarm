@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://pwhud1nmxke8"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://pwhud1nmxke8"]
 
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_d1u3l"]
-[ext_resource type="Texture2D" uid="uid://c7m5wtsr7iwd4" path="res://Assets/FlawLizArt/GlowStick/icon_glow_stick.png" id="1_rjpj0"]
 
 [resource]
 script = ExtResource("1_d1u3l")
 Path = "res://Item/Prefabs/GlowStick.tscn"
-CanSell = false
-SellValue = 0
 CanPlant = false
 GrowTimeInSeconds = 0
+CanProcessToMaterial = false
+MaterialType = 0
 CanPickUp = true
 Untrack = false
-Icon = ExtResource("1_rjpj0")
+InventoryItemCameraDistance = 0.5

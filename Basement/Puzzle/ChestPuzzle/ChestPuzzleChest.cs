@@ -100,7 +100,8 @@ public partial class ChestPuzzleChest : Touchable
         Closed.Hide();
         Open.Show();
         _open = true;
-        SetCollision_All();
+        SetCollisionLayer(player: true);
+        SetCollisionMask();
         SpawnItems();
     }
 

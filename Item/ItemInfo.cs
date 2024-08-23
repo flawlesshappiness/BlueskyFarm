@@ -23,7 +23,4 @@ public partial class ItemInfo : Resource
 
     [Export]
     public bool Untrack;
-
-    [Export]
-    public Texture2D Icon;
 }

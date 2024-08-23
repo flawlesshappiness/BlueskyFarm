@@ -36,7 +36,7 @@ public partial class InventoryBar : ControlScript
             if (data == null) continue;
             var info = GD.Load<ItemInfo>(data.InfoPath);
             if (info == null) continue;
-            e.Icon.Texture = info.Icon;
+            e.WorldObject.LoadItem(info);
         }
 
         UpdateElementVisibility();
@@ -70,7 +70,8 @@ public partial class InventoryBar : ControlScript
         if (info == null) return;
 
         var e = GetElement(i);
-        e.Icon.Texture = info.Icon;
+        //e.Icon.Texture = info.Icon;
+        e.WorldObject.LoadItem(info);
 
         DynamicUI.AnimateShow(true);
     }

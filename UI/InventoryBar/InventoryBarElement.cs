@@ -3,23 +3,25 @@ using Godot;
 public partial class InventoryBarElement : ControlScript
 {
     [NodeName]
-    public TextureRect Icon;
+    public TextureRect Selected;
 
     [NodeName]
-    public TextureRect Selected;
+    public WorldObject WorldObject;
 
     public void Clear()
     {
-        Icon.Texture = null;
+        WorldObject.Clear();
     }
 
     public void Select()
     {
         Selected.Visible = true;
+        WorldObject.StartAnimateSpin();
     }
 
     public void Deselect()
     {
         Selected.Visible = false;
+        WorldObject.StopAnimateSpin();
     }
 }

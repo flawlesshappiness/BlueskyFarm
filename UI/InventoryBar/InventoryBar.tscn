@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
 [ext_resource type="Script" path="res://UI/DynamicUI/DynamicUI.cs" id="1_5bjdx"]
-[ext_resource type="Texture2D" uid="uid://d0ujp2mov84bi" path="res://Assets/Quaternius/Icons/KeyBrown.png" id="2_85wm7"]
 [ext_resource type="Texture2D" uid="uid://c48ol1afhicfm" path="res://Assets/KenneyNL/Particles/circle_03.png" id="4_nuabn"]
+[ext_resource type="PackedScene" uid="uid://5m538famp4ae" path="res://UI/WorldObject/WorldObject.tscn" id="5_vu27v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la47w"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -91,8 +91,6 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Icon" type="TextureRect" parent="DynamicUI/GridContainer/InventoryBarElement/MarginContainer"]
+[node name="WorldObject" parent="DynamicUI/GridContainer/InventoryBarElement/MarginContainer" instance=ExtResource("5_vu27v")]
 layout_mode = 2
-texture = ExtResource("2_85wm7")
-expand_mode = 1
-stretch_mode = 4
+stretch = true

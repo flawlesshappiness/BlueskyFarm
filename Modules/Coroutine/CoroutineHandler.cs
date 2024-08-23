@@ -67,7 +67,7 @@ public partial class CoroutineHandler : Node
         _coroutines.Add(coroutine.Id, coroutine);
     }
 
-    private void RemoveCoroutineWithStringId(string id)
+    public void RemoveCoroutineWithStringId(string id)
     {
         if (string.IsNullOrEmpty(id)) return;
 

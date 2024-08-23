@@ -37,6 +37,11 @@ public class Coroutine : CustomYieldInstruction
         CoroutineHandler.Instance.RemoveCoroutine(coroutine);
     }
 
+    public static void Stop(string id)
+    {
+        CoroutineHandler.Instance.RemoveCoroutineWithStringId(id);
+    }
+
     public void UpdateFrame()
     {
         if (!TryMoveEnumerator(Enumerator))

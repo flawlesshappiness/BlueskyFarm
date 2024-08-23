@@ -76,11 +76,9 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         return item;
     }
 
-    public Item CreateItem(ItemInfo info, bool track_item = true)
+    public Item CreateItem(ItemInfo info, bool track_item = true, Node3D parent = null)
     {
-        var item = GDHelper.Instantiate<Item>(info.Path);
-        item.SetParent(Scene.Current);
-
+        var item = GDHelper.Instantiate<Item>(info.Path, parent ?? Scene.Current as Node);
         item.Info = info;
         item.Data = new ItemData
         {

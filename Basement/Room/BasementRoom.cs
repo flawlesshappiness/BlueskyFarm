@@ -43,9 +43,20 @@ public partial class BasementRoom : Node3DScript
         South = FindSection(nameof(South));
         West = FindSection(nameof(West));
 
-        Ceiling.Visible = true;
-        Floor.Visible = true;
-        Walls.Visible = true;
+        if (IsInstanceValid(Ceiling))
+        {
+            Ceiling.Visible = true;
+        }
+
+        if (IsInstanceValid(Floor))
+        {
+            Floor.Visible = true;
+        }
+
+        if (IsInstanceValid(Walls))
+        {
+            Walls.Visible = true;
+        }
     }
 
     private Section FindSection(string name)

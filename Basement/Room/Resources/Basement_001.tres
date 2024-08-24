@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=2 format=3 uid="uid://g0xibfmoc2cu"]
 
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_0gd7u"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_qowr4"]
 
 [resource]
-script = ExtResource("1_0gd7u")
-Path = "res://Basement/Room/Prefabs/Corridor_001.tscn"
+script = ExtResource("1_qowr4")
+Path = "res://Basement/Room/Prefabs/Basement_001.tscn"
 IsStartRoom = false
 RoomLayout = "000N000
 000N110
@@ -13,3 +13,4 @@ WW111EE
 0111100
 011S000
 000S000"
+Disabled = false

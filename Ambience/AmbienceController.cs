@@ -42,7 +42,7 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
         while (true)
         {
             var sound = info.Sounds
-                .Where(x => x != previous)
+                .Where(x => x != previous || info.Sounds.Count == 1)
                 .ToList()
                 .Random();
             var x = rng.RandfRange(-1, 1);

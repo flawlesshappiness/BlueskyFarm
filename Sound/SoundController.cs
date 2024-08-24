@@ -7,12 +7,14 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
     public override string Directory => "Sound";
     public static SoundController Instance => Singleton.Get<SoundController>();
 
-    public void Play(string name, SoundSettings settings = null)
+    public void Play(string name, SoundSettings settings = null) => Play(Collection.GetSound(name), settings);
+    public void Play(string name, SoundSettings3D settings = null) => Play(Collection.GetSound(name), settings);
+
+    public void Play(AudioStream stream, SoundSettings3D settings = null)
     {
-        var stream = Collection.GetSound(name);
         if (stream == null) return;
 
-        var sound = new AudioStreamPlayer();
+        var sound = new AudioStreamPlayer3D();
         sound.SetParent(Scene.Root);
         sound.Stream = stream;
         settings?.ModifySound(sound);
@@ -22,12 +24,11 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         DestroyDelay(sound, duration);
     }
 
-    public void Play(string name, SoundSettings3D settings = null)
+    public void Play(AudioStream stream, SoundSettings settings = null)
     {
-        var stream = Collection.GetSound(name);
         if (stream == null) return;
 
-        var sound = new AudioStreamPlayer3D();
+        var sound = new AudioStreamPlayer();
         sound.SetParent(Scene.Root);
         sound.Stream = stream;
         settings?.ModifySound(sound);

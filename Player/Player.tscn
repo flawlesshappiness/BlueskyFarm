@@ -11,6 +11,9 @@
 JumpUpSpeed = 4.0
 JumpHorizontalSpeed = 1.0
 
+[node name="Step" parent="NeckHorizontal/NeckVertical" index="0"]
+RunStepTime = 0.3
+
 [node name="ItemHold" type="Node3D" parent="NeckHorizontal" index="1"]
 script = ExtResource("2_26tw8")
 

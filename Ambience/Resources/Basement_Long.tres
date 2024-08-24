@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AmbienceGroupInfo" load_steps=3 format=3 uid="uid://dtwxlyjcmcvlh"]
+
+[ext_resource type="AudioStream" uid="uid://dmgonnb2mml4d" path="res://Sound/Sounds/sfx_amb_mushroom_roots.wav" id="1_uew25"]
+[ext_resource type="Script" path="res://Ambience/AmbienceGroupInfo.cs" id="7_1aove"]
+
+[resource]
+script = ExtResource("7_1aove")
+Name = "Basement"
+DistanceMin = 20.0
+DistanceMax = 28.0
+VolumeMin = -40.0
+VolumeMax = -20.0
+PitchMin = 0.9
+PitchMax = 1.1
+DelayMin = 5.0
+DelayMax = 15.0
+Sounds = Array[AudioStream]([ExtResource("1_uew25")])

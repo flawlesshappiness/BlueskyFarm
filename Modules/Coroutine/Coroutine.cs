@@ -18,7 +18,7 @@ public class Coroutine : CustomYieldInstruction
         Enumerator = enumerator;
     }
 
-    private static Coroutine Start(IEnumerator enumerator, string id = null, Node connection = null)
+    public static Coroutine Start(IEnumerator enumerator, string id = null, Node connection = null)
     {
         var coroutine = new Coroutine(enumerator);
         coroutine.SetId(id);

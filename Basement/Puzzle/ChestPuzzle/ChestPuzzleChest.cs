@@ -68,7 +68,7 @@ public partial class ChestPuzzleChest : Touchable
             Volume = 0
         });
 
-        View.Get<TextView>().DisplayText("The chest is locked.");
+        View.Get<GameView>().DisplayText("The chest is locked.");
     }
 
     private void AnimateUnlock(PuzzleKey key)

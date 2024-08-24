@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdco18oe37rhc"]
+[gd_scene load_steps=5 format=3 uid="uid://bdco18oe37rhc"]
 
 [ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
 [ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
+[ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="3_vtgjj"]
 [ext_resource type="PackedScene" uid="uid://caxidipwbdxhk" path="res://UI/InventoryBar/InventoryBar.tscn" id="6_iodv3"]
 
 [node name="GameView" type="Control"]
@@ -136,5 +137,43 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryBar" parent="MarginContainer/Control" instance=ExtResource("6_iodv3")]
+[node name="BottomBars" type="VBoxContainer" parent="MarginContainer/Control"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="BottomTextLabel" type="Label" parent="MarginContainer/Control/BottomBars"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_vtgjj")
+text = "Bla bla bla"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/BottomBars/BottomTextLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Control/BottomBars/BottomTextLabel/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="InventoryBar" parent="MarginContainer/Control/BottomBars" instance=ExtResource("6_iodv3")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2

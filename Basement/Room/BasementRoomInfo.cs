@@ -3,6 +3,12 @@ using Godot;
 [GlobalClass]
 public partial class BasementRoomInfo : Resource
 {
+    [Export]
+    public string Area;
+
+    [Export]
+    public string ConnectedArea;
+
     [Export(PropertyHint.File)]
     public string Path;
 

@@ -17,9 +17,24 @@ public partial class BasementScene : GameScene
         BasementController.Instance.GenerateBasement(new BasementSettings
         {
             RoomParent = NavRegion,
-            MaxRooms = 5,
-            MaxCorridorDepth = 3,
-            PuzzleCount = 3,
+            Areas = new()
+            {
+                new BasementSettingsArea
+                {
+                    AreaName = "Basement",
+                    MaxRooms = 5,
+                    MaxCorridorDepth = 3,
+                    PuzzleCount = 3,
+                },
+                new BasementSettingsArea
+                {
+                    AreaName = "Forest",
+                    ConnectedAreaName = "Basement",
+                    MaxRooms = 5,
+                    MaxCorridorDepth = 3,
+                    PuzzleCount = 0,
+                }
+            }
         });
 
         // Audio

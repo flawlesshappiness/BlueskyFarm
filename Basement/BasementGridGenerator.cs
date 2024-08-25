@@ -10,17 +10,29 @@ public static class BasementGridGenerator
         Debug.Indent++;
 
         var grid = new Grid<BasementRoomElement>();
-        var root = new BasementRoomElement();
-        root.IsStart = true;
+        for (int i = 0; i < settings.Areas.Count; i++)
+        {
+            var area = settings.Areas[i];
+            GenerateArea(grid, area);
+        }
 
-        grid.Set(0, 0, root);
+        Debug.Indent--;
+        return grid;
+    }
 
-        var remaining_rooms = settings.MaxRooms - 1;
+    private static bool GenerateArea(Grid<BasementRoomElement> grid, BasementSettingsArea area)
+    {
+        var start = CreateStartElement(grid, area);
+        var remaining_rooms = area.MaxRooms;
         while (remaining_rooms > 0)
         {
-            var current = grid.Elements.ToList().Random();
+            var current = grid.Elements
+                .Where(x => x.AreaName == area.AreaName)
+                .ToList()
+                .Random() ?? start;
+
             var depth = 0;
-            while (depth < settings.MaxCorridorDepth && remaining_rooms > 0)
+            while (depth < area.MaxCorridorDepth && remaining_rooms > 0)
             {
                 var available_coords = grid.GetEmptyNeighbourCoordinates(current.Coordinates);
                 if (!available_coords.Any()) break;
@@ -28,6 +40,7 @@ public static class BasementGridGenerator
                 var coords = available_coords.ToList().Random();
                 var next = new BasementRoomElement
                 {
+                    AreaName = area.AreaName,
                     Coordinates = coords,
                 };
 
@@ -43,9 +56,44 @@ public static class BasementGridGenerator
             }
         }
 
+        return true;
+    }
 
-        Debug.Indent--;
-        return grid;
+    private static BasementRoomElement CreateStartElement(Grid<BasementRoomElement> grid, BasementSettingsArea area)
+    {
+        if (string.IsNullOrEmpty(area.ConnectedAreaName))
+        {
+            var start = new BasementRoomElement
+            {
+                AreaName = area.AreaName,
+                Coordinates = new Vector2I(0, 0),
+                IsStart = true
+            };
+
+            grid.Set(0, 0, start);
+            return start;
+        }
+        else
+        {
+            var elements = grid.Elements.Where(x => x.AreaName == area.ConnectedAreaName && !x.IsStart);
+            var empties = elements.SelectMany(x => grid.GetEmptyNeighbourCoordinates(x.Coordinates))
+                .OrderByDescending(x => grid.GetEmptyNeighbourCoordinates(x).Count());
+            var position = empties.FirstOrDefault();
+            var start = new BasementRoomElement
+            {
+                AreaName = area.AreaName,
+                ConnectedAreaName = area.ConnectedAreaName,
+                Coordinates = position,
+                IsStart = true
+            };
+
+            var connected_element = grid.GetNeighbours(position).FirstOrDefault();
+            start.Connections.Add(connected_element);
+            connected_element.Connections.Add(start);
+
+            grid.Set(position, start);
+            return start;
+        }
     }
 
     public static void LogGrid(Grid<BasementRoomElement> grid)
@@ -72,6 +120,13 @@ public static class BasementGridGenerator
 public class BasementSettings
 {
     public Node RoomParent { get; set; }
+    public List<BasementSettingsArea> Areas { get; set; }
+}
+
+public class BasementSettingsArea
+{
+    public string AreaName { get; set; }
+    public string ConnectedAreaName { get; set; }
     public int MaxCorridorDepth { get; set; }
     public int MaxRooms { get; set; }
     public int PuzzleCount { get; set; }
@@ -83,10 +138,17 @@ public class BasementRoomElement
     public List<BasementRoomElement> Connections { get; set; } = new();
     public BasementRoom Room { get; set; }
     public BasementRoomInfo Info { get; set; }
+    public string AreaName { get; set; }
+    public string ConnectedAreaName { get; set; }
     public bool IsStart { get; set; }
 
-    public bool HasNorth => Connections.Any(x => x.Coordinates.Y > Coordinates.Y);
-    public bool HasSouth => Connections.Any(x => x.Coordinates.Y < Coordinates.Y);
-    public bool HasEast => Connections.Any(x => x.Coordinates.X > Coordinates.X);
-    public bool HasWest => Connections.Any(x => x.Coordinates.X < Coordinates.X);
+    public bool HasNorth => NorthElement != null;
+    public bool HasSouth => SouthElement != null;
+    public bool HasEast => EastElement != null;
+    public bool HasWest => WestElement != null;
+
+    public BasementRoomElement NorthElement => Connections.FirstOrDefault(x => x.Coordinates.Y > Coordinates.Y);
+    public BasementRoomElement SouthElement => Connections.FirstOrDefault(x => x.Coordinates.Y < Coordinates.Y);
+    public BasementRoomElement EastElement => Connections.FirstOrDefault(x => x.Coordinates.X > Coordinates.X);
+    public BasementRoomElement WestElement => Connections.FirstOrDefault(x => x.Coordinates.X < Coordinates.X);
 }

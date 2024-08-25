@@ -22,10 +22,13 @@ public partial class BasementPuzzleController : ResourceController<BasementPuzzl
 
     private void BasementGenerated(Basement basement)
     {
-        for (int i = 0; i < basement.Settings.PuzzleCount; i++)
+        foreach (var area in basement.Settings.Areas)
         {
-            var info = GetRandomPuzzleInfo();
-            var puzzle = CreatePuzzle(info);
+            for (int i = 0; i < area.PuzzleCount; i++)
+            {
+                var info = GetRandomPuzzleInfo();
+                var puzzle = CreatePuzzle(info);
+            }
         }
     }
 }

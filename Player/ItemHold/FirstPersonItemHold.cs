@@ -3,7 +3,7 @@ using Godot;
 public partial class FirstPersonItemHold : Node3DScript
 {
     [NodeName]
-    public Node3D Position;
+    public new Node3D Position;
 
     private Item _current_item;
 

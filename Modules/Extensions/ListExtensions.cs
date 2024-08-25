@@ -6,7 +6,7 @@ public static class ListExtensions
     public static T Random<T>(this List<T> list, RandomNumberGenerator rng = null)
     {
         rng ??= new RandomNumberGenerator();
-        return list.Get(rng.RandiRange(0, list.Count - 1));
+        return list.Count > 0 ? list.Get(rng.RandiRange(0, list.Count - 1)) : default(T);
     }
 
     public static T GetClamped<T>(this List<T> list, int index)

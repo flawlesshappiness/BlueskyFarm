@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_kluac")
+Area = "Basement"
 Path = "res://Basement/Room/Prefabs/Basement_003.tscn"
 IsStartRoom = false
 RoomLayout = "000N000

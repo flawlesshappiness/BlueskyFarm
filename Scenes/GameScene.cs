@@ -3,7 +3,7 @@ using System.Collections;
 
 public partial class GameScene : Scene
 {
-    public static GameScene Current => Scene.Current as GameScene;
+    public static new GameScene Current => Scene.Current as GameScene;
 
     [NodeType]
     public WorldEnvironment WorldEnvironment;

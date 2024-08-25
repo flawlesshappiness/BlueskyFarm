@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_t8603")
+Area = "Forest"
 Path = "res://Basement/Room/Prefabs/Forest_001.tscn"
 IsStartRoom = false
 RoomLayout = "1111111
@@ -13,4 +14,4 @@ RoomLayout = "1111111
 1111111
 1111111
 1111111"
-Disabled = true
+Disabled = false

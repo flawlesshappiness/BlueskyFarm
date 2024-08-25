@@ -32,6 +32,24 @@ public partial class BasementRoom : Node3DScript
             Open.SetEnabled(open);
             Closed.SetEnabled(!open);
         }
+
+        public void SetAreaConnection(string area1, string area2, BasementRoomElement section_element)
+        {
+            if (!Open.Visible) return;
+            if (string.IsNullOrEmpty(area1)) return;
+            if (string.IsNullOrEmpty(area2)) return;
+            if (section_element == null) return;
+
+            var children = Open.GetChildren();
+            foreach (var child in children)
+            {
+                var n3 = child as Node3D;
+                if (n3 == null) continue;
+
+                var valid = n3.Name == section_element.AreaName;
+                n3.SetEnabled(valid);
+            }
+        }
     }
 
     public override void _Ready()

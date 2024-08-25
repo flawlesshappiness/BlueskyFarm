@@ -16,7 +16,7 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_76nj1")
 size = Vector2(28, 28)
 
-[node name="Forset_001" instance=ExtResource("1_qmanm")]
+[node name="Forest_001" instance=ExtResource("1_qmanm")]
 
 [node name="Wall_Basement_001" parent="North/Closed" index="0" instance=ExtResource("2_k0gsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
@@ -298,3 +298,5 @@ mesh = SubResource("QuadMesh_x7vw4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/StaticBody3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_q4lmo")
+
+[node name="Walls" type="Node3D" parent="." index="8"]

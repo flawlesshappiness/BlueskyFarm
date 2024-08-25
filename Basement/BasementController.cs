@@ -52,6 +52,11 @@ public partial class BasementController : SingletonController
             room.South.SetOpen(element.HasSouth);
             room.West.SetOpen(element.HasWest);
 
+            room.North.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.NorthElement);
+            room.East.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.EastElement);
+            room.South.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.SouthElement);
+            room.West.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.WestElement);
+
             element.Room = room;
             element.Info = info;
         }
@@ -66,14 +71,15 @@ public partial class BasementController : SingletonController
         if (element.IsStart)
         {
             var room = BasementRoomController.Instance.Collection.Resources
-                .Where(x => !x.Disabled)
-                .FirstOrDefault(x => x.IsStartRoom);
+                .Where(x => !x.Disabled && x.IsStartRoom &&
+                ((x.Area == element.AreaName && x.ConnectedArea == element.ConnectedAreaName) || (x.Area == element.ConnectedAreaName && x.ConnectedArea == element.AreaName)))
+                .FirstOrDefault();
             return room;
         }
         else
         {
             var room = BasementRoomController.Instance.Collection.Resources
-                .Where(x => !x.Disabled && !x.IsStartRoom)
+                .Where(x => !x.Disabled && !x.IsStartRoom && x.Area == element.AreaName)
                 .ToList().Random();
 
             return room;

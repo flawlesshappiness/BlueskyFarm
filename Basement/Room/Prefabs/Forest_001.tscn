@@ -430,3 +430,10 @@ PositionRadiusMax = 4.0
 [node name="CommonTree36" parent="Interior" index="35" instance=ExtResource("3_dfkoj")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 10)
 PositionRadiusMax = 4.0
+
+[node name="OmniLight3D" type="SpotLight3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.4659, 0)
+light_color = Color(0.658824, 1, 0.898039, 1)
+light_energy = 4.429
+spot_range = 18.5097
+spot_angle = 19.1945

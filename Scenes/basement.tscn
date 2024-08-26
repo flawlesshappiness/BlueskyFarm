@@ -1,18 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvxlenqmx8s03"]
+[gd_scene load_steps=7 format=3 uid="uid://dvxlenqmx8s03"]
 
 [ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_4o6kx"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="2_38ywq"]
+[ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Basement.tres" id="2_t5fu3"]
+[ext_resource type="Environment" uid="uid://ck8maewbx0shd" path="res://Environment/Forest.tres" id="3_nj8np"]
 [ext_resource type="AudioStream" uid="uid://bobxdxs61gw4f" path="res://Sound/Ambience/amb_basement_001.ogg" id="3_vekss"]
-
-[sub_resource type="Environment" id="Environment_83lvk"]
-ambient_light_source = 2
-ambient_light_color = Color(0.15, 0.1275, 0.1275, 1)
-ssao_enabled = true
-ssao_radius = 0.5
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.15
-volumetric_fog_albedo = Color(0, 0, 0, 1)
-adjustment_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hft8w"]
 geometry_parsed_geometry_type = 1
@@ -22,14 +14,16 @@ agent_radius = 0.25
 
 [node name="Basement" type="Node3D"]
 script = ExtResource("1_4o6kx")
+BasementEnvironment = ExtResource("2_t5fu3")
+ForestEnvironment = ExtResource("3_nj8np")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_83lvk")
+environment = ExtResource("2_t5fu3")
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("2_38ywq")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="FirstPersonPlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44942, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79225, 0)
 light_color = Color(0.15, 0.15, 0.15, 1)
 omni_range = 7.0
 

@@ -50,7 +50,7 @@ public static class Lerp
                 return Color(v1.AsColor(), v2.AsColor(), t);
 
             default:
-                throw new ArgumentException($"Failed to Lerp variant of type: {v1.VariantType}");
+                throw new ArgumentException($"Failed to Lerp variant {v1.AsStringName()} of type: {v1.VariantType}");
         }
     }
 }

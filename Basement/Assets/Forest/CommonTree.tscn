@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://n3olirfw7mgc"]
+
+[ext_resource type="Script" path="res://Modules/Object/ObjectRandomizer.cs" id="1_1ivq3"]
+[ext_resource type="PackedScene" uid="uid://dmxoif37bmfxi" path="res://Assets/Quaternius/Nature/CommonTree_1.gltf" id="1_nau4l"]
+[ext_resource type="PackedScene" uid="uid://bccaqdvo0n7a8" path="res://Assets/Quaternius/Nature/CommonTree_2.gltf" id="2_20j61"]
+[ext_resource type="PackedScene" uid="uid://c7rjx8dhar0vg" path="res://Assets/Quaternius/Nature/CommonTree_3.gltf" id="3_wmlhu"]
+[ext_resource type="PackedScene" uid="uid://dq7k3n5chn7db" path="res://Assets/Quaternius/Nature/CommonTree_4.gltf" id="4_t1jtj"]
+[ext_resource type="PackedScene" uid="uid://ctsrjlypoyaly" path="res://Assets/Quaternius/Nature/CommonTree_5.gltf" id="5_t86hp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xjb1"]
+height = 4.0
+
+[node name="CommonTree" type="Node3D"]
+script = ExtResource("1_1ivq3")
+PositionRadiusMax = 5.0
+RotationMax = 360.0
+ScaleMin = 0.5
+
+[node name="Position" type="Node3D" parent="."]
+
+[node name="Models" type="Node3D" parent="Position"]
+
+[node name="CommonTree_12" parent="Position/Models" instance=ExtResource("1_nau4l")]
+
+[node name="CommonTree_22" parent="Position/Models" instance=ExtResource("2_20j61")]
+
+[node name="CommonTree_32" parent="Position/Models" instance=ExtResource("3_wmlhu")]
+
+[node name="CommonTree_42" parent="Position/Models" instance=ExtResource("4_t1jtj")]
+
+[node name="CommonTree_52" parent="Position/Models" instance=ExtResource("5_t86hp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Position"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Position/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_8xjb1")

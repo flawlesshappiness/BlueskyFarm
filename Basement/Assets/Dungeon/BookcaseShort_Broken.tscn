@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://rgnw4e0k7dd5"]
+
+[ext_resource type="PackedScene" uid="uid://bnfmbi1iwc58h" path="res://Assets/KayLousberg/Dungeon/bookcase_broken.gltf.glb" id="1_ntnpd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xjn4"]
+size = Vector3(1.02734, 2.0143, 0.549072)
+
+[node name="BookcaseShort_Broken" type="Node3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997802, 0)
+shape = SubResource("BoxShape3D_6xjn4")
+
+[node name="bookcase_broken_gltf" parent="." instance=ExtResource("1_ntnpd")]

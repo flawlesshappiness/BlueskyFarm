@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn3dw22pge74l"]
+
+[ext_resource type="PackedScene" uid="uid://c427t0ivprmob" path="res://Assets/KayLousberg/Dungeon/bookcaseWideFilled.gltf.glb" id="1_p8lph"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvpqg"]
+size = Vector3(1.99023, 2.0296, 0.549072)
+
+[node name="BookcaseWide_Filled" type="Node3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988732, 0)
+shape = SubResource("BoxShape3D_xvpqg")
+
+[node name="bookcaseWideFilled_gltf" parent="." instance=ExtResource("1_p8lph")]

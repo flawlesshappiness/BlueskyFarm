@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxurbi61g4pb3"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_b6fes"]
-[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon_001/Wall.tscn" id="2_0i55h"]
-[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon_001/Floor.tscn" id="3_jlg30"]
-[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon_001/Pillar.tscn" id="4_8bchb"]
-[ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon_001/Ceiling.tscn" id="5_nf4by"]
+[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_0i55h"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="3_jlg30"]
+[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="4_8bchb"]
+[ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="5_nf4by"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_omfsn"]
 size = Vector2(28, 28)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1aoygaokdlyg"]
+[gd_scene load_steps=10 format=3 uid="uid://c1aoygaokdlyg"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_qmanm"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_k0gsm"]
+[ext_resource type="Script" path="res://Basement/Room/ForestRoom.cs" id="2_spsn6"]
 [ext_resource type="PackedScene" uid="uid://n3olirfw7mgc" path="res://Basement/Assets/Forest/CommonTree.tscn" id="3_dfkoj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hwad"]
@@ -25,6 +26,7 @@ material = SubResource("StandardMaterial3D_76nj1")
 size = Vector2(28, 28)
 
 [node name="Forest_001" instance=ExtResource("1_qmanm")]
+script = ExtResource("2_spsn6")
 
 [node name="Wall_Basement_001" parent="North/Closed" index="0" instance=ExtResource("2_k0gsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
@@ -311,129 +313,12 @@ shape = SubResource("BoxShape3D_q4lmo")
 
 [node name="Interior" type="Node3D" parent="." index="9"]
 
-[node name="CommonTree" parent="Interior" index="0" instance=ExtResource("3_dfkoj")]
+[node name="TreeTemplate" parent="Interior" index="0" instance=ExtResource("3_dfkoj")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2, 0, -2)
 
-[node name="CommonTree4" parent="Interior" index="1" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2, 0, -6)
-
-[node name="CommonTree5" parent="Interior" index="2" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2, 0, -10)
-
-[node name="CommonTree2" parent="Interior" index="3" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2, 0, 2)
-
-[node name="CommonTree3" parent="Interior" index="4" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2, 0, 6)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree6" parent="Interior" index="5" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2, 0, 10)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree7" parent="Interior" index="6" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6, 0, -2)
-
-[node name="CommonTree8" parent="Interior" index="7" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6, 0, -6)
-
-[node name="CommonTree9" parent="Interior" index="8" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6, 0, -10)
-
-[node name="CommonTree10" parent="Interior" index="9" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6, 0, 2)
-
-[node name="CommonTree11" parent="Interior" index="10" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6, 0, 6)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree12" parent="Interior" index="11" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6, 0, 10)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree13" parent="Interior" index="12" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, -2)
-
-[node name="CommonTree14" parent="Interior" index="13" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, -6)
-
-[node name="CommonTree15" parent="Interior" index="14" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, -10)
-
-[node name="CommonTree16" parent="Interior" index="15" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, 2)
-
-[node name="CommonTree17" parent="Interior" index="16" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, 6)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree18" parent="Interior" index="17" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, 10)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree19" parent="Interior" index="18" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, -2)
-
-[node name="CommonTree20" parent="Interior" index="19" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, -6)
-
-[node name="CommonTree21" parent="Interior" index="20" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, -10)
-
-[node name="CommonTree22" parent="Interior" index="21" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, 2)
-
-[node name="CommonTree23" parent="Interior" index="22" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, 6)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree24" parent="Interior" index="23" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, 10)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree25" parent="Interior" index="24" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, -2)
-
-[node name="CommonTree26" parent="Interior" index="25" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, -6)
-
-[node name="CommonTree27" parent="Interior" index="26" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, -10)
-
-[node name="CommonTree28" parent="Interior" index="27" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, 2)
-
-[node name="CommonTree29" parent="Interior" index="28" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, 6)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree30" parent="Interior" index="29" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, 10)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree31" parent="Interior" index="30" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, -2)
-
-[node name="CommonTree32" parent="Interior" index="31" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, -6)
-
-[node name="CommonTree33" parent="Interior" index="32" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, -10)
-
-[node name="CommonTree34" parent="Interior" index="33" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 2)
-
-[node name="CommonTree35" parent="Interior" index="34" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 6)
-PositionRadiusMax = 4.0
-
-[node name="CommonTree36" parent="Interior" index="35" instance=ExtResource("3_dfkoj")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 10)
-PositionRadiusMax = 4.0
-
-[node name="OmniLight3D" type="SpotLight3D" parent="." index="10"]
+[node name="LightTemplate" type="SpotLight3D" parent="Interior" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.4659, 0)
 light_color = Color(0.658824, 1, 0.898039, 1)
 light_energy = 4.429
-spot_range = 18.5097
-spot_angle = 19.1945
+spot_range = 8.04895
+spot_angle = 7.0

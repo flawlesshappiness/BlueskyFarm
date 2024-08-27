@@ -26,6 +26,19 @@ public partial class BasementController : SingletonController
         GenerateRooms(basement);
     }
 
+    private void UpdateRoomConnection(Basement basement, BasementRoomElement element)
+    {
+        if (element == null) return;
+        if (!element.Info.IsConnectedToAllFromSameArea) return;
+
+        var neis = basement.Grid.GetNeighbours(element.Coordinates, x => x.AreaName == element.AreaName);
+        foreach (var nei in neis)
+        {
+            if (element.Connections.Contains(nei)) continue;
+            element.Connections.Add(nei);
+        }
+    }
+
     private void GenerateRooms(Basement basement)
     {
         Debug.TraceMethod();
@@ -43,8 +56,13 @@ public partial class BasementController : SingletonController
             var position = offset + new Vector3(x, 0, z);
 
             var info = GetRandomRoomInfo(element);
+            element.Info = info;
+            UpdateRoomConnection(basement, element);
+
             var parent = IsInstanceValid(basement.Settings.RoomParent) ? basement.Settings.RoomParent : Scene.Current;
             var room = GDHelper.Instantiate<BasementRoom>(info.Path, parent);
+            element.Room = room;
+            room.Element = element;
             room.GlobalPosition = position;
 
             room.North.SetOpen(element.HasNorth);
@@ -56,9 +74,6 @@ public partial class BasementController : SingletonController
             room.East.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.EastElement);
             room.South.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.SouthElement);
             room.West.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.WestElement);
-
-            element.Room = room;
-            element.Info = info;
         }
 
         FirstPersonController.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;

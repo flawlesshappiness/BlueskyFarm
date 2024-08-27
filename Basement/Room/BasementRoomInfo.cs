@@ -15,6 +15,9 @@ public partial class BasementRoomInfo : Resource
     [Export]
     public bool IsStartRoom;
 
+    [Export]
+    public bool IsConnectedToAllFromSameArea;
+
     [Export(PropertyHint.MultilineText)]
     public string RoomLayout;
 

@@ -40,7 +40,7 @@ public partial class BasementScene : GameScene
                 {
                     AreaName = "Forest",
                     ConnectedAreaName = "Basement",
-                    MaxRooms = 5,
+                    MaxRooms = 10,
                     MaxCorridorDepth = 3,
                     PuzzleCount = 0,
                 }
@@ -123,6 +123,13 @@ public partial class BasementScene : GameScene
             Category = category,
             Text = "Set Basement environment",
             Action = _ => WorldEnvironment.Environment = BasementEnvironment
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Teleport to Forest",
+            Action = _ => FirstPersonController.Instance.GlobalPosition = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == "Forest").Room.GlobalPosition
         });
     }
 

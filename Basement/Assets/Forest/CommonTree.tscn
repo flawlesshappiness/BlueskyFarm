@@ -23,12 +23,16 @@ ScaleMin = 0.5
 [node name="CommonTree_12" parent="Position/Models" instance=ExtResource("1_nau4l")]
 
 [node name="CommonTree_22" parent="Position/Models" instance=ExtResource("2_20j61")]
+visible = false
 
 [node name="CommonTree_32" parent="Position/Models" instance=ExtResource("3_wmlhu")]
+visible = false
 
 [node name="CommonTree_42" parent="Position/Models" instance=ExtResource("4_t1jtj")]
+visible = false
 
 [node name="CommonTree_52" parent="Position/Models" instance=ExtResource("5_t86hp")]
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Position"]
 collision_layer = 3

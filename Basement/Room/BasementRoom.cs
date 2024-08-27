@@ -14,6 +14,7 @@ public partial class BasementRoom : Node3DScript
     [NodeName]
     public Node3D Walls;
 
+    public BasementRoomElement Element { get; set; }
     public Section North { get; private set; }
     public Section East { get; private set; }
     public Section South { get; private set; }

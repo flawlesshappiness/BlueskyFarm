@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d16smjm0bk1hb"]
+
+[ext_resource type="PackedScene" uid="uid://cfdsys5g481sr" path="res://Assets/FlawLizArt/Pipes/Pipe_T_1m.fbx" id="1_1mnpb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xru14"]
+size = Vector3(0.700928, 0.835815, 1)
+
+[node name="Pipe" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417908, 0)
+shape = SubResource("BoxShape3D_xru14")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_1mnpb")]

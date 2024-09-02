@@ -11,8 +11,8 @@ public partial class ForestRoom : BasementRoom
     protected override void Initialize()
     {
         base.Initialize();
-        CreateTrees();
-        CreateLights();
+        //CreateTrees();
+        //CreateLights();
     }
 
     private void CreateTrees()

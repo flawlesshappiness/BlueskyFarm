@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhic38genrbbj"]
+
+[ext_resource type="PackedScene" uid="uid://co88quf8xyice" path="res://Assets/FlawLizArt/Pipes/Pipe_T_2m.fbx" id="1_mxk6c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wt8h1"]
+height = 1.02376
+radius = 0.346122
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jsv55"]
+height = 1.97991
+radius = 0.347609
+
+[node name="Pipe" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.472734, 0)
+shape = SubResource("CylinderShape3D_wt8h1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_jsv55")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_mxk6c")]

@@ -4,13 +4,28 @@ public partial class Touchable : Interactable
 {
     public event Action OnTouched;
 
+    public override void _Ready()
+    {
+        base._Ready();
+
+        if (!OverrideInitialCollisionMode)
+        {
+            SetCollision_Interactable();
+        }
+    }
+
     public void Touch()
     {
         Debug.TraceMethod();
         Debug.Indent++;
 
-        OnTouched?.Invoke();
+        Touched();
 
         Debug.Indent--;
+    }
+
+    protected virtual void Touched()
+    {
+        OnTouched?.Invoke();
     }
 }

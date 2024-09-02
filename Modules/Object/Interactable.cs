@@ -18,11 +18,6 @@ public partial class Interactable : Node3DScript
     public override void _Ready()
     {
         base._Ready();
-
-        if (!OverrideInitialCollisionMode)
-        {
-            SetCollision_Item();
-        }
     }
 
     public void SetCollision_None()

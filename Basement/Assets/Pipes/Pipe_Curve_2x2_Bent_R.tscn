@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2y7u452eps5h"]
+
+[ext_resource type="PackedScene" uid="uid://bsxw8fbiht0cm" path="res://Assets/FlawLizArt/Pipes/Pipe_Curve_2x2_Bent_R.fbx" id="1_2sbgt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8fyhq"]
+size = Vector3(2.31494, 2.368, 1.01721)
+
+[node name="Pipe" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.848261, 1.18435, 0.138213)
+shape = SubResource("BoxShape3D_8fyhq")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_2sbgt")]

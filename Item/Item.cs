@@ -20,6 +20,11 @@ public partial class Item : Grabbable
 
         RigidBody.ContactMonitor = true;
         RigidBody.MaxContactsReported = 1;
+
+        if (!OverrideInitialCollisionMode)
+        {
+            SetCollision_Item();
+        }
     }
 
     public override void _Process(double delta)

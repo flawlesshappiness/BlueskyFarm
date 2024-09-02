@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://do4a5egt7737j"]
+[gd_scene load_steps=35 format=3 uid="uid://do4a5egt7737j"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0qd33"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_brpqe"]
@@ -24,6 +24,16 @@
 [ext_resource type="PackedScene" uid="uid://kjyflebf1dgq" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleBoard.tscn" id="17_fcski"]
 [ext_resource type="PackedScene" uid="uid://c441btswvfo2p" path="res://Basement/Assets/Dungeon/PotA.tscn" id="17_h3lyi"]
 [ext_resource type="PackedScene" uid="uid://po4xohv40k0x" path="res://Basement/Assets/Dungeon/PotB.tscn" id="18_bn8ft"]
+[ext_resource type="PackedScene" uid="uid://c35ni2u8na2no" path="res://Basement/Assets/Pipes/Pipe_4m.tscn" id="24_dnycd"]
+[ext_resource type="PackedScene" uid="uid://dvwjqn38gk41m" path="res://Assets/FlawLizArt/Pipes/Vent_025m.fbx" id="25_2xw7o"]
+[ext_resource type="PackedScene" uid="uid://bhic38genrbbj" path="res://Basement/Assets/Pipes/Pipe_T_2m.tscn" id="26_3k73m"]
+[ext_resource type="PackedScene" uid="uid://cfaegae8onu57" path="res://Basement/Assets/Pipes/Pipe_2m.tscn" id="27_no28e"]
+[ext_resource type="PackedScene" uid="uid://bl4qcl8b7h466" path="res://Basement/Assets/Pipes/Pipe_Plus_1m.tscn" id="28_fk8cp"]
+[ext_resource type="PackedScene" uid="uid://d16smjm0bk1hb" path="res://Basement/Assets/Pipes/Pipe_T_1m.tscn" id="29_nggb1"]
+[ext_resource type="PackedScene" uid="uid://cxh4r3tmpqf7o" path="res://Basement/Assets/Pipes/Pipe_Curve_05x05_2m.tscn" id="30_psbkp"]
+[ext_resource type="PackedScene" uid="uid://cwmi6krkijbuq" path="res://Basement/Assets/Pipes/Pipe_1m.tscn" id="31_qcvjq"]
+[ext_resource type="PackedScene" uid="uid://c7n8nglupkas3" path="res://Basement/Assets/Pipes/Pipe_Curve_2x2.tscn" id="32_sdp70"]
+[ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="33_8n5pw"]
 
 [node name="Corridor_001" instance=ExtResource("1_0qd33")]
 
@@ -387,6 +397,7 @@ script = ExtResource("8_5qg8q")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 1" index="0"]
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="BookcaseWide_Filled" parent="Interior/Group 1/Interior 1" index="0" instance=ExtResource("9_52ldl")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -2.06639, 0, 0.202822)
@@ -432,6 +443,7 @@ transform = Transform3D(-0.367285, 0, -1.96599, 0, 2, 0, 1.96599, 0, -0.367285, 
 
 [node name="Interior 2" type="Node3D" parent="Interior/Group 1" index="1"]
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="BookcaseWide_Filled" parent="Interior/Group 1/Interior 2" index="0" instance=ExtResource("9_52ldl")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -2.06639, 0, 0.202822)
@@ -474,6 +486,7 @@ transform = Transform3D(-5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0, 0, 1.2
 
 [node name="Interior 3" type="Node3D" parent="Interior/Group 1" index="2"]
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="Barrel" parent="Interior/Group 1/Interior 3" index="0" instance=ExtResource("15_5na4i")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.87888, 0, -0.15316)
@@ -534,6 +547,7 @@ transform = Transform3D(0.9641, 4.21422e-08, -0.265539, -0.265539, -1.16071e-08,
 
 [node name="Interior 4" type="Node3D" parent="Interior/Group 1" index="3"]
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="Crate" parent="Interior/Group 1/Interior 4" index="0" instance=ExtResource("14_if3pg")]
 transform = Transform3D(1.90311, 0, 0.614946, 0, 2, 0, -0.614946, 0, 1.90311, -1.68674, 0, 3.75049)
@@ -582,6 +596,7 @@ transform = Transform3D(-0.411589, 0, 1.95719, 0, 2, 0, -1.95719, 0, -0.411589, 
 
 [node name="Interior 5" type="Node3D" parent="Interior/Group 1" index="4"]
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="PotA" parent="Interior/Group 1/Interior 5" index="0" instance=ExtResource("17_h3lyi")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.24024, -2.38419e-07, 1.06874)
@@ -672,6 +687,106 @@ transform = Transform3D(-0.93892, 0, -0.344135, 0, 1, 0, 0.344135, 0, -0.93892, 
 
 [node name="Roots_001" parent="Interior/Group 1/Interior 5" index="29" instance=ExtResource("12_ksh11")]
 transform = Transform3D(-4.37114e-08, 1, 0, -0.259847, -1.13583e-08, 0.96565, 0.96565, 4.22099e-08, 0.259847, -5.35559, 1.25193, -2.36561)
+
+[node name="Interior 6" type="Node3D" parent="Interior/Group 1" index="5"]
+script = ExtResource("9_imk4t")
+
+[node name="Pipe5" parent="Interior/Group 1/Interior 6" index="0" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Pipe9" parent="Interior/Group 1/Interior 6" index="1" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="Pipe11" parent="Interior/Group 1/Interior 6" index="2" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Pipe6" parent="Interior/Group 1/Interior 6" index="3" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+
+[node name="Root Scene" parent="Interior/Group 1/Interior 6" index="4" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 1.5)
+
+[node name="Root Scene2" parent="Interior/Group 1/Interior 6" index="5" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.5, 1.5)
+
+[node name="Root Scene3" parent="Interior/Group 1/Interior 6" index="6" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 1.5)
+
+[node name="Root Scene4" parent="Interior/Group 1/Interior 6" index="7" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, 1.5)
+
+[node name="Root Scene5" parent="Interior/Group 1/Interior 6" index="8" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2.5, 4.5)
+
+[node name="Root Scene6" parent="Interior/Group 1/Interior 6" index="9" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 4.5)
+
+[node name="Root Scene7" parent="Interior/Group 1/Interior 6" index="10" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 1.5, 4.5)
+
+[node name="Root Scene8" parent="Interior/Group 1/Interior 6" index="11" instance=ExtResource("25_2xw7o")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 1, 4.5)
+
+[node name="Pipe" parent="Interior/Group 1/Interior 6" index="12" instance=ExtResource("26_3k73m")]
+transform = Transform3D(-8.88178e-16, 1, -3.88235e-23, 4.37114e-08, 0, -1, -1, 0, -4.37114e-08, 1.5, 1, 0)
+
+[node name="Pipe_2m" parent="Interior/Group 1/Interior 6" index="13" instance=ExtResource("27_no28e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+
+[node name="Pipe_2m5" parent="Interior/Group 1/Interior 6" index="14" instance=ExtResource("27_no28e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+
+[node name="Pipe_2m6" parent="Interior/Group 1/Interior 6" index="15" instance=ExtResource("27_no28e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="Pipe_2m2" parent="Interior/Group 1/Interior 6" index="16" instance=ExtResource("27_no28e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+
+[node name="Pipe_2m4" parent="Interior/Group 1/Interior 6" index="17" instance=ExtResource("27_no28e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 0)
+
+[node name="Pipe_2m3" parent="Interior/Group 1/Interior 6" index="18" instance=ExtResource("27_no28e")]
+transform = Transform3D(1, 0, 0, 0, 0.75, 0, 0, 0, 1, 4.5, 0, 0)
+
+[node name="Pipe7" parent="Interior/Group 1/Interior 6" index="19" instance=ExtResource("28_fk8cp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 3, 0)
+
+[node name="Pipe2" parent="Interior/Group 1/Interior 6" index="20" instance=ExtResource("29_nggb1")]
+transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 3, 3.5, 0)
+
+[node name="Pipe3" parent="Interior/Group 1/Interior 6" index="21" instance=ExtResource("30_psbkp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.5, 1.5, 0)
+
+[node name="Pipe_1m" parent="Interior/Group 1/Interior 6" index="22" instance=ExtResource("31_qcvjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 0)
+
+[node name="Pipe_1m2" parent="Interior/Group 1/Interior 6" index="23" instance=ExtResource("31_qcvjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
+
+[node name="Pipe4" parent="Interior/Group 1/Interior 6" index="24" instance=ExtResource("32_sdp70")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5, 0, -3.5)
+
+[node name="Pipe10" parent="Interior/Group 1/Interior 6" index="25" instance=ExtResource("32_sdp70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Pipe8" parent="Interior/Group 1/Interior 6" index="26" instance=ExtResource("32_sdp70")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5, 0, -4.5)
+
+[node name="sfx_pipe_water" type="AudioStreamPlayer3D" parent="Interior/Group 1/Interior 6" index="27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+stream = ExtResource("33_8n5pw")
+volume_db = 20.0
+autoplay = true
+max_distance = 14.0
+bus = &"SFX"
+
+[node name="sfx_pipe_water2" type="AudioStreamPlayer3D" parent="Interior/Group 1/Interior 6" index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -4)
+stream = ExtResource("33_8n5pw")
+volume_db = 20.0
+autoplay = true
+max_distance = 14.0
+bus = &"SFX"
 
 [node name="Group 2" type="Node3D" parent="Interior" index="1"]
 script = ExtResource("8_5qg8q")

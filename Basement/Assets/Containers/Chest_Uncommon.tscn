@@ -1,7 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bciwq6vr8ya0e"]
+[gd_scene load_steps=13 format=3 uid="uid://bciwq6vr8ya0e"]
 
 [ext_resource type="PackedScene" uid="uid://d17f3i36cbba6" path="res://Assets/KayLousberg/Dungeon/chest_uncommon_empty.fbx" id="1_kwymg"]
+[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_lagty"]
 [ext_resource type="PackedScene" uid="uid://tx3pui0vlcll" path="res://Assets/KayLousberg/Dungeon/chestTop_uncommon.fbx" id="2_xjeky"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5tvp"]
+size = Vector3(1.82617, 1.42603, 1.40259)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04rcf"]
+size = Vector3(1.8728, 0.6073, 1.10547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8nvlx"]
+size = Vector3(1.78125, 0.693481, 1.30273)
 
 [sub_resource type="Animation" id="Animation_3jk3e"]
 resource_name = "idle_closed"
@@ -175,14 +185,39 @@ _data = {
 }
 
 [node name="Chest_Uncommon" type="Node3D"]
+script = ExtResource("1_lagty")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.650269, 0)
+shape = SubResource("BoxShape3D_y5tvp")
 
 [node name="Bottom" parent="." instance=ExtResource("1_kwymg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bottom"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30365, 0)
+shape = SubResource("BoxShape3D_04rcf")
 
 [node name="Anim" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592657, -0.530024)
 
 [node name="Top" parent="Anim" instance=ExtResource("2_xjeky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0457965)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Top"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Top/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999989, 0, 0, 0, 0.999989, 0, 0.346741, 0.5)
+shape = SubResource("BoxShape3D_8nvlx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

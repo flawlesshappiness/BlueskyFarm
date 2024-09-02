@@ -1,11 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7bd7hebhf4sg"]
+[gd_scene load_steps=13 format=3 uid="uid://c7bd7hebhf4sg"]
 
+[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_bda64"]
 [ext_resource type="PackedScene" uid="uid://dofjqd552sv0g" path="res://Assets/KayLousberg/Dungeon/chest_common_empty.fbx" id="1_rvegr"]
 [ext_resource type="PackedScene" uid="uid://b3ddqtxdjgn7j" path="res://Assets/KayLousberg/Dungeon/chestTop_common_empty.fbx" id="2_0ceb7"]
 
-[sub_resource type="Animation" id="Animation_3jk3e"]
-resource_name = "idle_closed"
-length = 0.1
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxl0d"]
+size = Vector3(1.44141, 1.33469, 1.30493)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1lb6l"]
+size = Vector3(1.44507, 0.609253, 1.08008)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycqiq"]
+size = Vector3(1.42383, 0.70752, 1.24414)
+
+[sub_resource type="Animation" id="Animation_pfhic"]
+length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,8 +49,9 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_pfhic"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_3jk3e"]
+resource_name = "idle_closed"
+length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,6 +123,21 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_kn2ha"]
+resource_name = "move_close"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-2.0944, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.1, 1.3, 1.5)
+}
+
 [sub_resource type="Animation" id="Animation_w2df6"]
 resource_name = "move_open"
 length = 0.8
@@ -150,21 +175,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.8)
 }
 
-[sub_resource type="Animation" id="Animation_kn2ha"]
-resource_name = "move_close"
-length = 1.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:rotation:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-2.0944, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.1, 1.3, 1.5)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vbqfd"]
 _data = {
 "RESET": SubResource("Animation_pfhic"),
@@ -175,14 +185,39 @@ _data = {
 }
 
 [node name="Chest_Common" type="Node3D"]
+script = ExtResource("1_bda64")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664902, 0)
+shape = SubResource("BoxShape3D_dxl0d")
 
 [node name="Bottom" parent="." instance=ExtResource("1_rvegr")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bottom"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298767, 0)
+shape = SubResource("BoxShape3D_1lb6l")
 
 [node name="Anim" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592657, -0.530024)
 
 [node name="Top" parent="Anim" instance=ExtResource("2_0ceb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00557733, 0.04603)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Top"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Top/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.357101, 0.5)
+shape = SubResource("BoxShape3D_ycqiq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

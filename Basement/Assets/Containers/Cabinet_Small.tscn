@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jkha8sp2ysg2" path="res://Assets/KenneyNL/Furniture/cabinetBed.fbx" id="4_oc0op"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyony"]
-size = Vector3(1.37915, 1.22162, 1.18164)
+size = Vector3(1.19751, 1.0952, 0.140869)
 
 [sub_resource type="Animation" id="Animation_hekon"]
 length = 0.001
@@ -166,12 +166,15 @@ size = Vector3(2.45313, 2.32971, 2.06042)
 
 [node name="Container_Base" instance=ExtResource("1_56urg")]
 
+[node name="StaticBody3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575592, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06321, 0)
 shape = SubResource("BoxShape3D_gyony")
 
 [node name="ItemPosition" parent="." index="1"]
-transform = Transform3D(-1, -1.7597e-14, -8.74227e-08, 0, 1, -2.23517e-07, 8.74228e-08, -2.23517e-07, -1, -1.19209e-07, 0.503, 0.540484)
+transform = Transform3D(-1, -2.26267e-08, -8.44438e-08, 0, 0.965926, -0.258819, 8.74228e-08, -0.258819, -0.965926, -1.19209e-07, 0.517908, 0.562142)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

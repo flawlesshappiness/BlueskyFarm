@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://psjxsmujgxnd" path="res://Assets/KenneyNL/Furniture/kitchenCabinetUpper.fbx" id="2_lh0qu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7rnys"]
-size = Vector3(2.30469, 2.07617, 1.27368)
+size = Vector3(2.30469, 2.07617, 0.320038)
 
 [sub_resource type="Animation" id="Animation_tk1m5"]
 length = 0.001
@@ -166,9 +166,14 @@ size = Vector3(4.32813, 3.91339, 2.10275)
 
 [node name="Container_Base" instance=ExtResource("1_ewylp")]
 
+[node name="StaticBody3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.973952, 0.490182)
+
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_7rnys")
+
+[node name="ItemPosition" parent="." index="1"]
+transform = Transform3D(-1, -2.26267e-08, -8.44439e-08, 0, 0.965925, -0.258819, 8.74228e-08, -0.258819, -0.965925, 6.55032e-15, 0.762413, 0.556575)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

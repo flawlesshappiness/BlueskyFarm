@@ -27,9 +27,12 @@ public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
         {
             current_collider = GetCollider() as Node3D;
             var interactable = current_collider.GetNodeInParents<Interactable>(2);
-            SetInteractable(interactable);
+            if (HasLineOfSightTo(interactable))
+            {
+                SetInteractable(interactable);
+            }
         }
-        else if (OverlapInteract(out var closest))
+        else if (OverlapInteract(out var closest) && HasLineOfSightTo(closest))
         {
             SetInteractable(closest);
         }
@@ -57,6 +60,26 @@ public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
             .FirstOrDefault();
 
         return valids.Count > 0;
+    }
+
+    private bool HasLineOfSightTo(Interactable interactable)
+    {
+        if (!IsInstanceValid(interactable)) return false;
+
+        var start = RayStartPosition;
+        var end = interactable.Body.GlobalPosition;
+        var dir = end - start;
+        var length = dir.Length() + SearchRadius;
+        var cm = CollisionMaskHelper.Create(2, 3);
+
+        if (this.TryRaycast(start, dir, length, cm, out var result))
+        {
+            var n3 = result.Collider as Node3D;
+            var result_interactable = n3.GetNodeInParents<Interactable>();
+            return result_interactable == interactable;
+        }
+
+        return false;
     }
 
     private void SetInteractable(Interactable interactable)

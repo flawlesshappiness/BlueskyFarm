@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ddqtxdjgn7j" path="res://Assets/KayLousberg/Dungeon/chestTop_common_empty.fbx" id="2_0ceb7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wiwl"]
-size = Vector3(1.75366, 1.31445, 1.33301)
+size = Vector3(1.06934, 1.0791, 0.30957)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8kth"]
 size = Vector3(1.44507, 0.609253, 1.08008)
@@ -186,8 +186,10 @@ _data = {
 
 [node name="Container_Base" instance=ExtResource("1_2egfb")]
 
+[node name="StaticBody3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601829, 0.507169)
+
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657227, 0)
 shape = SubResource("BoxShape3D_8wiwl")
 
 [node name="ItemPosition" parent="." index="1"]

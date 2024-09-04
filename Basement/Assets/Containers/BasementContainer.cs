@@ -24,6 +24,7 @@ public partial class BasementContainer : Touchable
     public override void _Ready()
     {
         base._Ready();
+        this.SetCollisionEnabled(IsVisibleInTree());
         Animation.Play(IdleClosed_AnimationName);
     }
 

@@ -76,7 +76,7 @@ public static class Node3DExtensions
     }
 
     #region RAYCAST
-    public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 direction, float length, uint collision_mask, out RaycastResult3D result) => node.TryRaycast(start, start + direction * length, collision_mask, out result);
+    public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 direction, float length, uint collision_mask, out RaycastResult3D result) => node.TryRaycast(start, start + direction.Normalized() * length, collision_mask, out result);
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 end, uint collision_mask, out RaycastResult3D result)
     {
         var space = node.GetWorld3D().DirectSpaceState;
@@ -103,7 +103,7 @@ public static class Node3DExtensions
         }
     }
 
-    public static bool TryRaycast(this Node2D node, Vector2 start, Vector2 direction, float length, uint collision_mask, out RaycastResult2D result) => node.TryRaycast(start, start + direction * length, collision_mask, out result);
+    public static bool TryRaycast(this Node2D node, Vector2 start, Vector2 direction, float length, uint collision_mask, out RaycastResult2D result) => node.TryRaycast(start, start + direction.Normalized() * length, collision_mask, out result);
     public static bool TryRaycast(this Node2D node, Vector2 start, Vector2 end, uint collision_mask, out RaycastResult2D result)
     {
         var space = node.GetWorld2D().DirectSpaceState;

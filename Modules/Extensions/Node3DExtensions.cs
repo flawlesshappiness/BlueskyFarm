@@ -5,25 +5,9 @@ public static class Node3DExtensions
 {
     public static void SetEnabled(this Node3D node, bool enabled)
     {
-        Rec(node);
         node.Visible = enabled;
-
-        void Rec(Node3D parent)
-        {
-            if (parent == null) return;
-
-            var shape = parent as CollisionShape3D;
-            if (shape != null)
-            {
-                shape.Disabled = !enabled;
-            }
-
-            var children = parent.GetChildren();
-            foreach (var child in children)
-            {
-                Rec(child as Node3D);
-            }
-        }
+        node.SetCollisionEnabled(enabled);
+        node.SetSoundsEnabled(enabled);
     }
 
     public static void SetCollisionEnabled(this Node3D node, bool enabled)
@@ -31,7 +15,63 @@ public static class Node3DExtensions
         var children = node.GetNodesInChildren<CollisionShape3D>();
         foreach (var child in children)
         {
-            child.Disabled = !enabled;
+            var child_enabled = enabled && child.IsVisibleInTree();
+            child.Disabled = !child_enabled;
+        }
+    }
+
+    public static void SetSoundsEnabled(this Node3D node, bool enabled)
+    {
+        var children = node.GetNodesInChildren<AudioStreamPlayer>();
+        var children_2d = node.GetNodesInChildren<AudioStreamPlayer2D>();
+        var children_3d = node.GetNodesInChildren<AudioStreamPlayer3D>();
+
+        foreach (var child in children)
+        {
+            var parent = child.GetParent() as Node3D;
+            if (parent == null) continue;
+
+            if (parent.IsVisibleInTree())
+            {
+                if (!child.Playing && child.Autoplay)
+                {
+                    child.Play();
+                }
+            }
+            else
+            {
+                child.Stop();
+            }
+        }
+
+        foreach (var child in children_2d)
+        {
+            if (child.IsVisibleInTree())
+            {
+                if (!child.Playing && child.Autoplay)
+                {
+                    child.Play();
+                }
+            }
+            else
+            {
+                child.Stop();
+            }
+        }
+
+        foreach (var child in children_3d)
+        {
+            if (child.IsVisibleInTree())
+            {
+                if (!child.Playing && child.Autoplay)
+                {
+                    child.Play();
+                }
+            }
+            else
+            {
+                child.Stop();
+            }
         }
     }
 

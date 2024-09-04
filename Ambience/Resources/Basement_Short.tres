@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="AmbienceGroupInfo" load_steps=8 format=3 uid="uid://cq5gcsdjgoknr"]
+[gd_resource type="Resource" script_class="AmbienceGroupInfo" load_steps=6 format=3 uid="uid://cq5gcsdjgoknr"]
 
 [ext_resource type="AudioStream" uid="uid://d2qrsb6ktjsk7" path="res://Sound/Sounds/sfx_amb_rootmimic_breath.wav" id="1_hd3xv"]
 [ext_resource type="AudioStream" uid="uid://boppkbv2ndbkp" path="res://Sound/Sounds/sfx_amb_rootmimic_breath2.wav" id="2_ipscm"]
-[ext_resource type="AudioStream" uid="uid://ebbvqyxmm4p3" path="res://Sound/Sounds/sfx_amb_rootmimic_long.wav" id="3_nbkh7"]
 [ext_resource type="AudioStream" uid="uid://dms7snrusk1i" path="res://Sound/Sounds/sfx_amb_rootmimic_rumble.wav" id="4_m63jl"]
 [ext_resource type="AudioStream" uid="uid://bd1thgqkuh2vn" path="res://Sound/Sounds/sfx_amb_rootmimic_scream.wav" id="5_vbgx5"]
-[ext_resource type="AudioStream" uid="uid://b7mxf3grot50m" path="res://Sound/Sounds/sfx_amb_rootmimic_short.wav" id="6_8k3o1"]
 [ext_resource type="Script" path="res://Ambience/AmbienceGroupInfo.cs" id="7_ebl2l"]
 
 [resource]
@@ -19,4 +17,4 @@ PitchMin = 0.9
 PitchMax = 1.1
 DelayMin = 15.0
 DelayMax = 30.0
-Sounds = Array[AudioStream]([ExtResource("1_hd3xv"), ExtResource("2_ipscm"), ExtResource("3_nbkh7"), ExtResource("4_m63jl"), ExtResource("5_vbgx5"), ExtResource("6_8k3o1")])
+Sounds = Array[AudioStream]([ExtResource("1_hd3xv"), ExtResource("2_ipscm"), ExtResource("4_m63jl"), ExtResource("5_vbgx5")])

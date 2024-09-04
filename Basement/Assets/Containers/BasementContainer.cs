@@ -1,4 +1,6 @@
 using Godot;
+using Godot.Collections;
+using System.Collections;
 
 public partial class BasementContainer : Touchable
 {
@@ -8,8 +10,14 @@ public partial class BasementContainer : Touchable
     [Export]
     public string MoveOpen_AnimationName = "move_open";
 
+    [Export]
+    public Array<string> Open_SFX;
+
     [NodeType]
     public AnimationPlayer Animation;
+
+    [NodeName]
+    public Node3D ItemPosition;
 
     protected bool _open;
 
@@ -32,10 +40,38 @@ public partial class BasementContainer : Touchable
 
         AnimateOpen();
         SetCollision_None();
+        SpawnItemCoroutine(0.1f);
+
+        var sfx = Open_SFX.PickRandom();
+        SoundController.Instance.Play(sfx, new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = GlobalPosition,
+            PitchMin = 0.95f,
+            PitchMax = 1.05f,
+        });
     }
 
     protected void AnimateOpen()
     {
         Animation.Play(MoveOpen_AnimationName);
+    }
+
+    private Coroutine SpawnItemCoroutine(float delay)
+    {
+        return Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(delay);
+            SpawnItem();
+        }
+    }
+
+    private void SpawnItem()
+    {
+        var info_path = ItemController.Instance.Collection.Radish;
+        var item = ItemController.Instance.CreateItem(info_path, false);
+        item.GlobalPosition = ItemPosition.GlobalPosition;
+        item.RigidBody.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;
     }
 }

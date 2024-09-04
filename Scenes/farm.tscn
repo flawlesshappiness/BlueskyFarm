@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=84 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -16,13 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
 [ext_resource type="PackedScene" uid="uid://d18u433iw0eyg" path="res://Assets/FlawLizArt/roots_010.glb" id="21_h5qq5"]
 [ext_resource type="PackedScene" uid="uid://cx4n62cprybbg" path="res://Shop/Combination/Prefabs/CombinationPipe.tscn" id="22_va1x0"]
-[ext_resource type="PackedScene" uid="uid://c7bd7hebhf4sg" path="res://Basement/Assets/Containers/Chest_Common.tscn" id="23_mmj2f"]
 [ext_resource type="PackedScene" uid="uid://capcrfrgq5yyu" path="res://Assets/FlawLizArt/hollow_tree.glb" id="24_4mfpi"]
 [ext_resource type="PackedScene" uid="uid://cj2jcm86uph56" path="res://Assets/FlawLizArt/roots_006.glb" id="24_0087b"]
-[ext_resource type="PackedScene" uid="uid://bciwq6vr8ya0e" path="res://Basement/Assets/Containers/Chest_Uncommon.tscn" id="24_hkv3x"]
-[ext_resource type="PackedScene" uid="uid://cxopjg75h0emf" path="res://Basement/Assets/Containers/Cabinet_Small.tscn" id="25_1764r"]
-[ext_resource type="PackedScene" uid="uid://0rjg4mdnfwn7" path="res://Basement/Assets/Containers/Cabinet_Big_Double.tscn" id="26_0lqqv"]
-[ext_resource type="PackedScene" uid="uid://d2elwn50afrrc" path="res://Basement/Assets/Containers/Cabinet_Big.tscn" id="27_xu8x6"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
@@ -840,20 +835,5 @@ stream = ExtResource("9_xc34j")
 volume_db = 20.0
 autoplay = true
 bus = &"BGM"
-
-[node name="Chest_Common" parent="." instance=ExtResource("23_mmj2f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38426, 2.98023e-08, 4.89149)
-
-[node name="Chest_Uncommon" parent="." instance=ExtResource("24_hkv3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.01309, 2.98023e-08, 4.74342)
-
-[node name="Cabinet_Small" parent="." instance=ExtResource("25_1764r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6344, 0, 4.75132)
-
-[node name="Cabinet_Small2" parent="." instance=ExtResource("26_0lqqv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6065, 0, 4.85777)
-
-[node name="Cabinet_Small3" parent="." instance=ExtResource("27_xu8x6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0909109, 0, 4.88764)
 
 [editable path="World/hollow_tree"]

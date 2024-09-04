@@ -5,8 +5,10 @@
 [resource]
 script = ExtResource("1_vtlms")
 Area = "Basement"
+ConnectedArea = ""
 Path = "res://Basement/Room/Prefabs/Basement_002.tscn"
 IsStartRoom = false
+IsConnectedToAllFromSameArea = false
 RoomLayout = "000N000
 0W11100
 0W00100
@@ -14,4 +16,4 @@ WW111EE
 00100E0
 00111E0
 000S000"
-Disabled = true
+Disabled = false

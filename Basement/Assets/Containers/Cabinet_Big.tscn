@@ -1,14 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://d2elwn50afrrc"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_mdm4l"]
+[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_ewylp"]
 [ext_resource type="PackedScene" uid="uid://psjxsmujgxnd" path="res://Assets/KenneyNL/Furniture/kitchenCabinetUpper.fbx" id="2_lh0qu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dxl0d"]
-size = Vector3(2.24902, 1.99561, 1.15796)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7rnys"]
+size = Vector3(2.30469, 2.07617, 1.27368)
 
-[sub_resource type="Animation" id="Animation_l8mpl"]
-resource_name = "idle_closed"
-length = 0.1
+[sub_resource type="Animation" id="Animation_tk1m5"]
+length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -43,8 +42,9 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_tk1m5"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_l8mpl"]
+resource_name = "idle_closed"
+length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,40 +161,35 @@ _data = {
 "move_open": SubResource("Animation_g3avf")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mg7oe"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2he5b"]
 size = Vector3(4.32813, 3.91339, 2.10275)
 
-[node name="Cabinet_Small" type="Node3D"]
-script = ExtResource("1_mdm4l")
+[node name="Container_Base" instance=ExtResource("1_ewylp")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 4
-collision_mask = 0
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_7rnys")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995361, 0)
-shape = SubResource("BoxShape3D_dxl0d")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_5e5sp")
 }
 
-[node name="Origin" type="Node3D" parent="."]
+[node name="Origin" type="Node3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Cabinet" parent="Origin" instance=ExtResource("2_lh0qu")]
+[node name="Cabinet" parent="Origin" index="0" instance=ExtResource("2_lh0qu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.17523, 0, 1.05448)
 
 [node name="door" parent="Origin/Cabinet/RootNode/kitchenCabinetUpper" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268442, 0.00268442, 0.001)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Origin"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Origin" index="1"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Origin/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Origin/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0302734, 1.95718, 0.00178528)
-shape = SubResource("BoxShape3D_mg7oe")
+shape = SubResource("BoxShape3D_2he5b")
 
 [editable path="Origin/Cabinet"]

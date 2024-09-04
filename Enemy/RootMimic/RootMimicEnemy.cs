@@ -187,6 +187,7 @@ public partial class RootMimicEnemy : NavEnemy
     {
         var basement = BasementController.Instance.CurrentBasement;
         _current_room = basement.Grid.Elements
+            .Where(x => IsValidRoomElement(x))
             .OrderByDescending(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition))
             .FirstOrDefault();
 
@@ -196,6 +197,12 @@ public partial class RootMimicEnemy : NavEnemy
         _spawned = true;
 
         SetState(State.Wander);
+    }
+
+    private bool IsValidRoomElement(BasementRoomElement element)
+    {
+        var valid_area = element.AreaName == AreaNames.Basement;
+        return valid_area;
     }
 
     private void SetState(State state)
@@ -233,6 +240,7 @@ public partial class RootMimicEnemy : NavEnemy
                 if (_rng.RandfRange(0, 1) < CHANCE_WANDER)
                 {
                     _current_room = _current_room.Connections
+                        .Where(x => IsValidRoomElement(x))
                         .OrderBy(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
                         .FirstOrDefault();
 
@@ -308,6 +316,7 @@ public partial class RootMimicEnemy : NavEnemy
         _ignore_move_pause = true;
 
         _current_room = RoomElements
+            .Where(x => IsValidRoomElement(x))
             .OrderByDescending(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
             .FirstOrDefault();
 

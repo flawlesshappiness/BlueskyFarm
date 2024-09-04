@@ -7,7 +7,11 @@ public partial class BasementInterior : Node3DScript
 
     public void Activate()
     {
-        var parent = GetParent() as BasementInteriorGroup;
-        parent.SetInterior(this);
+        this.SetEnabled(true);
+    }
+
+    public void Deactivate()
+    {
+        this.SetEnabled(false);
     }
 }

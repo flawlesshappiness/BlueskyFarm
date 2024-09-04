@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5lrrhnxtqhkn"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_3vjei"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxl0d"]
+
+[node name="Container_Base" type="Node3D"]
+script = ExtResource("1_3vjei")
+Open_SFX = Array[String](["sfx_open_container_001", "sfx_open_container_002", "sfx_open_container_003"])
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_dxl0d")
+
+[node name="ItemPosition" type="Node3D" parent="."]
+transform = Transform3D(-1, -4.37114e-08, -7.57103e-08, 0, 0.866025, -0.5, 8.74228e-08, -0.5, -0.866025, 0, 0, 0)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn3dw22pge74l"]
+[gd_scene load_steps=5 format=3 uid="uid://bn3dw22pge74l"]
 
 [ext_resource type="PackedScene" uid="uid://c427t0ivprmob" path="res://Assets/KayLousberg/Dungeon/bookcaseWideFilled.gltf.glb" id="1_p8lph"]
+[ext_resource type="PackedScene" uid="uid://d2elwn50afrrc" path="res://Basement/Assets/Containers/Cabinet_Big.tscn" id="2_kdfxj"]
+[ext_resource type="PackedScene" uid="uid://0rjg4mdnfwn7" path="res://Basement/Assets/Containers/Cabinet_Big_Double.tscn" id="3_1rpl7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvpqg"]
 size = Vector3(1.99023, 2.0296, 0.549072)
@@ -16,3 +18,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988732, 0)
 shape = SubResource("BoxShape3D_xvpqg")
 
 [node name="bookcaseWideFilled_gltf" parent="." instance=ExtResource("1_p8lph")]
+
+[node name="Container_Bottom" parent="." instance=ExtResource("2_kdfxj")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, -0.53389, 0.241677, 0.0638878)
+visible = false
+
+[node name="Container_Bottom_Back" parent="." instance=ExtResource("2_kdfxj")]
+transform = Transform3D(-0.23, 0, 2.01072e-08, 0, 0.23, 0, -2.01072e-08, 0, -0.23, -0.53389, 0.241677, -0.08568)
+visible = false
+
+[node name="Container_Top" parent="." instance=ExtResource("3_1rpl7")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, -0.0305879, 1.37769, 0.0892518)
+visible = false
+
+[node name="Container_Top_Back" parent="." instance=ExtResource("3_1rpl7")]
+transform = Transform3D(-0.23, 0, -2.01072e-08, 0, 0.23, 0, 2.01072e-08, 0, -0.23, -0.0305879, 1.37769, -0.0977368)
+visible = false

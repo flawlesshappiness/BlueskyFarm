@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://c7bd7hebhf4sg"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_bda64"]
+[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_2egfb"]
 [ext_resource type="PackedScene" uid="uid://dofjqd552sv0g" path="res://Assets/KayLousberg/Dungeon/chest_common_empty.fbx" id="1_rvegr"]
 [ext_resource type="PackedScene" uid="uid://b3ddqtxdjgn7j" path="res://Assets/KayLousberg/Dungeon/chestTop_common_empty.fbx" id="2_0ceb7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dxl0d"]
-size = Vector3(1.44141, 1.33469, 1.30493)
+[sub_resource type="BoxShape3D" id="BoxShape3D_8wiwl"]
+size = Vector3(1.75366, 1.31445, 1.33301)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1lb6l"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8kth"]
 size = Vector3(1.44507, 0.609253, 1.08008)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ycqiq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0eqw"]
 size = Vector3(1.42383, 0.70752, 1.24414)
 
 [sub_resource type="Animation" id="Animation_pfhic"]
@@ -184,42 +184,40 @@ _data = {
 "move_open": SubResource("Animation_w2df6")
 }
 
-[node name="Chest_Common" type="Node3D"]
-script = ExtResource("1_bda64")
+[node name="Container_Base" instance=ExtResource("1_2egfb")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 4
-collision_mask = 0
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657227, 0)
+shape = SubResource("BoxShape3D_8wiwl")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664902, 0)
-shape = SubResource("BoxShape3D_dxl0d")
+[node name="ItemPosition" parent="." index="1"]
+transform = Transform3D(-1, -4.37114e-08, -7.57103e-08, 0, 0.866025, -0.5, 8.74228e-08, -0.5, -0.866025, 3.55271e-15, 0.644569, 0.438379)
 
-[node name="Bottom" parent="." instance=ExtResource("1_rvegr")]
+[node name="Bottom" parent="." index="2" instance=ExtResource("1_rvegr")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bottom"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Bottom" index="1"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298767, 0)
-shape = SubResource("BoxShape3D_1lb6l")
+shape = SubResource("BoxShape3D_y8kth")
 
-[node name="Anim" type="Node3D" parent="."]
+[node name="Anim" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592657, -0.530024)
 
-[node name="Top" parent="Anim" instance=ExtResource("2_0ceb7")]
+[node name="Top" parent="Anim" index="0" instance=ExtResource("2_0ceb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00557733, 0.04603)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Top"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Top" index="1"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Top/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Top/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.357101, 0.5)
-shape = SubResource("BoxShape3D_ycqiq")
+shape = SubResource("BoxShape3D_u0eqw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_vbqfd")
 }

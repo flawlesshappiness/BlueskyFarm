@@ -1,4 +1,3 @@
-using Godot;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,20 +19,18 @@ public partial class BasementInteriorGroup : Node3DScript
 
     public void HideAllInteriors()
     {
-        foreach (var node in _interiors)
+        foreach (var interior in _interiors)
         {
-            node.Hide();
-            node.SetCollisionEnabled(false);
+            interior.Deactivate();
         }
     }
 
-    public void SetInterior(Node3D node)
+    public void SetInterior(BasementInterior interior)
     {
-        if (node == null) return;
+        if (!IsInstanceValid(interior)) return;
 
         HideAllInteriors();
-        node.Show();
-        node.SetCollisionEnabled(true);
+        interior.Activate();
     }
 
     public void SetRandomInterior()

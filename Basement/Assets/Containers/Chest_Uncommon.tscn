@@ -1,21 +1,20 @@
 [gd_scene load_steps=13 format=3 uid="uid://bciwq6vr8ya0e"]
 
 [ext_resource type="PackedScene" uid="uid://d17f3i36cbba6" path="res://Assets/KayLousberg/Dungeon/chest_uncommon_empty.fbx" id="1_kwymg"]
-[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_lagty"]
+[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_ywgar"]
 [ext_resource type="PackedScene" uid="uid://tx3pui0vlcll" path="res://Assets/KayLousberg/Dungeon/chestTop_uncommon.fbx" id="2_xjeky"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y5tvp"]
-size = Vector3(1.82617, 1.42603, 1.40259)
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8okv"]
+size = Vector3(1.96851, 1.46594, 1.45483)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_04rcf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_u001w"]
 size = Vector3(1.8728, 0.6073, 1.10547)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8nvlx"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwaib"]
 size = Vector3(1.78125, 0.693481, 1.30273)
 
-[sub_resource type="Animation" id="Animation_3jk3e"]
-resource_name = "idle_closed"
-length = 0.1
+[sub_resource type="Animation" id="Animation_pfhic"]
+length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,8 +49,9 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_pfhic"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_3jk3e"]
+resource_name = "idle_closed"
+length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,6 +123,21 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_kn2ha"]
+resource_name = "move_close"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-2.0944, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.1, 1.3, 1.5)
+}
+
 [sub_resource type="Animation" id="Animation_w2df6"]
 resource_name = "move_open"
 length = 0.8
@@ -160,21 +175,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.8)
 }
 
-[sub_resource type="Animation" id="Animation_kn2ha"]
-resource_name = "move_close"
-length = 1.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:rotation:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-2.0944, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.1, 1.3, 1.5)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vbqfd"]
 _data = {
 "RESET": SubResource("Animation_pfhic"),
@@ -184,42 +184,40 @@ _data = {
 "move_open": SubResource("Animation_w2df6")
 }
 
-[node name="Chest_Uncommon" type="Node3D"]
-script = ExtResource("1_lagty")
+[node name="Container_Base" instance=ExtResource("1_ywgar")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 4
-collision_mask = 0
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732971, 0)
+shape = SubResource("BoxShape3D_j8okv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.650269, 0)
-shape = SubResource("BoxShape3D_y5tvp")
+[node name="ItemPosition" parent="." index="1"]
+transform = Transform3D(-1, -4.37114e-08, -7.57103e-08, 0, 0.866025, -0.5, 8.74228e-08, -0.5, -0.866025, 3.78551e-08, 0.615125, 0.543257)
 
-[node name="Bottom" parent="." instance=ExtResource("1_kwymg")]
+[node name="Bottom" parent="." index="2" instance=ExtResource("1_kwymg")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bottom"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Bottom" index="1"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30365, 0)
-shape = SubResource("BoxShape3D_04rcf")
+shape = SubResource("BoxShape3D_u001w")
 
-[node name="Anim" type="Node3D" parent="."]
+[node name="Anim" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592657, -0.530024)
 
-[node name="Top" parent="Anim" instance=ExtResource("2_xjeky")]
+[node name="Top" parent="Anim" index="0" instance=ExtResource("2_xjeky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0457965)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Top"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Top" index="1"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Top/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Top/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999989, 0, 0, 0, 0.999989, 0, 0.346741, 0.5)
-shape = SubResource("BoxShape3D_8nvlx")
+shape = SubResource("BoxShape3D_xwaib")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_vbqfd")
 }

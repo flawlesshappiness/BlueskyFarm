@@ -89,7 +89,7 @@ public static partial class NodeExtensions
         {
             if (predicate?.Invoke(current) ?? true) list.Add(current);
 
-            foreach (var child in current.GetChildren())
+            foreach (var child in current.GetChildren(true))
             {
                 Recursive(child);
             }

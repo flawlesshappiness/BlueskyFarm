@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cq2haudvhcq6o"
-path="res://.godot/imported/barrelDark_NoLid.fbx-a29e6296538dc43496f2dd5b85beb2a5.scn"
+uid="uid://dasfrkqd3n4vj"
+path="res://.godot/imported/crateDarkLid.fbx-1d4ac509ad4b05f3a00c0821f145e5ac.scn"
 
 [deps]
 
-source_file="res://Assets/KayLousberg/Dungeon/barrelDark_NoLid.fbx"
-dest_files=["res://.godot/imported/barrelDark_NoLid.fbx-a29e6296538dc43496f2dd5b85beb2a5.scn"]
+source_file="res://Assets/KayLousberg/Dungeon/crateDarkLid.fbx"
+dest_files=["res://.godot/imported/crateDarkLid.fbx-1d4ac509ad4b05f3a00c0821f145e5ac.scn"]
 
 [params]
 
@@ -31,15 +31,11 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Darkness": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Darkness.tres"
-},
-"Metal": {
+"Stone": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Metal.tres"
 },
-"Wood": {
+"WoodDark": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Wood.tres"
 }

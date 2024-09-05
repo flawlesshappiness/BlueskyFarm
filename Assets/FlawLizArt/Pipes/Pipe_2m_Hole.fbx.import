@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cq2haudvhcq6o"
-path="res://.godot/imported/barrelDark_NoLid.fbx-a29e6296538dc43496f2dd5b85beb2a5.scn"
+uid="uid://dh2iukdlkvin0"
+path="res://.godot/imported/Pipe_2m_Hole.fbx-116a11d47e4d0495d4258c428e16202f.scn"
 
 [deps]
 
-source_file="res://Assets/KayLousberg/Dungeon/barrelDark_NoLid.fbx"
-dest_files=["res://.godot/imported/barrelDark_NoLid.fbx-a29e6296538dc43496f2dd5b85beb2a5.scn"]
+source_file="res://Assets/FlawLizArt/Pipes/Pipe_2m_Hole.fbx"
+dest_files=["res://.godot/imported/Pipe_2m_Hole.fbx-116a11d47e4d0495d4258c428e16202f.scn"]
 
 [params]
 
@@ -35,13 +35,13 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Darkness.tres"
 },
-"Metal": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Metal.tres"
-},
 "Wood": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Wood.tres"
+},
+"WoodLight": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Wood_Light.tres"
 }
 }
 }

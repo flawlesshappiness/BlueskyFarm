@@ -34,7 +34,7 @@ public partial class BasementScene : GameScene
                     AreaName = "Basement",
                     MaxRooms = 5,
                     MaxCorridorDepth = 3,
-                    PuzzleCount = 3,
+                    PuzzleCount = 0,
                 },
                 new BasementSettingsArea
                 {

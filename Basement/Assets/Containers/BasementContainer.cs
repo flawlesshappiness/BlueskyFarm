@@ -19,6 +19,8 @@ public partial class BasementContainer : Touchable
     [NodeName]
     public Node3D ItemPosition;
 
+    public Item Item { get; set; }
+
     protected bool _open;
 
     public override void _Ready()
@@ -70,9 +72,12 @@ public partial class BasementContainer : Touchable
 
     private void SpawnItem()
     {
-        var info_path = ItemController.Instance.Collection.Radish;
-        var item = ItemController.Instance.CreateItem(info_path, false);
-        item.GlobalPosition = ItemPosition.GlobalPosition;
-        item.RigidBody.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;
+        if (!IsInstanceValid(Item)) return;
+
+        Item.UnlockPosition_All();
+        Item.UnlockRotation_All();
+        Item.SetEnabled(true);
+        Item.GlobalPosition = ItemPosition.GlobalPosition;
+        Item.RigidBody.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;
     }
 }

@@ -47,6 +47,8 @@ public partial class BasementScene : GameScene
             }
         });
 
+        InitializeContainers();
+
         // Audio
         SetAudioEffectEnabled(true);
         AmbienceController.Instance.StartAmbience("Basement");
@@ -129,7 +131,7 @@ public partial class BasementScene : GameScene
         {
             Category = category,
             Text = "Teleport to Forest",
-            Action = _ => FirstPersonController.Instance.GlobalPosition = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == "Forest").Room.GlobalPosition
+            Action = _ => FirstPersonController.Instance.GlobalPosition = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == AreaNames.Forest).Room.GlobalPosition
         });
     }
 
@@ -145,6 +147,33 @@ public partial class BasementScene : GameScene
             {
                 lerp.UpdateLerp(f);
             });
+        }
+    }
+
+    private void InitializeContainers()
+    {
+        var basement_rooms = BasementController.Instance.CurrentBasement.Grid.Elements
+            .Where(x => x.AreaName == AreaNames.Basement);
+
+        var containers = basement_rooms
+            .SelectMany(x => x.Room.GetNodesInChildren<BasementContainer>())
+            .Where(x => x.IsVisibleInTree())
+            .ToList();
+
+        var item_count = 5;
+
+        for (var i = 0; i < item_count; i++)
+        {
+            var item_path = ItemController.Instance.Collection.Seed;
+            var plant_path = ItemController.Instance.Collection.Radish;
+            var item = ItemController.Instance.CreateItem(item_path, track_item: false);
+            item.Data.PlantInfoPath = plant_path;
+            item.SetEnabled(false);
+            item.LockPosition_All();
+
+            var container = containers.Random();
+            containers.Remove(container);
+            container.Item = item;
         }
     }
 }

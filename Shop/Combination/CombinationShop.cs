@@ -5,7 +5,7 @@ using System.Linq;
 public partial class CombinationShop : Node3DScript
 {
     [NodeName]
-    public Touchable Button;
+    public InteractableLever Lever;
 
     [NodeName]
     public CombinationPipe Pipe1;
@@ -25,8 +25,7 @@ public partial class CombinationShop : Node3DScript
     public override void _Ready()
     {
         base._Ready();
-
-        Button.OnTouched += ButtonTouched;
+        Lever.OnStateChanged += _ => ButtonTouched();
     }
 
     private void ButtonTouched()
@@ -59,12 +58,6 @@ public partial class CombinationShop : Node3DScript
         if (info == null)
         {
             DetachCurrentCombination();
-
-            SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition
-            });
         }
         else
         {
@@ -72,12 +65,6 @@ public partial class CombinationShop : Node3DScript
             item.GlobalPosition = GlobalPosition + new Vector3(0, 50, 0);
 
             ConsumeCurrentCombination();
-
-            SoundController.Instance.Play("sfx_shop_accept", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition
-            });
         }
     }
 }

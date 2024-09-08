@@ -33,6 +33,7 @@ public partial class InteractableLever : Touchable
     public event Action<int> OnStateChanged;
 
     private State _state = State.Up;
+    private bool _first_time_setup;
     private bool _animating;
 
     public enum State
@@ -50,6 +51,13 @@ public partial class InteractableLever : Touchable
     {
         base._Ready();
         Animation.Play(IdleUp_AnimationName);
+    }
+
+    private void SetupEvents()
+    {
+        if (_first_time_setup) return;
+        _first_time_setup = true;
+
         Animation.AnimationFinished += AnimationFinished;
     }
 
@@ -64,6 +72,8 @@ public partial class InteractableLever : Touchable
         base.Touched();
 
         if (_animating) return;
+
+        SetupEvents();
 
         if (Type == AnimationType.Toggle)
         {

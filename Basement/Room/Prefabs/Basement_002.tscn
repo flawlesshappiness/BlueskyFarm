@@ -112,8 +112,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 
@@ -121,8 +123,10 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 

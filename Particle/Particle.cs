@@ -4,9 +4,11 @@ using System.Collections;
 
 public static class Particle
 {
-    public static GpuParticles3D PlayOneShot(ParticleType type, Vector3 position)
+    public static GpuParticles3D PlayOneShot(string name, Vector3 position)
     {
-        var ps = ParticleController.Instance.CreateParticle(type);
+        var ps = ParticleController.Instance.CreateParticle(name);
+        if (!GodotObject.IsInstanceValid(ps)) return null;
+
         ps.GlobalPosition = position;
         ps.OneShot = true;
         ps.Emitting = true;
@@ -16,7 +18,10 @@ public static class Particle
 
     private static void DestroyParticleAfterLifetime(GpuParticles3D particle)
     {
-        DestroyParticleAfterDelay(particle, Convert.ToSingle(particle.Lifetime));
+        var particles_per_second = particle.Amount * particle.AmountRatio / particle.Lifetime;
+        var particle_spawn_time = 1f / particles_per_second * particle.Amount;
+        var delay = particle.Lifetime + particle_spawn_time;
+        DestroyParticleAfterDelay(particle, Convert.ToSingle(delay));
     }
 
     private static void DestroyParticleAfterDelay(GpuParticles3D particle, float delay)

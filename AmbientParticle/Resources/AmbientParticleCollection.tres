@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="AmbientParticleCollection" load_steps=2 format=3 uid="uid://skh14s5ox3mv"]
+
+[ext_resource type="Script" path="res://AmbientParticle/AmbientParticleCollection.cs" id="1_mr7vr"]
+
+[resource]
+script = ExtResource("1_mr7vr")

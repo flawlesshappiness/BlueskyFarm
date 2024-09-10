@@ -59,7 +59,7 @@ size = Vector3(1, 1, 0.5)
 size = Vector3(1, 4, 32)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bupu0"]
-size = Vector3(1.16211, 2.61133, 3.97705)
+size = Vector3(1.00775, 2.61133, 3.97705)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l57yw"]
 
@@ -576,7 +576,7 @@ ColorOff = Color(0.196078, 0.196078, 0.196078, 1)
 ColorOn = Color(0.0862745, 0.729412, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/MaterialProcessor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015625, 1.30566, 0.0114746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061554, 1.30566, 0.0114746)
 shape = SubResource("BoxShape3D_bupu0")
 
 [node name="InputArea" type="Area3D" parent="World/MaterialProcessor"]

@@ -1,6 +1,5 @@
 using Godot;
 using System.Collections.Generic;
-using System.IO;
 
 [GlobalClass]
 public partial class SoundCollection : ResourceCollection<SoundInfo>
@@ -10,32 +9,7 @@ public partial class SoundCollection : ResourceCollection<SoundInfo>
     protected override void OnLoad()
     {
         base.OnLoad();
-        LoadSounds();
-    }
-
-    private void LoadSounds()
-    {
-        var path = "res://Sound/Sounds";
-        var dir = DirAccess.Open(path);
-        var files = dir.GetFiles();
-
-        foreach (var file in files)
-        {
-            try
-            {
-                var path_file = $"{path}/{file}";
-                var ext = path_file.GetExtension();
-                if (ext != "import") continue;
-
-                var resource = GD.Load<AudioStream>(path_file.RemoveExtension());
-                var filename = GetFilename(path_file);
-                _sounds.Add(filename, resource);
-            }
-            catch
-            {
-                continue;
-            }
-        }
+        _sounds = LoadResources<AudioStream>("res://Sound/Sounds");
     }
 
     public AudioStream GetSound(string filename)
@@ -49,10 +23,5 @@ public partial class SoundCollection : ResourceCollection<SoundInfo>
 
         Debug.LogError("Failed to load sound with name: " + filename);
         return null;
-    }
-
-    private string GetFilename(string path)
-    {
-        return Path.GetFileName(path)?.RemoveExtensions();
     }
 }

@@ -28,6 +28,7 @@ public partial class MaterialProcessor : Node3DScript
     private List<MeshInstance3D> _glowsticks = new();
 
     private int _count_glowsticks_on;
+    private bool _machine_running;
     private const int COUNT_FOR_MATERIAL = 2;
 
     private class InputItem
@@ -181,16 +182,14 @@ public partial class MaterialProcessor : Node3DScript
 
     private void StartProcessing()
     {
+        if (_machine_running) return;
+
         if (InputCount == 0)
         {
-            SoundController.Instance.Play("sfx_shop_error", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition
-            });
-
             return;
         }
+
+        _machine_running = true;
 
         var count_materials = InputCount / COUNT_FOR_MATERIAL;
         var count_leftover = InputCount - count_materials * 2;
@@ -202,6 +201,14 @@ public partial class MaterialProcessor : Node3DScript
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            SoundController.Instance.Play("sfx_material_processor_run", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition,
+            });
+
+            yield return new WaitForSeconds(3.2f);
+
             for (int i = 0; i < count_materials; i++)
             {
                 SpawnMaterial(Data.Game.MaterialProcessorCurrentType);
@@ -213,6 +220,8 @@ public partial class MaterialProcessor : Node3DScript
                 SpawnInputItem(input);
                 yield return new WaitForSeconds(0.2f);
             }
+
+            _machine_running = false;
         }
     }
 
@@ -249,6 +258,7 @@ public partial class MaterialProcessor : Node3DScript
         {
             Bus = SoundBus.SFX,
             Position = OutputPosition.GlobalPosition,
+            Volume = 10,
             PitchMin = 0.9f,
             PitchMax = 1.0f,
         });

@@ -116,7 +116,7 @@ material = SubResource("StandardMaterial3D_3a8cd")
 _data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.49697, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.45369, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_k26en"]
+[sub_resource type="CurveTexture" id="CurveTexture_eevq2"]
 curve = SubResource("Curve_q7rlr")
 
 [sub_resource type="Curve" id="Curve_6ywu4"]
@@ -124,7 +124,7 @@ max_value = 5.0
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ww51h"]
+[sub_resource type="CurveTexture" id="CurveTexture_185yo"]
 curve = SubResource("Curve_6ywu4")
 
 [sub_resource type="Curve" id="Curve_sag4v"]
@@ -132,7 +132,7 @@ max_value = 3.0
 _data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_nurh8"]
+[sub_resource type="CurveTexture" id="CurveTexture_yx6ve"]
 curve = SubResource("Curve_sag4v")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0okyy"]
@@ -141,19 +141,19 @@ emission_shape = 3
 emission_box_extents = Vector3(5, 2, 5)
 angle_min = -25.0
 angle_max = 25.0
-angle_curve = SubResource("CurveTexture_ww51h")
+angle_curve = SubResource("CurveTexture_185yo")
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_nurh8")
+scale_curve = SubResource("CurveTexture_yx6ve")
 scale_over_velocity_max = 40.1
 color = Color(1, 1, 1, 0.490196)
-alpha_curve = SubResource("CurveTexture_k26en")
+alpha_curve = SubResource("CurveTexture_eevq2")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_klvn1"]
 load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u75bs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpfqt"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.870588, 0.968627, 1, 1)
@@ -165,7 +165,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_jot08"]
-material = SubResource("StandardMaterial3D_u75bs")
+material = SubResource("StandardMaterial3D_wpfqt")
 
 [node name="ps_mushroom_smoke" type="Node3D"]
 script = ExtResource("1_ddlgq")

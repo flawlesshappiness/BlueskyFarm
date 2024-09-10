@@ -8,6 +8,8 @@ public partial class ResourceCollection<T> : Resource
     private List<T> _resources;
     public List<T> Resources => _resources;
 
+    protected List<string> _resource_paths = new();
+
     public static C Load<C>(string path) where C : ResourceCollection<T>
     {
         Debug.TraceMethod(path);
@@ -46,6 +48,38 @@ public partial class ResourceCollection<T> : Resource
 
     protected virtual void OnLoad()
     {
+    }
 
+    protected Dictionary<string, X> LoadResources<X>(string path)
+        where X : class
+    {
+        var dir = DirAccess.Open(path);
+        var files = dir.GetFiles();
+        var results = new Dictionary<string, X>();
+
+        foreach (var file in files)
+        {
+            try
+            {
+                var path_file = $"{path}/{file}";
+                var ext = path_file.GetExtension();
+                if (ext != "import") continue;
+
+                var resource = GD.Load<X>(path_file.RemoveExtension());
+                var filename = GetFilename(path_file);
+                results.Add(filename, resource);
+            }
+            catch
+            {
+                continue;
+            }
+        }
+
+        return results;
+    }
+
+    protected string GetFilename(string path)
+    {
+        return Path.GetFileName(path)?.RemoveExtensions();
     }
 }

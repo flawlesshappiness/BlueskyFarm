@@ -10,9 +10,9 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
 
     private List<Coroutine> _coroutines = new();
 
-    public void StartAmbience(string group_name)
+    public void Start(string group_name)
     {
-        StopAmbience();
+        Stop();
 
         var infos = Collection.Resources.Where(x => x.Name == group_name);
         foreach (var info in infos)
@@ -22,7 +22,7 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
         }
     }
 
-    public void StopAmbience()
+    public void Stop()
     {
         foreach (var cr in _coroutines)
         {

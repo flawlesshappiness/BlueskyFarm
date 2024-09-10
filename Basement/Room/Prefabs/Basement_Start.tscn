@@ -63,8 +63,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 7.5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19946, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 
@@ -72,8 +73,9 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19946, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 
@@ -81,8 +83,9 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7.5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19946, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 
@@ -90,14 +93,16 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 4, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03894, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19946, 0)
 light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08031, 0)
 light_color = Color(0.45098, 0.298039, 0.12549, 1)
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.40261
 
@@ -419,7 +424,6 @@ transform = Transform3D(1.47027e-07, 0, 1, 0, 1, 0, -1, 0, 1.47027e-07, 5.5, 0, 
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 3.92304, 0)
 SceneName = "farm"
 StartNode = "StartBasement"
-HoverText = "Exit"
 
 [node name="Group 1" type="Node3D" parent="Interior" index="1"]
 script = ExtResource("9_sod5m")

@@ -51,7 +51,8 @@ public partial class BasementScene : GameScene
 
         // Audio
         SetAudioEffectEnabled(true);
-        AmbienceController.Instance.StartAmbience("Basement");
+        AmbienceController.Instance.Start(AreaNames.Basement);
+        AmbientParticleController.Instance.Start(AreaNames.Basement);
 
         // Navigation
         NavRegion.BakeNavigationMesh();
@@ -66,7 +67,7 @@ public partial class BasementScene : GameScene
 
         // Audio
         SetAudioEffectEnabled(false);
-        AmbienceController.Instance.StopAmbience();
+        AmbienceController.Instance.Stop();
     }
 
     protected override void BeforeSave()

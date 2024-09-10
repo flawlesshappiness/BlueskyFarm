@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://do4a5egt7737j"]
+[gd_scene load_steps=50 format=3 uid="uid://do4a5egt7737j"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0qd33"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_brpqe"]
@@ -36,6 +36,66 @@
 [ext_resource type="PackedScene" uid="uid://cwmi6krkijbuq" path="res://Basement/Assets/Pipes/Pipe_1m.tscn" id="31_qcvjq"]
 [ext_resource type="PackedScene" uid="uid://c7n8nglupkas3" path="res://Basement/Assets/Pipes/Pipe_Curve_2x2.tscn" id="32_sdp70"]
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="33_8n5pw"]
+[ext_resource type="AudioStream" uid="uid://0bpa32qucm6x" path="res://Sound/Sounds/sfx_steam.wav" id="36_n4eky"]
+[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="37_kgirq"]
+
+[sub_resource type="Curve" id="Curve_yoyeo"]
+_data = [Vector2(0, 0), 0.0, 4.8956, 0, 0, Vector2(0.5, 1), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -4.43223, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jag8f"]
+curve = SubResource("Curve_yoyeo")
+
+[sub_resource type="Curve" id="Curve_2vpjs"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_608f1"]
+curve = SubResource("Curve_2vpjs")
+
+[sub_resource type="Curve" id="Curve_2go2v"]
+_data = [Vector2(0, 0.5), 0.0, 0.5, 0, 1, Vector2(1, 1), 0.5, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pdp8u"]
+curve = SubResource("Curve_2go2v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u8hug"]
+lifetime_randomness = 0.2
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_608f1")
+direction = Vector3(0, 0, -1)
+spread = 15.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_pdp8u")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_jag8f")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_385ug"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogp5f"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.870588, 0.968627, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_385ug")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_yjrto"]
+material = SubResource("StandardMaterial3D_ogp5f")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqfk2"]
+size = Vector3(1, 4, 5)
 
 [node name="Corridor_001" instance=ExtResource("1_0qd33")]
 
@@ -388,7 +448,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
 script = ExtResource("8_5qg8q")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 1" index="0"]
+visible = false
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="BookcaseWide_Filled" parent="Interior/Group 1/Interior 1" index="0" instance=ExtResource("9_52ldl")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -2.06639, 0, 0.202822)
@@ -442,7 +504,9 @@ transform = Transform3D(-0.367285, 0, -1.96599, 0, 2, 0, 1.96599, 0, -0.367285, 
 transform = Transform3D(0.407867, 0, -0.289214, 0, 0.5, 0, 0.289214, 0, 0.407867, 4.76003, 0, 1.0189)
 
 [node name="Interior 2" type="Node3D" parent="Interior/Group 1" index="1"]
+visible = false
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="BookcaseWide_Filled" parent="Interior/Group 1/Interior 2" index="0" instance=ExtResource("9_52ldl")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -2.06639, 0, 0.202822)
@@ -493,7 +557,9 @@ transform = Transform3D(0.744079, 0, -0.668092, 0, 1, 0, 0.668092, 0, 0.744079, 
 transform = Transform3D(-5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0, 0, 1.25, -5.34122, 4.00686, -1.87392)
 
 [node name="Interior 3" type="Node3D" parent="Interior/Group 1" index="2"]
+visible = false
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="Barrel14" parent="Interior/Group 1/Interior 3" index="0" instance=ExtResource("17_sjt3f")]
 transform = Transform3D(-0.860591, 0, 0.509297, 0, 1, 0, -0.509297, 0, -0.860591, -0.581043, 2.38419e-07, 4.52029)
@@ -553,7 +619,9 @@ transform = Transform3D(0.9641, 4.21422e-08, -0.265539, -0.265539, -1.16071e-08,
 transform = Transform3D(-0.620683, 0, 0.784062, 0, 1, 0, -0.784062, 0, -0.620683, -4.53088, 0, -3.78822)
 
 [node name="Interior 4" type="Node3D" parent="Interior/Group 1" index="3"]
+visible = false
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="Crate" parent="Interior/Group 1/Interior 4" index="0" instance=ExtResource("14_if3pg")]
 transform = Transform3D(1.90311, 0, 0.614946, 0, 2, 0, -0.614946, 0, 1.90311, -1.68674, 0, 3.75049)
@@ -601,6 +669,7 @@ transform = Transform3D(0.217019, 0, 0.976167, 0, 1, 0, -0.976167, 0, 0.217019, 
 transform = Transform3D(-0.140936, 0, -0.990019, 0, 1, 0, 0.990019, 0, -0.140936, 4.42869, 4.76837e-07, 0.758018)
 
 [node name="Interior 5" type="Node3D" parent="Interior/Group 1" index="4"]
+visible = false
 script = ExtResource("9_imk4t")
 ExcludedFromGroup = true
 
@@ -806,7 +875,103 @@ autoplay = true
 max_distance = 14.0
 bus = &"SFX"
 
+[node name="sfx_steam" type="AudioStreamPlayer3D" parent="Interior/Group 1/Interior 6" index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+stream = ExtResource("36_n4eky")
+autoplay = true
+max_distance = 14.0
+bus = &"SFX"
+
+[node name="Steam" type="Node3D" parent="Interior/Group 1/Interior 6" index="34"]
+
+[node name="ps_steam" parent="Interior/Group 1/Interior 6/Steam" index="0" instance=ExtResource("37_kgirq")]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 1, 1.78027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam5" parent="Interior/Group 1/Interior 6/Steam" index="1" instance=ExtResource("37_kgirq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, -1, 0, 8.74228e-08, 0, 1, 2.18557e-07, 1, 4.28027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam6" parent="Interior/Group 1/Interior 6/Steam" index="2" instance=ExtResource("37_kgirq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, -1, 0, 8.74228e-08, 0, 1, 2.18557e-07, 1.5, 4.28027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam7" parent="Interior/Group 1/Interior 6/Steam" index="3" instance=ExtResource("37_kgirq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, -1, 0, 8.74228e-08, 0, 1, 2.18557e-07, 2, 4.28027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam8" parent="Interior/Group 1/Interior 6/Steam" index="4" instance=ExtResource("37_kgirq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, -1, 0, 8.74228e-08, 0, 1, 2.18557e-07, 2.5, 4.28027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam2" parent="Interior/Group 1/Interior 6/Steam" index="5" instance=ExtResource("37_kgirq")]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 1.5, 1.78027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam3" parent="Interior/Group 1/Interior 6/Steam" index="6" instance=ExtResource("37_kgirq")]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 2, 1.78027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="ps_steam4" parent="Interior/Group 1/Interior 6/Steam" index="7" instance=ExtResource("37_kgirq")]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 2.5, 1.78027)
+emitting = true
+amount = 20
+lifetime = 0.75
+one_shot = false
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_u8hug")
+draw_pass_1 = SubResource("QuadMesh_yjrto")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Interior/Group 1/Interior 6/Steam" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Group 1/Interior 6/Steam/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_xqfk2")
+
 [node name="Group 2" type="Node3D" parent="Interior" index="1"]
+visible = false
 script = ExtResource("8_5qg8q")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 2" index="0"]
@@ -876,6 +1041,7 @@ transform = Transform3D(0.63733, 0, 0.770591, 0, 1, 0, -0.770591, 0, 0.63733, -4
 transform = Transform3D(-0.092805, 0, 0.995684, 0, 1, 0, -0.995684, 0, -0.092805, -8.42403, 0, 8.47776)
 
 [node name="Group 3" type="Node3D" parent="Interior" index="2"]
+visible = false
 script = ExtResource("8_5qg8q")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 3" index="0"]

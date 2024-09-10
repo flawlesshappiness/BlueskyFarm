@@ -19,6 +19,9 @@ public partial class BasementContainer : Touchable
     [NodeName]
     public Node3D ItemPosition;
 
+    [NodeName]
+    public GpuParticles3D ps_dust;
+
     public Item Item { get; set; }
 
     protected bool _open;
@@ -53,6 +56,8 @@ public partial class BasementContainer : Touchable
             PitchMin = 0.95f,
             PitchMax = 1.05f,
         });
+
+        ps_dust.Emitting = true;
     }
 
     protected void AnimateOpen()

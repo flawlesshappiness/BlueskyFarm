@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxopjg75h0emf"]
+[gd_scene load_steps=23 format=3 uid="uid://cxopjg75h0emf"]
 
 [ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_56urg"]
+[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="3_tctef"]
 [ext_resource type="PackedScene" uid="uid://jkha8sp2ysg2" path="res://Assets/KenneyNL/Furniture/cabinetBed.fbx" id="4_oc0op"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyony"]
@@ -164,6 +165,70 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_q7vgr"]
 size = Vector3(2.45313, 2.32971, 2.06042)
 
+[sub_resource type="Curve" id="Curve_0lbvj"]
+_data = [Vector2(0, 0), 0.0, 1.47321, 0, 0, Vector2(0.5, 0.5), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -1.69621, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8dvby"]
+curve = SubResource("Curve_0lbvj")
+
+[sub_resource type="Curve" id="Curve_05g2m"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pvm6t"]
+curve = SubResource("Curve_05g2m")
+
+[sub_resource type="Curve" id="Curve_ps7ve"]
+_data = [Vector2(0, 0.21978), 0.0, 0.78022, 0, 1, Vector2(1, 1), 0.78022, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5pl8l"]
+curve = SubResource("Curve_ps7ve")
+
+[sub_resource type="Curve" id="Curve_dgr0q"]
+_data = [Vector2(0, 1), 0.0, -1.45055, 0, 0, Vector2(1, 0), -0.281521, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fland"]
+curve = SubResource("Curve_dgr0q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nwh1"]
+lifetime_randomness = 0.2
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_pvm6t")
+direction = Vector3(0, 0, -1)
+spread = 30.0
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+velocity_limit_curve = SubResource("CurveTexture_fland")
+gravity = Vector3(0, -0.2, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_5pl8l")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_8dvby")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6qdro"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dtg5"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.870588, 0.968627, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_6qdro")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ywvxu"]
+material = SubResource("StandardMaterial3D_4dtg5")
+
 [node name="Container_Base" instance=ExtResource("1_56urg")]
 
 [node name="StaticBody3D" parent="." index="0"]
@@ -197,5 +262,14 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Origin/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0454102, 1.16534, -0.0391235)
 shape = SubResource("BoxShape3D_q7vgr")
+
+[node name="ps_dust" parent="." index="4" instance=ExtResource("3_tctef")]
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0.505769, 0.49296)
+amount = 5
+lifetime = 5.0
+explosiveness = 1.0
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_6nwh1")
+draw_pass_1 = SubResource("QuadMesh_ywvxu")
 
 [editable path="Origin/Cabinet"]

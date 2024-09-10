@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0nvr88bjty6"]
+[gd_scene load_steps=24 format=3 uid="uid://b0nvr88bjty6"]
 
 [ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_ftn4q"]
 [ext_resource type="PackedScene" uid="uid://d4a4ypiimkuab" path="res://Assets/KayLousberg/Dungeon/barrelDarkLid.fbx" id="2_4c4vd"]
 [ext_resource type="PackedScene" uid="uid://cq2haudvhcq6o" path="res://Assets/KayLousberg/Dungeon/barrelDark_NoLid.fbx" id="3_i58c2"]
+[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_5meeh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_124s1"]
 size = Vector3(0.633057, 0.173828, 0.616211)
@@ -298,6 +299,70 @@ _data = {
 height = 1.03856
 radius = 0.477606
 
+[sub_resource type="Curve" id="Curve_ricim"]
+_data = [Vector2(0, 0), 0.0, 1.47321, 0, 0, Vector2(0.5, 0.5), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -1.69621, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4kqc6"]
+curve = SubResource("Curve_ricim")
+
+[sub_resource type="Curve" id="Curve_v7rx4"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ycaej"]
+curve = SubResource("Curve_v7rx4")
+
+[sub_resource type="Curve" id="Curve_63nsn"]
+_data = [Vector2(0, 0.21978), 0.0, 0.78022, 0, 1, Vector2(1, 1), 0.78022, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o8xgq"]
+curve = SubResource("Curve_63nsn")
+
+[sub_resource type="Curve" id="Curve_d4uks"]
+_data = [Vector2(0, 1), 0.0, -1.45055, 0, 0, Vector2(1, 0), -0.281521, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y6fuk"]
+curve = SubResource("Curve_d4uks")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdp6j"]
+lifetime_randomness = 0.2
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_ycaej")
+direction = Vector3(0, 0, -1)
+spread = 30.0
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+velocity_limit_curve = SubResource("CurveTexture_y6fuk")
+gravity = Vector3(0, -0.2, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_o8xgq")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_4kqc6")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r8now"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogp5f"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.870588, 0.968627, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_r8now")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_iv6ab"]
+material = SubResource("StandardMaterial3D_ogp5f")
+
 [node name="Barrel" instance=ExtResource("1_ftn4q")]
 
 [node name="StaticBody3D" parent="." index="0"]
@@ -313,7 +378,6 @@ transform = Transform3D(-1, -6.18172e-08, -6.18172e-08, 0, 0.707106, -0.707107, 
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 1.02, -0.077)
 
 [node name="Lid" parent="Anim" index="0" instance=ExtResource("2_4c4vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
@@ -331,3 +395,12 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0887505, 0)
 shape = SubResource("CylinderShape3D_heq52")
+
+[node name="ps_dust" parent="." index="6" instance=ExtResource("4_5meeh")]
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 1.01886, 0.208152)
+amount = 5
+lifetime = 5.0
+explosiveness = 1.0
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_pdp6j")
+draw_pass_1 = SubResource("QuadMesh_iv6ab")

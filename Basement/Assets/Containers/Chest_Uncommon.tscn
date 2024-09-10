@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bciwq6vr8ya0e"]
+[gd_scene load_steps=26 format=3 uid="uid://bciwq6vr8ya0e"]
 
 [ext_resource type="PackedScene" uid="uid://d17f3i36cbba6" path="res://Assets/KayLousberg/Dungeon/chest_uncommon_empty.fbx" id="1_kwymg"]
 [ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_ywgar"]
 [ext_resource type="PackedScene" uid="uid://tx3pui0vlcll" path="res://Assets/KayLousberg/Dungeon/chestTop_uncommon.fbx" id="2_xjeky"]
+[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_nfg76"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8okv"]
 size = Vector3(1.74194, 1.11499, 0.267578)
@@ -184,6 +185,70 @@ _data = {
 "move_open": SubResource("Animation_w2df6")
 }
 
+[sub_resource type="Curve" id="Curve_r1mw4"]
+_data = [Vector2(0, 0), 0.0, 1.47321, 0, 0, Vector2(0.5, 0.5), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -1.69621, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kpgm7"]
+curve = SubResource("Curve_r1mw4")
+
+[sub_resource type="Curve" id="Curve_pl8s7"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8yof6"]
+curve = SubResource("Curve_pl8s7")
+
+[sub_resource type="Curve" id="Curve_qp0hk"]
+_data = [Vector2(0, 0.21978), 0.0, 0.78022, 0, 1, Vector2(1, 1), 0.78022, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q0jww"]
+curve = SubResource("Curve_qp0hk")
+
+[sub_resource type="Curve" id="Curve_u2jvv"]
+_data = [Vector2(0, 1), 0.0, -1.45055, 0, 0, Vector2(1, 0), -0.281521, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xxsd4"]
+curve = SubResource("Curve_u2jvv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d22yd"]
+lifetime_randomness = 0.2
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_8yof6")
+direction = Vector3(0, 0, -1)
+spread = 30.0
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+velocity_limit_curve = SubResource("CurveTexture_xxsd4")
+gravity = Vector3(0, -0.2, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_q0jww")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_kpgm7")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d81rm"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uojx0"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.870588, 0.968627, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_d81rm")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_r58vl"]
+material = SubResource("StandardMaterial3D_uojx0")
+
 [node name="Container_Base" instance=ExtResource("1_ywgar")]
 
 [node name="StaticBody3D" parent="." index="0"]
@@ -223,3 +288,12 @@ shape = SubResource("BoxShape3D_xwaib")
 libraries = {
 "": SubResource("AnimationLibrary_vbqfd")
 }
+
+[node name="ps_dust" parent="." index="5" instance=ExtResource("4_nfg76")]
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0.601966, 0.630439)
+amount = 5
+lifetime = 5.0
+explosiveness = 1.0
+visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_d22yd")
+draw_pass_1 = SubResource("QuadMesh_r58vl")

@@ -393,7 +393,6 @@ libraries = {
 
 [node name="ps_dust" parent="." index="5" instance=ExtResource("4_jwgmj")]
 transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0.967411, 0.402785)
-emitting = true
 amount = 5
 lifetime = 5.0
 explosiveness = 1.0

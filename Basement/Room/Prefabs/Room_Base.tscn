@@ -32,6 +32,12 @@ script = ExtResource("1_sat65")
 
 [node name="Open" type="Node3D" parent="West"]
 
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="Ceiling" type="Node3D" parent="."]
+
 [node name="RoomArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomArea"]

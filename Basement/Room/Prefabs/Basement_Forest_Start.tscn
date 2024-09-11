@@ -650,8 +650,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
 [node name="Pillar2" parent="West/Open/Basement" index="9" instance=ExtResource("4_8bchb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 
-[node name="Floor" type="Node3D" parent="." index="6"]
-
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor" index="0"]
 visible = false
 collision_layer = 3
@@ -690,9 +688,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="Floor_Basement_009" parent="Floor" index="9" instance=ExtResource("3_jlg30")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-
-[node name="Ceiling" type="Node3D" parent="." index="7"]
-visible = false
 
 [node name="Ceiling2" parent="Ceiling" index="0" instance=ExtResource("5_nf4by")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -792,5 +787,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 4)
 
 [node name="Ceiling34" parent="Ceiling" index="32" instance=ExtResource("5_nf4by")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -4)
-
-[node name="Walls" type="Node3D" parent="." index="8"]

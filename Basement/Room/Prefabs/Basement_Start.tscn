@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://wr8om1l3rw08"]
+[gd_scene load_steps=24 format=3 uid="uid://wr8om1l3rw08"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_wt0qa"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="2_rxsax"]
@@ -18,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://dbtefn1sw1qpl" path="res://Basement/Assets/Dungeon/Roots_004.tscn" id="16_trjvd"]
 [ext_resource type="PackedScene" uid="uid://litevesi34j0" path="res://Basement/Assets/Dungeon/Roots_003.tscn" id="17_5s3s2"]
 [ext_resource type="PackedScene" uid="uid://cqtrktvdlfk0e" path="res://Basement/Assets/Dungeon/Roots_006.tscn" id="18_0f45i"]
+[ext_resource type="PackedScene" uid="uid://b1noby45off82" path="res://Basement/Assets/Pipes/Pipe_Curve_1x1.tscn" id="19_5xght"]
+[ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="19_mjc75"]
+[ext_resource type="PackedScene" uid="uid://cwmi6krkijbuq" path="res://Basement/Assets/Pipes/Pipe_1m.tscn" id="20_j6cbe"]
+[ext_resource type="PackedScene" uid="uid://c35ni2u8na2no" path="res://Basement/Assets/Pipes/Pipe_4m.tscn" id="22_mmxsw"]
+[ext_resource type="PackedScene" uid="uid://bl4qcl8b7h466" path="res://Basement/Assets/Pipes/Pipe_Plus_1m.tscn" id="23_ifoag"]
 
 [node name="StartRoom_001" instance=ExtResource("1_wt0qa")]
 
@@ -663,3 +668,85 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 0)
 
 [node name="Ceiling6" parent="Ceiling" index="28" instance=ExtResource("3_dkg7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 0)
+
+[node name="Pipes" type="Node3D" parent="." index="12"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Pipes" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -12)
+stream = ExtResource("19_mjc75")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Pipes" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2, 1)
+stream = ExtResource("19_mjc75")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Pipes" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 12)
+stream = ExtResource("19_mjc75")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Pipes" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3, 0)
+stream = ExtResource("19_mjc75")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pipe" parent="Pipes" index="4" instance=ExtResource("19_5xght")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -1, 3, -13)
+
+[node name="Pipe2" parent="Pipes" index="5" instance=ExtResource("19_5xght")]
+transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 1, 3, -11)
+
+[node name="Pipe_1m" parent="Pipes" index="6" instance=ExtResource("20_j6cbe")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, 3, -11)
+
+[node name="Pipe_1m2" parent="Pipes" index="7" instance=ExtResource("20_j6cbe")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, 3, -13)
+
+[node name="Pipe3" parent="Pipes" index="8" instance=ExtResource("22_mmxsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
+
+[node name="Pipe4" parent="Pipes" index="9" instance=ExtResource("22_mmxsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 1)
+
+[node name="Pipe5" parent="Pipes" index="10" instance=ExtResource("22_mmxsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -1)
+
+[node name="Pipe6" parent="Pipes" index="11" instance=ExtResource("22_mmxsw")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, 3, 11.5)
+
+[node name="Pipe7" parent="Pipes" index="12" instance=ExtResource("22_mmxsw")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, 3, 12.5)
+
+[node name="Pipe8" parent="Pipes" index="13" instance=ExtResource("23_ifoag")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 11.5, 3, 0)
+
+[node name="Pipe9" parent="Pipes" index="14" instance=ExtResource("19_5xght")]
+transform = Transform3D(-1, -8.88178e-16, -2.98023e-08, -2.98023e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 13.5, 3, -1)
+
+[node name="Pipe10" parent="Pipes" index="15" instance=ExtResource("19_5xght")]
+transform = Transform3D(4.37114e-08, -1, 1.31134e-07, 2.98023e-08, -1.31134e-07, -1, 1, 4.37114e-08, 2.98023e-08, 11.5, 3, 0)
+
+[node name="Pipe_1m3" parent="Pipes" index="16" instance=ExtResource("20_j6cbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3, 2)
+
+[node name="Pipe_1m4" parent="Pipes" index="17" instance=ExtResource("20_j6cbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12, 3, 1.5)
+
+[node name="Pipe_1m5" parent="Pipes" index="18" instance=ExtResource("20_j6cbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12, 3, -0.5)
+
+[node name="Pipe_1m6" parent="Pipes" index="19" instance=ExtResource("20_j6cbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.5, 3, -1)

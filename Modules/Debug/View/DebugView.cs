@@ -1,38 +1,44 @@
 using Godot;
-using Godot.Collections;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class DebugView : View
 {
-    [NodeName(nameof(Main))]
+    public override string Directory => $"{Paths.Modules}/Debug/View";
+
+    [NodeName]
     public Control Main;
 
-    [NodeName(nameof(Content))]
+    [NodeName]
     public Control Content;
 
-    [NodeName(nameof(ButtonPrefab))]
+    [NodeName]
+    public DebugInputPopup InputPopup;
+
+    [NodeName]
     public Button ButtonPrefab;
 
-    [NodeName(nameof(CategoryPrefab))]
+    [NodeName]
     public Label CategoryPrefab;
 
-    [NodeName(nameof(ContentSearch))]
+    [NodeName]
     public DebugContentSearch ContentSearch;
 
-    [NodeName(nameof(ContentList))]
+    [NodeName]
     public DebugContentList ContentList;
 
-    [NodeName(nameof(SfxClick))]
+    [NodeName]
     public AudioStreamPlayer SfxClick;
 
-    [NodeName(nameof(SfxHover))]
+    [NodeName]
     public AudioStreamPlayer SfxHover;
 
-    [NodeName(nameof(SfxOpen))]
+    [NodeName]
     public AudioStreamPlayer SfxOpen;
 
     private Dictionary<string, Label> _categories = new();
-
-    public override string Directory => $"{Paths.Modules}/Debug/View";
+    private Action<Dictionary<string, string>> _onInputPopupSuccess;
 
     public override void _Ready()
     {
@@ -46,6 +52,22 @@ public partial class DebugView : View
         CreateActionButtons();
         Debug.OnActionAdded += CreateAction;
         Debug.RegisterDebugActions();
+
+        InputPopup.OnSuccess += InputPopupSuccess;
+        InputPopup.OnCancel += InputPopupCancel;
+    }
+
+    private void InputPopupCancel()
+    {
+        InputPopup.Hide();
+        Main.Show();
+    }
+
+    private void InputPopupSuccess(Dictionary<string, string> results)
+    {
+        _onInputPopupSuccess?.Invoke(results);
+        InputPopup.Hide();
+        Main.Show();
     }
 
     public override void _Input(InputEvent @event)
@@ -65,6 +87,7 @@ public partial class DebugView : View
     public void SetVisible(bool visible)
     {
         Main.Visible = visible;
+        InputPopup.Visible = false;
 
         var parent = GetParent();
         var lock_name = nameof(DebugView);
@@ -156,5 +179,22 @@ public partial class DebugView : View
         instance.Visible = true;
         _categories.Add(text, instance);
         return instance;
+    }
+
+    public void PopupStringInput(string label, Action<string> onSuccess)
+    {
+        Main.Hide();
+        InputPopup.Show();
+        InputPopup.Clear();
+        InputPopup.CreateStringInput("id", label);
+
+        _onInputPopupSuccess += OnSuccess;
+
+        void OnSuccess(Dictionary<string, string> results)
+        {
+            _onInputPopupSuccess -= OnSuccess;
+            var result = results.FirstOrDefault().Value;
+            onSuccess?.Invoke(result);
+        }
     }
 }

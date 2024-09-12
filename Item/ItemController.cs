@@ -133,14 +133,23 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         view.ContentSearch.ClearItems();
         foreach (var resource in Collection.Resources)
         {
-            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource));
+            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => WritDebugSpawnItem_CustomIdPopup(view, resource));
         }
 
         view.ContentSearch.UpdateButtons();
+    }
 
-        void SelectItem(ItemInfo info)
+    private void WritDebugSpawnItem_CustomIdPopup(DebugView view, ItemInfo info)
+    {
+        view.PopupStringInput("Custom id", id =>
+        {
+            SelectItem(info, id);
+        });
+
+        void SelectItem(ItemInfo info, string custom_id)
         {
             var item = CreateItem(info);
+            item.Data.CustomId = custom_id;
             FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
         }
     }

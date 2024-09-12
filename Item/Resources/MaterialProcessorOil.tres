@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://iae0r8ktp75w"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_f0yxv"]
+
+[resource]
+script = ExtResource("1_f0yxv")
+Path = "res://Item/Prefabs/MaterialProcessorOil.tscn"
+CanPlant = false
+GrowTimeInSeconds = 0
+CanProcessToMaterial = false
+MaterialType = 0
+CanPickUp = true
+Untrack = false
+InventoryItemCameraDistance = 0.6

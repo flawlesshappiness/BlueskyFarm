@@ -103,6 +103,11 @@ public partial class MaterialProcessor : Node3DScript
     {
         var count = InputCount;
 
+        if (count == _count_glowsticks_on)
+        {
+            return;
+        }
+
         if (count == 0)
         {
             AnimateGlowsticksOff();
@@ -184,6 +189,12 @@ public partial class MaterialProcessor : Node3DScript
     {
         if (_machine_running) return;
 
+        if (!Data.Game.Flag_MaterialProcessorFixed)
+        {
+            FailProcessing();
+            return;
+        }
+
         if (InputCount == 0)
         {
             return;
@@ -220,6 +231,38 @@ public partial class MaterialProcessor : Node3DScript
                 SpawnInputItem(input);
                 yield return new WaitForSeconds(0.2f);
             }
+
+            _machine_running = false;
+        }
+    }
+
+    private void FailProcessing()
+    {
+        _machine_running = true;
+
+        var inputs = Data.Game.MaterialProcessorInputs.ToList();
+        Clear();
+        UpdateInputCount();
+
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            SoundController.Instance.Play("sfx_material_processor_fail", new SoundSettings3D
+            {
+                Bus = SoundBus.SFX,
+                Position = GlobalPosition,
+            });
+
+            yield return new WaitForSeconds(2f);
+
+            foreach (var input in inputs)
+            {
+                SpawnInputItem(input);
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            var view = View.Get<GameView>();
+            view.DisplayText("It's not working correctly.");
 
             _machine_running = false;
         }

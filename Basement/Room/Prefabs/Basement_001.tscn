@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://do4a5egt7737j"]
+[gd_scene load_steps=56 format=3 uid="uid://do4a5egt7737j"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0qd33"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_brpqe"]
@@ -40,6 +40,10 @@
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="37_kgirq"]
 [ext_resource type="PackedScene" uid="uid://bko7nouhmvnrg" path="res://Basement/Assets/Pipes/Valve.tscn" id="38_aegam"]
 [ext_resource type="PackedScene" uid="uid://csg3mshpydk84" path="res://Assets/FlawLizArt/Pipes/ValveBox.fbx" id="38_dglfh"]
+[ext_resource type="PackedScene" uid="uid://ckn6rco467wxl" path="res://Basement/Assets/Pipes/Pipe_Curve_05x05_4m.tscn" id="41_v2xn6"]
+[ext_resource type="PackedScene" uid="uid://b1noby45off82" path="res://Basement/Assets/Pipes/Pipe_Curve_1x1.tscn" id="42_270pc"]
+[ext_resource type="PackedScene" uid="uid://c7n8nglupkas3" path="res://Basement/Assets/Pipes/Pipe_Curve_2x2.tscn" id="43_oooww"]
+[ext_resource type="PackedScene" uid="uid://drla07ki6n810" path="res://Basement/Assets/Pipes/Pipe_Plus_2m.tscn" id="44_pddf5"]
 
 [sub_resource type="Curve" id="Curve_yoyeo"]
 _data = [Vector2(0, 0), 0.0, 4.8956, 0, 0, Vector2(0.5, 1), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -4.43223, 0.0, 0, 0]
@@ -487,39 +491,51 @@ metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster" parent="Mushrooms" index="0" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.932, 0, -0.879381)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster3" parent="Mushrooms" index="1" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -6.7938, 0, 6.9294)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster4" parent="Mushrooms" index="2" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -3.14775, 4.76837e-07, 1.17185)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster5" parent="Mushrooms" index="3" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -1.57193, 4.76837e-07, -3.02106)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster6" parent="Mushrooms" index="4" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 2.50854, 4.76837e-07, -1.60686)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster14" parent="Mushrooms" index="5" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -3.66128, 4.76837e-07, 4.55547)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster7" parent="Mushrooms" index="6" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 3.63315, 4.76837e-07, 2.83582)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster8" parent="Mushrooms" index="7" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 5.84891, 4.76837e-07, -3.64866)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster10" parent="Mushrooms" index="8" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 6.53493, 4.76837e-07, -7.62912)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster9" parent="Mushrooms" index="9" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 11.2467, 4.76837e-07, 0.683665)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster11" parent="Mushrooms" index="10" instance=ExtResource("8_6ahy3")]
-transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 0.478012, 4.76837e-07, -11.9978)
+transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, 0.915369, 4.76837e-07, -12.7353)
+metadata/_edit_lock_ = true
 
 [node name="SporeMushroomCluster13" parent="Mushrooms" index="11" instance=ExtResource("8_6ahy3")]
 transform = Transform3D(0.922363, 0, -0.386325, 0, 1, 0, 0.386325, 0, 0.922363, -0.675136, 4.76837e-07, 11.261)
+metadata/_edit_lock_ = true
 
 [node name="Interior" type="Node3D" parent="." index="12"]
 
@@ -740,7 +756,9 @@ transform = Transform3D(0.217019, 0, 0.976167, 0, 1, 0, -0.976167, 0, 0.217019, 
 transform = Transform3D(-0.140936, 0, -0.990019, 0, 1, 0, 0.990019, 0, -0.140936, 4.42869, 4.76837e-07, 0.758018)
 
 [node name="Interior 5" type="Node3D" parent="Interior/Group 1" index="4"]
+visible = false
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="PotA" parent="Interior/Group 1/Interior 5" index="0" instance=ExtResource("17_h3lyi")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.24024, -2.38419e-07, 1.06874)
@@ -833,7 +851,9 @@ transform = Transform3D(-0.93892, 0, -0.344135, 0, 1, 0, 0.344135, 0, -0.93892, 
 transform = Transform3D(-4.37114e-08, 1, 0, -0.259847, -1.13583e-08, 0.96565, 0.96565, 4.22099e-08, 0.259847, -5.35559, 1.25193, -2.36561)
 
 [node name="Interior 6" type="Node3D" parent="Interior/Group 1" index="5"]
+visible = false
 script = ExtResource("9_imk4t")
+ExcludedFromGroup = true
 
 [node name="Pipe5" parent="Interior/Group 1/Interior 6" index="0" instance=ExtResource("24_dnycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
@@ -1042,7 +1062,6 @@ transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0812615, 0)
 
 [node name="Group 2" type="Node3D" parent="Interior" index="1"]
-visible = false
 script = ExtResource("8_5qg8q")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 2" index="0"]
@@ -1112,7 +1131,6 @@ transform = Transform3D(0.63733, 0, 0.770591, 0, 1, 0, -0.770591, 0, 0.63733, -4
 transform = Transform3D(-0.092805, 0, 0.995684, 0, 1, 0, -0.995684, 0, -0.092805, -8.42403, 0, 8.47776)
 
 [node name="Group 3" type="Node3D" parent="Interior" index="2"]
-visible = false
 script = ExtResource("8_5qg8q")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 3" index="0"]
@@ -1153,6 +1171,103 @@ transform = Transform3D(0.880585, 0, -0.473888, 0, 1, 0, 0.473888, 0, 0.880585, 
 
 [node name="Crate3" parent="Interior/Group 3/Interior 2" index="4" instance=ExtResource("21_jnexj")]
 transform = Transform3D(0.115111, 0, -0.993353, 0, 1, 0, 0.993353, 0, 0.115111, 8.42324, -2.38419e-07, -6.58744)
+
+[node name="Pipes" type="Node3D" parent="." index="13"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Pipes" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.5, -1)
+stream = ExtResource("33_8n5pw")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Pipes" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 11.5)
+stream = ExtResource("33_8n5pw")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Pipes" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, 0)
+stream = ExtResource("33_8n5pw")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Pipes" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -8.5)
+stream = ExtResource("33_8n5pw")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pipe" parent="Pipes" index="4" instance=ExtResource("41_v2xn6")]
+transform = Transform3D(0, -1, 0, -4.37114e-08, 0, 1, -1, 0, -4.37114e-08, -8, 1, -1)
+
+[node name="Pipe2" parent="Pipes" index="5" instance=ExtResource("41_v2xn6")]
+transform = Transform3D(0, -1, 0, -4.37114e-08, 0, 1, -1, 0, -4.37114e-08, -6.5, 2, -1)
+
+[node name="Pipe3" parent="Pipes" index="6" instance=ExtResource("42_270pc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 0, -1)
+
+[node name="Pipe4" parent="Pipes" index="7" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 12.5)
+
+[node name="Pipe5" parent="Pipes" index="8" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 10)
+
+[node name="Pipe6" parent="Pipes" index="9" instance=ExtResource("42_270pc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 7)
+
+[node name="Pipe7" parent="Pipes" index="10" instance=ExtResource("42_270pc")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5, 3, 7)
+
+[node name="Pipe8" parent="Pipes" index="11" instance=ExtResource("42_270pc")]
+transform = Transform3D(-4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 3.82137e-15, 0, 8.74228e-08, -1, -1.5, 3, 10.8827)
+
+[node name="Pipe9" parent="Pipes" index="12" instance=ExtResource("42_270pc")]
+transform = Transform3D(-4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 3.82137e-15, 0, 8.74228e-08, -1, -1.5, 3, 11.6709)
+
+[node name="Pipe10" parent="Pipes" index="13" instance=ExtResource("42_270pc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.5, 0, 1)
+
+[node name="Pipe_2m" parent="Pipes" index="14" instance=ExtResource("27_no28e")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 8.5, 1, 1)
+
+[node name="Pipe11" parent="Pipes" index="15" instance=ExtResource("43_oooww")]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 12.5, 0, 1)
+
+[node name="Pipe12" parent="Pipes" index="16" instance=ExtResource("43_oooww")]
+transform = Transform3D(1, 8.74228e-08, -8.9407e-08, 8.74228e-08, -1, -7.8162e-15, -8.9407e-08, 0, -1, 8.5, 4, 1)
+
+[node name="Pipe13" parent="Pipes" index="17" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11, 3, 2)
+
+[node name="Pipe14" parent="Pipes" index="18" instance=ExtResource("24_dnycd")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12, 3, 2)
+
+[node name="Pipe15" parent="Pipes" index="19" instance=ExtResource("44_pddf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -8.5)
+
+[node name="Pipe_1m" parent="Pipes" index="20" instance=ExtResource("31_qcvjq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 2, -6.5)
+
+[node name="Pipe_1m2" parent="Pipes" index="21" instance=ExtResource("31_qcvjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8.5)
+
+[node name="Pipe_1m3" parent="Pipes" index="22" instance=ExtResource("31_qcvjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -8.5)
+
+[node name="Pipe_1m4" parent="Pipes" index="23" instance=ExtResource("31_qcvjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -10.5)
+
+[node name="Pipe16" parent="Pipes" index="24" instance=ExtResource("42_270pc")]
+transform = Transform3D(4.37114e-08, -8.74228e-08, 1, -3.82137e-15, -1, -8.74228e-08, 1, 0, -4.37114e-08, -1, 3, -10.5)
 
 [editable path="Interior/Group 1/Interior 1/BookcaseWide_Filled5"]
 [editable path="Interior/Group 1/Interior 1/BookcaseWide_Filled8"]

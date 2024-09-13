@@ -5,8 +5,10 @@
 [resource]
 script = ExtResource("1_qowr4")
 Area = "Basement"
+ConnectedArea = ""
 Path = "res://Basement/Room/Prefabs/Basement_001.tscn"
 IsStartRoom = false
+IsConnectedToAllFromSameArea = false
 RoomLayout = "000N000
 000N110
 0011110

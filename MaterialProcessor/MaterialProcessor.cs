@@ -31,6 +31,8 @@ public partial class MaterialProcessor : Node3DScript
     private bool _machine_running;
     private const int COUNT_FOR_MATERIAL = 2;
 
+    private static bool _registered_debug_actions;
+
     private class InputItem
     {
         public ItemInfo Info { get; set; }
@@ -46,6 +48,8 @@ public partial class MaterialProcessor : Node3DScript
 
         InitializeGlowsticks();
         UpdateInputCount();
+
+        RegisterDebugActions();
     }
 
     private void InitializeGlowsticks()
@@ -55,6 +59,21 @@ public partial class MaterialProcessor : Node3DScript
         {
             SetGlowstickColor(gs, ColorOff);
         }
+    }
+
+    private void RegisterDebugActions()
+    {
+        if (_registered_debug_actions) return;
+        _registered_debug_actions = true;
+
+        var category = "Material processor";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Unfix",
+            Action = _ => Data.Game.Flag_MaterialProcessorFixed = false
+        });
     }
 
     private void BodyEntered(Node3D body)
@@ -70,11 +89,20 @@ public partial class MaterialProcessor : Node3DScript
     private void ItemEntered(Item item)
     {
         if (!IsInstanceValid(item)) return;
-        if (!IsValidInput(item)) return;
 
-        CreateInput(item);
-        ItemController.Instance.UntrackItem(item);
-        item.QueueFree();
+        if (item.Data.CustomId == "MaterialProcessorOil")
+        {
+            FixMachine(item);
+            return;
+        }
+
+        if (IsValidInput(item))
+        {
+            CreateInput(item);
+            ItemController.Instance.UntrackItem(item);
+            item.QueueFree();
+            return;
+        }
     }
 
     private void CreateInput(Item item)
@@ -298,6 +326,24 @@ public partial class MaterialProcessor : Node3DScript
         item.RigidBody.LinearVelocity = OutputPosition.GlobalBasis * Vector3.Forward * 3;
 
         SoundController.Instance.Play("sfx_pickup", new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = OutputPosition.GlobalPosition,
+            Volume = 10,
+            PitchMin = 0.9f,
+            PitchMax = 1.0f,
+        });
+    }
+
+    private void FixMachine(Item item)
+    {
+        if (Data.Game.Flag_MaterialProcessorFixed) return;
+        Data.Game.Flag_MaterialProcessorFixed = true;
+
+        ItemController.Instance.UntrackItem(item);
+        item.QueueFree();
+
+        SoundController.Instance.Play("sfx_material_processor_fix", new SoundSettings3D
         {
             Bus = SoundBus.SFX,
             Position = OutputPosition.GlobalPosition,

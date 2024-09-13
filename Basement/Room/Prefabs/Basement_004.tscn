@@ -1,0 +1,1139 @@
+[gd_scene load_steps=25 format=3 uid="uid://cuvpda7b6svie"]
+
+[ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_sipjv"]
+[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="2_myptf"]
+[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_n2fvb"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="2_ri8gr"]
+[ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="4_cjnrd"]
+[ext_resource type="PackedScene" uid="uid://dp3xft717kmct" path="res://Basement/Assets/Pipes/Pipe_Curve_05x05.tscn" id="4_u7ctk"]
+[ext_resource type="PackedScene" uid="uid://cfaegae8onu57" path="res://Basement/Assets/Pipes/Pipe_2m.tscn" id="5_n7333"]
+[ext_resource type="PackedScene" uid="uid://b1noby45off82" path="res://Basement/Assets/Pipes/Pipe_Curve_1x1.tscn" id="6_qe453"]
+[ext_resource type="PackedScene" uid="uid://c35ni2u8na2no" path="res://Basement/Assets/Pipes/Pipe_4m.tscn" id="7_d26t0"]
+[ext_resource type="PackedScene" uid="uid://c7n8nglupkas3" path="res://Basement/Assets/Pipes/Pipe_Curve_2x2.tscn" id="8_2ut8y"]
+[ext_resource type="PackedScene" uid="uid://cwmi6krkijbuq" path="res://Basement/Assets/Pipes/Pipe_1m.tscn" id="8_t6abt"]
+[ext_resource type="PackedScene" uid="uid://bhic38genrbbj" path="res://Basement/Assets/Pipes/Pipe_T_2m.tscn" id="10_7jvsy"]
+[ext_resource type="PackedScene" uid="uid://drla07ki6n810" path="res://Basement/Assets/Pipes/Pipe_Plus_2m.tscn" id="12_hong2"]
+[ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="12_vtl4r"]
+[ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="13_j7q3c"]
+[ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="16_a8182"]
+[ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="17_ccjqp"]
+[ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="17_e2bqe"]
+[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel.tscn" id="19_j13iw"]
+[ext_resource type="PackedScene" uid="uid://b0nvr88bjty6" path="res://Basement/Assets/Containers/Barrel.tscn" id="20_qaeam"]
+[ext_resource type="PackedScene" uid="uid://dv5bvqe43lho4" path="res://Basement/Assets/Containers/Crate.tscn" id="21_funyw"]
+[ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon/Crate.tscn" id="22_jjq0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d8vr"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_uomls"]
+material = SubResource("StandardMaterial3D_1d8vr")
+size = Vector2(12, 12)
+
+[node name="Basement_004" instance=ExtResource("1_sipjv")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="North/Closed" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283822, 2.04917, -4.90734)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Wall_Basement_001" parent="North/Closed" index="1" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+metadata/_edit_lock_ = true
+
+[node name="Pipe" parent="North/Closed" index="2" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.5, 1, -5.5)
+
+[node name="Pipe2" parent="North/Closed" index="3" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, 3.82137e-15, 8.74228e-08, 8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 2.5, 1, -5.5)
+
+[node name="Pipe3" parent="North/Closed" index="4" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2, 1, -5)
+
+[node name="Pipe4" parent="North/Closed" index="5" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4, 2, -5.5)
+
+[node name="Pipe5" parent="North/Closed" index="6" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, 3.82137e-15, 8.74228e-08, 8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 1, 2, -5.5)
+
+[node name="Pipe6" parent="North/Closed" index="7" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.5, 2, -5)
+
+[node name="Pipe8" parent="North/Closed" index="8" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, 3.82137e-15, 8.74228e-08, 8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 4, 3, -5.5)
+
+[node name="Pipe12" parent="North/Closed" index="9" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, -1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, 0.5, 6.5, -5.5)
+
+[node name="Pipe9" parent="North/Closed" index="10" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 3.5, 3, -5)
+
+[node name="Pipe7" parent="North/Closed" index="11" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, 3, -5)
+
+[node name="Pipe10" parent="North/Closed" index="12" instance=ExtResource("6_qe453")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, -5)
+
+[node name="Pipe11" parent="North/Closed" index="13" instance=ExtResource("6_qe453")]
+transform = Transform3D(-2.98023e-08, 1, -1.77636e-15, 1, 2.98023e-08, 8.74228e-08, 8.74228e-08, 0, -1, -0.5, 5, -5)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="North/Open" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -7.5)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pillar" parent="North/Open" index="1" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+metadata/_edit_lock_ = true
+
+[node name="Pillar2" parent="North/Open" index="2" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+metadata/_edit_lock_ = true
+
+[node name="Pipe" parent="North/Open" index="3" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, -0.5, 4, -8.5)
+
+[node name="Pipe9" parent="North/Open" index="4" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-8.74228e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -1, 1, -8.74228e-08, 4.37114e-08, 1.5, 2.5, -8.5)
+
+[node name="Pipe13" parent="North/Open" index="5" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-8.74228e-08, -1, -4.37114e-08, 4.37114e-08, 4.37114e-08, -1, 1, -8.74228e-08, 4.37114e-08, 1.5, 1, -10.5)
+
+[node name="Pipe4" parent="North/Open" index="6" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, 0.5, 4, -10.5)
+
+[node name="Pipe3" parent="North/Open" index="7" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.74846e-07, 1, 7.64274e-15, -1, 1.74846e-07, -4.37114e-08, -0.5, 6.5, -5)
+
+[node name="Pipe12" parent="North/Open" index="8" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.74846e-07, 1, 7.64274e-15, -1, 1.74846e-07, -4.37114e-08, 3, 3.5, -5)
+
+[node name="Pipe8" parent="North/Open" index="9" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.74846e-07, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 1.74846e-07, -4.37114e-08, 1.5, 5.5, -5)
+
+[node name="Pipe_2m" parent="North/Open" index="10" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.5, 3.5, -8)
+
+[node name="Pipe_2m3" parent="North/Open" index="11" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 2.5, -8)
+
+[node name="Pipe_2m2" parent="North/Open" index="12" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4.5, -5)
+
+[node name="Pipe2" parent="North/Open" index="13" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -0.5, 3.5, -6)
+
+[node name="Pipe10" parent="North/Open" index="14" instance=ExtResource("6_qe453")]
+transform = Transform3D(1, -4.37114e-08, 1.74846e-07, 1.74846e-07, -5.73206e-15, -1, 4.37114e-08, 1, 1.91069e-15, 1, 2.5, -6)
+
+[node name="Pipe15" parent="North/Open" index="15" instance=ExtResource("6_qe453")]
+transform = Transform3D(1, -4.37114e-08, 1.74846e-07, 1.74846e-07, -5.73206e-15, -1, 4.37114e-08, 1, 1.91069e-15, 1, 1, -6)
+
+[node name="Pipe16" parent="North/Open" index="16" instance=ExtResource("6_qe453")]
+transform = Transform3D(-1.06581e-14, 1, 8.9407e-08, -1, -8.35187e-23, -1.31134e-07, -1.31134e-07, -8.9407e-08, 1, 2, 1, -5)
+
+[node name="Pipe11" parent="North/Open" index="17" instance=ExtResource("6_qe453")]
+transform = Transform3D(3.82137e-15, 1, -8.74228e-08, 1, -8.35187e-23, 4.37114e-08, 4.37114e-08, -8.74228e-08, -1, 2, 2.5, -5)
+
+[node name="Pipe6" parent="North/Open" index="18" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 0.5, 3.5, -6)
+
+[node name="Pipe7" parent="North/Open" index="19" instance=ExtResource("6_qe453")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, -5)
+
+[node name="Pipe5" parent="North/Open" index="20" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 3.5, -10)
+
+[node name="Pipe14" parent="North/Open" index="21" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1, -10)
+
+[node name="Wall_Basement_002" parent="East/Closed" index="0" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="East/Closed" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78241, 2.04917, 0.19467)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pipe" parent="East/Closed" index="2" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -1)
+
+[node name="Pipe3" parent="East/Closed" index="3" instance=ExtResource("6_qe453")]
+transform = Transform3D(1.31134e-07, 0, 1, 1, -4.37114e-08, -1.31134e-07, 4.37114e-08, 1, -5.73206e-15, 5, 2, 0)
+
+[node name="Pipe2" parent="East/Closed" index="4" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -2)
+
+[node name="Pipe4" parent="East/Closed" index="5" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(1.31134e-07, 0, 1, 1, -4.37114e-08, -1.31134e-07, 4.37114e-08, 1, -5.73206e-15, 5, 1, 0)
+
+[node name="Pipe5" parent="East/Closed" index="6" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 2)
+
+[node name="Pipe11" parent="East/Closed" index="7" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 3)
+
+[node name="Pipe6" parent="East/Closed" index="8" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 1)
+
+[node name="Pipe_2m" parent="East/Closed" index="9" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 1)
+
+[node name="Pipe_2m4" parent="East/Closed" index="10" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4.5)
+
+[node name="Pipe_2m5" parent="East/Closed" index="11" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
+
+[node name="Pipe7" parent="East/Closed" index="12" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.5, -1)
+
+[node name="Pipe8" parent="East/Closed" index="13" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 5, 3.5, -1)
+
+[node name="Pipe_2m2" parent="East/Closed" index="14" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, -1)
+
+[node name="Pipe9" parent="East/Closed" index="15" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.5, 0)
+
+[node name="Pipe10" parent="East/Closed" index="16" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 5, 4.5, 0)
+
+[node name="Pipe_2m3" parent="East/Closed" index="17" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, 0)
+
+[node name="Pipe12" parent="East/Closed" index="18" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 2, 4.5)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="East/Open" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, 1)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pillar3" parent="East/Open" index="1" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="Pillar4" parent="East/Open" index="2" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="Pipe" parent="East/Open" index="3" instance=ExtResource("6_qe453")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7, 0, 1)
+
+[node name="Pipe2" parent="East/Open" index="4" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, -1, 4.37114e-08, -8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, 6, 1, 1)
+
+[node name="Pipe4" parent="East/Open" index="5" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, -1, 4.37114e-08, -8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, 6, 2, 1)
+
+[node name="Pipe9" parent="East/Open" index="6" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, -1, 4.37114e-08, -8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, 6, 3, 1)
+
+[node name="Pipe14" parent="East/Open" index="7" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, -1, 4.37114e-08, 1, 4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 6, 3.5, 0)
+
+[node name="Pipe3" parent="East/Open" index="8" instance=ExtResource("6_qe453")]
+transform = Transform3D(-1.31134e-07, -4.37114e-08, -1, -1, -8.74228e-08, 1.31134e-07, -8.74228e-08, 1, -4.37114e-08, 5, 1, 2)
+
+[node name="Pipe10" parent="East/Open" index="9" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, 1, 1, 8.74228e-08, -4.37114e-08, -8.74228e-08, 1, -4.37114e-08, 5, 3, 2)
+
+[node name="Pipe11" parent="East/Open" index="10" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, 1, -1.31134e-07, 1, -4.37114e-08, -1, -1.31134e-07, 4.37114e-08, 5, 4, 3)
+
+[node name="Pipe5" parent="East/Open" index="11" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 2, 1)
+
+[node name="Pipe6" parent="East/Open" index="12" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 10.5, 2, 1.5)
+
+[node name="Pipe8" parent="East/Open" index="13" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 8.5, 3, 1.5)
+
+[node name="Pipe13" parent="East/Open" index="14" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, 3.82137e-15, -1, 0, 8.74228e-08, 0, 1, 8.5, 4, 0)
+
+[node name="Pipe12" parent="East/Open" index="15" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, -8.74228e-08, 4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, 5.5, 5, 1.5)
+
+[node name="Pipe15" parent="East/Open" index="16" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, 1.31134e-07, -1.31134e-07, 4.37114e-08, -1, 5.5, 7, 0)
+
+[node name="Pipe7" parent="East/Open" index="17" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 4)
+
+[node name="Pipe_2m" parent="East/Open" index="18" instance=ExtResource("5_n7333")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 8, 3, 1)
+
+[node name="Pipe_2m2" parent="East/Open" index="19" instance=ExtResource("5_n7333")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 8, 3.5, 0)
+
+[node name="Pipe_2m3" parent="East/Open" index="20" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, 0)
+
+[node name="Wall_Basement_002" parent="South/Closed" index="0" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 6)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="South/Closed" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136942, 2.04917, 5.01611)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pipe" parent="South/Closed" index="2" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Pipe2" parent="South/Closed" index="3" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 5)
+
+[node name="Pipe3" parent="South/Closed" index="4" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 5)
+
+[node name="Pipe4" parent="South/Closed" index="5" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 1, 1, 5.5)
+
+[node name="Pipe5" parent="South/Closed" index="6" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -1, 2.5, 5.5)
+
+[node name="Pipe6" parent="South/Closed" index="7" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.31134e-07, -3.82137e-15, 1, -1, 4.37114e-08, 1.31134e-07, -4.37114e-08, -1, 1.91069e-15, 0, 4.5, 5.5)
+
+[node name="Pipe7" parent="South/Closed" index="8" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.31134e-07, -3.82137e-15, 1, -1, 4.37114e-08, 1.31134e-07, -4.37114e-08, -1, 1.91069e-15, 1, 6, 5.5)
+
+[node name="Pipe8" parent="South/Closed" index="9" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.31134e-07, -3.82137e-15, 1, -1, 4.37114e-08, 1.31134e-07, -4.37114e-08, -1, 1.91069e-15, -1, 7.5, 5.5)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="South/Open" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 8.5)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pillar3" parent="South/Open" index="1" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="Pillar4" parent="South/Open" index="2" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Pipe" parent="South/Open" index="3" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.91069e-15, 1, 1.31134e-07, -4.37114e-08, 1.31134e-07, -1, -1, -3.82137e-15, 4.37114e-08, -1.5, 3, 8.5)
+
+[node name="Pipe_2m" parent="South/Open" index="4" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 3, 8)
+
+[node name="Pipe3" parent="South/Open" index="5" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.91069e-15, 1, 1.31134e-07, -4.37114e-08, 1.31134e-07, -1, -1, -3.82137e-15, 4.37114e-08, -1.5, 2, 10.5)
+
+[node name="Pipe5" parent="South/Open" index="6" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 8.74228e-08, -1, 0, -1, -8.74228e-08, -1, -3.82137e-15, 4.37114e-08, 0, 4, 10.5)
+
+[node name="Pipe4" parent="South/Open" index="7" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(1.91069e-15, 1, 1.31134e-07, 1.31134e-07, -1.31134e-07, 1, 1, 1.52855e-14, -1.31134e-07, -1.5, 2, 7.5)
+
+[node name="Pipe_2m3" parent="South/Open" index="8" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 2, 10)
+
+[node name="Pipe_2m2" parent="South/Open" index="9" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -1, 2, 5)
+
+[node name="Pipe_2m4" parent="South/Open" index="10" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -2, 4.5, 5)
+
+[node name="Pipe_2m5" parent="South/Open" index="11" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -1.25, -1.50996e-07, 0, 1.88745e-07, -1, -2, 2.5, 5)
+
+[node name="Pipe2" parent="South/Open" index="12" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 2, 5)
+
+[node name="Pipe7" parent="South/Open" index="13" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 3.5, 6)
+
+[node name="Pipe8" parent="South/Open" index="14" instance=ExtResource("6_qe453")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4.5, 5)
+
+[node name="Pipe9" parent="South/Open" index="15" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, -1, -3.82137e-15, -1, -4.37114e-08, 8.74228e-08, -8.74228e-08, 0, -1, -1, 5.5, 5)
+
+[node name="Pipe6" parent="South/Open" index="16" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 10)
+
+[node name="Wall_Basement_003" parent="West/Closed" index="0" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="West/Closed" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06708, 2.04917, -0.248067)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pipe" parent="West/Closed" index="2" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 1, -5.5)
+
+[node name="Pipe2" parent="West/Closed" index="3" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 3, -5.5)
+
+[node name="Pipe5" parent="West/Closed" index="4" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 2, -2.5)
+
+[node name="Pipe3" parent="West/Closed" index="5" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -5, 3, -1.5)
+
+[node name="Pipe4" parent="West/Closed" index="6" instance=ExtResource("6_qe453")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5, 4, -0.5)
+
+[node name="Pipe7" parent="West/Closed" index="7" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -0.5)
+
+[node name="Pipe6" parent="West/Closed" index="8" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, -5.5, 2, -3)
+
+[node name="Pipe8" parent="West/Closed" index="9" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -5.5, 5, 3)
+
+[node name="Pipe10" parent="West/Closed" index="10" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5.5, 3.5, 2.5)
+
+[node name="Pipe_2m" parent="West/Closed" index="11" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 5, 0.5)
+
+[node name="Pipe9" parent="West/Closed" index="12" instance=ExtResource("10_7jvsy")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 2, 2.5)
+
+[node name="Pipe_1m" parent="West/Closed" index="13" instance=ExtResource("8_t6abt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2.5)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="West/Open" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -1)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 20.0
+autoplay = true
+max_distance = 6.0
+
+[node name="Pillar5" parent="West/Open" index="1" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+
+[node name="Pillar6" parent="West/Open" index="2" instance=ExtResource("2_myptf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+
+[node name="Pipe" parent="West/Open" index="3" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -10, 1, -1)
+
+[node name="Pipe11" parent="West/Open" index="4" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -10, 3.5, 0)
+
+[node name="Pipe2" parent="West/Open" index="5" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -6, 1, -1)
+
+[node name="Pipe3" parent="West/Open" index="6" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -6, 2, -1)
+
+[node name="Pipe4" parent="West/Open" index="7" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -6, 3, -1)
+
+[node name="Pipe10" parent="West/Open" index="8" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, 1, 0, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, -6, 3.5, 0)
+
+[node name="Pipe12" parent="West/Open" index="9" instance=ExtResource("6_qe453")]
+transform = Transform3D(1.31134e-07, 7.64274e-15, -1, -8.74228e-08, 1, -3.82137e-15, 1, 8.74228e-08, 1.31134e-07, -5, 4.5, 0)
+
+[node name="Pipe13" parent="West/Open" index="10" instance=ExtResource("6_qe453")]
+transform = Transform3D(-2.18557e-07, -1.52855e-14, 1, 1, 4.37114e-08, 2.18557e-07, -4.37114e-08, 1, 5.73206e-15, -5, 5.5, 3)
+
+[node name="Pipe_2m" parent="West/Open" index="11" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 1, -2)
+
+[node name="Pipe_2m3" parent="West/Open" index="12" instance=ExtResource("5_n7333")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -6, 2, -1)
+
+[node name="Pipe_2m4" parent="West/Open" index="13" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 3, -2)
+
+[node name="Pipe_2m6" parent="West/Open" index="14" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 5.5, 3)
+
+[node name="Pipe_2m5" parent="West/Open" index="15" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 3, -4)
+
+[node name="Pipe_2m2" parent="West/Open" index="16" instance=ExtResource("5_n7333")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 1, -4)
+
+[node name="Pipe_1m" parent="West/Open" index="17" instance=ExtResource("8_t6abt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 2, -2)
+
+[node name="Pipe5" parent="West/Open" index="18" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, 3.82137e-15, -8.74228e-08, 8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, -5, 2, -3)
+
+[node name="Pipe14" parent="West/Open" index="19" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(-1, 3.82137e-15, -8.74228e-08, -3.82137e-15, 1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, -5, 6.5, 4)
+
+[node name="Pipe6" parent="West/Open" index="20" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -4.37114e-08, 0, -6, 3, -1)
+
+[node name="Pipe7" parent="West/Open" index="21" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -4.37114e-08, 0, -8, 2, -1)
+
+[node name="Pipe8" parent="West/Open" index="22" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -4.37114e-08, 0, -10, 1, -1)
+
+[node name="Pipe9" parent="West/Open" index="23" instance=ExtResource("4_u7ctk")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 1, 4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -10, 3.5, 0)
+
+[node name="Wall_Basement_003" parent="Walls" index="0" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_004" parent="Walls" index="1" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_035" parent="Walls" index="2" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_036" parent="Walls" index="3" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_037" parent="Walls" index="4" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0, 2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_038" parent="Walls" index="5" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_039" parent="Walls" index="6" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_040" parent="Walls" index="7" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_041" parent="Walls" index="8" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 0, 2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_042" parent="Walls" index="9" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12, 0, 2)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_043" parent="Walls" index="10" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 8)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_044" parent="Walls" index="11" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 12)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_045" parent="Walls" index="12" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 0, 12)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_046" parent="Walls" index="13" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 0, 8)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_047" parent="Walls" index="14" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -12)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_048" parent="Walls" index="15" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -8)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_049" parent="Walls" index="16" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 0, -8)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_050" parent="Walls" index="17" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 0, -12)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_005" parent="Walls" index="18" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_006" parent="Walls" index="19" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_007" parent="Walls" index="20" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_008" parent="Walls" index="21" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_009" parent="Walls" index="22" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_010" parent="Walls" index="23" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 0, 4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_011" parent="Walls" index="24" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 4, -4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_012" parent="Walls" index="25" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_013" parent="Walls" index="26" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_022" parent="Walls" index="27" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_014" parent="Walls" index="28" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 4, -4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_015" parent="Walls" index="29" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 4, 4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_016" parent="Walls" index="30" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 4, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_019" parent="Walls" index="31" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_017" parent="Walls" index="32" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 4, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_018" parent="Walls" index="33" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 4, 4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_020" parent="Walls" index="34" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 4, 0)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_021" parent="Walls" index="35" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 4, 0)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_023" parent="Walls" index="36" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 8, -4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_024" parent="Walls" index="37" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_025" parent="Walls" index="38" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_026" parent="Walls" index="39" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_027" parent="Walls" index="40" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 8, -4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_028" parent="Walls" index="41" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 8, 4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_029" parent="Walls" index="42" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 8, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_030" parent="Walls" index="43" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 8, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_031" parent="Walls" index="44" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 8, 6)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_032" parent="Walls" index="45" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 8, 4)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_033" parent="Walls" index="46" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 8, 0)
+metadata/_edit_lock_ = true
+
+[node name="Wall_Basement_034" parent="Walls" index="47" instance=ExtResource("2_n2fvb")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 8, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_001" parent="Floor" index="0" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_002" parent="Floor" index="1" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_003" parent="Floor" index="2" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_004" parent="Floor" index="3" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_005" parent="Floor" index="4" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_006" parent="Floor" index="5" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_007" parent="Floor" index="6" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_015" parent="Floor" index="7" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_016" parent="Floor" index="8" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_008" parent="Floor" index="9" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_009" parent="Floor" index="10" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_023" parent="Floor" index="11" instance=ExtResource("2_ri8gr")]
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_011" parent="Floor" index="12" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_012" parent="Floor" index="13" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_013" parent="Floor" index="14" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_014" parent="Floor" index="15" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Floor_Basement_010" parent="Floor" index="16" instance=ExtResource("2_ri8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 12, 0)
+mesh = SubResource("QuadMesh_uomls")
+metadata/_edit_lock_ = true
+
+[node name="Ceiling17" parent="Ceiling" index="1" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 0)
+
+[node name="Ceiling18" parent="Ceiling" index="2" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 0)
+
+[node name="Ceiling19" parent="Ceiling" index="3" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
+
+[node name="Ceiling20" parent="Ceiling" index="4" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 0)
+
+[node name="Ceiling21" parent="Ceiling" index="5" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.24537e-07, 4, -12)
+
+[node name="Ceiling22" parent="Ceiling" index="6" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.49691e-07, 4, -8)
+
+[node name="Ceiling23" parent="Ceiling" index="7" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.49691e-07, 4, 8)
+
+[node name="Ceiling24" parent="Ceiling" index="8" instance=ExtResource("4_cjnrd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.24537e-07, 4, 12)
+
+[node name="Pipes" type="Node3D" parent="." index="10"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Pipes" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+stream = ExtResource("12_vtl4r")
+volume_db = 20.0
+unit_size = 40.0
+autoplay = true
+max_distance = 16.0
+
+[node name="Pipe" parent="Pipes" index="1" instance=ExtResource("12_hong2")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2, 7, 2)
+
+[node name="Pipe2" parent="Pipes" index="2" instance=ExtResource("12_hong2")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2, 7, -2)
+
+[node name="Pipe3" parent="Pipes" index="3" instance=ExtResource("12_hong2")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2, 7, 2)
+
+[node name="Pipe4" parent="Pipes" index="4" instance=ExtResource("12_hong2")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2, 7, -2)
+
+[node name="Pipe_2m" parent="Pipes" index="5" instance=ExtResource("5_n7333")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1, 7, -2)
+
+[node name="Pipe_2m2" parent="Pipes" index="6" instance=ExtResource("5_n7333")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1, 7, 2)
+
+[node name="Pipe_2m3" parent="Pipes" index="7" instance=ExtResource("5_n7333")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -2, 7, 1)
+
+[node name="Pipe_2m4" parent="Pipes" index="8" instance=ExtResource("5_n7333")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 2, 7, 1)
+
+[node name="Pipe5" parent="Pipes" index="9" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 2, 7, -3)
+
+[node name="Pipe6" parent="Pipes" index="10" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -2, 7, -3)
+
+[node name="Pipe7" parent="Pipes" index="11" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 0, -4.37114e-08, -1, 1.74846e-07, 1, -4.37114e-08, -2, 7, 3)
+
+[node name="Pipe14" parent="Pipes" index="12" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, 0, 7.5, 4.5)
+
+[node name="Pipe44" parent="Pipes" index="13" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, 1, 9, 4)
+
+[node name="Pipe15" parent="Pipes" index="14" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, 0, 11.5, 4.5)
+
+[node name="Pipe8" parent="Pipes" index="15" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 0, -4.37114e-08, -1, 1.74846e-07, 1, -4.37114e-08, 2, 7, 3)
+
+[node name="Pipe9" parent="Pipes" index="16" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-2.18557e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -2.18557e-07, 9.55343e-15, -3, 7, -2)
+
+[node name="Pipe10" parent="Pipes" index="17" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-2.18557e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -2.18557e-07, 9.55343e-15, -3, 7, 2)
+
+[node name="Pipe11" parent="Pipes" index="18" instance=ExtResource("7_d26t0")]
+transform = Transform3D(3.0598e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 3.0598e-07, -1.33748e-14, 3, 7, 2)
+
+[node name="Pipe12" parent="Pipes" index="19" instance=ExtResource("7_d26t0")]
+transform = Transform3D(3.0598e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 3.0598e-07, -1.33748e-14, 3, 7, -2)
+
+[node name="Pipe13" parent="Pipes" index="20" instance=ExtResource("6_qe453")]
+transform = Transform3D(2.66454e-15, 2.98023e-08, -1, 1, -4.37114e-08, 8.57914e-16, -4.37114e-08, -1, -2.98023e-08, 0, 6.5, 5.5)
+
+[node name="Pipe16" parent="Pipes" index="21" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, 3, 6.5, 4.5)
+
+[node name="Pipe17" parent="Pipes" index="22" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, 3, 10.5, 4.5)
+
+[node name="Pipe18" parent="Pipes" index="23" instance=ExtResource("6_qe453")]
+transform = Transform3D(2.66454e-15, 2.98023e-08, -1, 1, -4.37114e-08, 8.57914e-16, -4.37114e-08, -1, -2.98023e-08, 3, 5.5, 5.5)
+
+[node name="Pipe19" parent="Pipes" index="24" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -3, 6.5, 4.5)
+
+[node name="Pipe20" parent="Pipes" index="25" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -3, 10.5, 4.5)
+
+[node name="Pipe21" parent="Pipes" index="26" instance=ExtResource("6_qe453")]
+transform = Transform3D(2.66454e-15, 2.98023e-08, -1, 1, -4.37114e-08, 8.57914e-16, -4.37114e-08, -1, -2.98023e-08, -3, 5.5, 5.5)
+
+[node name="Pipe22" parent="Pipes" index="27" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, -4.37114e-08, -4.66667, 7, -1.16667)
+
+[node name="Pipe23" parent="Pipes" index="28" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, -4.37114e-08, -4.66667, 11, -1.16667)
+
+[node name="Pipe24" parent="Pipes" index="29" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, 1, 7.35137e-08, 1, -4.37114e-08, 8.57914e-16, 4.57522e-15, 7.35137e-08, -1, -5.66667, 6, -1.16667)
+
+[node name="Pipe25" parent="Pipes" index="30" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, -4.37114e-08, -4.66667, 5, -2.66667)
+
+[node name="Pipe26" parent="Pipes" index="31" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, -4.37114e-08, -4.66667, 9, -2.66667)
+
+[node name="Pipe27" parent="Pipes" index="32" instance=ExtResource("6_qe453")]
+transform = Transform3D(4.37114e-08, 1, 7.35137e-08, 1, -4.37114e-08, 8.57914e-16, 4.57522e-15, 7.35137e-08, -1, -5.66667, 4, -2.66667)
+
+[node name="Pipe28" parent="Pipes" index="33" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, -3, 4, -4.83333)
+
+[node name="Pipe29" parent="Pipes" index="34" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, -3, 8, -4.83333)
+
+[node name="Pipe30" parent="Pipes" index="35" instance=ExtResource("6_qe453")]
+transform = Transform3D(-6.48591e-15, -1.17225e-07, 1, 1, -4.37114e-08, 8.57914e-16, 4.37114e-08, 1, 1.17225e-07, -3, 3, -5.83333)
+
+[node name="Pipe31" parent="Pipes" index="36" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, 3, 6, -4.83333)
+
+[node name="Pipe61" parent="Pipes" index="37" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, 0.5, 9.5, -3.33333)
+
+[node name="Pipe62" parent="Pipes" index="38" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, -1, 10, -3.33333)
+
+[node name="Pipe32" parent="Pipes" index="39" instance=ExtResource("7_d26t0")]
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, 3, 10, -4.83333)
+
+[node name="Pipe33" parent="Pipes" index="40" instance=ExtResource("6_qe453")]
+transform = Transform3D(-6.48591e-15, -1.17225e-07, 1, 1, -4.37114e-08, 8.57914e-16, 4.37114e-08, 1, 1.17225e-07, 3, 5, -5.83333)
+
+[node name="Pipe34" parent="Pipes" index="41" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 4.66667, 5, -4.66667)
+
+[node name="Pipe41" parent="Pipes" index="42" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 3.5, 7.5, -3)
+
+[node name="Pipe63" parent="Pipes" index="43" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, -2, 7, -2)
+
+[node name="Pipe64" parent="Pipes" index="44" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 2, 7, -2)
+
+[node name="Pipe65" parent="Pipes" index="45" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 2, 7, 2)
+
+[node name="Pipe66" parent="Pipes" index="46" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, -2, 7, 2)
+
+[node name="Pipe67" parent="Pipes" index="47" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, -2, 11, 2)
+
+[node name="Pipe68" parent="Pipes" index="48" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, -2, 11, -2)
+
+[node name="Pipe69" parent="Pipes" index="49" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 2, 11, -2)
+
+[node name="Pipe70" parent="Pipes" index="50" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 2, 11, 2)
+
+[node name="Pipe42" parent="Pipes" index="51" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 3.5, 11.5, -3)
+
+[node name="Pipe35" parent="Pipes" index="52" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 4.66667, 9, -4.66667)
+
+[node name="Pipe36" parent="Pipes" index="53" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, -1, -1.60937e-07, 1, -4.37114e-08, 8.57913e-16, -8.39659e-15, -1.60937e-07, 1, 5.66667, 4, -4.66667)
+
+[node name="Pipe37" parent="Pipes" index="54" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 4.66667, 6, 4.33333)
+
+[node name="Pipe38" parent="Pipes" index="55" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 4.66667, 10, 4.33333)
+
+[node name="Pipe39" parent="Pipes" index="56" instance=ExtResource("6_qe453")]
+transform = Transform3D(-4.37114e-08, -1, -1.60937e-07, 1, -4.37114e-08, 8.57913e-16, -8.39659e-15, -1.60937e-07, 1, 5.66667, 5, 4.33333)
+
+[node name="Pipe40" parent="Pipes" index="57" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5.5, 5.5, -3)
+
+[node name="Pipe59" parent="Pipes" index="58" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.5, 7.5, -5.5)
+
+[node name="Pipe60" parent="Pipes" index="59" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -1, 8, -5.5)
+
+[node name="Pipe43" parent="Pipes" index="60" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 3.5, 8.5, 1)
+
+[node name="Pipe45" parent="Pipes" index="61" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5.5, 6.5, 1)
+
+[node name="Pipe46" parent="Pipes" index="62" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 3.5, 8, 3)
+
+[node name="Pipe48" parent="Pipes" index="63" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5.5, 6, 3)
+
+[node name="Pipe49" parent="Pipes" index="64" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 7, 6)
+
+[node name="Pipe47" parent="Pipes" index="65" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -4, 9, 4)
+
+[node name="Pipe54" parent="Pipes" index="66" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -3.5, 9, 3)
+
+[node name="Pipe50" parent="Pipes" index="67" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -4, 7, 6)
+
+[node name="Pipe53" parent="Pipes" index="68" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -5.5, 7, 3)
+
+[node name="Pipe55" parent="Pipes" index="69" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -3.5, 9, 0)
+
+[node name="Pipe56" parent="Pipes" index="70" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -5.5, 7, 0)
+
+[node name="Pipe57" parent="Pipes" index="71" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -3.5, 8, -3.5)
+
+[node name="Pipe58" parent="Pipes" index="72" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -5.5, 6, -3.5)
+
+[node name="Pipe51" parent="Pipes" index="73" instance=ExtResource("7_d26t0")]
+transform = Transform3D(1, -1.74846e-07, 7.64274e-15, 1.74846e-07, 1, 0, -7.64274e-15, 0, 1, -1, 10.5, 4)
+
+[node name="Pipe52" parent="Pipes" index="74" instance=ExtResource("8_2ut8y")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 8.5, 6)
+
+[node name="Lights" type="Node3D" parent="." index="11"]
+
+[node name="Lantern2" parent="Lights" index="0" instance=ExtResource("13_j7q3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6.76233, 2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
+light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 8.40261
+
+[node name="Lantern3" parent="Lights" index="1" instance=ExtResource("13_j7q3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6.76233, -2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
+light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 8.40261
+
+[node name="Mushrooms" type="Node3D" parent="." index="12"]
+
+[node name="SporeMushroomCluster" parent="Mushrooms" index="0" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9942, 0, 0.663633)
+
+[node name="SporeMushroomCluster2" parent="Mushrooms" index="1" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.697301, 0, 8.75926)
+
+[node name="SporeMushroomCluster3" parent="Mushrooms" index="2" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4438, 0, -0.589616)
+
+[node name="SporeMushroomCluster4" parent="Mushrooms" index="3" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590768, -2.38419e-07, -8.9665)
+
+[node name="SporeMushroomCluster5" parent="Mushrooms" index="4" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19585, -2.38419e-07, -2.29305)
+
+[node name="SporeMushroomCluster6" parent="Mushrooms" index="5" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14352, -2.38419e-07, 0.113469)
+
+[node name="SporeMushroomCluster7" parent="Mushrooms" index="6" instance=ExtResource("16_a8182")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94524, -2.38419e-07, 2.63689)
+
+[node name="Interior" type="Node3D" parent="." index="13"]
+
+[node name="Group 1" type="Node3D" parent="Interior" index="0"]
+script = ExtResource("17_ccjqp")
+
+[node name="Interior 1 (Barrel)" type="Node3D" parent="Interior/Group 1" index="0"]
+script = ExtResource("17_e2bqe")
+
+[node name="Barrel" parent="Interior/Group 1/Interior 1 (Barrel)" index="0" instance=ExtResource("19_j13iw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, 4)
+
+[node name="Barrel11" parent="Interior/Group 1/Interior 1 (Barrel)" index="1" instance=ExtResource("19_j13iw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.22127, 4.76837e-07, -3.91545)
+
+[node name="Barrel3" parent="Interior/Group 1/Interior 1 (Barrel)" index="2" instance=ExtResource("19_j13iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.425, -1.90735e-06, 4.00874)
+
+[node name="Barrel6" parent="Interior/Group 1/Interior 1 (Barrel)" index="3" instance=ExtResource("19_j13iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93723, -2.38419e-06, 3.00203)
+
+[node name="Barrel10" parent="Interior/Group 1/Interior 1 (Barrel)" index="4" instance=ExtResource("19_j13iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44822, -2.14577e-06, -2.43359)
+
+[node name="Barrel12" parent="Interior/Group 1/Interior 1 (Barrel)" index="5" instance=ExtResource("19_j13iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08774, -2.14577e-06, -3.38135)
+
+[node name="Barrel13" parent="Interior/Group 1/Interior 1 (Barrel)" index="6" instance=ExtResource("19_j13iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12349, -2.14577e-06, -2.90458)
+
+[node name="Barrel2" parent="Interior/Group 1/Interior 1 (Barrel)" index="7" instance=ExtResource("20_qaeam")]
+transform = Transform3D(-0.521829, 0, 0.85305, 0, 1, 0, -0.85305, 0, -0.521829, -2.81637, 0, 2.92922)
+
+[node name="Barrel4" parent="Interior/Group 1/Interior 1 (Barrel)" index="8" instance=ExtResource("20_qaeam")]
+transform = Transform3D(0.516608, 0, 0.856222, 0, 1, 0, -0.856222, 0, 0.516608, -3.97868, 0, -2.36316)
+
+[node name="Barrel5" parent="Interior/Group 1/Interior 1 (Barrel)" index="9" instance=ExtResource("20_qaeam")]
+transform = Transform3D(-0.383957, 0, -0.923351, 0, 1, 0, 0.923351, 0, -0.383957, 4.06959, 0, 1.89676)
+
+[node name="Interior 1 (Crate)" type="Node3D" parent="Interior/Group 1" index="1"]
+visible = false
+script = ExtResource("17_e2bqe")
+
+[node name="Crate" parent="Interior/Group 1/Interior 1 (Crate)" index="0" instance=ExtResource("21_funyw")]
+transform = Transform3D(0.911905, 0, 0.410401, 0, 1, 0, -0.410401, 0, 0.911905, -3.87779, 0, -4.12793)
+
+[node name="Crate2" parent="Interior/Group 1/Interior 1 (Crate)" index="1" instance=ExtResource("21_funyw")]
+transform = Transform3D(-0.999955, 0, -0.00944203, 0, 1, 0, 0.00944203, 0, -0.999955, -1.81154, 2.38419e-07, 3.7831)
+
+[node name="Crate3" parent="Interior/Group 1/Interior 1 (Crate)" index="2" instance=ExtResource("21_funyw")]
+transform = Transform3D(0.609855, 0, -0.792513, 0, 1, 0, 0.792513, 0, 0.609855, 2.24698, -2.38419e-07, -3.84816)
+
+[node name="Crate4" parent="Interior/Group 1/Interior 1 (Crate)" index="3" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(1.48381, 0, 0.219798, 0, 1.5, 0, -0.219798, 0, 1.48381, 4.22696, 0, -4.00396)
+
+[node name="Crate5" parent="Interior/Group 1/Interior 1 (Crate)" index="4" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(1.46266, 0, -0.332604, 0, 1.5, 0, 0.332604, 0, 1.46266, 3.73392, 0, -2.02627)
+
+[node name="Crate6" parent="Interior/Group 1/Interior 1 (Crate)" index="5" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(1.46631, 0, 0.316143, 0, 1.5, 0, -0.316143, 0, 1.46631, -3.69883, 4.76837e-07, 4.18639)
+
+[node name="Crate7" parent="Interior/Group 1/Interior 1 (Crate)" index="6" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(0.835989, 0, -0.548746, 0, 1, 0, 0.548746, 0, 0.835989, -3.69883, 1.5, 4.18639)
+
+[node name="Crate8" parent="Interior/Group 1/Interior 1 (Crate)" index="7" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(0.991906, 0, 0.126978, 0, 1, 0, -0.126978, 0, 0.991906, -4.46147, 0, 2.77649)
+
+[node name="Crate9" parent="Interior/Group 1/Interior 1 (Crate)" index="8" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(0.991906, 0, 0.126978, 0, 1, 0, -0.126978, 0, 0.991906, -2.48507, 0, -3.97877)
+
+[node name="Crate12" parent="Interior/Group 1/Interior 1 (Crate)" index="9" instance=ExtResource("22_jjq0v")]
+transform = Transform3D(0.984454, 0, 0.175642, 0, 1, 0, -0.175642, 0, 0.984454, 3.66341, 0, 4.34897)

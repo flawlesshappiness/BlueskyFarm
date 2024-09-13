@@ -161,6 +161,8 @@ public partial class BasementScene : GameScene
             .Where(x => x.IsVisibleInTree())
             .ToList();
 
+        if (containers.Count == 0) return;
+
         var item_count = 5;
 
         for (var i = 0; i < item_count; i++)

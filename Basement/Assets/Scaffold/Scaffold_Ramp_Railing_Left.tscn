@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7qbcyamvmb3s"]
+
+[ext_resource type="PackedScene" uid="uid://dd21cdkftbljp" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low_railing_long.fbx" id="2_kmamd"]
+[ext_resource type="PackedScene" uid="uid://umg7cnwpkkts" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low_long.fbx" id="3_gprfm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gs5on"]
+size = Vector3(4, 0.5, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sj8eo"]
+size = Vector3(4.53125, 1.03601, 0.5)
+
+[node name="Scaffold_Ramp" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, -2.11)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_gs5on")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-3.91188e-08, -1.95039e-08, -1, -0.446198, 0.894934, 0, 0.894934, 0.446198, -4.37114e-08, -1.75, 0.431989, 0.315382)
+shape = SubResource("BoxShape3D_sj8eo")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.894934, -0.499742, 0, 0.446198, 1.00233, 0, 0, 0)
+
+[node name="scaffold_small_low_railing_long" parent="Pivot" instance=ExtResource("2_kmamd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, -0.1, -2)
+
+[node name="scaffold_small_low_long" parent="Pivot" instance=ExtResource("3_gprfm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -0.1, -2)

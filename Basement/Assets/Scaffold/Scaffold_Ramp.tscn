@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://mohelny02hgp"]
+
+[ext_resource type="PackedScene" uid="uid://b2d6hrtjg3yvb" path="res://Assets/KayLousberg/Dungeon/scaffold_low.gltf.glb" id="1_phjcf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gs5on"]
+size = Vector3(4, 0.5, 4.5)
+
+[node name="Scaffold_Ramp" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, -2.11)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_gs5on")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.894934, -0.499742, 0, 0.446198, 1.00233, 0, 0, 0)
+
+[node name="scaffold_low_gltf" parent="Pivot" instance=ExtResource("1_phjcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -2)

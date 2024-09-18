@@ -30,6 +30,8 @@ public partial class InteractableLever : Touchable
     [NodeType]
     public AnimationPlayer Animation;
 
+    public int CurrentState => (int)_state;
+
     public event Action<int> OnStateChanged;
 
     private State _state = State.Up;

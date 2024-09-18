@@ -9,6 +9,7 @@ size = Vector3(0.1, 0.1, 0.1)
 script = ExtResource("1_q2qlf")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_fdkj0")

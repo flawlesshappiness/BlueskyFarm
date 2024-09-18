@@ -3,13 +3,12 @@
 [ext_resource type="Script" path="res://Modules/Object/InteractableLever.cs" id="1_1nmdm"]
 [ext_resource type="PackedScene" uid="uid://b7ab1s2v5w6cj" path="res://Assets/FlawLizArt/Pipes/Valve.fbx" id="2_s5bku"]
 
-[sub_resource type="Animation" id="Animation_mja10"]
-resource_name = "idle_left"
-length = 0.1
+[sub_resource type="Animation" id="Animation_au65l"]
+length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim/Model:rotation:x")
+tracks/0/path = NodePath("Pivot/Anim/Model:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,7 +19,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Anim/Model:rotation:y")
+tracks/1/path = NodePath("Pivot/Anim/Model:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -31,7 +30,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Anim/Model:rotation:z")
+tracks/2/path = NodePath("Pivot/Anim/Model:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -40,12 +39,13 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_au65l"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_mja10"]
+resource_name = "idle_left"
+length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim/Model:rotation:x")
+tracks/0/path = NodePath("Pivot/Anim/Model:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +56,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Anim/Model:rotation:y")
+tracks/1/path = NodePath("Pivot/Anim/Model:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,7 +67,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Anim/Model:rotation:z")
+tracks/2/path = NodePath("Pivot/Anim/Model:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -82,7 +82,7 @@ length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim/Model:rotation:x")
+tracks/0/path = NodePath("Pivot/Anim/Model:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +93,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Anim/Model:rotation:y")
+tracks/1/path = NodePath("Pivot/Anim/Model:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,7 +104,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Anim/Model:rotation:z")
+tracks/2/path = NodePath("Pivot/Anim/Model:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -118,7 +118,7 @@ resource_name = "move_left"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim/Model:rotation:x")
+tracks/0/path = NodePath("Pivot/Anim/Model:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +129,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Anim/Model:rotation:y")
+tracks/1/path = NodePath("Pivot/Anim/Model:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -140,7 +140,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Anim/Model:rotation:z")
+tracks/2/path = NodePath("Pivot/Anim/Model:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -154,7 +154,7 @@ resource_name = "move_right"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim/Model:rotation:x")
+tracks/0/path = NodePath("Pivot/Anim/Model:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -165,7 +165,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Anim/Model:rotation:y")
+tracks/1/path = NodePath("Pivot/Anim/Model:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -176,7 +176,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Anim/Model:rotation:z")
+tracks/2/path = NodePath("Pivot/Anim/Model:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -194,8 +194,8 @@ _data = {
 "move_right": SubResource("Animation_dlayj")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s0hq4"]
-size = Vector3(0.207031, 0.963867, 0.493042)
+[sub_resource type="BoxShape3D" id="BoxShape3D_neu6h"]
+size = Vector3(1.01074, 0.132996, 1.00098)
 
 [node name="Valve" type="Node3D"]
 script = ExtResource("1_1nmdm")
@@ -208,11 +208,13 @@ Toggle_SFX = "sfx_valve"
 Pull_SFX = "sfx_valve"
 InteractableText = "Valve"
 
-[node name="Anim" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.272636, 0)
 
-[node name="Model" parent="Anim" instance=ExtResource("2_s5bku")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+[node name="Anim" type="Node3D" parent="Pivot"]
+
+[node name="Model" parent="Pivot/Anim" instance=ExtResource("2_s5bku")]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -224,5 +226,5 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.247)
-shape = SubResource("BoxShape3D_s0hq4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00100708, 0)
+shape = SubResource("BoxShape3D_neu6h")

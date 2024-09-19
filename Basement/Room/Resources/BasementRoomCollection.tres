@@ -4,3 +4,4 @@
 
 [resource]
 script = ExtResource("1_ywqq0")
+MaterialProcessorOilRoom = "res://Basement/Room/Resources/Basement_SteamPuzzle.tres"

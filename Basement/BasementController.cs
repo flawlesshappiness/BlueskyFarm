@@ -15,6 +15,7 @@ public partial class BasementController : SingletonController
         CurrentBasement = new Basement();
         CurrentBasement.Settings = settings;
         GenerateGrid(CurrentBasement);
+        GenerateRooms(CurrentBasement);
         OnBasementGenerated?.Invoke(CurrentBasement);
     }
 
@@ -23,7 +24,16 @@ public partial class BasementController : SingletonController
         var grid = BasementGridGenerator.Generate(basement.Settings);
         basement.Grid = grid;
 
-        GenerateRooms(basement);
+        // Add special rooms
+        if (!Data.Game.Flag_MaterialProcessorFixed)
+        {
+            var room = BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+            {
+                AreaName = AreaNames.Basement
+            });
+
+            room.Info = GD.Load<BasementRoomInfo>(BasementRoomController.Instance.Collection.MaterialProcessorOilRoom);
+        }
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)
@@ -55,12 +65,11 @@ public partial class BasementController : SingletonController
             var z = -coords.Y * room_size.Z;
             var position = offset + new Vector3(x, 0, z);
 
-            var info = GetRandomRoomInfo(element);
-            element.Info = info;
+            element.Info ??= GetRandomRoomInfo(element);
             UpdateRoomConnection(basement, element);
 
             var parent = IsInstanceValid(basement.Settings.RoomParent) ? basement.Settings.RoomParent : Scene.Current;
-            var room = GDHelper.Instantiate<BasementRoom>(info.Path, parent);
+            var room = GDHelper.Instantiate<BasementRoom>(element.Info.Path, parent);
             element.Room = room;
             room.Element = element;
             room.GlobalPosition = position;

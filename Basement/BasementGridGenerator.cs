@@ -96,6 +96,30 @@ public static class BasementGridGenerator
         }
     }
 
+    public static BasementRoomElement AddRoom(Grid<BasementRoomElement> grid, AddRoomSettings settings)
+    {
+        var valid_rooms = grid.Elements
+            .Where(x => !x.IsStart)
+            .Where(x => string.IsNullOrEmpty(settings.AreaName) || x.AreaName == settings.AreaName)
+            .Where(x => grid.GetEmptyNeighbourCoordinates(x.Coordinates).Count() > 0);
+
+        var valid_room = valid_rooms.ToList().Random();
+
+        var coord = grid.GetEmptyNeighbourCoordinates(valid_room.Coordinates).ToList().Random();
+
+        var new_room = new BasementRoomElement
+        {
+            Coordinates = coord,
+            AreaName = valid_room.AreaName
+        };
+
+        grid.Set(coord, new_room);
+        new_room.Connections.Add(valid_room);
+        valid_room.Connections.Add(new_room);
+
+        return new_room;
+    }
+
     public static void LogGrid(Grid<BasementRoomElement> grid)
     {
         var x_lowest = grid.Elements.OrderBy(x => x.Coordinates.X).First().Coordinates.X;
@@ -115,6 +139,11 @@ public static class BasementGridGenerator
             Debug.Log(s);
         }
     }
+}
+
+public class AddRoomSettings
+{
+    public string AreaName { get; set; }
 }
 
 public class BasementSettings

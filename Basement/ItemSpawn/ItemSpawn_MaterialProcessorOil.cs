@@ -5,6 +5,9 @@ public partial class ItemSpawn_MaterialProcessorOil : Node3DScript
     [Export(PropertyHint.File)]
     public string ItemInfoPath;
 
+    [Export]
+    public string CustomId;
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -23,6 +26,7 @@ public partial class ItemSpawn_MaterialProcessorOil : Node3DScript
     {
         var item = ItemController.Instance.CreateItem(ItemInfoPath);
         item.GlobalPosition = GlobalPosition;
+        item.Data.CustomId = CustomId;
         return item;
     }
 }

@@ -26,4 +26,7 @@ public partial class ItemInfo : Resource
 
     [Export]
     public float InventoryItemCameraDistance = 0.25f;
+
+    [Export]
+    public float InventoryItemRotationOffset = 0.0f;
 }

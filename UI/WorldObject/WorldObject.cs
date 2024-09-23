@@ -9,6 +9,9 @@ public partial class WorldObject : ControlScript
     [NodeName]
     public Node3D Spin;
 
+    [NodeName]
+    public Node3D RotationOffset;
+
     [NodeType]
     public Camera3D Camera;
 
@@ -37,11 +40,17 @@ public partial class WorldObject : ControlScript
         item.RigidBody.ProcessMode = ProcessModeEnum.Disabled;
         SetObject(item);
         UpdateCameraFromItemInfo(info);
+        UpdateRotationOffsetFromItemInfo(info);
     }
 
     private void UpdateCameraFromItemInfo(ItemInfo info)
     {
         Camera.Position = new Vector3(0, 0, info.InventoryItemCameraDistance);
+    }
+
+    private void UpdateRotationOffsetFromItemInfo(ItemInfo info)
+    {
+        RotationOffset.RotationDegrees = new Vector3(info.InventoryItemRotationOffset, 0f, 0f);
     }
 
     public void StartAnimateSpin()
@@ -58,7 +67,7 @@ public partial class WorldObject : ControlScript
                 yield return LerpEnumerator.Lerp01(duration, f =>
                 {
                     var y = Mathf.Lerp(start, end, f);
-                    Spin.GlobalRotationDegrees = new Vector3(0, y, 0);
+                    Spin.RotationDegrees = new Vector3(0, y, 0);
                 });
             }
         }
@@ -66,7 +75,7 @@ public partial class WorldObject : ControlScript
 
     public void StopAnimateSpin()
     {
-        Spin.GlobalRotationDegrees = new Vector3(0, 0, 0);
+        Spin.RotationDegrees = new Vector3(0, 0, 0);
         Coroutine.Stop("spin" + GetInstanceId());
     }
 }

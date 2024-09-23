@@ -17,6 +17,7 @@ public partial class InventoryController : SingletonController
     public event Action<int> OnItemAdded;
     public event Action<int> OnItemRemoved;
     public event Action<int> OnSelectedItemChanged;
+    public event Action<int> OnSelectedItemUsed;
 
     private bool _dropping_inventory;
     private float _time_select_index;
@@ -69,6 +70,16 @@ public partial class InventoryController : SingletonController
         {
             Input_PickUpPressed();
         }
+
+        if (PlayerInput.UseItem.Pressed)
+        {
+            Input_UseItem();
+        }
+    }
+
+    private void Input_UseItem()
+    {
+        OnSelectedItemUsed?.Invoke(SelectedIndex);
     }
 
     private void Input_SetInventoryIndex(int i)

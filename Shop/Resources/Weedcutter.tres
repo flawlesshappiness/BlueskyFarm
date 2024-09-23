@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ShopItemInfo" load_steps=2 format=3 uid="uid://c01s1m4salefy"]
+
+[ext_resource type="Script" path="res://Shop/ShopItemInfo.cs" id="1_j8k5e"]
+
+[resource]
+script = ExtResource("1_j8k5e")
+ItemInfoPath = "res://Item/Resources/Weedcutter.tres"
+Combination = Array[int]([0, 0, 0])

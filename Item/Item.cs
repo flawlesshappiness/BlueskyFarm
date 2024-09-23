@@ -89,6 +89,11 @@ public partial class Item : Grabbable
         });
     }
 
+    public virtual void Use()
+    {
+        // Use item
+    }
+
     public virtual void AddToInventory()
     {
         InventoryController.Instance.Add(this);

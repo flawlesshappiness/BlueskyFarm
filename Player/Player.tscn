@@ -10,7 +10,7 @@
 [node name="FirstPersonPlayer" instance=ExtResource("1_pwey1")]
 WalkSpeed = 4.0
 RunSpeed = 6.0
-JumpUpSpeed = 4.0
+JumpUpSpeed = 0.0
 JumpHorizontalSpeed = 1.0
 
 [node name="Step" parent="NeckHorizontal/NeckVertical" index="0"]

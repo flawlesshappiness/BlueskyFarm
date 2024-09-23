@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://yf41wk6nfikp"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_11wnj"]
+
+[resource]
+script = ExtResource("1_11wnj")
+Path = "res://Item/Prefabs/Weedcutter.tscn"
+CanPlant = false
+GrowTimeInSeconds = 0
+CanProcessToMaterial = false
+MaterialType = 0
+CanPickUp = true
+Untrack = false
+InventoryItemCameraDistance = 0.75
+InventoryItemRotationOffset = 80.0

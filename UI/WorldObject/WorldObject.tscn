@@ -23,5 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Spin" type="Node3D" parent="SubViewport/Root"]
 
-[node name="Origin" type="Node3D" parent="SubViewport/Root/Spin"]
+[node name="RotationOffset" type="Node3D" parent="SubViewport/Root/Spin"]
+
+[node name="Origin" type="Node3D" parent="SubViewport/Root/Spin/RotationOffset"]
 transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, 0, 0, 0)

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_8pp41")
-Version = "0.0.2"
+Version = "0.0.3"
 Release = false

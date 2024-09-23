@@ -10,6 +10,7 @@ public partial class FirstPersonItemHold : Node3DScript
     public override void _Ready()
     {
         base._Ready();
+        InventoryController.Instance.OnSelectedItemUsed += SelectedItemUsed;
         InventoryController.Instance.OnSelectedItemChanged += SelectedItemChanged;
         InventoryController.Instance.OnItemAdded += ItemAdded;
         InventoryController.Instance.OnItemRemoved += ItemRemoved;
@@ -18,6 +19,7 @@ public partial class FirstPersonItemHold : Node3DScript
     public override void _ExitTree()
     {
         base._ExitTree();
+        InventoryController.Instance.OnSelectedItemUsed -= SelectedItemUsed;
         InventoryController.Instance.OnSelectedItemChanged -= SelectedItemChanged;
         InventoryController.Instance.OnItemAdded -= ItemAdded;
         InventoryController.Instance.OnItemRemoved -= ItemRemoved;
@@ -54,7 +56,7 @@ public partial class FirstPersonItemHold : Node3DScript
 
         if (IsInstanceValid(_current_item))
         {
-            _current_item.RigidBody.ProcessMode = ProcessModeEnum.Disabled;
+            _current_item.RigidBody.Freeze = true;
             _current_item.SetParent(Position);
             _current_item.SetCollision_None();
             _current_item.GlobalPosition = Position.GlobalPosition;
@@ -68,5 +70,12 @@ public partial class FirstPersonItemHold : Node3DScript
 
         _current_item.QueueFree();
         _current_item = null;
+    }
+
+    private void SelectedItemUsed(int i)
+    {
+        if (!IsInstanceValid(_current_item)) return;
+
+        _current_item.Use();
     }
 }

@@ -203,7 +203,7 @@ public partial class FirstPersonController : CharacterBody3D
             }
 
             // Handle Jump
-            if (PlayerInput.Jump.Pressed)
+            if (JumpUpSpeed > 0 && PlayerInput.Jump.Pressed)
             {
                 var dir = new Vector3(direction.X, 0, direction.Z).Normalized() * JumpHorizontalSpeed;
                 var jump_vel = new Vector3(dir.X, JumpUpSpeed, dir.Z);

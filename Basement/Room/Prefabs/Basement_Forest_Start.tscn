@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxurbi61g4pb3"]
+[gd_scene load_steps=13 format=3 uid="uid://bxurbi61g4pb3"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_b6fes"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_0i55h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="5_nf4by"]
 [ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Basement.tres" id="6_3qe6l"]
 [ext_resource type="Environment" uid="uid://ck8maewbx0shd" path="res://Environment/Forest.tres" id="7_bwmmb"]
+[ext_resource type="PackedScene" uid="uid://csv45s26emb7f" path="res://Basement/Assets/Forest/ForestBlockade.tscn" id="8_q7kmf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_28eyb"]
 size = Vector3(12, 4, 8)
@@ -18,7 +19,7 @@ size = Vector2(28, 28)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4lmo"]
 size = Vector3(28, 1, 28)
 
-[node name="Forest_001" instance=ExtResource("1_b6fes")]
+[node name="Basement_Forest_Start" instance=ExtResource("1_b6fes")]
 
 [node name="Wall_Basement_007" parent="North/Closed" index="0" instance=ExtResource("2_0i55h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
@@ -143,6 +144,8 @@ shape = SubResource("BoxShape3D_28eyb")
 
 [node name="End" type="Node3D" parent="North/Open/Forest/EnvironmentFadeArea" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="ForestBlockade" parent="North/Open/Forest" index="33" instance=ExtResource("8_q7kmf")]
 
 [node name="Basement" type="Node3D" parent="North/Open" index="1"]
 
@@ -300,6 +303,9 @@ shape = SubResource("BoxShape3D_28eyb")
 
 [node name="End" type="Node3D" parent="East/Open/Forest/EnvironmentFadeArea2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="ForestBlockade2" parent="East/Open/Forest" index="33" instance=ExtResource("8_q7kmf")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0, 0)
 
 [node name="Basement" type="Node3D" parent="East/Open" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -459,6 +465,9 @@ shape = SubResource("BoxShape3D_28eyb")
 [node name="End" type="Node3D" parent="South/Open/Forest/EnvironmentFadeArea3" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
+[node name="ForestBlockade3" parent="South/Open/Forest" index="33" instance=ExtResource("8_q7kmf")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+
 [node name="Basement" type="Node3D" parent="South/Open" index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
@@ -617,6 +626,9 @@ shape = SubResource("BoxShape3D_28eyb")
 [node name="End" type="Node3D" parent="West/Open/Forest/EnvironmentFadeArea4" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
+[node name="ForestBlockade3" parent="West/Open/Forest" index="33" instance=ExtResource("8_q7kmf")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+
 [node name="Basement" type="Node3D" parent="West/Open" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -688,6 +700,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="Floor_Basement_009" parent="Floor" index="9" instance=ExtResource("3_jlg30")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="Ceiling" parent="." index="6"]
+visible = false
 
 [node name="Ceiling2" parent="Ceiling" index="0" instance=ExtResource("5_nf4by")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

@@ -1,9 +1,12 @@
 using Godot;
+using System;
 
 public partial class Weed : Node3DScript
 {
     [NodeType]
     public AnimationPlayer Animation;
+
+    public event Action OnWeedCut;
 
     private bool _is_cut;
 
@@ -18,6 +21,7 @@ public partial class Weed : Node3DScript
 
     private void Remove()
     {
+        OnWeedCut?.Invoke();
         QueueFree();
     }
 }

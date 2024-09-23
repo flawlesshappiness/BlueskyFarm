@@ -377,9 +377,11 @@ shape = SubResource("BoxShape3D_f7644")
 
 [node name="sfx_open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_67kqc")
+bus = &"SFX"
 
 [node name="sfx_close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1gr3m")
+bus = &"SFX"
 
 [node name="ps_dust_falling" parent="." instance=ExtResource("5_yy756")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.44721)

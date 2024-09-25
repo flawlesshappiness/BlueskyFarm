@@ -223,21 +223,17 @@ public partial class FirstPersonController : CharacterBody3D
     {
         var target = Interact?.CurrentInteractable;
 
-        if (InteractLock.IsLocked)
+        if (InteractLock.IsLocked || !IsInstanceValid(target))
         {
             Cursor.Hide();
-        }
-        else if (target == null)
-        {
-            Cursor.Hide();
-        }
-        else if (TryHandleCursor_Touch(target))
-        {
-            // Handled by touch
         }
         else if (Grab?.TryHandleCursor(target) ?? false)
         {
             // Handled by grab
+        }
+        else if (TryHandleCursor_Touch(target))
+        {
+            // Handled by touch
         }
         else
         {

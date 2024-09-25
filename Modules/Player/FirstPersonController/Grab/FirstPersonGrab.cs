@@ -104,7 +104,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
     {
         if (Target == null) return;
 
-        if (IsInstanceValid(Target as Node))
+        if (IsInstanceValid(Target))
         {
             Target.Released();
         }
@@ -138,6 +138,12 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
 
     public bool TryHandleCursor(Interactable interactable)
     {
+        if (Target != null)
+        {
+            Cursor.Hide();
+            return true;
+        }
+
         var grabbable = interactable as Grabbable;
         if (!IsInstanceValid(grabbable)) return false;
         if (!CanGrab(grabbable)) return false;

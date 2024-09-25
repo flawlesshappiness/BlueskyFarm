@@ -73,6 +73,7 @@ public class SoundSettings3D : SoundSettingsBase
 {
     public Vector3 Position { get; set; }
     public float MaxDistance { get; set; } = 16f;
+    public float UnitSize { get; set; } = 10f;
 
     public void ModifySound(AudioStreamPlayer3D sound)
     {
@@ -81,5 +82,6 @@ public class SoundSettings3D : SoundSettingsBase
         sound.PitchScale = RandomPitch;
         sound.VolumeDb = Volume;
         sound.MaxDistance = MaxDistance;
+        sound.UnitSize = UnitSize;
     }
 }

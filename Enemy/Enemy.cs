@@ -8,6 +8,7 @@ public partial class Enemy : Node3DScript
     protected float DistanceToPlayer => GlobalPosition.DistanceTo(PlayerPosition);
     protected Vector3 DirectionToPlayer => GlobalPosition.DirectionTo(PlayerPosition);
     protected IEnumerable<BasementRoomElement> RoomElements => BasementController.Instance.CurrentBasement.Grid.Elements;
+    protected bool IsDebug { get; private set; }
 
     public bool CanSeePlayer()
     {
@@ -19,5 +20,10 @@ public partial class Enemy : Node3DScript
         }
 
         return false;
+    }
+
+    public virtual void DebugSpawn()
+    {
+        IsDebug = true;
     }
 }

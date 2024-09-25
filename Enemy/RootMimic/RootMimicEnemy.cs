@@ -68,7 +68,11 @@ public partial class RootMimicEnemy : NavEnemy
     [NodeName]
     public Node3D Leg3_R_ThreatPosition;
 
-    private enum State { Wander, Waiting, Threat, Fleeing, Attacking }
+    private enum State
+    {
+        Wander, Waiting, Threat, Fleeing, Attacking,
+        Debug_Follow
+    }
 
     private State _state;
     private float _time_step_sfx;
@@ -109,7 +113,7 @@ public partial class RootMimicEnemy : NavEnemy
             LocalPosition = Target.Position;
             LocalRotation = Target.Rotation;
             MaxDistance = 1f;
-            TargetSpeed = 7f;
+            TargetSpeed = 15f;
 
             _init_max_distance = MaxDistance;
         }
@@ -132,8 +136,20 @@ public partial class RootMimicEnemy : NavEnemy
 
         RegisterDebugActions();
         InitializeLimbs();
+    }
 
-        Spawn();
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        if (IsDebug)
+        {
+            SpawnDebug();
+        }
+        else
+        {
+            Spawn();
+        }
     }
 
     private void RegisterDebugActions()
@@ -146,14 +162,35 @@ public partial class RootMimicEnemy : NavEnemy
             Text = "Teleport to player",
             Action = _ => DebugTeleportToPlayer()
         });
-    }
 
-    private void DebugTeleportToPlayer()
-    {
-        GlobalPosition = Player.GlobalPosition;
-        Agent.TargetPosition = GlobalPosition;
-        SetState(State.Waiting);
-        _state_change_disabled = true;
+        void DebugTeleportToPlayer()
+        {
+            GlobalPosition = Player.GlobalPosition;
+            Agent.TargetPosition = GlobalPosition;
+            SetState(State.Waiting);
+            _state_change_disabled = true;
+        }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Follow player",
+            Action = _ => SetState(State.Debug_Follow)
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set state (Waiting)",
+            Action = _ => SetState(State.Waiting)
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set state (Threat)",
+            Action = _ => SetState(State.Threat)
+        });
     }
 
     private void InitializeLimbs()
@@ -199,6 +236,12 @@ public partial class RootMimicEnemy : NavEnemy
         SetState(State.Wander);
     }
 
+    private void SpawnDebug()
+    {
+        GlobalPosition = Player.GlobalPosition;
+        _spawned = true;
+    }
+
     private bool IsValidRoomElement(BasementRoomElement element)
     {
         var valid_area = element.AreaName == AreaNames.Basement;
@@ -218,6 +261,7 @@ public partial class RootMimicEnemy : NavEnemy
             case State.Threat: StartCoroutine(StateCr_Threat, id); return;
             case State.Fleeing: StartCoroutine(StateCr_Fleeing, id); return;
             case State.Attacking: StartCoroutine(StateCr_Attacking, id); return;
+            case State.Debug_Follow: StartCoroutine(StateCr_Debug_Follow, id); return;
             default: return;
         }
     }
@@ -261,6 +305,12 @@ public partial class RootMimicEnemy : NavEnemy
 
         while (true)
         {
+            if (IsDebug)
+            {
+                yield return null;
+                continue;
+            }
+
             if (DistanceToPlayer > DIST_WAIT_FAR)
             {
                 SetState(State.Wander);
@@ -294,7 +344,7 @@ public partial class RootMimicEnemy : NavEnemy
         SfxGrowl.Play();
 
         var time_wait = GameTime.Time + 4f;
-        while (GameTime.Time < time_wait && DistanceToPlayer > DIST_THREAT_ATTACK)
+        while ((GameTime.Time < time_wait && DistanceToPlayer > DIST_THREAT_ATTACK) || IsDebug)
         {
             TurnTowardsDirection(DirectionToPlayer);
             yield return null;
@@ -352,6 +402,23 @@ public partial class RootMimicEnemy : NavEnemy
 
         Player.MovementLock.RemoveLock(id_lock);
         GameScene.Current.KillPlayer();
+    }
+
+    private IEnumerator StateCr_Debug_Follow()
+    {
+        while (true)
+        {
+            if (DistanceToPlayer < DIST_THREAT_ATTACK)
+            {
+                Agent.TargetPosition = GlobalPosition;
+            }
+            else if (DistanceToPlayer > DIST_THREAT)
+            {
+                Agent.TargetPosition = Player.GlobalPosition;
+            }
+
+            yield return null;
+        }
     }
 
     protected override void OnVelocityComputed(Vector3 v)
@@ -422,7 +489,8 @@ public partial class RootMimicEnemy : NavEnemy
             PitchMax = 1.0f,
             Volume = -10,
             Position = position,
-            MaxDistance = 28 * 2
+            MaxDistance = 28,
+            UnitSize = 50
         });
     }
 

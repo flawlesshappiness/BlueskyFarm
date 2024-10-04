@@ -8,7 +8,7 @@
 
 [node name="RootMimic" type="Node3D"]
 script = ExtResource("1_t6yvr")
-MoveSpeed = 6.0
+MoveSpeed = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5

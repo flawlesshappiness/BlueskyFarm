@@ -26,6 +26,19 @@ public partial class DebugInputPopup : ControlScript
         CancelButton.Pressed += PressedCancel;
     }
 
+    public override void _Input(InputEvent e)
+    {
+        base._Input(e);
+
+        if (e is InputEventKey k)
+        {
+            if (k.Keycode == Key.Enter)
+            {
+                PressedAccept();
+            }
+        }
+    }
+
     public void Clear()
     {
         foreach (var input in _inputs)

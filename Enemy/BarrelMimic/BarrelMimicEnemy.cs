@@ -10,19 +10,28 @@ public partial class BarrelMimicEnemy : NavEnemy
     [NodeType]
     public AnimationStateMachine StateMachine;
 
+    [NodeType]
+    public Touchable Touchable;
+
     private BoolParameter _param_sitting;
     private BoolParameter _param_moving;
     private BoolParameter _param_scaring;
     private TriggerParameter _param_attacking;
 
-    private enum State { Idle, Debug_Follow, Debug_Scare }
+    private enum State { Idle, Debug_Follow, Debug_Scare, Debug_Touch }
     private State state = State.Idle;
 
     public override void _Ready()
     {
         base._Ready();
         InitializeAnimations();
+        InitializeTouchable();
         RegisterDebugActions();
+    }
+
+    private void InitializeTouchable()
+    {
+        Touchable.OnTouched += OnTouched;
     }
 
     private void InitializeAnimations()
@@ -101,6 +110,16 @@ public partial class BarrelMimicEnemy : NavEnemy
         });
     }
 
+    private void SetTouchEnabled(bool enabled)
+    {
+        Touchable.SetEnabled(enabled);
+    }
+
+    private void OnTouched()
+    {
+        SetState(State.Debug_Scare);
+    }
+
     protected override void OnVelocityComputed(Vector3 v)
     {
         if (StateMachine.Current.Name == "Armature|walk_forward")
@@ -111,13 +130,15 @@ public partial class BarrelMimicEnemy : NavEnemy
 
     private void SetState(State state)
     {
-        this.state = state;
+        SetTouchEnabled(false);
 
+        this.state = state;
         var id = "state";
         switch (state)
         {
             case State.Debug_Follow: StartCoroutine(StateCr_DebugFollow, id); return;
             case State.Debug_Scare: StartCoroutine(StateCr_DebugScare, id); return;
+            case State.Debug_Touch: StartCoroutine(StateCr_DebugTouch, id); return;
             default: return;
         }
     }
@@ -161,17 +182,34 @@ public partial class BarrelMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_DebugScare()
     {
+        var time_end = GameTime.Time + 2;
+
         while (true)
         {
-            _param_sitting.Set(DistanceToPlayer > 3);
-            _param_scaring.Set(DistanceToPlayer <= 3);
-
-            if (_param_scaring.Value)
+            if (GameTime.Time > time_end && DistanceToPlayer > 3)
             {
+                SetState(State.Debug_Touch);
+            }
+            else
+            {
+                _param_sitting.Set(false);
+                _param_scaring.Set(true);
                 TurnTowardsDirection(DirectionToPlayer);
             }
 
             yield return null;
         }
+    }
+
+    private IEnumerator StateCr_DebugTouch()
+    {
+        _param_sitting.Set(true);
+        _param_scaring.Set(false);
+        _param_moving.Set(false);
+
+        Agent.TargetPosition = GlobalPosition;
+        SetTouchEnabled(true);
+
+        yield return null;
     }
 }

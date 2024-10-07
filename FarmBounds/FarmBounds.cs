@@ -32,7 +32,7 @@ public partial class FarmBounds : NodeScript
         if (!IsInstanceValid(node)) return;
         if (node.IsQueuedForDeletion()) return;
 
-        var item = node.GetParent<Item>();
+        var item = node.GetNodeInParents<Item>();
 
         if (item?.IsBeingHandled ?? false) return;
 

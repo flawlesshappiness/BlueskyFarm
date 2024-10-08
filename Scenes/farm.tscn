@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://capcrfrgq5yyu" path="res://Assets/FlawLizArt/hollow_tree.glb" id="24_4mfpi"]
 [ext_resource type="PackedScene" uid="uid://cj2jcm86uph56" path="res://Assets/FlawLizArt/roots_006.glb" id="24_0087b"]
 [ext_resource type="PackedScene" uid="uid://dlbnnuo8olhu8" path="res://Assets/FlawLizArt/Pipes/Pipe_Curve_05x05_1m.fbx" id="26_aevkn"]
-[ext_resource type="PackedScene" uid="uid://bewr8vamgvxx3" path="res://Enemy/BarrelMimic/BarrelMimic.tscn" id="29_wq7nl"]
+[ext_resource type="PackedScene" uid="uid://b2r5gd5rrhgdb" path="res://Enemy/BarrelMimicFlower/BarrelMimicFlower.tscn" id="29_a3fo7"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
@@ -801,7 +801,7 @@ volume_db = 20.0
 autoplay = true
 bus = &"BGM"
 
-[node name="BarrelMimic" parent="." instance=ExtResource("29_wq7nl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.13814, 0, 5.93448)
+[node name="barrel_mimic_flower" parent="." instance=ExtResource("29_a3fo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.27603, 0, 6.87646)
 
 [editable path="World/NavigationRegion3D/hollow_tree"]

@@ -4,6 +4,7 @@ public partial class BasementRoom : Node3DScript
 {
     public const int SECTION_SIZE = 4;
     public const int SECTION_COUNT = 7;
+    public static int ROOM_SIZE => SECTION_SIZE * SECTION_COUNT;
 
     [NodeName]
     public Node3D Ceiling;

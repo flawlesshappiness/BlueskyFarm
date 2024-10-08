@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_h85n2")
-Path = "res://Enemy/BarrelMimic/BarrelMimic.tscn"
+Path = "res://Enemy/BarrelMimicFlower/BarrelMimicFlower.tscn"

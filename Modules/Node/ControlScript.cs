@@ -16,7 +16,7 @@ public partial class ControlScript : Control
     public Coroutine StartCoroutine(Func<IEnumerator> enumerator, string id = null)
     {
         id = (id ?? string.Empty) + GetInstanceId();
-        return Coroutine.Start(enumerator, this, id);
+        return Coroutine.Start(enumerator, id, this);
     }
 
     public override void _Process(double delta)

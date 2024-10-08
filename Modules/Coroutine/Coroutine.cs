@@ -29,7 +29,7 @@ public class Coroutine : CustomYieldInstruction
 
     public static Coroutine Start(Func<IEnumerator> enumerator, string id) => Start(enumerator(), id: id);
     public static Coroutine Start(Func<IEnumerator> enumerator, Node connection) => Start(enumerator(), connection: connection);
-    public static Coroutine Start(Func<IEnumerator> enumerator, Node connection, string id) => Start(enumerator(), connection: connection, id: id);
+    public static Coroutine Start(Func<IEnumerator> enumerator, string id, Node connection) => Start(enumerator(), connection: connection, id: id);
     public static Coroutine Start(Func<IEnumerator> enumerator) => Start(enumerator());
 
     public static void Stop(Coroutine coroutine)

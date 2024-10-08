@@ -7247,6 +7247,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Wood.tres"
 }
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"optimizer/enabled": false
+}
 }
 }
 fbx/importer=0

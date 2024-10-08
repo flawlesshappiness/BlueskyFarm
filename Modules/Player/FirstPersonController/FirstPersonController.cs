@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections;
 
 public partial class FirstPersonController : CharacterBody3D
 {
@@ -91,15 +90,9 @@ public partial class FirstPersonController : CharacterBody3D
     {
         var player = FirstPersonController.Instance;
         var agent = player.Agent;
-
+        var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), player.GlobalPosition) - new Vector3(0, agent.PathHeightOffset, 0);
+        player.GlobalPosition = nav_position;
         view.SetVisible(false);
-        Coroutine.Start(Cr);
-        IEnumerator Cr()
-        {
-            agent.TargetPosition = player.GlobalPosition;
-            yield return null;
-            player.GlobalPosition = agent.GetNextPathPosition();
-        }
     }
 
     public override void _Input(InputEvent @event)

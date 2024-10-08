@@ -30,7 +30,12 @@ public partial class Node3DScript : Node3D
 
     public Coroutine StartCoroutine(Func<IEnumerator> enumerator, string id = null)
     {
+        return StartCoroutine(enumerator(), id);
+    }
+
+    public Coroutine StartCoroutine(IEnumerator enumerator, string id = null)
+    {
         id = (id ?? string.Empty) + GetInstanceId();
-        return Coroutine.Start(enumerator, this, id);
+        return Coroutine.Start(enumerator, id, this);
     }
 }

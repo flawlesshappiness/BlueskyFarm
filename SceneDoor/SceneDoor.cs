@@ -71,7 +71,7 @@ public partial class SceneDoor : Touchable
                 Bus = SoundBus.SFX
             });
 
-            yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(0, 1, f)));
+            yield return LerpEnumerator.Lerp01(0.5f, f => view.SetBlackOverlayAlpha(Mathf.Lerp(0, 1, f)));
             yield return new WaitForSeconds(0.5f);
 
             ChangeScene();
@@ -88,7 +88,7 @@ public partial class SceneDoor : Touchable
             });
 
 
-            yield return LerpEnumerator.Lerp01(0.5f, f => view.SetOverlayAlpha(Mathf.Lerp(1, 0, f)));
+            yield return LerpEnumerator.Lerp01(0.5f, f => view.SetBlackOverlayAlpha(Mathf.Lerp(1, 0, f)));
         }
     }
 }

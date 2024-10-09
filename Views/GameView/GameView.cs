@@ -3,8 +3,10 @@ using System.Collections;
 
 public partial class GameView : View
 {
+    public static GameView Instance => View.Get<GameView>();
+
     [NodeName]
-    public ColorRect ColorRectOverlay;
+    public ColorRect OverlayTemplate;
 
     [NodeType]
     public Minimap Minimap;
@@ -17,11 +19,14 @@ public partial class GameView : View
 
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
 
+    private ColorRect _overlay_black;
+
     public override void _Ready()
     {
         base._Ready();
+        OverlayTemplate.Hide();
         BottomTextLabel.Modulate = Colors.Transparent;
-        SetOverlayAlpha(0);
+        _overlay_black = CreateOverlay(Colors.Black.SetA(0));
         Show();
     }
 
@@ -35,11 +40,20 @@ public partial class GameView : View
         }
     }
 
-    public void SetOverlayAlpha(float alpha)
+    public ColorRect CreateOverlay(Color color)
     {
-        var color = ColorRectOverlay.Color;
+        var overlay = OverlayTemplate.Duplicate() as ColorRect;
+        overlay.SetParent(OverlayTemplate.GetParent());
+        overlay.Color = color;
+        overlay.Show();
+        return overlay;
+    }
+
+    public void SetBlackOverlayAlpha(float alpha)
+    {
+        var color = _overlay_black.Color;
         var new_color = new Color(color.R, color.G, color.B, alpha);
-        ColorRectOverlay.Color = new_color;
+        _overlay_black.Color = new_color;
     }
 
     public void DisplayText(string text)

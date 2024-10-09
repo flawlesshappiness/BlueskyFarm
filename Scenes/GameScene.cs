@@ -85,7 +85,7 @@ public partial class GameScene : Scene
         IEnumerator Cr()
         {
             var view = View.Get<GameView>();
-            view.SetOverlayAlpha(1);
+            view.SetBlackOverlayAlpha(1);
 
             var player = FirstPersonController.Instance;
             player.MovementLock.AddLock("death");
@@ -100,7 +100,7 @@ public partial class GameScene : Scene
 
             Goto("farm");
 
-            view.SetOverlayAlpha(0);
+            view.SetBlackOverlayAlpha(0);
 
             bus.SetMuted(false);
 

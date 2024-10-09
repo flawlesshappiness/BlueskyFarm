@@ -131,29 +131,40 @@ public partial class FirstPersonController : CharacterBody3D
         if (!IsInstanceValid(_look_at_target)) return;
 
         var target_position = _look_at_target.GlobalPosition;
-        var target_distance = GlobalPosition.DistanceTo(target_position);
 
-        var y_position = target_position.Set(y: NeckHorizontal.GlobalPosition.Y);
-        var y_dir = y_position.DirectionTo(NeckHorizontal.GlobalPosition);
-        var y_angle = Mathf.RadToDeg(NeckHorizontal.GlobalBasis.Z.SignedAngleTo(y_dir, Vector3.Up));
-        var y_angle_lerp = Mathf.Lerp(0, y_angle, _look_at_speed * GameTime.DeltaTime);
-        if (Mathf.Abs(y_angle) > 1f)
+        var hor_angle = GetHorizontalAngleToPoint(target_position);
+        var hor_angle_lerp = Mathf.Lerp(0, hor_angle, _look_at_speed * GameTime.DeltaTime);
+        if (Mathf.Abs(hor_angle) > 1f)
         {
-            NeckHorizontal.RotateY(y_angle_lerp);
+            NeckHorizontal.RotateY(hor_angle_lerp);
         }
 
-        /* UNFINISHED
-        var x_position = (Camera.GlobalBasis.Z * target_distance).Set(y: target_position.Y);
-        var x_dir = Camera.GlobalPosition.DirectionTo(x_position);
-        var x_angle = Mathf.RadToDeg(Camera.GlobalBasis.Z.SignedAngleTo(x_dir, Camera.GlobalBasis.X));
-        var x_angle_lerp = Mathf.Lerp(0, x_angle, _look_at_speed * GameTime.DeltaTime);
-        if (Mathf.Abs(x_angle) > 5f)
+        var ver_angle = GetVerticalAngleToPoint(target_position);
+        var ver_angle_lerp = Mathf.Lerp(0, ver_angle, _look_at_speed * GameTime.DeltaTime);
+        if (Mathf.Abs(ver_angle) > 5f)
         {
-            Camera.RotateX(x_angle_lerp);
+            Camera.RotateX(ver_angle_lerp);
         }
+    }
 
-        Debug.Log(x_angle);
-        */
+    public float GetHorizontalAngleToPoint(Vector3 point)
+    {
+        var dir = NeckHorizontal.GlobalPosition.Set(y: point.Y) - point;
+        var rad = NeckHorizontal.GlobalBasis.Z.SignedAngleTo(dir, Vector3.Up);
+        var deg = Mathf.RadToDeg(rad);
+        return deg;
+    }
+
+    public float GetVerticalAngleToPoint(Vector3 point)
+    {
+        var dist = Camera.GlobalPosition.Set(y: point.Y).DistanceTo(point);
+        var new_point = Camera.GlobalPosition.Set(y: point.Y) - NeckHorizontal.GlobalBasis.Z.Normalized() * dist;
+        var dir_to_new_point = new_point - Camera.GlobalPosition;
+        var dir_forward = -Camera.GlobalBasis.Z;
+        var dir_right = Camera.GlobalBasis.X;
+        var rad = dir_forward.SignedAngleTo(dir_to_new_point, dir_right);
+        var deg = Mathf.RadToDeg(rad);
+        return deg;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -315,6 +326,14 @@ public partial class FirstPersonController : CharacterBody3D
     {
         _look_at_target = target;
         _look_at_speed = speed;
+    }
+
+    public void StopLookingAt(Node3D target)
+    {
+        if (_look_at_target == target)
+        {
+            StopLookingAt();
+        }
     }
 
     public void StopLookingAt()

@@ -5,6 +5,9 @@ using System.Linq;
 
 public partial class BarrelMimicFlowerEnemy : NavEnemy
 {
+    [Export]
+    public Color OverlayColor;
+
     [NodeType]
     public AnimationPlayer AnimationPlayer;
 
@@ -23,6 +26,8 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     private BasementRoomElement _current_room;
     private BasementRoomElement _last_player_room;
 
+    private ColorRect _overlay;
+
     public override void _Ready()
     {
         base._Ready();
@@ -30,12 +35,14 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         InitializeTouchable();
         InitializePosition();
         RegisterDebugActions();
+
+        _overlay = GameView.Instance.CreateOverlay(OverlayColor.SetA(0));
     }
 
-    public override void _Process(double delta)
+    public override void _ExitTree()
     {
-        base._Process(delta);
-        Debug.Log(DistanceToPlayer);
+        _overlay.QueueFree();
+        base._ExitTree();
     }
 
     private void InitializeAnimations()
@@ -63,6 +70,8 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
     private void InitializePosition()
     {
+        if (BasementController.Instance.CurrentBasement == null) return;
+
         GlobalPosition = new Vector3(0, -20, 0);
         SetState(State.Teleporting);
     }
@@ -93,13 +102,14 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
     private bool PlayerCanSeeMe()
     {
-        return false;
+        return true;
     }
 
     private void SetState(State state)
     {
+        if (BasementController.Instance.CurrentBasement == null) return;
+
         _state = state;
-        Debug.LogMethod(state);
 
         var enumerator = state switch
         {
@@ -112,7 +122,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         StartCoroutine(enumerator, "state");
     }
 
-    IEnumerator StateCr_Waiting()
+    private IEnumerator StateCr_Waiting()
     {
         _param_close.Trigger();
         Touchable.SetEnabled(true);
@@ -129,20 +139,56 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         }
     }
 
-    IEnumerator StateCr_Attacking()
+    private IEnumerator StateCr_Attacking()
     {
         _param_touched.Trigger();
+        Touchable.SetEnabled(false);
+        Player.StartLookingAt(this, 0.01f);
+        AnimateAttackOverlay();
         yield return null;
+    }
+
+    private void AnimateAttackOverlay()
+    {
+        var animation_length = AnimationPlayer.GetAnimation("Armature|closed_to_open").Length;
+        var delay = animation_length * 0.4f;
+        var duration = animation_length - delay;
+        var a_start = 0f;
+        var a_end = 0.5f;
+
+        StartCoroutine(Cr, "overlay");
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(delay);
+
+            var time_start = GameTime.Time;
+            var time_end = time_start + duration;
+            while (GameTime.Time < time_end)
+            {
+                var t = (GameTime.Time - time_start) / duration;
+                var a = Mathf.Lerp(a_start, a_end, t);
+                _overlay.Color = _overlay.Color.SetA(a);
+                yield return null;
+            }
+        }
     }
 
     public void CallMethod_AttackFinished()
     {
+        Player.StopLookingAt(this);
         TeleportPlayer();
         SetState(State.Teleporting);
     }
 
     private void TeleportPlayer()
     {
+        if (!PlayerCanSeeMe())
+        {
+            return;
+        }
+
+        _overlay.Color = _overlay.Color.SetA(1);
+
         var basement = BasementController.Instance.CurrentBasement;
         var room = basement.Grid.Elements
             .Where(x => IsValidRoomElement(x) && x != _current_room && !x.Info.IsStartRoom)
@@ -155,6 +201,12 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         var nav_position = NavigationServer3D.MapGetClosestPoint(Player.Agent.GetNavigationMap(), position);
         _last_player_room = room;
         Player.GlobalPosition = nav_position;
+
+        StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
+        {
+            var a = Mathf.Lerp(1f, 0f, f);
+            _overlay.Color = _overlay.Color.SetA(a);
+        }), "overlay");
     }
 
     private bool IsValidRoomElement(BasementRoomElement element)
@@ -163,7 +215,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         return valid_area;
     }
 
-    IEnumerator StateCr_Teleporting()
+    private IEnumerator StateCr_Teleporting()
     {
         var basement = BasementController.Instance.CurrentBasement;
         var room = basement.Grid.Elements
@@ -175,15 +227,40 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         var x = rnd.RandfRange(-d, d);
         var z = rnd.RandfRange(-d, d);
         var position = room.Room.GlobalPosition + new Vector3(x, 0, z);
-        var nav_position = NavigationServer3D.MapGetClosestPoint(Agent.GetNavigationMap(), position) - new Vector3(0, Agent.PathHeightOffset, 0); ;
-
-        // CHECK FOR WALLS
+        var nav_position = NavigationServer3D.MapGetClosestPoint(Agent.GetNavigationMap(), position) - new Vector3(0, Agent.PathHeightOffset, 0);
 
         GlobalPosition = nav_position;
         _current_room = room;
 
+        MoveAwayFromWalls();
         SetState(State.Waiting);
 
         yield return null;
+    }
+
+    private void MoveAwayFromWalls()
+    {
+        var dir_right = GetDirectionAwayFromWall(Vector3.Right);
+        var dir_left = GetDirectionAwayFromWall(Vector3.Left);
+        var dir_back = GetDirectionAwayFromWall(Vector3.Back);
+        var dir_forward = GetDirectionAwayFromWall(Vector3.Forward);
+
+        var dir_x = dir_right + dir_left;
+        var dir_z = dir_forward + dir_back;
+        GlobalPosition += dir_x + dir_z;
+    }
+
+    private Vector3 GetDirectionAwayFromWall(Vector3 direction)
+    {
+        var dist = 3f;
+        var start = GlobalPosition.Add(y: 0.5f);
+        var end = start + direction.Normalized() * dist;
+        if (this.TryRaycast(start, end, CollisionMaskHelper.Create(1), out var result))
+        {
+            var move_dir = -direction * (dist - (start - result.Position).Length());
+            return move_dir;
+        }
+
+        return Vector3.Zero;
     }
 }

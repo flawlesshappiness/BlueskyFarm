@@ -130,9 +130,6 @@ alpha_curve = SubResource("CurveTexture_y125m")
 
 [node name="Basement_SteamPuzzle" instance=ExtResource("1_b0ede")]
 
-[node name="Closed" parent="North" index="0"]
-visible = false
-
 [node name="Wall_Basement_001" parent="North/Closed" index="0" instance=ExtResource("2_5vkft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
@@ -153,8 +150,8 @@ unit_size = 20.0
 autoplay = true
 max_distance = 6.0
 
-[node name="Closed" parent="East" index="0"]
-visible = false
+[node name="Floor_Basement_001" parent="North/Open" index="4" instance=ExtResource("2_4255b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
 [node name="Wall_Basement_001" parent="East/Closed" index="0" instance=ExtResource("2_5vkft")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, 0)
@@ -182,8 +179,8 @@ unit_size = 20.0
 autoplay = true
 max_distance = 6.0
 
-[node name="Closed" parent="South" index="0"]
-visible = false
+[node name="Floor_Basement_012" parent="East/Open" index="6" instance=ExtResource("2_4255b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="Wall_Basement_001" parent="South/Closed" index="0" instance=ExtResource("2_5vkft")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 10)
@@ -220,8 +217,8 @@ unit_size = 20.0
 autoplay = true
 max_distance = 6.0
 
-[node name="Closed" parent="West" index="0"]
-visible = false
+[node name="Floor_Basement_016" parent="South/Open" index="9" instance=ExtResource("2_4255b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
 [node name="Wall_Basement_001" parent="West/Closed" index="0" instance=ExtResource("2_5vkft")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 0)
@@ -251,6 +248,9 @@ volume_db = 20.0
 unit_size = 20.0
 autoplay = true
 max_distance = 6.0
+
+[node name="Floor_Basement_014" parent="West/Open" index="7" instance=ExtResource("2_4255b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
 [node name="Wall_Basement_003" parent="Walls" index="0" instance=ExtResource("2_5vkft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
@@ -528,120 +528,79 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 6)
 metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_001" parent="Floor" index="0" instance=ExtResource("2_4255b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-metadata/_edit_lock_ = true
-
-[node name="Floor_Basement_002" parent="Floor" index="1" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_002" parent="Floor" index="0" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_003" parent="Floor" index="2" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_003" parent="Floor" index="1" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_004" parent="Floor" index="3" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_004" parent="Floor" index="2" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_024" parent="Floor" index="4" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_024" parent="Floor" index="3" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_025" parent="Floor" index="5" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_025" parent="Floor" index="4" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_026" parent="Floor" index="6" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_026" parent="Floor" index="5" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_005" parent="Floor" index="7" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_005" parent="Floor" index="6" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_006" parent="Floor" index="8" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_006" parent="Floor" index="7" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_020" parent="Floor" index="9" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_020" parent="Floor" index="8" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_021" parent="Floor" index="10" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_021" parent="Floor" index="9" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_022" parent="Floor" index="11" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_022" parent="Floor" index="10" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_007" parent="Floor" index="12" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_007" parent="Floor" index="11" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_015" parent="Floor" index="13" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_015" parent="Floor" index="12" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_016" parent="Floor" index="14" instance=ExtResource("2_4255b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-metadata/_edit_lock_ = true
-
-[node name="Floor_Basement_008" parent="Floor" index="15" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_008" parent="Floor" index="13" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_027" parent="Floor" index="16" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_027" parent="Floor" index="14" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_028" parent="Floor" index="17" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_028" parent="Floor" index="15" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_029" parent="Floor" index="18" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_029" parent="Floor" index="16" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_009" parent="Floor" index="19" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_009" parent="Floor" index="17" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_023" parent="Floor" index="20" instance=ExtResource("2_4255b")]
-metadata/_edit_lock_ = true
+[node name="Floor_Basement_023" parent="Floor" index="18" instance=ExtResource("2_4255b")]
 
-[node name="Floor_Basement_011" parent="Floor" index="21" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_011" parent="Floor" index="19" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_012" parent="Floor" index="22" instance=ExtResource("2_4255b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-metadata/_edit_lock_ = true
-
-[node name="Floor_Basement_013" parent="Floor" index="23" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_013" parent="Floor" index="20" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_014" parent="Floor" index="24" instance=ExtResource("2_4255b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-metadata/_edit_lock_ = true
-
-[node name="Floor_Basement_010" parent="Floor" index="25" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_010" parent="Floor" index="21" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_017" parent="Floor" index="26" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_017" parent="Floor" index="22" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_018" parent="Floor" index="27" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_018" parent="Floor" index="23" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
-metadata/_edit_lock_ = true
 
-[node name="Floor_Basement_019" parent="Floor" index="28" instance=ExtResource("2_4255b")]
+[node name="Floor_Basement_019" parent="Floor" index="24" instance=ExtResource("2_4255b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
-metadata/_edit_lock_ = true
 
 [node name="Ceiling" parent="." index="6"]
 visible = false

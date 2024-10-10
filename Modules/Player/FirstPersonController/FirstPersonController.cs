@@ -90,7 +90,8 @@ public partial class FirstPersonController : CharacterBody3D
     {
         var player = FirstPersonController.Instance;
         var agent = player.Agent;
-        var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), player.GlobalPosition) - new Vector3(0, agent.PathHeightOffset, 0);
+        var target_position = player.GlobalPosition + player.Camera.GlobalBasis.Z * 1f;
+        var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), target_position) - new Vector3(0, agent.PathHeightOffset, 0);
         player.GlobalPosition = nav_position;
         view.SetVisible(false);
     }

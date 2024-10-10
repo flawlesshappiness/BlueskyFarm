@@ -83,15 +83,8 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Close pose",
-            Action = v => { _param_close.Trigger(); v.SetVisible(false); }
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Debug touched",
-            Action = v => { _param_touched.Trigger(); v.SetVisible(false); }
+            Text = "Teleport player",
+            Action = v => { Player.GlobalPosition = GlobalPosition; v.SetVisible(false); }
         });
     }
 
@@ -102,7 +95,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
     private bool PlayerCanSeeMe()
     {
-        return true;
+        return GetLookAtT() > 0.5f;
     }
 
     private void SetState(State state)
@@ -163,14 +156,26 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
             var time_start = GameTime.Time;
             var time_end = time_start + duration;
+            var curve = Curves.EaseInQuad;
             while (GameTime.Time < time_end)
             {
-                var t = (GameTime.Time - time_start) / duration;
+                var t_look_at = GetLookAtT();
+                var t_time = (GameTime.Time - time_start) / duration;
+                var t = curve.Evaluate(t_time * t_look_at);
                 var a = Mathf.Lerp(a_start, a_end, t);
                 _overlay.Color = _overlay.Color.SetA(a);
                 yield return null;
             }
         }
+    }
+
+    private float GetLookAtT()
+    {
+        var hor = Mathf.Abs(Player.GetHorizontalAngleToPoint(GlobalPosition));
+        var ver = Mathf.Abs(Player.GetVerticalAngleToPoint(GlobalPosition));
+        var t_hor = (180f - hor) / 180f;
+        var t_ver = (180f - ver) / 180f;
+        return t_hor * t_ver;
     }
 
     public void CallMethod_AttackFinished()
@@ -184,6 +189,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     {
         if (!PlayerCanSeeMe())
         {
+            FadeOutOverlayFromCurrent();
             return;
         }
 
@@ -202,6 +208,21 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         _last_player_room = room;
         Player.GlobalPosition = nav_position;
 
+        FadeOutOverlayFromFull();
+    }
+
+    private void FadeOutOverlayFromCurrent()
+    {
+        var a_start = _overlay.Color.A;
+        StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
+        {
+            var a = Mathf.Lerp(a_start, 0f, f);
+            _overlay.Color = _overlay.Color.SetA(a);
+        }), "overlay");
+    }
+
+    private void FadeOutOverlayFromFull()
+    {
         StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
         {
             var a = Mathf.Lerp(1f, 0f, f);

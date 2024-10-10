@@ -143,7 +143,7 @@ public partial class FirstPersonController : CharacterBody3D
         var ver_angle_lerp = Mathf.Lerp(0, ver_angle, _look_at_speed * GameTime.DeltaTime);
         if (Mathf.Abs(ver_angle) > 5f)
         {
-            Camera.RotateX(ver_angle_lerp);
+            NeckVertical.RotateX(ver_angle_lerp);
         }
     }
 
@@ -157,11 +157,11 @@ public partial class FirstPersonController : CharacterBody3D
 
     public float GetVerticalAngleToPoint(Vector3 point)
     {
-        var dist = Camera.GlobalPosition.Set(y: point.Y).DistanceTo(point);
-        var new_point = Camera.GlobalPosition.Set(y: point.Y) - NeckHorizontal.GlobalBasis.Z.Normalized() * dist;
-        var dir_to_new_point = new_point - Camera.GlobalPosition;
-        var dir_forward = -Camera.GlobalBasis.Z;
-        var dir_right = Camera.GlobalBasis.X;
+        var dist = NeckVertical.GlobalPosition.Set(y: point.Y).DistanceTo(point);
+        var new_point = NeckVertical.GlobalPosition.Set(y: point.Y) - NeckHorizontal.GlobalBasis.Z.Normalized() * dist;
+        var dir_to_new_point = new_point - NeckVertical.GlobalPosition;
+        var dir_forward = -NeckVertical.GlobalBasis.Z;
+        var dir_right = NeckVertical.GlobalBasis.X;
         var rad = dir_forward.SignedAngleTo(dir_to_new_point, dir_right);
         var deg = Mathf.RadToDeg(rad);
         return deg;

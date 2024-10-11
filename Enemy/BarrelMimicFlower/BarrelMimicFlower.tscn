@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Enemy/BarrelMimicFlower/BarrelMimicFlowerEnemy.cs" id="2_rsxom"]
 [ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_shp25"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_d3q0a"]
-[ext_resource type="AudioStream" uid="uid://yn8uauv37uiy" path="res://Sound/Sounds/sfx_barrelmimic_scare.wav" id="5_7itnf"]
 [ext_resource type="AudioStream" uid="uid://d31soh3em4gln" path="res://Sound/Sounds/sfx_open_container_003.wav" id="6_1fjyo"]
 [ext_resource type="Texture2D" uid="uid://2skmi72bqjse" path="res://Assets/KenneyNL/Particles/scorch_01.png" id="7_3at0n"]
+[ext_resource type="AudioStream" uid="uid://dqicem3j6k0jh" path="res://Sound/Sounds/sfx_barrelmimicflower_charge.wav" id="7_seeuf"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="8_48rw8"]
 [ext_resource type="Texture2D" uid="uid://qk1wt7kqshi" path="res://Assets/KenneyNL/Particles/light_02.png" id="8_scqw2"]
 
@@ -41,6 +41,8 @@ angle_min = -4.99999
 angle_max = 5.00001
 angle_curve = SubResource("CurveTexture_ykkeo")
 gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
 scale_curve = SubResource("CurveTexture_uuqxj")
 scale_over_velocity_max = 40.1
 alpha_curve = SubResource("CurveTexture_h4t4k")
@@ -87,8 +89,8 @@ angle_min = -4.99999
 angle_max = 5.00001
 angle_curve = SubResource("CurveTexture_innd3")
 gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 2.0
+scale_min = 3.0
+scale_max = 3.0
 scale_curve = SubResource("CurveTexture_e4ue8")
 scale_over_velocity_max = 40.1
 alpha_curve = SubResource("CurveTexture_6xdyt")
@@ -163,27 +165,31 @@ MoveSpeed = 0.0
 TurnSpeed = 0.0
 
 [node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0.371391, 0.928477)
 bones/1/position = Vector3(-0.0023067, -5.96046e-10, 0)
+bones/1/rotation = Quaternion(0.656532, -0.262613, 0.262613, 0.656532)
 bones/1/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.672499, 0.218508, 0.218508, 0.672499)
-bones/5/rotation = Quaternion(0.572061, 0.415627, 0.415627, 0.572061)
+bones/3/rotation = Quaternion(0.705551, -0.0468801, 0.452639, 0.543247)
+bones/5/rotation = Quaternion(0.685506, 0.173442, 0.598358, 0.376786)
 bones/5/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.000721766, -0.00219944, 0)
-bones/7/rotation = Quaternion(0.415627, 0.572061, 0.572061, 0.415627)
-bones/9/rotation = Quaternion(0.218508, 0.672499, 0.672498, 0.218508)
-bones/11/rotation = Quaternion(-9.4157e-08, 0.707107, 0.707107, -9.4157e-08)
+bones/7/rotation = Quaternion(0.598358, 0.376786, 0.685506, 0.173442)
+bones/9/rotation = Quaternion(0.452639, 0.543247, 0.705551, -0.0468801)
+bones/11/rotation = Quaternion(0.262613, 0.656532, 0.656532, -0.262613)
 bones/11/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(0.00189307, 0.00134876, 0)
-bones/13/rotation = Quaternion(-0.218508, 0.672498, 0.672499, -0.218508)
+bones/13/rotation = Quaternion(0.04688, 0.705551, 0.543247, -0.452639)
 bones/13/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(0.000732394, 0.00219475, 0)
-bones/15/rotation = Quaternion(-0.415627, 0.572061, 0.572061, -0.415627)
+bones/15/rotation = Quaternion(-0.173442, 0.685506, 0.376786, -0.598358)
 bones/15/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-0.000686109, 0.00221605, 0)
-bones/17/rotation = Quaternion(0.572061, -0.415627, -0.415627, 0.572061)
+bones/17/rotation = Quaternion(0.376786, -0.598358, -0.173441, 0.685506)
 bones/19/position = Vector3(-0.00192616, 0.00131372, 0)
-bones/19/rotation = Quaternion(0.672498, -0.218508, -0.218508, 0.672499)
+bones/19/rotation = Quaternion(0.543247, -0.452639, 0.0468802, 0.705551)
 bones/19/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(0, -5.96046e-10, 0.000348615)
+bones/21/rotation = Quaternion(0.00392832, -0.707096, 0.707096, 0.00392832)
 bones/21/scale = Vector3(1, 1, 1)
 
 [node name="AnimationStateMachine" type="Node" parent="." index="2"]
@@ -206,16 +212,19 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CylinderShape3D_u0t6r")
 
-[node name="sfx_danger" type="AudioStreamPlayer3D" parent="." index="5"]
-stream = ExtResource("5_7itnf")
-
-[node name="sfx_open" type="AudioStreamPlayer3D" parent="." index="6"]
+[node name="sfx_open" type="AudioStreamPlayer3D" parent="." index="5"]
 stream = ExtResource("6_1fjyo")
+bus = &"SFX"
+
+[node name="sfx_charge" type="AudioStreamPlayer3D" parent="." index="6"]
+stream = ExtResource("7_seeuf")
+bus = &"SFX"
 
 [node name="glow_ball" type="Node3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272841, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="ps_glow_ball" type="GPUParticles3D" parent="glow_ball" index="0"]
+emitting = false
 amount = 20
 fixed_fps = 60
 visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
@@ -224,6 +233,7 @@ process_material = SubResource("ParticleProcessMaterial_41eta")
 draw_pass_1 = SubResource("QuadMesh_64fuf")
 
 [node name="ps_glow_ring" type="GPUParticles3D" parent="glow_ball" index="1"]
+emitting = false
 amount = 2
 fixed_fps = 60
 visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
@@ -243,6 +253,6 @@ process_material = SubResource("ParticleProcessMaterial_7snki")
 draw_pass_1 = SubResource("QuadMesh_p5qyv")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="glow_ball" index="3"]
+visible = false
 light_color = Color(1, 0.693333, 0.2, 1)
 shadow_enabled = true
-omni_range = 1.0

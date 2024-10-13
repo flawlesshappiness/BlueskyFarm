@@ -1,0 +1,456 @@
+[gd_scene load_steps=43 format=3 uid="uid://5qa8gpoix8on"]
+
+[ext_resource type="PackedScene" uid="uid://cc4ivoqj1p453" path="res://Assets/FlawLizArt/BarrelMimicFlower/crate_mimic_flower.fbx" id="1_ednjg"]
+[ext_resource type="Script" path="res://Enemy/BarrelMimicFlower/BarrelMimicFlowerEnemy.cs" id="2_gfrs8"]
+[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_e8iit"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_imdec"]
+[ext_resource type="AudioStream" uid="uid://d31soh3em4gln" path="res://Sound/Sounds/sfx_open_container_003.wav" id="5_g4vic"]
+[ext_resource type="AudioStream" uid="uid://dqicem3j6k0jh" path="res://Sound/Sounds/sfx_barrelmimicflower_charge.wav" id="6_rg2up"]
+[ext_resource type="Texture2D" uid="uid://2skmi72bqjse" path="res://Assets/KenneyNL/Particles/scorch_01.png" id="7_ci2rs"]
+[ext_resource type="Texture2D" uid="uid://qk1wt7kqshi" path="res://Assets/KenneyNL/Particles/light_02.png" id="8_p3yb7"]
+[ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="9_kja3w"]
+
+[sub_resource type="Animation" id="Animation_kjkgh"]
+resource_name = "closed_pose"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrateMimic/Skeleton3D:Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrateMimic/Skeleton3D:Front")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -5.33851e-08, 0.707107, 0.707107, -5.33851e-08)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrateMimic/Skeleton3D:Back")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrateMimic/Skeleton3D:Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, 0.5)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrateMimic/Skeleton3D:Right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.5, 0.5, 0.5, 0.5)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0, 0, 0.00918344)
+
+[sub_resource type="Animation" id="Animation_olovs"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrateMimic/Skeleton3D:Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrateMimic/Skeleton3D:Front")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -5.33851e-08, 0.707107, 0.707107, -5.33851e-08)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrateMimic/Skeleton3D:Back")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrateMimic/Skeleton3D:Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, 0.5)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrateMimic/Skeleton3D:Right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.5, 0.5, 0.5, 0.5)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+
+[sub_resource type="Animation" id="Animation_tbv5h"]
+resource_name = "open_pose"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrateMimic/Skeleton3D:Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrateMimic/Skeleton3D:Front")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -7.7095e-09, 0.994773, 0.102115, -7.51032e-08)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrateMimic/Skeleton3D:Back")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.995251, 0, 0, 0.0973397)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrateMimic/Skeleton3D:Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.7037, 0.7037, 0.0693269, -0.0693271)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrateMimic/Skeleton3D:Right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.701573, 0.701574, 0.0882874, 0.0882871)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.707107, 0, 0, 0.707107)
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0, 1.0191e-09, 0.000634649)
+
+[sub_resource type="Animation" id="Animation_fctl8"]
+resource_name = "closed_to_open"
+length = 1.6667
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrateMimic/Skeleton3D:Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.333333, 1, 0, 0, 0, 1.66667, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrateMimic/Skeleton3D:Front")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -5.33851e-08, 0.707107, 0.707107, -5.33851e-08, 0.333333, 1, -5.33851e-08, 0.707107, 0.707107, -5.33851e-08, 0.866667, 1, -7.7095e-09, 0.994773, 0.102115, -7.51032e-08, 1.4, 1, -2.0601e-08, 0.962052, 0.272868, -7.26329e-08, 1.66667, 1, -7.7095e-09, 0.994773, 0.102115, -7.51032e-08)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrateMimic/Skeleton3D:Back")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107, 0.333333, 1, 0.707107, 0, 0, 0.707107, 0.866667, 1, 0.995251, 0, 0, 0.0973397, 1.4, 1, 0.960408, 0, 0, 0.278597, 1.66667, 1, 0.995251, 0, 0, 0.0973397)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrateMimic/Skeleton3D:Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, 0.5, 0.333333, 1, 0.5, -0.5, -0.5, 0.5, 0.866667, 1, -0.7037, 0.7037, 0.0693269, -0.0693271, 1.4, 1, -0.684883, 0.684883, 0.175886, -0.175886, 1.66667, 1, -0.7037, 0.7037, 0.0693269, -0.0693271)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrateMimic/Skeleton3D:Right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.5, 0.5, 0.5, 0.5, 0.333333, 1, 0.5, 0.5, 0.5, 0.5, 0.866667, 1, 0.701573, 0.701574, 0.0882874, 0.0882871, 1.4, 1, 0.681605, 0.681605, 0.188187, 0.188187, 1.66667, 1, 0.701573, 0.701574, 0.0882874, 0.0882871)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107, 0.166667, 1, -0.707107, 0, 0, 0.707107, 1.66667, 1, -0.707107, 0, 0, 0.707107)
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrateMimic/Skeleton3D:Top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0, 0, 0.00918344, 0.166667, 1, 0, -8.97492e-11, 0.00993631, 0.333333, 1, 0, -8.97492e-11, 0.00993631, 0.5, 1, 0, 1.0191e-09, 0.000634649, 1.66667, 1, 0, 1.0191e-09, 0.000634649)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxeby"]
+_data = {
+"RESET": SubResource("Animation_olovs"),
+"closed_pose": SubResource("Animation_kjkgh"),
+"closed_to_open": SubResource("Animation_fctl8"),
+"open_pose": SubResource("Animation_tbv5h")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d55u"]
+
+[sub_resource type="Curve" id="Curve_feyns"]
+_data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.49697, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.45369, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h4t4k"]
+curve = SubResource("Curve_feyns")
+
+[sub_resource type="Curve" id="Curve_0paen"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ykkeo"]
+curve = SubResource("Curve_0paen")
+
+[sub_resource type="Curve" id="Curve_ijky5"]
+_data = [Vector2(0, 0.1), 0.0, 0.997253, 0, 0, Vector2(1, 1), 1.00038, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uuqxj"]
+curve = SubResource("Curve_ijky5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rudox"]
+angle_min = -4.99999
+angle_max = 5.00001
+angle_curve = SubResource("CurveTexture_ykkeo")
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_uuqxj")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_h4t4k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgnrm"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_ci2rs")
+emission_enabled = true
+emission = Color(1, 0.867833, 0.39, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_lc26b"]
+material = SubResource("StandardMaterial3D_mgnrm")
+
+[sub_resource type="Curve" id="Curve_ke5pa"]
+_data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.0787879, 1), -3.2967, -3.2967, 0, 0, Vector2(1, 0), -0.29603, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6xdyt"]
+curve = SubResource("Curve_ke5pa")
+
+[sub_resource type="Curve" id="Curve_1c0xm"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_innd3"]
+curve = SubResource("Curve_1c0xm")
+
+[sub_resource type="Curve" id="Curve_rw6xt"]
+_data = [Vector2(0, 0.1), 0.0, 0.997253, 0, 0, Vector2(1, 1), 1.00038, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e4ue8"]
+curve = SubResource("Curve_rw6xt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_krar0"]
+angle_min = -4.99999
+angle_max = 5.00001
+angle_curve = SubResource("CurveTexture_innd3")
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_e4ue8")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_6xdyt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qd6o3"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_p3yb7")
+emission_enabled = true
+emission = Color(1, 0.891667, 0.5, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_cqvhn"]
+material = SubResource("StandardMaterial3D_qd6o3")
+
+[sub_resource type="Curve" id="Curve_uhjfd"]
+_data = [Vector2(0, 0), 0.0, 4.10989, 0, 0, Vector2(0.7, 1), 5.46376e-07, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xu72f"]
+curve = SubResource("Curve_uhjfd")
+
+[sub_resource type="Curve" id="Curve_msf1k"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1m53s"]
+curve = SubResource("Curve_msf1k")
+
+[sub_resource type="Curve" id="Curve_6if3n"]
+_data = [Vector2(0, 0.1), 0.0, 2.49529, 0, 0, Vector2(0.8, 1), 4.52173e-07, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_27b82"]
+curve = SubResource("Curve_6if3n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kh6vv"]
+angle_min = -4.99999
+angle_max = 5.00001
+angle_curve = SubResource("CurveTexture_1m53s")
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_27b82")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_xu72f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfvqi"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_kja3w")
+emission_enabled = true
+emission = Color(1, 0.891667, 0.5, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_27jcf"]
+material = SubResource("StandardMaterial3D_bfvqi")
+
+[node name="CrateMimicFlower" instance=ExtResource("1_ednjg")]
+script = ExtResource("2_gfrs8")
+OverlayColor = Color(1, 0.862745, 0.568627, 1)
+MoveSpeed = 0.0
+TurnSpeed = 0.0
+
+[node name="Skeleton3D" parent="CrateMimic" index="0"]
+bones/1/position = Vector3(0, 0.00427775, 0.00204037)
+bones/1/rotation = Quaternion(-5.33851e-08, 0.707107, 0.707107, -5.33851e-08)
+bones/1/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(0, -0.00427775, 0.00204037)
+bones/3/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-0.00427775, -2.77556e-17, 0.00204037)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.00427775, -2.77556e-17, 0.00204037)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(0, 1.0191e-09, 0.000634649)
+bones/9/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_lxeby")
+}
+
+[node name="AnimationStateMachine" type="Node" parent="." index="2"]
+script = ExtResource("3_e8iit")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+path_height_offset = 0.5
+path_postprocessing = 1
+
+[node name="Touchable" type="Node3D" parent="." index="4"]
+script = ExtResource("4_imdec")
+OverrideInitialCollisionMode = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Touchable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98532, 0)
+collision_layer = 7
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_4d55u")
+
+[node name="sfx_open" type="AudioStreamPlayer3D" parent="." index="5"]
+stream = ExtResource("5_g4vic")
+bus = &"SFX"
+
+[node name="sfx_charge" type="AudioStreamPlayer3D" parent="." index="6"]
+stream = ExtResource("6_rg2up")
+bus = &"SFX"
+
+[node name="glow_ball" type="Node3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ps_glow_ball" type="GPUParticles3D" parent="glow_ball" index="0"]
+emitting = false
+amount = 20
+fixed_fps = 60
+visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_rudox")
+draw_pass_1 = SubResource("QuadMesh_lc26b")
+
+[node name="ps_glow_ring" type="GPUParticles3D" parent="glow_ball" index="1"]
+emitting = false
+amount = 2
+fixed_fps = 60
+visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_krar0")
+draw_pass_1 = SubResource("QuadMesh_cqvhn")
+
+[node name="ps_glow_big" type="GPUParticles3D" parent="glow_ball" index="2"]
+emitting = false
+amount = 1
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_kh6vv")
+draw_pass_1 = SubResource("QuadMesh_27jcf")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="glow_ball" index="3"]
+visible = false
+light_color = Color(1, 0.693333, 0.2, 1)
+shadow_enabled = true

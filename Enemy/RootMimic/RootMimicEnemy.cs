@@ -222,12 +222,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void Spawn()
     {
-        var basement = BasementController.Instance.CurrentBasement;
-        _current_room = basement.Grid.Elements
-            .Where(x => IsValidRoomElement(x))
-            .OrderByDescending(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition))
-            .FirstOrDefault();
-
+        _current_room = GetFurthestRoomElementToPlayer(AreaNames.Basement);
         var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
         GlobalPosition = spawn.GlobalPosition;
 
@@ -270,11 +265,39 @@ public partial class RootMimicEnemy : NavEnemy
     {
         _ignore_move_pause = false;
 
+        var move_to_room_center = false;
         var time_wait = GameTime.Time;
         while (true)
         {
+            if (move_to_room_center)
+            {
+                if (DistanceToPlayer < DIST_WAIT_NEAR * 0.75f || Agent.IsNavigationFinished())
+                {
+                    SetState(State.Waiting);
+                    break;
+                }
+
+                yield return null;
+                continue;
+            }
+
             if (DistanceToPlayer < DIST_WAIT_NEAR)
             {
+                var closest_room = GetClosestRoomElements(AreaNames.Basement)
+                    .Take(2)
+                    .OrderByDescending(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition)) // Get room furthest from the player
+                    .FirstOrDefault();
+
+                if (GlobalPosition.DistanceTo(closest_room.Room.GlobalPosition) > BasementRoom.ROOM_SIZE * 0.5f)
+                {
+                    Debug.Log("MOVE TO ROOM CENTER");
+                    _current_room = closest_room;
+                    Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
+                    move_to_room_center = true;
+                    yield return null;
+                    continue;
+                }
+
                 SetState(State.Waiting);
                 break;
             }
@@ -283,11 +306,7 @@ public partial class RootMimicEnemy : NavEnemy
             {
                 if (_rng.RandfRange(0, 1) < CHANCE_WANDER)
                 {
-                    _current_room = _current_room.Connections
-                        .Where(x => IsValidRoomElement(x))
-                        .OrderBy(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
-                        .FirstOrDefault();
-
+                    _current_room = GetClosestRoomElementToPlayer(AreaNames.Basement);
                     Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
                 }
 
@@ -364,14 +383,8 @@ public partial class RootMimicEnemy : NavEnemy
     private IEnumerator StateCr_Fleeing()
     {
         _ignore_move_pause = true;
-
-        _current_room = RoomElements
-            .Where(x => IsValidRoomElement(x))
-            .OrderByDescending(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
-            .FirstOrDefault();
-
+        _current_room = GetFurthestRoomElementToPlayer(AreaNames.Basement);
         Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
-
         SfxThreat.Play();
 
         while (true)
@@ -544,9 +557,9 @@ public partial class RootMimicEnemy : NavEnemy
 
     private Vector3 GetRandomPositionInRoom(BasementRoom room)
     {
-        var room_size = BasementRoom.SECTION_COUNT * BasementRoom.SECTION_SIZE;
+        var room_size = BasementRoom.ROOM_SIZE;
         var min = room_size * 0.2f;
-        var max = room_size * 0.8f;
+        var max = room_size * 0.5f;
         var x = _rng.RandfRange(min, max);
         var z = _rng.RandfRange(min, max);
         return room.GlobalPosition + new Vector3(x, 0, z);

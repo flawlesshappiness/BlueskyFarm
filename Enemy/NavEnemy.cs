@@ -1,4 +1,7 @@
 using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class NavEnemy : Enemy
 {
@@ -63,5 +66,42 @@ public partial class NavEnemy : Enemy
     protected void StopNavigation()
     {
         Agent.TargetPosition = GlobalPosition;
+    }
+
+    public BasementRoomElement GetClosestRoomElementToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
+    {
+        return GetClosestRoomElementsToPlayer(area, validate)
+            .FirstOrDefault();
+    }
+
+    public IEnumerable<BasementRoomElement> GetClosestRoomElementsToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
+    {
+        return RoomElements
+            .Where(x => string.IsNullOrEmpty(area) || x.AreaName == area)
+            .Where(x => validate == null || validate.Invoke(x))
+            .OrderBy(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition));
+    }
+
+    public BasementRoomElement GetFurthestRoomElementToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
+    {
+        return RoomElements
+            .Where(x => string.IsNullOrEmpty(area) || x.AreaName == area)
+            .Where(x => validate == null || validate.Invoke(x))
+            .OrderByDescending(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition))
+            .FirstOrDefault();
+    }
+
+    public IEnumerable<BasementRoomElement> GetClosestRoomElements(string area = null, Func<BasementRoomElement, bool> validate = null)
+    {
+        return RoomElements
+            .Where(x => string.IsNullOrEmpty(area) || x.AreaName == area)
+            .Where(x => validate == null || validate.Invoke(x))
+            .OrderBy(x => GlobalPosition.DistanceTo(x.Room.GlobalPosition));
+    }
+
+    public BasementRoomElement GetClosestRoomElement(string area = null, Func<BasementRoomElement, bool> validate = null)
+    {
+        return GetClosestRoomElements(area, validate)
+            .FirstOrDefault();
     }
 }

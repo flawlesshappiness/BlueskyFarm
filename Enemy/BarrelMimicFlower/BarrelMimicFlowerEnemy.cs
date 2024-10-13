@@ -33,7 +33,6 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     private State _state;
 
     private BasementRoomElement _current_room;
-    private BasementRoomElement _last_player_room;
 
     private ColorRect _overlay;
 
@@ -226,7 +225,6 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         var z = rnd.RandfRange(-d, d);
         var position = room.Room.GlobalPosition + new Vector3(x, 0, z);
         var nav_position = NavigationServer3D.MapGetClosestPoint(Player.Agent.GetNavigationMap(), position);
-        _last_player_room = room;
         Player.GlobalPosition = nav_position;
 
         FadeOutOverlayFromFull();
@@ -260,10 +258,8 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     private IEnumerator StateCr_Teleporting()
     {
         var basement = BasementController.Instance.CurrentBasement;
-        var room = basement.Grid.Elements
-            .Where(x => IsValidRoomElement(x) && x != _current_room && x != _last_player_room && !x.Info.IsStartRoom)
-            .OrderBy(x => x.Room.GlobalPosition.DistanceTo(PlayerPosition))
-            .FirstOrDefault();
+        var player_room = GetClosestRoomElementToPlayer(AreaNames.Basement);
+        var room = GetClosestRoomElementsToPlayer(AreaNames.Basement, x => x != player_room).FirstOrDefault();
         var rnd = new RandomNumberGenerator();
         var d = 8;
         var x = rnd.RandfRange(-d, d);

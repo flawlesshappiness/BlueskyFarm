@@ -6,6 +6,15 @@ using System.Linq;
 public partial class BarrelMimicFlowerEnemy : NavEnemy
 {
     [Export]
+    public string animation_closed;
+
+    [Export]
+    public string animation_open;
+
+    [Export]
+    public string animation_closed_to_open;
+
+    [Export]
     public Color OverlayColor;
 
     [NodeType]
@@ -47,9 +56,9 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
     private void InitializeAnimations()
     {
-        var pose_closed = StateMachine.CreateAnimation("Armature|closed_pose", false);
-        var pose_open = StateMachine.CreateAnimation("Armature|open_pose", false);
-        var closed_to_open = StateMachine.CreateAnimation("Armature|closed_to_open", false);
+        var pose_closed = StateMachine.CreateAnimation(animation_closed, false);
+        var pose_open = StateMachine.CreateAnimation(animation_open, false);
+        var closed_to_open = StateMachine.CreateAnimation(animation_closed_to_open, false);
 
         _param_close = StateMachine.CreateParameter("close");
         _param_touched = StateMachine.CreateParameter("touched");
@@ -143,7 +152,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
     private void AnimateAttackOverlay()
     {
-        var animation_length = AnimationPlayer.GetAnimation("Armature|closed_to_open").Length;
+        var animation_length = AnimationPlayer.GetAnimation(animation_closed_to_open).Length;
         var delay = animation_length * 0.4f;
         var duration = animation_length - delay;
         var a_start = 0f;

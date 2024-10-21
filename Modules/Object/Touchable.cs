@@ -28,4 +28,9 @@ public partial class Touchable : Interactable
     {
         OnTouched?.Invoke();
     }
+
+    public virtual bool HandleCursor()
+    {
+        return false;
+    }
 }

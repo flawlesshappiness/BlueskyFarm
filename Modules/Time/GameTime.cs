@@ -12,4 +12,9 @@ public partial class GameTime : Node
         DeltaTime = Convert.ToSingle(delta);
         Time += Scene.PauseLock.IsFree ? DeltaTime : 0;
     }
+
+    public static float T(float start, float duration)
+    {
+        return (Time - start) / duration;
+    }
 }

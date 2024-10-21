@@ -1,8 +1,6 @@
-using System;
-
 public class PlantAreaData
 {
-    public Guid ItemId { get; set; }
-    public string ItemInfoPath { get; set; }
+    public string Id { get; set; }
+    public string PlantInfoPath { get; set; }
     public float TimeLeft { get; set; }
 }

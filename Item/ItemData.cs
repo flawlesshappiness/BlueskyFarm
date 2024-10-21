@@ -12,4 +12,8 @@ public class ItemData
     public float X_Rotation { get; set; }
     public float Y_Rotation { get; set; }
     public float Z_Rotation { get; set; }
+    public float Scale { get; set; } = 1f;
+
+    // Plant
+    public bool PlantIsHuge { get; set; }
 }

@@ -251,13 +251,21 @@ public partial class FirstPersonController : CharacterBody3D
         var touchable = interactable as Touchable;
         if (!IsInstanceValid(touchable)) return false;
 
-        Cursor.Show(new CursorSettings
+        if (touchable.HandleCursor())
         {
-            Name = "Touch",
-            OverrideTexture = interactable.OverrideCursorTexture,
-            Text = interactable.InteractableText,
-            Position = interactable.Body.GlobalPosition
-        });
+            // Handled by touchable
+            return true;
+        }
+        else
+        {
+            Cursor.Show(new CursorSettings
+            {
+                Name = "Touch",
+                OverrideTexture = interactable.OverrideCursorTexture,
+                Text = interactable.InteractableText,
+                Position = interactable.Body.GlobalPosition
+            });
+        }
 
         return true;
     }

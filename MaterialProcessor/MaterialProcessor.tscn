@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlkva26lti2lp"]
+
+[ext_resource type="Script" path="res://MaterialProcessor/MaterialProcessor.cs" id="1_7rjv5"]
+[ext_resource type="PackedScene" uid="uid://dlbnnuo8olhu8" path="res://Assets/FlawLizArt/Pipes/Pipe_Curve_05x05_1m.fbx" id="2_psqxk"]
+[ext_resource type="PackedScene" uid="uid://5vvbqi3a5iq1" path="res://Assets/FlawLizArt/Pipes/Pipe_Claw.fbx" id="3_5xbt7"]
+[ext_resource type="PackedScene" uid="uid://ni11naw6plq7" path="res://Assets/FlawLizArt/Pipes/Pipe_1m.fbx" id="4_l1sd1"]
+[ext_resource type="PackedScene" uid="uid://dmf4nk8qtawdx" path="res://Assets/FlawLizArt/Pipes/Pipe_2m.fbx" id="5_i6gxy"]
+[ext_resource type="PackedScene" uid="uid://bwayhmvpb0lrs" path="res://Basement/Assets/Pipes/Lever.tscn" id="6_sfq22"]
+[ext_resource type="PackedScene" uid="uid://b0c5jgcou2xwa" path="res://Assets/FlawLizArt/Pipes/LeverBox.fbx" id="7_1sv7q"]
+[ext_resource type="PackedScene" uid="uid://c6b7h0qlcne00" path="res://Assets/FlawLizArt/GlowStick/glow_stick.glb" id="8_8pn63"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bupu0"]
+size = Vector3(1.00775, 2.61133, 3.97705)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l57yw"]
+
+[node name="MaterialProcessor" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.859, 0, 0)
+collision_layer = 3
+script = ExtResource("1_7rjv5")
+ColorOff = Color(0.196078, 0.196078, 0.196078, 1)
+ColorOn = Color(0.0862745, 0.729412, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061554, 1.30566, 0.0114746)
+shape = SubResource("BoxShape3D_bupu0")
+
+[node name="InputArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.966659, 2.23815)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InputArea"]
+shape = SubResource("SphereShape3D_l57yw")
+
+[node name="OutputPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.02147)
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="BigPipe" parent="Models" instance=ExtResource("2_psqxk")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 0, -1)
+
+[node name="BigPipe2" parent="Models" instance=ExtResource("2_psqxk")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 1)
+
+[node name="Input" parent="Models" instance=ExtResource("3_5xbt7")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 1.30919)
+
+[node name="Output" parent="Models" instance=ExtResource("4_l1sd1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, -1)
+
+[node name="Root Scene" parent="Models" instance=ExtResource("5_i6gxy")]
+transform = Transform3D(-4.37114e-08, -1, 0, 0, 0, -1, 1, -4.37114e-08, 0, 0, 0.874421, -1)
+
+[node name="Root Scene2" parent="Models" instance=ExtResource("5_i6gxy")]
+transform = Transform3D(-4.37114e-08, -1, 0, 0, 0, -1, 1, -4.37114e-08, 0, 0, 0.874421, 1)
+
+[node name="Lever" parent="." instance=ExtResource("6_sfq22")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.5, 1, -0.992725)
+Type = 1
+
+[node name="Root Scene" parent="Lever" instance=ExtResource("7_1sv7q")]
+transform = Transform3D(0.7, -6.1196e-08, -2.67496e-15, 0, -3.0598e-08, 0.7, -6.1196e-08, -0.7, -3.0598e-08, 8.26033e-09, 0.00394952, 0.0944872)
+
+[node name="Glowsticks" type="Node3D" parent="."]
+
+[node name="glow_stick2" parent="Glowsticks" instance=ExtResource("8_8pn63")]
+transform = Transform3D(-0.198563, 0.11464, -0.0996513, -0.125, -0.216506, 0, -0.0863005, 0.0498256, 0.229281, 0.5, 0.528987, 1.01394)
+
+[node name="glow_stick3" parent="Glowsticks" instance=ExtResource("8_8pn63")]
+transform = Transform3D(-0.213726, 0.123394, 0.0399401, -0.125, -0.216506, -7.15879e-09, 0.0345892, -0.0199701, 0.246789, 0.5, 0.686112, 1.01394)
+
+[node name="glow_stick4" parent="Glowsticks" instance=ExtResource("8_8pn63")]
+transform = Transform3D(-0.209895, 0.123077, -0.0574129, -0.126339, -0.215727, -0.000577161, -0.0498261, 0.0285295, 0.243318, 0.5, 0.843051, 1.01394)
+
+[node name="glow_stick5" parent="Glowsticks" instance=ExtResource("8_8pn63")]
+transform = Transform3D(-0.216441, 0.124962, -0.00615166, -0.125, -0.216506, 0, -0.0053275, 0.00307583, 0.249924, 0.5, 1.01397, 1.01394)
+
+[node name="glow_stick6" parent="Glowsticks" instance=ExtResource("8_8pn63")]
+transform = Transform3D(-0.211286, 0.121986, 0.0545656, -0.125, -0.216506, 0, 0.0472552, -0.0272828, 0.243973, 0.5, 1.23333, 1.01394)
+
+[node name="glow_stick7" parent="Glowsticks" instance=ExtResource("8_8pn63")]
+transform = Transform3D(-0.207587, 0.119851, -0.0710164, -0.125, -0.216506, 0, -0.061502, 0.0355082, 0.239701, 0.5, 1.38524, 1.01394)

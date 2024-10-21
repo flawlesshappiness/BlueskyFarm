@@ -3,43 +3,63 @@ using System;
 using System.Collections;
 using System.Linq;
 
-public partial class PlantArea : Area3D
+public partial class PlantArea : Touchable
 {
-    [NodeName("SeedPosition")]
+    [NodeType]
+    public Area3D Area;
+
+    [NodeName]
     public Node3D SeedPosition;
 
-    public Seed CurrentSeed { get; private set; }
+    [NodeName]
+    public Path3D SeedPath;
 
-    private bool _initialized;
-    private Item _parent_item;
+    [NodeName]
+    public GpuParticles3D ps_dirt_puff;
+
+    public string Id => GetInstanceId().ToString();
+    public Seed CurrentSeed { get; private set; }
 
     public override void _Ready()
     {
         base._Ready();
         NodeScript.FindNodesFromAttribute(this, GetType());
 
-        BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
-
-        _parent_item = this.GetNodeInParents<Item>();
-        _parent_item.OnUpdateData += UpdateData;
+        Area.BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-
-        if (!_initialized)
-        {
-            _initialized = true;
-            Initialize();
-        }
-
         Process_Grow();
     }
 
-    private void Initialize()
+    protected override void Initialize()
     {
+        base.Initialize();
         LoadData();
+    }
+
+    private void LoadData()
+    {
+        var data = GetOrCreateData();
+
+        if (string.IsNullOrEmpty(data.PlantInfoPath)) return;
+
+        if (data.TimeLeft <= 0)
+        {
+            SpawnPlantFromData(data);
+        }
+        else
+        {
+            PlantSeedFromData(data);
+        }
+    }
+
+    private void UpdateData()
+    {
+        if (CurrentSeed == null) return;
+        CurrentSeed.UpdateData();
     }
 
     private void OnBodyEntered(Node3D body)
@@ -55,62 +75,56 @@ public partial class PlantArea : Area3D
         if (plant_info == null) return;
 
         ItemController.Instance.UntrackItem(item);
+        var item_position = item.GlobalPosition;
         item.QueueFree();
 
         var data = new PlantAreaData
         {
-            ItemId = _parent_item.Data.Id,
-            ItemInfoPath = item.Data.PlantInfoPath,
+            Id = Id,
+            PlantInfoPath = item.Data.PlantInfoPath,
             TimeLeft = plant_info.GrowTimeInSeconds
         };
 
-        AddOrSetData(data);
+        SetData(data);
         PlantSeedFromData(data);
+
+        CurrentSeed.SeedItem.GlobalPosition = item_position;
+        AnimateSeedToGround(CurrentSeed.SeedItem);
     }
 
     private PlantAreaData GetOrCreateData()
     {
-        var id = _parent_item.Data.Id;
         var scene_data = Scene.Current.SceneData;
-        var data = scene_data.PlantAreas.FirstOrDefault(x => x.ItemId == id);
+        var data = scene_data.PlantAreas.FirstOrDefault(x => x.Id == Id);
 
         if (data == null)
         {
-            data = new PlantAreaData { ItemId = id };
+            data = new PlantAreaData { Id = Id };
             scene_data.PlantAreas.Add(data);
         }
 
         return data;
     }
 
-    private void RemoveData(Guid id)
+    private void RemoveSeedData(string id)
     {
         var scene_data = Scene.Current.SceneData;
-        var other_data = scene_data.PlantAreas.FirstOrDefault(x => x.ItemId == id);
+        var other_data = scene_data.PlantAreas.FirstOrDefault(x => x.Id == id);
         if (other_data != null)
         {
             scene_data.PlantAreas.Remove(other_data);
         }
     }
 
-    private void AddOrSetData(PlantAreaData data)
+    private void SetData(PlantAreaData data)
     {
-        RemoveData(data.ItemId);
+        RemoveSeedData(data.Id);
         Scene.Current.SceneData.PlantAreas.Add(data);
-    }
-
-    private void LoadData()
-    {
-        var data = GetOrCreateData();
-
-        if (string.IsNullOrEmpty(data.ItemInfoPath)) return;
-
-        PlantSeedFromData(data);
     }
 
     private void PlantSeedFromData(PlantAreaData data)
     {
-        Debug.TraceMethod($"{data.ItemInfoPath}");
+        Debug.TraceMethod($"{data.PlantInfoPath}");
         Debug.Indent++;
 
         if (data == null)
@@ -122,7 +136,7 @@ public partial class PlantArea : Area3D
 
         var seed_item_path = ItemController.Instance.Collection.Seed;
         var seed_item = ItemController.Instance.CreateItem(seed_item_path, track_item: false);
-        ReparentItem(seed_item);
+        SetItemPosition(seed_item);
 
         CurrentSeed = new Seed
         {
@@ -135,14 +149,13 @@ public partial class PlantArea : Area3D
         Debug.Indent--;
     }
 
-    private void ReparentItem(Item item)
+    private void SetItemPosition(Item item)
     {
+        item.GlobalPosition = SeedPosition.GlobalPosition;
+        item.GlobalRotation = SeedPosition.GlobalRotation;
+        item.LockPosition_All();
+        item.LockRotation_All();
         item.SetCollision_None();
-        item.RigidBody.Freeze = true;
-        item.GlobalTransform = SeedPosition.GlobalTransform;
-        item.SetParent(SeedPosition);
-        item.ResetBodyPosition();
-        item.ResetBodyRotation();
     }
 
     private void DespawnSeedModel(Seed seed)
@@ -159,7 +172,7 @@ public partial class PlantArea : Area3D
 
     private void SpawnPlantFromData(PlantAreaData data)
     {
-        Debug.TraceMethod($"{data.ItemInfoPath}");
+        Debug.TraceMethod($"{data.PlantInfoPath}");
         Debug.Indent++;
 
         if (data == null)
@@ -193,45 +206,29 @@ public partial class PlantArea : Area3D
             return;
         }
 
-        seed.PlantItem = ItemController.Instance.CreateItem(seed.Data.ItemInfoPath, track_item: false);
-        ReparentItem(seed.PlantItem);
-        SetupPlantGrabbable(seed);
-        SetPlantFullyGrown(CurrentSeed);
+        seed.PlantItem = ItemController.Instance.CreateItem(seed.Data.PlantInfoPath, track_item: false);
+
+        SetItemPosition(seed.PlantItem);
+        RandomizeScale(seed.PlantItem);
 
         Debug.Indent--;
     }
 
-    private void SetupPlantGrabbable(Seed seed)
+    private void RandomizeScale(Item item)
     {
-        if (seed == null) return;
+        var rng = new RandomNumberGenerator();
+        var is_huge = rng.Randf() < 0.05f;
 
-        var item = seed.PlantItem;
-
-        item.OnGrabbed += OnGrabbedPlant;
-        item.OnAddedToInventory += OnGrabbedPlant;
-
-        void OnGrabbedPlant()
+        if (is_huge)
         {
-            item.OnGrabbed -= OnGrabbedPlant;
-            item.OnAddedToInventory -= OnGrabbedPlant;
-            item.RigidBody.Freeze = false;
-            item.SetCollision_Item();
-            item.SetParent(Scene.Root);
-
-            RemoveData(CurrentSeed.Data.ItemId);
-
-            ItemController.Instance.TrackItem(item);
-
-            CurrentSeed = null;
+            item.Data.Scale = 2.5f;
+            item.Data.PlantIsHuge = true;
         }
-    }
-
-    public void SetPlantFullyGrown(Seed seed)
-    {
-        if (seed == null) return;
-
-        seed.PlantItem.Scale = Vector3.One * 1f;
-        seed.PlantItem.SetCollision_Interactable();
+        else
+        {
+            var scale = rng.RandfRange(0.5f, 1.0f);
+            item.Data.Scale = scale;
+        }
     }
 
     private void Process_Grow()
@@ -239,7 +236,7 @@ public partial class PlantArea : Area3D
         if (CurrentSeed == null) return; // No seed
         if (CurrentSeed.PlantItem != null) return; // Already has plant
 
-        if (GameTime.Time > CurrentSeed.TimeEnd)
+        if (IsSeedFinishedGrowing())
         {
             DespawnSeedModel(CurrentSeed);
             SpawnPlantModel(CurrentSeed);
@@ -253,23 +250,87 @@ public partial class PlantArea : Area3D
         }
     }
 
-    private void UpdateData()
+    private bool IsSeedFinishedGrowing()
     {
-        if (CurrentSeed == null) return;
-        CurrentSeed.UpdateData();
+        return GameTime.Time > CurrentSeed.TimeEnd;
+    }
+
+    public override bool HandleCursor()
+    {
+        if (CurrentSeed == null)
+        {
+            Cursor.Hide();
+            return true;
+        }
+        else if (IsSeedFinishedGrowing())
+        {
+            return false;
+        }
+        else
+        {
+            var seconds = (int)(CurrentSeed.TimeEnd - GameTime.Time);
+            var end_date = new TimeSpan(0, 0, seconds);
+            Cursor.Show(new CursorSettings
+            {
+                Name = "Wait",
+                Position = SeedPosition.GlobalPosition,
+                Text = end_date.ToString("mm':'ss")
+            });
+            return true;
+        }
+    }
+
+    protected override void Touched()
+    {
+        base.Touched();
+        if (CurrentSeed?.PlantItem == null) return;
+
+        var data = CurrentSeed.PlantItem.Data;
+        PopPlantFromDirt(data);
+
+        var rng = new RandomNumberGenerator();
+        var is_double = rng.Randf() < 0.05f;
+        if (is_double)
+        {
+            PopPlantFromDirt(data);
+        }
+
+        PlayDirtPuffParticle();
+        PlayDirtSFX();
+
+        CurrentSeed.PlantItem.QueueFree();
+        RemoveSeedData(CurrentSeed.Data.Id);
+        CurrentSeed = null;
+    }
+
+    private void PopPlantFromDirt(ItemData data)
+    {
+        var rng = new RandomNumberGenerator();
+        var dir_to_player = (FirstPersonController.Instance.Mid.GlobalPosition - SeedPosition.GlobalPosition).Normalized();
+        var velocity = Vector3.Up * 2f + dir_to_player * 3f;
+        var torque = new Vector3().RandomNormalized() * rng.RandfRange(1f, 5f);
+        var item = ItemController.Instance.CreateItem(data.InfoPath);
+
+        item.SetScale(data.Scale);
+        item.GlobalPosition = SeedPosition.GlobalPosition.Add(y: 0.25f);
+        item.RigidBody.LinearVelocity = velocity;
+        item.RigidBody.AngularVelocity = torque;
     }
 
     private void AnimatePlantAppear(Seed seed)
     {
+        PlayDirtPuffParticle();
+
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
             var duration = 0.05f;
             var plant = seed.PlantItem;
-            var scale_A = Vector3.One * 1.1f;
-            var scale_B = Vector3.One * 1.2f;
-            var scale_C = Vector3.One * 0.9f;
-            var scale_D = Vector3.One * 1.0f;
+            var end_scale = plant.Data.Scale;
+            var scale_A = Vector3.One * 1.1f * end_scale;
+            var scale_B = Vector3.One * 1.2f * end_scale;
+            var scale_C = Vector3.One * 0.9f * end_scale;
+            var scale_D = Vector3.One * 1.0f * end_scale;
 
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
@@ -286,5 +347,59 @@ public partial class PlantArea : Area3D
                 plant.Scale = Lerp.Vector(scale_C, scale_D, Curves.EaseInOutQuad.Evaluate(f));
             });
         }
+    }
+
+    private void AnimateSeedToGround(Item item)
+    {
+        var p1 = item.GlobalPosition;
+        var p1_out = Vector3.Up * 0.5f;
+        var p2 = SeedPosition.GlobalPosition;
+        var p2_in = Vector3.Up * 1.5f;
+        var origin = SeedPath.GlobalPosition;
+
+        var curve = new Curve3D();
+        curve.ClearPoints();
+        curve.AddPoint(p1 - origin, @out: p1_out);
+        curve.AddPoint(p2 - origin, @in: p2_in);
+        SeedPath.Curve = curve;
+
+        Coroutine.Start(Cr, this);
+        IEnumerator Cr()
+        {
+            var length = curve.GetBakedLength();
+            var duration = 0.5f;
+            var time_start = GameTime.Time;
+            var time_end = time_start + duration;
+
+            while (GameTime.Time < time_end - 0.1f)
+            {
+                var t = GameTime.T(time_start, duration);
+                var offset = Mathf.Lerp(0f, length, t);
+                var position = curve.SampleBaked(offset);
+                item.GlobalPosition = origin + position;
+                yield return null;
+            }
+
+            item.GlobalPosition = SeedPosition.GlobalPosition;
+
+            PlayDirtPuffParticle();
+            PlayDirtSFX();
+        }
+    }
+
+    private void PlayDirtPuffParticle()
+    {
+        ps_dirt_puff.Emitting = true;
+    }
+
+    private void PlayDirtSFX()
+    {
+        SoundController.Instance.Play("sfx_seed_in_dirt", new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = SeedPosition.GlobalPosition,
+            PitchMin = 0.95f,
+            PitchMax = 1f
+        });
     }
 }

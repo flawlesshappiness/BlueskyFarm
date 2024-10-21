@@ -23,6 +23,12 @@ public static class VectorExtensions
     {
         return new Vector2 { X = v.X, Y = v.Y };
     }
+
+    public static Vector3 RandomNormalized(this Vector3 v)
+    {
+        var rng = new RandomNumberGenerator();
+        return new Vector3(rng.Randf(), rng.Randf(), rng.Randf()).Normalized();
+    }
     #endregion
 
     #region VECTOR2

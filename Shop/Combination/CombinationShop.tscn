@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmns0vbr7ck4f"]
+
+[ext_resource type="Script" path="res://Shop/Combination/CombinationShop.cs" id="1_roxpu"]
+[ext_resource type="PackedScene" uid="uid://cx4n62cprybbg" path="res://Shop/Combination/Prefabs/CombinationPipe.tscn" id="2_xgkd6"]
+[ext_resource type="PackedScene" uid="uid://bwayhmvpb0lrs" path="res://Basement/Assets/Pipes/Lever.tscn" id="3_hp6cg"]
+[ext_resource type="PackedScene" uid="uid://b0c5jgcou2xwa" path="res://Assets/FlawLizArt/Pipes/LeverBox.fbx" id="4_fasv2"]
+
+[node name="CombinationShop" type="Node3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_roxpu")
+
+[node name="Crafting" type="Node3D" parent="."]
+
+[node name="Pipe1" parent="Crafting" instance=ExtResource("2_xgkd6")]
+transform = Transform3D(0.321935, 0, 0.946762, 0, 1, 0, -0.946762, 0, 0.321935, 1.84843, 0, 0.74433)
+
+[node name="Pipe2" parent="Crafting" instance=ExtResource("2_xgkd6")]
+transform = Transform3D(0.897104, 0, 0.441819, 0, 1, 0, -0.441819, 0, 0.897104, 0.750432, 0, 1.84779)
+
+[node name="Pipe3" parent="Crafting" instance=ExtResource("2_xgkd6")]
+transform = Transform3D(0.907785, 0, -0.419436, 0, 1, 0, 0.419436, 0, 0.907785, -0.750907, 0, 1.83837)
+
+[node name="Pipe4" parent="Crafting" instance=ExtResource("2_xgkd6")]
+transform = Transform3D(0.263335, 0, -0.964704, 0, 1, 0, 0.964704, 0, 0.263335, -1.84664, 0, 0.738538)
+
+[node name="Lever" parent="." instance=ExtResource("3_hp6cg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.86771e-07, 1, 2.13641)
+Type = 1
+
+[node name="Root Scene" parent="Lever" instance=ExtResource("4_fasv2")]
+transform = Transform3D(0.7, -6.1196e-08, -2.67496e-15, 0, -3.0598e-08, 0.7, -6.1196e-08, -0.7, -3.0598e-08, 8.26033e-09, 0.00394952, 0.0944872)

@@ -3,12 +3,15 @@ using System;
 
 public partial class Item : Grabbable
 {
+    [NodeName]
+    public Node3D ScaleNode;
+
     public ItemInfo Info { get; set; }
     public ItemData Data { get; set; }
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
     public new Vector3 GlobalPosition { get => RigidBody.GlobalPosition; set => RigidBody.GlobalPosition = value; }
     public new Vector3 GlobalRotation { get => RigidBody.GlobalRotation; set => RigidBody.GlobalRotation = value; }
-    public new Vector3 Scale { get => RigidBody.Scale; set => RigidBody.Scale = value; }
+    public new Vector3 Scale { get => ScaleNode.Scale; set => ScaleNode.Scale = value; }
 
     public event Action OnUpdateData;
     public event Action OnAddedToInventory;
@@ -33,7 +36,11 @@ public partial class Item : Grabbable
 
         if (RigidBody.GlobalPosition.Y < -50)
         {
-            FarmBounds.Instance.ThrowObject(RigidBody, FirstPersonController.Instance.GlobalPosition);
+            var bounds = FarmBounds.Instance;
+            if (bounds != null)
+            {
+                bounds.ThrowObject(RigidBody, FirstPersonController.Instance.GlobalPosition);
+            }
         }
     }
 
@@ -56,6 +63,7 @@ public partial class Item : Grabbable
     {
         RigidBody.GlobalPosition = new Vector3(Data.X_Position, Data.Y_Position, Data.Z_Position);
         RigidBody.GlobalRotation = new Vector3(Data.X_Rotation, Data.Y_Rotation, Data.Z_Rotation);
+        Scale = Vector3.One * Data.Scale;
     }
 
     private void OnBodyEntered(Node other)
@@ -129,4 +137,10 @@ public partial class Item : Grabbable
 
     public void LockRotation_All() => LockRotation(x: true, y: true, z: true);
     public void UnlockRotation_All() => LockRotation();
+
+    public void SetScale(float scale)
+    {
+        Data.Scale = scale;
+        Scale = Vector3.One * scale;
+    }
 }

@@ -68,7 +68,7 @@ public partial class PlantArea : Touchable
 
         var item = body.GetNodeInParents<Item>();
         if (item == null) return;
-        if (!item.Info.CanPlant) return;
+        if (!item.Info.IsSeed) return;
         if (string.IsNullOrEmpty(item.Data.PlantInfoPath)) return;
 
         var plant_info = GD.Load<ItemInfo>(item.Data.PlantInfoPath);
@@ -226,7 +226,7 @@ public partial class PlantArea : Touchable
         }
         else
         {
-            var scale = rng.RandfRange(0.5f, 1.0f);
+            var scale = rng.RandfRange(0.75f, 1.0f);
             item.Data.Scale = scale;
         }
     }

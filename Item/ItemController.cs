@@ -120,8 +120,27 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         {
             Category = category,
             Text = "Spawn seed",
-            Action = DebugSpawnSeed
+            Action = SpawnSeed
         });
+
+        void SpawnSeed(DebugView view)
+        {
+            view.HideContent();
+            view.Content.Show();
+            view.ContentSearch.Show();
+            view.ContentSearch.ClearItems();
+
+            view.ContentSearch.AddItem(ItemType.Vegetable.ToString(), () => SelectItemType(ItemType.Vegetable));
+            view.ContentSearch.UpdateButtons();
+
+            void SelectItemType(ItemType type)
+            {
+                var infos = Collection.Resources.Where(info => info.Type == type);
+                var item = CreateItem(Collection.Seed);
+                item.Data.PlantInfoPath = infos.ToList().Random().ResourcePath;
+                FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
+            }
+        }
     }
 
     private void DebugSpawnItem(DebugView view)
@@ -150,28 +169,6 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         {
             var item = CreateItem(info);
             item.Data.CustomId = custom_id;
-            FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
-        }
-    }
-
-    private void DebugSpawnSeed(DebugView view)
-    {
-        view.HideContent();
-        view.Content.Show();
-        view.ContentSearch.Show();
-
-        view.ContentSearch.ClearItems();
-        foreach (var resource in Collection.Resources)
-        {
-            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource.ResourcePath));
-        }
-
-        view.ContentSearch.UpdateButtons();
-
-        void SelectItem(string path)
-        {
-            var item = CreateItem(Collection.Seed);
-            item.Data.PlantInfoPath = path;
             FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
         }
     }

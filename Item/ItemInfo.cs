@@ -7,7 +7,13 @@ public partial class ItemInfo : Resource
     public string Path { get; set; }
 
     [Export]
-    public bool CanPlant;
+    public ItemType Type { get; set; }
+
+    [Export]
+    public bool IsSeed;
+
+    [Export]
+    public ItemType SeedResultType;
 
     [Export]
     public int GrowTimeInSeconds;

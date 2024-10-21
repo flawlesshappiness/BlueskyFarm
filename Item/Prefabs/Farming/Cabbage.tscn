@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwlj2e8ti2s7e"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_x4bn2"]
+[ext_resource type="PackedScene" uid="uid://br872mxbeio1o" path="res://Assets/KenneyNL/Food/cabbage.fbx" id="2_ficgl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udry6"]
+size = Vector3(0.219727, 0.266074, 0.239258)
+
+[node name="Cabbage" instance=ExtResource("1_x4bn2")]
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129433, 0)
+shape = SubResource("BoxShape3D_udry6")
+
+[node name="cabbage" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_ficgl")]

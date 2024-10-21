@@ -5,9 +5,7 @@
 [resource]
 script = ExtResource("1_ui6y8")
 PlantPot = "res://Item/Resources/PlantPot.tres"
-Seed = "res://Item/Resources/Seed.tres"
-Coin = "res://Item/Resources/Coin.tres"
-Radish = "res://Item/Resources/Radish.tres"
+Seed = "res://Item/Resources/Plant_Seed.tres"
 GlowStick = "res://Item/Resources/GlowStick.tres"
 Key_Brown = "res://Item/Resources/Key_Brown.tres"
 PlantMaterial = "res://Item/Resources/PlantMaterial.tres"

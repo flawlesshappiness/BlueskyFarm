@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgxwdmedntrn0"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_3wwbh"]
+[ext_resource type="PackedScene" uid="uid://cuefkybfg3ikw" path="res://Assets/KenneyNL/Food/onion.fbx" id="2_w3eqk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udry6"]
+size = Vector3(0.216797, 0.254803, 0.211914)
+
+[node name="Onion" instance=ExtResource("1_3wwbh")]
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0230499, 0)
+shape = SubResource("BoxShape3D_udry6")
+
+[node name="onion" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_w3eqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.146383, 0)

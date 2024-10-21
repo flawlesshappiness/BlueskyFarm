@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://h20jm2ihagcf"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_rr3q2"]
+
+[resource]
+script = ExtResource("1_rr3q2")
+Path = "res://Item/Prefabs/Farming/Beet.tscn"
+Type = 1
+IsSeed = false
+SeedResultType = 0
+GrowTimeInSeconds = 3
+CanProcessToMaterial = true
+MaterialType = 0
+CanPickUp = true
+Untrack = false
+InventoryItemCameraDistance = 0.25
+InventoryItemRotationOffset = 0.0

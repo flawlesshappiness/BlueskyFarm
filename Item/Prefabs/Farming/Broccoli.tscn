@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://r86fcd5nhrbw"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_6nvja"]
+[ext_resource type="PackedScene" uid="uid://bnt1fcbhm4478" path="res://Assets/KenneyNL/Food/broccoli.fbx" id="2_5p357"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udry6"]
+size = Vector3(0.363281, 0.43246, 0.400391)
+
+[node name="Broccoli" instance=ExtResource("1_6nvja")]
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159948, 0)
+shape = SubResource("BoxShape3D_udry6")
+
+[node name="broccoli" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_5p357")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0482798, 0)

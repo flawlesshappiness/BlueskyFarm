@@ -168,7 +168,11 @@ public partial class BasementScene : GameScene
         for (var i = 0; i < item_count; i++)
         {
             var item_path = ItemController.Instance.Collection.Seed;
-            var plant_path = ItemController.Instance.Collection.Radish;
+            var plant_path = ItemController.Instance.Collection.Resources
+                .Where(info => info.Type == ItemType.Vegetable)
+                .ToList()
+                .Random()
+                .ResourcePath;
             var item = ItemController.Instance.CreateItem(item_path, track_item: false);
             item.Data.PlantInfoPath = plant_path;
             item.SetEnabled(false);

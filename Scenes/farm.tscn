@@ -527,7 +527,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3698, 0, -3.35599)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1302, 0, -7.85599)
 
 [node name="Grass_Short14" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0756, 0, -11.4631)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88632, 0, -11.4631)
 
 [node name="Grass_Short15" parent="World/Grass" instance=ExtResource("17_nm5pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88317, 0, 12.0864)

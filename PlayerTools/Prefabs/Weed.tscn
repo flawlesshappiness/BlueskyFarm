@@ -1,10 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://d34kbvu0t4aco"]
+[gd_scene load_steps=11 format=3 uid="uid://d34kbvu0t4aco"]
 
 [ext_resource type="Script" path="res://PlayerTools/Weedcutter/Weed.cs" id="1_w0phl"]
-[ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="2_ug7oq"]
+[ext_resource type="PackedScene" uid="uid://ypg4pgvvs6p4" path="res://Assets/Quaternius/Nature/Plant_1.fbx" id="3_ddj51"]
+[ext_resource type="PackedScene" uid="uid://tj5ithche6o7" path="res://Assets/Quaternius/Nature/Plant_3.fbx" id="4_yir4v"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_0pgst"]
+[ext_resource type="PackedScene" uid="uid://c6yu5xr3w0is6" path="res://Assets/Quaternius/Nature/Plant_4.fbx" id="5_45bva"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hq0n7"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="Animation" id="Animation_4war8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/Anim:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_t3lja"]
 resource_name = "cut"
@@ -46,70 +88,55 @@ tracks/2/keys = {
 "values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4war8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/Anim:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/Anim:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Model/Anim:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mhbdc"]
 _data = {
 "RESET": SubResource("Animation_4war8"),
 "cut": SubResource("Animation_t3lja")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyi5g"]
+size = Vector3(0.5, 0.464722, 0.5)
+
 [node name="Weed" type="Node3D"]
 script = ExtResource("1_w0phl")
+IsTouchable = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14875, 0)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343518, 0)
 shape = SubResource("BoxShape3D_hq0n7")
 
 [node name="Model" type="Node3D" parent="."]
 
 [node name="Anim" type="Node3D" parent="Model"]
 
-[node name="Grass_Short" parent="Model/Anim" instance=ExtResource("2_ug7oq")]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
+[node name="Plant_1" parent="Model/Anim" instance=ExtResource("3_ddj51")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Plant_3" parent="Model/Anim" instance=ExtResource("4_yir4v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Plant_4" parent="Model/Anim" instance=ExtResource("5_45bva")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mhbdc")
 }
+
+[node name="Touchable" type="Node3D" parent="."]
+script = ExtResource("5_0pgst")
+InteractableText = "Weeds"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215031, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0101929, 0)
+shape = SubResource("BoxShape3D_jyi5g")

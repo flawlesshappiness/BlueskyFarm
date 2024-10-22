@@ -18,5 +18,15 @@ public partial class FarmScene : GameScene
         FirstPersonController.Instance.UpdateData();
         InventoryController.Instance.UpdateData();
         ItemController.Instance.UpdateData();
+        UpdateData_PlantArea();
+    }
+
+    private void UpdateData_PlantArea()
+    {
+        var areas = Scene.Current.GetNodesInChildren<PlantArea>();
+        foreach (var area in areas)
+        {
+            area.UpdateData();
+        }
     }
 }

@@ -11,6 +11,8 @@ public static class Debug
 
     public static int Indent = 0;
 
+    public static bool IsEditor => Engine.IsEditorHint();
+
     public static List<DebugAction> RegisteredActions = new();
 
     public static event Action<DebugAction> OnActionAdded;

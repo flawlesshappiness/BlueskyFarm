@@ -7,12 +7,13 @@
 size = Vector3(0.5, 3.5, 1.5)
 
 [node name="Weed" instance=ExtResource("1_4qgh0")]
+IsTouchable = false
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("BoxShape3D_m47ap")
 
-[node name="Grass_Short" parent="Model/Anim" index="0"]
+[node name="Plant_1" parent="Model/Anim" index="0"]
 visible = false
 
 [node name="Roots_003" parent="Model/Anim" index="1" instance=ExtResource("2_8mibf")]
@@ -20,3 +21,9 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0905
 
 [node name="Roots_004" parent="Model/Anim" index="2" instance=ExtResource("2_8mibf")]
 transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 0.0905135, -0.429807, -0.232314)
+
+[node name="Plant_3" parent="Model/Anim" index="3"]
+visible = false
+
+[node name="Plant_4" parent="Model/Anim" index="4"]
+visible = false

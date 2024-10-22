@@ -1,10 +1,15 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections;
 using System.Linq;
 
+[Tool]
 public partial class PlantArea : Touchable
 {
+    [Export]
+    public string Id;
+
     [NodeType]
     public Area3D Area;
 
@@ -17,21 +22,31 @@ public partial class PlantArea : Touchable
     [NodeName]
     public GpuParticles3D ps_dirt_puff;
 
-    public string Id => GetInstanceId().ToString();
     public Seed CurrentSeed { get; private set; }
 
-    public override void _Ready()
+    protected override void _ReadyPlayer()
     {
-        base._Ready();
-        NodeScript.FindNodesFromAttribute(this, GetType());
+        base._ReadyPlayer();
 
         Area.BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
     }
 
-    public override void _Process(double delta)
+    protected override void _ProcessPlayer(double delta)
     {
-        base._Process(delta);
+        base._ProcessPlayer(delta);
         Process_Grow();
+    }
+
+    public override void _ValidateProperty(Dictionary property)
+    {
+        base._ValidateProperty(property);
+
+        if (property["name"].AsStringName() == nameof(Id))
+        {
+            var flags = property["usage"].As<PropertyUsageFlags>();
+            flags |= PropertyUsageFlags.ReadOnly;
+            property["usage"] = (int)flags;
+        }
     }
 
     protected override void Initialize()
@@ -56,10 +71,11 @@ public partial class PlantArea : Touchable
         }
     }
 
-    private void UpdateData()
+    public void UpdateData()
     {
         if (CurrentSeed == null) return;
         CurrentSeed.UpdateData();
+        Debug.Log(CurrentSeed.Data.TimeLeft);
     }
 
     private void OnBodyEntered(Node3D body)
@@ -89,6 +105,7 @@ public partial class PlantArea : Touchable
         PlantSeedFromData(data);
 
         CurrentSeed.SeedItem.GlobalPosition = item_position;
+        PlayThrowSFX();
         AnimateSeedToGround(CurrentSeed.SeedItem);
     }
 
@@ -395,6 +412,17 @@ public partial class PlantArea : Touchable
     private void PlayDirtSFX()
     {
         SoundController.Instance.Play("sfx_seed_in_dirt", new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            Position = SeedPosition.GlobalPosition,
+            PitchMin = 0.95f,
+            PitchMax = 1f
+        });
+    }
+
+    private void PlayThrowSFX()
+    {
+        SoundController.Instance.Play("sfx_throw_light", new SoundSettings3D
         {
             Bus = SoundBus.SFX,
             Position = SeedPosition.GlobalPosition,

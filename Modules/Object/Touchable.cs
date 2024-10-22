@@ -4,9 +4,9 @@ public partial class Touchable : Interactable
 {
     public event Action OnTouched;
 
-    public override void _Ready()
+    protected override void _ReadyPlayer()
     {
-        base._Ready();
+        base._ReadyPlayer();
 
         if (!OverrideInitialCollisionMode)
         {

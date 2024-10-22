@@ -15,11 +15,6 @@ public partial class Interactable : Node3DScript
     public PhysicsBody3D Body => _body ??= this.GetNodeInChildren<PhysicsBody3D>();
     private PhysicsBody3D _body;
 
-    public override void _Ready()
-    {
-        base._Ready();
-    }
-
     public void SetCollision_None()
     {
         SetCollisionLayer();

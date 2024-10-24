@@ -290,7 +290,6 @@ public partial class RootMimicEnemy : NavEnemy
 
                 if (GlobalPosition.DistanceTo(closest_room.Room.GlobalPosition) > BasementRoom.ROOM_SIZE * 0.5f)
                 {
-                    Debug.Log("MOVE TO ROOM CENTER");
                     _current_room = closest_room;
                     Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
                     move_to_room_center = true;

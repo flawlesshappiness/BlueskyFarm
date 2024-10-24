@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 [Tool]
@@ -10,11 +11,17 @@ public partial class PlantArea : Touchable
     [Export]
     public string Id;
 
+    [Export]
+    public Vector3 WeedArea;
+
     [NodeType]
     public Area3D Area;
 
     [NodeName]
     public Node3D SeedPosition;
+
+    [NodeType]
+    public Weed WeedTemplate;
 
     [NodeName]
     public Path3D SeedPath;
@@ -24,17 +31,23 @@ public partial class PlantArea : Touchable
 
     public Seed CurrentSeed { get; private set; }
 
+    private const float WEED_TIME = 10f;
+
+    private List<Weed> _current_weeds = new();
+
     protected override void _ReadyPlayer()
     {
         base._ReadyPlayer();
 
         Area.BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
+        WeedTemplate.SetEnabled(false);
     }
 
     protected override void _ProcessPlayer(double delta)
     {
         base._ProcessPlayer(delta);
         Process_Grow();
+        Process_Weeds();
     }
 
     public override void _ValidateProperty(Dictionary property)
@@ -69,13 +82,14 @@ public partial class PlantArea : Touchable
         {
             PlantSeedFromData(data);
         }
+
+        CreateWeedsFromData(data);
     }
 
     public void UpdateData()
     {
         if (CurrentSeed == null) return;
         CurrentSeed.UpdateData();
-        Debug.Log(CurrentSeed.Data.TimeLeft);
     }
 
     private void OnBodyEntered(Node3D body)
@@ -98,7 +112,7 @@ public partial class PlantArea : Touchable
         {
             Id = Id,
             PlantInfoPath = item.Data.PlantInfoPath,
-            TimeLeft = plant_info.GrowTimeInSeconds
+            TimeLeft = plant_info.GrowTimeInSeconds,
         };
 
         SetData(data);
@@ -160,6 +174,7 @@ public partial class PlantArea : Touchable
             Data = data,
             TimeStart = GameTime.Time,
             TimeEnd = GameTime.Time + data.TimeLeft,
+            TimeWeed = GameTime.Time + WEED_TIME,
             SeedItem = seed_item
         };
 
@@ -267,6 +282,11 @@ public partial class PlantArea : Touchable
         }
     }
 
+    private bool HasSeed()
+    {
+        return CurrentSeed != null;
+    }
+
     private bool IsSeedFinishedGrowing()
     {
         return GameTime.Time > CurrentSeed.TimeEnd;
@@ -301,6 +321,7 @@ public partial class PlantArea : Touchable
     {
         base.Touched();
         if (CurrentSeed?.PlantItem == null) return;
+        if (HasWeeds()) return;
 
         var data = CurrentSeed.PlantItem.Data;
         PopPlantFromDirt(data);
@@ -337,33 +358,7 @@ public partial class PlantArea : Touchable
     private void AnimatePlantAppear(Seed seed)
     {
         PlayDirtPuffParticle();
-
-        Coroutine.Start(Cr);
-        IEnumerator Cr()
-        {
-            var duration = 0.05f;
-            var plant = seed.PlantItem;
-            var end_scale = plant.Data.Scale;
-            var scale_A = Vector3.One * 1.1f * end_scale;
-            var scale_B = Vector3.One * 1.2f * end_scale;
-            var scale_C = Vector3.One * 0.9f * end_scale;
-            var scale_D = Vector3.One * 1.0f * end_scale;
-
-            yield return LerpEnumerator.Lerp01(duration, f =>
-            {
-                plant.Scale = Lerp.Vector(scale_A, scale_B, Curves.EaseOutQuad.Evaluate(f));
-            });
-
-            yield return LerpEnumerator.Lerp01(duration * 0.9f, f =>
-            {
-                plant.Scale = Lerp.Vector(scale_B, scale_C, Curves.EaseInOutQuad.Evaluate(f));
-            });
-
-            yield return LerpEnumerator.Lerp01(duration * 0.8f, f =>
-            {
-                plant.Scale = Lerp.Vector(scale_C, scale_D, Curves.EaseInOutQuad.Evaluate(f));
-            });
-        }
+        seed.PlantItem.AnimateWobble();
     }
 
     private void AnimateSeedToGround(Item item)
@@ -429,5 +424,85 @@ public partial class PlantArea : Touchable
             PitchMin = 0.95f,
             PitchMax = 1f
         });
+    }
+
+    private void ClearWeeds()
+    {
+        foreach (var weed in _current_weeds.ToList())
+        {
+            weed.QueueFree();
+        }
+
+        _current_weeds.Clear();
+        CurrentSeed.Data.WeedCount = 0;
+    }
+
+    private void CreateWeedsFromData(PlantAreaData data)
+    {
+        if (data == null) return;
+
+        var count_to_spawn = data.WeedCount;
+        while (data.TimeUntilNextWeed < 0)
+        {
+            data.TimeUntilNextWeed += WEED_TIME;
+            count_to_spawn++;
+        }
+
+        for (int i = 0; i < count_to_spawn; i++)
+        {
+            CreateWeed();
+        }
+
+        CurrentSeed.TimeWeed = GameTime.Time + data.TimeUntilNextWeed;
+    }
+
+    private Weed CreateWeed()
+    {
+        var weed = WeedTemplate.Duplicate() as Weed;
+        weed.SetParent(WeedTemplate.GetParent());
+        weed.SetEnabled(weed.IsTouchable);
+        weed.RandomizeModel();
+        weed.RandomizeScale();
+        weed.AnimateAppear();
+        weed.OnWeedCut += () => WeedCut(weed);
+
+        var rng = new RandomNumberGenerator();
+        var w = WeedArea.X * 0.5f;
+        var h = WeedArea.Z * 0.5f;
+        var x = rng.RandfRange(-w, w);
+        var z = rng.RandfRange(-h, h);
+        weed.GlobalPosition = SeedPosition.GlobalPosition + new Vector3(x, 0, z);
+
+        _current_weeds.Add(weed);
+        CurrentSeed.Data.WeedCount++;
+        return weed;
+    }
+
+    private void WeedCut(Weed weed)
+    {
+        _current_weeds.Remove(weed);
+        CurrentSeed.Data.WeedCount--;
+        CurrentSeed.DecreaseTimeFromWeeds();
+
+        CurrentSeed?.SeedItem?.AnimateWobble();
+        CurrentSeed?.PlantItem?.AnimateWobble();
+    }
+
+    private bool HasWeeds()
+    {
+        return _current_weeds.Count > 0;
+    }
+
+    private void Process_Weeds()
+    {
+        if (!HasSeed()) return;
+        if (IsSeedFinishedGrowing()) return;
+
+        if (GameTime.Time > CurrentSeed.TimeWeed)
+        {
+            var rng = new RandomNumberGenerator();
+            CurrentSeed.TimeWeed += WEED_TIME * rng.RandfRange(0.9f, 1.1f);
+            CreateWeed();
+        }
     }
 }

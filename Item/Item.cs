@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class Item : Grabbable
 {
@@ -142,5 +143,20 @@ public partial class Item : Grabbable
     {
         Data.Scale = scale;
         Scale = Vector3.One * scale;
+    }
+
+    public Coroutine AnimateWobble()
+    {
+        return StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            var duration = 0.25f;
+            var curve = AnimationCurves.WobbleOut(0.2f, 3);
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Sample(f);
+                ScaleNode.Scale = Vector3.One * t;
+            });
+        }
     }
 }

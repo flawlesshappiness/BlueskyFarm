@@ -49,7 +49,11 @@ public class LerpEnumerator : CustomYieldInstruction
             var tf = Convert.ToSingle(t);
             onLerp?.Invoke(tf);
             yield return null;
-            if (t >= 1) break;
+            if (t >= 1)
+            {
+                onLerp?.Invoke(1);
+                break;
+            }
         }
     }
 

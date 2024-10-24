@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvbctpjxk6w4r"]
+[gd_scene load_steps=15 format=3 uid="uid://bvbctpjxk6w4r"]
 
 [ext_resource type="Script" path="res://Farming/PlantArea.cs" id="1_qlu5f"]
 [ext_resource type="Script" path="res://Modules/Misc/AutoGuid.cs" id="2_gt8jd"]
+[ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://PlayerTools/Prefabs/Weed.tscn" id="3_qg5tq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hg4ky"]
-size = Vector3(0.75, 0.242676, 0.75)
+size = Vector3(0.25, 0.242676, 0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjvol"]
 albedo_color = Color(0.37, 0.26418, 0.2072, 1)
@@ -52,6 +53,7 @@ material = SubResource("StandardMaterial3D_qaxa5")
 [node name="PlantArea" type="Node3D"]
 script = ExtResource("1_qlu5f")
 Id = "a778a0aa-0263-4ec6-a4a7-c5fa68a65c43"
+WeedArea = Vector3(1.25, 0, 1.25)
 
 [node name="Id" type="Node3D" parent="."]
 script = ExtResource("2_gt8jd")
@@ -103,3 +105,5 @@ fixed_fps = 60
 visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
 process_material = SubResource("ParticleProcessMaterial_0nra4")
 draw_pass_1 = SubResource("SphereMesh_0igpa")
+
+[node name="WeedTemplate" parent="." instance=ExtResource("3_qg5tq")]

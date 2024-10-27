@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgcfv68enmgn3"]
+[gd_scene load_steps=12 format=3 uid="uid://dgcfv68enmgn3"]
 
 [ext_resource type="PackedScene" uid="uid://brkipcb2ogekw" path="res://Assets/FlawLizArt/WateringCan/watering_can.fbx" id="1_ky6qj"]
+[ext_resource type="AudioStream" uid="uid://cej38fnn3uwd5" path="res://Sound/Sounds/sfx_watering_can_water.wav" id="2_6gi1v"]
 
 [sub_resource type="Curve" id="Curve_r0cid"]
 _data = [Vector2(0, 0), 0.0, 10.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.19088, 0.0, 0, 0]
@@ -74,6 +75,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx_water:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5g5lo"]
 resource_name = "use_item"
@@ -123,6 +136,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx_water:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7hx84"]
 _data = {
@@ -162,3 +187,9 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.65625)
 shape = SubResource("BoxShape3D_5pcmt")
+
+[node name="sfx_water" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0162577, -0.913898)
+stream = ExtResource("2_6gi1v")
+volume_db = -10.0
+bus = &"SFX"

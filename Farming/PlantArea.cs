@@ -29,7 +29,14 @@ public partial class PlantArea : Touchable
     [NodeName]
     public GpuParticles3D ps_dirt_puff;
 
+    [NodeType]
+    public Waterable Waterable;
+
+    [NodeName]
+    public Sprite3D WaterSprite;
+
     public Seed CurrentSeed { get; private set; }
+    public bool HasSeed => CurrentSeed != null;
 
     private const float WEED_TIME = 10f;
 
@@ -41,6 +48,8 @@ public partial class PlantArea : Touchable
 
         Area.BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
         WeedTemplate.SetEnabled(false);
+
+        Waterable.OnWatered += Watered;
     }
 
     protected override void _ProcessPlayer(double delta)
@@ -71,6 +80,8 @@ public partial class PlantArea : Touchable
     private void LoadData()
     {
         var data = GetOrCreateData();
+
+        SetWatered(data.IsWatered);
 
         if (string.IsNullOrEmpty(data.PlantInfoPath)) return;
 
@@ -282,11 +293,6 @@ public partial class PlantArea : Touchable
         }
     }
 
-    private bool HasSeed()
-    {
-        return CurrentSeed != null;
-    }
-
     private bool IsSeedFinishedGrowing()
     {
         return GameTime.Time > CurrentSeed.TimeEnd;
@@ -325,6 +331,7 @@ public partial class PlantArea : Touchable
 
         var data = CurrentSeed.PlantItem.Data;
         PopPlantFromDirt(data);
+        AnimateUnwater();
 
         var rng = new RandomNumberGenerator();
         var is_double = rng.Randf() < 0.05f;
@@ -495,7 +502,7 @@ public partial class PlantArea : Touchable
 
     private void Process_Weeds()
     {
-        if (!HasSeed()) return;
+        if (!HasSeed) return;
         if (IsSeedFinishedGrowing()) return;
 
         if (GameTime.Time > CurrentSeed.TimeWeed)
@@ -504,5 +511,65 @@ public partial class PlantArea : Touchable
             CurrentSeed.TimeWeed += WEED_TIME * rng.RandfRange(0.9f, 1.1f);
             CreateWeed();
         }
+    }
+
+    private void Watered()
+    {
+        if (!HasSeed) return;
+        if (CurrentSeed.Data.IsWatered) return;
+
+        CurrentSeed.Data.IsWatered = true;
+
+        var grow_time = CurrentSeed.TimeEnd - GameTime.Time;
+        grow_time *= 0.5f;
+        CurrentSeed.TimeEnd = GameTime.Time + grow_time;
+
+        AnimateWater();
+        CurrentSeed?.SeedItem?.AnimateWobble();
+        CurrentSeed?.PlantItem?.AnimateWobble();
+    }
+
+    private void AnimateWater()
+    {
+        var rng = new RandomNumberGenerator();
+        WaterSprite.RotationDegrees = WaterSprite.RotationDegrees.Set(y: rng.RandfRange(0, 360f));
+
+        StartCoroutine(Cr, "water");
+        IEnumerator Cr()
+        {
+            var duration = 0.5f;
+            var scale_start = 0.2f;
+            var scale_end = 0.3f;
+            var alpha_start = 0f;
+            var alpha_end = 0.8f;
+            var color = WaterSprite.Modulate;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                WaterSprite.Scale = Vector3.One * Mathf.Lerp(scale_start, scale_end, f);
+                WaterSprite.Modulate = color.SetA(Mathf.Lerp(alpha_start, alpha_end, f));
+            });
+        }
+    }
+
+    private void AnimateUnwater()
+    {
+        StartCoroutine(Cr, "water");
+        IEnumerator Cr()
+        {
+            var duration = 0.25f;
+            var alpha_start = WaterSprite.Modulate.A;
+            var alpha_end = 0f;
+            var color = WaterSprite.Modulate;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                WaterSprite.Modulate = color.SetA(Mathf.Lerp(alpha_start, alpha_end, f));
+            });
+        }
+    }
+
+    private void SetWatered(bool watered)
+    {
+        var a = watered ? 0.8f : 0f;
+        WaterSprite.Modulate = WaterSprite.Modulate.SetA(a);
     }
 }

@@ -46,15 +46,13 @@ public partial class Weedcutter : Item
     {
         foreach (var body in _bodies)
         {
-            if (!IsInstanceValid(body)) continue;
+            if (body is Node node && node != null)
+            {
+                var weed = node.GetNodeInParents<Weed>();
+                if (weed == null) continue;
 
-            var node = body as Node3D;
-            if (node == null) continue;
-
-            var weed = node.GetNodeInParents<Weed>();
-            if (weed == null) continue;
-
-            Cut(weed);
+                Cut(weed);
+            }
         }
 
         Clear();

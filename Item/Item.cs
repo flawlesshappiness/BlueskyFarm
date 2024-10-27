@@ -150,12 +150,12 @@ public partial class Item : Grabbable
         return StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
-            var duration = 0.25f;
-            var curve = AnimationCurves.WobbleOut(0.2f, 3);
+            var duration = 0.6f;
+            var curve = AnimationCurves.WobbleOut(0.4f, 3);
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 var t = curve.Sample(f);
-                ScaleNode.Scale = Vector3.One * t;
+                ScaleNode.Scale = Vector3.One * (Data.Scale * t);
             });
         }
     }

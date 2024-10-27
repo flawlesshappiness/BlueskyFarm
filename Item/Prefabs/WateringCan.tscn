@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://se23c32y7wpy"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_3f5mt"]
+[ext_resource type="PackedScene" uid="uid://dgcfv68enmgn3" path="res://PlayerTools/WateringCan/WateringCan.tscn" id="2_30cir"]
+[ext_resource type="Script" path="res://PlayerTools/WateringCan/WateringCan.cs" id="2_q36dt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rlbdg"]
+size = Vector3(0.325, 0.315, 0.395)
+
+[node name="WateringCan" instance=ExtResource("1_3f5mt")]
+script = ExtResource("2_q36dt")
+UseAnimation = "use_item"
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+shape = SubResource("BoxShape3D_rlbdg")
+
+[node name="WateringCan" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_30cir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.151859, 0)

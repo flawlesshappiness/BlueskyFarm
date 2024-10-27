@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvbctpjxk6w4r"]
+[gd_scene load_steps=18 format=3 uid="uid://bvbctpjxk6w4r"]
 
 [ext_resource type="Script" path="res://Farming/PlantArea.cs" id="1_qlu5f"]
 [ext_resource type="Script" path="res://Modules/Misc/AutoGuid.cs" id="2_gt8jd"]
 [ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://PlayerTools/Prefabs/Weed.tscn" id="3_qg5tq"]
+[ext_resource type="Script" path="res://PlayerTools/WateringCan/Waterable.cs" id="4_b6w7s"]
+[ext_resource type="Texture2D" uid="uid://deku6vb433a0g" path="res://Assets/KenneyNL/Particles/dirt_02.png" id="5_2gtwe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hg4ky"]
 size = Vector3(0.25, 0.242676, 0.25)
@@ -31,7 +33,7 @@ point_count = 2
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_nkhl7"]
+[sub_resource type="CurveTexture" id="CurveTexture_kuqyw"]
 curve = SubResource("Curve_1efyk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0nra4"]
@@ -41,14 +43,16 @@ initial_velocity_max = 2.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.2
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_nkhl7")
+scale_curve = SubResource("CurveTexture_kuqyw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qaxa5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hib5o"]
 shading_mode = 0
 albedo_color = Color(0.22, 0.176, 0.176, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_0igpa"]
-material = SubResource("StandardMaterial3D_qaxa5")
+material = SubResource("StandardMaterial3D_hib5o")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1s655"]
 
 [node name="PlantArea" type="Node3D"]
 script = ExtResource("1_qlu5f")
@@ -81,7 +85,7 @@ shape = SubResource("BoxShape3D_3j850")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -107,3 +111,18 @@ process_material = SubResource("ParticleProcessMaterial_0nra4")
 draw_pass_1 = SubResource("SphereMesh_0igpa")
 
 [node name="WeedTemplate" parent="." instance=ExtResource("3_qg5tq")]
+
+[node name="Waterable" type="Node3D" parent="."]
+script = ExtResource("4_b6w7s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Waterable"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waterable/StaticBody3D"]
+shape = SubResource("BoxShape3D_1s655")
+
+[node name="WaterSprite" type="Sprite3D" parent="Waterable"]
+transform = Transform3D(0.35, 0, 0, 0, -1.5299e-08, -0.35, 0, 0.35, -1.5299e-08, 0, 0.129449, 0)
+modulate = Color(0.07, 0.0566183, 0.0441, 1)
+texture = ExtResource("5_2gtwe")

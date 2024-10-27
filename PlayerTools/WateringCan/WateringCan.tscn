@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=3 uid="uid://dgcfv68enmgn3"]
+
+[ext_resource type="PackedScene" uid="uid://brkipcb2ogekw" path="res://Assets/FlawLizArt/WateringCan/watering_can.fbx" id="1_ky6qj"]
+
+[sub_resource type="Curve" id="Curve_r0cid"]
+_data = [Vector2(0, 0), 0.0, 10.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.19088, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4njej"]
+curve = SubResource("Curve_r0cid")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jdd01"]
+emission_shape = 1
+emission_sphere_radius = 0.07
+velocity_pivot = Vector3(1, 1, 1)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+scale_min = 0.02
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_4njej")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqc0v"]
+shading_mode = 0
+albedo_color = Color(0.11, 0.614333, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5trw0"]
+material = SubResource("StandardMaterial3D_sqc0v")
+
+[sub_resource type="Animation" id="Animation_iq5k8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/watering_can/ps_spout:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5g5lo"]
+resource_name = "use_item"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.133333, -0.427823, -0.436332, -0.25, 0, 0.25, 0, 0, -0.333333, 0.350278, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 2)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/watering_can/ps_spout:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7hx84"]
+_data = {
+"RESET": SubResource("Animation_iq5k8"),
+"use_item": SubResource("Animation_5g5lo")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pcmt"]
+size = Vector3(0.488037, 3, 0.6875)
+
+[node name="WateringCan" type="Node3D"]
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="watering_can" parent="Model" instance=ExtResource("1_ky6qj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="ps_spout" type="GPUParticles3D" parent="Model/watering_can"]
+transform = Transform3D(0.0452369, -1.99939, 0.0200454, 1.41421, 0.0461681, 1.41346, -1.41349, -0.017796, 1.41483, 0, 0.700392, -0.95094)
+emitting = false
+amount = 100
+lifetime = 0.5
+fixed_fps = 60
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+process_material = SubResource("ParticleProcessMaterial_jdd01")
+draw_pass_1 = SubResource("SphereMesh_5trw0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7hx84")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.65625)
+shape = SubResource("BoxShape3D_5pcmt")

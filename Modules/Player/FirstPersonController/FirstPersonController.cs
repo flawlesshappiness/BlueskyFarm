@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class FirstPersonController : CharacterBody3D
 {
@@ -84,6 +85,24 @@ public partial class FirstPersonController : CharacterBody3D
             Text = "Unstuck",
             Action = Unstuck
         });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Replenish near item uses",
+            Action = ReplenishCloseItems
+        });
+
+        void ReplenishCloseItems(DebugView view)
+        {
+            var items = Scene.Current
+                .GetNodesInChildren<Item>()
+                .Where(x => GlobalPosition.DistanceTo(x.GlobalPosition) < 5f);
+
+            items.ForEach(x => x.ReplenishUses(999));
+
+            view.Close();
+        }
     }
 
     private void Unstuck(DebugView view)

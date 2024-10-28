@@ -16,4 +16,7 @@ public class ItemData
 
     // Plant
     public bool PlantIsHuge { get; set; }
+
+    // Tool
+    public int Uses { get; set; }
 }

@@ -111,6 +111,8 @@ public partial class DebugView : View
         }
     }
 
+    public void Close() => SetVisible(false);
+
     public void HideContent()
     {
         Content.Visible = false;

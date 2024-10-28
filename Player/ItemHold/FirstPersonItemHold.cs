@@ -52,7 +52,8 @@ public partial class FirstPersonItemHold : Node3DScript
         var data = InventoryController.Instance.GetItem(i);
         if (data == null) return;
 
-        _current_item = ItemController.Instance.CreateItem(data.InfoPath, false);
+        _current_item = ItemController.Instance.CreateItemFromData(data);
+        ItemController.Instance.UntrackItem(_current_item);
 
         if (IsInstanceValid(_current_item))
         {

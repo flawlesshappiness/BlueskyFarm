@@ -191,5 +191,5 @@ shape = SubResource("BoxShape3D_5pcmt")
 [node name="sfx_water" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0162577, -0.913898)
 stream = ExtResource("2_6gi1v")
-volume_db = -10.0
+volume_db = -15.0
 bus = &"SFX"

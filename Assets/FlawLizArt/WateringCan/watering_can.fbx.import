@@ -39,7 +39,7 @@ _subresources={
 },
 "Metal": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Metal.tres"
+"use_external/path": "res://Assets/Materials/WateringCan.tres"
 }
 }
 }

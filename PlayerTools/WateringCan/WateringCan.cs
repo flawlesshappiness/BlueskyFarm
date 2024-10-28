@@ -16,8 +16,16 @@ public partial class WateringCan : Item
     public Area3D Area;
 
     private bool _using;
-    private bool _slosh_max_speed;
+    private float _slosh_speed_min;
+    private float _slosh_speed_max;
     private List<GodotObject> _bodies = new();
+
+    private const float SPEED_SLOSH_LOW_MIN = 2f;
+    private const float SPEED_SLOSH_LOW_MAX = 4f;
+    private const float SPEED_SLOSH_MED_MIN = 4f;
+    private const float SPEED_SLOSH_MED_MAX = 7f;
+    private const float SPEED_SLOSH_HIGH_MIN = 5f;
+    private const float SPEED_SLOSH_HIGH_MAX = 10f;
 
 
     public override void _Ready()
@@ -38,39 +46,47 @@ public partial class WateringCan : Item
 
     private void PhysicsProcess_Slosh(float delta)
     {
-        var max_vel = 8f;
-        var min_vel = 2f;
+        if (Data.Uses <= 0) return;
+
         var vel = RigidBody.LinearVelocity.Length();
 
-        if (_slosh_max_speed)
+        _slosh_speed_max = Mathf.Max(_slosh_speed_max, vel);
+        _slosh_speed_min =
+            _slosh_speed_max > SPEED_SLOSH_HIGH_MAX ? SPEED_SLOSH_HIGH_MIN :
+            _slosh_speed_max > SPEED_SLOSH_MED_MAX ? SPEED_SLOSH_MED_MIN :
+            _slosh_speed_max > SPEED_SLOSH_LOW_MAX ? SPEED_SLOSH_LOW_MIN :
+            -1;
+
+        if (vel < _slosh_speed_min)
         {
-            if (vel < min_vel)
-            {
-                PlaySloshSFX();
-                _slosh_max_speed = false;
-            }
-        }
-        else
-        {
-            if (vel > max_vel)
-            {
-                _slosh_max_speed = true;
-            }
+            PlaySloshSFX(_slosh_speed_max);
+            _slosh_speed_max = 0;
         }
     }
 
-    private void PlaySloshSFX()
+    private void PlaySloshSFX(float speed)
     {
         var rng = new RandomNumberGenerator();
-        var i = rng.RandiRange(1, 3);
-        var sfx_name = $"sfx_watering_can_slosh_{i.ToString("000")}";
+        var i = rng.RandiRange(1, 3).ToString("000");
+        var power = GetPowerString(speed);
+        var sfx_name = $"sfx_watering_can_slosh_{power}_{i}";
+
         SoundController.Instance.Play(sfx_name, new SoundSettings3D
         {
             Bus = SoundBus.SFX,
             Position = GlobalPosition,
-            PitchMax = 1.0f,
-            PitchMin = 0.9f,
+            PitchMax = 1.1f,
+            PitchMin = 0.8f,
         });
+
+        string GetPowerString(float speed)
+        {
+            return
+                speed > SPEED_SLOSH_HIGH_MAX ? "high" :
+                speed > SPEED_SLOSH_MED_MAX ? "med" :
+                speed > SPEED_SLOSH_LOW_MAX ? "low" :
+                "";
+        }
     }
 
     public override void Use()

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=2 format=3 uid="uid://bfeoy4oiy1nxk"]
+
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_ypfv3"]
+
+[resource]
+script = ExtResource("1_ypfv3")
+Area = "Basement"
+ConnectedArea = ""
+Path = "res://Basement/Room/Prefabs/Basement_005.tscn"
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "000N000
+0111110
+0111110
+W11111E
+0111110
+0111110
+000S000"
+Disabled = false

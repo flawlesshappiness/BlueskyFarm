@@ -109,8 +109,6 @@ public partial class Item : Grabbable
     public void ReplenishUses(int uses)
     {
         Data.Uses = Mathf.Clamp(Data.Uses + uses, 0, MaxUses);
-
-        Debug.Log($"{Name} uses: {Data.Uses}");
     }
 
     public virtual void AddToInventory()

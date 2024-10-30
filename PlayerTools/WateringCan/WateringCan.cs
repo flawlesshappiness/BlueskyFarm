@@ -15,6 +15,9 @@ public partial class WateringCan : Item
     [NodeType]
     public Area3D Area;
 
+    public bool IsFull => Data.Uses >= MaxUses;
+    public bool IsEmpty => Data.Uses == 0;
+
     private bool _using;
     private float _slosh_speed_min;
     private float _slosh_speed_max;
@@ -46,7 +49,7 @@ public partial class WateringCan : Item
 
     private void PhysicsProcess_Slosh(float delta)
     {
-        if (Data.Uses <= 0) return;
+        if (IsEmpty) return;
 
         var vel = RigidBody.LinearVelocity.Length();
 

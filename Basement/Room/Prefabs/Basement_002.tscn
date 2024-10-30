@@ -787,7 +787,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22856, 0, 0.675217)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51517, 4.76837e-07, -0.525919)
 
 [node name="SporeMushroomCluster5" parent="Mushrooms" index="4" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96083, 9.53674e-07, -5.64471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.77477, 9.53674e-07, -4.99212)
 
 [node name="SporeMushroomCluster6" parent="Mushrooms" index="5" instance=ExtResource("17_bhwak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57142, 9.53674e-07, 1.02944)

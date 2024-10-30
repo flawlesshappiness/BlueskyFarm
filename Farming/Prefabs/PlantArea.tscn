@@ -53,6 +53,7 @@ albedo_color = Color(0.22, 0.176, 0.176, 1)
 material = SubResource("StandardMaterial3D_hib5o")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1s655"]
+size = Vector3(1, 0.652222, 1)
 
 [node name="PlantArea" type="Node3D"]
 script = ExtResource("1_qlu5f")
@@ -120,6 +121,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Waterable/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.173889, 0)
 shape = SubResource("BoxShape3D_1s655")
 
 [node name="WaterSprite" type="Sprite3D" parent="Waterable"]

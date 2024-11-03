@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7qbcyamvmb3s"]
+[gd_scene load_steps=6 format=3 uid="uid://c7qbcyamvmb3s"]
 
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_1yeaq"]
 [ext_resource type="PackedScene" uid="uid://dd21cdkftbljp" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low_railing_long.fbx" id="2_kmamd"]
 [ext_resource type="PackedScene" uid="uid://umg7cnwpkkts" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low_long.fbx" id="3_gprfm"]
 
@@ -15,6 +16,8 @@ size = Vector3(4.53125, 1.03601, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, -2.11)
 collision_layer = 3
 collision_mask = 0
+script = ExtResource("1_1yeaq")
+Type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, 0, -0.25, 0)

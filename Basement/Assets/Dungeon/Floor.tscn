@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqqfts07rm4oe"]
+[gd_scene load_steps=6 format=3 uid="uid://dqqfts07rm4oe"]
 
 [ext_resource type="PackedScene" uid="uid://d1cuj0q0dtdm7" path="res://Assets/KayLousberg/Dungeon/floorDecoration_tilesLarge.gltf.glb" id="1_dard0"]
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_lmnvg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1l5t0"]
 size = Vector3(4, 1, 4)
@@ -15,6 +16,8 @@ albedo_color = Color(0.4095, 0.433125, 0.45, 1)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 3
+script = ExtResource("1_lmnvg")
+Type = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

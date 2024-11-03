@@ -45,6 +45,9 @@ public partial class FirstPersonController : CharacterBody3D
     [NodeType]
     public NavigationAgent3D Agent;
 
+    [NodeName]
+    public RayCast3D GroundRaycast;
+
     public float MoveSpeedMultiplier { get; set; } = 1f;
     public float LookSpeedMultiplier { get; set; } = 1f;
     public bool IsRunning => PlayerInput.Run.Held;
@@ -58,6 +61,7 @@ public partial class FirstPersonController : CharacterBody3D
     private static bool _debug_actions_registered;
     private Node3D _look_at_target;
     private float _look_at_speed;
+    private SolidMaterial _ground;
 
     public Action OnJump, OnLand;
 
@@ -127,6 +131,7 @@ public partial class FirstPersonController : CharacterBody3D
         Process_Interact();
         Process_Cursor();
         Process_RotateView();
+        Process_Ground();
     }
 
     private void Input_RotateView(InputEvent e)
@@ -367,5 +372,18 @@ public partial class FirstPersonController : CharacterBody3D
     public void StopLookingAt()
     {
         _look_at_target = null;
+    }
+
+    private void Process_Ground()
+    {
+        var collider = GroundRaycast.GetCollider();
+        if (!IsInstanceValid(collider)) return;
+
+        _ground = collider as SolidMaterial ?? _ground;
+    }
+
+    public SolidMaterial GetGround()
+    {
+        return _ground;
     }
 }

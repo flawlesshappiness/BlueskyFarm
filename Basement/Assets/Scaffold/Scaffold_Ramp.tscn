@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://mohelny02hgp"]
+[gd_scene load_steps=4 format=3 uid="uid://mohelny02hgp"]
 
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_80nme"]
 [ext_resource type="PackedScene" uid="uid://b2d6hrtjg3yvb" path="res://Assets/KayLousberg/Dungeon/scaffold_low.gltf.glb" id="1_phjcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gs5on"]
@@ -11,6 +12,8 @@ size = Vector3(4, 0.5, 4.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, -2.11)
 collision_layer = 3
 collision_mask = 0
+script = ExtResource("1_80nme")
+Type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, 0, -0.25, 0)

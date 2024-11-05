@@ -58,7 +58,8 @@ public partial class WaterArea : Area3D
             };
 
             _bodies.Add(wb);
-            SpawnWaterRippleParticle(wb);
+            PlayWaterRippleParticle(wb);
+            PlayWaterImpactEffects(wb);
         }
     }
 
@@ -101,7 +102,7 @@ public partial class WaterArea : Area3D
             if (!wb.FinalParticle)
             {
                 wb.FinalParticle = true;
-                SpawnWaterRippleParticle(wb);
+                PlayWaterRippleParticle(wb);
             }
 
             return;
@@ -118,14 +119,101 @@ public partial class WaterArea : Area3D
 
         if (GameTime.Time > wb.TimeLastParticle + time)
         {
-            SpawnWaterRippleParticle(wb);
+            PlayWaterRippleParticle(wb);
         }
     }
 
-    private void SpawnWaterRippleParticle(WaterBody wb)
+    private void PlayWaterRippleParticle(WaterBody wb)
     {
         var position = wb.Body.GlobalPosition.Set(y: _y_height + 0.01f);
         Particle.PlayOneShot("ps_water_ripple", position);
         wb.TimeLastParticle = GameTime.Time;
+    }
+
+    private void PlayWaterSplashParticle(WaterBody wb)
+    {
+        var position = wb.Body.GlobalPosition.Set(y: _y_height + 0.01f);
+        Particle.PlayOneShot("ps_water_splash", position);
+    }
+
+    private void PlayWaterImpactEffects(WaterBody wb)
+    {
+        var vel = wb.Body.LinearVelocity.Length();
+        var position = wb.Body.GlobalPosition;
+        var v_low = 2f;
+        var v_med = 4f;
+        var v_high = 7f;
+
+        if (vel > v_high)
+        {
+            var t_vel = (vel - v_high) / (10 - v_high);
+            PlayWaterImpactHighSfx(position, t_vel);
+            PlayWaterSplashParticle(wb);
+        }
+        else if (vel > v_med)
+        {
+            var t_vel = (vel - v_med) / (v_high - v_med);
+            PlayWaterImpactMedSfx(position, t_vel);
+            PlayWaterSplashParticle(wb);
+        }
+        else if (vel > v_low)
+        {
+            var t_vel = (vel - v_low) / (v_med - v_low);
+            PlayWaterImpactLowSfx(position, t_vel);
+        }
+    }
+
+    private void PlayWaterImpactLowSfx(Vector3 position, float t)
+    {
+        var rng = new RandomNumberGenerator();
+        var i = rng.RandiRange(1, 4).ToString("000");
+        var sfx_name = $"sfx_impact_water_low_{i}";
+        var pitch_base = Mathf.Lerp(1.0f, 0.9f, t);
+
+        SoundController.Instance.Play(sfx_name, new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            PitchMin = pitch_base - 0.05f,
+            PitchMax = pitch_base,
+            Volume = -30,
+            Position = position,
+            AttenuationEnabled = false,
+        });
+    }
+
+    private void PlayWaterImpactMedSfx(Vector3 position, float t)
+    {
+        var rng = new RandomNumberGenerator();
+        var i = rng.RandiRange(1, 3).ToString("000");
+        var sfx_name = $"sfx_impact_water_med_{i}";
+        var pitch_base = Mathf.Lerp(1.0f, 0.8f, t);
+
+        SoundController.Instance.Play(sfx_name, new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            PitchMin = pitch_base - 0.05f,
+            PitchMax = pitch_base,
+            Volume = -30,
+            Position = position,
+            AttenuationEnabled = false,
+        });
+    }
+
+    private void PlayWaterImpactHighSfx(Vector3 position, float t)
+    {
+        var rng = new RandomNumberGenerator();
+        var i = rng.RandiRange(1, 4).ToString("000");
+        var sfx_name = $"sfx_impact_water_high_{i}";
+        var pitch_base = Mathf.Lerp(1.0f, 0.7f, t);
+
+        SoundController.Instance.Play(sfx_name, new SoundSettings3D
+        {
+            Bus = SoundBus.SFX,
+            PitchMin = pitch_base - 0.05f,
+            PitchMax = pitch_base,
+            Volume = -20,
+            Position = position,
+            AttenuationEnabled = false,
+        });
     }
 }

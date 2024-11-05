@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://7fahd0dekub6"]
+[gd_scene load_steps=27 format=3 uid="uid://7fahd0dekub6"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_8w33s"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_k3ad5"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="3_7vrey"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="3_wdfqq"]
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="5_1dtlf"]
+[ext_resource type="Script" path="res://Water/WaterArea.cs" id="6_v6xil"]
 [ext_resource type="Script" path="res://PlayerTools/WateringCan/WateringCanRefillArea.cs" id="6_x7tkd"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="8_yecch"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="9_oanbm"]
@@ -21,6 +22,9 @@
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="15_01l3n"]
 [ext_resource type="PackedScene" uid="uid://blngv8bqc23br" path="res://Basement/Assets/Pipes/Pipe_Curve_05x05_1m.tscn" id="15_mn2j2"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ugevi"]
+size = Vector3(12, 1, 12)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bh0nv"]
 transparency = 1
 albedo_color = Color(0.36, 0.626667, 1, 0.886275)
@@ -29,11 +33,11 @@ albedo_color = Color(0.36, 0.626667, 1, 0.886275)
 material = SubResource("StandardMaterial3D_bh0nv")
 size = Vector2(12, 12)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4saov"]
-size = Vector3(12, 0.1, 2)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxlku"]
 size = Vector3(12, 12, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4saov"]
+size = Vector3(12, 0.1, 2)
 
 [node name="Room_Base" instance=ExtResource("1_8w33s")]
 
@@ -307,39 +311,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
 [node name="Floor_Basement_019" parent="Floor" index="36" instance=ExtResource("9_wr5tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 
-[node name="water" type="MeshInstance3D" parent="Floor" index="37"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.259174, 0)
+[node name="WaterArea" type="Area3D" parent="Floor" index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.259174, 0)
+script = ExtResource("6_v6xil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/WaterArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ugevi")
+
+[node name="water" type="MeshInstance3D" parent="Floor/WaterArea" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_dajge")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor/water" index="0"]
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/water/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.3, -0.5)
-shape = SubResource("BoxShape3D_4saov")
-
-[node name="CollisionShape3D 2" type="CollisionShape3D" parent="Floor/water/StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -5.3, -0.5)
-shape = SubResource("BoxShape3D_4saov")
-
-[node name="CollisionShape3D 3" type="CollisionShape3D" parent="Floor/water/StaticBody3D" index="2"]
-transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, 1, -4.37114e-08, 0, 3.09086e-08, 0.707107, 0.707107, 5.3, 0, -0.5)
-shape = SubResource("BoxShape3D_4saov")
-
-[node name="CollisionShape3D 4" type="CollisionShape3D" parent="Floor/water/StaticBody3D" index="3"]
-transform = Transform3D(-3.09086e-08, -0.707107, -0.707107, 1, -4.37114e-08, 0, -3.09086e-08, -0.707107, 0.707107, -5.3, 0, -0.5)
-shape = SubResource("BoxShape3D_4saov")
-
-[node name="Refill" type="Node3D" parent="Floor/water" index="1"]
+[node name="Refill" type="Node3D" parent="Floor/WaterArea/water" index="0"]
 script = ExtResource("6_x7tkd")
 
-[node name="Area3D" type="Area3D" parent="Floor/water/Refill" index="0"]
+[node name="Area3D" type="Area3D" parent="Floor/WaterArea/water/Refill" index="0"]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/water/Refill/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/WaterArea/water/Refill/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.91333e-08, -1.12404)
 shape = SubResource("BoxShape3D_bxlku")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/WaterArea" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/WaterArea/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.3, -0.5)
+shape = SubResource("BoxShape3D_4saov")
+
+[node name="CollisionShape3D 2" type="CollisionShape3D" parent="Floor/WaterArea/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -5.3, -0.5)
+shape = SubResource("BoxShape3D_4saov")
+
+[node name="CollisionShape3D 3" type="CollisionShape3D" parent="Floor/WaterArea/StaticBody3D" index="2"]
+transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, 1, -4.37114e-08, 0, 3.09086e-08, 0.707107, 0.707107, 5.3, 0, -0.5)
+shape = SubResource("BoxShape3D_4saov")
+
+[node name="CollisionShape3D 4" type="CollisionShape3D" parent="Floor/WaterArea/StaticBody3D" index="3"]
+transform = Transform3D(-3.09086e-08, -0.707107, -0.707107, 1, -4.37114e-08, 0, -3.09086e-08, -0.707107, 0.707107, -5.3, 0, -0.5)
+shape = SubResource("BoxShape3D_4saov")
 
 [node name="Ceiling" parent="." index="6"]
 visible = false

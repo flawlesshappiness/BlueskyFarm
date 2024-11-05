@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ParticleInfo" load_steps=2 format=3 uid="uid://bgoc1lsltmoce"]
+
+[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="1_rpmpv"]
+
+[resource]
+script = ExtResource("1_rpmpv")
+Path = "res://Particle/Prefabs/ps_water_ripple.tscn"

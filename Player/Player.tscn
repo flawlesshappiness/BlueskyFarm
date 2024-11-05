@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdkodwuco1fd1"]
+[gd_scene load_steps=6 format=3 uid="uid://bdkodwuco1fd1"]
 
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="1_pwey1"]
 [ext_resource type="Script" path="res://Player/ItemHold/FirstPersonItemHold.cs" id="2_26tw8"]
 [ext_resource type="Script" path="res://Player/PlayerStepSound.cs" id="2_k52kp"]
+[ext_resource type="Script" path="res://Player/Player.cs" id="2_w0i0x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0t8rm"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="FirstPersonPlayer" instance=ExtResource("1_pwey1")]
+script = ExtResource("2_w0i0x")
 WalkSpeed = 4.0
 RunSpeed = 6.0
 JumpUpSpeed = 0.0
@@ -25,5 +30,17 @@ script = ExtResource("2_26tw8")
 [node name="Position" type="Node3D" parent="NeckHorizontal/ItemHold" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.7, -0.25)
 
-[node name="StepSounds" type="Node3D" parent="." index="3"]
+[node name="StepSounds" type="Node3D" parent="." index="4"]
 script = ExtResource("2_k52kp")
+
+[node name="GroundRaycast" type="RayCast3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="WaterArea" type="Area3D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_0t8rm")

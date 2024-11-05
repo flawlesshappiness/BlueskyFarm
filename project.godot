@@ -128,6 +128,7 @@ UseItem={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Item"
 3d_physics/layer_3="Interact"
+3d_physics/layer_4="Water"
 
 [physics]
 

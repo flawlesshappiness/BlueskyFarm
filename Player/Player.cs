@@ -8,25 +8,28 @@ public partial class Player : FirstPersonController
     public RayCast3D GroundRaycast;
 
     [NodeName]
-    public Area3D WaterArea;
+    public Area3D WaterTrigger;
 
     public bool IsInWater { get; private set; }
 
     private SolidMaterial _ground;
+    private WaterArea _current_water_area;
+    private float _time_next_water_ripple;
 
     public override void _Ready()
     {
         base._Ready();
         Instance = this;
 
-        WaterArea.AreaEntered += v => CallDeferred(nameof(WaterAreaEntered), v);
-        WaterArea.AreaExited += v => CallDeferred(nameof(WaterAreaExited), v);
+        WaterTrigger.AreaEntered += v => CallDeferred(nameof(WaterAreaEntered), v);
+        WaterTrigger.AreaExited += v => CallDeferred(nameof(WaterAreaExited), v);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
         PhysicsProcess_Ground();
+        PhysicsProcess_WaterRippleParticles();
     }
 
     private void PhysicsProcess_Ground()
@@ -50,6 +53,7 @@ public partial class Player : FirstPersonController
         if (area is WaterArea water && water != null)
         {
             IsInWater = true;
+            _current_water_area = water;
         }
     }
 
@@ -61,6 +65,25 @@ public partial class Player : FirstPersonController
         if (area is WaterArea water && water != null)
         {
             IsInWater = false;
+            _current_water_area = null;
         }
+    }
+
+    private void PhysicsProcess_WaterRippleParticles()
+    {
+        if (!IsInWater) return;
+        if (Velocity.Length() < 0.5f) return;
+        if (GameTime.Time < _time_next_water_ripple) return;
+
+        _time_next_water_ripple = GameTime.Time + 0.01f;
+        PlaySplashParticle();
+    }
+
+    private void PlaySplashParticle()
+    {
+        if (!IsInstanceValid(_current_water_area)) return;
+
+        var position = GlobalPosition.Set(y: _current_water_area.GlobalWaterHeight + 0.01f);
+        Particle.PlayOneShot("ps_water_ripple", position);
     }
 }

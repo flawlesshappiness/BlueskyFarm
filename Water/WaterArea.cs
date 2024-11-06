@@ -8,6 +8,8 @@ public partial class WaterArea : Area3D
     [NodeType]
     public CollisionShape3D Shape;
 
+    public float GlobalWaterHeight => _y_height;
+
     private List<WaterBody> _bodies = new();
     private float _y_height;
 

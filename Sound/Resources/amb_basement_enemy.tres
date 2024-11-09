@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=4 format=3 uid="uid://fcetjxgeuxd8"]
+
+[ext_resource type="AudioStream" uid="uid://ebbvqyxmm4p3" path="res://Sound/Sounds/sfx_amb_rootmimic_long.wav" id="1_s5o8v"]
+[ext_resource type="AudioStream" uid="uid://b7mxf3grot50m" path="res://Sound/Sounds/sfx_amb_rootmimic_short.wav" id="2_aa1xe"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="5_u27r5"]
+
+[resource]
+script = ExtResource("5_u27r5")
+AudioStreams = Array[AudioStream]([ExtResource("1_s5o8v"), ExtResource("2_aa1xe")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

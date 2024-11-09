@@ -28,10 +28,6 @@ public partial class WateringCanRefillArea : Node3DScript
 
         wc.ReplenishUses(wc.MaxUses);
 
-        SoundController.Instance.Play("sfx_watering_can_refill", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = wc.GlobalPosition
-        });
+        SoundController.Instance.Play("sfx_watering_can_refill", wc.GlobalPosition);
     }
 }

@@ -38,31 +38,24 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
         var mul_debug = 1f;
         yield return new WaitForSeconds(rng.RandfRange(15, 30) * mul_debug);
 
-        AudioStream previous = null;
+        SoundInfo previous = null;
         while (true)
         {
-            var sound = info.Sounds
-                .Where(x => x != previous || info.Sounds.Count == 1)
+            var allow_duplicate = info.Infos.Count == 1;
+            var sound = info.Infos
+                .Where(x => allow_duplicate || x != previous)
                 .ToList()
                 .Random();
             var x = rng.RandfRange(-1, 1);
             var z = rng.RandfRange(-1, 1);
-            var distance = rng.RandfRange(info.DistanceMin, info.DistanceMax);
+            var distance = rng.RandfRange(12, 20);
             var offset = new Vector3(x, 0, z).Normalized() * distance;
             var position = FirstPersonController.Instance.GlobalPosition + offset;
-            SoundController.Instance.Play(sound, new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                MaxDistance = distance * 2,
-                Position = position,
-                Volume = rng.RandfRange(info.VolumeMin, info.VolumeMax),
-                PitchMin = info.PitchMin,
-                PitchMax = info.PitchMax
-            });
+            var asp = SoundController.Instance.Play(sound, position);
 
             var delay = rng.RandfRange(15, 30) * mul_debug;
-            yield return new WaitForSeconds(sound.GetLength() + delay);
-
+            var length = asp.Stream.GetLength();
+            yield return new WaitForSeconds(length + delay);
             previous = sound;
         }
     }

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://ca4ei0pjus1kg"]
+
+[ext_resource type="AudioStream" uid="uid://d4f52awttp5kd" path="res://Sound/Sounds/sfx_open_container_001.wav" id="1_bo5uy"]
+[ext_resource type="AudioStream" uid="uid://8t5r3uaq28ee" path="res://Sound/Sounds/sfx_open_container_002.wav" id="2_iacex"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_mvhit"]
+[ext_resource type="AudioStream" uid="uid://d31soh3em4gln" path="res://Sound/Sounds/sfx_open_container_003.wav" id="3_d3gr6"]
+
+[resource]
+script = ExtResource("2_mvhit")
+AudioStreams = Array[AudioStream]([ExtResource("1_bo5uy"), ExtResource("2_iacex"), ExtResource("3_d3gr6")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

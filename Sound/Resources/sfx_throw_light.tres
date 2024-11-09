@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cqb7celmadjfl"]
+
+[ext_resource type="AudioStream" uid="uid://c6yrwa4rax7b5" path="res://Sound/Sounds/sfx_throw_light.wav" id="1_0jyr1"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_v85jd"]
+
+[resource]
+script = ExtResource("2_v85jd")
+AudioStreams = Array[AudioStream]([ExtResource("1_0jyr1")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

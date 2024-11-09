@@ -1,5 +1,4 @@
 using Godot;
-using System.Linq;
 
 public partial class PlayerStepSound : NodeScript
 {
@@ -31,20 +30,13 @@ public partial class PlayerStepSound : NodeScript
             var ground = Player.Instance.GetGround();
             var type = water ? SolidMaterialType.Water : ground?.Type ?? SolidMaterialType.Default;
             var info = SolidMaterialController.Instance.GetInfo(type);
-            var volume = running ? info.StepBaseVolume + 3 : info.StepBaseVolume;
             var pitch_base_water = running ? 0.8f : 1.0f;
             var pitch_base = water ? pitch_base_water : running ? 1.0f : 0.8f;
-            var streams = running ? info.RunSounds : info.WalkSounds;
-            var valid_streams = streams.Where(x => _previous_step_sound == null || x != _previous_step_sound);
-            var sfx = valid_streams.ToList().Random();
-            _previous_step_sound = sfx;
+            var sfx = running ? info.RunSound : info.WalkSound;
 
-            SoundController.Instance.Play(sfx, new SoundSettings
+            SoundController.Instance.Play(sfx, new SoundOverride
             {
-                Bus = SoundBus.SFX,
-                PitchMin = pitch_base - 0.1f,
-                PitchMax = pitch_base,
-                Volume = volume
+                PitchRange = new Vector2(pitch_base - 0.05f, pitch_base)
             });
         }
 

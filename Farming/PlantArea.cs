@@ -285,11 +285,7 @@ public partial class PlantArea : Touchable
             SpawnPlantModel(CurrentSeed);
             AnimatePlantAppear(CurrentSeed);
 
-            SoundController.Instance.Play("sfx_pickup", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition
-            });
+            SoundController.Instance.Play("sfx_pickup", GlobalPosition);
         }
     }
 
@@ -413,24 +409,12 @@ public partial class PlantArea : Touchable
 
     private void PlayDirtSFX()
     {
-        SoundController.Instance.Play("sfx_seed_in_dirt", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = SeedPosition.GlobalPosition,
-            PitchMin = 0.95f,
-            PitchMax = 1f
-        });
+        SoundController.Instance.Play("sfx_seed_in_dirt", SeedPosition.GlobalPosition);
     }
 
     private void PlayThrowSFX()
     {
-        SoundController.Instance.Play("sfx_throw_light", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = SeedPosition.GlobalPosition,
-            PitchMin = 0.95f,
-            PitchMax = 1f
-        });
+        SoundController.Instance.Play("sfx_throw_light", SeedPosition.GlobalPosition);
     }
 
     private void ClearWeeds()

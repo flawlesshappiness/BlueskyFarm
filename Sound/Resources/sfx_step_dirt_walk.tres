@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=17 format=3 uid="uid://qvtj7uveimse"]
+
+[ext_resource type="AudioStream" uid="uid://bfx81c244e3um" path="res://Sound/Sounds/sfx_step_dirt_001.wav" id="1_hpwwt"]
+[ext_resource type="AudioStream" uid="uid://c7ntwafch42a" path="res://Sound/Sounds/sfx_step_dirt_002.wav" id="2_jdtjq"]
+[ext_resource type="AudioStream" uid="uid://dlettaggk0g0g" path="res://Sound/Sounds/sfx_step_dirt_003.wav" id="3_npok6"]
+[ext_resource type="AudioStream" uid="uid://fudl2s7veyv7" path="res://Sound/Sounds/sfx_step_dirt_004.wav" id="4_7k6mg"]
+[ext_resource type="AudioStream" uid="uid://dgn2bwj5fvpmw" path="res://Sound/Sounds/sfx_step_dirt_005.wav" id="5_1y2oe"]
+[ext_resource type="AudioStream" uid="uid://cid3ardn0rqoq" path="res://Sound/Sounds/sfx_step_dirt_006.wav" id="6_1h2vb"]
+[ext_resource type="AudioStream" uid="uid://bl0qoiuc6mfsi" path="res://Sound/Sounds/sfx_step_dirt_007.wav" id="7_rdpvt"]
+[ext_resource type="AudioStream" uid="uid://deas7v1i207x7" path="res://Sound/Sounds/sfx_step_dirt_008.wav" id="8_70k2n"]
+[ext_resource type="AudioStream" uid="uid://csekpft3vradf" path="res://Sound/Sounds/sfx_step_dirt_009.wav" id="9_hvo2m"]
+[ext_resource type="AudioStream" uid="uid://dpn4lwny8to2o" path="res://Sound/Sounds/sfx_step_dirt_010.wav" id="10_iik61"]
+[ext_resource type="AudioStream" uid="uid://beamumw6jgyo7" path="res://Sound/Sounds/sfx_step_dirt_011.wav" id="11_dpqs0"]
+[ext_resource type="AudioStream" uid="uid://bvuj1rehh8lu0" path="res://Sound/Sounds/sfx_step_dirt_012.wav" id="12_qcsfi"]
+[ext_resource type="AudioStream" uid="uid://d0of37ca3wg87" path="res://Sound/Sounds/sfx_step_dirt_013.wav" id="13_fusvx"]
+[ext_resource type="AudioStream" uid="uid://bx2apvevf30jb" path="res://Sound/Sounds/sfx_step_dirt_014.wav" id="14_t740x"]
+[ext_resource type="AudioStream" uid="uid://cc46u58q68cxq" path="res://Sound/Sounds/sfx_step_dirt_015.wav" id="15_sjleh"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="21_np2cq"]
+
+[resource]
+script = ExtResource("21_np2cq")
+AudioStreams = Array[AudioStream]([ExtResource("1_hpwwt"), ExtResource("2_jdtjq"), ExtResource("3_npok6"), ExtResource("4_7k6mg"), ExtResource("5_1y2oe"), ExtResource("6_1h2vb"), ExtResource("7_rdpvt"), ExtResource("8_70k2n"), ExtResource("9_hvo2m"), ExtResource("10_iik61"), ExtResource("11_dpqs0"), ExtResource("12_qcsfi"), ExtResource("13_fusvx"), ExtResource("14_t740x"), ExtResource("15_sjleh")])
+Volume = -20.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

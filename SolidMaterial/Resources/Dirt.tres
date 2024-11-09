@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="SolidMaterialInfo" load_steps=17 format=3 uid="uid://ccqxms4abpaxf"]
+[gd_resource type="Resource" script_class="SolidMaterialInfo" load_steps=19 format=3 uid="uid://ccqxms4abpaxf"]
 
 [ext_resource type="AudioStream" uid="uid://bfx81c244e3um" path="res://Sound/Sounds/sfx_step_dirt_001.wav" id="1_86f4q"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterialInfo.cs" id="1_pkw88"]
+[ext_resource type="Resource" uid="uid://moyyiqotn55l" path="res://Sound/Resources/sfx_step_dirt_run.tres" id="1_ssn6y"]
 [ext_resource type="AudioStream" uid="uid://c7ntwafch42a" path="res://Sound/Sounds/sfx_step_dirt_002.wav" id="2_ay3rh"]
 [ext_resource type="AudioStream" uid="uid://dlettaggk0g0g" path="res://Sound/Sounds/sfx_step_dirt_003.wav" id="3_ear3t"]
 [ext_resource type="AudioStream" uid="uid://fudl2s7veyv7" path="res://Sound/Sounds/sfx_step_dirt_004.wav" id="4_pawtf"]
@@ -16,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://d0of37ca3wg87" path="res://Sound/Sounds/sfx_step_dirt_013.wav" id="13_6um35"]
 [ext_resource type="AudioStream" uid="uid://bx2apvevf30jb" path="res://Sound/Sounds/sfx_step_dirt_014.wav" id="14_jvuse"]
 [ext_resource type="AudioStream" uid="uid://cc46u58q68cxq" path="res://Sound/Sounds/sfx_step_dirt_015.wav" id="15_njdhq"]
+[ext_resource type="Resource" uid="uid://qvtj7uveimse" path="res://Sound/Resources/sfx_step_dirt_walk.tres" id="17_7xpb8"]
 
 [resource]
 script = ExtResource("1_pkw88")
@@ -23,3 +25,5 @@ Type = 1
 StepBaseVolume = -20.0
 WalkSounds = Array[AudioStream]([ExtResource("1_86f4q"), ExtResource("2_ay3rh"), ExtResource("3_ear3t"), ExtResource("4_pawtf"), ExtResource("5_8uwvg"), ExtResource("6_455ao"), ExtResource("7_83eya"), ExtResource("8_6jr78"), ExtResource("9_0ok5e"), ExtResource("10_o20oq"), ExtResource("11_70i1v"), ExtResource("12_xh0n3"), ExtResource("13_6um35"), ExtResource("14_jvuse"), ExtResource("15_njdhq")])
 RunSounds = Array[AudioStream]([ExtResource("1_86f4q"), ExtResource("2_ay3rh"), ExtResource("3_ear3t"), ExtResource("4_pawtf"), ExtResource("5_8uwvg"), ExtResource("6_455ao"), ExtResource("7_83eya"), ExtResource("8_6jr78"), ExtResource("9_0ok5e"), ExtResource("10_o20oq"), ExtResource("11_70i1v"), ExtResource("12_xh0n3"), ExtResource("13_6um35"), ExtResource("14_jvuse"), ExtResource("15_njdhq")])
+WalkSound = ExtResource("17_7xpb8")
+RunSound = ExtResource("1_ssn6y")

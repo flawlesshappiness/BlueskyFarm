@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 
 [GlobalClass]
 public partial class SolidMaterialInfo : Resource
@@ -8,11 +7,8 @@ public partial class SolidMaterialInfo : Resource
     public SolidMaterialType Type;
 
     [Export]
-    public float StepBaseVolume;
+    public SoundInfo WalkSound;
 
     [Export]
-    public Array<AudioStream> WalkSounds;
-
-    [Export]
-    public Array<AudioStream> RunSounds;
+    public SoundInfo RunSound;
 }

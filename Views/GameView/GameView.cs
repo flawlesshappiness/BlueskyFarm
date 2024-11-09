@@ -66,7 +66,7 @@ public partial class GameView : View
         BottomTextLabel.Text = text;
         BottomTextLabel.Modulate = Colors.Transparent;
 
-        SoundController.Instance.Play("sfx_text_display", new SoundSettings
+        SoundController.Instance.Play("sfx_text_display", new SoundOverride
         {
             Bus = SoundBus.SFX
         });

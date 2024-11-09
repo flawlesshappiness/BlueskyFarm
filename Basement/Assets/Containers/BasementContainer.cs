@@ -49,13 +49,7 @@ public partial class BasementContainer : Touchable
         SpawnItemCoroutine(0.1f);
 
         var sfx = Open_SFX.PickRandom();
-        SoundController.Instance.Play(sfx, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMin = 0.95f,
-            PitchMax = 1.05f,
-        });
+        SoundController.Instance.Play("sfx_container_open", GlobalPosition);
 
         ps_dust.Emitting = true;
     }

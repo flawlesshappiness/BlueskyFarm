@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://r1yafxaio3pi"]
+
+[ext_resource type="AudioStream" uid="uid://dakcvtjjdoghd" path="res://Sound/Sounds/sfx_root_mimic_walk.wav" id="1_n27d4"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_6tvh5"]
+
+[resource]
+script = ExtResource("2_6tvh5")
+AudioStreams = Array[AudioStream]([ExtResource("1_n27d4")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

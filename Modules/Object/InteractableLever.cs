@@ -94,13 +94,7 @@ public partial class InteractableLever : Touchable
         var animation = _state == State.Up ? MoveUp_AnimationName : MoveDown_AnimationName;
         Animation.Play(animation);
 
-        SoundController.Instance.Play(Toggle_SFX, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMin = 0.95f,
-            PitchMax = 1f
-        });
+        SoundController.Instance.Play(Toggle_SFX, GlobalPosition);
     }
 
     private void Pull()
@@ -108,12 +102,6 @@ public partial class InteractableLever : Touchable
         _animating = true;
         Animation.Play(MoveBoth_AnimationName);
 
-        SoundController.Instance.Play(Pull_SFX, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMin = 0.95f,
-            PitchMax = 1f
-        });
+        SoundController.Instance.Play(Pull_SFX, GlobalPosition);
     }
 }

@@ -199,19 +199,11 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         {
             FadeOutOverlayFromCurrent();
 
-            SoundController.Instance.Play("sfx_barrelmimicflower_teleport_self", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition,
-                Volume = -10
-            });
+            SoundController.Instance.Play("sfx_barrel_mimic_flower_teleport_self", GlobalPosition);
             return;
         }
 
-        SoundController.Instance.Play("sfx_barrelmimicflower_teleport_player", new SoundSettings
-        {
-            Bus = SoundBus.SFX,
-        });
+        SoundController.Instance.Play("sfx_barrel_mimic_flower_teleport_player");
 
         _overlay.Color = _overlay.Color.SetA(1);
 

@@ -10,10 +10,10 @@ public partial class SceneDoor : Touchable
     public string StartNode;
 
     [Export]
-    public AudioStream OpenSound;
+    public SoundInfo OpenSound;
 
     [Export]
-    public AudioStream CloseSound;
+    public SoundInfo CloseSound;
 
     public override void _Ready()
     {
@@ -65,11 +65,7 @@ public partial class SceneDoor : Touchable
             FirstPersonController.Instance.MovementLock.AddLock(nameof(SceneDoor));
             FirstPersonController.Instance.InteractLock.AddLock(nameof(SceneDoor));
 
-            SoundController.Instance.Play(OpenSound?.ResourcePath, new SoundSettings
-            {
-                Volume = -12,
-                Bus = SoundBus.SFX
-            });
+            SoundController.Instance.Play(OpenSound?.ResourcePath);
 
             yield return LerpEnumerator.Lerp01(0.5f, f => view.SetBlackOverlayAlpha(Mathf.Lerp(0, 1, f)));
             yield return new WaitForSeconds(0.5f);
@@ -81,11 +77,7 @@ public partial class SceneDoor : Touchable
             FirstPersonController.Instance.MovementLock.RemoveLock(nameof(SceneDoor));
             FirstPersonController.Instance.InteractLock.RemoveLock(nameof(SceneDoor));
 
-            SoundController.Instance.Play(CloseSound?.ResourcePath, new SoundSettings
-            {
-                Volume = -12,
-                Bus = SoundBus.SFX
-            });
+            SoundController.Instance.Play(CloseSound?.ResourcePath);
 
 
             yield return LerpEnumerator.Lerp01(0.5f, f => view.SetBlackOverlayAlpha(Mathf.Lerp(1, 0, f)));

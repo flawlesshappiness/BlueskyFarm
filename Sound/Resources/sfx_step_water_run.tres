@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=10 format=3 uid="uid://cb8cy6cg1qa7k"]
+
+[ext_resource type="AudioStream" uid="uid://c51fjmyr15ue4" path="res://Sound/Sounds/sfx_step_water_high_001.wav" id="1_u3akc"]
+[ext_resource type="AudioStream" uid="uid://g5r4delkq20c" path="res://Sound/Sounds/sfx_step_water_high_002.wav" id="2_tbwpb"]
+[ext_resource type="AudioStream" uid="uid://c0h2opnm2kq45" path="res://Sound/Sounds/sfx_step_water_high_003.wav" id="3_n587j"]
+[ext_resource type="AudioStream" uid="uid://w2a2g2vm3ueb" path="res://Sound/Sounds/sfx_step_water_high_004.wav" id="4_fkaxq"]
+[ext_resource type="AudioStream" uid="uid://cemffnyn5won0" path="res://Sound/Sounds/sfx_step_water_high_005.wav" id="5_8a12o"]
+[ext_resource type="AudioStream" uid="uid://r737ld7h4v1a" path="res://Sound/Sounds/sfx_step_water_high_006.wav" id="6_kc887"]
+[ext_resource type="AudioStream" uid="uid://rotk8yvmtj8c" path="res://Sound/Sounds/sfx_step_water_high_007.wav" id="7_wtlq5"]
+[ext_resource type="AudioStream" uid="uid://cmjpj8yqiwsny" path="res://Sound/Sounds/sfx_step_water_high_008.wav" id="8_wb2gc"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="11_qwfh1"]
+
+[resource]
+script = ExtResource("11_qwfh1")
+AudioStreams = Array[AudioStream]([ExtResource("1_u3akc"), ExtResource("2_tbwpb"), ExtResource("3_n587j"), ExtResource("4_fkaxq"), ExtResource("5_8a12o"), ExtResource("6_kc887"), ExtResource("7_wtlq5"), ExtResource("8_wb2gc")])
+Volume = -12.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

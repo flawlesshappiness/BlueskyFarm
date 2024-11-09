@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://2f2v4v0ugqce"]
+
+[ext_resource type="AudioStream" uid="uid://qsdorjv35rlo" path="res://Sound/Sounds/sfx_door_close.ogg" id="1_edipf"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_vy51l"]
+
+[resource]
+script = ExtResource("2_vy51l")
+AudioStreams = Array[AudioStream]([ExtResource("1_edipf")])
+Volume = -15.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

@@ -69,18 +69,10 @@ public partial class WateringCan : Item
 
     private void PlaySloshSFX(float speed)
     {
-        var rng = new RandomNumberGenerator();
-        var i = rng.RandiRange(1, 3).ToString("000");
         var power = GetPowerString(speed);
-        var sfx_name = $"sfx_watering_can_slosh_{power}_{i}";
+        var sfx_name = $"sfx_watering_can_slosh_{power}";
 
-        SoundController.Instance.Play(sfx_name, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMax = 1.1f,
-            PitchMin = 0.8f,
-        });
+        SoundController.Instance.Play(sfx_name, GlobalPosition);
 
         string GetPowerString(float speed)
         {

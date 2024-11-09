@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://cy4dcy3p0c0ha"]
+
+[ext_resource type="AudioStream" uid="uid://brwugia3y4v1i" path="res://Sound/Sounds/sfx_step_wood_001.wav" id="1_ogoeg"]
+[ext_resource type="AudioStream" uid="uid://bdymb6iraxg06" path="res://Sound/Sounds/sfx_step_wood_002.wav" id="2_n2pkv"]
+[ext_resource type="AudioStream" uid="uid://dr20usngp85ou" path="res://Sound/Sounds/sfx_step_wood_003.wav" id="3_sbwem"]
+[ext_resource type="AudioStream" uid="uid://d3vfuq635loka" path="res://Sound/Sounds/sfx_step_wood_004.wav" id="4_eji3j"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="11_smjpq"]
+
+[resource]
+script = ExtResource("11_smjpq")
+AudioStreams = Array[AudioStream]([ExtResource("1_ogoeg"), ExtResource("2_n2pkv"), ExtResource("3_sbwem"), ExtResource("4_eji3j")])
+Volume = -15.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

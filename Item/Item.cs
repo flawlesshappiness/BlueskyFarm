@@ -91,14 +91,9 @@ public partial class Item : Grabbable
         var volume = Mathf.Lerp(vol_min, vol_max, t_vel);
         var pitch = Mathf.Lerp(pitch_max, pitch_min, t_vel);
 
-        SoundController.Instance.Play("sfx_impact_default", new SoundSettings3D
-        {
-            Position = RigidBody.GlobalPosition,
-            PitchMin = pitch,
-            PitchMax = pitch,
-            Volume = volume,
-            Bus = SoundBus.SFX
-        });
+        var asp = SoundController.Instance.Play("sfx_impact_default", RigidBody.GlobalPosition);
+        asp.VolumeDb = volume;
+        asp.PitchScale = pitch;
     }
 
     public virtual void Use()

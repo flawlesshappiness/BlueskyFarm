@@ -145,77 +145,39 @@ public partial class WaterArea : Area3D
         var v_low = 2f;
         var v_med = 4f;
         var v_high = 7f;
+        var v_max = 10f;
 
         if (vel > v_high)
         {
-            var t_vel = (vel - v_high) / (10 - v_high);
-            PlayWaterImpactHighSfx(position, t_vel);
+            var t_vel = (vel - v_high) / (v_max - v_high);
+            PlayWaterImpactHighSfx(position);
             PlayWaterSplashParticle(wb);
         }
         else if (vel > v_med)
         {
             var t_vel = (vel - v_med) / (v_high - v_med);
-            PlayWaterImpactMedSfx(position, t_vel);
+            PlayWaterImpactMedSfx(position);
             PlayWaterSplashParticle(wb);
         }
         else if (vel > v_low)
         {
             var t_vel = (vel - v_low) / (v_med - v_low);
-            PlayWaterImpactLowSfx(position, t_vel);
+            PlayWaterImpactLowSfx(position);
         }
     }
 
-    private void PlayWaterImpactLowSfx(Vector3 position, float t)
+    private void PlayWaterImpactLowSfx(Vector3 position)
     {
-        var rng = new RandomNumberGenerator();
-        var i = rng.RandiRange(1, 4).ToString("000");
-        var sfx_name = $"sfx_impact_water_low_{i}";
-        var pitch_base = Mathf.Lerp(1.0f, 0.9f, t);
-
-        SoundController.Instance.Play(sfx_name, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            PitchMin = pitch_base - 0.05f,
-            PitchMax = pitch_base,
-            Volume = -30,
-            Position = position,
-            AttenuationEnabled = false,
-        });
+        SoundController.Instance.Play("sfx_impact_water_low", position);
     }
 
-    private void PlayWaterImpactMedSfx(Vector3 position, float t)
+    private void PlayWaterImpactMedSfx(Vector3 position)
     {
-        var rng = new RandomNumberGenerator();
-        var i = rng.RandiRange(1, 3).ToString("000");
-        var sfx_name = $"sfx_impact_water_med_{i}";
-        var pitch_base = Mathf.Lerp(1.0f, 0.8f, t);
-
-        SoundController.Instance.Play(sfx_name, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            PitchMin = pitch_base - 0.05f,
-            PitchMax = pitch_base,
-            Volume = -30,
-            Position = position,
-            AttenuationEnabled = false,
-        });
+        SoundController.Instance.Play("sfx_impact_water_med", position);
     }
 
-    private void PlayWaterImpactHighSfx(Vector3 position, float t)
+    private void PlayWaterImpactHighSfx(Vector3 position)
     {
-        var rng = new RandomNumberGenerator();
-        var i = rng.RandiRange(1, 4).ToString("000");
-        var sfx_name = $"sfx_impact_water_high_{i}";
-        var pitch_base = Mathf.Lerp(1.0f, 0.7f, t);
-
-        SoundController.Instance.Play(sfx_name, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            PitchMin = pitch_base - 0.05f,
-            PitchMax = pitch_base,
-            Volume = -20,
-            Position = position,
-            AttenuationEnabled = false,
-        });
+        SoundController.Instance.Play("sfx_impact_water_high", position);
     }
 }

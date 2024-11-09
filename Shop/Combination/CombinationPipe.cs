@@ -50,13 +50,7 @@ public partial class CombinationPipe : Node3DScript
 
         CurrentMaterial.RigidBody.LinearVelocity = Area.GlobalBasis * Vector3.Forward * 3;
 
-        SoundController.Instance.Play("sfx_pickup", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = Area.GlobalPosition,
-            PitchMin = 0.9f,
-            PitchMax = 1.0f,
-        });
+        SoundController.Instance.Play("sfx_pickup", Area.GlobalPosition);
     }
 
     private void BodyEntered(GodotObject obj)
@@ -105,13 +99,7 @@ public partial class CombinationPipe : Node3DScript
         CurrentMaterial = mat;
         EnableDetaching();
 
-        SoundController.Instance.Play("sfx_pickup", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = Area.GlobalPosition,
-            PitchMin = 0.9f,
-            PitchMax = 1.0f,
-        });
+        SoundController.Instance.Play("sfx_pickup", Area.GlobalPosition);
     }
 
     public void ConsumeMaterial()

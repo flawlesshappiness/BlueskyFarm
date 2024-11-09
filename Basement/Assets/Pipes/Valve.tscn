@@ -204,8 +204,8 @@ IdleDown_AnimationName = "idle_right"
 MoveUp_AnimationName = "move_left"
 MoveDown_AnimationName = "move_right"
 MoveBoth_AnimationName = "move_right"
-Toggle_SFX = "sfx_valve"
-Pull_SFX = "sfx_valve"
+Toggle_SFX = "sfx_valve_turn"
+Pull_SFX = "sfx_valve_turn"
 InteractableText = "Valve"
 
 [node name="Pivot" type="Node3D" parent="."]

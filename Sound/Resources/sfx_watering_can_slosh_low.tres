@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://dglbj5423ukld"]
+
+[ext_resource type="AudioStream" uid="uid://cf7gntrolkmmx" path="res://Sound/Sounds/sfx_watering_can_slosh_low_001.wav" id="1_qccbp"]
+[ext_resource type="AudioStream" uid="uid://ditf41ci5bye1" path="res://Sound/Sounds/sfx_watering_can_slosh_low_002.wav" id="2_7duf1"]
+[ext_resource type="AudioStream" uid="uid://dgwdn4gurmf3t" path="res://Sound/Sounds/sfx_watering_can_slosh_low_003.wav" id="3_3vbty"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="5_1omqh"]
+
+[resource]
+script = ExtResource("5_1omqh")
+AudioStreams = Array[AudioStream]([ExtResource("1_qccbp"), ExtResource("2_7duf1"), ExtResource("3_3vbty")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

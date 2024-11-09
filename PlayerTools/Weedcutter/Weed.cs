@@ -62,13 +62,7 @@ public partial class Weed : Node3DScript
 
     private void PlayCutSFX()
     {
-        SoundController.Instance.Play("sfx_weed_cut", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMin = 0.95f,
-            PitchMax = 1f
-        });
+        SoundController.Instance.Play("sfx_weed_cut", GlobalPosition);
     }
 
     public void RandomizeModel()
@@ -86,13 +80,7 @@ public partial class Weed : Node3DScript
 
     public Coroutine AnimateAppear()
     {
-        SoundController.Instance.Play("sfx_weed_cut", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMin = 0.7f,
-            PitchMax = 0.75f
-        });
+        SoundController.Instance.Play("sfx_weed_cut", GlobalPosition);
 
         return StartCoroutine(Cr, "animate");
         IEnumerator Cr()

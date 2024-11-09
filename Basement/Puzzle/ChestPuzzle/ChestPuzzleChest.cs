@@ -61,12 +61,7 @@ public partial class ChestPuzzleChest : Touchable
 
     private void Locked()
     {
-        SoundController.Instance.Play("sfx_chest_locked", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            Volume = 0
-        });
+        SoundController.Instance.Play("sfx_chest_locked", GlobalPosition);
 
         View.Get<GameView>().DisplayText("The chest is locked.");
     }
@@ -77,11 +72,7 @@ public partial class ChestPuzzleChest : Touchable
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            SoundController.Instance.Play("sfx_puzzle_solved", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = key.GlobalPosition,
-            });
+            SoundController.Instance.Play("sfx_puzzle_solved", key.GlobalPosition);
 
             yield return key.AnimateGlowThenDisappear();
             Unlock();
@@ -90,12 +81,7 @@ public partial class ChestPuzzleChest : Touchable
 
     public void Unlock()
     {
-        SoundController.Instance.Play("sfx_chest_open", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            Volume = 0
-        });
+        SoundController.Instance.Play("sfx_chest_open", GlobalPosition);
 
         Closed.Hide();
         Open.Show();

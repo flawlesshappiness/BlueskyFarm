@@ -494,16 +494,7 @@ public partial class RootMimicEnemy : NavEnemy
         if (GameTime.Time < _time_step_sfx) return;
         _time_step_sfx = GameTime.Time + 0.1f;
 
-        SoundController.Instance.Play("sfx_root_mimic_walk", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            PitchMin = 0.8f,
-            PitchMax = 1.0f,
-            Volume = -10,
-            Position = position,
-            MaxDistance = 28,
-            UnitSize = 50
-        });
+        SoundController.Instance.Play("sfx_root_mimic_walk", position);
     }
 
     private void AnimatePose_Threat()

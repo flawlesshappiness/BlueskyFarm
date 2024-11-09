@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cyubf3wr0xqqn"]
+
+[ext_resource type="AudioStream" uid="uid://b74bp278f7xoq" path="res://Sound/Sounds/sfx_barrelmimicflower_teleport_self.wav" id="1_i7iof"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_2b21d"]
+
+[resource]
+script = ExtResource("2_2b21d")
+AudioStreams = Array[AudioStream]([ExtResource("1_i7iof")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cgrr54nr5vhsn"]
+
+[ext_resource type="AudioStream" uid="uid://dgasd5dkgxkjl" path="res://Sound/Sounds/sfx_root_mimic_threat.wav" id="1_wkdlu"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_4r3hb"]
+
+[resource]
+script = ExtResource("2_4r3hb")
+AudioStreams = Array[AudioStream]([ExtResource("1_wkdlu")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

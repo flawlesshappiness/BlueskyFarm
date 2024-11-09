@@ -190,13 +190,8 @@ public partial class MaterialProcessor : Node3DScript
     private void PlayGlowstickSFX(int i_pitch)
     {
         var pitch = 0.9f + (0.2f * i_pitch);
-        SoundController.Instance.Play("sfx_pickup", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = GlobalPosition,
-            PitchMin = pitch,
-            PitchMax = pitch,
-        });
+        var asp = SoundController.Instance.Play("sfx_pickup", GlobalPosition);
+        asp.PitchScale = pitch;
     }
 
     private void SetGlowstickColor(MeshInstance3D mesh, Color color)
@@ -240,11 +235,7 @@ public partial class MaterialProcessor : Node3DScript
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            SoundController.Instance.Play("sfx_material_processor_run", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition,
-            });
+            SoundController.Instance.Play("sfx_material_processor_run", GlobalPosition);
 
             yield return new WaitForSeconds(3.2f);
 
@@ -275,11 +266,7 @@ public partial class MaterialProcessor : Node3DScript
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            SoundController.Instance.Play("sfx_material_processor_fail", new SoundSettings3D
-            {
-                Bus = SoundBus.SFX,
-                Position = GlobalPosition,
-            });
+            SoundController.Instance.Play("sfx_material_processor_fail", GlobalPosition);
 
             yield return new WaitForSeconds(2f);
 
@@ -325,14 +312,7 @@ public partial class MaterialProcessor : Node3DScript
         item.GlobalPosition = OutputPosition.GlobalPosition;
         item.RigidBody.LinearVelocity = OutputPosition.GlobalBasis * Vector3.Forward * 3;
 
-        SoundController.Instance.Play("sfx_pickup", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = OutputPosition.GlobalPosition,
-            Volume = 10,
-            PitchMin = 0.9f,
-            PitchMax = 1.0f,
-        });
+        SoundController.Instance.Play("sfx_pickup", OutputPosition.GlobalPosition);
     }
 
     private void FixMachine(Item item)
@@ -343,13 +323,6 @@ public partial class MaterialProcessor : Node3DScript
         ItemController.Instance.UntrackItem(item);
         item.QueueFree();
 
-        SoundController.Instance.Play("sfx_material_processor_fix", new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = OutputPosition.GlobalPosition,
-            Volume = 10,
-            PitchMin = 0.9f,
-            PitchMax = 1.0f,
-        });
+        SoundController.Instance.Play("sfx_material_processor_fix", OutputPosition.GlobalPosition);
     }
 }

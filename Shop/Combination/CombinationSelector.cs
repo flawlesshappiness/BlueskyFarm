@@ -31,11 +31,7 @@ public partial class CombinationSelector : NodeScript
     private void TouchInput(CombinationInput input)
     {
         SetCombination(CurrentCombination + input.Input);
-        SoundController.Instance.Play(input.SfxInput, new SoundSettings3D
-        {
-            Bus = SoundBus.SFX,
-            Position = input.GlobalPosition,
-        });
+        SoundController.Instance.Play(input.SfxInput, input.GlobalPosition);
     }
 
     public void Clear()

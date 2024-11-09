@@ -1,27 +1,42 @@
 using Godot;
 using System.Collections.Generic;
+using System.IO;
 
 [GlobalClass]
 public partial class SoundCollection : ResourceCollection<SoundInfo>
 {
-    private Dictionary<string, AudioStream> _sounds = new();
+    private Dictionary<string, SoundEntry> _entries = new();
 
     protected override void OnLoad()
     {
         base.OnLoad();
-        _sounds = LoadResources<AudioStream>("res://Sound/Sounds");
+
+        foreach (var info in Resources)
+        {
+            var filename = Path.GetFileName(info.ResourcePath).RemoveExtension();
+            _entries.Add(filename, new SoundEntry
+            {
+                Info = info,
+            });
+        }
     }
 
-    public AudioStream GetSound(string filename)
+    public SoundEntry GetEntry(string filename)
     {
         filename = GetFilename(filename);
 
-        if (_sounds.ContainsKey(filename))
+        if (_entries.TryGetValue(filename, out var entry))
         {
-            return _sounds[filename];
+            return entry;
         }
 
-        Debug.LogError("Failed to load sound with name: " + filename);
+        Debug.LogError("Failed to get sound entry with name: " + filename);
         return null;
     }
+}
+
+public class SoundEntry
+{
+    public SoundInfo Info { get; set; }
+    public AudioStream LastPlayedStream { get; set; }
 }

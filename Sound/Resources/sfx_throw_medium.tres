@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://ccob4q10typ7f"]
+
+[ext_resource type="AudioStream" uid="uid://dt8dhto25lamh" path="res://Sound/Sounds/sfx_throw_medium.wav" id="1_nldgw"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_8qa0w"]
+
+[resource]
+script = ExtResource("2_8qa0w")
+AudioStreams = Array[AudioStream]([ExtResource("1_nldgw")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

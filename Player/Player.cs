@@ -23,6 +23,23 @@ public partial class Player : FirstPersonController
 
         WaterTrigger.AreaEntered += v => CallDeferred(nameof(WaterAreaEntered), v);
         WaterTrigger.AreaExited += v => CallDeferred(nameof(WaterAreaExited), v);
+
+        DialogueController.Instance.OnDialogueStart += OnDialogueStart;
+        DialogueController.Instance.OnDialogueEnd += OnDialogueEnd;
+    }
+
+    private void OnDialogueStart()
+    {
+        var name = nameof(DialogueController);
+        InventoryController.Instance.InventoryLock.AddLock(name);
+        InteractLock.AddLock(name);
+    }
+
+    private void OnDialogueEnd()
+    {
+        var name = nameof(DialogueController);
+        InventoryController.Instance.InventoryLock.RemoveLock(nameof(DialogueController));
+        InteractLock.RemoveLock(name);
     }
 
     public override void _PhysicsProcess(double delta)

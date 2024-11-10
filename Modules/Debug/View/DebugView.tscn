@@ -39,7 +39,6 @@ grow_vertical = 2
 script = ExtResource("1_7hao7")
 
 [node name="Main" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,7 +153,6 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="ContentSearch" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,6 +194,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ResultButtonPrefab" type="Button" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/ScrollContainer/VBoxContainer"]
+auto_translate_mode = 2
 layout_mode = 2
 text = "PREFAB"
 

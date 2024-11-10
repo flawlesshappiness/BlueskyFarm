@@ -120,6 +120,22 @@ public partial class DebugView : View
         ContentList.Visible = false;
     }
 
+    public void SetContent_Search()
+    {
+        HideContent();
+        Content.Show();
+        ContentSearch.Show();
+        ContentSearch.ClearItems();
+    }
+
+    public void SetContent_List()
+    {
+        HideContent();
+        Content.Show();
+        ContentSearch.Show();
+        ContentList.Clear();
+    }
+
     private void ToggleVisible() =>
         SetVisible(!Main.Visible);
 

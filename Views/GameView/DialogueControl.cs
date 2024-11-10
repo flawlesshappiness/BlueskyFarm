@@ -20,6 +20,12 @@ public partial class DialogueControl : ControlScript
         DialogueController.Instance.OnDialogueStart += OnDialogueStart;
         DialogueController.Instance.OnDialogueEnd += OnDialogueEnd;
         Clear();
+
+        var locales = TranslationServer.GetLoadedLocales();
+        foreach (var locale in locales)
+        {
+            Debug.Log(locale);
+        }
     }
 
     public override void _Process(double delta)
@@ -53,7 +59,7 @@ public partial class DialogueControl : ControlScript
 
     private void OnDialogue(DialogueNode node)
     {
-        SetText(Tr(node.name));
+        SetText(node.name);
         AnimateText();
     }
 

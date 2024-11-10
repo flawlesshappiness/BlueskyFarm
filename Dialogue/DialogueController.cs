@@ -41,6 +41,13 @@ public partial class DialogueController : SingletonController
             Action = v => { NextNode(); v.Close(); }
         });
 
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set language",
+            Action = SetLanguage
+        });
+
         void SearchForDialogueNode(DebugView view)
         {
             view.SetContent_Search();
@@ -50,6 +57,16 @@ public partial class DialogueController : SingletonController
                 view.ContentSearch.AddItem(node.name, () => { SetNode(node); view.Close(); });
             }
 
+            view.ContentSearch.UpdateButtons();
+        }
+
+        void SetLanguage(DebugView view)
+        {
+            view.SetContent_Search();
+            foreach (var locale in TranslationServer.GetLoadedLocales())
+            {
+                view.ContentSearch.AddItem(locale, () => { TranslationServer.SetLocale(locale); view.Close(); });
+            }
             view.ContentSearch.UpdateButtons();
         }
     }

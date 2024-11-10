@@ -102,6 +102,7 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         go.Set("max_distance", max_distance);
         go.Set("unit_size", unit_size);
         go.Set("attenuation_filter_cutoff_hz", attenuation_filter_cutoff_hz);
+        go.Set("max_db", 10); // Subject to change
 
         var duration = Convert.ToSingle(stream.GetLength());
         DestroyDelay(go, duration);

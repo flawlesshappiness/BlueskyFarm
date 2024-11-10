@@ -7,9 +7,10 @@ public partial class InventoryController : SingletonController
 {
     public override string Directory => "Inventory";
     public static InventoryController Instance => Singleton.Get<InventoryController>();
-    private FirstPersonController Player => FirstPersonController.Instance;
     public ItemData[] CurrentInventoryItems { get; private set; } = new ItemData[MAX_INVENTORY_SIZE];
     public int SelectedIndex { get; private set; }
+
+    public MultiLock InventoryLock = new();
 
     public const int INIT_INVENTORY_SIZE = 5;
     public const int MAX_INVENTORY_SIZE = 15;
@@ -43,6 +44,8 @@ public partial class InventoryController : SingletonController
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
+
+        if (InventoryLock.IsLocked) return;
 
         if (PlayerInput.NextInventorySlot.Pressed)
         {
@@ -111,7 +114,7 @@ public partial class InventoryController : SingletonController
 
     private void Input_PickUpPressed()
     {
-        var item = Player.Interact?.CurrentInteractable as Item;
+        var item = Player.Instance.Interact?.CurrentInteractable as Item;
         PickUpItem(item);
     }
 
@@ -191,7 +194,7 @@ public partial class InventoryController : SingletonController
 
             yield return LerpEnumerator.Lerp01(0.1f, f =>
             {
-                item.RigidBody.GlobalPosition = start_position.Lerp(Player.Mid.GlobalPosition, f);
+                item.RigidBody.GlobalPosition = start_position.Lerp(Player.Instance.Mid.GlobalPosition, f);
                 item.RigidBody.Scale = start_scale.Lerp(end_scale, f);
             });
 
@@ -252,10 +255,10 @@ public partial class InventoryController : SingletonController
     {
         if (data == null) return;
 
-        var dir = Player.Camera.GlobalBasis * Vector3.Forward;
-        var vel = Player.Velocity;
+        var dir = Player.Instance.Camera.GlobalBasis * Vector3.Forward;
+        var vel = Player.Instance.Velocity;
         var item = ItemController.Instance.CreateItemFromData(data);
-        item.RigidBody.GlobalPosition = Player.Mid.GlobalPosition;
+        item.RigidBody.GlobalPosition = Player.Instance.Mid.GlobalPosition;
         item.RigidBody.LinearVelocity = vel + dir * 5;
 
         PlayPickupSoundFx();

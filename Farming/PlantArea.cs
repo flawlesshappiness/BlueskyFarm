@@ -254,6 +254,8 @@ public partial class PlantArea : Touchable
         SetItemPosition(seed.PlantItem);
         RandomizeScale(seed.PlantItem);
 
+        SoundController.Instance.Play("sfx_seed_grow", GlobalPosition);
+
         Debug.Indent--;
     }
 
@@ -356,6 +358,8 @@ public partial class PlantArea : Touchable
         item.GlobalPosition = SeedPosition.GlobalPosition.Add(y: 0.25f);
         item.RigidBody.LinearVelocity = velocity;
         item.RigidBody.AngularVelocity = torque;
+
+        SoundController.Instance.Play("sfx_seed_complete", GlobalPosition);
     }
 
     private void AnimatePlantAppear(Seed seed)
@@ -477,6 +481,8 @@ public partial class PlantArea : Touchable
 
         CurrentSeed?.SeedItem?.AnimateWobble();
         CurrentSeed?.PlantItem?.AnimateWobble();
+
+        SoundController.Instance.Play("sfx_seed_grow", GlobalPosition);
     }
 
     private bool HasWeeds()
@@ -511,6 +517,8 @@ public partial class PlantArea : Touchable
         AnimateWater();
         CurrentSeed?.SeedItem?.AnimateWobble();
         CurrentSeed?.PlantItem?.AnimateWobble();
+
+        SoundController.Instance.Play("sfx_seed_grow", GlobalPosition);
     }
 
     private void AnimateWater()

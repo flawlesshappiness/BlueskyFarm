@@ -107,6 +107,8 @@ public partial class WateringCan : Item
         IEnumerator Cr()
         {
             _using = true;
+            InventoryController.Instance.InventoryLock.AddLock(nameof(WateringCan));
+
             var animation = AnimationPlayer.GetAnimation(UseAnimation);
             AnimationPlayer.Play(UseAnimation);
             SetPlayerLocked(true);
@@ -121,6 +123,8 @@ public partial class WateringCan : Item
             SetPlayerLocked(false);
 
             yield return new WaitForSeconds(animation.Length * 0.2f);
+
+            InventoryController.Instance.InventoryLock.RemoveLock(nameof(WateringCan));
             _using = false;
         }
     }

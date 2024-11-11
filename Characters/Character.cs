@@ -43,7 +43,7 @@ public partial class Character : Node3DScript
         }
     }
 
-    private void OnDialogueEnd()
+    protected virtual void OnDialogueEnd()
     {
         ActiveDialogue = false;
     }

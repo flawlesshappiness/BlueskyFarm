@@ -1,25 +1,39 @@
+using Godot;
+
 public partial class FrogCharacter : Character
 {
     [NodeType]
     public Touchable Touchable;
 
     private bool _active_dialogue;
+    private Vector3 _init_direction;
 
     public override void _Ready()
     {
         base._Ready();
-        InitializeAnimations();
+
+        _init_direction = GlobalBasis * -Vector3.Forward;
 
         Touchable.OnTouched += Touched;
+
+        InitializeAnimations();
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+        PhysicsProcess_Turn();
+    }
 
+    private void PhysicsProcess_Turn()
+    {
         if (ActiveDialogue)
         {
             TurnTowardsPlayer();
+        }
+        else
+        {
+            TurnTowardsDirection(_init_direction);
         }
     }
 

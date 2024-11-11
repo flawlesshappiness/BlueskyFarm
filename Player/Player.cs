@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 
 public partial class Player : FirstPersonController
 {
@@ -37,9 +38,16 @@ public partial class Player : FirstPersonController
 
     private void OnDialogueEnd()
     {
-        var name = nameof(DialogueController);
-        InventoryController.Instance.InventoryLock.RemoveLock(nameof(DialogueController));
-        InteractLock.RemoveLock(name);
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            var delay = 0.5f;
+            yield return new WaitForSeconds(delay);
+
+            var name = nameof(DialogueController);
+            InventoryController.Instance.InventoryLock.RemoveLock(nameof(DialogueController));
+            InteractLock.RemoveLock(name);
+        }
     }
 
     public override void _PhysicsProcess(double delta)

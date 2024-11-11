@@ -9,5 +9,23 @@
 	},
 	{
 		"name": "##TEST_003##"
+	},
+	
+	{
+		"name": "##FROG_TEST_001##",
+		"next": "##FROG_TEST_002##",
+		"animation": "CharacterArmature|Wave"
+	},
+	{
+		"name": "##FROG_TEST_002##",
+		"next": "##FROG_TEST_003##"
+	},
+	{
+		"name": "##FROG_TEST_003##",
+		"next": "##FROG_TEST_004##"
+	},
+	{
+		"name": "##FROG_TEST_004##",
+		"animation": "CharacterArmature|Yes"
 	}
 ]

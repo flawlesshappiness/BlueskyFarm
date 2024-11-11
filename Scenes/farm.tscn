@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=69 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="9_t030q"]
 [ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
 [ext_resource type="PackedScene" uid="uid://bvbctpjxk6w4r" path="res://Farming/Prefabs/PlantArea.tscn" id="13_p2ljc"]
+[ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
@@ -626,6 +627,9 @@ Id = "063399dd-1159-4bf1-a4ae-b0be17fbf114"
 [node name="PlantArea6" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -13)
 Id = "c272d916-6676-410b-8e3e-ce50c64489c6"
+
+[node name="Frog" parent="World" instance=ExtResource("15_gw4ke")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1365e-06, 0, 13)
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97852, 0, -3.07958)

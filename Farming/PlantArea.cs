@@ -458,7 +458,6 @@ public partial class PlantArea : Touchable
         weed.SetEnabled(weed.IsTouchable);
         weed.RandomizeModel();
         weed.RandomizeScale();
-        weed.AnimateAppear();
         weed.OnWeedCut += () => WeedCut(weed);
 
         var rng = new RandomNumberGenerator();
@@ -469,6 +468,13 @@ public partial class PlantArea : Touchable
         weed.GlobalPosition = SeedPosition.GlobalPosition + new Vector3(x, 0, z);
 
         _current_weeds.Add(weed);
+        return weed;
+    }
+
+    private Weed CreateWeedWithData()
+    {
+        var weed = CreateWeed();
+        weed.AnimateAppear();
         CurrentSeed.Data.WeedCount++;
         return weed;
     }
@@ -499,7 +505,7 @@ public partial class PlantArea : Touchable
         {
             var rng = new RandomNumberGenerator();
             CurrentSeed.TimeWeed += WEED_TIME * rng.RandfRange(0.9f, 1.1f);
-            CreateWeed();
+            CreateWeedWithData();
         }
     }
 

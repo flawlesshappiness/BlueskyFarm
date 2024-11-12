@@ -31,14 +31,14 @@ sky = SubResource("Sky_b8lqf")
 adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
-size = Vector3(31, 50, 31)
+size = Vector3(24, 50, 24)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(31, 4, 31)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
-vertices = PackedVector3Array(-15.6322, 4.24041, -15.6322, -15.3822, 4.49041, -15.1322, 15.1178, 4.49041, -15.3822, 15.6178, 4.24041, -15.6322, -15.6322, 4.24041, 15.6178, -15.1322, 4.49041, 15.3678, 15.3678, 4.49041, 15.1178, 15.6178, 4.24041, 15.6178, 9.86779, 0.740409, 12.6178, 9.86779, 1.24041, 14.3678, 13.1178, 1.24041, 14.3678, 13.1178, 0.740409, 12.6178, -14.3822, 0.490409, -14.3822, -14.3822, 0.490409, 14.3678, 8.86779, 0.490409, 12.6178, 14.3678, 0.490409, -14.3822, 8.86779, 0.490409, 14.3678, 14.1178, 0.490409, 12.6178, 14.3678, 0.490409, 14.3678)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 1), PackedInt32Array(1, 4, 0), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(6, 7, 5), PackedInt32Array(5, 7, 4), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(14, 16, 13), PackedInt32Array(17, 15, 18), PackedInt32Array(15, 17, 11), PackedInt32Array(15, 11, 8), PackedInt32Array(15, 8, 14)]
+vertices = PackedVector3Array(-11.6322, 4.24041, -11.6322, -11.3822, 4.49041, -11.1322, 11.1178, 4.49041, -11.3822, 11.6178, 4.24041, -11.6322, -11.6322, 4.24041, 11.6178, -11.1322, 4.49041, 11.3678, 11.3678, 4.49041, 11.1178, 11.6178, 4.24041, 11.6178, 6.61779, 0.740409, 8.61779, 6.61779, 1.24041, 10.3678, 9.86779, 1.24041, 10.3678, 9.86779, 0.740409, 8.61779, -10.3822, 0.490409, -10.3822, -10.3822, 0.490409, 10.3678, 5.61779, 0.490409, 8.61779, 10.3678, 0.490409, -10.3822, 5.61779, 0.490409, 10.3678, 10.3678, 0.740409, 8.61779)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 1), PackedInt32Array(1, 4, 0), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(6, 7, 5), PackedInt32Array(5, 7, 4), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(14, 16, 13), PackedInt32Array(15, 17, 11), PackedInt32Array(15, 11, 8), PackedInt32Array(15, 8, 14)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlevm"]
 albedo_color = Color(0.384314, 0.658824, 0.419608, 1)
@@ -299,7 +299,7 @@ shape = SubResource("BoxShape3D_t5e8f")
 navigation_mesh = SubResource("NavigationMesh_ijsjf")
 
 [node name="Ground" type="Node3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(32, 0, 0, 0, 1.067, 0, 0, 0, 32, 0, 0, 0)
+transform = Transform3D(24, 0, 0, 0, 1, 0, 0, 0, 24, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/NavigationRegion3D/Ground"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -316,7 +316,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 shape = SubResource("BoxShape3D_ko2qb")
 
 [node name="Bush_E" type="Node3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, 0)
 
 [node name="Bush" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
@@ -330,17 +330,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
 [node name="Bush4" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
 
-[node name="Bush5" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 14)
-
 [node name="Bush6" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
 
 [node name="Bush7" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
-
-[node name="Bush8" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -14)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_E"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -352,7 +346,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
 [node name="Bush_N" type="Node3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 15.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 11.5)
 
 [node name="Bush" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
@@ -366,17 +360,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
 [node name="Bush4" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
 
-[node name="Bush5" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 14)
-
 [node name="Bush6" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
 
 [node name="Bush7" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
-
-[node name="Bush8" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -14)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_N"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -388,7 +376,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
 [node name="Bush_S" type="Node3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -15.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -11.5)
 
 [node name="Bush" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
@@ -402,17 +390,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
 [node name="Bush4" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
 
-[node name="Bush5" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 14)
-
 [node name="Bush6" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
 
 [node name="Bush7" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
-
-[node name="Bush8" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -14)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_S"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -424,7 +406,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
 [node name="Bush_W" type="Node3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 0)
 
 [node name="Bush" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
@@ -438,17 +420,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
 [node name="Bush4" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
 
-[node name="Bush5" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 14)
-
 [node name="Bush6" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
 
 [node name="Bush7" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
-
-[node name="Bush8" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -14)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_W"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -460,7 +436,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
 [node name="Basement" parent="World/NavigationRegion3D" instance=ExtResource("9_t030q")]
-transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 11.5, 0.435387, 13.1053)
+transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 8.27578, 0.435387, 9.22459)
 
 [node name="Trapdoor" parent="World/NavigationRegion3D/Basement" instance=ExtResource("8_je3mm")]
 transform = Transform3D(1, 0, 0, 0, -0.999958, -0.00921533, 0, 0.00921533, -0.999958, 0, -0.0844181, 0.306818)
@@ -495,10 +471,10 @@ texture = ExtResource("20_uqr56")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26637, 0, -8.79061)
 
 [node name="Grass_Short2" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82901, 0, -12.1156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90951, 0, -5.53251)
 
 [node name="Grass_Short3" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74148, 0, -8.13845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98085, 0, -9.38638)
 
 [node name="Grass_Short4" parent="World/Grass" instance=ExtResource("17_nm5pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38516, 0, -2.67196)
@@ -507,37 +483,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38516, 0, -2.67196)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01564, 0, 4.16537)
 
 [node name="Grass_Short6" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93413, 0, 8.19257)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23599, 0, 6.8292)
 
 [node name="Grass_Short7" parent="World/Grass" instance=ExtResource("17_nm5pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58333, 0, 8.81956)
 
 [node name="Grass_Short8" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4731, 0, 6.00204)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9731, 0, 6.50204)
 
 [node name="Grass_Short9" parent="World/Grass" instance=ExtResource("17_nm5pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2186, 0, 1.69152)
 
 [node name="Grass_Short10" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4762, 0, -3.78012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41636, 0, 0.586651)
 
 [node name="Grass_Short11" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.774, 0, -12.7488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.16799, 9.53674e-07, -3.58998)
 
 [node name="Grass_Short12" parent="World/Grass" instance=ExtResource("17_nm5pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3698, 0, -3.35599)
 
 [node name="Grass_Short13" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1302, 0, -7.85599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.28811, 0, -7.85599)
 
 [node name="Grass_Short14" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88632, 0, -11.4631)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458269, 0, -3.12574)
 
 [node name="Grass_Short15" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88317, 0, 12.0864)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37066, -9.53674e-07, 1.25319)
 
 [node name="Grass_Short16" parent="World/Grass" instance=ExtResource("17_nm5pa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45425, 0, 11.5706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38232, 0, 0.713255)
 
 [node name="Rift" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
@@ -605,31 +581,31 @@ draw_pass_1 = SubResource("QuadMesh_7x72b")
 [node name="PlantAreas" type="Node3D" parent="World"]
 
 [node name="PlantArea" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.37391)
 Id = "9f60cbc2-27ee-4b69-87e1-cea0cc13cc0b"
 
 [node name="PlantArea2" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6.37391)
 Id = "5bcb48df-2504-4fa0-b08d-7413c2ab42de"
 
 [node name="PlantArea3" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6.37391)
 Id = "00d306ab-038d-4f2e-b799-97dc7b5efe17"
 
 [node name="PlantArea4" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8.37391)
 Id = "3f316eda-4a5a-4397-9462-4dd713e44938"
 
 [node name="PlantArea5" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.37391)
 Id = "063399dd-1159-4bf1-a4ae-b0be17fbf114"
 
 [node name="PlantArea6" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8.37391)
 Id = "c272d916-6676-410b-8e3e-ce50c64489c6"
 
 [node name="Frog" parent="World" instance=ExtResource("15_gw4ke")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1365e-06, 0, 13)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1365e-06, 0, 9.31604)
 CharacterId = "supervisor"
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]

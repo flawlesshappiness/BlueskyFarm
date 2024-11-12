@@ -1,17 +1,5 @@
 [
 	{
-		"id": "##TEST_001##",
-		"next": "##TEST_002##"
-	},
-	{
-		"id": "##TEST_002##",
-		"next": "##TEST_003##"
-	},
-	{
-		"id": "##TEST_003##"
-	},
-	
-	{
 		"id": "##FROG_INTRO_001##",
 		"next": "##FROG_INTRO_002##",
 		"animation": "CharacterArmature|Wave"

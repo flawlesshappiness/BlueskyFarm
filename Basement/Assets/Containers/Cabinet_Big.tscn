@@ -266,7 +266,6 @@ shape = SubResource("BoxShape3D_2he5b")
 
 [node name="ps_dust" parent="." index="4" instance=ExtResource("3_msicc")]
 transform = Transform3D(1, 0, 0, 0, -0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 1.01895, 0.599322)
-emitting = true
 amount = 10
 lifetime = 5.0
 explosiveness = 1.0

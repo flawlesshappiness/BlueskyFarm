@@ -132,7 +132,6 @@ public partial class FirstPersonController : CharacterBody3D
     private void Input_RotateView(InputEvent e)
     {
         if (LookLock.IsLocked) return;
-        if (MovementLock.IsLocked) return;
         if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
         if (e is not InputEventMouseMotion) return;
         if (Grab?.IsRotating ?? false) return;
@@ -161,7 +160,7 @@ public partial class FirstPersonController : CharacterBody3D
 
         var ver_angle = GetVerticalAngleToPoint(target_position);
         var ver_angle_lerp = Mathf.Lerp(0, ver_angle, _look_at_speed * GameTime.DeltaTime);
-        if (Mathf.Abs(ver_angle) > 5f)
+        if (Mathf.Abs(ver_angle) > 1f)
         {
             NeckVertical.RotateX(ver_angle_lerp);
         }
@@ -247,7 +246,11 @@ public partial class FirstPersonController : CharacterBody3D
     {
         var target = Interact?.CurrentInteractable;
 
-        if (InteractLock.IsLocked || !IsInstanceValid(target))
+        if (InteractLock.IsLocked)
+        {
+            // Do nothing
+        }
+        else if (!IsInstanceValid(target))
         {
             Cursor.Hide();
         }

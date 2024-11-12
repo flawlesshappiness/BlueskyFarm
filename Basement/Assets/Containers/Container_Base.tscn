@@ -6,7 +6,7 @@
 
 [node name="Container_Base" type="Node3D"]
 script = ExtResource("1_3vjei")
-Open_SFX = Array[String](["sfx_open_container_001", "sfx_open_container_002", "sfx_open_container_003"])
+InteractableText = "Open"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 4

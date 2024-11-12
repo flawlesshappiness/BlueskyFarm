@@ -13,6 +13,14 @@ public static class Cursor
         View.Show();
     }
 
+    public static void Progress(ProgressSettings settings)
+    {
+        View.SetProgress(settings.Value);
+        View.SetCursorText(settings.Text);
+        View.SetCursorPosition(settings.Position);
+        View.Show();
+    }
+
     public static void Hide()
     {
         View.Hide();
@@ -25,4 +33,11 @@ public class CursorSettings
     public Vector3 Position { get; set; }
     public string Text { get; set; }
     public Texture2D OverrideTexture { get; set; }
+}
+
+public class ProgressSettings
+{
+    public Vector3 Position { get; set; }
+    public string Text { get; set; }
+    public float Value { get; set; }
 }

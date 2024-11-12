@@ -2,11 +2,17 @@ using Godot;
 
 public partial class CursorView : View
 {
-    [NodeName(nameof(Cursor))]
-    public TextureRect Cursor;
+    [NodeName]
+    public Control Cursor;
 
-    [NodeName(nameof(Label))]
+    [NodeType]
+    public TextureRect Icon;
+
+    [NodeName]
     public Label Label;
+
+    [NodeType]
+    public ProgressBar ProgressBar;
 
     public override string Directory => $"{Paths.Modules}/Cursor/View";
 
@@ -18,18 +24,14 @@ public partial class CursorView : View
 
     public void SetCursorTexture(Texture2D texture)
     {
-        Cursor.Texture = texture;
+        Icon.Texture = texture;
+        Icon.Show();
+        ProgressBar.Hide();
     }
 
     public void SetCursorText(string text)
     {
         Label.Text = text;
-    }
-
-    public void SetCursor(CursorType type, string text = "")
-    {
-        SetCursorTexture(null);
-        SetCursorText(text);
     }
 
     public void SetCursorPosition(Vector2 position)
@@ -42,5 +44,12 @@ public partial class CursorView : View
     {
         var viewport_position = GetViewport().GetCamera3D().UnprojectPosition(position);
         SetCursorPosition(viewport_position);
+    }
+
+    public void SetProgress(float t)
+    {
+        ProgressBar.Value = t;
+        Icon.Hide();
+        ProgressBar.Show();
     }
 }

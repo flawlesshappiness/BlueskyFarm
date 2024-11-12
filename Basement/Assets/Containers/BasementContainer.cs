@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using System.Collections;
 
 public partial class BasementContainer : Touchable
@@ -9,9 +8,6 @@ public partial class BasementContainer : Touchable
 
     [Export]
     public string MoveOpen_AnimationName = "move_open";
-
-    [Export]
-    public Array<string> Open_SFX;
 
     [NodeType]
     public AnimationPlayer Animation;
@@ -29,7 +25,7 @@ public partial class BasementContainer : Touchable
     public override void _Ready()
     {
         base._Ready();
-        this.SetCollisionEnabled(IsVisibleInTree());
+        this.SetEnabled(IsVisibleInTree());
         Animation.Play(IdleClosed_AnimationName);
     }
 
@@ -44,14 +40,48 @@ public partial class BasementContainer : Touchable
         if (_open) return;
         _open = true;
 
-        AnimateOpen();
-        SetCollision_None();
-        SpawnItemCoroutine(0.1f);
+        StartCoroutine(Cr, nameof(Open));
+        IEnumerator Cr()
+        {
+            yield return OpenOverTime(2f);
 
-        var sfx = Open_SFX.PickRandom();
-        SoundController.Instance.Play("sfx_container_open", GlobalPosition);
+            AnimateOpen();
+            SetCollision_None();
+            SpawnItemCoroutine(0.1f);
 
-        ps_dust.Emitting = true;
+            SoundController.Instance.Play("sfx_container_open", GlobalPosition);
+
+            ps_dust.Emitting = true;
+        }
+    }
+
+    private Coroutine OpenOverTime(float duration)
+    {
+        return StartCoroutine(Cr, nameof(OpenOverTime));
+        IEnumerator Cr()
+        {
+            var id = GetInstanceId().ToString();
+            Player.Instance.MovementLock.AddLock(id);
+            Player.Instance.InteractLock.AddLock(id);
+            Player.Instance.StartLookingAt(Body, 0.05f);
+
+            var time_start = GameTime.Time;
+            var time_end = time_start + duration;
+            while (GameTime.Time < time_end)
+            {
+                var t = (GameTime.Time - time_start) / duration;
+                Cursor.Progress(new ProgressSettings
+                {
+                    Position = Body.GlobalPosition,
+                    Value = t
+                });
+                yield return null;
+            }
+
+            Player.Instance.MovementLock.RemoveLock(id);
+            Player.Instance.InteractLock.RemoveLock(id);
+            Player.Instance.StopLookingAt();
+        }
     }
 
     protected void AnimateOpen()

@@ -435,6 +435,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 4)
 [node name="Ceiling43" parent="Ceiling" index="24" instance=ExtResource("3_wdfqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 8)
 
+[node name="EnemySpawn" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
 [node name="Lights" type="Node3D" parent="." index="10"]
 
 [node name="Lantern" parent="Lights" index="0" instance=ExtResource("3_7vrey")]

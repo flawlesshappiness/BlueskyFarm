@@ -1,20 +1,63 @@
 using Godot;
+using System.Linq;
 
 public partial class Character : Node3DScript
 {
+    [Export]
+    public string CharacterId;
+
     [NodeType]
     public AnimationPlayer AnimationPlayer;
 
     [NodeType]
     public AnimationStateMachine AnimationStateMachine;
 
+    public CharacterData CharacterData { get; private set; }
     protected bool ActiveDialogue { get; private set; }
 
     public override void _Ready()
     {
         base._Ready();
+        InitializeData();
+        InitializeDialogue();
+    }
+
+    private void InitializeDialogue()
+    {
         DialogueController.Instance.OnDialogueEnd += OnDialogueEnd;
         DialogueController.Instance.OnDialogue += OnDialogue;
+    }
+
+    private void InitializeData()
+    {
+        CharacterData = GetOrCreateData();
+    }
+
+    private CharacterData GetOrCreateData()
+    {
+        Debug.TraceMethod(CharacterId);
+        Debug.Indent++;
+
+        if (string.IsNullOrEmpty(CharacterId))
+        {
+            Debug.LogError("CharacterId was null or empty");
+            Debug.Indent--;
+            return null;
+        }
+
+        var data = Data.Game.Characters.FirstOrDefault(x => x.Id == CharacterId);
+        if (data == null)
+        {
+            data = new CharacterData
+            {
+                Id = CharacterId
+            };
+
+            Data.Game.Characters.Add(data);
+        }
+
+        Debug.Indent--;
+        return data;
     }
 
     protected void StartDialogue(string name)

@@ -91,6 +91,18 @@ public partial class Character : Node3DScript
         ActiveDialogue = false;
     }
 
+    protected bool HasFlag(string id)
+    {
+        var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == id);
+        return data?.value ?? false;
+    }
+
+    protected int GetFlag(string id)
+    {
+        var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == id);
+        return data?.value ?? 0;
+    }
+
     protected void TurnTowardsPlayer()
     {
         var direction_to_player = GlobalPosition.DirectionTo(Player.Instance.GlobalPosition);
@@ -102,5 +114,4 @@ public partial class Character : Node3DScript
         var y = Mathf.LerpAngle(GlobalRotation.Y, Mathf.Atan2(direction.X, direction.Z), 10 * GameTime.DeltaTime);
         GlobalRotation = GlobalRotation.Set(y: y);
     }
-
 }

@@ -8,7 +8,7 @@ public class DialogueNodeCollection
     {
         foreach (var node in nodes)
         {
-            Nodes.Add(node.name, node);
+            Nodes.Add(node.id, node);
         }
     }
 }

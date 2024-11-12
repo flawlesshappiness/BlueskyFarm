@@ -57,7 +57,7 @@ public partial class DialogueControl : ControlScript
 
     private void OnDialogue(DialogueNode node)
     {
-        SetText(node.name);
+        SetText(node.id);
         AnimateText();
     }
 

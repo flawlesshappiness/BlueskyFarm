@@ -1,31 +1,45 @@
 [
 	{
-		"name": "##TEST_001##",
+		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},
 	{
-		"name": "##TEST_002##",
+		"id": "##TEST_002##",
 		"next": "##TEST_003##"
 	},
 	{
-		"name": "##TEST_003##"
+		"id": "##TEST_003##"
 	},
 	
 	{
-		"name": "##FROG_TEST_001##",
-		"next": "##FROG_TEST_002##",
+		"id": "##FROG_INTRO_001##",
+		"next": "##FROG_INTRO_002##",
 		"animation": "CharacterArmature|Wave"
 	},
 	{
-		"name": "##FROG_TEST_002##",
-		"next": "##FROG_TEST_003##"
+		"id": "##FROG_INTRO_002##",
+		"next": "##FROG_INTRO_003##"
 	},
 	{
-		"name": "##FROG_TEST_003##",
-		"next": "##FROG_TEST_004##"
+		"id": "##FROG_INTRO_003##",
+		"next": "##FROG_INTRO_004##"
 	},
 	{
-		"name": "##FROG_TEST_004##",
-		"animation": "CharacterArmature|Yes"
+		"id": "##FROG_INTRO_004##",
+		"animation": "CharacterArmature|Yes",
+		"flags_b": [
+			{
+				"id": "frog_intro",
+				"value": true
+			}
+		]
+	},
+	
+	{
+		"id": "##FROG_INTRO_005##",
+		"next": "##FROG_INTRO_006##"
+	},
+	{
+		"id": "##FROG_INTRO_006##"
 	}
 ]

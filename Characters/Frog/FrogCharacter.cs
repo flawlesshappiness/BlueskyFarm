@@ -56,6 +56,13 @@ public partial class FrogCharacter : Character
 
     private void Touched()
     {
-        StartDialogue("##FROG_TEST_001##");
+        if (HasFlag("frog_intro"))
+        {
+            StartDialogue("##FROG_INTRO_005##");
+        }
+        else
+        {
+            StartDialogue("##FROG_INTRO_001##");
+        }
     }
 }

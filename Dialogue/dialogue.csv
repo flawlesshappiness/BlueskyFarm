@@ -3,7 +3,9 @@ keys;en
 ##TEST_002##;Natus maiores sit est reprehenderit delectus. Omnis nisi dolor dicta quasi et quia. Delectus repellendus doloremque et sed magni non. Molestias quas consequatur commodi recusandae provident.
 ##TEST_003##;Test 3 (end)
 ##LOCKED_001##;It's locked
-##FROG_TEST_001##;Oh, hey.
-##FROG_TEST_002##;I thought we closed applications.
-##FROG_TEST_003##;Hmm, no matter.\nCan you grow a vegetable for me?
-##FROG_TEST_004##;You can find seeds down in the basement.\nBring it here when you have it.
+##FROG_INTRO_001##;Oh, hey.
+##FROG_INTRO_002##;I thought we closed applications.
+##FROG_INTRO_003##;Hmm, no matter.\nCan you grow a vegetable for me?
+##FROG_INTRO_004##;You can find seeds down in the basement.\nBring the vegetable here when you have it.
+##FROG_INTRO_005##;Grow a vegetable for me.
+##FROG_INTRO_006##;You should be able to find a variety of seeds down in the basement.

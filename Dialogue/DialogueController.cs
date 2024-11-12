@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 
 public partial class DialogueController : SingletonController
@@ -54,7 +55,7 @@ public partial class DialogueController : SingletonController
 
             foreach (var node in _collection.Nodes.Values)
             {
-                view.ContentSearch.AddItem(node.name, () => { SetNode(node); view.Close(); });
+                view.ContentSearch.AddItem(node.id, () => { SetNode(node); view.Close(); });
             }
 
             view.ContentSearch.UpdateButtons();
@@ -94,6 +95,7 @@ public partial class DialogueController : SingletonController
 
         var is_first = CurrentNode == null;
         CurrentNode = node;
+        UpdateFlags(node);
 
         if (is_first)
         {
@@ -131,5 +133,47 @@ public partial class DialogueController : SingletonController
 
         CurrentNode = null;
         OnDialogueEnd?.Invoke();
+    }
+
+    private void UpdateFlags(DialogueNode node)
+    {
+        if (node == null) return;
+
+        UpdateFlags_Bool(node.flags_b);
+        UpdateFlags_Int(node.flags_i);
+    }
+
+    private void UpdateFlags_Bool(IEnumerable<DialogueFlagBool> flags)
+    {
+        if (flags == null) return;
+
+        foreach (var flag in flags)
+        {
+            var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == flag.id);
+            if (data == null)
+            {
+                data = new DialogueFlagBool { id = flag.id };
+                Data.Game.DialogFlags_Bool.Add(data);
+            }
+
+            data.value = flag.value;
+        }
+    }
+
+    private void UpdateFlags_Int(IEnumerable<DialogueFlagInt> flags)
+    {
+        if (flags == null) return;
+
+        foreach (var flag in flags)
+        {
+            var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == flag.id);
+            if (data == null)
+            {
+                data = new DialogueFlagInt { id = flag.id };
+                Data.Game.DialogFlags_Int.Add(data);
+            }
+
+            data.value = flag.value;
+        }
     }
 }

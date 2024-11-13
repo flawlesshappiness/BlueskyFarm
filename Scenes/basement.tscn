@@ -20,9 +20,9 @@ ForestEnvironment = ExtResource("3_nj8np")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_t5fu3")
 
-[node name="FirstPersonPlayer" parent="." instance=ExtResource("2_38ywq")]
+[node name="Player" parent="." instance=ExtResource("2_38ywq")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="FirstPersonPlayer"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79225, 0)
 light_color = Color(0.15, 0.15, 0.15, 1)
 omni_range = 7.0
@@ -35,3 +35,5 @@ bus = &"SFX"
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_hft8w")
+
+[node name="DungeonParent" type="Node3D" parent="NavigationRegion3D"]

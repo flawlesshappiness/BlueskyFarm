@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ushvc4v1oc0j"]
+[gd_scene load_steps=7 format=3 uid="uid://ushvc4v1oc0j"]
 
 [ext_resource type="PackedScene" uid="uid://cueux51r45dkf" path="res://Assets/KayLousberg/Dungeon/wall_door.gltf.glb" id="2_0ixls"]
 
@@ -9,6 +9,12 @@ size = Vector3(2, 4, 1)
 size = Vector3(2, 4, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7tqwk"]
+size = Vector3(2, 1.5, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_egw6o"]
+size = Vector3(2, 4, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_1yr14"]
 size = Vector3(2, 1.5, 1)
 
 [node name="Doorway" type="Node3D"]
@@ -29,3 +35,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
 shape = SubResource("BoxShape3D_7tqwk")
 
 [node name="wall_door_gltf" parent="." instance=ExtResource("2_0ixls")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
+occluder = SubResource("BoxOccluder3D_egw6o")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+occluder = SubResource("BoxOccluder3D_egw6o")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
+occluder = SubResource("BoxOccluder3D_1yr14")

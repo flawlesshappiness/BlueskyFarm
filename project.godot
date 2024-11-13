@@ -137,3 +137,7 @@ locale/translations=PackedStringArray("res://Dialogue/dialogue.en.translation")
 [physics]
 
 common/physics_ticks_per_second=180
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true

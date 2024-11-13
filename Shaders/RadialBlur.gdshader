@@ -13,15 +13,22 @@ uniform float blur_power : hint_range( 0.0, 1.0 ) = 0.01;
 // サンプリング回数
 uniform int sampling_count : hint_range( 1, 64 ) = 6;
 
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform sampler2D input_texture;
 
 void fragment( )
 {
-	vec2 direction = SCREEN_UV - blur_center;
-	vec3 c = vec3( 0.0, 0.0, 0.0 );
-	float f = 1.0 / float( sampling_count );
-	for( int i=0; i < sampling_count; i++ ) {
-		c += texture( screen_texture, SCREEN_UV - blur_power * direction * float(i) ).rgb * f;
+	if(blur_power > 0.0)
+	{
+		vec2 direction = SCREEN_UV - blur_center;
+		vec3 c = vec3( 0.0, 0.0, 0.0 );
+		float f = 1.0 / float( sampling_count );
+		for( int i=0; i < sampling_count; i++ ) {
+			c += texture(input_texture, SCREEN_UV - blur_power * direction * float(i)).rgb * f;
+		}
+		COLOR.rgb = c;
 	}
-	COLOR.rgb = c;
+	else
+	{
+		COLOR = texture(input_texture, SCREEN_UV);
+	}
 }

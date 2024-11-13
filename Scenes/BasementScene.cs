@@ -7,6 +7,12 @@ public partial class BasementScene : GameScene
     [NodeType]
     public NavigationRegion3D NavRegion;
 
+    [NodeType]
+    public OccluderInstance3D Occluder;
+
+    [NodeName]
+    public Node3D DungeonParent;
+
     [Export]
     public Environment BasementEnvironment;
 
@@ -26,7 +32,7 @@ public partial class BasementScene : GameScene
         // Basement
         BasementController.Instance.GenerateBasement(new BasementSettings
         {
-            RoomParent = NavRegion,
+            RoomParent = DungeonParent,
             Areas = new()
             {
                 new BasementSettingsArea

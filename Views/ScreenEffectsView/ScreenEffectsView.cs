@@ -5,72 +5,88 @@ public partial class ScreenEffectsView : View
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(ScreenEffectsView)}";
 
     [NodeName]
-    public ColorRect Combined;
+    public ColorRect Radial;
+
+    [NodeName]
+    public ColorRect Gaussian;
+
+    [NodeName]
+    public ColorRect Distort;
 
     [NodeName]
     public ColorRect AnimatedFog;
 
-    public ShaderMaterial CombinedMaterial => _mat_combined ?? (_mat_combined = Combined.Material as ShaderMaterial);
-    private ShaderMaterial _mat_combined;
+    [NodeName]
+    public SubViewport Main;
+
+    [NodeType]
+    public Camera3D Camera;
+
+    [NodeName]
+    public Node3D Test;
+
+    public ShaderMaterial RadialMaterial => _mat_radial ?? (_mat_radial = Radial.Material as ShaderMaterial);
+    private ShaderMaterial _mat_radial;
+
+    public ShaderMaterial GaussianMaterial => _mat_gaussian ?? (_mat_gaussian = Gaussian.Material as ShaderMaterial);
+    private ShaderMaterial _mat_gaussian;
+
+    public ShaderMaterial DistortMaterial => _mat_distort ?? (_mat_distort = Distort.Material as ShaderMaterial);
+    private ShaderMaterial _mat_distort;
 
     public ShaderMaterial FogMaterial => _mat_fog ?? (_mat_fog = AnimatedFog.Material as ShaderMaterial);
     private ShaderMaterial _mat_fog;
 
     public void Reset()
     {
-        Blur_Type = -1;
-        Blur_Amount = 0;
-        Radial_Strength = 0;
-        Distort_Strength = 0;
+        GaussianBlurAmount = 0;
+        RadialBlurAmount = 0;
+        DistortStrength = 0;
         Fog_Alpha = 0;
+
+        Test.Hide();
     }
 
-    public float Distort_Strength
+    public float DistortStrength
     {
-        get => CombinedMaterial.GetShaderParameter("distort_strength").AsSingle();
-        set => CombinedMaterial.SetShaderParameter("distort_strength", value);
+        get => DistortMaterial.GetShaderParameter("strength").AsSingle();
+        set => DistortMaterial.SetShaderParameter("strength", value);
     }
 
-    public float Distort_Speed
+    public float DistortSpeed
     {
-        get => CombinedMaterial.GetShaderParameter("distort_speed").AsSingle();
-        set => CombinedMaterial.SetShaderParameter("distort_speed", value);
+        get => DistortMaterial.GetShaderParameter("speed").AsSingle();
+        set => DistortMaterial.SetShaderParameter("speed", value);
     }
 
-    public Vector2 Distort_Displacement
+    public Vector2 DistortDisplacement
     {
-        get => CombinedMaterial.GetShaderParameter("distort_displacement").AsVector2();
-        set => CombinedMaterial.SetShaderParameter("distort_displacement", value);
+        get => DistortMaterial.GetShaderParameter("displacement").AsVector2();
+        set => DistortMaterial.SetShaderParameter("displacement", value);
     }
 
-    public int Blur_Type
+    public float GaussianBlurAmount
     {
-        get => CombinedMaterial.GetShaderParameter("blur_type").AsInt32();
-        set => CombinedMaterial.SetShaderParameter("blur_type", value);
+        get => GaussianMaterial.GetShaderParameter("blur_amount").AsSingle();
+        set => GaussianMaterial.SetShaderParameter("blur_amount", value);
     }
 
-    public float Blur_Amount
+    public Vector2 RadialBlurCenter
     {
-        get => CombinedMaterial.GetShaderParameter("blur_amount").AsSingle();
-        set => CombinedMaterial.SetShaderParameter("blur_amount", value);
+        get => RadialMaterial.GetShaderParameter("blur_center").AsVector2();
+        set => RadialMaterial.SetShaderParameter("blur_center", value);
     }
 
-    public Vector2 Radial_Center
+    public float RadialBlurAmount
     {
-        get => CombinedMaterial.GetShaderParameter("radial_center").AsVector2();
-        set => CombinedMaterial.SetShaderParameter("radial_center", value);
+        get => RadialMaterial.GetShaderParameter("blur_power").AsSingle();
+        set => RadialMaterial.SetShaderParameter("blur_power", value);
     }
 
-    public float Radial_Strength
+    public int RadialBlurSamplingCount
     {
-        get => CombinedMaterial.GetShaderParameter("radial_strength").AsSingle();
-        set => CombinedMaterial.SetShaderParameter("radial_strength", value);
-    }
-
-    public int Radial_Sampling
-    {
-        get => CombinedMaterial.GetShaderParameter("radial_sampling").AsInt32();
-        set => CombinedMaterial.SetShaderParameter("radial_sampling", value);
+        get => RadialMaterial.GetShaderParameter("sampling_count").AsInt32();
+        set => RadialMaterial.SetShaderParameter("sampling_count", value);
     }
 
     public float Fog_Alpha
@@ -87,8 +103,8 @@ public partial class ScreenEffectsView : View
 
     public Vector2 Fog_Direction
     {
-        get => CombinedMaterial.GetShaderParameter("fog_direction").AsVector2();
-        set => CombinedMaterial.SetShaderParameter("fog_direction", value);
+        get => FogMaterial.GetShaderParameter("fog_direction").AsVector2();
+        set => FogMaterial.SetShaderParameter("fog_direction", value);
     }
 
     public override void _Ready()
@@ -96,5 +112,19 @@ public partial class ScreenEffectsView : View
         base._Ready();
         Visible = true;
         Reset();
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_MatchCamera();
+    }
+
+    private void Process_MatchCamera()
+    {
+        var player = Player.Instance;
+        if (player == null) return;
+
+        Camera.GlobalTransform = Player.Instance.Camera.GlobalTransform;
     }
 }

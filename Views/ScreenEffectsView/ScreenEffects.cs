@@ -6,12 +6,6 @@ public static class ScreenEffects
     private static ScreenEffectsView _view;
     public static ScreenEffectsView Instance => _view ?? (_view = View.Get<ScreenEffectsView>());
 
-    private enum BlurType
-    {
-        GAUSSIAN = 0,
-        RADIAL = 1
-    }
-
     private static Coroutine _cr_blur;
     private static Coroutine _cr_radial;
     private static Coroutine _cr_distort;
@@ -27,11 +21,6 @@ public static class ScreenEffects
         Instance.Reset();
     }
 
-    private static void SetBlurType(BlurType blur_type)
-    {
-        Instance.Blur_Type = (int)blur_type;
-    }
-
     public static Coroutine AnimateBlur(float strength, float duration_in, float duration_on, float duration_out)
     {
         Coroutine.Stop(_cr_blur);
@@ -40,23 +29,22 @@ public static class ScreenEffects
 
         IEnumerator Cr()
         {
-            SetBlurType(BlurType.GAUSSIAN);
-            var start = Instance.Blur_Amount;
+            var start = Instance.GaussianBlurAmount;
             var end = strength;
 
             yield return LerpEnumerator.Lerp01(duration_in, f =>
             {
-                Instance.Blur_Amount = Mathf.Lerp(start, end, f);
+                Instance.GaussianBlurAmount = Mathf.Lerp(start, end, f);
             });
 
             yield return new WaitForSeconds(duration_on);
 
-            start = Instance.Blur_Amount;
+            start = Instance.GaussianBlurAmount;
             end = 0f;
 
             yield return LerpEnumerator.Lerp01(duration_out, f =>
             {
-                Instance.Blur_Amount = Mathf.Lerp(start, end, f);
+                Instance.GaussianBlurAmount = Mathf.Lerp(start, end, f);
             });
         }
     }
@@ -69,25 +57,25 @@ public static class ScreenEffects
 
         IEnumerator Cr()
         {
-            Instance.Distort_Speed = speed;
-            Instance.Distort_Displacement = displacement;
+            Instance.DistortSpeed = speed;
+            Instance.DistortDisplacement = displacement;
 
-            var start = Instance.Distort_Strength;
+            var start = Instance.DistortStrength;
             var end = strength;
 
             yield return LerpEnumerator.Lerp01(duration_in, f =>
             {
-                Instance.Distort_Strength = Mathf.Lerp(start, end, f);
+                Instance.DistortStrength = Mathf.Lerp(start, end, f);
             });
 
             yield return new WaitForSeconds(duration_on);
 
-            start = Instance.Distort_Strength;
+            start = Instance.DistortStrength;
             end = 0f;
 
             yield return LerpEnumerator.Lerp01(duration_out, f =>
             {
-                Instance.Distort_Strength = Mathf.Lerp(start, end, f);
+                Instance.DistortStrength = Mathf.Lerp(start, end, f);
             });
         }
     }

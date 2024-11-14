@@ -30,7 +30,7 @@ viewport_path = NodePath("SubViewportContainer/RenderPass_Distort")
 resource_local_to_scene = true
 shader = ExtResource("3_vbq4h")
 shader_parameter/blur_center = Vector2(0.5, 0.5)
-shader_parameter/blur_power = 0.05
+shader_parameter/blur_power = 0.01
 shader_parameter/sampling_count = 10
 shader_parameter/input_texture = SubResource("ViewportTexture_uuy6n")
 
@@ -40,7 +40,7 @@ viewport_path = NodePath("SubViewportContainer/RenderPass_Radial")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgekj"]
 resource_local_to_scene = true
 shader = ExtResource("3_ar8rf")
-shader_parameter/blur_amount = 0
+shader_parameter/blur_amount = 5
 shader_parameter/blur_iterations = 16
 shader_parameter/blur_quality = 8
 shader_parameter/input_texture = SubResource("ViewportTexture_jipkw")
@@ -96,9 +96,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/Main/Camera3D/Test"]
 mesh = SubResource("SphereMesh_l6it3")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/Main/Camera3D/Test"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
 
 [node name="RenderPass_Distort" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false

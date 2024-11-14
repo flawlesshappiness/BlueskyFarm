@@ -10,7 +10,7 @@ float Pseudo3dNoise(vec3 pos) {
     vec2 i = floor(pos.xy);
     vec2 f = pos.xy - i;
     vec2 blend = f * f * (3.0 - 2.0 * f);
-    float noiseVal = 
+    float noiseVal =
         mix(
             mix(
                 dot(GetGradient(i + vec2(0, 0), pos.z), f - vec2(0, 0)),
@@ -41,12 +41,12 @@ uniform float strength = 1.0;
 uniform float speed = 1.0;
 uniform vec2 displacement = vec2(1.0, 1.0);
 
-void fragment() { 
+void fragment() {
 	vec2 uv = UV;
-	
+
 	if(strength > 0.0){
 		uv = DistortUV(SCREEN_PIXEL_SIZE, UV, strength, speed, displacement);
 	}
-	
+
 	COLOR = texture(input_texture, uv);
 }

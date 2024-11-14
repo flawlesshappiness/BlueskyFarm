@@ -45,7 +45,7 @@ public abstract partial class View : ControlScript, IComparable<View>
     }
 
     public static T Get<T>() where T : View =>
-        Singleton.Get<T>();
+        Singleton.TryGet<T>(out var view) ? view : null;
 
     public static void Show<T>() where T : View =>
         Get<T>().Show();

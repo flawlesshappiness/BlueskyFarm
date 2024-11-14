@@ -17,7 +17,6 @@ public partial class GameScene : Scene
         base._Ready();
         _player_is_dying = false;
 
-        ScreenEffects.Reset();
         RegisterDebugActions();
 
         WorldEnvironment.Environment.AdjustmentEnabled = true;
@@ -93,8 +92,6 @@ public partial class GameScene : Scene
 
             var bus = AudioBus.Get(SoundBus.Master.ToString());
             bus.SetMuted(true);
-
-            ScreenEffects.Reset();
 
             yield return new WaitForSeconds(2f);
 

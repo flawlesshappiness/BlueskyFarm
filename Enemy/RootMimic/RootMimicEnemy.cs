@@ -343,6 +343,7 @@ public partial class RootMimicEnemy : NavEnemy
                 }
                 else
                 {
+                    ScreenEffects.AnimateRadialBlur(nameof(RootMimicEnemy) + GetInstanceId(), 0.02f, 0.1f, 0f, 1f);
                     SetState(State.Fleeing);
                 }
 
@@ -361,7 +362,13 @@ public partial class RootMimicEnemy : NavEnemy
         SfxThreat.Play();
         SfxGrowl.Play();
 
-        var time_wait = GameTime.Time + 4f;
+        var duration = 4f;
+        Player.StartLookingAt(this, 0.05f);
+        ScreenEffects.AnimateRadialBlur(nameof(RootMimicEnemy) + GetInstanceId(), 0.02f, 0.1f, duration, 1f);
+        SoundController.Instance.Play("sfx_horror_chord");
+        SoundController.Instance.Play("sfx_horror_boom");
+
+        var time_wait = GameTime.Time + duration;
         while ((GameTime.Time < time_wait && DistanceToPlayer > DIST_THREAT_ATTACK) || IsDebug)
         {
             TurnTowardsDirection(DirectionToPlayer);
@@ -370,10 +377,12 @@ public partial class RootMimicEnemy : NavEnemy
 
         if (DistanceToPlayer < DIST_THREAT)
         {
+            Player.StopLookingAt();
             SetState(State.Attacking);
         }
         else
         {
+            Player.StopLookingAt();
             AnimatePose_Walk();
             SetState(State.Fleeing);
         }

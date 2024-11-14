@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://bcr1tni7u8ldc"]
+
+[ext_resource type="AudioStream" uid="uid://cw6g7x78md6hv" path="res://Sound/Sounds/sfx_horror_chord_001.wav" id="1_xe1ys"]
+[ext_resource type="AudioStream" uid="uid://dhlcd3ar03d07" path="res://Sound/Sounds/sfx_horror_chord_002.wav" id="2_27jj7"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_j0uul"]
+[ext_resource type="AudioStream" uid="uid://chs1ayhsg7u68" path="res://Sound/Sounds/sfx_horror_chord_003.wav" id="3_opd12"]
+
+[resource]
+script = ExtResource("2_j0uul")
+AudioStreams = Array[AudioStream]([ExtResource("1_xe1ys"), ExtResource("2_27jj7"), ExtResource("3_opd12")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

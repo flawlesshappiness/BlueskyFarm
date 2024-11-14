@@ -6,6 +6,16 @@ public partial class AnimationCurves : Resource
     public static AnimationCurves Instance => _instance ?? (_instance = Load());
     private static AnimationCurves _instance;
 
+    private static AnimationCurves Load()
+    {
+        var path_file = $"res://Modules/Curves/{nameof(AnimationCurves)}.tres";
+        var resource = GD.Load<AnimationCurves>(path_file);
+        return resource;
+    }
+
+    [Export]
+    public Godot.Curve Sine;
+
     public static Godot.Curve WobbleOut(float max, int peaks)
     {
         var curve = new Godot.Curve();
@@ -29,12 +39,5 @@ public partial class AnimationCurves : Resource
 
         curve.AddPoint(new Vector2(1, 1));
         return curve;
-    }
-
-    private static AnimationCurves Load()
-    {
-        var path_file = $"res://Modules/Curves/{nameof(AnimationCurves)}.tres";
-        var resource = GD.Load<AnimationCurves>(path_file);
-        return resource;
     }
 }

@@ -59,15 +59,15 @@ public partial class SporeMushroomEnemy : Enemy
 
         if (_clusters_triggered == 1)
         {
-            ScreenEffects.Instance.DistortStrength = 0.05f;
-            ScreenEffects.Instance.DistortSpeed = 0.2f;
-            ScreenEffects.Instance.DistortDisplacement = new Vector2(0.2f, 0.1f);
+            ScreenEffects.View.DistortStrength = 0.05f;
+            ScreenEffects.View.DistortSpeed = 0.2f;
+            ScreenEffects.View.DistortDisplacement = new Vector2(0.2f, 0.1f);
         }
         else if (_clusters_triggered == 2)
         {
-            ScreenEffects.Instance.DistortStrength = 0.05f;
-            ScreenEffects.Instance.DistortSpeed = 0.3f;
-            ScreenEffects.Instance.DistortDisplacement = new Vector2(0.3f, 0.1f);
+            ScreenEffects.View.DistortStrength = 0.05f;
+            ScreenEffects.View.DistortSpeed = 0.3f;
+            ScreenEffects.View.DistortDisplacement = new Vector2(0.3f, 0.1f);
         }
         else if (_clusters_triggered >= 3)
         {

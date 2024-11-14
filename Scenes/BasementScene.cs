@@ -7,9 +7,6 @@ public partial class BasementScene : GameScene
     [NodeType]
     public NavigationRegion3D NavRegion;
 
-    [NodeType]
-    public OccluderInstance3D Occluder;
-
     [NodeName]
     public Node3D DungeonParent;
 

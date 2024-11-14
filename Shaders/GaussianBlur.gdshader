@@ -35,14 +35,7 @@ uniform int blur_quality = 8;
 uniform sampler2D input_texture;
 
 void fragment(){
-	if(blur_amount > 0)
-	{
-		vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy;
-		vec4 xorgaussian = texture_xorgaussian(input_texture, uv, SCREEN_PIXEL_SIZE, float(blur_amount), blur_iterations, blur_quality);
-		COLOR =  xorgaussian;
-	}
-	else
-	{
-		COLOR = texture(input_texture, SCREEN_UV);
-	}
+	vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy;
+	vec4 xorgaussian = texture_xorgaussian(input_texture, uv, SCREEN_PIXEL_SIZE, float(blur_amount), blur_iterations, blur_quality);
+	COLOR =  xorgaussian;
 }

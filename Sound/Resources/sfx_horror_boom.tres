@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cqiuj0um8ixfs"]
+
+[ext_resource type="AudioStream" uid="uid://bdcuwhwseoigr" path="res://Sound/Sounds/sfx_horror_boom_001.wav" id="1_25267"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_v0ykf"]
+
+[resource]
+script = ExtResource("4_v0ykf")
+AudioStreams = Array[AudioStream]([ExtResource("1_25267")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

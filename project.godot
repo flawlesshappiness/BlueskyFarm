@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 MouseVisibility="*res://Modules/Input/MouseVisibility.cs"
 GameTime="*res://Modules/Time/GameTime.cs"
 DebugDraw="*res://addons/debug_drawing/DebugDraw.cs"
+ScreenEffects="*res://Views/ScreenEffectsView/ScreenEffects.cs"
 
 [display]
 

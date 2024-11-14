@@ -52,8 +52,9 @@ public partial class SporeMushroomCluster : Node3DScript
         if (!Visible) return;
         if (_triggered) return;
 
-        ScreenEffects.AnimateBlur(20, 0.2f, 0f, 15f);
-        ScreenEffects.AnimateFog(1f, new Color(0.25f, 0.25f, 0.25f, 0.75f), new Vector2(0, 2), 2f, 0f, 15f);
+        var fx_id = nameof(SporeMushroomCluster) + GetInstanceId();
+        ScreenEffects.AnimateGaussianBlur(fx_id, 20, 0.2f, 0f, 15f);
+        ScreenEffects.AnimateFog(fx_id, 1f, new Color(0.25f, 0.25f, 0.25f, 0.75f), 2f, 0f, 15f);
         AnimateMoveSpeed();
 
         SfxPuff.Play();

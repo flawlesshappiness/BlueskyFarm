@@ -21,6 +21,7 @@ public partial class ScreenEffects : Node3DScript
     {
         base._Ready();
         Instance = this;
+        ProcessMode = ProcessModeEnum.Always;
         RegisterDebugActions();
     }
 
@@ -127,4 +128,10 @@ public partial class ScreenEffects : Node3DScript
 
     public static Coroutine AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValue(Instance._fog_alpha, id, alpha, duration_in, duration_on, duration_out);
+
+    public static void SetGaussianBlur(string id, float strength) =>
+        Instance._gaussian_amount.Set(id, strength);
+
+    public static void RemoveGaussianBlur(string id) =>
+        Instance._gaussian_amount.Remove(id);
 }

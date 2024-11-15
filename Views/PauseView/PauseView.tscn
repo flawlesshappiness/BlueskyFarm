@@ -1,15 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://w1gaqqx2eca8"]
+[gd_scene load_steps=3 format=3 uid="uid://w1gaqqx2eca8"]
 
 [ext_resource type="Script" path="res://Views/PauseView/PauseView.cs" id="1_wckvo"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_41t0w"]
-[ext_resource type="Shader" path="res://Shaders/GaussianBlur.gdshader" id="2_y1cvp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8y28"]
-shader = ExtResource("2_y1cvp")
-shader_parameter/blur_type = 0
-shader_parameter/blur_amount = 16
-shader_parameter/blur_radius = 1.0
-shader_parameter/blur_direction = Vector2(1, 1)
 
 [node name="PauseView" type="Control"]
 layout_mode = 3
@@ -20,16 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wckvo")
 ChildOrder = 10
-
-[node name="GaussianBlur" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_i8y28")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

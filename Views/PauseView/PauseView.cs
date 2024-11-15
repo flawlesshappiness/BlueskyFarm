@@ -52,6 +52,8 @@ public partial class PauseView : View
         base.OnShow();
         Scene.PauseLock.AddLock(nameof(PauseView));
         MouseVisibility.Instance.Lock.AddLock(nameof(PauseView));
+
+        ScreenEffects.SetGaussianBlur(nameof(PauseView), 16);
     }
 
     protected override void OnHide()
@@ -59,6 +61,8 @@ public partial class PauseView : View
         base.OnHide();
         Scene.PauseLock.RemoveLock(nameof(PauseView));
         MouseVisibility.Instance.Lock.RemoveLock(nameof(PauseView));
+
+        ScreenEffects.RemoveGaussianBlur(nameof(PauseView));
     }
 
     private void ResumePressed()

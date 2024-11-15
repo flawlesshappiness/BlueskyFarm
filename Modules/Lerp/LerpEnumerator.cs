@@ -44,7 +44,7 @@ public class LerpEnumerator : CustomYieldInstruction
         var start = GameTime.Time;
         while (true)
         {
-            var v = (GameTime.Time - start) / duration;
+            var v = duration == 0 ? 1 : (GameTime.Time - start) / duration;
             var t = Math.Clamp(v, 0, 1);
             var tf = Convert.ToSingle(t);
             onLerp?.Invoke(tf);

@@ -37,7 +37,9 @@ public partial class ScreenEffectsView : View
     public ShaderMaterial FogMaterial => _mat_fog ?? (_mat_fog = AnimatedFog.Material as ShaderMaterial);
     private ShaderMaterial _mat_fog;
 
-    public void Reset()
+    private Node3D _camera_target;
+
+    public void Clear()
     {
         GaussianBlurAmount = 0;
         RadialBlurAmount = 0;
@@ -111,7 +113,7 @@ public partial class ScreenEffectsView : View
     {
         base._Ready();
         Visible = true;
-        Reset();
+        Clear();
     }
 
     public override void _Process(double delta)
@@ -122,9 +124,14 @@ public partial class ScreenEffectsView : View
 
     private void Process_MatchCamera()
     {
-        var player = Player.Instance;
-        if (player == null) return;
+        if (IsInstanceValid(_camera_target))
+        {
+            Camera.GlobalTransform = _camera_target.GlobalTransform;
+        }
+    }
 
-        Camera.GlobalTransform = Player.Instance.Camera.GlobalTransform;
+    public void SetCameraTarget(Node3D target)
+    {
+        _camera_target = target;
     }
 }

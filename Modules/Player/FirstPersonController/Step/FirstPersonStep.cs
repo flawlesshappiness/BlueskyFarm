@@ -5,13 +5,13 @@ using System.Collections;
 public partial class FirstPersonStep : Node3D
 {
     [Export]
-    public float WalkStepTime = 0.7f;
+    public float WalkStepTime;
 
     [Export]
-    public float RunStepTime = 0.7f;
+    public float RunStepTime;
 
     [Export]
-    public float StepBounce = 0.2f;
+    public float StepBounce;
 
     private float DesiredStepTime => Player.Instance.IsRunning ? RunStepTime : WalkStepTime;
     private float StepTimeMultiplier => Player.Instance.MoveSpeedMultiplier == 0 ? 0 : (1f / Player.Instance.MoveSpeedMultiplier);

@@ -42,7 +42,7 @@ public partial class CursorView : View
 
     public void SetCursorPosition(Vector3 position)
     {
-        var viewport_position = GetViewport().GetCamera3D().UnprojectPosition(position);
+        var viewport_position = ScreenEffects.View.Camera.UnprojectPosition(position);
         SetCursorPosition(viewport_position);
     }
 

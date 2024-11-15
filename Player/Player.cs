@@ -12,24 +12,45 @@ public partial class Player : FirstPersonController
     [Export]
     public float RunSpeed;
 
+    [NodeType]
+    public FirstPersonInteract Interact;
+
+    [NodeType]
+    public FirstPersonGrab Grab;
+
+    [NodeType]
+    public FirstPersonStep Step;
+
     [NodeName]
     public RayCast3D GroundRaycast;
 
     [NodeName]
     public Area3D WaterTrigger;
 
+    [NodeName]
+    public Node3D CameraTarget;
+
+    [NodeType]
+    public NavigationAgent3D Agent;
+
     public bool IsInWater { get; private set; }
     public bool IsRunning => PlayerInput.Run.Held;
+    public Vector3 MidPosition => GlobalPosition.Add(y: Capsule.Height * 0.5f);
+    public float MoveSpeedMultiplier => _move_multiplier_max.Value;
+    public float LookSpeedMultiplier => _look_multiplier_max.Value;
 
     public MultiLock MovementLock = new MultiLock();
     public MultiLock LookLock = new MultiLock();
-
+    public MultiLock InteractLock = new MultiLock();
 
     private static bool _debug_actions_registered;
 
     private SolidMaterial _ground;
     private WaterArea _current_water_area;
     private float _time_next_water_ripple;
+
+    private MultiFloatMax _move_multiplier_max = new MultiFloatMax(1);
+    private MultiFloatMax _look_multiplier_max = new MultiFloatMax(1);
 
     public override void _Ready()
     {
@@ -44,6 +65,8 @@ public partial class Player : FirstPersonController
 
         RegisterDebugActions();
         LoadData();
+
+        ScreenEffects.View.SetCameraTarget(CameraTarget);
     }
 
     private void RegisterDebugActions()
@@ -82,7 +105,7 @@ public partial class Player : FirstPersonController
         {
             var player = Player.Instance;
             var agent = player.Agent;
-            var target_position = player.GlobalPosition - player.Camera.GlobalBasis.Z * 2f;
+            var target_position = player.GlobalPosition - player.CameraTarget.GlobalBasis.Z * 2f;
             var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), target_position) - new Vector3(0, agent.PathHeightOffset, 0);
             player.GlobalPosition = nav_position;
             view.Close();
@@ -115,6 +138,8 @@ public partial class Player : FirstPersonController
     {
         base._Process(delta);
         Process_Move();
+        Process_Cursor();
+        Process_Interact();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -150,7 +175,8 @@ public partial class Player : FirstPersonController
         var input = PlayerInput.GetMoveInput();
         if (input.Length() > 0)
         {
-            var speed = IsRunning ? RunSpeed : WalkSpeed;
+            var base_speed = IsRunning ? RunSpeed : WalkSpeed;
+            var speed = base_speed * MoveSpeedMultiplier;
             Move(input, speed);
         }
         else
@@ -159,11 +185,97 @@ public partial class Player : FirstPersonController
         }
     }
 
+    private void Process_Cursor()
+    {
+        var target = Interact.CurrentInteractable;
+
+        if (InteractLock.IsLocked)
+        {
+            // Purposefully unhandled
+        }
+        else if (Grab.TryHandleCursor(target))
+        {
+            // Handled by grab
+        }
+        else if (TryHandleCursor_Touch(target))
+        {
+            // Handled by touch
+        }
+        else
+        {
+            Cursor.Hide();
+        }
+    }
+
+    private void Process_Interact()
+    {
+        if (InteractLock.IsLocked) return;
+
+        if (PlayerInput.Interact.Pressed)
+        {
+            var interactable = Interact.CurrentInteractable;
+            if (TryGrab(interactable)) return;
+            if (TryTouch(interactable)) return;
+        }
+        else if (PlayerInput.Interact.Released)
+        {
+            Grab?.Release();
+        }
+    }
+
+    private bool TryHandleCursor_Touch(Interactable interactable)
+    {
+        var touchable = interactable as Touchable;
+        if (!IsInstanceValid(touchable)) return false;
+
+        if (touchable.HandleCursor())
+        {
+            // Handled by touchable
+            return true;
+        }
+        else
+        {
+            Cursor.Show(new CursorSettings
+            {
+                Name = "Touch",
+                OverrideTexture = interactable.OverrideCursorTexture,
+                Text = interactable.InteractableText,
+                Position = interactable.Body.GlobalPosition
+            });
+        }
+
+        return true;
+    }
+
+    private bool TryGrab(Interactable interactable)
+    {
+        if (Grab == null) return false;
+        if (interactable == null) return false;
+
+        var grabbable = interactable as Grabbable;
+        if (grabbable == null) return false;
+
+        Grab.Grab(grabbable);
+        return true;
+    }
+
+    private bool TryTouch(Interactable interactable)
+    {
+        if (interactable == null) return false;
+
+        var touchable = interactable as Touchable;
+        if (touchable == null) return false;
+
+        touchable.Touch();
+        return true;
+    }
+
     private void OnDialogueStart()
     {
         var name = nameof(DialogueController);
         InventoryController.Instance.InventoryLock.AddLock(name);
         InteractLock.AddLock(name);
+        Cursor.Hide();
     }
 
     private void OnDialogueEnd()
@@ -183,6 +295,76 @@ public partial class Player : FirstPersonController
     public SolidMaterial GetGround()
     {
         return _ground;
+    }
+
+    public void SetLookSpeedMultiplier(string id, float value)
+    {
+        _look_multiplier_max.Set(id, Mathf.Clamp(value, 0, 1));
+    }
+
+    public void RemoveLookSpeedMultiplier(string id)
+    {
+        _look_multiplier_max.Remove(id);
+    }
+
+    public void SetMoveSpeedMultiplier(string id, float value)
+    {
+        _move_multiplier_max.Set(id, Mathf.Clamp(value, 0, 1));
+    }
+
+    public void RemoveMoveSpeedMultiplier(string id)
+    {
+        _move_multiplier_max.Remove(id);
+    }
+
+    public Coroutine AnimateLookSpeedMultiplier(string id, float value, float duration_in, float duration_on, float duration_out)
+    {
+        return Coroutine.Start(Cr, $"{nameof(AnimateLookSpeedMultiplier)}_{id}", this);
+        IEnumerator Cr()
+        {
+            var start = _look_multiplier_max.DefaultValue;
+            var end = value;
+            yield return LerpEnumerator.Lerp01(duration_in, f =>
+            {
+                SetLookSpeedMultiplier(id, Mathf.Lerp(start, end, f));
+            });
+
+            yield return new WaitForSeconds(duration_on);
+
+            start = value;
+            end = _look_multiplier_max.DefaultValue;
+            yield return LerpEnumerator.Lerp01(duration_out, f =>
+            {
+                SetLookSpeedMultiplier(id, Mathf.Lerp(start, end, f));
+            });
+
+            RemoveLookSpeedMultiplier(id);
+        }
+    }
+
+    public Coroutine AnimateMoveSpeedMultiplier(string id, float value, float duration_in, float duration_on, float duration_out)
+    {
+        return Coroutine.Start(Cr, $"{nameof(AnimateMoveSpeedMultiplier)}_{id}", this);
+        IEnumerator Cr()
+        {
+            var start = _move_multiplier_max.DefaultValue;
+            var end = value;
+            yield return LerpEnumerator.Lerp01(duration_in, f =>
+            {
+                SetMoveSpeedMultiplier(id, Mathf.Lerp(start, end, f));
+            });
+
+            yield return new WaitForSeconds(duration_on);
+
+            start = value;
+            end = _move_multiplier_max.DefaultValue;
+            yield return LerpEnumerator.Lerp01(duration_out, f =>
+            {
+                SetMoveSpeedMultiplier(id, Mathf.Lerp(start, end, f));
+            });
+
+            RemoveMoveSpeedMultiplier(id);
+        }
     }
 
     private void WaterAreaEntered(GodotObject go)

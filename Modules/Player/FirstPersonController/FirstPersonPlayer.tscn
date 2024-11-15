@@ -1,19 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://doq3o5nc1388a"]
+[gd_scene load_steps=3 format=3 uid="uid://doq3o5nc1388a"]
 
 [ext_resource type="Script" path="res://Modules/Player/FirstPersonController/FirstPersonController.cs" id="1_2k6r2"]
-[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Step/FirstPersonStep.cs" id="2_1v0dj"]
-[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Interact/FirstPersonInteract.cs" id="2_ctqgn"]
-[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Grab/FirstPersonGrab.cs" id="3_30dn4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xb1f"]
 
 [node name="FirstPersonPlayer" type="CharacterBody3D"]
 script = ExtResource("1_2k6r2")
-JumpHorizontalSpeed = 2.0
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0xb1f")
 
@@ -21,27 +15,3 @@ shape = SubResource("CapsuleShape3D_0xb1f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47242, 0)
 
 [node name="NeckVertical" type="Node3D" parent="NeckHorizontal"]
-
-[node name="Step" type="Node3D" parent="NeckHorizontal/NeckVertical"]
-script = ExtResource("2_1v0dj")
-
-[node name="Camera" type="Camera3D" parent="NeckHorizontal/NeckVertical/Step"]
-
-[node name="Interact" type="RayCast3D" parent="NeckHorizontal/NeckVertical/Step/Camera"]
-target_position = Vector3(0, 0, -2)
-collision_mask = 4
-script = ExtResource("2_ctqgn")
-SearchRadius = 1.0
-
-[node name="Grab" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/Camera"]
-script = ExtResource("3_30dn4")
-GrabPositionOffsetMax = 2.0
-
-[node name="Position" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/Camera/Grab"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-
-[node name="Rotation" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/Camera/Grab"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-
-[node name="Mid" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -1,11 +1,14 @@
 using Godot;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class ScreenEffects : Node3DScript
 {
     public static ScreenEffects Instance { get; private set; }
     public static ScreenEffectsView View => _view ?? (_view = global::View.Get<ScreenEffectsView>());
     private static ScreenEffectsView _view;
+
+    private Dictionary<string, Coroutine> _coroutines = new();
 
     private MultiFloatMin _radial_amount = new();
     private MultiFloatMin _gaussian_amount = new();
@@ -19,6 +22,25 @@ public partial class ScreenEffects : Node3DScript
         base._Ready();
         Instance = this;
         RegisterDebugActions();
+    }
+
+    public void Clear()
+    {
+        // Clear coroutines
+        foreach (var kvp in _coroutines)
+        {
+            Coroutine.Stop(kvp.Value);
+        }
+        _coroutines.Clear();
+
+        // Clear floats
+        _radial_amount.Clear();
+        _gaussian_amount.Clear();
+        _distort_strength.Clear();
+        _fog_alpha.Clear();
+
+        // Reset view
+        View.Clear();
     }
 
     public override void _Process(double delta)
@@ -56,6 +78,13 @@ public partial class ScreenEffects : Node3DScript
             Text = "Test distort",
             Action = v => { AnimateDistort($"{nameof(ScreenEffects)}{_test++}", 0.05f, 0.3f, new Vector2(0.3f, 0.1f), 1, 3, 1); v.Close(); }
         });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Reset",
+            Action = v => { Clear(); v.Close(); }
+        });
     }
 
     public static Coroutine AnimateGaussianBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
@@ -63,8 +92,10 @@ public partial class ScreenEffects : Node3DScript
 
     private Coroutine _AnimateGaussianBlur(string id, float strength, float duration_in, float duration_on, float duration_out)
     {
-        Debug.Log(id);
-        return StartCoroutine(Cr, id);
+        var cr = StartCoroutine(Cr, $"{nameof(_AnimateGaussianBlur)}_{id}");
+        _coroutines.Add(id, cr);
+        return cr;
+
         IEnumerator Cr()
         {
             var start = 0f;
@@ -86,6 +117,7 @@ public partial class ScreenEffects : Node3DScript
             });
 
             _gaussian_amount.Remove(id);
+            _coroutines.Remove(id);
         }
     }
 
@@ -94,7 +126,10 @@ public partial class ScreenEffects : Node3DScript
 
     private Coroutine _AnimateDistort(string id, float strength, float speed, Vector2 displacement, float duration_in, float duration_on, float duration_out)
     {
-        return StartCoroutine(Cr, id);
+        var cr = StartCoroutine(Cr, $"{nameof(_AnimateDistort)}_{id}");
+        _coroutines.Add(id, cr);
+        return cr;
+
         IEnumerator Cr()
         {
             View.DistortSpeed = speed;
@@ -119,6 +154,7 @@ public partial class ScreenEffects : Node3DScript
             });
 
             _distort_strength.Remove(id);
+            _coroutines.Remove(id);
         }
     }
 
@@ -127,7 +163,10 @@ public partial class ScreenEffects : Node3DScript
 
     private Coroutine _AnimateRadialBlur(string id, float strength, float duration_in, float duration_on, float duration_out)
     {
-        return StartCoroutine(Cr, id);
+        var cr = StartCoroutine(Cr, $"{nameof(_AnimateRadialBlur)}_{id}");
+        _coroutines.Add(id, cr);
+        return cr;
+
         IEnumerator Cr()
         {
             var start = 0f;
@@ -149,15 +188,19 @@ public partial class ScreenEffects : Node3DScript
             });
 
             _radial_amount.Remove(id);
+            _coroutines.Remove(id);
         }
     }
 
-    public static Coroutine AnimateFog(string id, float alpha, Color color, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateFog(id, alpha, color, duration_in, duration_on, duration_out);
+    public static Coroutine AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateFog(id, alpha, duration_in, duration_on, duration_out);
 
-    private Coroutine _AnimateFog(string id, float alpha, Color color, float duration_in, float duration_on, float duration_out)
+    private Coroutine _AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out)
     {
-        return StartCoroutine(Cr, id);
+        var cr = StartCoroutine(Cr, $"{nameof(_AnimateFog)}_{id}");
+        _coroutines.Add(id, cr);
+        return cr;
+
         IEnumerator Cr()
         {
             var start = 0f;
@@ -179,6 +222,7 @@ public partial class ScreenEffects : Node3DScript
             });
 
             _fog_alpha.Remove(id);
+            _coroutines.Remove(id);
         }
     }
 }

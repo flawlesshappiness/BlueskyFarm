@@ -52,6 +52,9 @@ public partial class BasementScene : GameScene
 
         InitializeContainers();
 
+        // Screen effects
+        ScreenEffects.Instance.Clear();
+
         // Audio
         SetAudioEffectEnabled(true);
         AmbienceController.Instance.Start(AreaNames.Basement);
@@ -96,7 +99,7 @@ public partial class BasementScene : GameScene
 
     private void SetAudioEffectEnabled(bool enabled)
     {
-        var bus = AudioBus.Get("SFX");
+        var bus = AudioBus.Get(SoundBus.SFX.ToString());
         bus.SetEffectEnabled<AudioEffectReverb>(enabled);
     }
 

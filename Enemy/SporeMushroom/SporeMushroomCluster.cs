@@ -54,8 +54,10 @@ public partial class SporeMushroomCluster : Node3DScript
 
         var fx_id = nameof(SporeMushroomCluster) + GetInstanceId();
         ScreenEffects.AnimateGaussianBlur(fx_id, 20, 0.2f, 0f, 15f);
-        ScreenEffects.AnimateFog(fx_id, 1f, new Color(0.25f, 0.25f, 0.25f, 0.75f), 2f, 0f, 15f);
-        AnimateMoveSpeed();
+        ScreenEffects.AnimateFog(fx_id, 1f, 2f, 0f, 15f);
+        ScreenEffects.AnimateDistort(fx_id, 0.03f, 0.3f, new Vector2(0.2f, 0.1f), 2f, 5f, 15f);
+        Player.Instance.AnimateMoveSpeedMultiplier(fx_id, 0.25f, 0, 2f, 2f);
+        Player.Instance.AnimateLookSpeedMultiplier(fx_id, 0.25f, 0, 2f, 2f);
 
         SfxPuff.Play();
         PsSmoke.PlayPuff();
@@ -78,28 +80,6 @@ public partial class SporeMushroomCluster : Node3DScript
                 model.AnimateAppear();
                 yield return new WaitForSeconds(0.05f);
             }
-        }
-    }
-
-    private void AnimateMoveSpeed()
-    {
-        var id = $"{nameof(SporeMushroomCluster)}.{nameof(AnimateMoveSpeed)}";
-        Coroutine.Start(Cr, id);
-        IEnumerator Cr()
-        {
-            Player.Instance.MoveSpeedMultiplier = 0.25f;
-            Player.Instance.LookSpeedMultiplier = 0.25f;
-
-            yield return new WaitForSeconds(2f);
-
-            var move_start = Player.Instance.MoveSpeedMultiplier;
-            var look_start = Player.Instance.LookSpeedMultiplier;
-
-            yield return LerpEnumerator.Lerp01(2f, f =>
-            {
-                Player.Instance.MoveSpeedMultiplier = Mathf.Lerp(move_start, 1f, f);
-                Player.Instance.LookSpeedMultiplier = Mathf.Lerp(look_start, 1f, f);
-            });
         }
     }
 }

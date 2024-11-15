@@ -9,6 +9,8 @@ public partial class FarmScene : GameScene
         view.Minimap.Hide();
 
         Data.Game.Save();
+
+        ScreenEffects.Instance.Clear();
     }
 
     protected override void BeforeSave()

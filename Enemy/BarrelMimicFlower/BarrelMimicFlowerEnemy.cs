@@ -144,7 +144,6 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     {
         _param_touched.Trigger();
         Touchable.SetEnabled(false);
-        Player.StartLookingAt(this, 0.005f);
         AnimateAttackOverlay();
         yield return null;
     }

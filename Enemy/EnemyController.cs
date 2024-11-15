@@ -25,6 +25,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     {
         foreach (var info in Collection.Resources)
         {
+            if (!info.Enabled) continue;
             var enemy = CreateEnemy(info);
         }
     }

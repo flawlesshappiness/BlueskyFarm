@@ -13,9 +13,6 @@ public partial class AnimationCurves : Resource
         return resource;
     }
 
-    [Export]
-    public Godot.Curve Sine;
-
     public static Godot.Curve WobbleOut(float max, int peaks)
     {
         var curve = new Godot.Curve();

@@ -86,8 +86,11 @@ public partial class BasementScene : GameScene
 
         foreach (var data in plant_areas)
         {
-            data.TimeLeft -= time_passed;
-            data.TimeUntilNextWeed -= time_passed;
+            if (data.TimeLeft > 0)
+            {
+                data.TimeLeft -= time_passed;
+                data.TimeUntilNextWeed -= time_passed;
+            }
         }
     }
 

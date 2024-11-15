@@ -437,7 +437,7 @@ public partial class PlantArea : Touchable
         if (data == null) return;
 
         var count_to_spawn = data.WeedCount;
-        while (data.TimeUntilNextWeed < 0)
+        while (data.TimeUntilNextWeed < Mathf.Min(0, data.TimeLeft)) // Less than 0, or however low TimeLeft is (could be negative)
         {
             data.TimeUntilNextWeed += WEED_TIME;
             count_to_spawn++;

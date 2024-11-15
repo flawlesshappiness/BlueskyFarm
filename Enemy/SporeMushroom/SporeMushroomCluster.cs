@@ -55,7 +55,7 @@ public partial class SporeMushroomCluster : Node3DScript
         var fx_id = nameof(SporeMushroomCluster) + GetInstanceId();
         ScreenEffects.AnimateGaussianBlur(fx_id, 20, 0.2f, 0f, 15f);
         ScreenEffects.AnimateFog(fx_id, 1f, 2f, 0f, 15f);
-        ScreenEffects.AnimateDistort(fx_id, 0.03f, 0.3f, new Vector2(0.2f, 0.1f), 2f, 5f, 15f);
+        ScreenEffects.AnimateDistort(fx_id, 0.03f, 2f, 5f, 15f);
         Player.Instance.AnimateMoveSpeedMultiplier(fx_id, 0.25f, 0, 2f, 2f);
         Player.Instance.AnimateLookSpeedMultiplier(fx_id, 0.25f, 0, 2f, 2f);
 

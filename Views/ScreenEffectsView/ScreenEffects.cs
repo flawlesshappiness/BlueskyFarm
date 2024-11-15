@@ -76,7 +76,7 @@ public partial class ScreenEffects : Node3DScript
         {
             Category = category,
             Text = "Test distort",
-            Action = v => { AnimateDistort($"{nameof(ScreenEffects)}{_test++}", 0.05f, 0.3f, new Vector2(0.3f, 0.1f), 1, 3, 1); v.Close(); }
+            Action = v => { AnimateDistort($"{nameof(ScreenEffects)}{_test++}", 0.05f, 1, 3, 1); v.Close(); }
         });
 
         Debug.RegisterAction(new DebugAction
@@ -87,142 +87,44 @@ public partial class ScreenEffects : Node3DScript
         });
     }
 
+    private Coroutine _AnimateMinValue(MultiFloatMin controller, string id, float value, float duration_in, float duration_on, float duration_out)
+    {
+        var cr = StartCoroutine(Cr, $"{nameof(_AnimateMinValue)}_{id}");
+        _coroutines.Add(id, cr);
+        return cr;
+
+        IEnumerator Cr()
+        {
+            var start = controller.DefaultValue;
+            var end = value;
+            var curve = Curves.EaseInOutQuad;
+
+            yield return LerpEnumerator.Lerp01(duration_in, f =>
+            {
+                controller.Set(id, Mathf.Lerp(start, end, curve.Evaluate(f)));
+            });
+
+            yield return new WaitForSeconds(duration_on);
+
+            yield return LerpEnumerator.Lerp01(duration_out, f =>
+            {
+                controller.Set(id, Mathf.Lerp(end, start, curve.Evaluate(f)));
+            });
+
+            controller.Remove(id);
+            _coroutines.Remove(id);
+        }
+    }
+
     public static Coroutine AnimateGaussianBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateGaussianBlur(id, strength, duration_in, duration_on, duration_out);
+        Instance._AnimateMinValue(Instance._gaussian_amount, id, strength, duration_in, duration_on, duration_out);
 
-    private Coroutine _AnimateGaussianBlur(string id, float strength, float duration_in, float duration_on, float duration_out)
-    {
-        var cr = StartCoroutine(Cr, $"{nameof(_AnimateGaussianBlur)}_{id}");
-        _coroutines.Add(id, cr);
-        return cr;
-
-        IEnumerator Cr()
-        {
-            var start = 0f;
-            var end = strength;
-
-            yield return LerpEnumerator.Lerp01(duration_in, f =>
-            {
-                _gaussian_amount.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            yield return new WaitForSeconds(duration_on);
-
-            start = strength;
-            end = 0f;
-
-            yield return LerpEnumerator.Lerp01(duration_out, f =>
-            {
-                _gaussian_amount.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            _gaussian_amount.Remove(id);
-            _coroutines.Remove(id);
-        }
-    }
-
-    public static Coroutine AnimateDistort(string id, float strength, float speed, Vector2 displacement, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateDistort(id, strength, speed, displacement, duration_in, duration_on, duration_out);
-
-    private Coroutine _AnimateDistort(string id, float strength, float speed, Vector2 displacement, float duration_in, float duration_on, float duration_out)
-    {
-        var cr = StartCoroutine(Cr, $"{nameof(_AnimateDistort)}_{id}");
-        _coroutines.Add(id, cr);
-        return cr;
-
-        IEnumerator Cr()
-        {
-            View.DistortSpeed = speed;
-            View.DistortDisplacement = displacement;
-
-            var start = 0f;
-            var end = strength;
-
-            yield return LerpEnumerator.Lerp01(duration_in, f =>
-            {
-                _distort_strength.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            yield return new WaitForSeconds(duration_on);
-
-            start = strength;
-            end = 0f;
-
-            yield return LerpEnumerator.Lerp01(duration_out, f =>
-            {
-                _distort_strength.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            _distort_strength.Remove(id);
-            _coroutines.Remove(id);
-        }
-    }
+    public static Coroutine AnimateDistort(string id, float strength, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValue(Instance._distort_strength, id, strength, duration_in, duration_on, duration_out);
 
     public static Coroutine AnimateRadialBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateRadialBlur(id, strength, duration_in, duration_on, duration_out);
-
-    private Coroutine _AnimateRadialBlur(string id, float strength, float duration_in, float duration_on, float duration_out)
-    {
-        var cr = StartCoroutine(Cr, $"{nameof(_AnimateRadialBlur)}_{id}");
-        _coroutines.Add(id, cr);
-        return cr;
-
-        IEnumerator Cr()
-        {
-            var start = 0f;
-            var end = strength;
-
-            yield return LerpEnumerator.Lerp01(duration_in, f =>
-            {
-                _radial_amount.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            yield return new WaitForSeconds(duration_on);
-
-            start = strength;
-            end = 0f;
-
-            yield return LerpEnumerator.Lerp01(duration_out, f =>
-            {
-                _radial_amount.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            _radial_amount.Remove(id);
-            _coroutines.Remove(id);
-        }
-    }
+        Instance._AnimateMinValue(Instance._radial_amount, id, strength, duration_in, duration_on, duration_out);
 
     public static Coroutine AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateFog(id, alpha, duration_in, duration_on, duration_out);
-
-    private Coroutine _AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out)
-    {
-        var cr = StartCoroutine(Cr, $"{nameof(_AnimateFog)}_{id}");
-        _coroutines.Add(id, cr);
-        return cr;
-
-        IEnumerator Cr()
-        {
-            var start = 0f;
-            var end = alpha;
-
-            yield return LerpEnumerator.Lerp01(duration_in, f =>
-            {
-                _fog_alpha.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            yield return new WaitForSeconds(duration_on);
-
-            start = alpha;
-            end = 0f;
-
-            yield return LerpEnumerator.Lerp01(duration_out, f =>
-            {
-                _fog_alpha.Set(id, Mathf.Lerp(start, end, f));
-            });
-
-            _fog_alpha.Remove(id);
-            _coroutines.Remove(id);
-        }
-    }
+        Instance._AnimateMinValue(Instance._fog_alpha, id, alpha, duration_in, duration_on, duration_out);
 }

@@ -131,19 +131,17 @@ public partial class WateringCan : Item
 
     private void SetPlayerLocked(bool locked)
     {
-        var player = FirstPersonController.Instance;
-
         if (locked)
         {
-            player.MovementLock.AddLock(nameof(WateringCan));
-            player.LookLock.AddLock(nameof(WateringCan));
-            player.InteractLock.AddLock(nameof(WateringCan));
+            Player.Instance.MovementLock.AddLock(nameof(WateringCan));
+            Player.Instance.LookLock.AddLock(nameof(WateringCan));
+            Player.Instance.InteractLock.AddLock(nameof(WateringCan));
         }
         else
         {
-            player.MovementLock.RemoveLock(nameof(WateringCan));
-            player.LookLock.RemoveLock(nameof(WateringCan));
-            player.InteractLock.RemoveLock(nameof(WateringCan));
+            Player.Instance.MovementLock.RemoveLock(nameof(WateringCan));
+            Player.Instance.LookLock.RemoveLock(nameof(WateringCan));
+            Player.Instance.InteractLock.RemoveLock(nameof(WateringCan));
         }
     }
 

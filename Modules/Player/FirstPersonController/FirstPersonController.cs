@@ -1,26 +1,8 @@
 using Godot;
 using System;
-using System.Linq;
 
 public partial class FirstPersonController : CharacterBody3D
 {
-    public static FirstPersonController Instance { get; private set; }
-
-    [Export]
-    public float WalkSpeed = 2.5f;
-
-    [Export]
-    public float RunSpeed = 5.0f;
-
-    [Export]
-    public float JumpUpSpeed = 3f;
-
-    [Export]
-    public float JumpHorizontalSpeed;
-
-    // Get the gravity from the project settings to be synced with RigidBody nodes.
-    public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
     [NodeName]
     public Node3D NeckHorizontal;
 
@@ -47,78 +29,24 @@ public partial class FirstPersonController : CharacterBody3D
 
     public float MoveSpeedMultiplier { get; set; } = 1f;
     public float LookSpeedMultiplier { get; set; } = 1f;
-    public bool IsRunning => PlayerInput.Run.Held;
-    public float DesiredMoveSpeed => IsRunning ? RunSpeed : WalkSpeed;
+    public Vector3 DesiredMoveVelocity { get; private set; }
+    public Vector3 DesiredJumpVelocity { get; private set; }
 
     public MultiLock InteractLock = new MultiLock();
-    public MultiLock MovementLock = new MultiLock();
-    public MultiLock LookLock = new MultiLock();
 
+    private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+    private bool _moving;
     private bool _jumping;
-    private static bool _debug_actions_registered;
     private Node3D _look_at_target;
     private float _look_at_speed;
 
     public Action OnJump, OnLand;
+    public Action OnMoveStart, OnMoveStop;
 
     public override void _Ready()
     {
         base._Ready();
-        Instance = this;
         NodeScript.FindNodesFromAttribute(this, GetType());
-
-        LoadData();
-
-        RegisterDebugActions();
-    }
-
-    private void RegisterDebugActions()
-    {
-        if (_debug_actions_registered) return;
-        _debug_actions_registered = true;
-
-        var category = "Player";
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Unstuck",
-            Action = Unstuck
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Replenish near item uses",
-            Action = ReplenishCloseItems
-        });
-
-        void ReplenishCloseItems(DebugView view)
-        {
-            var items = Scene.Current
-                .GetNodesInChildren<Item>()
-                .Where(x => GlobalPosition.DistanceTo(x.GlobalPosition) < 5f);
-
-            items.ForEach(x => x.ReplenishUses(999));
-
-            view.Close();
-        }
-    }
-
-    private void Unstuck(DebugView view)
-    {
-        var player = FirstPersonController.Instance;
-        var agent = player.Agent;
-        var target_position = player.GlobalPosition - player.Camera.GlobalBasis.Z * 2f;
-        var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), target_position) - new Vector3(0, agent.PathHeightOffset, 0);
-        player.GlobalPosition = nav_position;
-        view.SetVisible(false);
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-        Input_RotateView(@event);
     }
 
     public override void _Process(double delta)
@@ -129,17 +57,20 @@ public partial class FirstPersonController : CharacterBody3D
         Process_RotateView();
     }
 
-    private void Input_RotateView(InputEvent e)
+    public override void _PhysicsProcess(double delta)
     {
-        if (LookLock.IsLocked) return;
-        if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
-        if (e is not InputEventMouseMotion) return;
-        if (Grab?.IsRotating ?? false) return;
+        PhysicsProcess_Move(delta);
+    }
 
-        var factor = 0.001f;
-        var motion = e as InputEventMouseMotion;
-        NeckHorizontal.RotateY(-motion.Relative.X * factor * LookSpeedMultiplier);
-        NeckVertical.RotateX(-motion.Relative.Y * factor * LookSpeedMultiplier);
+    protected void Look(InputEventMouseMotion motion, float speed)
+    {
+        Look(motion.Relative * speed);
+    }
+
+    protected void Look(Vector2 direction)
+    {
+        NeckHorizontal.RotateY(-direction.X);
+        NeckVertical.RotateX(-direction.Y);
 
         var x = Mathf.Clamp(NeckVertical.Rotation.X, Mathf.DegToRad(-70), Mathf.DegToRad(70));
         NeckVertical.Rotation = Rotation with { X = x };
@@ -186,24 +117,10 @@ public partial class FirstPersonController : CharacterBody3D
         return deg;
     }
 
-    public override void _PhysicsProcess(double delta)
+    private void PhysicsProcess_Move(double delta)
     {
         Vector3 velocity = Velocity;
         var grounded = IsOnFloor();
-
-        // Add the gravity.
-        if (!grounded)
-            velocity.Y -= gravity * (float)delta;
-
-        // Get the input direction and handle the movement/deceleration.
-        Vector2 inputDir = Input.GetVector(
-            PlayerInput.Left.Name,
-            PlayerInput.Right.Name,
-            PlayerInput.Forward.Name,
-            PlayerInput.Back.Name);
-
-        Vector3 direction = (NeckHorizontal.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-        if (MovementLock.IsLocked) direction *= 0;
 
         if (grounded)
         {
@@ -213,33 +130,72 @@ public partial class FirstPersonController : CharacterBody3D
                 OnLand?.Invoke();
             }
 
-            var has_direction = direction != Vector3.Zero;
-            if (has_direction)
+            if (DesiredMoveVelocity != Vector3.Zero)
             {
-                velocity.X = direction.X * DesiredMoveSpeed * MoveSpeedMultiplier;
-                velocity.Z = direction.Z * DesiredMoveSpeed * MoveSpeedMultiplier;
+                if (!_moving)
+                {
+                    _moving = true;
+                    OnMoveStart?.Invoke();
+                }
+
+                velocity.X = DesiredMoveVelocity.X;
+                velocity.Z = DesiredMoveVelocity.Z;
             }
             else
             {
-                velocity.X = Mathf.MoveToward(Velocity.X, 0, DesiredMoveSpeed * MoveSpeedMultiplier);
-                velocity.Z = Mathf.MoveToward(Velocity.Z, 0, DesiredMoveSpeed * MoveSpeedMultiplier);
+                if (_moving)
+                {
+                    _moving = false;
+                    OnMoveStop?.Invoke();
+                }
+
+                var decel = 15 * (float)delta;
+                velocity.X = Mathf.MoveToward(Velocity.X, 0, decel);
+                velocity.Z = Mathf.MoveToward(Velocity.Z, 0, decel);
             }
 
-            // Handle Jump
-            if (JumpUpSpeed > 0 && PlayerInput.Jump.Pressed)
+            if (DesiredJumpVelocity != Vector3.Zero)
             {
-                var dir = new Vector3(direction.X, 0, direction.Z).Normalized() * JumpHorizontalSpeed;
-                var jump_vel = new Vector3(dir.X, JumpUpSpeed, dir.Z);
-                velocity += jump_vel;
-
+                velocity += DesiredJumpVelocity;
                 _jumping = true;
-
                 OnJump?.Invoke();
             }
+        }
+        else
+        {
+            velocity.Y -= _gravity * (float)delta;
         }
 
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    protected void Move(Vector2 input, float speed)
+    {
+        if (input.Length() > 0)
+        {
+            Vector3 direction = (NeckHorizontal.Basis * new Vector3(input.X, 0, input.Y)).Normalized();
+            Move(direction * speed);
+        }
+        else
+        {
+            Stop();
+        }
+    }
+
+    protected void Move(Vector3 velocity)
+    {
+        DesiredMoveVelocity = velocity;
+    }
+
+    protected void Stop()
+    {
+        DesiredMoveVelocity = Vector3.Zero;
+    }
+
+    protected void Jump(Vector3 velocity)
+    {
+        DesiredJumpVelocity = velocity;
     }
 
     private void Process_Cursor()
@@ -335,22 +291,6 @@ public partial class FirstPersonController : CharacterBody3D
     {
         NeckVertical.Rotation = new Vector3(node.GlobalRotation.X, 0, 0);
         NeckHorizontal.Rotation = new Vector3(0, node.GlobalRotation.Y, 0);
-    }
-
-    public void UpdateData()
-    {
-        Data.Game.PlayerPositionX = GlobalPosition.X;
-        Data.Game.PlayerPositionY = GlobalPosition.Y;
-        Data.Game.PlayerPositionZ = GlobalPosition.Z;
-        Data.Game.PlayerNeckVerticalRotation = NeckVertical.Rotation.X;
-        Data.Game.PlayerNeckHorizontalRotation = NeckHorizontal.Rotation.Y;
-    }
-
-    public void LoadData()
-    {
-        GlobalPosition = new Vector3(Data.Game.PlayerPositionX, Data.Game.PlayerPositionY, Data.Game.PlayerPositionZ);
-        NeckVertical.Rotation = new Vector3(Data.Game.PlayerNeckVerticalRotation, 0, 0);
-        NeckHorizontal.Rotation = new Vector3(0, Data.Game.PlayerNeckHorizontalRotation, 0);
     }
 
     public void StartLookingAt(Node3D target, float speed)

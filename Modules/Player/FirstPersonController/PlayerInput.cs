@@ -10,4 +10,13 @@ public partial class PlayerInput : Node
     public static CustomInputAction Interact = new CustomInputAction("Interact");
     public static CustomInputAction Pause = new CustomInputAction("Pause");
     public static CustomInputAction Run = new CustomInputAction("Run");
+
+    public static Vector2 GetMoveInput()
+    {
+        return Input.GetVector(
+            Left.Name,
+            Right.Name,
+            Forward.Name,
+            Back.Name);
+    }
 }

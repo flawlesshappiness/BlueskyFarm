@@ -138,7 +138,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
                 var infos = Collection.Resources.Where(info => info.Type == type);
                 var item = CreateItem(Collection.Seed);
                 item.Data.PlantInfoPath = infos.ToList().Random().ResourcePath;
-                FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
+                FarmBounds.Instance.ThrowObject(item.RigidBody, Player.Instance.GlobalPosition);
             }
         }
     }
@@ -152,13 +152,13 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         view.ContentSearch.ClearItems();
         foreach (var resource in Collection.Resources)
         {
-            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => WritDebugSpawnItem_CustomIdPopup(view, resource));
+            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => WriteDebugSpawnItem_CustomIdPopup(view, resource));
         }
 
         view.ContentSearch.UpdateButtons();
     }
 
-    private void WritDebugSpawnItem_CustomIdPopup(DebugView view, ItemInfo info)
+    private void WriteDebugSpawnItem_CustomIdPopup(DebugView view, ItemInfo info)
     {
         view.PopupStringInput("Custom id", id =>
         {
@@ -169,7 +169,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         {
             var item = CreateItem(info);
             item.Data.CustomId = custom_id;
-            FarmBounds.Instance.ThrowObject(item.RigidBody, FirstPersonController.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(item.RigidBody, Player.Instance.GlobalPosition);
         }
     }
 }

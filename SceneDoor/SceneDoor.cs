@@ -50,8 +50,8 @@ public partial class SceneDoor : Touchable
         var node = Scene.Current.GetNodeInChildren<Node3D>(StartNode);
         if (node != null)
         {
-            FirstPersonController.Instance.GlobalPosition = node.GlobalPosition;
-            FirstPersonController.Instance.SetLookRotation(node);
+            Player.Instance.GlobalPosition = node.GlobalPosition;
+            Player.Instance.SetLookRotation(node);
         }
     }
 
@@ -62,8 +62,9 @@ public partial class SceneDoor : Touchable
         {
             var view = View.Get<GameView>();
 
-            FirstPersonController.Instance.MovementLock.AddLock(nameof(SceneDoor));
-            FirstPersonController.Instance.InteractLock.AddLock(nameof(SceneDoor));
+            Player.Instance.MovementLock.AddLock(nameof(SceneDoor));
+            Player.Instance.LookLock.AddLock(nameof(SceneDoor));
+            Player.Instance.InteractLock.AddLock(nameof(SceneDoor));
 
             SoundController.Instance.Play(OpenSound?.ResourcePath);
 
@@ -74,8 +75,9 @@ public partial class SceneDoor : Touchable
 
             yield return new WaitForSeconds(0.5f);
 
-            FirstPersonController.Instance.MovementLock.RemoveLock(nameof(SceneDoor));
-            FirstPersonController.Instance.InteractLock.RemoveLock(nameof(SceneDoor));
+            Player.Instance.MovementLock.RemoveLock(nameof(SceneDoor));
+            Player.Instance.LookLock.RemoveLock(nameof(SceneDoor));
+            Player.Instance.InteractLock.RemoveLock(nameof(SceneDoor));
 
             SoundController.Instance.Play(CloseSound?.ResourcePath);
 

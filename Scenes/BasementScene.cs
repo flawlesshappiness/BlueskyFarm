@@ -139,7 +139,7 @@ public partial class BasementScene : GameScene
         {
             Category = category,
             Text = "Teleport to Forest",
-            Action = _ => FirstPersonController.Instance.GlobalPosition = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == AreaNames.Forest).Room.GlobalPosition
+            Action = _ => Player.Instance.GlobalPosition = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == AreaNames.Forest).Room.GlobalPosition
         });
     }
 

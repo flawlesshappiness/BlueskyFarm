@@ -349,7 +349,7 @@ public partial class PlantArea : Touchable
     private void PopPlantFromDirt(ItemData data)
     {
         var rng = new RandomNumberGenerator();
-        var dir_to_player = (FirstPersonController.Instance.Mid.GlobalPosition - SeedPosition.GlobalPosition).Normalized();
+        var dir_to_player = (Player.Instance.GlobalPosition.Add(y: 1) - SeedPosition.GlobalPosition).Normalized();
         var velocity = Vector3.Up * 2f + dir_to_player * 3f;
         var torque = new Vector3().RandomNormalized() * rng.RandfRange(1f, 5f);
         var item = ItemController.Instance.CreateItem(data.InfoPath);

@@ -86,9 +86,8 @@ public partial class GameScene : Scene
             var view = View.Get<GameView>();
             view.SetBlackOverlayAlpha(1);
 
-            var player = FirstPersonController.Instance;
-            player.MovementLock.AddLock("death");
-            player.InteractLock.AddLock("death");
+            Player.Instance.MovementLock.AddLock("death");
+            Player.Instance.InteractLock.AddLock("death");
 
             var bus = AudioBus.Get(SoundBus.Master.ToString());
             bus.SetMuted(true);
@@ -101,10 +100,9 @@ public partial class GameScene : Scene
 
             bus.SetMuted(false);
 
-            player = FirstPersonController.Instance;
-            player.GlobalPosition = Vector3.Zero;
-            player.MovementLock.RemoveLock("death");
-            player.InteractLock.RemoveLock("death");
+            Player.Instance.GlobalPosition = Vector3.Zero;
+            Player.Instance.MovementLock.RemoveLock("death");
+            Player.Instance.InteractLock.RemoveLock("death");
         }
     }
 }

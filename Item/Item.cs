@@ -43,7 +43,7 @@ public partial class Item : Grabbable
             var bounds = FarmBounds.Instance;
             if (bounds != null)
             {
-                bounds.ThrowObject(RigidBody, FirstPersonController.Instance.GlobalPosition);
+                bounds.ThrowObject(RigidBody, Player.Instance.GlobalPosition);
             }
         }
     }

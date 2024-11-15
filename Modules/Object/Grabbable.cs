@@ -73,7 +73,7 @@ public partial class Grabbable : Interactable
 
     public void ReleaseIfGrabbed()
     {
-        var player = FirstPersonController.Instance;
+        var player = Player.Instance; // TODO: Should not reference player
         if (player.Grab.GetCurrentTarget() == this)
         {
             player.Grab.Release();

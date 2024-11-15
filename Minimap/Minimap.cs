@@ -48,10 +48,10 @@ public partial class Minimap : ControlScript
     {
         base._Process(delta);
 
-        var pos_player = WorldToMinimapPosition(-FirstPersonController.Instance.GlobalPosition);
+        var pos_player = WorldToMinimapPosition(-global::Player.Instance.GlobalPosition);
         Scroll.Position = pos_player + Player.Position;
 
-        Rotate.Rotation = FirstPersonController.Instance.NeckHorizontal.Rotation.Y;
+        Rotate.Rotation = global::Player.Instance.NeckHorizontal.Rotation.Y;
     }
 
     private void RegisterDebugActions()

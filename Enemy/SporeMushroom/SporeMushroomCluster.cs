@@ -87,18 +87,18 @@ public partial class SporeMushroomCluster : Node3DScript
         Coroutine.Start(Cr, id);
         IEnumerator Cr()
         {
-            FirstPersonController.Instance.MoveSpeedMultiplier = 0.25f;
-            FirstPersonController.Instance.LookSpeedMultiplier = 0.25f;
+            Player.Instance.MoveSpeedMultiplier = 0.25f;
+            Player.Instance.LookSpeedMultiplier = 0.25f;
 
             yield return new WaitForSeconds(2f);
 
-            var move_start = FirstPersonController.Instance.MoveSpeedMultiplier;
-            var look_start = FirstPersonController.Instance.LookSpeedMultiplier;
+            var move_start = Player.Instance.MoveSpeedMultiplier;
+            var look_start = Player.Instance.LookSpeedMultiplier;
 
             yield return LerpEnumerator.Lerp01(2f, f =>
             {
-                FirstPersonController.Instance.MoveSpeedMultiplier = Mathf.Lerp(move_start, 1f, f);
-                FirstPersonController.Instance.LookSpeedMultiplier = Mathf.Lerp(look_start, 1f, f);
+                Player.Instance.MoveSpeedMultiplier = Mathf.Lerp(move_start, 1f, f);
+                Player.Instance.LookSpeedMultiplier = Mathf.Lerp(look_start, 1f, f);
             });
         }
     }

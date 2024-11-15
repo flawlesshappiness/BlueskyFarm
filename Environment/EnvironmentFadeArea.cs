@@ -66,7 +66,7 @@ public partial class EnvironmentFadeArea : Node3DScript
 
     private float GetLerpValue()
     {
-        var p = FirstPersonController.Instance.GlobalPosition;
+        var p = Player.Instance.GlobalPosition;
         var a = p - Start.GlobalPosition;
         var b = End.GlobalPosition - Start.GlobalPosition;
         var angle = a.AngleTo(b);

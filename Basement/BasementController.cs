@@ -85,7 +85,7 @@ public partial class BasementController : SingletonController
             room.West.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.WestElement);
         }
 
-        FirstPersonController.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;
+        Player.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;
 
         Debug.Indent--;
     }

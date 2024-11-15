@@ -48,7 +48,7 @@ public partial class AmbientParticleController : ResourceController<AmbientParti
             var z = rng.RandfRange(-1, 1);
             var distance = rng.RandfRange(info.DistanceMin, info.DistanceMax);
             var offset = new Vector3(x, 0, z).Normalized() * distance;
-            var position = FirstPersonController.Instance.GlobalPosition + offset;
+            var position = Player.Instance.GlobalPosition + offset;
 
             Particle.PlayOneShot(particle_name, position);
             Debug.Log("TEST");

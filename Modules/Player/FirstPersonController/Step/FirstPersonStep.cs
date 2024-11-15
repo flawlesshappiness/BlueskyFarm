@@ -13,51 +13,36 @@ public partial class FirstPersonStep : Node3D
     [Export]
     public float StepBounce = 0.2f;
 
-    private float DesiredStepTime => Player.IsRunning ? RunStepTime : WalkStepTime;
-    private float StepTimeMultiplier => Player.MoveSpeedMultiplier == 0 ? 0 : (1f / Player.MoveSpeedMultiplier);
-
-    private FirstPersonController Player { get; set; }
+    private float DesiredStepTime => Player.Instance.IsRunning ? RunStepTime : WalkStepTime;
+    private float StepTimeMultiplier => Player.Instance.MoveSpeedMultiplier == 0 ? 0 : (1f / Player.Instance.MoveSpeedMultiplier);
 
     private bool moving;
     private float timeNextStep;
     private Vector3 start_position;
     private Coroutine cr_head_bob;
 
-    public Action OnMoveStart, OnMoveStop, OnMoveStep;
+    public Action OnMoveStep;
 
     public override void _Ready()
     {
         base._Ready();
         start_position = Position;
-        Player = this.GetNodeInParents<FirstPersonController>();
+
+        var player = this.GetNodeInParents<Player>();
+        player.OnMoveStart += MoveStart;
+        player.OnMoveStop += MoveStop;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        Process_Movement();
         Process_Step();
-    }
-
-    private void Process_Movement()
-    {
-        if (Player == null) return;
-
-        var velocity = Player.Velocity;
-
-        if (moving != velocity.Length() > 0)
-        {
-            moving = !moving;
-
-            if (moving) MoveStart();
-            else MoveStop();
-        }
     }
 
     private void Process_Step()
     {
         if (!moving) return;
-        if (!Player.IsOnFloor()) return;
+        if (!Player.Instance.IsOnFloor()) return;
         if (GameTime.Time < timeNextStep) return;
 
         MoveStep();
@@ -77,13 +62,14 @@ public partial class FirstPersonStep : Node3D
 
     private void MoveStart()
     {
-        OnMoveStart?.Invoke();
-        MoveStep();
+        moving = true;
+        ResetStepTime();
+        StepHeadBob();
     }
 
     private void MoveStop()
     {
-        OnMoveStop?.Invoke();
+        moving = false;
         ResetHeadBob();
     }
 

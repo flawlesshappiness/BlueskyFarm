@@ -15,7 +15,7 @@ public partial class FarmScene : GameScene
     {
         base.BeforeSave();
 
-        FirstPersonController.Instance.UpdateData();
+        Player.Instance.UpdateData();
         InventoryController.Instance.UpdateData();
         ItemController.Instance.UpdateData();
         UpdateData_PlantArea();

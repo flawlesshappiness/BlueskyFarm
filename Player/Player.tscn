@@ -8,12 +8,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0t8rm"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="FirstPersonPlayer" instance=ExtResource("1_pwey1")]
+[node name="Player" instance=ExtResource("1_pwey1")]
 script = ExtResource("2_w0i0x")
 WalkSpeed = 4.0
 RunSpeed = 6.0
-JumpUpSpeed = 0.0
-JumpHorizontalSpeed = 1.0
 
 [node name="NavigationAgent3D" parent="." index="0"]
 path_height_offset = 0.5

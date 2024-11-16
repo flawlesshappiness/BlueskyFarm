@@ -24,6 +24,12 @@ public partial class PlayerStepSound : NodeScript
         var water = Player.Instance.IsInWater;
         var ground = Player.Instance.GetGround();
         var type = water ? SolidMaterialType.Water : ground?.Type ?? SolidMaterialType.Default;
+        PlayStepSFX(type, running);
+    }
+
+    public void PlayStepSFX(SolidMaterialType type, bool running)
+    {
+        var water = type == SolidMaterialType.Water;
         var info = SolidMaterialController.Instance.GetInfo(type);
         var pitch_base_water = running ? 0.8f : 1.0f;
         var pitch_base = water ? pitch_base_water : running ? 1.0f : 0.8f;

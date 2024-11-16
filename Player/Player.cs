@@ -21,6 +21,9 @@ public partial class Player : FirstPersonController
     [NodeType]
     public FirstPersonStep Step;
 
+    [NodeType]
+    public PlayerStepSound StepSound;
+
     [NodeName]
     public RayCast3D GroundRaycast;
 
@@ -32,6 +35,9 @@ public partial class Player : FirstPersonController
 
     [NodeType]
     public NavigationAgent3D Agent;
+
+    [NodeName]
+    public RigidBody3D CameraRagdoll;
 
     public bool IsInWater { get; private set; }
     public bool IsRunning => PlayerInput.Run.Held;
@@ -377,6 +383,8 @@ public partial class Player : FirstPersonController
         {
             IsInWater = true;
             _current_water_area = water;
+
+            StepSound.PlayStepSFX(SolidMaterialType.Water, IsRunning);
         }
     }
 
@@ -389,6 +397,8 @@ public partial class Player : FirstPersonController
         {
             IsInWater = false;
             _current_water_area = null;
+
+            StepSound.PlayStepSFX(SolidMaterialType.Water, IsRunning);
         }
     }
 

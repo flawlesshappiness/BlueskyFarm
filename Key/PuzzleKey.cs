@@ -22,7 +22,7 @@ public partial class PuzzleKey : Item
         return Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            ReleaseIfGrabbed();
+            Player.Instance.Grab.Release();
             SetCollision_None();
             LockPosition_All();
             LockRotation_All();

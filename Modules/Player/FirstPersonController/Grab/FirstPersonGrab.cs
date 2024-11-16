@@ -84,8 +84,8 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
             return;
         }
 
-        Target.SetPosition(GrabPosition);
-        Target.SetRotation(GrabRotation);
+        Target.TargetPosition = GrabPosition;
+        Target.TargetRotation = GrabRotation;
     }
 
     public void SetTarget(Grabbable grabbable)

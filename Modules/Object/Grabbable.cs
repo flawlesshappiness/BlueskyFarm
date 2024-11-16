@@ -11,12 +11,11 @@ public partial class Grabbable : Interactable
 
     public bool IsGrabbable { get; private set; }
     public bool IsGrabbed { get; private set; }
+    public Vector3 TargetPosition { get; set; }
+    public Vector3 TargetRotation { get; set; }
 
     public event Action OnGrabbed;
     public event Action OnReleased;
-
-    private Vector3 target_position;
-    private Vector3 target_rotation;
 
     public override void _Ready()
     {
@@ -36,8 +35,8 @@ public partial class Grabbable : Interactable
     {
         if (!IsGrabbed) return;
 
-        var direction = RigidBody.GlobalPosition.DirectionTo(target_position);
-        var distance = RigidBody.GlobalPosition.DistanceTo(target_position);
+        var direction = RigidBody.GlobalPosition.DirectionTo(TargetPosition);
+        var distance = RigidBody.GlobalPosition.DistanceTo(TargetPosition);
         var velocity = direction * distance * 10;
         RigidBody.LinearVelocity = velocity;
     }
@@ -46,7 +45,7 @@ public partial class Grabbable : Interactable
     {
         if (!IsGrabbed) return;
 
-        RigidBody.GlobalRotation = target_rotation;
+        RigidBody.GlobalRotation = TargetRotation;
         RigidBody.AngularVelocity = Vector3.Zero;
     }
 
@@ -71,32 +70,8 @@ public partial class Grabbable : Interactable
         OnReleased?.Invoke();
     }
 
-    public void ReleaseIfGrabbed()
-    {
-        var player = Player.Instance; // TODO: Should not reference player
-        if (player.Grab.GetCurrentTarget() == this)
-        {
-            player.Grab.Release();
-        }
-    }
-
-    public void SetPosition(Vector3 position)
-    {
-        target_position = position;
-    }
-
-    public void SetRotation(Vector3 rotation)
-    {
-        target_rotation = rotation;
-    }
-
     public void SetGrabbable(bool grabbable)
     {
         IsGrabbable = grabbable;
-
-        if (!IsGrabbable)
-        {
-            ReleaseIfGrabbed();
-        }
     }
 }

@@ -53,6 +53,7 @@ public partial class ScreenEffectsView : View
         SqueezeXAmount = 0;
         SqueezeYAmount = 0;
         Fog_Alpha = 0;
+        Camera_Offset = Vector3.Zero;
 
         Test.Hide();
     }
@@ -129,6 +130,9 @@ public partial class ScreenEffectsView : View
         set => FogMaterial.SetShaderParameter("fog_direction", value);
     }
 
+    public Vector3 Camera_Offset { get; set; }
+    public float Camera_Offset_Forward { get; set; }
+
     public override void _Ready()
     {
         base._Ready();
@@ -147,6 +151,8 @@ public partial class ScreenEffectsView : View
         if (IsInstanceValid(_camera_target))
         {
             Camera.GlobalTransform = _camera_target.GlobalTransform;
+            Camera.GlobalPosition += _camera_target.GlobalBasis * Camera_Offset;
+            Camera.GlobalPosition += _camera_target.GlobalBasis * Vector3.Forward * Camera_Offset_Forward;
         }
     }
 

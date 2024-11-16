@@ -52,3 +52,9 @@ public class MultiFloatMax : MultiFloat
     public override float Value => HasValues ? _values.Values.OrderBy(x => x).FirstOrDefault() : DefaultValue;
     public MultiFloatMax(float default_value = 0) : base(default_value) { }
 }
+
+public class MultiFloatSum : MultiFloat
+{
+    public override float Value => HasValues ? _values.Values.Sum() : DefaultValue;
+    public MultiFloatSum(float default_value = 0) : base(default_value) { }
+}

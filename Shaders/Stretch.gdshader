@@ -16,14 +16,16 @@ float squeeze_value(float v, float t){
 		t = min(1.0f, abs(t));
 		return v * (1.0f - t) + t * 0.5f;
 	}
-	else if(t < 1.0f){
+	else
+	{
+		t = min(1.0f, t);
 		float cosv = cos(v*PI-PI) * 0.5f + 0.5f;
 		return interpolate(v, cosv, t);
 	}
-	else {
-		v = cosine_curve(v, t-1.0f);
-		return interpolate(0.0f, 1.0f, v);
-	}
+	//else {
+	//	v = cosine_curve(v, t-1.0f);
+	//	return interpolate(0.0f, 1.0f, v);
+	//}
 }
 
 uniform sampler2D input_texture;

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,6 +17,10 @@ public partial class ScreenEffects : Node3DScript
     private MultiFloatMin _squeeze_x_strength = new();
     private MultiFloatMin _squeeze_y_strength = new();
     private MultiFloatMin _fog_alpha = new();
+    private float _camera_fov = 75f;
+    private float _camera_fov_default = 75f;
+    private Vector3 _camera_offset;
+    private MultiFloatSum _camera_offset_forward = new();
 
     private static int _test;
 
@@ -43,6 +48,9 @@ public partial class ScreenEffects : Node3DScript
         _squeeze_x_strength.Clear();
         _squeeze_y_strength.Clear();
         _fog_alpha.Clear();
+        _camera_fov = _camera_fov_default;
+        _camera_offset = Vector3.Zero;
+        _camera_offset_forward.Clear();
 
         // Reset view
         View.Clear();
@@ -59,6 +67,9 @@ public partial class ScreenEffects : Node3DScript
         View.SqueezeXAmount = _squeeze_x_strength.Value;
         View.SqueezeYAmount = _squeeze_y_strength.Value;
         View.Fog_Alpha = _fog_alpha.Value;
+        View.Camera.Fov = Mathf.Lerp(View.Camera.Fov, _camera_fov, 5f * (float)delta);
+        View.Camera_Offset = View.Camera_Offset.Lerp(_camera_offset, 5f * (float)delta);
+        View.Camera_Offset_Forward = Mathf.Lerp(View.Camera_Offset_Forward, _camera_offset_forward.Value, 5f * (float)delta);
     }
 
     private void RegisterDebugActions()
@@ -90,7 +101,40 @@ public partial class ScreenEffects : Node3DScript
         {
             Category = category,
             Text = "Test squeeze",
-            Action = v => { AnimateSqueezeX($"{nameof(ScreenEffects)}{_test++}", 1.0f, 5, 1, 5); v.Close(); }
+            Action = v => { AnimateSqueezeX($"{nameof(ScreenEffects)}{_test++}", 0.5f, 5, 1, 5); v.Close(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test fov",
+            Action = v => { AnimateFov($"{nameof(ScreenEffects)}{_test++}", 90f, 5, 1, 5); v.Close(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test camera offset",
+            Action = v => { _AnimateValue(f => SetCameraOffset(Vector3.Right * 2 * f), $"{nameof(ScreenEffects)}{_test++}", 0, 1, 2, 0, 2); v.Close(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test camera offset forward",
+            Action = v => { _AnimateValue(f => SetCameraOffsetForward($"{nameof(ScreenEffects)}{_test}", 2 * f), $"{nameof(ScreenEffects)}{_test}", 0, 1, 2, 0, 2); v.Close(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test dolly zoom",
+            Action = v =>
+            {
+                _AnimateValue(f => SetCameraOffset(Vector3.Forward * 2 * f), $"{nameof(ScreenEffects)}{_test++}", 0, 1, 2, 0, 2);
+                AnimateFov($"{nameof(ScreenEffects)}{_test++}", 120f, 2, 0, 2);
+                v.Close();
+            }
         });
 
         Debug.RegisterAction(new DebugAction
@@ -101,10 +145,22 @@ public partial class ScreenEffects : Node3DScript
         });
     }
 
+    private void AddCoroutine(string id, Coroutine coroutine)
+    {
+        if (_coroutines.ContainsKey(id))
+        {
+            _coroutines[id] = coroutine;
+        }
+        else
+        {
+            _coroutines.Add(id, coroutine);
+        }
+    }
+
     private Coroutine _AnimateMinValue(MultiFloatMin controller, string id, float value, float duration_in, float duration_on, float duration_out)
     {
         var cr = StartCoroutine(Cr, $"{nameof(_AnimateMinValue)}_{id}");
-        _coroutines.Add(id, cr);
+        AddCoroutine(id, cr);
         return cr;
 
         IEnumerator Cr()
@@ -130,6 +186,34 @@ public partial class ScreenEffects : Node3DScript
         }
     }
 
+    private Coroutine _AnimateValue(Action<float> action, string id, float start, float end, float duration_in, float duration_on, float duration_out)
+    {
+        var cr = StartCoroutine(Cr, $"{nameof(_AnimateValue)}_{id}");
+        AddCoroutine(id, cr);
+        return cr;
+
+        IEnumerator Cr()
+        {
+            var curve = Curves.EaseInOutQuad;
+
+            yield return LerpEnumerator.Lerp01(duration_in, f =>
+            {
+                var value = Mathf.Lerp(start, end, curve.Evaluate(f));
+                action(value);
+            });
+
+            yield return new WaitForSeconds(duration_on);
+
+            yield return LerpEnumerator.Lerp01(duration_out, f =>
+            {
+                var value = Mathf.Lerp(end, start, curve.Evaluate(f));
+                action(value);
+            });
+
+            _coroutines.Remove(id);
+        }
+    }
+
     public static Coroutine AnimateGaussianBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValue(Instance._gaussian_amount, id, strength, duration_in, duration_on, duration_out);
 
@@ -148,9 +232,21 @@ public partial class ScreenEffects : Node3DScript
     public static Coroutine AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValue(Instance._fog_alpha, id, alpha, duration_in, duration_on, duration_out);
 
+    public static Coroutine AnimateFov(string id, float fov, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateValue(v => Instance._camera_fov = v, id, Instance._camera_fov_default, fov, duration_in, duration_on, duration_out);
+
     public static void SetGaussianBlur(string id, float strength) =>
         Instance._gaussian_amount.Set(id, strength);
 
     public static void RemoveGaussianBlur(string id) =>
         Instance._gaussian_amount.Remove(id);
+
+    public static void SetCameraOffset(Vector3 offset) =>
+        Instance._camera_offset = offset;
+
+    public static void SetCameraOffsetForward(string id, float distance) =>
+        Instance._camera_offset_forward.Set(id, distance);
+
+    public static void RemoveCameraOffsetForward(string id) =>
+        Instance._camera_offset_forward.Remove(id);
 }

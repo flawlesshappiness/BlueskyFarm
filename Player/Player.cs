@@ -275,6 +275,7 @@ public partial class Player : FirstPersonController
         var name = nameof(DialogueController);
         InventoryController.Instance.InventoryLock.AddLock(name);
         InteractLock.AddLock(name);
+        GameView.Instance.HideAllDynamicUI();
         Cursor.Hide();
     }
 

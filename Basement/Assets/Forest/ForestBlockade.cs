@@ -50,6 +50,6 @@ public partial class ForestBlockade : Touchable
     {
         base.Touched();
         var view = View.Get<GameView>();
-        view.DisplayText("I need a tool to remove these weeds");
+        DialogueController.Instance.SetNode("##REQ_WEEDS_TOOL_001##");
     }
 }

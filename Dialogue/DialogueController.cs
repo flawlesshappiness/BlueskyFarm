@@ -86,7 +86,7 @@ public partial class DialogueController : SingletonController
         return _collection.Nodes.TryGetValue(name, out var node) ? node : null;
     }
 
-    public void SetNode(string name) => SetNode(GetNode(name));
+    public void SetNode(string name) => SetNode(GetNode(name) ?? new DialogueNode { id = name });
 
     public void SetNode(DialogueNode node)
     {

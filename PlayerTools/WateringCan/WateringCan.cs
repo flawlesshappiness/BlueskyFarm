@@ -94,8 +94,7 @@ public partial class WateringCan : Item
         }
         else
         {
-            var view = View.Get<GameView>();
-            view.DisplayText("The watering can is empty");
+            DialogueController.Instance.SetNode("##WATERING_CAN_EMPTY_001##");
         }
     }
 

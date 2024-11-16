@@ -1,5 +1,4 @@
 using Godot;
-using System.Collections;
 
 public partial class GameView : View
 {
@@ -14,9 +13,6 @@ public partial class GameView : View
     [NodeName]
     public InventoryBar InventoryBar;
 
-    [NodeName]
-    public Label BottomTextLabel;
-
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
 
     private ColorRect _overlay_black;
@@ -25,7 +21,6 @@ public partial class GameView : View
     {
         base._Ready();
         OverlayTemplate.Hide();
-        BottomTextLabel.Modulate = Colors.Transparent;
         _overlay_black = CreateOverlay(Colors.Black.SetA(0));
         Show();
     }
@@ -54,45 +49,6 @@ public partial class GameView : View
         var color = _overlay_black.Color;
         var new_color = new Color(color.R, color.G, color.B, alpha);
         _overlay_black.Color = new_color;
-    }
-
-    public void DisplayText(string text)
-    {
-        if (text == BottomTextLabel.Text) return;
-
-        var word_count = text.Split(' ').Length;
-        var duration = Mathf.Max(3f, word_count);
-
-        BottomTextLabel.Text = text;
-        BottomTextLabel.Modulate = Colors.Transparent;
-
-        SoundController.Instance.Play("sfx_text_display", new SoundOverride
-        {
-            Bus = SoundBus.SFX
-        });
-
-        Coroutine.Start(Cr, "DisplayText" + GetInstanceId());
-
-        IEnumerator Cr()
-        {
-            var start = BottomTextLabel.Modulate;
-            var end = Colors.White;
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                BottomTextLabel.Modulate = start.Lerp(end, f);
-            });
-
-            yield return new WaitForSeconds(duration);
-
-            start = BottomTextLabel.Modulate;
-            end = Colors.Transparent;
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                BottomTextLabel.Modulate = start.Lerp(end, f);
-            });
-
-            BottomTextLabel.Text = "";
-        }
     }
 
     public void ShowAllDynamicUI()

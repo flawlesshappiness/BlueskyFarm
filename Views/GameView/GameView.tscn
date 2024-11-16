@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdco18oe37rhc"]
+[gd_scene load_steps=8 format=3 uid="uid://bdco18oe37rhc"]
 
 [ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
-[ext_resource type="Script" path="res://UI/DynamicUI/DynamicUI.cs" id="2_y0c2o"]
 [ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="3_vtgjj"]
 [ext_resource type="Script" path="res://Views/GameView/DialogueControl.cs" id="5_cmyes"]
@@ -35,170 +34,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="DynamiUI" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_y0c2o")
-
-[node name="MarginContainer" type="MarginContainer" parent="DynamiUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Control" type="Control" parent="DynamiUI/MarginContainer"]
-layout_mode = 2
-
-[node name="Minimap" type="Control" parent="DynamiUI/MarginContainer/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 0
-offset_right = 168.0
-offset_bottom = 168.0
-script = ExtResource("3_lv1ii")
-
-[node name="Panel" type="Panel" parent="DynamiUI/MarginContainer/Control/Minimap"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Clip" type="ColorRect" parent="DynamiUI/MarginContainer/Control/Minimap/Panel"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Rotate" type="Control" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(84, 84)
-
-[node name="Scroll" type="Control" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate"]
-layout_mode = 2
-anchors_preset = 0
-
-[node name="RoomTemplate" type="Control" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 56.0
-offset_bottom = 56.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 7
-
-[node name="SectionTemplate" type="ColorRect" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer/GridContainer"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 2
-color = Color(0.196078, 0.196078, 0.196078, 1)
-
-[node name="ItemTemplate" type="ColorRect" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 48.0
-offset_right = 72.0
-offset_bottom = 52.0
-color = Color(1, 0.760784, 0, 1)
-
-[node name="Player" type="ColorRect" parent="DynamiUI/MarginContainer/Control/Minimap/Panel/Clip"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventoryBar" parent="DynamiUI/MarginContainer/Control" instance=ExtResource("6_iodv3")]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 1
-anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = -556.0
-offset_top = 0.0
-offset_right = 556.0
-offset_bottom = 60.0
-grow_vertical = 1
-
-[node name="BottomBars" type="VBoxContainer" parent="DynamiUI/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 2
-
-[node name="BottomTextLabel" type="Label" parent="DynamiUI/MarginContainer/Control/BottomBars"]
-custom_minimum_size = Vector2(1, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("3_vtgjj")
-text = "Bla bla bla "
-horizontal_alignment = 1
-vertical_alignment = 2
-autowrap_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="DynamiUI/MarginContainer/Control/BottomBars/BottomTextLabel"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -10
-theme_override_constants/margin_top = -10
-theme_override_constants/margin_right = -10
-theme_override_constants/margin_bottom = -10
-
-[node name="ColorRect" type="ColorRect" parent="DynamiUI/MarginContainer/Control/BottomBars/BottomTextLabel/MarginContainer"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.490196)
 
 [node name="Dialogue" type="Control" parent="."]
 layout_mode = 1
@@ -253,3 +88,123 @@ text_overrun_behavior = 3
 
 [node name="SfxVoice" type="AudioStreamPlayer" parent="Dialogue"]
 stream = ExtResource("7_a4mg0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Minimap" type="Control" parent="MarginContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_right = 168.0
+offset_bottom = 168.0
+script = ExtResource("3_lv1ii")
+
+[node name="Panel" type="Panel" parent="MarginContainer/Control/Minimap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clip" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rotate" type="Control" parent="MarginContainer/Control/Minimap/Panel/Clip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(84, 84)
+
+[node name="Scroll" type="Control" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate"]
+layout_mode = 2
+anchors_preset = 0
+
+[node name="RoomTemplate" type="Control" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 56.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 7
+
+[node name="SectionTemplate" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll/RoomTemplate/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="ItemTemplate" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip/Rotate/Scroll"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 48.0
+offset_right = 72.0
+offset_bottom = 52.0
+color = Color(1, 0.760784, 0, 1)
+
+[node name="Player" type="ColorRect" parent="MarginContainer/Control/Minimap/Panel/Clip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomBars" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="InventoryBar" parent="MarginContainer/Control/BottomBars" instance=ExtResource("6_iodv3")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2

@@ -277,7 +277,7 @@ public partial class MaterialProcessor : Node3DScript
             }
 
             var view = View.Get<GameView>();
-            view.DisplayText("It's not working correctly.");
+            DialogueController.Instance.SetNode("##MAT_PROC_001##");
 
             _machine_running = false;
         }

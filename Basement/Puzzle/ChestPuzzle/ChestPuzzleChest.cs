@@ -63,7 +63,7 @@ public partial class ChestPuzzleChest : Touchable
     {
         SoundController.Instance.Play("sfx_chest_locked", GlobalPosition);
 
-        View.Get<GameView>().DisplayText("The chest is locked.");
+        DialogueController.Instance.SetNode("##CHEST_LOCKED_001##");
     }
 
     private void AnimateUnlock(PuzzleKey key)

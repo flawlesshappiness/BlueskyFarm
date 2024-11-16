@@ -229,7 +229,7 @@ public partial class PlantArea : Touchable
         {
             Data = data,
             TimeStart = GameTime.Time,
-            TimeEnd = GameTime.Time,
+            TimeEnd = GameTime.Time + data.TimeLeft,
         };
 
         SpawnPlantModel(CurrentSeed);
@@ -253,8 +253,6 @@ public partial class PlantArea : Touchable
 
         SetItemPosition(seed.PlantItem);
         RandomizeScale(seed.PlantItem);
-
-        SoundController.Instance.Play("sfx_seed_grow", GlobalPosition);
 
         Debug.Indent--;
     }
@@ -280,20 +278,13 @@ public partial class PlantArea : Touchable
     {
         if (CurrentSeed == null) return; // No seed
         if (CurrentSeed.PlantItem != null) return; // Already has plant
+        if (!CurrentSeed.IsFinished) return;
 
-        if (IsSeedFinishedGrowing())
-        {
-            DespawnSeedModel(CurrentSeed);
-            SpawnPlantModel(CurrentSeed);
-            AnimatePlantAppear(CurrentSeed);
+        DespawnSeedModel(CurrentSeed);
+        SpawnPlantModel(CurrentSeed);
+        AnimatePlantAppear(CurrentSeed);
 
-            SoundController.Instance.Play("sfx_pickup", GlobalPosition);
-        }
-    }
-
-    private bool IsSeedFinishedGrowing()
-    {
-        return GameTime.Time > CurrentSeed.TimeEnd;
+        SoundController.Instance.Play("sfx_pickup", GlobalPosition);
     }
 
     public override bool HandleCursor()
@@ -303,7 +294,7 @@ public partial class PlantArea : Touchable
             Cursor.Hide();
             return true;
         }
-        else if (IsSeedFinishedGrowing())
+        else if (CurrentSeed.IsFinished)
         {
             return false;
         }
@@ -499,7 +490,7 @@ public partial class PlantArea : Touchable
     private void Process_Weeds()
     {
         if (!HasSeed) return;
-        if (IsSeedFinishedGrowing()) return;
+        if (CurrentSeed.IsFinished) return;
 
         if (GameTime.Time > CurrentSeed.TimeWeed)
         {

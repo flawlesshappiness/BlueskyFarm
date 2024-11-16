@@ -7,14 +7,22 @@ public class Seed
     public Item SeedItem { get; set; }
     public Item PlantItem { get; set; }
 
+    public bool IsFinished => GameTime.Time > TimeEnd;
+
     public void UpdateData()
     {
-        Data.TimeLeft = TimeEnd - GameTime.Time;
-        Data.TimeUntilNextWeed = TimeWeed - GameTime.Time;
+        if (!IsFinished)
+        {
+            Data.TimeLeft = TimeEnd - GameTime.Time;
+            Data.TimeUntilNextWeed = TimeWeed - GameTime.Time;
+        }
     }
 
     public void DecreaseTimeFromWeeds()
     {
-        TimeEnd -= 5f;
+        if (!IsFinished)
+        {
+            TimeEnd -= 5f;
+        }
     }
 }

@@ -12,7 +12,7 @@ public partial class GameView : View
     public Minimap Minimap;
 
     [NodeName]
-    public DynamicUI DynamicUI;
+    public InventoryBar InventoryBar;
 
     [NodeName]
     public Label BottomTextLabel;
@@ -36,7 +36,7 @@ public partial class GameView : View
 
         if (PlayerInput.ShowUI.Pressed)
         {
-            DynamicUI.AnimateShow(true);
+            ShowAllDynamicUI();
         }
     }
 
@@ -93,5 +93,15 @@ public partial class GameView : View
 
             BottomTextLabel.Text = "";
         }
+    }
+
+    public void ShowAllDynamicUI()
+    {
+        InventoryBar.AnimateShow();
+    }
+
+    public void HideAllDynamicUI()
+    {
+        InventoryBar.AnimateHide();
     }
 }

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://caxidipwbdxhk"]
+[gd_scene load_steps=6 format=3 uid="uid://caxidipwbdxhk"]
 
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
-[ext_resource type="Script" path="res://UI/DynamicUI/DynamicUI.cs" id="1_5bjdx"]
 [ext_resource type="Texture2D" uid="uid://c48ol1afhicfm" path="res://Assets/KenneyNL/Particles/circle_03.png" id="4_nuabn"]
 [ext_resource type="PackedScene" uid="uid://5m538famp4ae" path="res://UI/WorldObject/WorldObject.tscn" id="5_vu27v"]
 
@@ -27,16 +26,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_3r2to")
 
-[node name="DynamicUI" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_5bjdx")
-
-[node name="GridContainer" type="GridContainer" parent="DynamicUI"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -52,13 +42,13 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5
 columns = 15
 
-[node name="InventoryBarElement" type="Control" parent="DynamicUI/GridContainer"]
+[node name="InventoryBarElement" type="Control" parent="GridContainer"]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 size_flags_vertical = 8
 script = ExtResource("1_03bnl")
 
-[node name="Panel" type="Panel" parent="DynamicUI/GridContainer/InventoryBarElement"]
+[node name="Panel" type="Panel" parent="GridContainer/InventoryBarElement"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_la47w")
 
-[node name="Selected" type="TextureRect" parent="DynamicUI/GridContainer/InventoryBarElement"]
+[node name="Selected" type="TextureRect" parent="GridContainer/InventoryBarElement"]
 modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1
 anchors_preset = 15
@@ -79,7 +69,7 @@ texture = ExtResource("4_nuabn")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="DynamicUI/GridContainer/InventoryBarElement"]
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/InventoryBarElement"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,6 +81,5 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="WorldObject" parent="DynamicUI/GridContainer/InventoryBarElement/MarginContainer" instance=ExtResource("5_vu27v")]
+[node name="WorldObject" parent="GridContainer/InventoryBarElement/MarginContainer" instance=ExtResource("5_vu27v")]
 layout_mode = 2
-stretch = true

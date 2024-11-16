@@ -173,7 +173,7 @@ public partial class Player : FirstPersonController
     private void Process_Move()
     {
         var input = PlayerInput.GetMoveInput();
-        if (input.Length() > 0)
+        if (input.Length() > 0 && !MovementLock.IsLocked)
         {
             var base_speed = IsRunning ? RunSpeed : WalkSpeed;
             var speed = base_speed * MoveSpeedMultiplier;

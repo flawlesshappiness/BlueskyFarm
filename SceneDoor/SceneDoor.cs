@@ -65,6 +65,8 @@ public partial class SceneDoor : Touchable
             Player.Instance.MovementLock.AddLock(nameof(SceneDoor));
             Player.Instance.LookLock.AddLock(nameof(SceneDoor));
             Player.Instance.InteractLock.AddLock(nameof(SceneDoor));
+            Cursor.Hide();
+            view.HideAllDynamicUI();
 
             SoundController.Instance.Play(OpenSound?.ResourcePath);
 

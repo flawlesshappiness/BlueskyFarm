@@ -1,13 +1,10 @@
 using Godot;
 using System.Linq;
 
-public partial class InventoryBar : ControlScript
+public partial class InventoryBar : DynamicUI
 {
     [NodeType]
     public InventoryBarElement ElementTemplate;
-
-    [NodeType]
-    public DynamicUI DynamicUI;
 
     private InventoryBarElement[] _elements = new InventoryBarElement[InventoryController.MAX_INVENTORY_SIZE];
 
@@ -50,7 +47,7 @@ public partial class InventoryBar : ControlScript
             _elements[i].Visible = i < size;
         }
 
-        DynamicUI.AnimateShow(true);
+        AnimateShow();
     }
 
     private void ItemRemoved(int i)
@@ -58,7 +55,7 @@ public partial class InventoryBar : ControlScript
         var e = GetElement(i);
         e.Clear();
 
-        DynamicUI.AnimateShow(true);
+        AnimateShow();
     }
 
     private void ItemAdded(int i)
@@ -70,10 +67,9 @@ public partial class InventoryBar : ControlScript
         if (info == null) return;
 
         var e = GetElement(i);
-        //e.Icon.Texture = info.Icon;
         e.WorldObject.LoadItem(info);
 
-        DynamicUI.AnimateShow(true);
+        AnimateShow();
     }
 
     private void SelectedItemChanged(int i)
@@ -82,7 +78,7 @@ public partial class InventoryBar : ControlScript
         var e = GetElement(i);
         e.Select();
 
-        DynamicUI.AnimateShow(true);
+        AnimateShow();
     }
 
     private void DeselectAllElements()
@@ -101,6 +97,7 @@ public partial class InventoryBar : ControlScript
         e.SetParent(ElementTemplate.GetParent());
         e.Clear();
         e.Show();
+        e.WorldObject.SubViewportContainer.Stretch = true;
         return e;
     }
 }

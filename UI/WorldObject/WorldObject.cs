@@ -15,6 +15,9 @@ public partial class WorldObject : ControlScript
     [NodeType]
     public Camera3D Camera;
 
+    [NodeType]
+    public SubViewportContainer SubViewportContainer;
+
     private Node3D _current;
 
     public void Clear()

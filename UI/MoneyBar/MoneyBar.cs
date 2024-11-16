@@ -20,6 +20,6 @@ public partial class MoneyBar : ControlScript
     private void OnMoneyChanged(int value)
     {
         MoneyLabel.Text = value.ToString();
-        DynamicUI.AnimateShow(true);
+        DynamicUI.AnimateShow();
     }
 }

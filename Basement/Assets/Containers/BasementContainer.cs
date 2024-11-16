@@ -103,8 +103,8 @@ public partial class BasementContainer : Touchable
     {
         if (!IsInstanceValid(Item)) return;
 
-        Item.UnlockPosition_All();
-        Item.UnlockRotation_All();
+        Item.RigidBody.UnlockPosition_All();
+        Item.RigidBody.UnlockRotation_All();
         Item.SetEnabled(true);
         Item.GlobalPosition = ItemPosition.GlobalPosition;
         Item.RigidBody.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;

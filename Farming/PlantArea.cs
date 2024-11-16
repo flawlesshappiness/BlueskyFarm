@@ -196,8 +196,8 @@ public partial class PlantArea : Touchable
     {
         item.GlobalPosition = SeedPosition.GlobalPosition;
         item.GlobalRotation = SeedPosition.GlobalRotation;
-        item.LockPosition_All();
-        item.LockRotation_All();
+        item.RigidBody.LockPosition_All();
+        item.RigidBody.LockRotation_All();
         item.SetCollision_None();
     }
 

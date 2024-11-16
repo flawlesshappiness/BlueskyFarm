@@ -186,7 +186,7 @@ public partial class BasementScene : GameScene
             var item = ItemController.Instance.CreateItem(item_path, track_item: false);
             item.Data.PlantInfoPath = plant_path;
             item.SetEnabled(false);
-            item.LockPosition_All();
+            item.RigidBody.LockPosition_All();
 
             var container = containers.Random();
             containers.Remove(container);

@@ -72,6 +72,7 @@ public partial class Player : FirstPersonController
         RegisterDebugActions();
         LoadData();
 
+        FreezeCameraRagdoll();
         ScreenEffects.View.SetCameraTarget(CameraTarget);
     }
 
@@ -94,6 +95,13 @@ public partial class Player : FirstPersonController
             Category = category,
             Text = "Replenish near item uses",
             Action = ReplenishCloseItems
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test camera ragdoll",
+            Action = v => { Instance.ThrowCamera(Instance.CameraTarget.GlobalBasis * (Vector3.Forward * 4)); v.Close(); }
         });
 
         void ReplenishCloseItems(DebugView view)
@@ -418,5 +426,65 @@ public partial class Player : FirstPersonController
 
         var position = GlobalPosition.Set(y: _current_water_area.GlobalWaterHeight + 0.01f);
         Particle.PlayOneShot("ps_water_ripple", position);
+    }
+
+    private void FreezeCameraRagdoll()
+    {
+        CameraRagdoll.LockPosition_All();
+        CameraRagdoll.LockRotation_All();
+        CameraRagdoll.SetParent(CameraTarget);
+        CameraRagdoll.Position = Vector3.Zero;
+        CameraRagdoll.Rotation = Vector3.Zero;
+    }
+
+    public void ThrowCamera(Vector3 velocity)
+    {
+        Coroutine.Start(Cr, $"{nameof(ThrowCamera) + GetInstanceId()}", this);
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(1);
+
+            CameraRagdoll.UnlockPosition_All();
+            CameraRagdoll.UnlockRotation_All();
+            CameraRagdoll.SetParent(Scene.Current);
+            CameraRagdoll.GlobalRotation = CameraTarget.GlobalRotation;
+            ScreenEffects.View.SetCameraTarget(CameraRagdoll);
+
+            MovementLock.AddLock("ragdoll");
+            LookLock.AddLock("ragdoll");
+            InteractLock.AddLock("ragdoll");
+            Cursor.Hide();
+
+            CameraRagdoll.LinearVelocity = velocity;
+            CameraRagdoll.AngularVelocity = velocity.Normalized();
+
+            yield return new WaitForSeconds(1);
+            while (CameraRagdoll.LinearVelocity.Length() > 0.2f)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.5f);
+
+            GlobalPosition = CameraRagdoll.GlobalPosition;
+
+            var start_position = CameraRagdoll.GlobalPosition;
+            var end_position = CameraTarget.GlobalPosition;
+            var start_rotation = CameraRagdoll.GlobalRotation;
+            var end_rotation = CameraTarget.GlobalRotation;
+            var curve = Curves.EaseInOutQuad;
+            yield return LerpEnumerator.Lerp01(1.0f, f =>
+            {
+                var t = curve.Evaluate(f);
+                CameraRagdoll.GlobalPosition = start_position.Lerp(end_position, t);
+                CameraRagdoll.GlobalRotation = start_rotation.Lerp(end_rotation, t);
+            });
+
+            FreezeCameraRagdoll();
+            ScreenEffects.View.SetCameraTarget(CameraTarget);
+
+            MovementLock.RemoveLock("ragdoll");
+            LookLock.RemoveLock("ragdoll");
+            InteractLock.RemoveLock("ragdoll");
+        }
     }
 }

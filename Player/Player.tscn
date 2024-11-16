@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdkodwuco1fd1"]
+[gd_scene load_steps=11 format=3 uid="uid://bdkodwuco1fd1"]
 
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="1_pwey1"]
 [ext_resource type="Script" path="res://Player/ItemHold/FirstPersonItemHold.cs" id="2_26tw8"]
@@ -8,8 +8,11 @@
 [ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Interact/FirstPersonInteract.cs" id="4_t751g"]
 [ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Grab/FirstPersonGrab.cs" id="5_67u2u"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4kl3r"]
-size = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vchsy"]
+bounce = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfhuh"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0t8rm"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -47,10 +50,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 [node name="Rotation" type="Node3D" parent="NeckHorizontal/NeckVertical/Step/CameraTarget/Grab" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
-[node name="CameraRagdoll" type="RigidBody3D" parent="NeckHorizontal/NeckVertical/Step" index="2"]
+[node name="CameraRagdoll" type="RigidBody3D" parent="NeckHorizontal/NeckVertical/Step/CameraTarget" index="2"]
+collision_layer = 2
+collision_mask = 2
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_vchsy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NeckHorizontal/NeckVertical/Step/CameraRagdoll" index="0"]
-shape = SubResource("BoxShape3D_4kl3r")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NeckHorizontal/NeckVertical/Step/CameraTarget/CameraRagdoll" index="0"]
+shape = SubResource("BoxShape3D_sfhuh")
 
 [node name="ItemHold" type="Node3D" parent="NeckHorizontal" index="1"]
 script = ExtResource("2_26tw8")

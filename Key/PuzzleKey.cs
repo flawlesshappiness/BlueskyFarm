@@ -24,8 +24,8 @@ public partial class PuzzleKey : Item
         {
             Player.Instance.Grab.Release();
             SetCollision_None();
-            LockPosition_All();
-            LockRotation_All();
+            RigidBody.LockPosition_All();
+            RigidBody.LockRotation_All();
 
             var start_em = Colors.Black;
             var end_em = Colors.White;

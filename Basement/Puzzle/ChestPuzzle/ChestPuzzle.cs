@@ -34,15 +34,15 @@ public partial class ChestPuzzle : BasementPuzzle
         key.GlobalPosition = key_position.GlobalPosition;
         key.GlobalRotation = key_position.GlobalRotation;
         key.Data.CustomId = chest.CustomId;
-        key.LockPosition_All();
-        key.LockRotation_All();
+        key.RigidBody.LockPosition_All();
+        key.RigidBody.LockRotation_All();
 
         key.OnGrabbed += UnlockKey;
 
         void UnlockKey()
         {
-            key.UnlockPosition_All();
-            key.UnlockRotation_All();
+            key.RigidBody.UnlockPosition_All();
+            key.RigidBody.UnlockRotation_All();
             key.OnGrabbed -= UnlockKey;
         }
     }

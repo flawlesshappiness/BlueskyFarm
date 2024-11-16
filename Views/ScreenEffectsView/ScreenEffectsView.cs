@@ -14,6 +14,9 @@ public partial class ScreenEffectsView : View
     public ColorRect Distort;
 
     [NodeName]
+    public ColorRect Squeeze;
+
+    [NodeName]
     public ColorRect AnimatedFog;
 
     [NodeName]
@@ -34,6 +37,9 @@ public partial class ScreenEffectsView : View
     public ShaderMaterial DistortMaterial => _mat_distort ?? (_mat_distort = Distort.Material as ShaderMaterial);
     private ShaderMaterial _mat_distort;
 
+    public ShaderMaterial SqueezeMaterial => _mat_squeeze ?? (_mat_squeeze = Squeeze.Material as ShaderMaterial);
+    private ShaderMaterial _mat_squeeze;
+
     public ShaderMaterial FogMaterial => _mat_fog ?? (_mat_fog = AnimatedFog.Material as ShaderMaterial);
     private ShaderMaterial _mat_fog;
 
@@ -44,6 +50,8 @@ public partial class ScreenEffectsView : View
         GaussianBlurAmount = 0;
         RadialBlurAmount = 0;
         DistortStrength = 0;
+        SqueezeXAmount = 0;
+        SqueezeYAmount = 0;
         Fog_Alpha = 0;
 
         Test.Hide();
@@ -59,6 +67,18 @@ public partial class ScreenEffectsView : View
     {
         get => DistortMaterial.GetShaderParameter("speed").AsSingle();
         set => DistortMaterial.SetShaderParameter("speed", value);
+    }
+
+    public float SqueezeXAmount
+    {
+        get => SqueezeMaterial.GetShaderParameter("squeeze_x").AsSingle();
+        set => SqueezeMaterial.SetShaderParameter("squeeze_x", value);
+    }
+
+    public float SqueezeYAmount
+    {
+        get => SqueezeMaterial.GetShaderParameter("squeeze_y").AsSingle();
+        set => SqueezeMaterial.SetShaderParameter("squeeze_y", value);
     }
 
     public Vector2 DistortDisplacement

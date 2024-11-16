@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1m3wg25xw3p2"]
+[gd_scene load_steps=19 format=3 uid="uid://b1m3wg25xw3p2"]
 
 [ext_resource type="Script" path="res://Views/ScreenEffectsView/ScreenEffectsView.cs" id="1_g7exa"]
 [ext_resource type="Shader" path="res://Shaders/GaussianBlur.gdshader" id="3_ar8rf"]
+[ext_resource type="Shader" path="res://Shaders/Stretch.gdshader" id="3_eq7ha"]
 [ext_resource type="Shader" path="res://Shaders/DistortFilterPerlinNoise_Custom.gdshader" id="3_gse0n"]
 [ext_resource type="Shader" path="res://Shaders/Input.gdshader" id="3_raj45"]
 [ext_resource type="Shader" path="res://Shaders/RadialBlur.gdshader" id="3_vbq4h"]
@@ -12,8 +13,18 @@ shader = ExtResource("3_raj45")
 
 [sub_resource type="SphereMesh" id="SphereMesh_l6it3"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qsb15"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_emwei"]
 viewport_path = NodePath("SubViewportContainer/Main")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxetc"]
+resource_local_to_scene = true
+shader = ExtResource("3_eq7ha")
+shader_parameter/squeeze_x = 0.0
+shader_parameter/squeeze_y = 0.0
+shader_parameter/input_texture = SubResource("ViewportTexture_emwei")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qsb15"]
+viewport_path = NodePath("SubViewportContainer/RenderPass_Squeeze")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vbft6"]
 resource_local_to_scene = true
@@ -97,6 +108,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/Main/Camera3D/Test"]
 mesh = SubResource("SphereMesh_l6it3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SubViewportContainer/Main/Camera3D/Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_l6it3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SubViewportContainer/Main/Camera3D/Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("SphereMesh_l6it3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/Main/Camera3D/Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = SubResource("SphereMesh_l6it3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SubViewportContainer/Main/Camera3D/Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("SphereMesh_l6it3")
+
+[node name="RenderPass_Squeeze" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Squeeze" type="ColorRect" parent="SubViewportContainer/RenderPass_Squeeze"]
+material = SubResource("ShaderMaterial_fxetc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="RenderPass_Distort" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false

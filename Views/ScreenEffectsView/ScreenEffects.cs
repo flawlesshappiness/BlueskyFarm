@@ -13,6 +13,8 @@ public partial class ScreenEffects : Node3DScript
     private MultiFloatMin _radial_amount = new();
     private MultiFloatMin _gaussian_amount = new();
     private MultiFloatMin _distort_strength = new();
+    private MultiFloatMin _squeeze_x_strength = new();
+    private MultiFloatMin _squeeze_y_strength = new();
     private MultiFloatMin _fog_alpha = new();
 
     private static int _test;
@@ -38,6 +40,8 @@ public partial class ScreenEffects : Node3DScript
         _radial_amount.Clear();
         _gaussian_amount.Clear();
         _distort_strength.Clear();
+        _squeeze_x_strength.Clear();
+        _squeeze_y_strength.Clear();
         _fog_alpha.Clear();
 
         // Reset view
@@ -52,6 +56,8 @@ public partial class ScreenEffects : Node3DScript
         View.RadialBlurAmount = _radial_amount.Value;
         View.GaussianBlurAmount = _gaussian_amount.Value;
         View.DistortStrength = _distort_strength.Value;
+        View.SqueezeXAmount = _squeeze_x_strength.Value;
+        View.SqueezeYAmount = _squeeze_y_strength.Value;
         View.Fog_Alpha = _fog_alpha.Value;
     }
 
@@ -78,6 +84,13 @@ public partial class ScreenEffects : Node3DScript
             Category = category,
             Text = "Test distort",
             Action = v => { AnimateDistort($"{nameof(ScreenEffects)}{_test++}", 0.05f, 1, 3, 1); v.Close(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test squeeze",
+            Action = v => { AnimateSqueezeX($"{nameof(ScreenEffects)}{_test++}", 1.0f, 5, 1, 5); v.Close(); }
         });
 
         Debug.RegisterAction(new DebugAction
@@ -122,6 +135,12 @@ public partial class ScreenEffects : Node3DScript
 
     public static Coroutine AnimateDistort(string id, float strength, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValue(Instance._distort_strength, id, strength, duration_in, duration_on, duration_out);
+
+    public static Coroutine AnimateSqueezeX(string id, float strength, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValue(Instance._squeeze_x_strength, id, strength, duration_in, duration_on, duration_out);
+
+    public static Coroutine AnimateSqueezeY(string id, float strength, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValue(Instance._squeeze_y_strength, id, strength, duration_in, duration_on, duration_out);
 
     public static Coroutine AnimateRadialBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValue(Instance._radial_amount, id, strength, duration_in, duration_on, duration_out);

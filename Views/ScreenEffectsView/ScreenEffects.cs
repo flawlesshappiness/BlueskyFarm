@@ -17,6 +17,7 @@ public partial class ScreenEffects : Node3DScript
     private MultiFloatMin _squeeze_x_strength = new();
     private MultiFloatMin _squeeze_y_strength = new();
     private MultiFloatMin _fog_alpha = new();
+    private MultiFloatMax _heartbeat_frequency = new(1);
     private float _camera_fov = 75f;
     private float _camera_fov_default = 75f;
     private Vector3 _camera_offset;
@@ -48,6 +49,7 @@ public partial class ScreenEffects : Node3DScript
         _squeeze_x_strength.Clear();
         _squeeze_y_strength.Clear();
         _fog_alpha.Clear();
+        _heartbeat_frequency.Clear();
         _camera_fov = _camera_fov_default;
         _camera_offset = Vector3.Zero;
         _camera_offset_forward.Clear();
@@ -67,9 +69,9 @@ public partial class ScreenEffects : Node3DScript
         View.SqueezeXAmount = _squeeze_x_strength.Value;
         View.SqueezeYAmount = _squeeze_y_strength.Value;
         View.Fog_Alpha = _fog_alpha.Value;
-        View.Camera.Fov = Mathf.Lerp(View.Camera.Fov, _camera_fov, 5f * (float)delta);
-        View.Camera_Offset = View.Camera_Offset.Lerp(_camera_offset, 5f * (float)delta);
-        View.Camera_Offset_Forward = Mathf.Lerp(View.Camera_Offset_Forward, _camera_offset_forward.Value, 5f * (float)delta);
+        View.Camera.Fov = Mathf.Lerp(View.Camera.Fov, _camera_fov, 40f * (float)delta);
+        View.Camera_Offset = View.Camera_Offset.Lerp(_camera_offset, 40f * (float)delta);
+        View.Camera_Offset_Forward = Mathf.Lerp(View.Camera_Offset_Forward, _camera_offset_forward.Value, 40f * (float)delta);
     }
 
     private void RegisterDebugActions()
@@ -135,6 +137,20 @@ public partial class ScreenEffects : Node3DScript
                 AnimateFov($"{nameof(ScreenEffects)}{_test++}", 120f, 2, 0, 2);
                 v.Close();
             }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Start heartbeat",
+            Action = v => { StartHeartbeat(); v.Close(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Animate heartbeat",
+            Action = v => { AnimateHeartbeatFrequency($"{nameof(ScreenEffects)}{_test++}", 0.25f, 0, 0, 10f); v.Close(); }
         });
 
         Debug.RegisterAction(new DebugAction
@@ -249,4 +265,62 @@ public partial class ScreenEffects : Node3DScript
 
     public static void RemoveCameraOffsetForward(string id) =>
         Instance._camera_offset_forward.Remove(id);
+
+    public static Coroutine AnimateHeartbeatFrequency(string id, float frequency, float duration_in, float duration_on, float duration_out)
+    {
+        var cr_id = $"{nameof(AnimateHeartbeatFrequency)}_{id}";
+        var cr = Coroutine.Start(Cr, cr_id);
+        Instance.AddCoroutine(cr_id, cr);
+        return cr;
+        IEnumerator Cr()
+        {
+            yield return Instance._AnimateValue(f => Instance._heartbeat_frequency.Set(id, f), id, 1f, frequency, duration_in, duration_on, duration_out);
+            Instance._heartbeat_frequency.Remove(id);
+            Instance._coroutines.Remove(cr_id);
+        }
+    }
+
+    public static void StartHeartbeat()
+    {
+        var id = $"{nameof(ScreenEffects)}_Heartbeat";
+        Coroutine.Start(Cr, id);
+        IEnumerator Cr()
+        {
+            while (true)
+            {
+                if (Instance._heartbeat_frequency.HasValues)
+                {
+                    var freq = Instance._heartbeat_frequency.Value;
+                    var vol = Mathf.Lerp(0f, -15f, freq);
+                    Beat();
+                    SoundController.Instance.Play("sfx_heartbeat_A", new SoundOverride
+                    {
+                        Volume = vol
+                    });
+                    yield return new WaitForSeconds(0.3f * freq);
+                    Beat();
+                    SoundController.Instance.Play("sfx_heartbeat_B", new SoundOverride
+                    {
+                        Volume = vol
+                    });
+                    yield return new WaitForSeconds(0.8f * freq);
+                }
+                else
+                {
+                    yield return null;
+                }
+            }
+        }
+
+        void Beat()
+        {
+            AnimateFov(id, Instance._camera_fov - 3, 0, 0, 0.5f * Instance._heartbeat_frequency.Value);
+        }
+    }
+
+    public static void StopHeartbeat()
+    {
+        var id = $"{nameof(ScreenEffects)}_Heartbeat";
+        Coroutine.Stop(id);
+    }
 }

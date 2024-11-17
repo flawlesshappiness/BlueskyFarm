@@ -54,6 +54,7 @@ public partial class BasementScene : GameScene
 
         // Screen effects
         ScreenEffects.Instance.Clear();
+        ScreenEffects.StartHeartbeat();
 
         // Audio
         SetAudioEffectEnabled(true);
@@ -74,6 +75,9 @@ public partial class BasementScene : GameScene
         // Audio
         SetAudioEffectEnabled(false);
         AmbienceController.Instance.Stop();
+
+        // Screen effects
+        ScreenEffects.StopHeartbeat();
     }
 
     protected override void BeforeSave()

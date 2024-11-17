@@ -359,12 +359,12 @@ public partial class RootMimicEnemy : NavEnemy
         StopNavigation();
         AnimatePose_Threat();
 
-        SfxThreat.Play();
         SfxGrowl.Play();
 
         var duration = 4f;
         Player.StartLookingAt(this, 0.05f);
         ScreenEffects.AnimateRadialBlur(nameof(RootMimicEnemy) + GetInstanceId(), 0.02f, 0.1f, duration, 1f);
+        ScreenEffects.AnimateHeartbeatFrequency(nameof(RootMimicEnemy) + GetInstanceId(), 0.5f, 0, 1f, 10f);
         SoundController.Instance.Play("sfx_horror_chord");
         SoundController.Instance.Play("sfx_horror_boom");
 

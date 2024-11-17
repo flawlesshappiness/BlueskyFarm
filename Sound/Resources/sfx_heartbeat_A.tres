@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://baya2uij3sovn"]
+
+[ext_resource type="AudioStream" uid="uid://cvdd50b1yl830" path="res://Sound/Sounds/sfx_heartbeat_001.wav" id="1_8l4ip"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_ja7ll"]
+
+[resource]
+script = ExtResource("2_ja7ll")
+AudioStreams = Array[AudioStream]([ExtResource("1_8l4ip")])
+Volume = -10.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

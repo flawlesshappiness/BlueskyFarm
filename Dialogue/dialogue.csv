@@ -1,8 +1,9 @@
 keys;en
 ##LOCKED_001##;It's locked
-##FROG_INTRO_001##;Oh, hey.
-##FROG_INTRO_002##;I thought we closed applications.
-##FROG_INTRO_003##;Hmm, no matter.\nCan you grow a vegetable for me?
-##FROG_INTRO_004##;You can find seeds down in the basement.\nBring the vegetable here when you have it.
-##FROG_INTRO_005##;Grow a vegetable for me.
-##FROG_INTRO_006##;You should be able to find a variety of seeds down in the basement.
+##FROG_INTRO_001##;Did you just come in?
+##FROG_INTRO_002##;I thought we closed applications... No matter. Welcome to the farm!
+##FROG_INTRO_003##;I understand that everything here is new for you, so you can consider me your supervisor.
+##FROG_INTRO_004##;Now for your first task...
+##FROG_INTRO_005##;Take this seed, plant it, and come back to me with the crop.
+##FROG_INTRO_REPEAT_001##;I gave you a seed. Plant it, and wait for it to grow.
+##FROG_INTRO_REPEAT_002##;Bring me the crop once it has fully grown.

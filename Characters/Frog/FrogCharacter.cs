@@ -58,7 +58,7 @@ public partial class FrogCharacter : Character
     {
         if (HasFlag("frog_intro"))
         {
-            StartDialogue("##FROG_INTRO_005##");
+            StartDialogue("##FROG_INTRO_REPEAT_001##");
         }
         else
         {

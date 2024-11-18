@@ -1,8 +1,7 @@
 [
 	{
 		"id": "##FROG_INTRO_001##",
-		"next": "##FROG_INTRO_002##",
-		"animation": "CharacterArmature|Wave"
+		"next": "##FROG_INTRO_002##"
 	},
 	{
 		"id": "##FROG_INTRO_002##",
@@ -14,7 +13,10 @@
 	},
 	{
 		"id": "##FROG_INTRO_004##",
-		"animation": "CharacterArmature|Yes",
+		"next": "##FROG_INTRO_005##"
+	},
+	{
+		"id": "##FROG_INTRO_005##",
 		"flags_b": [
 			{
 				"id": "frog_intro",
@@ -24,10 +26,10 @@
 	},
 	
 	{
-		"id": "##FROG_INTRO_005##",
-		"next": "##FROG_INTRO_006##"
+		"id": "##FROG_INTRO_REPEAT_001##",
+		"next": "##FROG_INTRO_REPEAT_002##"
 	},
 	{
-		"id": "##FROG_INTRO_006##"
+		"id": "##FROG_INTRO_REPEAT_002##"
 	}
 ]

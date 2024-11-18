@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=69 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -13,9 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bvbctpjxk6w4r" path="res://Farming/Prefabs/PlantArea.tscn" id="13_p2ljc"]
 [ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
-[ext_resource type="PackedScene" uid="uid://b7uxb0tuhjy1u" path="res://Assets/FlawLizArt/Blueprint/blueprint_flat.fbx" id="19_1kq2s"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
-[ext_resource type="PackedScene" uid="uid://dqkdgxttd1l3s" path="res://Assets/FlawLizArt/Blueprint/blueprint_roll.fbx" id="20_nn3b8"]
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
@@ -624,9 +622,3 @@ stream = ExtResource("9_xc34j")
 volume_db = 20.0
 autoplay = true
 bus = &"BGM"
-
-[node name="blueprint_flat" parent="." instance=ExtResource("19_1kq2s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87406, 0.287608, -1.53944)
-
-[node name="blueprint_roll" parent="." instance=ExtResource("20_nn3b8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.583636, 0.389817, -1.42771)

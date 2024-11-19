@@ -25,6 +25,20 @@ public partial class SaveDataController : Node
             Category = category,
             Action = v => ClearAllSaveData()
         });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Text = "Clear GAME save data",
+            Category = category,
+            Action = v => { ClearSaveData(typeof(GameSaveData)); GetTree().Quit(); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Text = "Clear OPTIONS save data",
+            Category = category,
+            Action = v => { ClearSaveData(typeof(OptionsData)); GetTree().Quit(); }
+        });
     }
 
     public T Get<T>() where T : SaveData, new()

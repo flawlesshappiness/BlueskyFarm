@@ -29,7 +29,7 @@ public partial class GameScene : Scene
     {
         if (!IsInstanceValid(WorldEnvironment)) return;
 
-        WorldEnvironment.Environment.AdjustmentBrightness = Data.Game.Brightness;
+        WorldEnvironment.Environment.AdjustmentBrightness = Data.Options.Brightness;
     }
 
     protected override void Initialize()

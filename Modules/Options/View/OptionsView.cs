@@ -53,14 +53,14 @@ public partial class OptionsView : View
         VSync_AddItems();
         FPSLimit_AddItems();
 
-        MasterSlider.Value = Data.Game.VolumeMaster;
-        SFXSlider.Value = Data.Game.VolumeSFX;
-        BGMSlider.Value = Data.Game.VolumeBGM;
-        BrightnessSlider.Value = Data.Game.Brightness;
-        WindowModeDropdown.Selected = Data.Game.WindowMode;
-        ResolutionDropdown.Selected = Data.Game.Resolution;
-        VSyncDropdown.Selected = Data.Game.VSync;
-        FPSLimitDropdown.Selected = Data.Game.FPSLimit;
+        MasterSlider.Value = Data.Options.VolumeMaster;
+        SFXSlider.Value = Data.Options.VolumeSFX;
+        BGMSlider.Value = Data.Options.VolumeBGM;
+        BrightnessSlider.Value = Data.Options.Brightness;
+        WindowModeDropdown.Selected = Data.Options.WindowMode;
+        ResolutionDropdown.Selected = Data.Options.Resolution;
+        VSyncDropdown.Selected = Data.Options.VSync;
+        FPSLimitDropdown.Selected = Data.Options.FPSLimit;
 
         BackButton.Pressed += BackPressed;
         MasterSlider.ValueChanged += MasterSlider_ValueChanged;
@@ -96,6 +96,7 @@ public partial class OptionsView : View
 
     private void BackPressed()
     {
+        Data.Options.Save();
         OnBack?.Invoke();
         Hide();
     }
@@ -104,28 +105,28 @@ public partial class OptionsView : View
     {
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateVolume("Master", f);
-        Data.Game.VolumeMaster = f;
+        Data.Options.VolumeMaster = f;
     }
 
     private void SFXSlider_ValueChanged(double v)
     {
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateVolume("SFX", f);
-        Data.Game.VolumeSFX = f;
+        Data.Options.VolumeSFX = f;
     }
 
     private void BGMSlider_ValueChanged(double v)
     {
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateVolume("BGM", f);
-        Data.Game.VolumeBGM = f;
+        Data.Options.VolumeBGM = f;
     }
 
     private void BrightnessSlider_ValueChanged(double v)
     {
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateBrightness(f);
-        Data.Game.Brightness = f;
+        Data.Options.Brightness = f;
     }
 
     private void WindowMode_AddItems()
@@ -152,13 +153,13 @@ public partial class OptionsView : View
         }
 
         OptionsController.Instance.UpdateWindowMode(i);
-        Data.Game.WindowMode = i;
+        Data.Options.WindowMode = i;
         Resolution_UpdateVisible();
     }
 
     private void Resolution_UpdateVisible()
     {
-        var mode = OptionsController.WindowModes.GetClamped(Data.Game.WindowMode);
+        var mode = OptionsController.WindowModes.GetClamped(Data.Options.WindowMode);
         Resolution.Visible = mode == Window.ModeEnum.Windowed;
     }
 
@@ -175,7 +176,7 @@ public partial class OptionsView : View
     {
         var i = (int)index;
         OptionsController.Instance.UpdateResolution(i);
-        Data.Game.Resolution = i;
+        Data.Options.Resolution = i;
     }
 
     private void VSync_AddItems()
@@ -196,7 +197,7 @@ public partial class OptionsView : View
     {
         var i = (int)index;
         OptionsController.Instance.UpdateVsync(i);
-        Data.Game.VSync = i;
+        Data.Options.VSync = i;
     }
 
     private void FPSLimit_AddItems()
@@ -217,7 +218,7 @@ public partial class OptionsView : View
     {
         var i = (int)index;
         OptionsController.Instance.UpdateFPSLimit(i);
-        Data.Game.FPSLimit = i;
+        Data.Options.FPSLimit = i;
     }
 
     private void RebindStart()

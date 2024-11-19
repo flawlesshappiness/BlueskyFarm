@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public partial class GameSaveData
+public partial class OptionsData : SaveData
 {
     public float VolumeMaster { get; set; } = 0.5f;
     public float VolumeSFX { get; set; } = 1.0f;

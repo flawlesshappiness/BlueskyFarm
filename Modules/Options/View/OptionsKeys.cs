@@ -62,8 +62,8 @@ public partial class OptionsKeys : NodeScript
             control.RebindLabel.Text = action;
             control.SetWaitingForInput(false);
 
-            var data_key = Data.Game.KeyOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
-            var data_mouse = Data.Game.MouseButtonOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
+            var data_key = Data.Options.KeyOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
+            var data_mouse = Data.Options.MouseButtonOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
             var data = data_key ?? data_mouse;
 
             var rebind = new Rebind

@@ -7,8 +7,8 @@ public partial class OptionsController : SingletonController
 {
     public override string Directory => $"{Paths.Modules}/Options";
     public static OptionsController Instance => Singleton.Get<OptionsController>();
-    public static Window.ModeEnum CurrentWindowMode => WindowModes.GetClamped(Data.Game.WindowMode);
-    public static DisplayServer.VSyncMode CurrentVSyncMode => VSyncModes.GetClamped(Data.Game.VSync);
+    public static Window.ModeEnum CurrentWindowMode => WindowModes.GetClamped(Data.Options.WindowMode);
+    public static DisplayServer.VSyncMode CurrentVSyncMode => VSyncModes.GetClamped(Data.Options.VSync);
 
     public event Action OnBrightnessChanged;
 
@@ -47,7 +47,7 @@ public partial class OptionsController : SingletonController
     public override void _Ready()
     {
         base._Ready();
-        Data.Game.OnBeforeSave += BeforeSave;
+        Data.Options.OnBeforeSave += BeforeSave;
     }
 
     protected override void Initialize()
@@ -70,26 +70,26 @@ public partial class OptionsController : SingletonController
             .Where(x => x != null)
             .ToList();
 
-        Data.Game.KeyOverrides = key_overrides;
-        Data.Game.MouseButtonOverrides = mouse_button_overrides;
+        Data.Options.KeyOverrides = key_overrides;
+        Data.Options.MouseButtonOverrides = mouse_button_overrides;
     }
 
     private void LoadData()
     {
         LoadActionOverrides();
-        UpdateVolume("Master", Data.Game.VolumeMaster);
-        UpdateVolume("SFX", Data.Game.VolumeSFX);
-        UpdateVolume("BGM", Data.Game.VolumeBGM);
-        UpdateVsync(Data.Game.VSync);
-        UpdateFPSLimit(Data.Game.FPSLimit);
-        UpdateBrightness(Data.Game.Brightness);
+        UpdateVolume("Master", Data.Options.VolumeMaster);
+        UpdateVolume("SFX", Data.Options.VolumeSFX);
+        UpdateVolume("BGM", Data.Options.VolumeBGM);
+        UpdateVsync(Data.Options.VSync);
+        UpdateFPSLimit(Data.Options.FPSLimit);
+        UpdateBrightness(Data.Options.Brightness);
 
         if (CurrentWindowMode == Window.ModeEnum.Windowed)
         {
-            UpdateResolution(Data.Game.Resolution);
+            UpdateResolution(Data.Options.Resolution);
         }
 
-        UpdateWindowMode(Data.Game.WindowMode);
+        UpdateWindowMode(Data.Options.WindowMode);
     }
 
     private void LoadActionOverrides()
@@ -97,12 +97,12 @@ public partial class OptionsController : SingletonController
         var view = View.Get<OptionsView>();
         view.Keys.PersistDefaultBindings();
 
-        foreach (var action_override in Data.Game.KeyOverrides)
+        foreach (var action_override in Data.Options.KeyOverrides)
         {
             UpdateKeyOverride(action_override);
         }
 
-        foreach (var action_override in Data.Game.MouseButtonOverrides)
+        foreach (var action_override in Data.Options.MouseButtonOverrides)
         {
             UpdateMouseButtonOverride(action_override);
         }

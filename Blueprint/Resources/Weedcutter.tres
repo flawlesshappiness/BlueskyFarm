@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=3 format=3 uid="uid://01u0f5x7p1wd"]
+
+[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="1_0n838"]
+[ext_resource type="Resource" uid="uid://yf41wk6nfikp" path="res://Item/Resources/Weedcutter.tres" id="1_qae5m"]
+
+[resource]
+script = ExtResource("1_0n838")
+Id = "weedcutter"
+ResultItemInfo = ExtResource("1_qae5m")
+VegetableCount = 5

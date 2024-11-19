@@ -27,8 +27,65 @@ public partial class InventoryController : SingletonController
     protected override void Initialize()
     {
         base.Initialize();
+        RegisterDebugActions();
         LoadData();
         Input_SetInventoryIndex(0);
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "INVENTORY";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Replenish uses",
+            Action = ReplenishItem
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Deplete uses",
+            Action = DepleteItem
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set custom id",
+            Action = SetCustomId
+        });
+
+        void ReplenishItem(DebugView view)
+        {
+            var data = GetSelectedItem();
+            if (data == null) return;
+            var info = ItemController.Instance.GetInfo(data.Info);
+            data.Uses = info.Uses;
+        }
+
+        void DepleteItem(DebugView view)
+        {
+            var data = GetSelectedItem();
+            if (data == null) return;
+            data.Uses = 0;
+        }
+
+        void SetCustomId(DebugView view)
+        {
+            view.PopupStringInput("Custom id", id =>
+            {
+                Input(id);
+            });
+
+            void Input(string custom_id)
+            {
+                var data = GetSelectedItem();
+                if (data == null) return;
+                data.CustomId = custom_id;
+            }
+        }
     }
 
     private void LoadData()
@@ -139,6 +196,7 @@ public partial class InventoryController : SingletonController
 
     public int GetItemIndex(ItemData data) => CurrentInventoryItems.ToList().IndexOf(data);
     public ItemData GetItem(int i) => IsValidItemIndex(i) ? CurrentInventoryItems[i] : null;
+    public ItemData GetSelectedItem() => GetItem(SelectedIndex);
     public bool IsValidItemIndex(int i) => i >= 0 && i < Data.Game.InventorySize && i < CurrentInventoryItems.Length;
     public bool HasFreeSpace() => GetFreeIndex() > -1;
     public bool IsInventoryEmpty() => !CurrentInventoryItems.Any(x => x != null);
@@ -153,18 +211,25 @@ public partial class InventoryController : SingletonController
         return -1;
     }
 
-    public void Add(Item item)
+    public void Add(ItemInfo info)
     {
-        if (HasItem(item.Data)) return;
+        if (info == null) return;
+        var data = ItemController.Instance.CreateItemData(info);
+        Add(data);
+    }
 
-        Debug.TraceMethod(item.Data.InfoPath);
+    public void Add(ItemData data)
+    {
+        if (data == null) return;
+        if (HasItem(data)) return;
+
+        Debug.TraceMethod(data.Info);
         Debug.Indent++;
 
         var i = GetFreeIndex();
         if (i == -1) return;
 
-        item.UpdateData();
-        CurrentInventoryItems[i] = item.Data;
+        CurrentInventoryItems[i] = data;
         OnItemAdded?.Invoke(i);
 
         Debug.Indent--;

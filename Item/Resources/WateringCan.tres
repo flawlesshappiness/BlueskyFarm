@@ -6,6 +6,7 @@
 script = ExtResource("1_kqwuk")
 Path = "res://Item/Prefabs/WateringCan.tscn"
 Type = 0
+Uses = 10
 IsSeed = false
 SeedResultType = 0
 GrowTimeInSeconds = 0

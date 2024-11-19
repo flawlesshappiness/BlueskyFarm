@@ -4,10 +4,13 @@ using Godot;
 public partial class ItemInfo : Resource
 {
     [Export(PropertyHint.File)]
-    public string Path { get; set; }
+    public string Path;
 
     [Export]
-    public ItemType Type { get; set; }
+    public ItemType Type;
+
+    [Export]
+    public int Uses;
 
     [Export]
     public bool IsSeed;

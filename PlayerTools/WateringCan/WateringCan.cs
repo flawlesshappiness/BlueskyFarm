@@ -15,7 +15,7 @@ public partial class WateringCan : Item
     [NodeType]
     public Area3D Area;
 
-    public bool IsFull => Data.Uses >= MaxUses;
+    public bool IsFull => Data.Uses >= Info.Uses;
     public bool IsEmpty => Data.Uses == 0;
 
     private bool _using;

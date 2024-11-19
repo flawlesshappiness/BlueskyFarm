@@ -63,9 +63,17 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         Debug.Indent--;
     }
 
+    public ItemData CreateItemData(ItemInfo info)
+    {
+        return new ItemData
+        {
+            Info = info.ResourcePath
+        };
+    }
+
     public Item CreateItemFromData(ItemData data)
     {
-        var info = GD.Load<ItemInfo>(data.InfoPath);
+        var info = GD.Load<ItemInfo>(data.Info);
         var item = GDHelper.Instantiate<Item>(info.Path);
 
         item.Info = info;
@@ -80,10 +88,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     {
         var item = GDHelper.Instantiate<Item>(info.Path, parent ?? Scene.Current as Node);
         item.Info = info;
-        item.Data = new ItemData
-        {
-            InfoPath = info.ResourcePath
-        };
+        item.Data = CreateItemData(info);
 
         var track = !info.Untrack && track_item;
         if (track)
@@ -112,50 +117,53 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Spawn item",
-            Action = DebugSpawnItem
+            Text = "Give item",
+            Action = GiveItem
         });
 
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Spawn seed",
-            Action = SpawnSeed
+            Text = "Give seed",
+            Action = GiveSeed
         });
 
-        void SpawnSeed(DebugView view)
+        void GiveSeed(DebugView view)
         {
-            view.HideContent();
-            view.Content.Show();
-            view.ContentSearch.Show();
-            view.ContentSearch.ClearItems();
-
+            view.SetContent_Search();
             view.ContentSearch.AddItem(ItemType.Vegetable.ToString(), () => SelectItemType(ItemType.Vegetable));
             view.ContentSearch.UpdateButtons();
 
             void SelectItemType(ItemType type)
             {
-                var infos = Collection.Resources.Where(info => info.Type == type);
-                var item = CreateItem(Collection.Seed);
-                item.Data.PlantInfoPath = infos.ToList().Random().ResourcePath;
-                FarmBounds.Instance.ThrowObject(item.RigidBody, Player.Instance.GlobalPosition);
+                var info = GetInfo(Collection.Seed);
+                var data = CreateItemData(info);
+
+                var plant_infos = Collection.Resources.Where(info => info.Type == type);
+                data.Seed = new SeedData
+                {
+                    Info = plant_infos.ToList().Random().ResourcePath
+                };
+
+                InventoryController.Instance.Add(data);
             }
         }
-    }
 
-    private void DebugSpawnItem(DebugView view)
-    {
-        view.HideContent();
-        view.Content.Show();
-        view.ContentSearch.Show();
-
-        view.ContentSearch.ClearItems();
-        foreach (var resource in Collection.Resources)
+        void GiveItem(DebugView view)
         {
-            view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => WriteDebugSpawnItem_CustomIdPopup(view, resource));
-        }
+            view.SetContent_Search();
+            foreach (var resource in Collection.Resources)
+            {
+                view.ContentSearch.AddItem(Path.GetFileName(resource.ResourcePath), () => SelectItem(resource));
+            }
 
-        view.ContentSearch.UpdateButtons();
+            view.ContentSearch.UpdateButtons();
+
+            void SelectItem(ItemInfo info)
+            {
+                InventoryController.Instance.Add(info);
+            }
+        }
     }
 
     private void WriteDebugSpawnItem_CustomIdPopup(DebugView view, ItemInfo info)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cafny2o1xbe0w"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_xfrwy"]
+[ext_resource type="PackedScene" uid="uid://dqkdgxttd1l3s" path="res://Assets/FlawLizArt/Blueprint/blueprint_roll.fbx" id="2_vpyyp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ucp8"]
+size = Vector3(0.217773, 0.218994, 1.01953)
+
+[node name="BlueprintRoll" instance=ExtResource("1_xfrwy")]
+InteractableText = "Blueprint"
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+shape = SubResource("BoxShape3D_3ucp8")
+
+[node name="blueprint_roll" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_vpyyp")]

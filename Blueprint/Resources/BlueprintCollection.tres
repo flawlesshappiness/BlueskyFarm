@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="BlueprintCollection" load_steps=2 format=3 uid="uid://b08tuorqm4ydo"]
+
+[ext_resource type="Script" path="res://Blueprint/BlueprintCollection.cs" id="1_wgehw"]
+
+[resource]
+script = ExtResource("1_wgehw")

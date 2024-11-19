@@ -25,6 +25,7 @@ public partial class BasementController : SingletonController
         basement.Grid = grid;
 
         // Add special rooms
+        /*
         if (!Data.Game.Flag_MaterialProcessorFixed)
         {
             var room = BasementGridGenerator.AddRoom(grid, new AddRoomSettings
@@ -34,6 +35,7 @@ public partial class BasementController : SingletonController
 
             room.Info = GD.Load<BasementRoomInfo>(BasementRoomController.Instance.Collection.MaterialProcessorOilRoom);
         }
+        */
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

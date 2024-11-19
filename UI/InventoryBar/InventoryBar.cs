@@ -31,7 +31,7 @@ public partial class InventoryBar : DynamicUI
 
             var data = Data.Game.InventoryItems[i];
             if (data == null) continue;
-            var info = GD.Load<ItemInfo>(data.InfoPath);
+            var info = GD.Load<ItemInfo>(data.Info);
             if (info == null) continue;
             e.WorldObject.LoadItem(info);
         }
@@ -63,7 +63,7 @@ public partial class InventoryBar : DynamicUI
         var data = InventoryController.Instance.GetItem(i);
         if (data == null) return;
 
-        var info = GD.Load<ItemInfo>(data.InfoPath);
+        var info = GD.Load<ItemInfo>(data.Info);
         if (info == null) return;
 
         var e = GetElement(i);

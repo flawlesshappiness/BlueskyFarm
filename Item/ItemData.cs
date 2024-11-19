@@ -4,8 +4,7 @@ public class ItemData
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string CustomId { get; set; }
-    public string InfoPath { get; set; }
-    public string PlantInfoPath { get; set; }
+    public string Info { get; set; }
     public float X_Position { get; set; }
     public float Y_Position { get; set; }
     public float Z_Position { get; set; }
@@ -13,10 +12,7 @@ public class ItemData
     public float Y_Rotation { get; set; }
     public float Z_Rotation { get; set; }
     public float Scale { get; set; } = 1f;
-
-    // Plant
-    public bool PlantIsHuge { get; set; }
-
-    // Tool
     public int Uses { get; set; }
+    public SeedData Seed { get; set; }
+    public BlueprintData Blueprint { get; set; }
 }

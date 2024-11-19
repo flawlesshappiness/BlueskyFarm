@@ -4,9 +4,6 @@ using System.Collections;
 
 public partial class Item : Grabbable
 {
-    [Export]
-    public int MaxUses;
-
     [NodeName]
     public Node3D ScaleNode;
 
@@ -103,12 +100,13 @@ public partial class Item : Grabbable
 
     public void ReplenishUses(int uses)
     {
-        Data.Uses = Mathf.Clamp(Data.Uses + uses, 0, MaxUses);
+        Data.Uses = Mathf.Clamp(Data.Uses + uses, 0, Info.Uses);
     }
 
     public virtual void AddToInventory()
     {
-        InventoryController.Instance.Add(this);
+        UpdateData();
+        InventoryController.Instance.Add(Data);
         OnAddedToInventory?.Invoke();
     }
 

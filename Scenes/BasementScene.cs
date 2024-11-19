@@ -187,8 +187,13 @@ public partial class BasementScene : GameScene
                 .ToList()
                 .Random()
                 .ResourcePath;
+
             var item = ItemController.Instance.CreateItem(item_path, track_item: false);
-            item.Data.PlantInfoPath = plant_path;
+            item.Data.Seed = new SeedData
+            {
+                Info = plant_path,
+            };
+
             item.SetEnabled(false);
             item.RigidBody.LockPosition_All();
 

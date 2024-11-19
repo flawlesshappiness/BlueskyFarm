@@ -110,9 +110,9 @@ public partial class PlantArea : Touchable
         var item = body.GetNodeInParents<Item>();
         if (item == null) return;
         if (!item.Info.IsSeed) return;
-        if (string.IsNullOrEmpty(item.Data.PlantInfoPath)) return;
+        if (string.IsNullOrEmpty(item.Data.Seed?.Info)) return;
 
-        var plant_info = GD.Load<ItemInfo>(item.Data.PlantInfoPath);
+        var plant_info = GD.Load<ItemInfo>(item.Data.Seed.Info);
         if (plant_info == null) return;
 
         ItemController.Instance.UntrackItem(item);
@@ -122,7 +122,7 @@ public partial class PlantArea : Touchable
         var data = new PlantAreaData
         {
             Id = Id,
-            PlantInfoPath = item.Data.PlantInfoPath,
+            PlantInfoPath = item.Data.Seed.Info,
             TimeLeft = plant_info.GrowTimeInSeconds,
         };
 
@@ -265,7 +265,7 @@ public partial class PlantArea : Touchable
         if (is_huge)
         {
             item.Data.Scale = 2.5f;
-            item.Data.PlantIsHuge = true;
+            item.Data.Seed.IsHuge = true;
         }
         else
         {
@@ -343,7 +343,7 @@ public partial class PlantArea : Touchable
         var dir_to_player = (Player.Instance.GlobalPosition.Add(y: 1) - SeedPosition.GlobalPosition).Normalized();
         var velocity = Vector3.Up * 2f + dir_to_player * 3f;
         var torque = new Vector3().RandomNormalized() * rng.RandfRange(1f, 5f);
-        var item = ItemController.Instance.CreateItem(data.InfoPath);
+        var item = ItemController.Instance.CreateItem(data.Info);
 
         item.SetScale(data.Scale);
         item.GlobalPosition = SeedPosition.GlobalPosition.Add(y: 0.25f);

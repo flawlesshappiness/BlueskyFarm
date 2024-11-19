@@ -113,7 +113,6 @@ public partial class ChestPuzzleChest : Touchable
     {
         var seed_item_path = ItemController.Instance.Collection.Seed;
         var seed_item = ItemController.Instance.CreateItem(seed_item_path);
-        seed_item.Data.PlantInfoPath = "";
         return seed_item;
     }
 }

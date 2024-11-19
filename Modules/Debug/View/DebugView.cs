@@ -206,11 +206,10 @@ public partial class DebugView : View
         InputPopup.Clear();
         InputPopup.CreateStringInput("id", label);
 
-        _onInputPopupSuccess += OnSuccess;
+        _onInputPopupSuccess = OnSuccess;
 
         void OnSuccess(Dictionary<string, string> results)
         {
-            _onInputPopupSuccess -= OnSuccess;
             var result = results.FirstOrDefault().Value;
             onSuccess?.Invoke(result);
         }

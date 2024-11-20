@@ -136,9 +136,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
             void SelectItemType(ItemType type)
             {
-                var info = GetInfo(Collection.Seed);
-                var data = CreateItemData(info);
-
+                var data = CreateItemData(Collection.Seed);
                 var plant_infos = Collection.Resources.Where(info => info.Type == type);
                 data.Seed = new SeedData
                 {

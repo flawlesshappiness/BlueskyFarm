@@ -1,8 +1,6 @@
-using Godot;
-using System.Linq;
-
 public partial class ChestPuzzle : BasementPuzzle
 {
+    /*
     public override void _Ready()
     {
         base._Ready();
@@ -52,4 +50,5 @@ public partial class ChestPuzzle : BasementPuzzle
         var item = ItemController.Instance.CreateItem(ItemController.Instance.Collection.Key_Brown, track_item: false);
         return item;
     }
+    */
 }

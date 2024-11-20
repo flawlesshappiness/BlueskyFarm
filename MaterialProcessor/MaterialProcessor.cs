@@ -1,10 +1,6 @@
-using Godot;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 public partial class MaterialProcessor : Node3DScript
 {
+    /*
     [Export]
     public Color ColorOff;
 
@@ -285,21 +281,10 @@ public partial class MaterialProcessor : Node3DScript
 
     private void SpawnMaterial(CraftingMaterialType type)
     {
-        var path = GetMaterialPath(type);
+        var path = ""; // Removed
         var item = ItemController.Instance.CreateItem(path);
         SpawnOutput(item);
     }
-
-    private string GetMaterialPath(CraftingMaterialType type) => type switch
-    {
-        CraftingMaterialType.Plant => ItemController.Instance.Collection.PlantMaterial,
-        CraftingMaterialType.Metal => ItemController.Instance.Collection.MetalMaterial,
-        CraftingMaterialType.Wood => ItemController.Instance.Collection.WoodMaterial,
-        CraftingMaterialType.Glow => ItemController.Instance.Collection.GlowMaterial,
-        CraftingMaterialType.Rock => ItemController.Instance.Collection.RockMaterial,
-        CraftingMaterialType.Crystal => ItemController.Instance.Collection.CrystalMaterial,
-        _ => ItemController.Instance.Collection.PlantMaterial
-    };
 
     private void SpawnInputItem(ItemData data)
     {
@@ -325,4 +310,5 @@ public partial class MaterialProcessor : Node3DScript
 
         SoundController.Instance.Play("sfx_material_processor_fix", OutputPosition.GlobalPosition);
     }
+    */
 }

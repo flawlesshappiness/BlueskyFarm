@@ -132,7 +132,7 @@ public partial class DebugView : View
     {
         HideContent();
         Content.Show();
-        ContentSearch.Show();
+        ContentList.Show();
         ContentList.Clear();
     }
 

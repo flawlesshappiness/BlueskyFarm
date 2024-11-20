@@ -7,6 +7,9 @@ public partial class ItemInfo : Resource
     public string Path;
 
     [Export]
+    public string ItemName;
+
+    [Export]
     public ItemType Type;
 
     [Export]

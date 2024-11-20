@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public static class Node3DExtensions
 {
+    public static void Disable(this Node3D node) => node.SetEnabled(false);
+    public static void Enable(this Node3D node) => node.SetEnabled(true);
+
     public static void SetEnabled(this Node3D node, bool enabled)
     {
         node.Visible = enabled;

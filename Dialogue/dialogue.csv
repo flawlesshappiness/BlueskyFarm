@@ -1,5 +1,8 @@
 keys;en
 ##LOCKED_001##;It's locked
+##CANCEL##;Cancel
+##ACCEPT##;Accept
+##OK##;OK
 ##FROG_INTRO_001##;Did you just come in?
 ##FROG_INTRO_002##;I thought we closed applications... No matter. Welcome to the farm!
 ##FROG_INTRO_003##;I understand that everything here is new for you, so you can consider me your supervisor.

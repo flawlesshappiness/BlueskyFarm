@@ -39,6 +39,36 @@ public partial class SaveDataController : Node
             Category = category,
             Action = v => { ClearSaveData(typeof(OptionsData)); GetTree().Quit(); }
         });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Text = "Show GAME save data",
+            Category = category,
+            Action = ShowGameSaveData
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Text = "Show OPTIONS save data",
+            Category = category,
+            Action = ShowOptionsData
+        });
+
+        void ShowGameSaveData(DebugView view)
+        {
+            view.SetContent_List();
+            var data = Get<GameSaveData>();
+            var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+            view.ContentList.AddText(json);
+        }
+
+        void ShowOptionsData(DebugView view)
+        {
+            view.SetContent_List();
+            var data = Get<OptionsData>();
+            var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+            view.ContentList.AddText(json);
+        }
     }
 
     public T Get<T>() where T : SaveData, new()

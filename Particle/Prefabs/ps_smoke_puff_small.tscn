@@ -1,26 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuy4jtcsoatjt"]
 
 [sub_resource type="Curve" id="Curve_fggv3"]
-_data = [Vector2(0, 1), 0.0, -1.87571, 0, 0, Vector2(1, 0), -0.142211, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -0.301413, 0, 0, Vector2(1, 0), -0.904239, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_4gwa3"]
 curve = SubResource("Curve_fggv3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r4eym"]
+emission_shape = 1
+emission_sphere_radius = 0.1
 velocity_pivot = Vector3(1, 1, 1)
 spread = 180.0
 initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 2, 0)
-scale_min = 0.5
-scale_max = 0.5
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
 scale_curve = SubResource("CurveTexture_4gwa3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_m1liv"]
 
 [node name="ps_smoke_puff_small" type="GPUParticles3D"]
-lifetime = 0.5
+amount = 4
+lifetime = 0.25
 explosiveness = 1.0
 fixed_fps = 60
 visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)

@@ -5,7 +5,11 @@
 [resource]
 script = ExtResource("1_11wnj")
 Path = "res://Item/Prefabs/Weedcutter.tscn"
-CanPlant = false
+ItemName = "Weedcutter"
+Type = 0
+Uses = 0
+IsSeed = false
+SeedResultType = 0
 GrowTimeInSeconds = 0
 CanProcessToMaterial = false
 MaterialType = 0

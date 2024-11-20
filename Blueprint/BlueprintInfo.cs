@@ -7,7 +7,7 @@ public partial class BlueprintInfo : Resource
     public string Id;
 
     [Export]
-    public Resource ResultItemInfo;
+    public ItemInfo ResultItemInfo;
 
     [Export]
     public int VegetableCount;

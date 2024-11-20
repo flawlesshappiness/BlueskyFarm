@@ -140,4 +140,33 @@ public partial class Item : Grabbable
             });
         }
     }
+
+    public Coroutine AnimateDisappearAndQueueFree()
+    {
+        RigidBody.LockPosition_All();
+        RigidBody.LockRotation_All();
+        SetCollision_None();
+        IsBeingHandled = true;
+        ItemController.Instance.UntrackItem(this);
+
+        return StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            SoundController.Instance.Play("sfx_throw_light", GlobalPosition);
+
+            var duration = 0.25f;
+            var curve = Curves.EaseInBack;
+            var start = Data.Scale;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Evaluate(f);
+                var scale = Mathf.Lerp(start, 0f, t);
+                ScaleNode.Scale = Vector3.One * scale;
+            });
+
+            SoundController.Instance.Play("sfx_pickup", GlobalPosition);
+            Particle.PlayOneShot("ps_smoke_puff_small", GlobalPosition);
+            QueueFree();
+        }
+    }
 }

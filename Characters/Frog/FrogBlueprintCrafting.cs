@@ -63,15 +63,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
     {
         if (data == null) return;
 
-        var id = Data.Game.BlueprintCraftingData.Id;
-        var info = BlueprintController.Instance.GetInfo(id);
-        var item_bp = ItemController.Instance.CreateItem(ItemController.Instance.Collection.Blueprint);
-        item_bp.InteractableText = $"Blueprint: {info.ResultItemInfo.ItemName}";
-        item_bp.Data.Blueprint = new BlueprintData
-        {
-            Id = id
-        };
-
+        var item_bp = BlueprintController.Instance.CreateBlueprintRoll(data.Id);
         ThrowItemToPlayer(item_bp);
 
         SoundController.Instance.Play("sfx_throw_light", item_bp.GlobalPosition);

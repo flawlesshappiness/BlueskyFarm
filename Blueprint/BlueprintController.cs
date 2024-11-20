@@ -51,4 +51,17 @@ public partial class BlueprintController : ResourceController<BlueprintCollectio
     {
         return Collection.Resources.FirstOrDefault(x => x.Id == id);
     }
+
+    public Item CreateBlueprintRoll(string id)
+    {
+        var info = GetInfo(id);
+        var item_bp = ItemController.Instance.CreateItem(ItemController.Instance.Collection.Blueprint);
+        item_bp.InteractableText = $"Blueprint: {info.ResultItemInfo.ItemName}";
+        item_bp.Data.Blueprint = new BlueprintData
+        {
+            Id = id
+        };
+
+        return item_bp;
+    }
 }

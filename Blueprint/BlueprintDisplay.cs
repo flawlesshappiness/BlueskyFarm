@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Linq;
 
 public partial class BlueprintDisplay : Node3DScript
 {
@@ -15,17 +16,20 @@ public partial class BlueprintDisplay : Node3DScript
     public override void _Ready()
     {
         base._Ready();
+        Touchable.InteractableText = Tr("##CANCEL##");
         Touchable.OnTouched += Touched;
     }
 
-    public void SetData(BlueprintCraftingData data)
+    public void UpdateText(BlueprintCraftingData data)
     {
         if (data == null) return;
 
-        VegetableCounter.SetValue(data.VegetableCount);
+        UpdateCounter(VegetableCounter, data.Materials.FirstOrDefault(x => x.Type == ItemType.Vegetable));
+    }
 
-        Touchable.Enable();
-        Touchable.InteractableText = Tr("##CANCEL##");
+    private void UpdateCounter(BlueprintDisplayCounter counter, BlueprintCraftingMaterialData data)
+    {
+        counter.SetValue(data.Max - data.Count);
     }
 
     private void Touched()

@@ -1,5 +1,7 @@
 using Godot;
+using System;
 using System.Collections;
+using System.Linq;
 
 public partial class FrogBlueprintCrafting : Node3DScript
 {
@@ -9,7 +11,14 @@ public partial class FrogBlueprintCrafting : Node3DScript
     [NodeType]
     public BlueprintDisplay Display;
 
+    public bool HasBlueprint => Data.Game.BlueprintCraftingData != null;
+
     private FrogCharacter _character;
+
+    public event Action OnBlueprintStarted;
+    public event Action OnBlueprintCompleted;
+    public event Action OnBlueprintCancelled;
+    public event Action OnMaterialReceived;
 
     public override void _Ready()
     {
@@ -24,7 +33,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
     private void LoadData()
     {
         var has_data = Data.Game.BlueprintCraftingData != null;
-        Display.SetData(Data.Game.BlueprintCraftingData);
+        Display.UpdateText(Data.Game.BlueprintCraftingData);
         Display.SetVisible(has_data);
         Display.SetCancelEnabled(has_data);
     }
@@ -35,7 +44,12 @@ public partial class FrogBlueprintCrafting : Node3DScript
         if (node == null) return;
 
         var item = node.GetNodeInParents<Item>();
-        if (IsItemValid(item))
+
+        if (HasBlueprint && IsValidMaterial(item))
+        {
+            AddMaterial(item);
+        }
+        else if (IsValidBlueprint(item))
         {
             SetBlueprint(item);
         }
@@ -46,16 +60,112 @@ public partial class FrogBlueprintCrafting : Node3DScript
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            OnBlueprintCancelled?.Invoke();
+
             Display.SetCancelEnabled(false);
             yield return Display.AnimateHide();
 
             ItemArea.Disable();
             ThrowBlueprintToPlayer(Data.Game.BlueprintCraftingData);
-            Data.Game.BlueprintCraftingData = null;
 
+            var item_datas = Data.Game.BlueprintCraftingData.Items;
+            for (int i = 0; i < item_datas.Count; i++)
+            {
+                var t = (float)i / (item_datas.Count - 1);
+                var pitch = Mathf.Lerp(1f, 1.5f, t);
+                var item_data = item_datas[i];
+                yield return new WaitForSeconds(0.1f);
+                var item = ItemController.Instance.CreateItemFromData(item_data);
+                ThrowItemToPlayer(item);
+                SoundController.Instance.Play("sfx_pickup", GlobalPosition, new SoundOverride
+                {
+                    PitchRange = new Vector2(pitch, pitch)
+                });
+            }
+
+            Data.Game.BlueprintCraftingData = null;
             yield return new WaitForSeconds(2f);
 
             ItemArea.Enable();
+        }
+    }
+
+    private bool IsValidBlueprint(Item item)
+    {
+        return item != null && !string.IsNullOrEmpty(item.Data.Blueprint?.Id);
+    }
+
+    private bool IsValidMaterial(Item item)
+    {
+        if (!IsInstanceValid(item)) return false;
+        if (item.Info == null) return false;
+
+        var data = Data.Game.BlueprintCraftingData.Materials.FirstOrDefault(x => x.Type == item.Info.Type);
+        if (data == null) return false;
+        return data.Max > 0 && data.Count < data.Max;
+    }
+
+    private void SetBlueprint(Item item)
+    {
+        var bp_info = BlueprintController.Instance.GetInfo(item.Data.Blueprint.Id);
+        Data.Game.BlueprintCraftingData = new BlueprintCraftingData
+        {
+            Id = item.Data.Blueprint.Id,
+        };
+
+        Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Vegetable, Max = bp_info.VegetableCount });
+
+        Display.UpdateText(Data.Game.BlueprintCraftingData);
+
+        StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            yield return item.AnimateDisappearAndQueueFree();
+            yield return new WaitForSeconds(0.25f);
+
+            OnBlueprintStarted?.Invoke();
+
+            yield return Display.AnimateShow();
+            Display.SetCancelEnabled(true);
+        }
+    }
+
+    private void AddMaterial(Item item)
+    {
+        if (!IsInstanceValid(item)) return;
+
+        Data.Game.BlueprintCraftingData.Items.Add(item.Data);
+        var data = Data.Game.BlueprintCraftingData.Materials.FirstOrDefault(x => x.Type == item.Info.Type);
+        data.Count++;
+
+        StartCoroutine(Cr, "material");
+        IEnumerator Cr()
+        {
+            Display.SetCancelEnabled(false);
+
+            yield return item.AnimateDisappearAndQueueFree();
+
+            ValidateBlueprint();
+            Display.UpdateText(Data.Game.BlueprintCraftingData);
+            Display.SetCancelEnabled(true);
+        }
+    }
+
+    private void ValidateBlueprint()
+    {
+        var has_materials = Data.Game.BlueprintCraftingData.Materials.All(x => x.Count >= x.Max);
+        if (!has_materials) return;
+
+        StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            Display.SetCancelEnabled(false);
+            yield return Display.AnimateHide();
+            yield return new WaitForSeconds(0.5f);
+
+            ThrowResultToPlayer(Data.Game.BlueprintCraftingData);
+            Data.Game.BlueprintCraftingData = null;
+            OnBlueprintCompleted?.Invoke();
         }
     }
 
@@ -69,29 +179,15 @@ public partial class FrogBlueprintCrafting : Node3DScript
         SoundController.Instance.Play("sfx_throw_light", item_bp.GlobalPosition);
     }
 
-    private bool IsItemValid(Item item)
+    private void ThrowResultToPlayer(BlueprintCraftingData data)
     {
-        return item != null && !string.IsNullOrEmpty(item.Data.Blueprint?.Id);
-    }
+        if (data == null) return;
 
-    private void SetBlueprint(Item item)
-    {
-        var bp_info = BlueprintController.Instance.GetInfo(item.Data.Blueprint.Id);
-        Data.Game.BlueprintCraftingData = new BlueprintCraftingData
-        {
-            Id = item.Data.Blueprint.Id,
-            VegetableCount = bp_info.VegetableCount
-        };
+        var bp_info = BlueprintController.Instance.GetInfo(data.Id);
+        var item = ItemController.Instance.CreateItem(bp_info.ResultItemInfo);
+        ThrowItemToPlayer(item);
 
-        Display.SetData(Data.Game.BlueprintCraftingData);
-
-        StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            yield return item.AnimateDisappearAndQueueFree();
-            yield return Display.AnimateShow();
-            Display.SetCancelEnabled(true);
-        }
+        SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
     }
 
     private void ThrowItemToPlayer(Item item)

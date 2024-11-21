@@ -164,8 +164,6 @@ public partial class Item : Grabbable
                 ScaleNode.Scale = Vector3.One * scale;
             });
 
-            SoundController.Instance.Play("sfx_pickup", GlobalPosition);
-            Particle.PlayOneShot("ps_smoke_puff_small", GlobalPosition);
             QueueFree();
         }
     }

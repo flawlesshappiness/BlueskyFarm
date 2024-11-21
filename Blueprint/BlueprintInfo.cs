@@ -11,4 +11,7 @@ public partial class BlueprintInfo : Resource
 
     [Export]
     public int VegetableCount;
+
+    [Export]
+    public bool CanCancel;
 }

@@ -18,6 +18,7 @@ public partial class BlueprintDisplay : Node3DScript
         base._Ready();
         Touchable.InteractableText = Tr("##CANCEL##");
         Touchable.OnTouched += Touched;
+        SetCancelEnabled(false);
     }
 
     public void UpdateText(BlueprintCraftingData data)

@@ -35,7 +35,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         var has_data = Data.Game.BlueprintCraftingData != null;
         Display.UpdateText(Data.Game.BlueprintCraftingData);
         Display.SetVisible(has_data);
-        Display.SetCancelEnabled(has_data);
+        SetCancelEnabled(has_data);
     }
 
     private void BodyEntered(GodotObject go)
@@ -62,7 +62,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         {
             OnBlueprintCancelled?.Invoke();
 
-            Display.SetCancelEnabled(false);
+            SetCancelEnabled(false);
             yield return Display.AnimateHide();
 
             ItemArea.Disable();
@@ -126,7 +126,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
             OnBlueprintStarted?.Invoke();
 
             yield return Display.AnimateShow();
-            Display.SetCancelEnabled(true);
+            SetCancelEnabled(true);
         }
     }
 
@@ -141,13 +141,13 @@ public partial class FrogBlueprintCrafting : Node3DScript
         StartCoroutine(Cr, "material");
         IEnumerator Cr()
         {
-            Display.SetCancelEnabled(false);
+            SetCancelEnabled(false);
 
             yield return item.AnimateDisappearAndQueueFree();
 
             ValidateBlueprint();
             Display.UpdateText(Data.Game.BlueprintCraftingData);
-            Display.SetCancelEnabled(true);
+            SetCancelEnabled(true);
         }
     }
 
@@ -159,7 +159,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
-            Display.SetCancelEnabled(false);
+            SetCancelEnabled(false);
             yield return Display.AnimateHide();
             yield return new WaitForSeconds(0.5f);
 
@@ -199,5 +199,12 @@ public partial class FrogBlueprintCrafting : Node3DScript
 
         item.GlobalPosition = start_position;
         item.RigidBody.LinearVelocity = velocity;
+    }
+
+    private void SetCancelEnabled(bool enabled)
+    {
+        var info = BlueprintController.Instance.GetInfo(Data.Game.BlueprintCraftingData?.Id);
+        var can_cancel = info?.CanCancel ?? true;
+        Display.SetCancelEnabled(enabled && can_cancel);
     }
 }

@@ -8,3 +8,4 @@ script = ExtResource("1_0n838")
 Id = "weedcutter"
 ResultItemInfo = ExtResource("1_qae5m")
 VegetableCount = 5
+CanCancel = true

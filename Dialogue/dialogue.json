@@ -22,6 +22,9 @@
 				"id": "frog_intro",
 				"value": true
 			}
+		],
+		"triggers": [
+			"tutorial_001"
 		]
 	},
 	
@@ -31,5 +34,42 @@
 	},
 	{
 		"id": "##FROG_INTRO_REPEAT_002##"
+	},
+	
+	{
+		"id": "##FROG_FIND_SEEDS_001##",
+		"next": "##FROG_FIND_SEEDS_002##"
+	},
+	{
+		"id": "##FROG_FIND_SEEDS_002##",
+		"next": "##FROG_FIND_SEEDS_003##"
+	},
+	{
+		"id": "##FROG_FIND_SEEDS_003##",
+		"next": "##FROG_FIND_SEEDS_004##"
+	},
+	{
+		"id": "##FROG_FIND_SEEDS_004##",
+		"flags_b": [
+			{
+				"id": "frog_intro",
+				"value": false
+			},
+			{
+				"id": "frog_find_seeds",
+				"value": true
+			}
+		],
+		"triggers": [
+			"tutorial_002"
+		]
+	},
+	
+	{
+		"id": "##FROG_FIND_SEEDS_REPEAT_001##",
+		"next": "##FROG_FIND_SEEDS_REPEAT_002##"
+	},
+	{
+		"id": "##FROG_FIND_SEEDS_REPEAT_002##"
 	}
 ]

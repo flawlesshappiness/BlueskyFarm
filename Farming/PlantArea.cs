@@ -123,7 +123,7 @@ public partial class PlantArea : Touchable
         {
             Id = Id,
             PlantInfoPath = item.Data.Seed.Info,
-            TimeLeft = plant_info.GrowTimeInSeconds,
+            TimeLeft = item.Data.Seed.OverrideGrowTime ?? plant_info.GrowTimeInSeconds,
         };
 
         SetData(data);
@@ -262,10 +262,10 @@ public partial class PlantArea : Touchable
         var rng = new RandomNumberGenerator();
         var is_huge = rng.Randf() < 0.05f;
 
-        if (is_huge)
+        if (is_huge && false)
         {
             item.Data.Scale = 2.5f;
-            item.Data.Seed.IsHuge = true;
+            //item.Data.Seed.IsHuge = true;
         }
         else
         {

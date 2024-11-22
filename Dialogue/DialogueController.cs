@@ -13,6 +13,8 @@ public partial class DialogueController : SingletonController
     public event Action<DialogueNode> OnDialogue;
     public event Action OnDialogueStart;
     public event Action OnDialogueEnd;
+    public event Action OnDialogueCancel;
+    public event Action<string> OnDialogueTrigger;
 
     private DialogueNodeCollection _collection;
 
@@ -90,8 +92,10 @@ public partial class DialogueController : SingletonController
 
     public void SetNode(DialogueNode node)
     {
-        if (CurrentNode == node) return;
         if (node == null) return;
+        if (CurrentNode == node) return;
+
+        Debug.TraceMethod(node.id);
 
         var is_first = CurrentNode == null;
         CurrentNode = node;
@@ -108,6 +112,8 @@ public partial class DialogueController : SingletonController
     public void NextNode()
     {
         if (CurrentNode == null) return;
+
+        UpdateTriggers(CurrentNode);
 
         if (string.IsNullOrEmpty(CurrentNode.next))
         {
@@ -131,8 +137,25 @@ public partial class DialogueController : SingletonController
     {
         if (CurrentNode == null) return;
 
-        CurrentNode = null;
+        Debug.TraceMethod();
+
+        StopDialogue();
         OnDialogueEnd?.Invoke();
+    }
+
+    public void CancelDialogue()
+    {
+        if (CurrentNode == null) return;
+
+        Debug.TraceMethod();
+
+        StopDialogue();
+        OnDialogueCancel?.Invoke();
+    }
+
+    private void StopDialogue()
+    {
+        CurrentNode = null;
     }
 
     private void UpdateFlags(DialogueNode node)
@@ -149,6 +172,8 @@ public partial class DialogueController : SingletonController
 
         foreach (var flag in flags)
         {
+            Debug.TraceMethod(flag.id);
+
             var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == flag.id);
             if (data == null)
             {
@@ -166,6 +191,8 @@ public partial class DialogueController : SingletonController
 
         foreach (var flag in flags)
         {
+            Debug.TraceMethod(flag.id);
+
             var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == flag.id);
             if (data == null)
             {
@@ -174,6 +201,18 @@ public partial class DialogueController : SingletonController
             }
 
             data.value = flag.value;
+        }
+    }
+
+    private void UpdateTriggers(DialogueNode node)
+    {
+        if (node.triggers == null) return;
+
+        foreach (var trigger in node.triggers)
+        {
+            Debug.TraceMethod(trigger);
+
+            OnDialogueTrigger?.Invoke(trigger);
         }
     }
 }

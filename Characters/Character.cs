@@ -24,8 +24,10 @@ public partial class Character : Node3DScript
 
     private void InitializeDialogue()
     {
-        DialogueController.Instance.OnDialogueEnd += OnDialogueEnd;
-        DialogueController.Instance.OnDialogue += OnDialogue;
+        DialogueController.Instance.OnDialogue += _OnDialogue;
+        DialogueController.Instance.OnDialogueEnd += _OnDialogueEnd;
+        DialogueController.Instance.OnDialogueCancel += _OnDialogueCancel;
+        DialogueController.Instance.OnDialogueTrigger += _OnDialogueTrigger;
     }
 
     private void InitializeData()
@@ -66,15 +68,39 @@ public partial class Character : Node3DScript
         DialogueController.Instance.SetNode(name);
     }
 
-    private void OnDialogue(DialogueNode node)
+    private void _OnDialogue(DialogueNode node)
     {
         if (ActiveDialogue)
         {
-            OnDialogueNode(node);
+            OnDialogue(node);
         }
     }
 
-    protected virtual void OnDialogueNode(DialogueNode node)
+    private void _OnDialogueEnd()
+    {
+        if (ActiveDialogue)
+        {
+            ActiveDialogue = false;
+        }
+    }
+
+    private void _OnDialogueCancel()
+    {
+        if (ActiveDialogue)
+        {
+            ActiveDialogue = false;
+        }
+    }
+
+    private void _OnDialogueTrigger(string trigger)
+    {
+        if (ActiveDialogue)
+        {
+            OnDialogueTrigger(trigger);
+        }
+    }
+
+    protected virtual void OnDialogue(DialogueNode node)
     {
         if (!string.IsNullOrEmpty(node.animation))
         {
@@ -86,9 +112,9 @@ public partial class Character : Node3DScript
         }
     }
 
-    protected virtual void OnDialogueEnd()
+    protected virtual void OnDialogueTrigger(string trigger)
     {
-        ActiveDialogue = false;
+
     }
 
     protected bool HasFlag(string id)

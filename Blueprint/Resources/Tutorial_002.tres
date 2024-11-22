@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=2 format=3 uid="uid://bjuuklad53m57"]
+
+[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="1_cpj8p"]
+
+[resource]
+script = ExtResource("1_cpj8p")
+Id = "tutorial_002"
+ResultDialogueNode = ""
+VegetableCount = 5
+CanCancel = false

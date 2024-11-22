@@ -10,6 +10,9 @@ public partial class BlueprintInfo : Resource
     public ItemInfo ResultItemInfo;
 
     [Export]
+    public string ResultDialogueNode;
+
+    [Export]
     public int VegetableCount;
 
     [Export]

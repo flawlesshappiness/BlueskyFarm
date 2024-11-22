@@ -16,7 +16,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
     private FrogCharacter _character;
 
     public event Action OnBlueprintStarted;
-    public event Action OnBlueprintCompleted;
+    public event Action<string> OnBlueprintCompleted;
     public event Action OnBlueprintCancelled;
     public event Action OnMaterialReceived;
 
@@ -107,10 +107,24 @@ public partial class FrogBlueprintCrafting : Node3DScript
 
     private void SetBlueprint(Item item)
     {
-        var bp_info = BlueprintController.Instance.GetInfo(item.Data.Blueprint.Id);
+        var bp_id = item.Data.Blueprint.Id;
+
+        StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            yield return item.AnimateDisappearAndQueueFree();
+            yield return new WaitForSeconds(0.25f);
+
+            SetBlueprint(bp_id);
+        }
+    }
+
+    public void SetBlueprint(string bp_id)
+    {
+        var bp_info = BlueprintController.Instance.GetInfo(bp_id);
         Data.Game.BlueprintCraftingData = new BlueprintCraftingData
         {
-            Id = item.Data.Blueprint.Id,
+            Id = bp_id,
         };
 
         Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Vegetable, Max = bp_info.VegetableCount });
@@ -120,9 +134,6 @@ public partial class FrogBlueprintCrafting : Node3DScript
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
-            yield return item.AnimateDisappearAndQueueFree();
-            yield return new WaitForSeconds(0.25f);
-
             OnBlueprintStarted?.Invoke();
 
             yield return Display.AnimateShow();
@@ -164,8 +175,8 @@ public partial class FrogBlueprintCrafting : Node3DScript
             yield return new WaitForSeconds(0.5f);
 
             ThrowResultToPlayer(Data.Game.BlueprintCraftingData);
+            OnBlueprintCompleted?.Invoke(Data.Game.BlueprintCraftingData.Id);
             Data.Game.BlueprintCraftingData = null;
-            OnBlueprintCompleted?.Invoke();
         }
     }
 
@@ -184,6 +195,9 @@ public partial class FrogBlueprintCrafting : Node3DScript
         if (data == null) return;
 
         var bp_info = BlueprintController.Instance.GetInfo(data.Id);
+        if (bp_info == null) return;
+        if (bp_info.ResultItemInfo == null) return;
+
         var item = ItemController.Instance.CreateItem(bp_info.ResultItemInfo);
         ThrowItemToPlayer(item);
 

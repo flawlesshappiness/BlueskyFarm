@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=70 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -37,8 +37,8 @@ size = Vector3(24, 50, 24)
 size = Vector3(31, 4, 31)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
-vertices = PackedVector3Array(-11.6322, 4.24041, -11.6322, -11.3822, 4.49041, -11.1322, 11.1178, 4.49041, -11.3822, 11.6178, 4.24041, -11.6322, -11.6322, 4.24041, 11.6178, -11.1322, 4.49041, 11.3678, 11.3678, 4.49041, 11.1178, 11.6178, 4.24041, 11.6178, 6.61779, 0.740409, 8.61779, 6.61779, 1.24041, 10.3678, 9.86779, 1.24041, 10.3678, 9.86779, 0.740409, 8.61779, -10.3822, 0.490409, -10.3822, -10.3822, 0.490409, 10.3678, 5.61779, 0.490409, 8.61779, 10.3678, 0.490409, -10.3822, 5.61779, 0.490409, 10.3678, 10.3678, 0.740409, 8.61779)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 1), PackedInt32Array(1, 4, 0), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(6, 7, 5), PackedInt32Array(5, 7, 4), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(14, 16, 13), PackedInt32Array(15, 17, 11), PackedInt32Array(15, 11, 8), PackedInt32Array(15, 8, 14)]
+vertices = PackedVector3Array(-11.6322, 4.24041, -11.6322, -11.3822, 4.49041, -11.1322, 11.1178, 4.49041, -11.3822, 11.6178, 4.24041, -11.6322, -11.6322, 4.24041, 11.6178, -11.1322, 4.49041, 11.3678, 11.3678, 4.49041, 11.1178, 11.6178, 4.24041, 11.6178, 9.86779, 0.490409, 8.36779, 9.86779, 0.490409, 10.3678, 10.3678, 0.490409, 10.3678, 10.3678, 0.490409, -10.3822, 5.61779, 0.740409, 8.36779, 5.61779, 1.24041, 10.3678, 8.86779, 1.24041, 10.3678, 8.86779, 0.740409, 8.36779, -10.3822, 0.490409, -10.3822, -10.3822, 0.490409, 10.3678, 4.61779, 0.490409, 8.36779, 4.61779, 0.490409, 10.3678)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 1), PackedInt32Array(1, 4, 0), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(6, 7, 5), PackedInt32Array(5, 7, 4), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 11), PackedInt32Array(18, 19, 17), PackedInt32Array(11, 12, 18), PackedInt32Array(11, 8, 15), PackedInt32Array(11, 15, 12)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlevm"]
 albedo_color = Color(0.384314, 0.658824, 0.419608, 1)
@@ -51,6 +51,9 @@ size = Vector3(1, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53lfa"]
 size = Vector3(1, 4, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1bpo"]
+size = Vector3(1.88379, 1, 1.78735)
 
 [sub_resource type="Curve" id="Curve_qma48"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -435,16 +438,27 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_53lfa")
 
-[node name="Basement" parent="World/NavigationRegion3D" instance=ExtResource("9_t030q")]
-transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 8.27578, 0.435387, 9.22459)
+[node name="Basement" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26262, 0, 8.99051)
+
+[node name="Ceiling" parent="World/NavigationRegion3D/Basement" instance=ExtResource("9_t030q")]
+transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435, 0)
 
 [node name="Trapdoor" parent="World/NavigationRegion3D/Basement" instance=ExtResource("8_je3mm")]
-transform = Transform3D(1, 0, 0, 0, -0.999958, -0.00921533, 0, 0.00921533, -0.999958, 0, -0.0844181, 0.306818)
+transform = Transform3D(1, 0, 0, 0, 0.975423, 0.22034, 0, -0.22034, 0.975423, 0, 0.452668, -0.317729)
 SceneName = "basement"
 InteractableText = "Basement"
 
 [node name="StartBasement" type="Node3D" parent="World/NavigationRegion3D/Basement"]
-transform = Transform3D(1, 0, 0, 0, -0.977412, 0.211342, 0, -0.211342, -0.977412, 0, -0.289693, 3.39987)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
+
+[node name="BasementUnlockArea" type="Area3D" parent="World/NavigationRegion3D/Basement"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Basement/BasementUnlockArea"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.349139, -0.359888)
+shape = SubResource("BoxShape3D_w1bpo")
 
 [node name="PotSign" parent="World/NavigationRegion3D" instance=ExtResource("19_up103")]
 transform = Transform3D(0.884622, 0, 0.46631, 0, 1, 0, -0.46631, 0, 0.884622, -3.1084, -2, 2.45581)

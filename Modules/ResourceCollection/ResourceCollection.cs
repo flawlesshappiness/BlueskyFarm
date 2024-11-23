@@ -8,7 +8,7 @@ public partial class ResourceCollection<T> : Resource
     private List<T> _resources;
     public List<T> Resources => _resources;
 
-    protected List<string> _resource_paths = new();
+    protected Dictionary<string, T> _resource_maps = new();
 
     public static C Load<C>(string path) where C : ResourceCollection<T>
     {
@@ -48,6 +48,16 @@ public partial class ResourceCollection<T> : Resource
 
     protected virtual void OnLoad()
     {
+        MapResources();
+    }
+
+    private void MapResources()
+    {
+        foreach (var info in Resources)
+        {
+            var filename = Path.GetFileName(info.ResourcePath).RemoveExtension();
+            _resource_maps.Add(filename, info);
+        }
     }
 
     protected Dictionary<string, X> LoadResources<X>(string path)
@@ -81,5 +91,10 @@ public partial class ResourceCollection<T> : Resource
     protected string GetFilename(string path)
     {
         return Path.GetFileName(path)?.RemoveExtensions();
+    }
+
+    public T GetResource(string name)
+    {
+        return _resource_maps.TryGetValue(name, out var resource) ? resource : null;
     }
 }

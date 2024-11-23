@@ -38,7 +38,7 @@ public partial class PlantArea : Touchable
     public Seed CurrentSeed { get; private set; }
     public bool HasSeed => CurrentSeed != null;
 
-    private const float WEED_TIME = 10f;
+    private const float WEED_TIME = 20f;
 
     private List<Weed> _current_weeds = new();
 
@@ -83,7 +83,7 @@ public partial class PlantArea : Touchable
 
         SetWatered(data.IsWatered);
 
-        if (string.IsNullOrEmpty(data.PlantInfoPath)) return;
+        if (string.IsNullOrEmpty(data.PlantInfo)) return;
 
         if (data.TimeLeft <= 0)
         {
@@ -122,7 +122,7 @@ public partial class PlantArea : Touchable
         var data = new PlantAreaData
         {
             Id = Id,
-            PlantInfoPath = item.Data.Seed.Info,
+            PlantInfo = item.Data.Seed.Info,
             TimeLeft = item.Data.Seed.OverrideGrowTime ?? plant_info.GrowTimeInSeconds,
         };
 
@@ -166,7 +166,7 @@ public partial class PlantArea : Touchable
 
     private void PlantSeedFromData(PlantAreaData data)
     {
-        Debug.TraceMethod($"{data.PlantInfoPath}");
+        Debug.TraceMethod($"{data.PlantInfo}");
         Debug.Indent++;
 
         if (data == null)
@@ -176,8 +176,11 @@ public partial class PlantArea : Touchable
             return;
         }
 
-        var seed_item_path = ItemController.Instance.Collection.Seed;
-        var seed_item = ItemController.Instance.CreateItem(seed_item_path, track_item: false);
+        var seed_item = ItemController.Instance.CreateItem("Seed_Plant", new CreateItemSettings
+        {
+            Tracked = false
+        });
+
         SetItemPosition(seed_item);
 
         CurrentSeed = new Seed
@@ -215,7 +218,7 @@ public partial class PlantArea : Touchable
 
     private void SpawnPlantFromData(PlantAreaData data)
     {
-        Debug.TraceMethod($"{data.PlantInfoPath}");
+        Debug.TraceMethod($"{data.PlantInfo}");
         Debug.Indent++;
 
         if (data == null)
@@ -249,7 +252,10 @@ public partial class PlantArea : Touchable
             return;
         }
 
-        seed.PlantItem = ItemController.Instance.CreateItem(seed.Data.PlantInfoPath, track_item: false);
+        seed.PlantItem = ItemController.Instance.CreateItemFromPath(seed.Data.PlantInfo, new CreateItemSettings
+        {
+            Tracked = false
+        });
 
         SetItemPosition(seed.PlantItem);
         RandomizeScale(seed.PlantItem);
@@ -343,7 +349,7 @@ public partial class PlantArea : Touchable
         var dir_to_player = (Player.Instance.GlobalPosition.Add(y: 1) - SeedPosition.GlobalPosition).Normalized();
         var velocity = Vector3.Up * 2f + dir_to_player * 3f;
         var torque = new Vector3().RandomNormalized() * rng.RandfRange(1f, 5f);
-        var item = ItemController.Instance.CreateItem(data.Info);
+        var item = ItemController.Instance.CreateItemFromPath(data.Info);
 
         item.SetScale(data.Scale);
         item.GlobalPosition = SeedPosition.GlobalPosition.Add(y: 0.25f);

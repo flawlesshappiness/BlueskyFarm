@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3g6ahucpex6p"]
+
+[ext_resource type="Script" path="res://Blueprint/BlueprintDisplay.cs" id="1_iyhtc"]
+[ext_resource type="PackedScene" uid="uid://b7uxb0tuhjy1u" path="res://Assets/FlawLizArt/Blueprint/blueprint_flat.fbx" id="2_uh4ts"]
+[ext_resource type="Texture2D" uid="uid://d4j8lf54ary6x" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_background.png" id="3_gw6or"]
+[ext_resource type="PackedScene" uid="uid://dbffc4txaji8b" path="res://Blueprint/Prefabs/BlueprintDisplayItemCounter.tscn" id="4_q5oyf"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_crf25"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mhlo"]
+size = Vector3(1, 0.0915527, 1)
+
+[node name="BlueprintDisplay" type="Node3D"]
+script = ExtResource("1_iyhtc")
+
+[node name="blueprint_flat" parent="." instance=ExtResource("2_uh4ts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00323855, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="blueprint_flat"]
+transform = Transform3D(0.360578, 5.44457e-08, 2.18557e-08, -3.15227e-08, 1.57613e-08, 0.25, 5.44457e-08, -0.360578, 1.09278e-08, 0, 0.00838383, 0)
+modulate = Color(0.45, 0.725, 1, 0.313726)
+texture = ExtResource("3_gw6or")
+
+[node name="Counter1" parent="blueprint_flat" instance=ExtResource("4_q5oyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238492, 0.005, 0.223436)
+
+[node name="Counter2" parent="blueprint_flat" instance=ExtResource("4_q5oyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00559816, 0.005, 0.223436)
+
+[node name="Counter3" parent="blueprint_flat" instance=ExtResource("4_q5oyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25709, 0.005, 0.223436)
+
+[node name="Touchable" type="Node3D" parent="."]
+script = ExtResource("5_crf25")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Touchable"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D"]
+shape = SubResource("BoxShape3D_3mhlo")

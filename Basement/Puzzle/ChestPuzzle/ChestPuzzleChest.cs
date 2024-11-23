@@ -1,8 +1,6 @@
-using Godot;
-using System.Collections;
-
 public partial class ChestPuzzleChest : Touchable
 {
+    /*
     [Export]
     public string CustomId;
 
@@ -111,8 +109,8 @@ public partial class ChestPuzzleChest : Touchable
 
     private Item CreateSeed()
     {
-        var seed_item_path = ItemController.Instance.Collection.Seed;
-        var seed_item = ItemController.Instance.CreateItem(seed_item_path);
+        var seed_item = ItemController.Instance.CreateItem("Plant_Seed");
         return seed_item;
     }
+    */
 }

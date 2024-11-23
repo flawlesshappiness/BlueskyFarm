@@ -25,12 +25,6 @@ public partial class ItemInfo : Resource
     public int GrowTimeInSeconds;
 
     [Export]
-    public bool CanProcessToMaterial;
-
-    [Export]
-    public CraftingMaterialType MaterialType;
-
-    [Export]
     public bool CanPickUp;
 
     [Export]

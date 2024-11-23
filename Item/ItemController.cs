@@ -84,13 +84,26 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         return item;
     }
 
-    public Item CreateItem(ItemInfo info, bool track_item = true, Node3D parent = null)
+    public Item CreateItemFromPath(string info_path, CreateItemSettings settings = null)
     {
-        var item = GDHelper.Instantiate<Item>(info.Path, parent ?? Scene.Current as Node);
+        var info = GetInfoFromPath(info_path);
+        return CreateItem(info, settings);
+    }
+
+    public Item CreateItem(string name, CreateItemSettings settings = null)
+    {
+        var info = Collection.GetResource(name);
+        return CreateItem(info, settings);
+    }
+
+    public Item CreateItem(ItemInfo info, CreateItemSettings settings = null)
+    {
+        var parent = settings?.Parent ?? Scene.Current as Node;
+        var item = GDHelper.Instantiate<Item>(info.Path, parent);
         item.Info = info;
         item.Data = CreateItemData(info);
 
-        var track = !info.Untrack && track_item;
+        var track = !info.Untrack && (settings?.Tracked ?? true);
         if (track)
         {
             ActiveItems.Add(item);
@@ -99,13 +112,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         return item;
     }
 
-    public Item CreateItem(string info_path, bool track_item = true)
-    {
-        var info = GetInfo(info_path);
-        return CreateItem(info, track_item);
-    }
-
-    public ItemInfo GetInfo(string path)
+    public ItemInfo GetInfoFromPath(string path)
     {
         return GD.Load<ItemInfo>(path);
     }
@@ -136,7 +143,8 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
             void SelectItemType(ItemType type)
             {
-                var data = CreateItemData(Collection.Seed);
+                var info = Collection.GetResource("Seed_Plant");
+                var data = CreateItemData(info);
                 var plant_infos = Collection.Resources.Where(info => info.Type == type);
                 data.Seed = new SeedData
                 {
@@ -178,4 +186,10 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
             FarmBounds.Instance.ThrowObject(item.RigidBody, Player.Instance.GlobalPosition);
         }
     }
+}
+
+public class CreateItemSettings
+{
+    public bool Tracked { get; set; } = true;
+    public Node3D Parent { get; set; }
 }

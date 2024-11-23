@@ -12,8 +12,8 @@ public partial class InventoryController : SingletonController
 
     public MultiLock InventoryLock = new();
 
-    public const int INIT_INVENTORY_SIZE = 5;
-    public const int MAX_INVENTORY_SIZE = 15;
+    public const int INIT_INVENTORY_SIZE = 2;
+    public const int MAX_INVENTORY_SIZE = 10;
 
     public event Action<int> OnItemAdded;
     public event Action<int> OnItemRemoved;
@@ -61,7 +61,7 @@ public partial class InventoryController : SingletonController
         {
             var data = GetSelectedItem();
             if (data == null) return;
-            var info = ItemController.Instance.GetInfo(data.Info);
+            var info = ItemController.Instance.GetInfoFromPath(data.Info);
             data.Uses = info.Uses;
         }
 

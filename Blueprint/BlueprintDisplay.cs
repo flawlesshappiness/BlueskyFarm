@@ -1,17 +1,25 @@
 using Godot;
 using System;
 using System.Collections;
-using System.Linq;
+using System.Collections.Generic;
 
 public partial class BlueprintDisplay : Node3DScript
 {
     [NodeName]
-    public BlueprintDisplayCounter VegetableCounter;
+    public BlueprintDisplayCounter Counter1;
+
+    [NodeName]
+    public BlueprintDisplayCounter Counter2;
+
+    [NodeName]
+    public BlueprintDisplayCounter Counter3;
 
     [NodeType]
     public Touchable Touchable;
 
     public event Action OnCancel;
+
+    private List<BlueprintDisplayCounter> _counters = new();
 
     public override void _Ready()
     {
@@ -19,17 +27,33 @@ public partial class BlueprintDisplay : Node3DScript
         Touchable.InteractableText = Tr("##CANCEL##");
         Touchable.OnTouched += Touched;
         SetCancelEnabled(false);
+
+        _counters = new() { Counter1, Counter2, Counter3 };
     }
 
     public void UpdateText(BlueprintCraftingData data)
     {
         if (data == null) return;
 
-        UpdateCounter(VegetableCounter, data.Materials.FirstOrDefault(x => x.Type == ItemType.Vegetable));
+        for (int i = 0; i < _counters.Count; i++)
+        {
+            var counter = _counters[i];
+            var material = i < data.Materials.Count ? data.Materials[i] : null;
+            if (material == null)
+            {
+                counter.Hide();
+            }
+            else
+            {
+                counter.Show();
+                UpdateCounter(counter, material);
+            }
+        }
     }
 
     private void UpdateCounter(BlueprintDisplayCounter counter, BlueprintCraftingMaterialData data)
     {
+        counter.SetType(data.Type);
         counter.SetValue(data.Max - data.Count);
     }
 

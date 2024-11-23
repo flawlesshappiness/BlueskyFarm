@@ -10,20 +10,20 @@ public partial class SceneDoor : Touchable
     public string StartNode;
 
     [Export]
+    public bool Locked;
+
+    [Export]
     public SoundInfo OpenSound;
 
     [Export]
     public SoundInfo CloseSound;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        OnTouched += Touched;
-    }
+    [Export]
+    public SoundInfo LockedSound;
 
-    private void Touched()
+    protected override void Touched()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         if (string.IsNullOrEmpty(SceneName))
@@ -33,9 +33,26 @@ public partial class SceneDoor : Touchable
             return;
         }
 
-        AnimateTransition();
+        if (Locked)
+        {
+            PlayLockedSFX();
+        }
+        else
+        {
+            AnimateTransition();
+        }
 
         Debug.Indent--;
+    }
+
+    private void PlayLockedSFX()
+    {
+        if (LockedSound != null)
+        {
+            SoundController.Instance.Play(LockedSound, GlobalPosition);
+        }
+
+        DialogueController.Instance.SetNode("##LOCKED##");
     }
 
     private void ChangeScene()

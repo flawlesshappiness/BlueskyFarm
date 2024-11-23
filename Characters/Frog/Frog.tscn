@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_xkswj"]
 [ext_resource type="Texture2D" uid="uid://b0benq6rk0e8n" path="res://Assets/KenneyNL/Cursors/message_dots_round.png" id="5_kdtbk"]
 [ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="6_653gd"]
-[ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/BlueprintDisplay.tscn" id="7_5bj7n"]
+[ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="7_5bj7n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_et3n8"]
 

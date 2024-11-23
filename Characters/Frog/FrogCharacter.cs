@@ -1,5 +1,4 @@
 using Godot;
-using System.Linq;
 
 public partial class FrogCharacter : Character
 {
@@ -98,6 +97,7 @@ public partial class FrogCharacter : Character
                 break;
 
             case "tutorial_002":
+                ThrowBasementKeyToPlayer();
                 BlueprintCrafting.SetBlueprint("tutorial_002");
                 break;
         }
@@ -105,16 +105,26 @@ public partial class FrogCharacter : Character
 
     private void ThrowSeedToPlayer()
     {
+        var item = SeedController.Instance.CreateSeed(ItemType.Vegetable);
+        item.Data.Seed.OverrideGrowTime = 10;
+
+        ThrowItemToPlayer(item);
+    }
+
+    private void ThrowBasementKeyToPlayer()
+    {
+        var item = ItemController.Instance.CreateItem("Key_Basement");
+        item.Data.CustomId = "basement_key";
+
+        ThrowItemToPlayer(item);
+    }
+
+    private void ThrowItemToPlayer(Item item)
+    {
         var start_position = GlobalPosition.Add(y: 1);
         var direction_to_player = start_position.DirectionTo(Player.Instance.MidPosition).Normalized();
         var direction = direction_to_player.Add(y: 1f);
         var velocity = direction * 2f;
-
-        var item = ItemController.Instance.CreateItem(ItemController.Instance.Collection.Seed);
-        var vegetable = ItemController.Instance.Collection.Resources
-            .Where(x => x.Type == ItemType.Vegetable)
-            .ToList().Random();
-        item.Data.Seed = new SeedData { Info = vegetable.ResourcePath, OverrideGrowTime = 10 };
         item.GlobalPosition = start_position;
         item.RigidBody.LinearVelocity = velocity;
     }

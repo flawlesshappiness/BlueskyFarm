@@ -10,4 +10,4 @@ Volume = -15.0
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0
-Attenuation = 0
+Attenuation = 1

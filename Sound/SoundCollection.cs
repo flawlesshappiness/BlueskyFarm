@@ -10,7 +10,11 @@ public partial class SoundCollection : ResourceCollection<SoundInfo>
     protected override void OnLoad()
     {
         base.OnLoad();
+        MapEntries();
+    }
 
+    private void MapEntries()
+    {
         foreach (var info in Resources)
         {
             var filename = Path.GetFileName(info.ResourcePath).RemoveExtension();

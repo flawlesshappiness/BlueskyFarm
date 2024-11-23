@@ -54,7 +54,7 @@ public partial class BlueprintController : ResourceController<BlueprintCollectio
 
     public Item CreateBlueprintRoll(string id)
     {
-        var item_bp = ItemController.Instance.CreateItem(ItemController.Instance.Collection.Blueprint);
+        var item_bp = ItemController.Instance.CreateItem("Blueprint");
         item_bp.Data.Blueprint = new BlueprintData
         {
             Id = id

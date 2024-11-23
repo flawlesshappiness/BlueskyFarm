@@ -13,6 +13,6 @@ public partial class ShopController : ResourceController<ShopItemInfoCollection,
 
     public Item CreateShopItem(ShopItemInfo info)
     {
-        return ItemController.Instance.CreateItem(info.ItemInfoPath);
+        return ItemController.Instance.CreateItemFromPath(info.ItemInfoPath);
     }
 }

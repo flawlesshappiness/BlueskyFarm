@@ -31,6 +31,16 @@ public partial class Item : Grabbable
         }
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        if (Info != null)
+        {
+            InteractableText = string.IsNullOrEmpty(Info.ItemName) ? InteractableText : Info.ItemName;
+        }
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -152,8 +162,6 @@ public partial class Item : Grabbable
         return StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
-            SoundController.Instance.Play("sfx_throw_light", GlobalPosition);
-
             var duration = 0.25f;
             var curve = Curves.EaseInBack;
             var start = Data.Scale;

@@ -39,7 +39,12 @@ public partial class WorldObject : ControlScript
 
     public void LoadItem(ItemInfo info)
     {
-        var item = ItemController.Instance.CreateItem(info, parent: Origin, track_item: false);
+        var item = ItemController.Instance.CreateItem(info, new CreateItemSettings
+        {
+            Parent = Origin,
+            Tracked = false,
+        });
+
         item.RigidBody.ProcessMode = ProcessModeEnum.Disabled;
         SetObject(item);
         UpdateCameraFromItemInfo(info);

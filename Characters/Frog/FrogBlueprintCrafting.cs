@@ -112,6 +112,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             yield return new WaitForSeconds(0.25f);
 
@@ -154,6 +155,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         {
             SetCancelEnabled(false);
 
+            SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
 
             ValidateBlueprint();

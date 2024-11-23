@@ -5,10 +5,15 @@
 [resource]
 script = ExtResource("2_bwd45")
 Path = "res://Item/Prefabs/Key_Brown.tscn"
-CanPlant = false
+ItemName = ""
+Type = 0
+Uses = 0
+IsSeed = false
+SeedResultType = 0
 GrowTimeInSeconds = 0
 CanProcessToMaterial = false
 MaterialType = 0
 CanPickUp = true
 Untrack = false
 InventoryItemCameraDistance = 0.6
+InventoryItemRotationOffset = 0.0

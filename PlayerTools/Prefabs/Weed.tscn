@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d34kbvu0t4aco"]
+[gd_scene load_steps=10 format=3 uid="uid://d34kbvu0t4aco"]
 
 [ext_resource type="Script" path="res://PlayerTools/Weedcutter/Weed.cs" id="1_w0phl"]
 [ext_resource type="PackedScene" uid="uid://ypg4pgvvs6p4" path="res://Assets/Quaternius/Nature/Plant_1.fbx" id="3_ddj51"]
 [ext_resource type="PackedScene" uid="uid://tj5ithche6o7" path="res://Assets/Quaternius/Nature/Plant_3.fbx" id="4_yir4v"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_0pgst"]
 [ext_resource type="PackedScene" uid="uid://c6yu5xr3w0is6" path="res://Assets/Quaternius/Nature/Plant_4.fbx" id="5_45bva"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hq0n7"]
-size = Vector3(0.25, 1, 0.25)
 
 [sub_resource type="Animation" id="Animation_4war8"]
 length = 0.001
@@ -95,20 +92,11 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyi5g"]
-size = Vector3(0.5, 0.464722, 0.5)
+size = Vector3(0.5, 0.49913, 0.5)
 
 [node name="Weed" type="Node3D"]
 script = ExtResource("1_w0phl")
 IsTouchable = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14875, 0)
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343518, 0)
-shape = SubResource("BoxShape3D_hq0n7")
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -140,5 +128,5 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0101929, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027397, 0)
 shape = SubResource("BoxShape3D_jyi5g")

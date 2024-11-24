@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="9_t030q"]
 [ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
-[ext_resource type="PackedScene" uid="uid://bvbctpjxk6w4r" path="res://Farming/Prefabs/PlantArea.tscn" id="13_p2ljc"]
+[ext_resource type="PackedScene" uid="uid://cr7x5dbwhu7er" path="res://Farming/Prefabs/PlantBoxUnlock.tscn" id="14_dcain"]
 [ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
@@ -592,31 +592,31 @@ visibility_aabb = AABB(-169, -162.801, -14.352, 338, 325.602, 28.704)
 process_material = SubResource("ParticleProcessMaterial_4ek4j")
 draw_pass_1 = SubResource("QuadMesh_7x72b")
 
-[node name="PlantAreas" type="Node3D" parent="World"]
+[node name="PlantBoxes" type="Node3D" parent="World"]
 
-[node name="PlantArea" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.37391)
-Id = "9f60cbc2-27ee-4b69-87e1-cea0cc13cc0b"
+[node name="PlantBox_001" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -8.5)
 
-[node name="PlantArea2" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -6.37391)
-Id = "5bcb48df-2504-4fa0-b08d-7413c2ab42de"
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_001" index="0"]
+Id = "PlantBox_001"
 
-[node name="PlantArea3" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -6.37391)
-Id = "00d306ab-038d-4f2e-b799-97dc7b5efe17"
+[node name="PlantBox_002" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, -8.5)
 
-[node name="PlantArea4" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -7.87391)
-Id = "3f316eda-4a5a-4397-9462-4dd713e44938"
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_002" index="0"]
+Id = "PlantBox_002"
 
-[node name="PlantArea5" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.87391)
-Id = "063399dd-1159-4bf1-a4ae-b0be17fbf114"
+[node name="PlantBox_003" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, -8.5)
 
-[node name="PlantArea6" parent="World/PlantAreas" instance=ExtResource("13_p2ljc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -7.87391)
-Id = "c272d916-6676-410b-8e3e-ce50c64489c6"
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_003" index="0"]
+Id = "PlantBox_003"
+
+[node name="PlantBox_004" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, -8.5)
+
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_004" index="0"]
+Id = "PlantBox_004"
 
 [node name="Frog" parent="World" instance=ExtResource("15_gw4ke")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1365e-06, 0, 9.31604)
@@ -636,3 +636,8 @@ stream = ExtResource("9_xc34j")
 volume_db = 20.0
 autoplay = true
 bus = &"BGM"
+
+[editable path="World/PlantBoxes/PlantBox_001"]
+[editable path="World/PlantBoxes/PlantBox_002"]
+[editable path="World/PlantBoxes/PlantBox_003"]
+[editable path="World/PlantBoxes/PlantBox_004"]

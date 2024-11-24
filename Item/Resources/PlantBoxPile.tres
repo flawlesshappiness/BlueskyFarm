@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://cpp3cxsfm31s3"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_c6bvc"]
+
+[resource]
+script = ExtResource("1_c6bvc")
+Path = "res://Item/Prefabs/PlantBoxPile.tscn"
+ItemName = "Plant box materials"
+Type = 0
+Uses = 0
+IsSeed = false
+SeedResultType = 0
+GrowTimeInSeconds = 0
+CanPickUp = false
+Untrack = false
+InventoryItemCameraDistance = 0.75
+InventoryItemRotationOffset = 45.0

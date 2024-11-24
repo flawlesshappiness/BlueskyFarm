@@ -39,6 +39,7 @@ public partial class BasementScene : GameScene
                     MaxCorridorDepth = 3,
                     PuzzleCount = 0,
                 },
+                /*
                 new BasementSettingsArea
                 {
                     AreaName = "Forest",
@@ -47,6 +48,7 @@ public partial class BasementScene : GameScene
                     MaxCorridorDepth = 3,
                     PuzzleCount = 0,
                 }
+                */
             }
         });
 

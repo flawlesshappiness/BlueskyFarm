@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr7x5dbwhu7er"]
+
+[ext_resource type="Script" path="res://Farming/PlantBoxUnlock.cs" id="1_vbjow"]
+[ext_resource type="PackedScene" uid="uid://bvbctpjxk6w4r" path="res://Farming/Prefabs/PlantBox.tscn" id="2_sud6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drhhn"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.294118)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jgfyg"]
+material = SubResource("StandardMaterial3D_drhhn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16s1r"]
+size = Vector3(1.18335, 0.325562, 1.21777)
+
+[node name="PlantBoxUnlock" type="Node3D"]
+script = ExtResource("1_vbjow")
+
+[node name="PlantBox" parent="." instance=ExtResource("2_sud6x")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_jgfyg")
+
+[node name="AreaUnlock" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaUnlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134949, 0)
+shape = SubResource("BoxShape3D_16s1r")

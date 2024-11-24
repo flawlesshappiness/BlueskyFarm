@@ -1,18 +1,21 @@
 using Godot;
-using Godot.Collections;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-[Tool]
-public partial class PlantArea : Touchable
+public partial class PlantArea : Node3DScript
 {
     [Export]
     public string Id;
 
+    [NodeName]
+    public Node3D Model;
+
     [Export]
     public Vector3 WeedArea;
+
+    [NodeName]
+    public Touchable TouchPlant;
 
     [NodeType]
     public Area3D Area;
@@ -22,12 +25,6 @@ public partial class PlantArea : Touchable
 
     [NodeType]
     public Weed WeedTemplate;
-
-    [NodeName]
-    public Path3D SeedPath;
-
-    [NodeName]
-    public GpuParticles3D ps_dirt_puff;
 
     [NodeType]
     public Waterable Waterable;
@@ -50,6 +47,7 @@ public partial class PlantArea : Touchable
         WeedTemplate.SetEnabled(false);
 
         Waterable.OnWatered += Watered;
+        TouchPlant.OnTouched += Touched;
     }
 
     protected override void _ProcessPlayer(double delta)
@@ -59,22 +57,11 @@ public partial class PlantArea : Touchable
         Process_Weeds();
     }
 
-    public override void _ValidateProperty(Dictionary property)
-    {
-        base._ValidateProperty(property);
-
-        if (property["name"].AsStringName() == nameof(Id))
-        {
-            var flags = property["usage"].As<PropertyUsageFlags>();
-            flags |= PropertyUsageFlags.ReadOnly;
-            property["usage"] = (int)flags;
-        }
-    }
-
     protected override void Initialize()
     {
         base.Initialize();
         LoadData();
+        UpdateTouchable();
     }
 
     private void LoadData()
@@ -293,34 +280,13 @@ public partial class PlantArea : Touchable
         SoundController.Instance.Play("sfx_pickup", GlobalPosition);
     }
 
-    public override bool HandleCursor()
+    private void UpdateTouchable()
     {
-        if (CurrentSeed == null)
-        {
-            Cursor.Hide();
-            return true;
-        }
-        else if (CurrentSeed.IsFinished)
-        {
-            return false;
-        }
-        else
-        {
-            var seconds = (int)(CurrentSeed.TimeEnd - GameTime.Time);
-            var end_date = new TimeSpan(0, 0, seconds);
-            Cursor.Show(new CursorSettings
-            {
-                Name = "Wait",
-                Position = SeedPosition.GlobalPosition,
-                Text = end_date.ToString("mm':'ss")
-            });
-            return true;
-        }
+        TouchPlant.SetEnabled(CurrentSeed != null && CurrentSeed.Data.WeedCount <= 0);
     }
 
-    protected override void Touched()
+    private void Touched()
     {
-        base.Touched();
         if (CurrentSeed?.PlantItem == null) return;
         if (HasWeeds()) return;
 
@@ -341,6 +307,7 @@ public partial class PlantArea : Touchable
         CurrentSeed.PlantItem.QueueFree();
         RemoveSeedData(CurrentSeed.Data.Id);
         CurrentSeed = null;
+        UpdateTouchable();
     }
 
     private void PopPlantFromDirt(ItemData data)
@@ -371,13 +338,11 @@ public partial class PlantArea : Touchable
         var p1_out = Vector3.Up * 0.5f;
         var p2 = SeedPosition.GlobalPosition;
         var p2_in = Vector3.Up * 1.5f;
-        var origin = SeedPath.GlobalPosition;
 
         var curve = new Curve3D();
         curve.ClearPoints();
-        curve.AddPoint(p1 - origin, @out: p1_out);
-        curve.AddPoint(p2 - origin, @in: p2_in);
-        SeedPath.Curve = curve;
+        curve.AddPoint(p1, @out: p1_out);
+        curve.AddPoint(p2, @in: p2_in);
 
         Coroutine.Start(Cr, this);
         IEnumerator Cr()
@@ -392,12 +357,13 @@ public partial class PlantArea : Touchable
                 var t = GameTime.T(time_start, duration);
                 var offset = Mathf.Lerp(0f, length, t);
                 var position = curve.SampleBaked(offset);
-                item.GlobalPosition = origin + position;
+                item.GlobalPosition = position;
                 yield return null;
             }
 
             item.GlobalPosition = SeedPosition.GlobalPosition;
 
+            UpdateTouchable();
             PlayDirtPuffParticle();
             PlayDirtSFX();
         }
@@ -405,7 +371,7 @@ public partial class PlantArea : Touchable
 
     private void PlayDirtPuffParticle()
     {
-        ps_dirt_puff.Emitting = true;
+        Particle.PlayOneShot("ps_dirt_puff", SeedPosition.GlobalPosition);
     }
 
     private void PlayDirtSFX()
@@ -473,6 +439,7 @@ public partial class PlantArea : Touchable
         var weed = CreateWeed();
         weed.AnimateAppear();
         CurrentSeed.Data.WeedCount++;
+        UpdateTouchable();
         return weed;
     }
 
@@ -484,6 +451,8 @@ public partial class PlantArea : Touchable
 
         CurrentSeed?.SeedItem?.AnimateWobble();
         CurrentSeed?.PlantItem?.AnimateWobble();
+
+        UpdateTouchable();
 
         SoundController.Instance.Play("sfx_seed_grow", GlobalPosition);
     }
@@ -566,5 +535,24 @@ public partial class PlantArea : Touchable
     {
         var a = watered ? 0.8f : 0f;
         WaterSprite.Modulate = WaterSprite.Modulate.SetA(a);
+    }
+
+    public Coroutine AnimateAppear()
+    {
+        Model.Scale = Vector3.One * 0.01f;
+        Model.Show();
+
+        return StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            var curve = Curves.EaseOutBack;
+            var start = Model.Scale;
+            var end = Vector3.One;
+            yield return LerpEnumerator.Lerp01(0.25f, f =>
+            {
+                var t = curve.Evaluate(f);
+                Model.Scale = start.Lerp(end, t);
+            });
+        }
     }
 }

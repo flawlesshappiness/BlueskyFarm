@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=2 format=3 uid="uid://bjuuklad53m57"]
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=3 format=3 uid="uid://bjuuklad53m57"]
 
 [ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="1_cpj8p"]
+[ext_resource type="Resource" uid="uid://cpp3cxsfm31s3" path="res://Item/Resources/PlantBoxPile.tres" id="1_fxmnx"]
 
 [resource]
 script = ExtResource("1_cpj8p")
 Id = "tutorial_002"
+ResultItemInfo = ExtResource("1_fxmnx")
 ResultDialogueNode = ""
 VegetableCount = 5
 CanCancel = false

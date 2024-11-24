@@ -6,6 +6,7 @@
 script = ExtResource("1_c6bvc")
 Path = "res://Item/Prefabs/PlantBoxPile.tscn"
 ItemName = "Plant box materials"
+CustomId = "plant_box_unlock"
 Type = 0
 Uses = 0
 IsSeed = false

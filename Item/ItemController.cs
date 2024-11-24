@@ -67,7 +67,8 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     {
         return new ItemData
         {
-            Info = info.ResourcePath
+            Info = info.ResourcePath,
+            CustomId = info.CustomId
         };
     }
 

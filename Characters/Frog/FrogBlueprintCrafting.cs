@@ -173,10 +173,10 @@ public partial class FrogBlueprintCrafting : Node3DScript
         IEnumerator Cr()
         {
             SetCancelEnabled(false);
-            yield return Display.AnimateHide();
-            yield return new WaitForSeconds(0.5f);
 
-            ThrowResultToPlayer(Data.Game.BlueprintCraftingData);
+            yield return Display.AnimateHide();
+
+            CreateResult(Data.Game.BlueprintCraftingData);
             OnBlueprintCompleted?.Invoke(Data.Game.BlueprintCraftingData.Id);
             Data.Game.BlueprintCraftingData = null;
         }
@@ -192,7 +192,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         SoundController.Instance.Play("sfx_throw_light", item_bp.GlobalPosition);
     }
 
-    private void ThrowResultToPlayer(BlueprintCraftingData data)
+    private void CreateResult(BlueprintCraftingData data)
     {
         if (data == null) return;
 
@@ -200,10 +200,12 @@ public partial class FrogBlueprintCrafting : Node3DScript
         if (bp_info == null) return;
         if (bp_info.ResultItemInfo == null) return;
 
+        var position = Display.GlobalPosition;
         var item = ItemController.Instance.CreateItem(bp_info.ResultItemInfo);
-        ThrowItemToPlayer(item);
+        item.GlobalPosition = position;
 
-        SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
+        SoundController.Instance.Play("sfx_pickup", position);
+        Particle.PlayOneShot("ps_smoke_puff_small", position);
     }
 
     private void ThrowItemToPlayer(Item item)

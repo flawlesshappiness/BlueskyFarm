@@ -10,6 +10,9 @@ public partial class ItemInfo : Resource
     public string ItemName;
 
     [Export]
+    public string CustomId;
+
+    [Export]
     public ItemType Type;
 
     [Export]

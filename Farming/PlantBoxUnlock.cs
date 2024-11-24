@@ -40,7 +40,8 @@ public partial class PlantBoxUnlock : Node3DScript
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             PlantArea.Enable();
-            SoundController.Instance.Play("sfx_throw_light", PlantArea.GlobalPosition);
+            Particle.PlayOneShot("ps_dirt_puff", PlantArea.GlobalPosition);
+            SoundController.Instance.Play("sfx_plant_box_create", PlantArea.GlobalPosition);
             yield return PlantArea.AnimateAppear();
         }
     }

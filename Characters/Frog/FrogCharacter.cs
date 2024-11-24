@@ -79,6 +79,14 @@ public partial class FrogCharacter : Character
         {
             StartDialogue("##FROG_FIND_SEEDS_REPEAT_001##");
         }
+        else if (HasFlag("frog_find_weedcutter"))
+        {
+            StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_001##");
+        }
+        else if (HasFlag("frog_find_weedcutter_repeat"))
+        {
+            StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##");
+        }
         else
         {
             StartDialogue("##FROG_INTRO_001##");

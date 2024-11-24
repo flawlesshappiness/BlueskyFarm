@@ -7,6 +7,6 @@
 script = ExtResource("1_cpj8p")
 Id = "tutorial_002"
 ResultItemInfo = ExtResource("1_fxmnx")
-ResultDialogueNode = ""
+ResultDialogueNode = "##FROG_FARM_MESS_001##"
 VegetableCount = 5
 CanCancel = false

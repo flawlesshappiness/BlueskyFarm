@@ -71,5 +71,77 @@
 	},
 	{
 		"id": "##FROG_FIND_SEEDS_REPEAT_002##"
+	},
+	
+	{
+		"id": "##FROG_FARM_MESS_001##",
+		"next": "##FROG_FARM_MESS_002##"
+	},
+	{
+		"id": "##FROG_FARM_MESS_002##",
+		"next": "##FROG_FARM_MESS_003##"
+	},
+	{
+		"id": "##FROG_FARM_MESS_003##",
+		"next": "##FROG_FARM_MESS_004##"
+	},
+	{
+		"id": "##FROG_FARM_MESS_004##",
+		"next": "##FROG_FARM_MESS_005##"
+	},
+	{
+		"id": "##FROG_FARM_MESS_005##",
+		"next": "##FROG_FARM_MESS_006##"
+	},
+	{
+		"id": "##FROG_FARM_MESS_006##",
+		"flags_b": [
+			{
+				"id": "frog_find_seeds",
+				"value": false
+			},
+			{
+				"id": "frog_find_weedcutter",
+				"value": true
+			}
+		]
+	},
+	
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_001##",
+		"next": "##FROG_BLUEPRINT_WEEDCUTTER_002##"
+	},
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_002##",
+		"next": "##FROG_BLUEPRINT_WEEDCUTTER_003##"
+	},
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_003##",
+		"next": "##FROG_BLUEPRINT_WEEDCUTTER_004##"
+	},
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_004##",
+		"next": "##FROG_BLUEPRINT_WEEDCUTTER_005##"
+	},
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_005##",
+		"flags_b": [
+			{
+				"id": "frog_find_weedcutter",
+				"value": false
+			},
+			{
+				"id": "frog_find_weedcutter_repeat",
+				"value": true
+			}
+		]
+	},
+	
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##",
+		"next": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##"
+	},
+	{
+		"id": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##"
 	}
 ]

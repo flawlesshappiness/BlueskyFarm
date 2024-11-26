@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4k8632s4ehbm"]
+
+[ext_resource type="PackedScene" uid="uid://dtsyjjyevybj2" path="res://Assets/KayLousberg/Dungeon 1.1/wall_stairs_left.fbx" id="1_fpy5x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26usx"]
+size = Vector3(0.5, 5.25, 4)
+
+[node name="Wall_Stairs_Left" type="Node3D"]
+
+[node name="wall_stairs_left" parent="." instance=ExtResource("1_fpy5x")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.625, 0)
+shape = SubResource("BoxShape3D_26usx")

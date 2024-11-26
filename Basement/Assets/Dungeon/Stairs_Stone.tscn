@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b64jan0k0ffg8"]
+
+[ext_resource type="PackedScene" uid="uid://b6g4q83wjdtsp" path="res://Assets/KayLousberg/Dungeon 1.1/stairs_stone.fbx" id="1_m8fso"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8gge"]
+size = Vector3(4, 5.79883, 0.608398)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h7x6l"]
+size = Vector3(4, 0.5, 0.5)
+
+[node name="Stairs_Stone" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.77442, -1.79787)
+shape = SubResource("BoxShape3D_c8gge")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.76362, -3.87172)
+shape = SubResource("BoxShape3D_h7x6l")
+
+[node name="stairs_stone" parent="." instance=ExtResource("1_m8fso")]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://brghqk1pwjx2d"
-path="res://.godot/imported/wallSingle.gltf.glb-105d3b58db9fac64c6cdb62e730e88e7.scn"
+uid="uid://cp5xe3rx0u2qh"
+path="res://.godot/imported/wall_middle.fbx-72e9dbd680d749a7285e1ab7e1fe976c.scn"
 
 [deps]
 
-source_file="res://Assets/KayLousberg/Dungeon/wallSingle.gltf.glb"
-dest_files=["res://.godot/imported/wallSingle.gltf.glb-105d3b58db9fac64c6cdb62e730e88e7.scn"]
+source_file="res://Assets/KayLousberg/Dungeon 1.1/wall_middle.fbx"
+dest_files=["res://.godot/imported/wall_middle.fbx-72e9dbd680d749a7285e1ab7e1fe976c.scn"]
 
 [params]
 
@@ -27,10 +27,18 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+_subresources={
+"materials": {
+"Stone": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Stone.tres"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

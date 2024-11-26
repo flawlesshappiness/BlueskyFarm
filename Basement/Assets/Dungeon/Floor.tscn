@@ -1,16 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqqfts07rm4oe"]
+[gd_scene load_steps=5 format=3 uid="uid://dqqfts07rm4oe"]
 
-[ext_resource type="PackedScene" uid="uid://d1cuj0q0dtdm7" path="res://Assets/KayLousberg/Dungeon/floorDecoration_tilesLarge.gltf.glb" id="1_dard0"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_lmnvg"]
+[ext_resource type="PackedScene" uid="uid://ulfjrc2aj3u1" path="res://Assets/KayLousberg/Dungeon 1.1/floor_dirt.fbx" id="2_vshat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1l5t0"]
 size = Vector3(4, 1, 4)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_bwwn1"]
-size = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o42e"]
-albedo_color = Color(0.4095, 0.433125, 0.45, 1)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_al11u"]
 size = Vector2(4, 4)
@@ -26,14 +20,8 @@ Type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_1l5t0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
-transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0.5, 0)
-mesh = SubResource("PlaneMesh_bwwn1")
-surface_material_override/0 = SubResource("StandardMaterial3D_5o42e")
-
-[node name="floorDecoration_tilesLarge_gltf" parent="." instance=ExtResource("1_dard0")]
-transform = Transform3D(0.675, 0, 0, 0, 0.5, 0, 0, 0, 0.675, 0, 0, 0)
-
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 occluder = SubResource("QuadOccluder3D_al11u")
+
+[node name="floor_dirt" parent="." instance=ExtResource("2_vshat")]

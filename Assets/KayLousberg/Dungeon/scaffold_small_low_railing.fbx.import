@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "WoodDark": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/KayLousberg/Dungeon/Materials/scaffold_low.tres"
+"use_external/path": "res://Assets/Materials/Wood.tres"
 }
 }
 }

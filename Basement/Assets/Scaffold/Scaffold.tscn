@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_vbqq1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86yec"]
-size = Vector3(4, 0.5, 4)
+size = Vector3(4, 0.199097, 4)
 
 [node name="Scaffold" type="Node3D"]
 
@@ -15,7 +15,7 @@ script = ExtResource("1_vbqq1")
 Type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0995483, 0)
 shape = SubResource("BoxShape3D_86yec")
 
 [node name="scaffold_low_gltf" parent="." instance=ExtResource("1_5pwaa")]

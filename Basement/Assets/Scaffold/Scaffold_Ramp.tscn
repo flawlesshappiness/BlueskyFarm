@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2d6hrtjg3yvb" path="res://Assets/KayLousberg/Dungeon/scaffold_low.gltf.glb" id="1_phjcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gs5on"]
-size = Vector3(4, 0.5, 4.5)
+size = Vector3(4, 0.204956, 4.5)
 
 [node name="Scaffold_Ramp" type="Node3D"]
 
@@ -16,7 +16,7 @@ script = ExtResource("1_80nme")
 Type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 0.894934, -0.446198, 0, 0.446198, 0.894934, 0, -0.117978, 0.065824)
 shape = SubResource("BoxShape3D_gs5on")
 
 [node name="Pivot" type="Node3D" parent="."]

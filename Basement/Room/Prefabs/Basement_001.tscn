@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="3_0ltca"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="4_152mh"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="5_mkup5"]
-[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="6_1eqlk"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="6_1eqlk"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="8_5qg8q"]
 [ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="8_6ahy3"]
 [ext_resource type="PackedScene" uid="uid://litevesi34j0" path="res://Basement/Assets/Dungeon/Roots_003.tscn" id="8_uqk1x"]

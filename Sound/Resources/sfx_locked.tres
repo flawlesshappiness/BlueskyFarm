@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://quw01a7d06r3"]
+
+[ext_resource type="AudioStream" uid="uid://dhsvdo3xlo7tg" path="res://Sound/Sounds/sfx_chest_locked.ogg" id="1_7x2b5"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_b8477"]
+
+[resource]
+script = ExtResource("2_b8477")
+AudioStreams = Array[AudioStream]([ExtResource("1_7x2b5")])
+Volume = -15.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 1

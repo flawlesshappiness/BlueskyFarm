@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_sipjv"]
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="2_myptf"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="2_n2fvb"]
-[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="2_ri8gr"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="2_ri8gr"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="4_cjnrd"]
 [ext_resource type="PackedScene" uid="uid://dp3xft717kmct" path="res://Basement/Assets/Pipes/Pipe_Curve_05x05.tscn" id="4_u7ctk"]
 [ext_resource type="PackedScene" uid="uid://cfaegae8onu57" path="res://Basement/Assets/Pipes/Pipe_2m.tscn" id="5_n7333"]
@@ -297,7 +297,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="Wall_Basement_002" parent="South/Closed" index="0" instance=ExtResource("2_n2fvb")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00276446, -5.96046e-08, 6.00814)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 6)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="South/Closed" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136942, 2.04917, 5.01611)

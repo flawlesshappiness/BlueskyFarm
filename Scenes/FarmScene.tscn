@@ -1,0 +1,643 @@
+[gd_scene load_steps=70 format=3 uid="uid://cdgomd3h4hi00"]
+
+[ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
+[ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
+[ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
+[ext_resource type="PackedScene" uid="uid://bki8lnpr3jq2m" path="res://Assets/FlawLizArt/bush.tscn" id="3_pkptg"]
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
+[ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon/Trapdoor.tscn" id="8_je3mm"]
+[ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="8_q5w4g"]
+[ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
+[ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="9_t030q"]
+[ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
+[ext_resource type="PackedScene" uid="uid://cr7x5dbwhu7er" path="res://Farming/Prefabs/PlantBoxUnlock.tscn" id="14_dcain"]
+[ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
+[ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
+[ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
+[ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
+[ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
+[ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
+[ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
+panorama = ExtResource("1_u4lhc")
+
+[sub_resource type="Sky" id="Sky_b8lqf"]
+sky_material = SubResource("PanoramaSkyMaterial_wi325")
+
+[sub_resource type="Environment" id="Environment_3hgua"]
+background_mode = 2
+sky = SubResource("Sky_b8lqf")
+adjustment_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
+size = Vector3(24, 50, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
+size = Vector3(31, 4, 31)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
+vertices = PackedVector3Array(-11.6322, 4.24041, -11.6322, -11.3822, 4.49041, -11.1322, 11.1178, 4.49041, -11.3822, 11.6178, 4.24041, -11.6322, -11.6322, 4.24041, 11.6178, -11.1322, 4.49041, 11.3678, 11.3678, 4.49041, 11.1178, 11.6178, 4.24041, 11.6178, 9.86779, 0.490409, 8.36779, 9.86779, 0.490409, 10.3678, 10.3678, 0.490409, 10.3678, 10.3678, 0.490409, -10.3822, 5.61779, 0.740409, 8.36779, 5.61779, 1.24041, 10.3678, 8.86779, 1.24041, 10.3678, 8.86779, 0.740409, 8.36779, -10.3822, 0.490409, -10.3822, -10.3822, 0.490409, 10.3678, 4.61779, 0.490409, 8.36779, 4.61779, 0.490409, 10.3678)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 1), PackedInt32Array(1, 4, 0), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(6, 7, 5), PackedInt32Array(5, 7, 4), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 11), PackedInt32Array(18, 19, 17), PackedInt32Array(11, 12, 18), PackedInt32Array(11, 8, 15), PackedInt32Array(11, 15, 12)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlevm"]
+albedo_color = Color(0.384314, 0.658824, 0.419608, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_u50wq"]
+material = SubResource("StandardMaterial3D_jlevm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ko2qb"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53lfa"]
+size = Vector3(1, 4, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1bpo"]
+size = Vector3(1.88379, 1, 1.78735)
+
+[sub_resource type="Curve" id="Curve_qma48"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3x5i2"]
+curve = SubResource("Curve_qma48")
+
+[sub_resource type="Curve" id="Curve_rw0g7"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vsbpu"]
+curve = SubResource("Curve_rw0g7")
+
+[sub_resource type="Curve" id="Curve_xhacx"]
+max_value = 3.0
+_data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4vxwc"]
+curve = SubResource("Curve_xhacx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fs4br"]
+lifetime_randomness = 0.4
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_vsbpu")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_4vxwc")
+scale_over_velocity_max = 40.1
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_3x5i2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjm45"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("31_2mgum")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_xkqfr"]
+material = SubResource("StandardMaterial3D_tjm45")
+
+[sub_resource type="Curve" id="Curve_0j38a"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_41o4x"]
+curve = SubResource("Curve_0j38a")
+
+[sub_resource type="Curve" id="Curve_y3wu1"]
+max_value = 3.0
+_data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ylal3"]
+curve = SubResource("Curve_y3wu1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nufg6"]
+lifetime_randomness = 0.4
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_ylal3")
+scale_over_velocity_max = 40.1
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_41o4x")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c3dv4"]
+load_path = "res://.godot/imported/circle_05.png-c487627d8a846893ebfdb8550595c0d6.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7q8t"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_c3dv4")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vnojs"]
+material = SubResource("StandardMaterial3D_p7q8t")
+size = Vector2(3, 0.5)
+
+[sub_resource type="Curve" id="Curve_gwd85"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), -3.51242e-07, -3.51242e-07, 0, 0, Vector2(0.266667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8cvbo"]
+curve = SubResource("Curve_gwd85")
+
+[sub_resource type="Curve" id="Curve_xyo0u"]
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 1, Vector2(1, 5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1lnfu"]
+curve = SubResource("Curve_xyo0u")
+
+[sub_resource type="Curve" id="Curve_encxc"]
+max_value = 3.0
+_data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lldvd"]
+curve = SubResource("Curve_encxc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pqhdu"]
+lifetime_randomness = 0.4
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_1lnfu")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 15.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_lldvd")
+scale_over_velocity_max = 40.1
+color = Color(0.0313726, 0, 0.14902, 1)
+alpha_curve = SubResource("CurveTexture_8cvbo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46s2f"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("31_q1fnc")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_1007t"]
+material = SubResource("StandardMaterial3D_46s2f")
+
+[sub_resource type="Curve" id="Curve_mfdn2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), -3.51242e-07, -3.51242e-07, 0, 0, Vector2(0.266667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_fqs6x"]
+curve = SubResource("Curve_mfdn2")
+
+[sub_resource type="Curve" id="Curve_jwvqb"]
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 1, Vector2(1, 5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ak51"]
+curve = SubResource("Curve_jwvqb")
+
+[sub_resource type="Curve" id="Curve_x1txu"]
+max_value = 3.0
+_data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8l03a"]
+curve = SubResource("Curve_x1txu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j68sx"]
+lifetime_randomness = 0.4
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_3ak51")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 70.0
+scale_max = 100.0
+scale_curve = SubResource("CurveTexture_8l03a")
+scale_over_velocity_max = 40.1
+color = Color(0.0313726, 0, 0.14902, 0.490196)
+alpha_curve = SubResource("CurveTexture_fqs6x")
+
+[sub_resource type="Curve" id="Curve_ifuq4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_k3k28"]
+curve = SubResource("Curve_ifuq4")
+
+[sub_resource type="Curve" id="Curve_ayacb"]
+max_value = 3.0
+_data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ovwr7"]
+curve = SubResource("Curve_ayacb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ek4j"]
+lifetime_randomness = 0.4
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_1lnfu")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 35.0
+scale_max = 40.0
+scale_curve = SubResource("CurveTexture_ovwr7")
+scale_over_velocity_max = 40.1
+color = Color(0.396078, 0.258824, 1, 0.0980392)
+alpha_curve = SubResource("CurveTexture_k3k28")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1u3r"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("32_hltal")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_7x72b"]
+material = SubResource("StandardMaterial3D_s1u3r")
+
+[node name="FarmScene" type="Node3D"]
+script = ExtResource("1_mng5r")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3hgua")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 21.5836, 0)
+light_color = Color(0.721569, 0.631373, 1, 1)
+shadow_enabled = true
+
+[node name="World" type="Node" parent="."]
+
+[node name="Bounds" type="Node" parent="World"]
+script = ExtResource("2_muofh")
+
+[node name="Area3D" type="Area3D" parent="World/Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bounds/Area3D"]
+shape = SubResource("BoxShape3D_ujqkt")
+
+[node name="SkyBlock" type="Node" parent="World"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/SkyBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
+shape = SubResource("BoxShape3D_t5e8f")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
+navigation_mesh = SubResource("NavigationMesh_ijsjf")
+
+[node name="Ground" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(24, 0, 0, 0, 1, 0, 0, 0, 24, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_u50wq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Ground/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("4_c8ppf")
+Type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Ground/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+shape = SubResource("BoxShape3D_ko2qb")
+
+[node name="Bush_E" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, 0)
+
+[node name="Bush" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
+
+[node name="Bush2" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 2)
+
+[node name="Bush3" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
+
+[node name="Bush4" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
+
+[node name="Bush6" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
+
+[node name="Bush7" parent="World/NavigationRegion3D/Bush_E" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_E"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Bush_E/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_53lfa")
+
+[node name="Bush_N" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 11.5)
+
+[node name="Bush" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
+
+[node name="Bush2" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 2)
+
+[node name="Bush3" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
+
+[node name="Bush4" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
+
+[node name="Bush6" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
+
+[node name="Bush7" parent="World/NavigationRegion3D/Bush_N" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_N"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Bush_N/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_53lfa")
+
+[node name="Bush_S" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -11.5)
+
+[node name="Bush" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
+
+[node name="Bush2" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 2)
+
+[node name="Bush3" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
+
+[node name="Bush4" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
+
+[node name="Bush6" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
+
+[node name="Bush7" parent="World/NavigationRegion3D/Bush_S" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_S"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Bush_S/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_53lfa")
+
+[node name="Bush_W" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 0)
+
+[node name="Bush" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -2)
+
+[node name="Bush2" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 2)
+
+[node name="Bush3" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 6)
+
+[node name="Bush4" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, 10)
+
+[node name="Bush6" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -6)
+
+[node name="Bush7" parent="World/NavigationRegion3D/Bush_W" instance=ExtResource("3_pkptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254192, 2, -10)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Bush_W"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Bush_W/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_53lfa")
+
+[node name="Basement" type="Node3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26262, 0, 8.99051)
+
+[node name="Ceiling" parent="World/NavigationRegion3D/Basement" instance=ExtResource("9_t030q")]
+transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435, 0)
+
+[node name="Trapdoor" parent="World/NavigationRegion3D/Basement" instance=ExtResource("8_je3mm")]
+transform = Transform3D(1, 0, 0, 0, 0.975423, 0.22034, 0, -0.22034, 0.975423, 0, 0.452668, -0.317729)
+SceneName = "basement"
+InteractableText = "Basement"
+
+[node name="StartBasement" type="Node3D" parent="World/NavigationRegion3D/Basement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
+
+[node name="BasementUnlockArea" type="Area3D" parent="World/NavigationRegion3D/Basement"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Basement/BasementUnlockArea"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.349139, -0.359888)
+shape = SubResource("BoxShape3D_w1bpo")
+
+[node name="PotSign" parent="World/NavigationRegion3D" instance=ExtResource("19_up103")]
+transform = Transform3D(0.884622, 0, 0.46631, 0, 1, 0, -0.46631, 0, 0.884622, -3.1084, -2, 2.45581)
+visible = false
+
+[node name="Label3D" type="Label3D" parent="World/NavigationRegion3D/PotSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
+text = "Pot"
+outline_size = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="World/NavigationRegion3D/PotSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0612478, 0.577809, 0.085988)
+modulate = Color(0.4, 1, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Sprite3D2" type="Sprite3D" parent="World/NavigationRegion3D/PotSign"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.119944, 0.577809, 0.0859871)
+modulate = Color(0.4, 1, 0.4, 1)
+texture = ExtResource("20_uqr56")
+
+[node name="Grass" type="Node3D" parent="World"]
+
+[node name="Grass_Short" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26637, 0, -8.79061)
+
+[node name="Grass_Short2" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90951, 0, -5.53251)
+
+[node name="Grass_Short3" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98085, 0, -9.38638)
+
+[node name="Grass_Short4" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38516, 0, -2.67196)
+
+[node name="Grass_Short5" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01564, 0, 4.16537)
+
+[node name="Grass_Short6" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23599, 0, 6.8292)
+
+[node name="Grass_Short7" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58333, 0, 8.81956)
+
+[node name="Grass_Short8" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9731, 0, 6.50204)
+
+[node name="Grass_Short9" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2186, 0, 1.69152)
+
+[node name="Grass_Short10" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41636, 0, 0.586651)
+
+[node name="Grass_Short11" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.16799, 9.53674e-07, -3.58998)
+
+[node name="Grass_Short12" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3698, 0, -3.35599)
+
+[node name="Grass_Short13" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.28811, 0, -7.85599)
+
+[node name="Grass_Short14" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458269, 0, -3.12574)
+
+[node name="Grass_Short15" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37066, -9.53674e-07, 1.25319)
+
+[node name="Grass_Short16" parent="World/Grass" instance=ExtResource("17_nm5pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38232, 0, 0.713255)
+
+[node name="Rift" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+
+[node name="Hole" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+amount = 40
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-110.118, -94.1289, -14.352, 220.235, 188.258, 28.704)
+process_material = SubResource("ParticleProcessMaterial_fs4br")
+draw_pass_1 = SubResource("QuadMesh_xkqfr")
+
+[node name="Hole2" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+amount = 40
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-129, -132, -14.352, 258, 264, 28.704)
+process_material = SubResource("ParticleProcessMaterial_nufg6")
+draw_pass_1 = SubResource("QuadMesh_vnojs")
+
+[node name="Waves" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, 0)
+amount = 5
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-147.5, -123.446, -14.352, 295, 246.891, 28.704)
+process_material = SubResource("ParticleProcessMaterial_pqhdu")
+draw_pass_1 = SubResource("QuadMesh_1007t")
+
+[node name="Waves2" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, 0)
+amount = 5
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-137, -130.5, -14.352, 274, 261, 28.704)
+process_material = SubResource("ParticleProcessMaterial_j68sx")
+draw_pass_1 = SubResource("QuadMesh_1007t")
+
+[node name="Shine" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, 0)
+amount = 5
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-147.5, -129.338, -14.352, 295, 258.677, 28.704)
+process_material = SubResource("ParticleProcessMaterial_4ek4j")
+draw_pass_1 = SubResource("QuadMesh_7x72b")
+
+[node name="Shine2" type="GPUParticles3D" parent="World/Rift"]
+transform = Transform3D(0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, 0.866025, -3.78552e-08, 0, 30, 0)
+amount = 5
+lifetime = 12.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-169, -162.801, -14.352, 338, 325.602, 28.704)
+process_material = SubResource("ParticleProcessMaterial_4ek4j")
+draw_pass_1 = SubResource("QuadMesh_7x72b")
+
+[node name="PlantBoxes" type="Node3D" parent="World"]
+
+[node name="PlantBox_001" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -8.5)
+
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_001" index="0"]
+Id = "PlantBox_001"
+
+[node name="PlantBox_002" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, -8.5)
+
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_002" index="0"]
+Id = "PlantBox_002"
+
+[node name="PlantBox_003" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, -8.5)
+
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_003" index="0"]
+Id = "PlantBox_003"
+
+[node name="PlantBox_004" parent="World/PlantBoxes" instance=ExtResource("14_dcain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, -8.5)
+
+[node name="PlantBox" parent="World/PlantBoxes/PlantBox_004" index="0"]
+Id = "PlantBox_004"
+
+[node name="Frog" parent="World" instance=ExtResource("15_gw4ke")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1365e-06, 0, 9.31604)
+CharacterId = "supervisor"
+
+[node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97852, 0, -3.07958)
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_q5w4g")
+volume_db = 20.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xc34j")
+volume_db = 20.0
+autoplay = true
+bus = &"BGM"
+
+[editable path="World/PlantBoxes/PlantBox_001"]
+[editable path="World/PlantBoxes/PlantBox_002"]
+[editable path="World/PlantBoxes/PlantBox_003"]
+[editable path="World/PlantBoxes/PlantBox_004"]

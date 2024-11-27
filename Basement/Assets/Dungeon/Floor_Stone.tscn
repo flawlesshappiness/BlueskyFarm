@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3qi3iiygfr1b"]
+
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_xcr3d"]
+[ext_resource type="PackedScene" uid="uid://ckox32tbut5ke" path="res://Assets/KayLousberg/Dungeon 1.1/floor_tile.fbx" id="2_nwd8q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1l5t0"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_al11u"]
+size = Vector2(4, 4)
+
+[node name="Floor_Dirt" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+script = ExtResource("1_xcr3d")
+Type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1l5t0")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+occluder = SubResource("QuadOccluder3D_al11u")
+
+[node name="floor_tile" parent="." instance=ExtResource("2_nwd8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472652, 0)

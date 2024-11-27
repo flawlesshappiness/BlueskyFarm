@@ -56,7 +56,7 @@ public partial class Boot : Node
         Debug.Indent++;
 
         // TODO: Current scene should not be loaded on boot
-        Scene.Goto(Data.Game.CurrentScene ?? "farm.tscn");
+        Scene.Goto(Data.Game.CurrentScene ?? "FarmScene.tscn");
 
         Debug.Indent--;
     }

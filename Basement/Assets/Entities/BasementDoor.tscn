@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4y6dw6sr015q"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_40cx2"]
+[ext_resource type="PackedScene" uid="uid://cvm2gm8rbbnwa" path="res://Assets/KayLousberg/Dungeon 1.1/door.fbx" id="1_ctwho"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="3_3pxfy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0nwd"]
+size = Vector3(2, 2.75, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3nku0"]
+size = Vector3(1.75, 2.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_q1x5q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xvd0h"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_grjwa"]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5p27j"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.309, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h4khl"]
+resource_name = "opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vibcd"]
+_data = {
+"RESET": SubResource("Animation_q1x5q"),
+"close": SubResource("Animation_xvd0h"),
+"closed": SubResource("Animation_grjwa"),
+"open": SubResource("Animation_5p27j"),
+"opened": SubResource("Animation_h4khl")
+}
+
+[node name="BasementDoor" type="Node3D"]
+script = ExtResource("1_40cx2")
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Model" type="Node3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="door" parent="Anim/Model" instance=ExtResource("1_ctwho")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Model"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Model/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, 0)
+shape = SubResource("BoxShape3D_n0nwd")
+
+[node name="Touchable" type="Node3D" parent="Anim/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+script = ExtResource("3_3pxfy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Model/Touchable"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Model/Touchable/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("BoxShape3D_3nku0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vibcd")
+}
+playback_default_blend_time = 0.25

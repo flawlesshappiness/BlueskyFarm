@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5vvlvbohf1n6"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_mksoe"]
-[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="2_pfgwj"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="2_pfgwj"]
 
 [node name="Basement_008" instance=ExtResource("1_mksoe")]
 

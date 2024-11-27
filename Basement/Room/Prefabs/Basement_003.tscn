@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="5_l0cl0"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="6_auaqw"]
 [ext_resource type="PackedScene" uid="uid://dkduh5d14led" path="res://Basement/Assets/Dungeon/Wall_Half.tscn" id="6_mdmiv"]
-[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="7_lk8dw"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="7_lk8dw"]
 [ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="8_4hw7v"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="11_lgr8f"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="12_f3s8l"]
@@ -161,7 +161,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12, 0,
 transform = Transform3D(-1, 0.000284851, -3.08384e-07, 0.000284851, 0.999997, -0.00276371, -4.83473e-07, -0.00276371, -0.999996, 6, 0, -2)
 
 [node name="Doorway10" parent="Walls" index="27" instance=ExtResource("3_1bcmr")]
-transform = Transform3D(1, -0.000284851, 3.95806e-07, 0.000284851, 0.999997, -0.00276371, 3.9605e-07, 0.00276371, 0.999996, 6, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
 
 [node name="Doorway7" parent="Walls" index="28" instance=ExtResource("3_1bcmr")]
 transform = Transform3D(1, 1.22327e-10, 1.74623e-09, 6.30962e-11, 1, -2.91038e-09, 2.91038e-09, -3.84171e-09, 1, -6, 0, 2)
@@ -176,7 +176,7 @@ transform = Transform3D(1.31084e-07, -8.34461e-11, 1, 0, 1, 6.68479e-11, -1, -6.
 transform = Transform3D(-2.18512e-07, -1.41199e-10, -1, 0, 1, 9.09495e-13, 1, -1.16415e-09, -2.19676e-07, -2, 0, 0)
 
 [node name="Doorway3" parent="Walls" index="32" instance=ExtResource("3_1bcmr")]
-transform = Transform3D(-2.53785e-08, -0.00123943, -0.999999, 0.00152428, 0.999999, -0.00123943, 0.999999, -0.00152428, 1.86719e-06, 2, 0, 6)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 6)
 
 [node name="Doorway4" parent="Walls" index="33" instance=ExtResource("3_1bcmr")]
 transform = Transform3D(-6.20441e-08, 0.00123943, 0.999999, 0.00152428, 0.999999, -0.00123943, -0.999999, 0.00152428, -1.95461e-06, 2, 0, 6)
@@ -185,7 +185,7 @@ transform = Transform3D(-6.20441e-08, 0.00123943, 0.999999, 0.00152428, 0.999999
 transform = Transform3D(-2.53785e-08, -0.00123943, -0.999999, 0.00152428, 0.999999, -0.00123943, 0.999999, -0.00152428, 1.86695e-06, -2, 0, -6)
 
 [node name="Doorway8" parent="Walls" index="35" instance=ExtResource("3_1bcmr")]
-transform = Transform3D(-6.20441e-08, 0.00123943, 0.999999, 0.00152428, 0.999999, -0.00123943, -0.999999, 0.00152428, -1.95437e-06, -2, 0, -6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -6)
 
 [node name="Wall_Basement_001" parent="Walls" index="36" instance=ExtResource("6_mdmiv")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -9)

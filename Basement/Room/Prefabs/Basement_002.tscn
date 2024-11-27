@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="4_x3qw5"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="5_l0cl0"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="6_auaqw"]
-[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor.tscn" id="7_lk8dw"]
+[ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="7_lk8dw"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="8_1uclb"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="9_yx7xh"]
 [ext_resource type="PackedScene" uid="uid://lmtc72pu0dqc" path="res://Basement/Assets/Dungeon/Barrel_Big_Horizontal.tscn" id="10_hy26g"]
@@ -53,16 +53,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10)
 
 [node name="Wall_Basement_005" parent="North/Open" index="2" instance=ExtResource("2_08v5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10)
 
 [node name="Wall_Basement_011" parent="North/Open" index="3" instance=ExtResource("2_08v5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10)
 
 [node name="Wall_Basement_009" parent="North/Open" index="4" instance=ExtResource("2_08v5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10)
 
 [node name="Wall_Basement_031" parent="North/Open" index="5" instance=ExtResource("2_08v5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
 
 [node name="Floor_Basement_001" parent="North/Open" index="6" instance=ExtResource("7_lk8dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
@@ -101,16 +101,16 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 10)
 
 [node name="Wall_Basement_001" parent="South/Open" index="2" instance=ExtResource("2_08v5d")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, 10)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 10)
 
 [node name="Wall_Basement_002" parent="South/Open" index="3" instance=ExtResource("2_08v5d")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 0, 10)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 0, 10)
 
 [node name="Wall_Basement_003" parent="South/Open" index="4" instance=ExtResource("2_08v5d")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, 10)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, 10)
 
 [node name="Wall_Basement_004" parent="South/Open" index="5" instance=ExtResource("2_08v5d")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 0, 10)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 10)
 
 [node name="Floor_Basement_016" parent="South/Open" index="6" instance=ExtResource("7_lk8dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)

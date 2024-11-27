@@ -24,6 +24,10 @@ public partial class BasementController : SingletonController
         var grid = BasementGridGenerator.Generate(basement.Settings);
         basement.Grid = grid;
 
+        // Set priority rooms
+        var workshop_element = GetRandomElement(AreaNames.Basement);
+        workshop_element.Info = BasementRoomController.Instance.Collection.GetResource("Basement_Workshop");
+
         // Add special rooms
         /*
         if (!Data.Game.Flag_MaterialProcessorFixed)
@@ -110,5 +114,12 @@ public partial class BasementController : SingletonController
 
             return room;
         }
+    }
+
+    private BasementRoomElement GetRandomElement(string area_name)
+    {
+        return CurrentBasement.Grid.Elements
+            .Where(x => x.AreaName == area_name && !x.IsStart && x.Info == null)
+            .ToList().Random();
     }
 }

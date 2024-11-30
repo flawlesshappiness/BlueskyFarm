@@ -65,21 +65,31 @@ public partial class BasementDoor : Node3DScript
     public void Open()
     {
         AnimationPlayer.Play("open");
-        SoundController.Instance.Play(OpenSFX, GlobalPosition);
+        SoundController.Instance.Play(OpenSFX, Touchable.GlobalPosition);
         _open = true;
     }
 
     public void Close()
     {
         AnimationPlayer.Play("close");
-        SoundController.Instance.Play(CloseSFX, GlobalPosition);
+        SoundController.Instance.Play(CloseSFX, Touchable.GlobalPosition);
         _open = false;
     }
 
     public void PlayLockedFX()
     {
-        SoundController.Instance.Play(LockedSFX, GlobalPosition);
-        DialogueController.Instance.SetNode("##LOCKED##");
+        SoundController.Instance.Play(LockedSFX, Touchable.GlobalPosition);
+        GameView.Instance.CreateText(new CreateTextSettings
+        {
+            Id = "locked_" + GetInstanceId(),
+            Text = "##LOCKED##",
+            Position = Touchable.GlobalPosition.Add(y: 0.2f),
+            Duration = 5.0f,
+            Shake_Duration = 0.4f,
+            Shake_Frequency = 0.04f,
+            Shake_Strength = 10f,
+            Shake_Dampening = 0.9f,
+        });
     }
 
     public void Unlock()

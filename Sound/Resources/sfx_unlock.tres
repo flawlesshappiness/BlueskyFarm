@@ -9,5 +9,5 @@ AudioStreams = Array[AudioStream]([ExtResource("1_nugju")])
 Volume = 0.0
 PitchRange = Vector2(0.8, 0.85)
 Bus = 1
-Distance = 0
+Distance = 2
 Attenuation = 1

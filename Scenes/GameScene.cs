@@ -94,7 +94,7 @@ public partial class GameScene : Scene
 
             yield return new WaitForSeconds(2f);
 
-            Goto("farm");
+            Goto(nameof(FarmScene));
 
             view.SetBlackOverlayAlpha(0);
 

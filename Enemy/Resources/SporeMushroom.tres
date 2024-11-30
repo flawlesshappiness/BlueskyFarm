@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_is5rn")
 Path = "res://Enemy/SporeMushroom/SporeMushroom.tscn"
-Enabled = true
+Enabled = false

@@ -1,4 +1,6 @@
 using Godot;
+using System.Collections;
+using System.Collections.Generic;
 
 public partial class GameView : View
 {
@@ -6,6 +8,9 @@ public partial class GameView : View
 
     [NodeName]
     public ColorRect OverlayTemplate;
+
+    [NodeName]
+    public Label TextTemplate;
 
     [NodeType]
     public Minimap Minimap;
@@ -16,11 +21,13 @@ public partial class GameView : View
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
 
     private ColorRect _overlay_black;
+    private Dictionary<string, Label> _create_text_labels = new();
 
     public override void _Ready()
     {
         base._Ready();
         OverlayTemplate.Hide();
+        TextTemplate.Hide();
         _overlay_black = CreateOverlay(Colors.Black.SetA(0));
         Show();
     }
@@ -60,4 +67,80 @@ public partial class GameView : View
     {
         InventoryBar.AnimateHide();
     }
+
+    // IDEA: Option to animate text
+    public Label CreateText(CreateTextSettings settings)
+    {
+        if (_create_text_labels.TryGetValue(settings.Id, out var label))
+        {
+            if (IsInstanceValid(label))
+            {
+                label.QueueFree();
+            }
+            _create_text_labels.Remove(settings.Id);
+        }
+
+        label = TextTemplate.Duplicate() as Label;
+        label.SetParent(TextTemplate.GetParent());
+        label.Text = settings.Text;
+        _create_text_labels.Add(settings.Id, label);
+
+        var time_start = GameTime.Time;
+        var time_end = time_start + settings.Duration;
+        var camera = ScreenEffects.View.Camera;
+
+        IEnumerator Cr()
+        {
+            while (GameTime.Time < time_end)
+            {
+                var viewport_position = camera.UnprojectPosition(settings.Position);
+                var size = label.Size;
+                var label_position = viewport_position - size * 0.5f;
+                var offset = GetOffsetPosition();
+                label.Position = label_position + offset;
+                label.Visible = !camera.IsPositionBehind(settings.Position);
+                yield return null;
+            }
+
+            label.QueueFree();
+        }
+
+        Vector2 GetOffsetPosition()
+        {
+            return OffsetShake();
+        }
+
+        float _shake_next = 0f;
+        Vector2 _shake_prev = Vector2.Zero;
+        Vector2 OffsetShake()
+        {
+            var end = time_start + settings.Shake_Duration;
+
+            if (GameTime.Time >= end) return Vector2.Zero;
+            if (GameTime.Time < _shake_next) return _shake_prev;
+
+            var rng = new RandomNumberGenerator();
+            var x = rng.RandfRange(-1, 1);
+            var y = rng.RandfRange(-1, 1);
+            _shake_prev = new Vector2(x, y).Normalized() * settings.Shake_Strength;
+            _shake_next = GameTime.Time + settings.Shake_Frequency;
+            settings.Shake_Strength *= settings.Shake_Dampening;
+            return _shake_prev;
+        }
+
+        Coroutine.Start(Cr, settings.Id, label);
+        return label;
+    }
+}
+
+public class CreateTextSettings
+{
+    public string Id { get; set; }
+    public string Text { get; set; }
+    public Vector3 Position { get; set; }
+    public float Duration { get; set; }
+    public float Shake_Strength { get; set; }
+    public float Shake_Frequency { get; set; }
+    public float Shake_Duration { get; set; }
+    public float Shake_Dampening { get; set; }
 }

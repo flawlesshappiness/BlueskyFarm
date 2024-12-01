@@ -134,6 +134,9 @@
 				"id": "frog_find_weedcutter_repeat",
 				"value": true
 			}
+		],
+		"triggers": [
+			"workshop_key"
 		]
 	},
 	

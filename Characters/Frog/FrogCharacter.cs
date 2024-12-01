@@ -108,6 +108,10 @@ public partial class FrogCharacter : Character
                 ThrowBasementKeyToPlayer();
                 BlueprintCrafting.SetBlueprint("tutorial_002");
                 break;
+
+            case "workshop_key":
+                Data.Game.Flag_WorkshopKeyAvailable = true;
+                break;
         }
     }
 
@@ -122,8 +126,6 @@ public partial class FrogCharacter : Character
     private void ThrowBasementKeyToPlayer()
     {
         var item = ItemController.Instance.CreateItem("Key_Basement");
-        item.Data.CustomId = "basement_key";
-
         ThrowItemToPlayer(item);
     }
 

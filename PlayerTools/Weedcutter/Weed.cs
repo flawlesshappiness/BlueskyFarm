@@ -36,7 +36,14 @@ public partial class Weed : Node3DScript
 
     private void Touched()
     {
-        Cut();
+        if (_is_cut) return;
+
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            yield return Player.Instance.WaitForProgress(0.5f, this);
+            Cut();
+        }
     }
 
     public void Cut()

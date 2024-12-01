@@ -1,4 +1,3 @@
-using Godot;
 using System.Collections;
 
 public partial class FarmScene : GameScene
@@ -7,13 +6,13 @@ public partial class FarmScene : GameScene
     public SceneDoor Trapdoor;
 
     [NodeName]
-    public Area3D BasementUnlockArea;
+    public ItemArea BasementUnlockArea;
 
     protected override void Initialize()
     {
         base.Initialize();
 
-        BasementUnlockArea.BodyEntered += go => CallDeferred(nameof(BasementUnlockArea_BodyEntered), go);
+        BasementUnlockArea.OnItemEntered += BasementUnlockArea_ItemEntered;
 
         var view = View.Get<GameView>();
         view.Minimap.Clear();
@@ -48,22 +47,11 @@ public partial class FarmScene : GameScene
         }
     }
 
-    private void BasementUnlockArea_BodyEntered(GodotObject go)
+    private void BasementUnlockArea_ItemEntered(Item item)
     {
-        if (!IsInstanceValid(go)) return;
+        item.IsBeingHandled = true;
 
-        var node = go as Node3D;
-        if (node == null) return;
-
-        var item = node.GetNodeInParents<Item>();
-        if (item == null) return;
-
-        if (item.Data.CustomId == "basement_key")
-        {
-            item.IsBeingHandled = true;
-            Coroutine.Start(Cr);
-        }
-
+        Coroutine.Start(Cr);
         IEnumerator Cr()
         {
             SoundController.Instance.Play("sfx_basement_unlock", Trapdoor.GlobalPosition);

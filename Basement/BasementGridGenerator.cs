@@ -98,6 +98,11 @@ public static class BasementGridGenerator
 
     public static BasementRoomElement AddRoom(Grid<BasementRoomElement> grid, AddRoomSettings settings)
     {
+        if (settings.RoomInfo == null)
+        {
+            Debug.LogError("Added basement room with no info");
+        }
+
         var valid_rooms = grid.Elements
             .Where(x => !x.IsStart)
             .Where(x => string.IsNullOrEmpty(settings.AreaName) || x.AreaName == settings.AreaName)
@@ -116,6 +121,8 @@ public static class BasementGridGenerator
         grid.Set(coord, new_room);
         new_room.Connections.Add(valid_room);
         valid_room.Connections.Add(new_room);
+
+        new_room.Info = settings.RoomInfo;
 
         return new_room;
     }
@@ -144,6 +151,7 @@ public static class BasementGridGenerator
 public class AddRoomSettings
 {
     public string AreaName { get; set; }
+    public BasementRoomInfo RoomInfo { get; set; }
 }
 
 public class BasementSettings

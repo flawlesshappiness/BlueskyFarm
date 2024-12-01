@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=71 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon/Trapdoor.tscn" id="8_je3mm"]
 [ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="8_q5w4g"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="8_vbfot"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="9_t030q"]
 [ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
 [ext_resource type="PackedScene" uid="uid://cr7x5dbwhu7er" path="res://Farming/Prefabs/PlantBoxUnlock.tscn" id="14_dcain"]
@@ -455,6 +456,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
 [node name="BasementUnlockArea" type="Area3D" parent="World/NavigationRegion3D/Basement"]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("8_vbfot")
+CustomId = "basement_key"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Basement/BasementUnlockArea"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.349139, -0.359888)

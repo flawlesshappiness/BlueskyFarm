@@ -6,6 +6,7 @@
 script = ExtResource("1_wpyor")
 Path = "res://Item/Prefabs/Key_Brown.tscn"
 ItemName = "Basement key"
+CustomId = "basement_key"
 Type = 0
 Uses = 0
 IsSeed = false

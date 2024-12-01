@@ -1,6 +1,5 @@
 using Godot;
 using System.Collections;
-using System.Linq;
 
 public partial class BasementWorkshopRoom : Node3DScript
 {
@@ -31,6 +30,7 @@ public partial class BasementWorkshopRoom : Node3DScript
     {
         item.IsBeingHandled = true;
         Data.Game.Flag_WorkshopDoorUnlocked = true;
+        Data.Game.Flag_WorkshopKeyAvailable = false;
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -52,13 +52,10 @@ public partial class BasementWorkshopRoom : Node3DScript
     private void CreateBlueprint()
     {
         var bp_id = "weedcutter";
-        var item_path = ItemController.Instance.Collection.GetResource("Weedcutter").ResourcePath;
-        var scene_data = Data.Game.Scenes.FirstOrDefault(x => x.Name == nameof(FarmScene));
-        var bp_in_scene = scene_data.Items.Any(x => x.Blueprint?.Id == bp_id);
-        var item_in_scene = scene_data.Items.Any(x => x.Info == item_path);
-        var bp_in_inv = Data.Game.InventoryItems.Any(x => x != null && x.Blueprint?.Id == bp_id);
-        var item_in_inv = Data.Game.InventoryItems.Any(x => x != null && x.Info == item_path);
-        var cancel = bp_in_scene || bp_in_inv || item_in_scene || item_in_inv;
+        var item_id = "Weedcutter";
+        var has_bp = Player.Instance.HasAccessToBlueprint(bp_id);
+        var has_item = Player.Instance.HasAccessToItem(item_id);
+        var cancel = has_bp || has_item;
 
         if (cancel) return;
 

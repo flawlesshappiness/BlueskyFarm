@@ -29,17 +29,15 @@ public partial class BasementController : SingletonController
         workshop_element.Info = BasementRoomController.Instance.Collection.GetResource("Basement_Workshop");
 
         // Add special rooms
-        /*
-        if (!Data.Game.Flag_MaterialProcessorFixed)
+        var has_workshop_key = Player.Instance.HasAccessToItem("Key_Workshop");
+        if (Data.Game.Flag_WorkshopKeyAvailable && !has_workshop_key)
         {
-            var room = BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+            BasementGridGenerator.AddRoom(grid, new AddRoomSettings
             {
-                AreaName = AreaNames.Basement
+                AreaName = AreaNames.Basement,
+                RoomInfo = BasementRoomController.Instance.Collection.GetResource("Basement_Well")
             });
-
-            room.Info = GD.Load<BasementRoomInfo>(BasementRoomController.Instance.Collection.MaterialProcessorOilRoom);
         }
-        */
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

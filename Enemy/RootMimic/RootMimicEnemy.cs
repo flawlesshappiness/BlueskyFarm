@@ -90,7 +90,7 @@ public partial class RootMimicEnemy : NavEnemy
     private const float CHANCE_WANDER = 0.5f;
     private const float DIST_WAIT_NEAR = 24;
     private const float DIST_WAIT_FAR = 28;
-    private const float DIST_THREAT = 5;
+    private const float DIST_THREAT = 8;
     private const float DIST_THREAT_ATTACK = 2;
 
     private class Limb

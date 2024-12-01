@@ -487,4 +487,52 @@ public partial class Player : FirstPersonController
             InteractLock.RemoveLock("ragdoll");
         }
     }
+
+    public Coroutine WaitForProgress(float duration, Node3D target)
+    {
+        return Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            var id = GetInstanceId().ToString();
+            MovementLock.AddLock(id);
+            InteractLock.AddLock(id);
+            StartLookingAt(target, 0.05f);
+
+            var time_start = GameTime.Time;
+            var time_end = time_start + duration;
+            while (GameTime.Time < time_end)
+            {
+                var t = (GameTime.Time - time_start) / duration;
+                Cursor.Progress(new ProgressSettings
+                {
+                    Position = target.GlobalPosition,
+                    Value = t
+                });
+                yield return null;
+            }
+
+            MovementLock.RemoveLock(id);
+            InteractLock.RemoveLock(id);
+            StopLookingAt();
+        }
+    }
+
+    public bool HasAccessToItem(string item_id) => HasAccessToItem(ItemController.Instance.Collection.GetResource(item_id));
+    public bool HasAccessToItem(ItemInfo info)
+    {
+        var item_path = info.ResourcePath;
+        var scene_data = Data.Game.Scenes.FirstOrDefault(x => x.Name == nameof(FarmScene));
+        var item_in_scene = scene_data.Items.Any(x => x.Info == item_path);
+        var item_in_inv = Data.Game.InventoryItems.Any(x => x != null && x.Info == item_path);
+        return item_in_scene || item_in_inv;
+    }
+
+    public bool HasAccessToBlueprint(string bp_id)
+    {
+        var scene_data = Data.Game.Scenes.FirstOrDefault(x => x.Name == nameof(FarmScene));
+        var bp_in_scene = scene_data.Items.Any(x => x.Blueprint?.Id == bp_id);
+        var bp_in_inv = Data.Game.InventoryItems.Any(x => x != null && x.Blueprint?.Id == bp_id);
+        var bp_in_progress = Data.Game.BlueprintCraftingData?.Id == bp_id;
+        return bp_in_scene || bp_in_inv || bp_in_progress;
+    }
 }

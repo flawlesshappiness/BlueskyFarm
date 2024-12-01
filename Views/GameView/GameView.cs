@@ -68,7 +68,6 @@ public partial class GameView : View
         InventoryBar.AnimateHide();
     }
 
-    // IDEA: Option to animate text
     public Label CreateText(CreateTextSettings settings)
     {
         if (_create_text_labels.TryGetValue(settings.Id, out var label))

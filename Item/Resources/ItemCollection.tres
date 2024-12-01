@@ -1,12 +1,6 @@
-[gd_resource type="Resource" script_class="ItemCollection" load_steps=5 format=3 uid="uid://c83wsv4ju085d"]
+[gd_resource type="Resource" script_class="ItemCollection" load_steps=2 format=3 uid="uid://c83wsv4ju085d"]
 
-[ext_resource type="Resource" uid="uid://b0mawrch4u8cp" path="res://Item/Resources/Seed_Plant.tres" id="1_2d35c"]
-[ext_resource type="Resource" uid="uid://bws14ev46uhsc" path="res://Item/Resources/Blueprint.tres" id="1_qytvv"]
 [ext_resource type="Script" path="res://Item/ItemCollection.cs" id="1_ui6y8"]
-[ext_resource type="Resource" uid="uid://chtymo0xmbllk" path="res://Item/Resources/Key_Brown.tres" id="2_wirgo"]
 
 [resource]
 script = ExtResource("1_ui6y8")
-Seed = ExtResource("1_2d35c")
-Key = ExtResource("2_wirgo")
-Blueprint = ExtResource("1_qytvv")

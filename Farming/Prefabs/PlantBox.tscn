@@ -21,6 +21,7 @@ size = Vector3(1, 0.267517, 1)
 
 [node name="PlantBox" type="Node3D"]
 script = ExtResource("1_qlu5f")
+WeedArea = Vector3(0.5, 0, 0.5)
 
 [node name="TouchPlant" type="Node3D" parent="."]
 script = ExtResource("3_sm5dc")

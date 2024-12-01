@@ -10,7 +10,19 @@ public partial class BasementWellRoom : Node3DScript
     public Node3D KeyOnRope;
 
     [NodeName]
+    public Node3D HandleItemPosition;
+
+    [NodeName]
     public Touchable KeyOnRopeTouchable;
+
+    [NodeName]
+    public Touchable MissingHandleTouchable;
+
+    [NodeName]
+    public Touchable SomethingInWellTouchable;
+
+    [NodeName]
+    public ItemArea HandleArea;
 
     private bool _key_collected;
 
@@ -24,6 +36,30 @@ public partial class BasementWellRoom : Node3DScript
         Well.OnLower += OnWellAnimate;
 
         KeyOnRopeTouchable.OnTouched += KeyOnRope_Touched;
+        SomethingInWellTouchable.OnTouched += SomethingInWell_Touched;
+
+        HandleArea.OnItemEntered += HandleArea_ItemEntered;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        InitializeHandle();
+    }
+
+    private void InitializeHandle()
+    {
+        MissingHandleTouchable.SetEnabled(!Data.Game.Flag_WorkshopWellRepaired);
+        SomethingInWellTouchable.SetEnabled(!Data.Game.Flag_WorkshopWellRepaired);
+
+        if (Data.Game.Flag_WorkshopWellRepaired) return;
+
+        Well.Handle.Disable();
+        Well.HandleTouchable.Disable();
+
+        var item_handle = ItemController.Instance.CreateItem("WellHandle");
+        item_handle.GlobalPosition = HandleItemPosition.GlobalPosition;
+        item_handle.GlobalRotation = HandleItemPosition.GlobalRotation;
     }
 
     private void OnWellAnimate()
@@ -62,5 +98,33 @@ public partial class BasementWellRoom : Node3DScript
 
             KeyOnRope.Disable();
         }
+    }
+
+    private void HandleArea_ItemEntered(Item item)
+    {
+        Data.Game.Flag_WorkshopWellRepaired = true;
+
+        item.IsBeingHandled = true;
+        item.QueueFree();
+
+        SoundController.Instance.Play("sfx_attach_wood", Well.Handle.GlobalPosition);
+
+        Well.Handle.Enable();
+        Well.HandleTouchable.Enable();
+
+        HandleArea.Disable();
+        MissingHandleTouchable.Disable();
+        SomethingInWellTouchable.Disable();
+    }
+
+    private void SomethingInWell_Touched()
+    {
+        GameView.Instance.CreateText(new CreateTextSettings
+        {
+            Id = "something_in_well_" + GetInstanceId(),
+            Duration = 5.0f,
+            Position = SomethingInWellTouchable.GlobalPosition.Add(y: 0.2f),
+            Text = "##SOMETHING_DOWN_THERE##"
+        });
     }
 }

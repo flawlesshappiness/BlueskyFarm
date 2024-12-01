@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cgcwdxvpavo73"]
+
+[ext_resource type="AudioStream" uid="uid://ca0ca0m70xdpv" path="res://Sound/Sounds/sfx_step_walk.ogg" id="1_7748h"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_2mjpp"]
+
+[resource]
+script = ExtResource("2_2mjpp")
+AudioStreams = Array[AudioStream]([ExtResource("1_7748h")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 1

@@ -7,6 +7,9 @@ public partial class BasementWell : Node3DScript
     public AnimationPlayer AnimationPlayer;
 
     [NodeName]
+    public Node3D Handle;
+
+    [NodeName]
     public Touchable HandleTouchable;
 
     [NodeName]

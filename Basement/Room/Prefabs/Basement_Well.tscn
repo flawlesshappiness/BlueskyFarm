@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btp1aaeioslg2"]
+[gd_scene load_steps=28 format=3 uid="uid://btp1aaeioslg2"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_4wkfx"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="2_bsgfs"]
@@ -11,13 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://b64jan0k0ffg8" path="res://Basement/Assets/Dungeon/Stairs_Stone.tscn" id="5_bqawn"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="5_sbye0"]
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Dungeon/Pillar.tscn" id="6_70pi8"]
-[ext_resource type="PackedScene" uid="uid://d3qi3iiygfr1b" path="res://Basement/Assets/Dungeon/Floor_Stone.tscn" id="9_qk5w3"]
 [ext_resource type="PackedScene" uid="uid://dxk2tkklkpjc8" path="res://Basement/Assets/Scaffold/Scaffold_Railing_Corner_Convex.tscn" id="10_b4aw8"]
 [ext_resource type="PackedScene" uid="uid://b8pl05r0sc17o" path="res://Basement/Assets/Dungeon/Well/Well.tscn" id="12_64s6i"]
 [ext_resource type="PackedScene" uid="uid://dhtudodcvd1bu" path="res://Assets/Quaternius/RPG/key1_on_rope.fbx" id="13_5p27i"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="13_6jpv3"]
 [ext_resource type="Script" path="res://Basement/Room/BasementWellRoom.cs" id="15_5a6tu"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="18_pupgp"]
+[ext_resource type="Texture2D" uid="uid://j4de0xeenph1" path="res://Assets/KenneyNL/Cursors/transparent.png" id="19_ncmlv"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="19_rtbro"]
+[ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="20_x4nks"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idsqn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -29,6 +31,15 @@ size = Vector2(4, 16)
 [sub_resource type="QuadMesh" id="QuadMesh_gfwek"]
 material = SubResource("StandardMaterial3D_idsqn")
 size = Vector2(24, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_td8is"]
+size = Vector3(0.299896, 0.236084, 0.195557)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mmbs"]
+size = Vector3(0.344482, 0.296875, 0.324219)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfx1h"]
+size = Vector3(1, 0.542725, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1qe8c"]
 size = Vector3(0.40625, 0.918823, 0.240234)
@@ -367,92 +378,92 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 [node name="Floor_Basement_031" parent="Floor" index="9" instance=ExtResource("2_bsgfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -4)
 
-[node name="Floor_Basement_033" parent="Floor" index="10" instance=ExtResource("2_bsgfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 4)
+[node name="Floor_Basement_032" parent="Floor" index="10" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
-[node name="Floor_Basement_034" parent="Floor" index="11" instance=ExtResource("2_bsgfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 8)
-
-[node name="Floor_Basement_025" parent="Floor" index="12" instance=ExtResource("2_bsgfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 0)
-
-[node name="Floor_Basement_026" parent="Floor" index="13" instance=ExtResource("2_bsgfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, -4)
-
-[node name="Floor_Basement_028" parent="Floor" index="14" instance=ExtResource("2_bsgfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 4)
-
-[node name="Floor_Basement_029" parent="Floor" index="15" instance=ExtResource("2_bsgfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 8)
-
-[node name="Scaffold_Railing" parent="Floor" index="16" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 0)
-
-[node name="Scaffold_Railing2" parent="Floor" index="17" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -4)
-
-[node name="Scaffold_Railing4" parent="Floor" index="18" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 4)
-
-[node name="Scaffold_Railing5" parent="Floor" index="19" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 8)
-
-[node name="Scaffold_Railing6" parent="Floor" index="20" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 12)
-
-[node name="Scaffold_Railing7" parent="Floor" index="21" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, 12)
-
-[node name="Scaffold_Railing9" parent="Floor" index="22" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 12)
-
-[node name="Scaffold_Railing11" parent="Floor" index="23" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 0)
-
-[node name="Scaffold_Railing12" parent="Floor" index="24" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 4)
-
-[node name="Scaffold_Railing13" parent="Floor" index="25" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 8)
-
-[node name="Scaffold_Railing14" parent="Floor" index="26" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, -4)
-
-[node name="Scaffold_Railing16" parent="Floor" index="27" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 0, 0, -8)
-
-[node name="Scaffold_Railing17" parent="Floor" index="28" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 4, 0, -8)
-
-[node name="Scaffold_Railing18" parent="Floor" index="29" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 8, 0, -8)
-
-[node name="Scaffold_Railing19" parent="Floor" index="30" instance=ExtResource("3_1ry4u")]
-transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, -4, 0, -8)
-
-[node name="Scaffold" parent="Floor" index="31" instance=ExtResource("4_fubq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
-
-[node name="Scaffold2" parent="Floor" index="32" instance=ExtResource("4_fubq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
-
-[node name="Scaffold3" parent="Floor" index="33" instance=ExtResource("4_fubq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 12)
-
-[node name="Scaffold4" parent="Floor" index="34" instance=ExtResource("4_fubq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
-
-[node name="Scaffold5" parent="Floor" index="35" instance=ExtResource("4_fubq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
-
-[node name="Stairs_Stone" parent="Floor" index="36" instance=ExtResource("5_bqawn")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, -4, 6)
-
-[node name="Floor_Dirt" parent="Floor" index="37" instance=ExtResource("9_qk5w3")]
+[node name="Floor_Basement_037" parent="Floor" index="11" instance=ExtResource("2_bsgfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
-[node name="Floor_Dirt2" parent="Floor" index="38" instance=ExtResource("9_qk5w3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+[node name="Floor_Basement_033" parent="Floor" index="12" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 4)
+
+[node name="Floor_Basement_034" parent="Floor" index="13" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 8)
+
+[node name="Floor_Basement_025" parent="Floor" index="14" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 0)
+
+[node name="Floor_Basement_026" parent="Floor" index="15" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, -4)
+
+[node name="Floor_Basement_028" parent="Floor" index="16" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 4)
+
+[node name="Floor_Basement_029" parent="Floor" index="17" instance=ExtResource("2_bsgfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 8)
+
+[node name="Scaffold_Railing" parent="Floor" index="18" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 0)
+
+[node name="Scaffold_Railing2" parent="Floor" index="19" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -4)
+
+[node name="Scaffold_Railing4" parent="Floor" index="20" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 4)
+
+[node name="Scaffold_Railing5" parent="Floor" index="21" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 8)
+
+[node name="Scaffold_Railing6" parent="Floor" index="22" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 12)
+
+[node name="Scaffold_Railing7" parent="Floor" index="23" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, 12)
+
+[node name="Scaffold_Railing9" parent="Floor" index="24" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 12)
+
+[node name="Scaffold_Railing11" parent="Floor" index="25" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 0)
+
+[node name="Scaffold_Railing12" parent="Floor" index="26" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 4)
+
+[node name="Scaffold_Railing13" parent="Floor" index="27" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 8)
+
+[node name="Scaffold_Railing14" parent="Floor" index="28" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, -4)
+
+[node name="Scaffold_Railing16" parent="Floor" index="29" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 0, 0, -8)
+
+[node name="Scaffold_Railing17" parent="Floor" index="30" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 4, 0, -8)
+
+[node name="Scaffold_Railing18" parent="Floor" index="31" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 8, 0, -8)
+
+[node name="Scaffold_Railing19" parent="Floor" index="32" instance=ExtResource("3_1ry4u")]
+transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, -4, 0, -8)
+
+[node name="Scaffold" parent="Floor" index="33" instance=ExtResource("4_fubq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
+
+[node name="Scaffold2" parent="Floor" index="34" instance=ExtResource("4_fubq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="Scaffold3" parent="Floor" index="35" instance=ExtResource("4_fubq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 12)
+
+[node name="Scaffold4" parent="Floor" index="36" instance=ExtResource("4_fubq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="Scaffold5" parent="Floor" index="37" instance=ExtResource("4_fubq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="Stairs_Stone" parent="Floor" index="38" instance=ExtResource("5_bqawn")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, -4, 6)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" index="39"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 12, 0, 2)
@@ -478,6 +489,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0,
 
 [node name="Scaffold_Corner_Convex4" parent="Floor" index="45" instance=ExtResource("10_b4aw8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, -8)
+
+[node name="Ceiling" parent="." index="6"]
+visible = false
 
 [node name="Ceiling" parent="Ceiling" index="0" instance=ExtResource("13_6jpv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 12)
@@ -594,7 +608,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -8)
 
 [node name="EnemySpawn" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="Lights" type="Node3D" parent="." index="10"]
 
@@ -610,6 +624,42 @@ script = ExtResource("15_5a6tu")
 
 [node name="Well" parent="BasementWellRoom" index="0" instance=ExtResource("12_64s6i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -4, 2)
+
+[node name="HandleArea" type="Area3D" parent="BasementWellRoom/Well" index="5"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("19_rtbro")
+CustomId = "well_handle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/HandleArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4148, 1.28711, 6.62752e-08)
+shape = SubResource("BoxShape3D_td8is")
+
+[node name="MissingHandleTouchable" type="Node3D" parent="BasementWellRoom/Well" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29934, 1.32973, 5.67958e-08)
+script = ExtResource("18_pupgp")
+InteractableText = "##MISSING_HANDLE##"
+OverrideCursorTexture = ExtResource("19_ncmlv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BasementWellRoom/Well/MissingHandleTouchable" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/MissingHandleTouchable/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146362, 0, 0)
+shape = SubResource("BoxShape3D_7mmbs")
+
+[node name="SomethingInWellTouchable" type="Node3D" parent="BasementWellRoom/Well" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00787699, 0.800258, 1.19554e-07)
+script = ExtResource("18_pupgp")
+OverrideCursorTexture = ExtResource("20_x4nks")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BasementWellRoom/Well/SomethingInWellTouchable" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/SomethingInWellTouchable/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_gfx1h")
 
 [node name="KeyOnRope" type="Node3D" parent="BasementWellRoom" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, -2.5, 2)
@@ -628,3 +678,6 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/KeyOnRope/KeyOnRopeTouchable/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0220337, 0)
 shape = SubResource("BoxShape3D_1qe8c")
+
+[node name="HandleItemPosition" type="Node3D" parent="BasementWellRoom" index="2"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2, -3.5, -2.25812)

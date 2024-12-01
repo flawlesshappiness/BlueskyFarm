@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc1hbs5fiqmpl"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_qcwgi"]
+[ext_resource type="PackedScene" uid="uid://cu48ee0sfxvpe" path="res://Assets/FlawLizArt/Well/well_handle.fbx" id="2_83uns"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qihmv"]
+size = Vector3(0.629883, 0.1, 0.362305)
+
+[node name="WellHandle" instance=ExtResource("1_qcwgi")]
+InteractableText = "Handle"
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+shape = SubResource("BoxShape3D_qihmv")
+
+[node name="well_handle" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_83uns")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.168537, -0.00340478, -0.131084)

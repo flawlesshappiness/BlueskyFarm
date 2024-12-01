@@ -27,8 +27,14 @@ public partial class BasementDoor : Node3DScript
     public override void _Ready()
     {
         base._Ready();
+        AnimationPlayer.AnimationFinished += AnimationFinished;
         Touchable.OnTouched += Touched;
         SetOpen(false);
+    }
+
+    private void AnimationFinished(StringName name)
+    {
+        Touchable.Enable();
     }
 
     private void Touched()
@@ -66,6 +72,7 @@ public partial class BasementDoor : Node3DScript
     {
         AnimationPlayer.Play("open");
         SoundController.Instance.Play(OpenSFX, Touchable.GlobalPosition);
+        Touchable.Disable();
         _open = true;
     }
 
@@ -73,6 +80,7 @@ public partial class BasementDoor : Node3DScript
     {
         AnimationPlayer.Play("close");
         SoundController.Instance.Play(CloseSFX, Touchable.GlobalPosition);
+        Touchable.Disable();
         _open = false;
     }
 

@@ -91,6 +91,7 @@ public partial class RootMimicEnemy : NavEnemy
     private const float DIST_WAIT_NEAR = 24;
     private const float DIST_WAIT_FAR = 28;
     private const float DIST_THREAT = 8;
+    private const float DIST_THREAT_CLOSE = 4;
     private const float DIST_THREAT_ATTACK = 2;
 
     private class Limb
@@ -375,7 +376,7 @@ public partial class RootMimicEnemy : NavEnemy
             yield return null;
         }
 
-        if (DistanceToPlayer < DIST_THREAT)
+        if (DistanceToPlayer < DIST_THREAT_CLOSE)
         {
             Player.StopLookingAt();
             SetState(State.Attacking);

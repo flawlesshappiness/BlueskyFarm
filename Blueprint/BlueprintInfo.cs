@@ -7,6 +7,9 @@ public partial class BlueprintInfo : Resource
     public string Id;
 
     [Export]
+    public Texture2D ResultIcon;
+
+    [Export]
     public ItemInfo ResultItemInfo;
 
     [Export]

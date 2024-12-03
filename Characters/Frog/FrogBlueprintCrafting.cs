@@ -33,7 +33,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
     private void LoadData()
     {
         var has_data = Data.Game.BlueprintCraftingData != null;
-        Display.UpdateText(Data.Game.BlueprintCraftingData);
+        Display.UpdateFromData(Data.Game.BlueprintCraftingData);
         Display.SetVisible(has_data);
         SetCancelEnabled(has_data);
     }
@@ -49,7 +49,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         {
             AddMaterial(item);
         }
-        else if (IsValidBlueprint(item))
+        else if (!HasBlueprint && IsValidBlueprint(item))
         {
             SetBlueprint(item);
         }
@@ -130,7 +130,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
 
         Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Vegetable, Max = bp_info.VegetableCount });
 
-        Display.UpdateText(Data.Game.BlueprintCraftingData);
+        Display.UpdateFromData(Data.Game.BlueprintCraftingData);
 
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
@@ -159,7 +159,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
             yield return item.AnimateDisappearAndQueueFree();
 
             ValidateBlueprint();
-            Display.UpdateText(Data.Game.BlueprintCraftingData);
+            Display.UpdateFromData(Data.Game.BlueprintCraftingData);
             SetCancelEnabled(true);
         }
     }

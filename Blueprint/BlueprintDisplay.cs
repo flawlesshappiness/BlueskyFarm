@@ -14,6 +14,9 @@ public partial class BlueprintDisplay : Node3DScript
     [NodeName]
     public BlueprintDisplayCounter Counter3;
 
+    [NodeName]
+    public Sprite3D ResultIcon;
+
     [NodeType]
     public Touchable Touchable;
 
@@ -31,9 +34,12 @@ public partial class BlueprintDisplay : Node3DScript
         _counters = new() { Counter1, Counter2, Counter3 };
     }
 
-    public void UpdateText(BlueprintCraftingData data)
+    public void UpdateFromData(BlueprintCraftingData data)
     {
         if (data == null) return;
+
+        var info = BlueprintController.Instance.GetInfo(data.Id);
+        ResultIcon.Texture = info.ResultIcon;
 
         for (int i = 0; i < _counters.Count; i++)
         {

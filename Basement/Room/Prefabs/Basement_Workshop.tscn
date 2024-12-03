@@ -510,57 +510,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
 [node name="Lantern2" parent="Lights" index="0" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.116, 8, 0.0620003)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern3" parent="Lights" index="1" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.116, 8, -1.938)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Lantern4" parent="Lights" index="2" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.75, -6.5)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern6" parent="Lights" index="3" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3.75, -2)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern6" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern5" parent="Lights" index="4" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.75, 2.5)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern5" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="BasementWorkshopRoom" type="Node3D" parent="." index="12"]
 script = ExtResource("18_ca1gp")

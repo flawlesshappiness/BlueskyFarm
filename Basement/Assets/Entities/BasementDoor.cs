@@ -9,12 +9,6 @@ public partial class BasementDoor : Node3DScript
     public Touchable Touchable;
 
     [Export]
-    public string OpenSFX = "sfx_door_open";
-
-    [Export]
-    public string CloseSFX = "sfx_door_close";
-
-    [Export]
     public string LockedSFX = "sfx_locked";
 
     [Export]
@@ -71,7 +65,6 @@ public partial class BasementDoor : Node3DScript
     public void Open()
     {
         AnimationPlayer.Play("open");
-        SoundController.Instance.Play(OpenSFX, Touchable.GlobalPosition);
         Touchable.Disable();
         _open = true;
     }
@@ -79,7 +72,6 @@ public partial class BasementDoor : Node3DScript
     public void Close()
     {
         AnimationPlayer.Play("close");
-        SoundController.Instance.Play(CloseSFX, Touchable.GlobalPosition);
         Touchable.Disable();
         _open = false;
     }

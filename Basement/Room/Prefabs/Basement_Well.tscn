@@ -64,14 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
 [node name="Lantern3" parent="North/Open" index="2" instance=ExtResource("4_r178n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -8)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="North/Open/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Wall29" parent="East/Closed" index="0" instance=ExtResource("5_sbye0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, 0)
 
@@ -83,14 +75,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
 
 [node name="Lantern3" parent="East/Open" index="2" instance=ExtResource("4_r178n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="East/Open/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Wall30" parent="South/Closed" index="0" instance=ExtResource("5_sbye0")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 14)
@@ -104,14 +88,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 14)
 [node name="Lantern3" parent="South/Open" index="2" instance=ExtResource("4_r178n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 12)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="South/Open/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Wall27" parent="West/Closed" index="0" instance=ExtResource("5_sbye0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 0)
 
@@ -123,14 +99,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
 
 [node name="Lantern3" parent="West/Open" index="2" instance=ExtResource("4_r178n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="West/Open/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Wall_Stairs_Left" parent="Walls" index="0" instance=ExtResource("2_fu436")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, -4, 8)

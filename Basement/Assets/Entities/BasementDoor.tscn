@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4y6dw6sr015q"]
+[gd_scene load_steps=14 format=3 uid="uid://c4y6dw6sr015q"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_40cx2"]
 [ext_resource type="PackedScene" uid="uid://cvm2gm8rbbnwa" path="res://Assets/KayLousberg/Dungeon 1.1/door.fbx" id="1_ctwho"]
+[ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="2_7ojik"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="3_3pxfy"]
+[ext_resource type="AudioStream" uid="uid://dmjatd05k5t12" path="res://Sound/Sounds/sfx_door_clicks_001.wav" id="3_47u1y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n0nwd"]
 size = Vector3(2, 2.75, 0.25)
@@ -24,9 +26,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim/Model/SfxClicks:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim/Model/SfxCreak:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_xvd0h"]
 resource_name = "close"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,6 +65,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 1.309, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim/Model/SfxCreak:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim/Model/SfxClicks:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.933333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_grjwa"]
@@ -68,6 +119,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.309, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim/Model/SfxClicks:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim/Model/SfxCreak:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_h4khl"]
@@ -102,6 +177,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [node name="Model" type="Node3D" parent="Anim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="SfxCreak" type="AudioStreamPlayer3D" parent="Anim/Model"]
+transform = Transform3D(0.258816, 0, -0.965927, 0, 1, 0, 0.965927, 0, 0.258816, 0, 1.25, 0)
+stream = ExtResource("2_7ojik")
+
+[node name="SfxClicks" type="AudioStreamPlayer3D" parent="Anim/Model"]
+transform = Transform3D(0.258816, 0, -0.965927, 0, 1, 0, 0.965927, 0, 0.258816, 0, 1.25, 0)
+stream = ExtResource("3_47u1y")
 
 [node name="door" parent="Anim/Model" instance=ExtResource("1_ctwho")]
 

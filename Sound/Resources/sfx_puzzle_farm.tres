@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=4 format=3 uid="uid://4ba36s0ccxs4"]
+
+[ext_resource type="AudioStream" uid="uid://vxdjbe13yu7o" path="res://Sound/Sounds/sfx_puzzle_farm_001.wav" id="1_ac4bn"]
+[ext_resource type="AudioStream" uid="uid://b5rupvtsi0ln0" path="res://Sound/Sounds/sfx_puzzle_farm_002.wav" id="2_woruo"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_fu70j"]
+
+[resource]
+script = ExtResource("3_fu70j")
+AudioStreams = Array[AudioStream]([ExtResource("1_ac4bn"), ExtResource("2_woruo")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 1

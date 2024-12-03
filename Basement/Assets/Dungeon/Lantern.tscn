@@ -87,4 +87,11 @@ visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_uhh7e")
 draw_pass_1 = SubResource("QuadMesh_jpans")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
+light_color = Color(0.909804, 0.6, 0.262745, 1)
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 8.40261
+
 [editable path="hanging_lantern_new"]

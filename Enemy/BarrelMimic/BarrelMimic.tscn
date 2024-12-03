@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vgevf"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_rtp2d"]
 [ext_resource type="AudioStream" uid="uid://baxjb86uhg6fm" path="res://Sound/Sounds/sfx_barrelmimic_open.wav" id="5_ltcm4"]
-[ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_barrelmimic_stand.wav" id="5_ujew6"]
+[ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="5_ujew6"]
 [ext_resource type="AudioStream" uid="uid://yn8uauv37uiy" path="res://Sound/Sounds/sfx_barrelmimic_scare.wav" id="7_sj3xk"]
 [ext_resource type="AudioStream" uid="uid://c1i6542v8e2p2" path="res://Sound/Sounds/sfx_barrelmimic_walk.wav" id="8_psaab"]
 

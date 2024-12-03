@@ -179,6 +179,8 @@ public partial class FrogBlueprintCrafting : Node3DScript
             CreateResult(Data.Game.BlueprintCraftingData);
             OnBlueprintCompleted?.Invoke(Data.Game.BlueprintCraftingData.Id);
             Data.Game.BlueprintCraftingData = null;
+
+            SoundController.Instance.Play("sfx_crafting_complete");
         }
     }
 

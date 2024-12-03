@@ -9,6 +9,7 @@ public partial class DialogueController : SingletonController
     public override string Directory => "Dialogue";
     public static DialogueController Instance => Singleton.Get<DialogueController>();
     public DialogueNode CurrentNode { get; private set; }
+    public DialogueCharacter CurrentCharacter { get; private set; }
 
     public event Action<DialogueNode> OnDialogue;
     public event Action OnDialogueStart;
@@ -214,5 +215,15 @@ public partial class DialogueController : SingletonController
 
             OnDialogueTrigger?.Invoke(trigger);
         }
+    }
+
+    public void SetCharacter(DialogueCharacter character)
+    {
+        CurrentCharacter = character;
+    }
+
+    public void ClearCharacter()
+    {
+        CurrentCharacter = null;
     }
 }

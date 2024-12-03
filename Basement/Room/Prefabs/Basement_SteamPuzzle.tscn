@@ -784,68 +784,20 @@ metadata/_edit_lock_ = true
 [node name="Lantern2" parent="Lights" index="0" instance=ExtResource("8_ptrk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.309, 8, -4.959)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern6" parent="Lights" index="1" instance=ExtResource("8_ptrk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.941, 8, -4.959)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern6" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Lantern7" parent="Lights" index="2" instance=ExtResource("8_ptrk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059, 8, 7.791)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern7" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern3" parent="Lights" index="3" instance=ExtResource("8_ptrk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.691, 3.82352, -7.78628)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Lantern5" parent="Lights" index="4" instance=ExtResource("8_ptrk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02583, 3.82352, -6.03628)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern5" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern4" parent="Lights" index="5" instance=ExtResource("8_ptrk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.809, 8, 0.0409999)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832668, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Pipes" type="Node3D" parent="." index="12"]
 

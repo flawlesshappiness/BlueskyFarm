@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://r7qs7l18m2i0"]
+[gd_scene load_steps=12 format=3 uid="uid://r7qs7l18m2i0"]
 
 [ext_resource type="PackedScene" uid="uid://cpoduyeleoxek" path="res://Characters/CharacterBase.tscn" id="1_jlthq"]
 [ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/Frog.fbx" id="2_58xa5"]
 [ext_resource type="Script" path="res://Characters/Frog/FrogCharacter.cs" id="2_e73ro"]
+[ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://Characters/Frog/FrogDialogueCharacter.tres" id="3_q6ye7"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_xkswj"]
 [ext_resource type="Texture2D" uid="uid://b0benq6rk0e8n" path="res://Assets/KenneyNL/Cursors/message_dots_round.png" id="5_kdtbk"]
 [ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="6_653gd"]
@@ -18,6 +19,8 @@ size = Vector3(1, 1.51624, 1.22208)
 
 [node name="Frog" instance=ExtResource("1_jlthq")]
 script = ExtResource("2_e73ro")
+CharacterId = "frog"
+DialogueCharacterInfo = ExtResource("3_q6ye7")
 
 [node name="Frog" parent="." index="1" instance=ExtResource("2_58xa5")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)

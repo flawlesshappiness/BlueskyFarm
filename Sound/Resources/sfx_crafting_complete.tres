@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=4 format=3 uid="uid://dl5vduugeulgy"]
+
+[ext_resource type="AudioStream" uid="uid://w3vd1w53agsv" path="res://Sound/Sounds/sfx_crafting_complete_001.wav" id="1_7v3rb"]
+[ext_resource type="AudioStream" uid="uid://ds335742bgugn" path="res://Sound/Sounds/sfx_crafting_complete_002.wav" id="2_b7mnm"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_sf063"]
+
+[resource]
+script = ExtResource("3_sf063")
+AudioStreams = Array[AudioStream]([ExtResource("1_7v3rb"), ExtResource("2_b7mnm")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 1

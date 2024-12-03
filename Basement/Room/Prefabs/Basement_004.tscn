@@ -774,7 +774,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.496
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.24537e-07, 4, 12)
 
 [node name="Pipes" type="Node3D" parent="." index="10"]
-visible = false
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Pipes" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -1011,24 +1010,8 @@ transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.371
 [node name="Lantern2" parent="Lights" index="0" instance=ExtResource("13_j7q3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6.76233, 2)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern3" parent="Lights" index="1" instance=ExtResource("13_j7q3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6.76233, -2)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="Mushrooms" type="Node3D" parent="." index="12"]
 

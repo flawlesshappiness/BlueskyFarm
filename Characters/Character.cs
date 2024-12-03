@@ -6,11 +6,17 @@ public partial class Character : Node3DScript
     [Export]
     public string CharacterId;
 
+    [Export]
+    public DialogueCharacterInfo DialogueCharacterInfo;
+
     [NodeType]
     public AnimationPlayer AnimationPlayer;
 
     [NodeType]
     public AnimationStateMachine AnimationStateMachine;
+
+    [NodeName]
+    public Node3D DialogueSoundOrigin;
 
     public CharacterData CharacterData { get; private set; }
     protected bool ActiveDialogue { get; private set; }
@@ -65,6 +71,13 @@ public partial class Character : Node3DScript
     protected void StartDialogue(string name)
     {
         ActiveDialogue = true;
+
+        DialogueController.Instance.SetCharacter(new DialogueCharacter
+        {
+            Info = DialogueCharacterInfo,
+            SoundOrigin = DialogueSoundOrigin
+        });
+
         DialogueController.Instance.SetNode(name);
     }
 

@@ -9,12 +9,10 @@ public partial class DialogueControl : ControlScript
     [NodeName]
     public Label DialogueLabel;
 
-    [NodeName]
-    public AudioStreamPlayer SfxVoice;
-
     private bool _animating_text;
     private Coroutine _cr_animate_text;
     private float _time_next_voice;
+    private AudioStreamPlayer3D _prev_character_voice;
 
     public override void _Ready()
     {
@@ -109,9 +107,16 @@ public partial class DialogueControl : ControlScript
         if (GameTime.Time < _time_next_voice) return;
         _time_next_voice = GameTime.Time + 0.07f;
 
-        var rng = new RandomNumberGenerator();
-        SfxVoice.PitchScale = rng.RandfRange(0.95f, 1f);
-        SfxVoice.Play();
+        if (IsInstanceValid(_prev_character_voice) && !_prev_character_voice.IsQueuedForDeletion())
+        {
+            _prev_character_voice.Stop();
+        }
+
+        var character = DialogueController.Instance.CurrentCharacter;
+        if (character != null)
+        {
+            _prev_character_voice = SoundController.Instance.Play(character.Info.TextSound, character.SoundOrigin.GlobalPosition);
+        }
     }
 
     private void AnimateBackgroundShow()

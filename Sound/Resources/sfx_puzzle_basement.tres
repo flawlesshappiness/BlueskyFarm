@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=4 format=3 uid="uid://d0hfm0472u26n"]
+
+[ext_resource type="AudioStream" uid="uid://cgnfuiaa43wnv" path="res://Sound/Sounds/sfx_puzzle_basement_001.wav" id="1_dap0a"]
+[ext_resource type="AudioStream" uid="uid://ba0q2hvcmjc8" path="res://Sound/Sounds/sfx_puzzle_basement_002.wav" id="2_ng4hi"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_knkhd"]
+
+[resource]
+script = ExtResource("4_knkhd")
+AudioStreams = Array[AudioStream]([ExtResource("1_dap0a"), ExtResource("2_ng4hi")])
+Volume = 0.0
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 1

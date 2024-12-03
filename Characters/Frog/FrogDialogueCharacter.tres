@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueCharacterInfo" load_steps=3 format=3 uid="uid://daqgs1cpi1mu3"]
+
+[ext_resource type="Resource" uid="uid://bme185tthsu5e" path="res://Sound/Resources/sfx_character_frog.tres" id="1_6i4hi"]
+[ext_resource type="Script" path="res://Dialogue/DialogueCharacterInfo.cs" id="1_n48be"]
+
+[resource]
+script = ExtResource("1_n48be")
+TextSound = ExtResource("1_6i4hi")

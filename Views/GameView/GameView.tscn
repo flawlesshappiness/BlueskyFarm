@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdco18oe37rhc"]
+[gd_scene load_steps=7 format=3 uid="uid://bdco18oe37rhc"]
 
 [ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
 [ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Views/GameView/DialogueControl.cs" id="5_cmyes"]
 [ext_resource type="Texture2D" uid="uid://mbhvgvfouhgx" path="res://Assets/FlawLizArt/UI/ui_gradient.png" id="5_fvv0q"]
 [ext_resource type="PackedScene" uid="uid://caxidipwbdxhk" path="res://UI/InventoryBar/InventoryBar.tscn" id="6_iodv3"]
-[ext_resource type="AudioStream" uid="uid://0tnt7d511eee" path="res://Sound/Sounds/sfx_voice_frog.wav" id="7_a4mg0"]
 
 [node name="GameView" type="Control"]
 layout_mode = 3
@@ -109,9 +108,6 @@ theme = ExtResource("3_vtgjj")
 text = "Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla "
 autowrap_mode = 2
 text_overrun_behavior = 3
-
-[node name="SfxVoice" type="AudioStreamPlayer" parent="Dialogue"]
-stream = ExtResource("7_a4mg0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

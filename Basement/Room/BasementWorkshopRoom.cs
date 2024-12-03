@@ -39,6 +39,7 @@ public partial class BasementWorkshopRoom : Node3DScript
             SoundController.Instance.Play("sfx_throw_light", position);
             yield return item.AnimateDisappearAndQueueFree();
             SoundController.Instance.Play("sfx_unlock", position);
+            SoundController.Instance.Play("sfx_puzzle_basement");
             SetWorkshopDoorLocked(false);
         }
     }

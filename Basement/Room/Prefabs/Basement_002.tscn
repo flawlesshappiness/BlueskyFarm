@@ -297,9 +297,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
 [node name="Floor_Basement_019" parent="Floor" index="24" instance=ExtResource("7_lk8dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 
-[node name="Ceiling" parent="." index="6"]
-visible = false
-
 [node name="Ceiling17" parent="Ceiling" index="0" instance=ExtResource("6_auaqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 metadata/_edit_lock_ = true
@@ -421,24 +418,8 @@ metadata/_edit_lock_ = true
 [node name="Lantern" parent="Lights" index="0" instance=ExtResource("5_l0cl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
-
 [node name="Lantern2" parent="Lights" index="1" instance=ExtResource("5_l0cl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Lantern2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875455, 0)
-light_color = Color(0.909804, 0.6, 0.262745, 1)
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 8.40261
 
 [node name="InteriorGroups" type="Node3D" parent="." index="11"]
 

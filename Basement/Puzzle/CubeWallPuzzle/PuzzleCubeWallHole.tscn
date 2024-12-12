@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://8whgrmaeb8sa"]
+
+[ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWallHole.cs" id="1_0eu2s"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_1olt8"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="2_a30s5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyb32"]
+size = Vector3(0.25, 0.25, 0.0997334)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olo5d"]
+size = Vector3(0.362305, 0.363525, 0.0994873)
+
+[node name="PuzzleCubeWallHole" type="Node3D"]
+script = ExtResource("1_0eu2s")
+
+[node name="AreaHole" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.233399)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_a30s5")
+CustomId = "puzzle_cube"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000283688)
+shape = SubResource("BoxShape3D_gyb32")
+
+[node name="InsidePosition" type="Node3D" parent="."]
+
+[node name="OutsidePosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.405263)
+
+[node name="EjectTouchable" type="Node3D" parent="."]
+script = ExtResource("2_1olt8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EjectTouchable"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EjectTouchable/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.232483)
+shape = SubResource("BoxShape3D_olo5d")

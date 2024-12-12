@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=3 format=3 uid="uid://d4h8fktgtmy5"]
+
+[ext_resource type="Texture2D" uid="uid://cce86y6lbhnua" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_inventory.png" id="1_5vd1k"]
+[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="2_jre0c"]
+
+[resource]
+script = ExtResource("2_jre0c")
+Id = "inventory_001"
+ResultIcon = ExtResource("1_5vd1k")
+ResultDialogueNode = ""
+VegetableCount = 10
+CanCancel = true

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://ct6eipqfviu6d"]
+
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_xajf4"]
+
+[resource]
+script = ExtResource("1_xajf4")
+Path = "res://Basement/Puzzle/CubeWallPuzzle/PuzzleCube.tscn"
+ItemName = ""
+CustomId = "puzzle_cube"
+Type = 0
+Uses = 0
+IsSeed = false
+SeedResultType = 0
+GrowTimeInSeconds = 0
+CanPickUp = true
+Untrack = false
+InventoryItemCameraDistance = 0.75
+InventoryItemRotationOffset = 45.0

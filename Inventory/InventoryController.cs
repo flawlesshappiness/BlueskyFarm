@@ -19,6 +19,7 @@ public partial class InventoryController : SingletonController
     public event Action<int> OnItemRemoved;
     public event Action<int> OnSelectedItemChanged;
     public event Action<int> OnSelectedItemUsed;
+    public event Action OnInventorySizeChanged;
 
     private bool _dropping_inventory;
     private float _time_select_index;
@@ -71,6 +72,20 @@ public partial class InventoryController : SingletonController
             if (data == null) return;
             data.Uses = 0;
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Increase inventory size",
+            Action = v => { IncreaseInventorySize(1); }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Decrease inventory size",
+            Action = v => { DecreaseInventorySize(1); }
+        });
 
         void SetCustomId(DebugView view)
         {
@@ -172,7 +187,9 @@ public partial class InventoryController : SingletonController
     private void Input_PickUpPressed()
     {
         var item = Player.Instance.Interact?.CurrentInteractable as Item;
-        PickUpItem(item);
+        if (!IsInstanceValid(item)) return;
+
+        item.PickUp();
     }
 
     public void ClearInventory()
@@ -241,10 +258,6 @@ public partial class InventoryController : SingletonController
         if (!HasFreeSpace()) return;
         if (!item.Info.CanPickUp) return;
 
-        item.AddToInventory();
-        ItemController.Instance.UntrackItem(item);
-        PlayPickupSoundFx();
-
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
@@ -257,13 +270,18 @@ public partial class InventoryController : SingletonController
             item.RigidBody.GravityScale = 0;
             item.RigidBody.LinearVelocity = Vector3.Zero;
 
+            PlayPickupSoundFx();
+
             yield return LerpEnumerator.Lerp01(0.1f, f =>
             {
                 item.RigidBody.GlobalPosition = start_position.Lerp(Player.Instance.MidPosition, f);
                 item.RigidBody.Scale = start_scale.Lerp(end_scale, f);
             });
 
-            item.SetEnabled(false);
+            Add(item.Data);
+
+            ItemController.Instance.UntrackItem(item);
+            item.Disable();
             item.QueueFree();
         }
     }
@@ -332,5 +350,21 @@ public partial class InventoryController : SingletonController
     private void PlayPickupSoundFx()
     {
         SoundController.Instance.Play("sfx_pickup");
+    }
+
+    public void IncreaseInventorySize(int amount = 1)
+    {
+        AdjustInventorySize(Mathf.Max(1, amount));
+    }
+
+    public void DecreaseInventorySize(int amount = 1)
+    {
+        AdjustInventorySize(-Mathf.Max(1, amount));
+    }
+
+    private void AdjustInventorySize(int amount)
+    {
+        Data.Game.InventorySize = Mathf.Clamp(Data.Game.InventorySize + amount, 1, MAX_INVENTORY_SIZE);
+        OnInventorySizeChanged?.Invoke();
     }
 }

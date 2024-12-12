@@ -15,7 +15,6 @@ public partial class Item : Grabbable
     public new Vector3 Scale { get => ScaleNode.Scale; set => ScaleNode.Scale = value; }
 
     public event Action OnUpdateData;
-    public event Action OnAddedToInventory;
 
     public override void _Ready()
     {
@@ -113,11 +112,9 @@ public partial class Item : Grabbable
         Data.Uses = Mathf.Clamp(Data.Uses + uses, 0, Info.Uses);
     }
 
-    public virtual void AddToInventory()
+    public virtual void PickUp()
     {
-        UpdateData();
-        InventoryController.Instance.Add(Data);
-        OnAddedToInventory?.Invoke();
+        InventoryController.Instance.PickUpItem(this);
     }
 
     public void ResetBodyPosition()

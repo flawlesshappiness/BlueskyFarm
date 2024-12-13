@@ -14,5 +14,5 @@ SeedResultType = 0
 GrowTimeInSeconds = 0
 CanPickUp = true
 Untrack = false
-InventoryItemCameraDistance = 0.75
+InventoryItemCameraDistance = 0.5
 InventoryItemRotationOffset = 45.0

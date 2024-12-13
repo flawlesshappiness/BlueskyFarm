@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,63 +18,15 @@ public partial class PuzzleCubeWallHole : Node3DScript
     [NodeName]
     public Touchable EjectTouchable;
 
+    public PuzzleCube.Type? SelectedType => _current_alignment?.Type;
+    public PuzzleCube.Color? SelectedColor => _current_cube?.Display.CurrentColor;
+
+    public event Action OnCubeChanged;
+    public event Action OnCubeEntered;
+    public event Action OnCubeExited;
+
     private PuzzleCube _current_cube;
-
-    private List<CubeAlignment> _alignments = new()
-    {
-        new CubeAlignment {
-            Direction = Vector3.Back,
-            Type = CubeTypes.Diagonal,
-            Rotation = new Vector3(0, 0, 0)
-        },
-
-        new CubeAlignment {
-            Direction = Vector3.Right,
-            Type = CubeTypes.Arrow,
-            Rotation = new Vector3(0, -90, 0)
-        },
-
-        new CubeAlignment {
-            Direction = Vector3.Forward,
-            Type = CubeTypes.F,
-            Rotation = new Vector3(0, 180, 0)
-        },
-
-        new CubeAlignment {
-            Direction = Vector3.Left,
-            Type = CubeTypes.Roots,
-            Rotation = new Vector3(0, 90, 0)
-        },
-
-        new CubeAlignment {
-            Direction = Vector3.Up,
-            Type = CubeTypes.Tree,
-            Rotation = new Vector3(0, 90, 90)
-        },
-
-        new CubeAlignment {
-            Direction = Vector3.Down,
-            Type = CubeTypes.Leaf,
-            Rotation = new Vector3(0, 90, -90)
-        },
-    };
-
-    private class CubeAlignment
-    {
-        public Vector3 Direction { get; set; }
-        public Vector3 Rotation { get; set; }
-        public CubeTypes Type { get; set; }
-    }
-
-    private enum CubeTypes
-    {
-        Diagonal, // north
-        Arrow, // east
-        F, // south
-        Roots, // west
-        Leaf, // top
-        Tree, // bottom
-    }
+    private PuzzleCube.Alignment _current_alignment;
 
     public override void _Ready()
     {
@@ -89,6 +42,9 @@ public partial class PuzzleCubeWallHole : Node3DScript
         var cube = item as PuzzleCube;
         if (cube == null) return;
 
+        var alignment = GetAlignment(cube);
+
+        _current_alignment = alignment;
         _current_cube = cube;
 
         Coroutine.Start(Cr);
@@ -101,13 +57,8 @@ public partial class PuzzleCubeWallHole : Node3DScript
             cube.RigidBody.LockPosition_All();
             cube.RigidBody.LockRotation_All();
 
-            var alignment = GetAlignment(cube);
-
             var end_rotation = WrappedEulerAngles(alignment.Rotation + GlobalRotationDegrees);
             var start_rotation = ClosestEulerAngles(WrappedEulerAngles(cube.RigidBody.GlobalRotationDegrees), end_rotation);
-
-            Debug.Log($"{start_rotation} > {end_rotation}");
-
             var start_position = cube.GlobalPosition;
             var curve_out = Curves.EaseOutQuad;
             var curve_in_out = Curves.EaseInOutQuad;
@@ -126,6 +77,9 @@ public partial class PuzzleCubeWallHole : Node3DScript
             });
 
             EjectTouchable.Enable();
+
+            OnCubeEntered?.Invoke();
+            OnCubeChanged?.Invoke();
         }
     }
 
@@ -162,10 +116,10 @@ public partial class PuzzleCubeWallHole : Node3DScript
         return closest;
     }
 
-    private CubeAlignment GetAlignment(PuzzleCube cube)
+    private PuzzleCube.Alignment GetAlignment(PuzzleCube cube)
     {
         var wall_normal = GlobalBasis * Vector3.Back;
-        var closest = _alignments
+        var closest = PuzzleCube.Alignments
             .OrderByDescending(x => (cube.RigidBody.GlobalBasis * x.Direction).Dot(wall_normal))
             .First();
         return closest;
@@ -179,6 +133,10 @@ public partial class PuzzleCubeWallHole : Node3DScript
 
         var cube = _current_cube;
         _current_cube = null;
+        _current_alignment = null;
+
+        OnCubeExited?.Invoke();
+        OnCubeChanged?.Invoke();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()

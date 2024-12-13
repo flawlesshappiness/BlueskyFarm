@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbvi1l6x4q4ya"]
+[gd_scene load_steps=10 format=3 uid="uid://bbvi1l6x4q4ya"]
 
 [ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWall.cs" id="1_3swwc"]
 [ext_resource type="PackedScene" uid="uid://chgkaf41d6svh" path="res://Assets/FlawLizArt/PuzzleCube/wall_cube_holes_3.fbx" id="1_gw1kq"]
 [ext_resource type="PackedScene" uid="uid://8whgrmaeb8sa" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWallHole.tscn" id="3_3syme"]
+[ext_resource type="PackedScene" uid="uid://cuqmcv1b1klcj" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeDisplay.tscn" id="4_6hi46"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wxd4o"]
 size = Vector3(4, 4, 0.25)
@@ -51,11 +52,24 @@ shape = SubResource("BoxShape3D_3618b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.125)
 occluder = SubResource("BoxOccluder3D_dno3r")
 
-[node name="PuzzleCubeWallHole" parent="." instance=ExtResource("3_3syme")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.0697954)
+[node name="Display" type="Node3D" parent="."]
 
-[node name="PuzzleCubeWallHole2" parent="." instance=ExtResource("3_3syme")]
+[node name="PuzzleCubeDisplay1" parent="Display" instance=ExtResource("4_6hi46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -0.2628)
+
+[node name="PuzzleCubeDisplay2" parent="Display" instance=ExtResource("4_6hi46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.2628)
+
+[node name="PuzzleCubeDisplay3" parent="Display" instance=ExtResource("4_6hi46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -0.2628)
+
+[node name="Holes" type="Node3D" parent="."]
+
+[node name="PuzzleCubeWallHole1" parent="Holes" instance=ExtResource("3_3syme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0.0697954)
 
-[node name="PuzzleCubeWallHole3" parent="." instance=ExtResource("3_3syme")]
+[node name="PuzzleCubeWallHole2" parent="Holes" instance=ExtResource("3_3syme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.0697954)
+
+[node name="PuzzleCubeWallHole3" parent="Holes" instance=ExtResource("3_3syme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.0697954)

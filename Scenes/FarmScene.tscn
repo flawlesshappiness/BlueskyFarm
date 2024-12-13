@@ -644,15 +644,6 @@ bus = &"BGM"
 [node name="Wall_Cube_Hole_3" parent="." instance=ExtResource("20_5fxbm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03353, 1.43051e-06, -9.49524)
 
-[node name="Wall_Cube_Hole_4" parent="." instance=ExtResource("20_5fxbm")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 9.28353, 1.43051e-06, -5.24524)
-
-[node name="Wall_Cube_Hole_5" parent="." instance=ExtResource("20_5fxbm")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.28353, 1.43051e-06, -0.995241)
-
-[node name="Wall_Cube_Hole_6" parent="." instance=ExtResource("20_5fxbm")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.966473, 1.43051e-06, -4.49524)
-
 [editable path="World/PlantBoxes/PlantBox_001"]
 [editable path="World/PlantBoxes/PlantBox_002"]
 [editable path="World/PlantBoxes/PlantBox_003"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuqmcv1b1klcj"]
+
+[ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeDisplay.cs" id="1_8fcu6"]
+[ext_resource type="PackedScene" uid="uid://b75ue3826xese" path="res://Assets/FlawLizArt/PuzzleCube/puzzle_cube.fbx" id="1_awpb1"]
+[ext_resource type="Material" uid="uid://cfrxboqgfpvby" path="res://Assets/Materials/Glow_Red.tres" id="2_dfrdf"]
+[ext_resource type="Material" uid="uid://f1n1eyew0r4k" path="res://Assets/Materials/Glow_Green.tres" id="3_0yv7x"]
+[ext_resource type="Material" uid="uid://cdesodxf0sk8w" path="res://Assets/Materials/Glow_Blue.tres" id="4_0kfls"]
+[ext_resource type="Material" uid="uid://dka32frqdmutd" path="res://Assets/Materials/Glow_Yellow.tres" id="5_dx8tt"]
+
+[node name="PuzzleCubeDisplay" type="Node3D"]
+script = ExtResource("1_8fcu6")
+RedMaterial = ExtResource("2_dfrdf")
+GreenMaterial = ExtResource("3_0yv7x")
+BlueMaterial = ExtResource("4_0kfls")
+YellowMaterial = ExtResource("5_dx8tt")
+
+[node name="puzzle_cube" parent="." instance=ExtResource("1_awpb1")]
+
+[node name="Cube" parent="puzzle_cube" index="0"]
+surface_material_override/1 = ExtResource("2_dfrdf")
+
+[editable path="puzzle_cube"]

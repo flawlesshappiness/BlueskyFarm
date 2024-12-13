@@ -69,7 +69,7 @@ public partial class Item : Grabbable
         OnUpdateData?.Invoke();
     }
 
-    public void LoadFromData()
+    public virtual void LoadFromData()
     {
         RigidBody.GlobalPosition = new Vector3(Data.X_Position, Data.Y_Position, Data.Z_Position);
         RigidBody.GlobalRotation = new Vector3(Data.X_Rotation, Data.Y_Rotation, Data.Z_Rotation);

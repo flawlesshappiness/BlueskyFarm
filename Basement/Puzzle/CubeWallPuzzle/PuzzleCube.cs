@@ -25,7 +25,9 @@ public partial class PuzzleCube : Item
         Red,
         Green,
         Blue,
-        Yellow
+        Yellow,
+
+        Disabled,
     }
 
     public static List<Alignment> Alignments = new()
@@ -92,6 +94,8 @@ public partial class PuzzleCube : Item
 
         var i = ((int)Display.CurrentColor + 1) % 4;
         SetColor(i);
+
+        SoundController.Instance.Play("sfx_stone_impact", GlobalPosition);
     }
 
     private void SetColor(int i)

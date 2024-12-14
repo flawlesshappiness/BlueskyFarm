@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://cgpn7oalpd74c"]
+
+[ext_resource type="AudioStream" uid="uid://b7b4u4ebrovjg" path="res://Sound/Sounds/sfx_stone_impact_001.wav" id="1_omwvs"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_f063u"]
+[ext_resource type="AudioStream" uid="uid://cbtbkt6arl8s0" path="res://Sound/Sounds/sfx_stone_impact_002.wav" id="2_mo0o0"]
+[ext_resource type="AudioStream" uid="uid://kf01qp4st80c" path="res://Sound/Sounds/sfx_stone_impact_003.wav" id="3_t2frj"]
+
+[resource]
+script = ExtResource("2_f063u")
+AudioStreams = Array[AudioStream]([ExtResource("1_omwvs"), ExtResource("2_mo0o0"), ExtResource("3_t2frj")])
+Volume = -10.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

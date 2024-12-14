@@ -14,6 +14,9 @@ public partial class PuzzleCubeDisplay : Node3DScript
     [Export]
     public Material YellowMaterial;
 
+    [Export]
+    public Material DisabledMaterial;
+
     [NodeName]
     public MeshInstance3D Cube;
 
@@ -34,6 +37,7 @@ public partial class PuzzleCubeDisplay : Node3DScript
             PuzzleCube.Color.Green => GreenMaterial,
             PuzzleCube.Color.Blue => BlueMaterial,
             PuzzleCube.Color.Yellow => YellowMaterial,
+            PuzzleCube.Color.Disabled => DisabledMaterial,
             _ => RedMaterial
         };
     }

@@ -36,6 +36,7 @@ public partial class PuzzleCubeWall : Node3DScript
         _target_sequence.Clear();
         var types = Enum.GetValues(typeof(PuzzleCube.Type)).Cast<PuzzleCube.Type>().ToList();
         var colors = Enum.GetValues(typeof(PuzzleCube.Color)).Cast<PuzzleCube.Color>().ToList();
+        colors.Remove(PuzzleCube.Color.Disabled);
 
         for (int i = 0; i < _holes.Count; i++)
         {
@@ -73,6 +74,8 @@ public partial class PuzzleCubeWall : Node3DScript
     {
         if (IsSequenceValid())
         {
+            _holes.ForEach(x => { x.Disable(); x.SetCubeColorDisabled(); });
+            SoundController.Instance.Play("sfx_puzzle_basement");
             OnSequenceCompleted?.Invoke();
         }
         else
@@ -86,7 +89,11 @@ public partial class PuzzleCubeWall : Node3DScript
         var seq = GetSequence();
         for (int i = 0; i < _target_sequence.Count; i++)
         {
-            if (_target_sequence[i].Type != seq[i]) return false;
+            var entry = _target_sequence[i];
+            var hole = _holes[i];
+
+            if (entry.Type != hole.SelectedType) return false;
+            if (entry.Color != hole.SelectedColor) return false;
         }
 
         return true;

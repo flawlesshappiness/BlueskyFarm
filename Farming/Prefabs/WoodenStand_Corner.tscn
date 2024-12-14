@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4lbw5d3ywj2d"]
+
+[ext_resource type="PackedScene" uid="uid://dgj7rwmedfe3r" path="res://Assets/FlawLizArt/WoodenStand/WoodenStand_Corner.fbx" id="1_5cjf8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_388tv"]
+size = Vector3(1.30029, 1, 1.30225)
+
+[node name="WoodenStand_Corner" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349854, 0.5, -0.348389)
+shape = SubResource("BoxShape3D_388tv")
+
+[node name="WoodenStand_Corner" parent="." instance=ExtResource("1_5cjf8")]

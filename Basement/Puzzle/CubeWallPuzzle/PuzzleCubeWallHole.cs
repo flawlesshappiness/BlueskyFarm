@@ -63,6 +63,8 @@ public partial class PuzzleCubeWallHole : Node3DScript
             var curve_out = Curves.EaseOutQuad;
             var curve_in_out = Curves.EaseInOutQuad;
 
+            SoundController.Instance.Play("sfx_stone_impact", GlobalPosition);
+
             yield return LerpEnumerator.Lerp01(0.5f, f =>
             {
                 var t = curve_out.Evaluate(f);
@@ -70,11 +72,15 @@ public partial class PuzzleCubeWallHole : Node3DScript
                 cube.GlobalPosition = start_position.Lerp(OutsidePosition.GlobalPosition, t);
             });
 
+            var sfx_drag = SoundController.Instance.Play("sfx_stone_drag_long", GlobalPosition);
+
             yield return LerpEnumerator.Lerp01(1, f =>
             {
                 var t = curve_in_out.Evaluate(f);
                 cube.GlobalPosition = OutsidePosition.GlobalPosition.Lerp(InsidePosition.GlobalPosition, t);
             });
+
+            sfx_drag.FadeOut(0.5f);
 
             EjectTouchable.Enable();
 
@@ -141,12 +147,16 @@ public partial class PuzzleCubeWallHole : Node3DScript
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            var sfx_drag = SoundController.Instance.Play("sfx_stone_drag_long", GlobalPosition);
+
             var curve = Curves.EaseOutQuad;
             yield return LerpEnumerator.Lerp01(1f, f =>
             {
                 var t = curve.Evaluate(f);
                 cube.GlobalPosition = InsidePosition.GlobalPosition.Lerp(OutsidePosition.GlobalPosition, t);
             });
+
+            sfx_drag.FadeOut(0.5f);
 
             cube.IsBeingHandled = false;
             cube.SetGrabbable(true);
@@ -158,5 +168,13 @@ public partial class PuzzleCubeWallHole : Node3DScript
 
             AreaHole.Enable();
         }
+    }
+
+    public void SetCubeColorDisabled()
+    {
+        if (_current_cube == null) return;
+
+        _current_cube.Display.SetColor(PuzzleCube.Color.Disabled);
+        _current_cube.Light.Visible = false;
     }
 }

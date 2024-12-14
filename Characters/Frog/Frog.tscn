@@ -96,6 +96,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22989, 0.474859)
 shape = SubResource("BoxShape3D_pa8jm")
 
 [node name="BlueprintDisplay" parent="BlueprintCrafting" index="1" instance=ExtResource("7_5bj7n")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.75, 1.25, 5.46392e-08)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.75, 1.25, 0.75)
 
 [editable path="Frog"]

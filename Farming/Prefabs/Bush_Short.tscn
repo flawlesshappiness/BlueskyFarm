@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfki383xt8r2n"]
+
+[ext_resource type="PackedScene" uid="uid://busxkqit4x0gd" path="res://Assets/FlawLizArt/Bush/bush_short.fbx" id="1_tm03j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2xkg4"]
+size = Vector3(1, 4, 2)
+
+[node name="Bush_Short" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_2xkg4")
+
+[node name="bush_short" parent="." instance=ExtResource("1_tm03j")]

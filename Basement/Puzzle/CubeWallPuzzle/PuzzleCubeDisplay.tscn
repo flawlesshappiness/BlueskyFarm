@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuqmcv1b1klcj"]
+[gd_scene load_steps=8 format=3 uid="uid://cuqmcv1b1klcj"]
 
 [ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeDisplay.cs" id="1_8fcu6"]
 [ext_resource type="PackedScene" uid="uid://b75ue3826xese" path="res://Assets/FlawLizArt/PuzzleCube/puzzle_cube.fbx" id="1_awpb1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://f1n1eyew0r4k" path="res://Assets/Materials/Glow_Green.tres" id="3_0yv7x"]
 [ext_resource type="Material" uid="uid://cdesodxf0sk8w" path="res://Assets/Materials/Glow_Blue.tres" id="4_0kfls"]
 [ext_resource type="Material" uid="uid://dka32frqdmutd" path="res://Assets/Materials/Glow_Yellow.tres" id="5_dx8tt"]
+[ext_resource type="Material" uid="uid://0lwpoabqehgh" path="res://Assets/Materials/Stone_Dark.tres" id="6_mywqa"]
 
 [node name="PuzzleCubeDisplay" type="Node3D"]
 script = ExtResource("1_8fcu6")
@@ -13,6 +14,7 @@ RedMaterial = ExtResource("2_dfrdf")
 GreenMaterial = ExtResource("3_0yv7x")
 BlueMaterial = ExtResource("4_0kfls")
 YellowMaterial = ExtResource("5_dx8tt")
+DisabledMaterial = ExtResource("6_mywqa")
 
 [node name="puzzle_cube" parent="." instance=ExtResource("1_awpb1")]
 

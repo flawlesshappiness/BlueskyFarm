@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=2 format=3 uid="uid://18dpt1mmly3e"]
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://18dpt1mmly3e"]
 
 [ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_ejteb"]
+[ext_resource type="PackedScene" uid="uid://btp1aaeioslg2" path="res://Basement/Room/Prefabs/Basement_Well.tscn" id="1_i5x5f"]
 
 [resource]
 script = ExtResource("1_ejteb")
 Area = "Basement"
 ConnectedArea = ""
 Path = "res://Basement/Room/Prefabs/Basement_Well.tscn"
+Scene = ExtResource("1_i5x5f")
 IsStartRoom = false
 IsConnectedToAllFromSameArea = false
 RoomLayout = "000N000

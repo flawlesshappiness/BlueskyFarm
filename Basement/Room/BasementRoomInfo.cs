@@ -9,8 +9,8 @@ public partial class BasementRoomInfo : Resource
     [Export]
     public string ConnectedArea;
 
-    [Export(PropertyHint.File)]
-    public string Path;
+    [Export]
+    public PackedScene Scene;
 
     [Export]
     public bool IsStartRoom;

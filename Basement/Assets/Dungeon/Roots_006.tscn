@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqtrktvdlfk0e"]
 
-[ext_resource type="PackedScene" uid="uid://bbpuaycu18q8l" path="res://Assets/FlawLizArt/roots_005.glb" id="1_uamvm"]
-[ext_resource type="PackedScene" uid="uid://ynujaevxx7k2" path="res://Assets/FlawLizArt/roots_001.glb" id="2_vbqrs"]
-[ext_resource type="PackedScene" uid="uid://bqfnys8ri4jjk" path="res://Assets/FlawLizArt/roots_007.glb" id="3_l7ksn"]
-[ext_resource type="PackedScene" uid="uid://bfy6xstm2urbn" path="res://Assets/FlawLizArt/roots_003.glb" id="4_h6c1l"]
+[ext_resource type="PackedScene" uid="uid://bbpuaycu18q8l" path="res://Assets/FlawLizArt/Roots/roots_005.glb" id="1_uamvm"]
+[ext_resource type="PackedScene" uid="uid://ynujaevxx7k2" path="res://Assets/FlawLizArt/Roots/roots_001.glb" id="2_vbqrs"]
+[ext_resource type="PackedScene" uid="uid://bqfnys8ri4jjk" path="res://Assets/FlawLizArt/Roots/roots_007.glb" id="3_l7ksn"]
+[ext_resource type="PackedScene" uid="uid://bfy6xstm2urbn" path="res://Assets/FlawLizArt/Roots/roots_003.glb" id="4_h6c1l"]
 
 [node name="Roots_006" type="Node3D"]
 

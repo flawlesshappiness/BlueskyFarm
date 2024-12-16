@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://r7qs7l18m2i0"]
+[gd_scene load_steps=9 format=3 uid="uid://r7qs7l18m2i0"]
 
 [ext_resource type="PackedScene" uid="uid://cpoduyeleoxek" path="res://Characters/CharacterBase.tscn" id="1_jlthq"]
 [ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/Frog.fbx" id="2_58xa5"]
@@ -6,16 +6,11 @@
 [ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://Characters/Frog/FrogDialogueCharacter.tres" id="3_q6ye7"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_xkswj"]
 [ext_resource type="Texture2D" uid="uid://b0benq6rk0e8n" path="res://Assets/KenneyNL/Cursors/message_dots_round.png" id="5_kdtbk"]
-[ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="6_653gd"]
-[ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="7_5bj7n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_et3n8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l5str"]
 size = Vector3(1, 1.53662, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pa8jm"]
-size = Vector3(1, 1.51624, 1.22208)
 
 [node name="Frog" instance=ExtResource("1_jlthq")]
 script = ExtResource("2_e73ro")
@@ -83,19 +78,5 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.937781, -0.134892)
 shape = SubResource("BoxShape3D_l5str")
-
-[node name="BlueprintCrafting" type="Node3D" parent="." index="4"]
-script = ExtResource("6_653gd")
-
-[node name="ItemArea" type="Area3D" parent="BlueprintCrafting" index="0"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueprintCrafting/ItemArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22989, 0.474859)
-shape = SubResource("BoxShape3D_pa8jm")
-
-[node name="BlueprintDisplay" parent="BlueprintCrafting" index="1" instance=ExtResource("7_5bj7n")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.75, 1.25, 0.75)
 
 [editable path="Frog"]

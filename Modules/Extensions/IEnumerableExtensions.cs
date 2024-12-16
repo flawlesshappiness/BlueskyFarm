@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class IEnumerableExtensions
 {
@@ -11,5 +12,20 @@ public static class IEnumerableExtensions
         }
 
         return source;
+    }
+
+    public static IEnumerable<T> TakeRandom<T>(this IEnumerable<T> source, int count)
+    {
+        var result = new List<T>();
+        var list = source.ToList();
+
+        for (int i = 0; i < count; i++)
+        {
+            var v = list.Random();
+            list.Remove(v);
+            result.Add(v);
+        }
+
+        return result;
     }
 }

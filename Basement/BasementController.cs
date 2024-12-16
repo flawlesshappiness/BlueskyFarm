@@ -25,8 +25,12 @@ public partial class BasementController : SingletonController
         basement.Grid = grid;
 
         // Set priority rooms
-        var workshop_element = GetRandomElement(AreaNames.Basement);
-        workshop_element.Info = BasementRoomController.Instance.Collection.GetResource("Basement_Workshop");
+        SetRandomElementInfo(AreaNames.Basement, "Basement_Workshop");
+
+        if (Data.Game.State_BasementInventoryPuzzle == 1 || true)
+        {
+            SetRandomElementInfo(AreaNames.Basement, "Basement_InventoryPuzzle");
+        }
 
         // Add special rooms
         var has_workshop_key = Player.Instance.HasAccessToItem("Key_Workshop");
@@ -73,7 +77,7 @@ public partial class BasementController : SingletonController
             UpdateRoomConnection(basement, element);
 
             var parent = IsInstanceValid(basement.Settings.RoomParent) ? basement.Settings.RoomParent : Scene.Current;
-            var room = GDHelper.Instantiate<BasementRoom>(element.Info.Path, parent);
+            var room = GDHelper.Instantiate<BasementRoom>(element.Info.Scene, parent);
             element.Room = room;
             room.Element = element;
             room.GlobalPosition = position;
@@ -99,9 +103,9 @@ public partial class BasementController : SingletonController
         if (element.IsStart)
         {
             var room = BasementRoomController.Instance.Collection.Resources
-                .Where(x => !x.Disabled && x.IsStartRoom &&
-                ((x.Area == element.AreaName && x.ConnectedArea == element.ConnectedAreaName) || (x.Area == element.ConnectedAreaName && x.ConnectedArea == element.AreaName)))
+                .Where(info => IsValidStartRoom(element, info))
                 .FirstOrDefault();
+
             return room;
         }
         else
@@ -114,10 +118,29 @@ public partial class BasementController : SingletonController
         }
     }
 
-    private BasementRoomElement GetRandomElement(string area_name)
+    private bool IsValidStartRoom(BasementRoomElement element, BasementRoomInfo info)
+    {
+        var valid_info = !info.Disabled && info.IsStartRoom;
+        var valid_connection_A = info.Area == element.AreaName && info.ConnectedArea == element.ConnectedAreaName;
+        var valid_connection_B = info.Area == element.ConnectedAreaName && info.ConnectedArea == element.AreaName;
+        var valid_connection_C = string.IsNullOrEmpty(info.ConnectedArea) && string.IsNullOrEmpty(element.ConnectedAreaName);
+        var valid_connection = valid_connection_A || valid_connection_B || valid_connection_C;
+
+        return valid_info && valid_connection;
+    }
+
+    private BasementRoomElement GetRandomElementWithoutInfo(string area_name)
     {
         return CurrentBasement.Grid.Elements
             .Where(x => x.AreaName == area_name && !x.IsStart && x.Info == null)
             .ToList().Random();
+    }
+
+    private void SetRandomElementInfo(string area_name, string info_name)
+    {
+        var element = GetRandomElementWithoutInfo(area_name);
+        if (element == null) return;
+
+        element.Info = BasementRoomController.Instance.Collection.GetResource(info_name);
     }
 }

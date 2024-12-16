@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1i2dw5kvkb8j"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Dungeon/Wall_Hole/BasementWallGatedHole.cs" id="1_x5vho"]
+[ext_resource type="PackedScene" uid="uid://csiqay11yl40y" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_gated_room.fbx" id="2_b7gn1"]
+[ext_resource type="PackedScene" uid="uid://6ynd6hni57pt" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_gated_room_bars.fbx" id="3_00ham"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olsi5"]
+size = Vector3(1, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iluga"]
+size = Vector3(4, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30iey"]
+size = Vector3(2, 1.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4wxn"]
+size = Vector3(2, 1.05127, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8pqoe"]
+size = Vector3(2.25, 1.75, 0.5)
+
+[node name="Wall_Hole_Gated" type="Node3D"]
+script = ExtResource("1_x5vho")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.5)
+shape = SubResource("BoxShape3D_olsi5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -1.5)
+shape = SubResource("BoxShape3D_olsi5")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.75)
+shape = SubResource("BoxShape3D_iluga")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -1.5)
+shape = SubResource("BoxShape3D_30iey")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525635, -1.5)
+shape = SubResource("BoxShape3D_a4wxn")
+
+[node name="wall_window_gated_room" parent="." instance=ExtResource("2_b7gn1")]
+
+[node name="Gate" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06129, 0)
+
+[node name="GateAnim" type="Node3D" parent="Gate"]
+
+[node name="wall_window_gated_room_bars" parent="Gate/GateAnim" instance=ExtResource("3_00ham")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gate/GateAnim"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate/GateAnim/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("BoxShape3D_8pqoe")

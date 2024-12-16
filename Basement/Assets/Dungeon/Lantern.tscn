@@ -67,6 +67,7 @@ material = SubResource("StandardMaterial3D_ogp5f")
 [node name="Lantern" type="Node3D"]
 
 [node name="hanging_lantern_new" parent="." instance=ExtResource("1_rpoe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104221, 0)
 
 [node name="lantern_hanging" parent="hanging_lantern_new" index="0"]
 cast_shadow = 0

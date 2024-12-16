@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=2 format=3 uid="uid://bwp4arqb8qp6h"]
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://bwp4arqb8qp6h"]
 
+[ext_resource type="PackedScene" uid="uid://c1aoygaokdlyg" path="res://Basement/Room/Prefabs/Forest_001.tscn" id="1_2hlwl"]
 [ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_t8603"]
 
 [resource]
@@ -7,6 +8,7 @@ script = ExtResource("1_t8603")
 Area = "Forest"
 ConnectedArea = ""
 Path = "res://Basement/Room/Prefabs/Forest_001.tscn"
+Scene = ExtResource("1_2hlwl")
 IsStartRoom = false
 IsConnectedToAllFromSameArea = true
 RoomLayout = "1111111

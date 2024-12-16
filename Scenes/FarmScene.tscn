@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=85 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -24,10 +24,11 @@
 [ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
-[ext_resource type="PackedScene" uid="uid://bbvi1l6x4q4ya" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWall.tscn" id="20_5fxbm"]
 [ext_resource type="PackedScene" uid="uid://dqfefqemw241x" path="res://Farming/Prefabs/WoodenStand.tscn" id="20_jrme7"]
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
 [ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farming/Prefabs/WoodenStand_Corner.tscn" id="21_gp4pu"]
+[ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="28_enwrr"]
+[ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="29_gcm1x"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
@@ -278,6 +279,9 @@ billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_7x72b"]
 material = SubResource("StandardMaterial3D_s1u3r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
+size = Vector3(1, 1.51624, 1.22208)
 
 [node name="FarmScene" type="Node3D"]
 script = ExtResource("1_mng5r")
@@ -640,6 +644,20 @@ Id = "PlantBox_004"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.999999, 0, 11.566)
 CharacterId = "supervisor"
 
+[node name="BlueprintCrafting" type="Node3D" parent="World/Frog"]
+script = ExtResource("28_enwrr")
+
+[node name="ItemArea" type="Area3D" parent="World/Frog/BlueprintCrafting"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Frog/BlueprintCrafting/ItemArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22989, 0.474859)
+shape = SubResource("BoxShape3D_dti2c")
+
+[node name="BlueprintDisplay" parent="World/Frog/BlueprintCrafting" instance=ExtResource("29_gcm1x")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.2177, 1.63848, 0.780684)
+
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97852, 0, -3.07958)
 
@@ -654,9 +672,6 @@ stream = ExtResource("9_xc34j")
 volume_db = 20.0
 autoplay = true
 bus = &"BGM"
-
-[node name="Wall_Cube_Hole_3" parent="." instance=ExtResource("20_5fxbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03353, 1.43051e-06, -9.49524)
 
 [editable path="World/PlantBoxes/PlantBox_001"]
 [editable path="World/PlantBoxes/PlantBox_002"]

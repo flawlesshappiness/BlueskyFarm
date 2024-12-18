@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b3ddqtxdjgn7j" path="res://Assets/KayLousberg/Dungeon/chestTop_common_empty.fbx" id="2_0ceb7"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_rs4re"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8wiwl"]
-size = Vector3(1.06934, 1.0791, 0.30957)
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwe5h"]
+size = Vector3(0.512695, 0.476563, 0.280273)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8kth"]
 size = Vector3(1.44507, 0.609253, 1.08008)
@@ -249,13 +249,13 @@ proximity_fade_distance = 12.0
 [sub_resource type="QuadMesh" id="QuadMesh_k5ikv"]
 material = SubResource("StandardMaterial3D_7055d")
 
-[node name="Container_Base" instance=ExtResource("1_2egfb")]
+[node name="Chest_Common" instance=ExtResource("1_2egfb")]
 
-[node name="StaticBody3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601829, 0.507169)
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62688, 0.610714)
 
-[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_8wiwl")
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+shape = SubResource("BoxShape3D_mwe5h")
 
 [node name="ItemPosition" parent="." index="1"]
 transform = Transform3D(-1, -4.37114e-08, -7.57103e-08, 0, 0.866025, -0.5, 8.74228e-08, -0.5, -0.866025, 3.55271e-15, 0.644569, 0.438379)

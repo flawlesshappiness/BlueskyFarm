@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5lrrhnxtqhkn"]
+[gd_scene load_steps=4 format=3 uid="uid://b5lrrhnxtqhkn"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_3vjei"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_0onj0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxl0d"]
 
 [node name="Container_Base" type="Node3D"]
 script = ExtResource("1_3vjei")
-InteractableText = "Open"
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Touchable" type="StaticBody3D" parent="."]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("2_0onj0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]
 shape = SubResource("BoxShape3D_dxl0d")
 
 [node name="ItemPosition" type="Node3D" parent="."]

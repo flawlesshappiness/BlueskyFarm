@@ -1,13 +1,10 @@
 using Godot;
 using System;
 
-public partial class Grabbable : Interactable
+public partial class Grabbable : InteractableRigidBody3D
 {
     [Export]
     public float MaxThrowVelocity = 12;
-
-    public RigidBody3D RigidBody => _rigidBody ??= Body as RigidBody3D;
-    private RigidBody3D _rigidBody;
 
     public bool IsGrabbable { get; private set; }
     public bool IsGrabbed { get; private set; }
@@ -20,7 +17,7 @@ public partial class Grabbable : Interactable
     public override void _Ready()
     {
         base._Ready();
-        RigidBody.CanSleep = false;
+        CanSleep = false;
         IsGrabbable = true;
     }
 
@@ -35,24 +32,24 @@ public partial class Grabbable : Interactable
     {
         if (!IsGrabbed) return;
 
-        var direction = RigidBody.GlobalPosition.DirectionTo(TargetPosition);
-        var distance = RigidBody.GlobalPosition.DistanceTo(TargetPosition);
+        var direction = GlobalPosition.DirectionTo(TargetPosition);
+        var distance = GlobalPosition.DistanceTo(TargetPosition);
         var velocity = direction * distance * 10;
-        RigidBody.LinearVelocity = velocity;
+        LinearVelocity = velocity;
     }
 
     private void PhysicsProcess_RotateWhenGrabbed()
     {
         if (!IsGrabbed) return;
 
-        RigidBody.GlobalRotation = TargetRotation;
-        RigidBody.AngularVelocity = Vector3.Zero;
+        GlobalRotation = TargetRotation;
+        AngularVelocity = Vector3.Zero;
     }
 
     public void Grabbed()
     {
         IsGrabbed = true;
-        RigidBody.GravityScale = 0;
+        GravityScale = 0;
 
         OnGrabbed?.Invoke();
     }
@@ -60,11 +57,11 @@ public partial class Grabbable : Interactable
     public void Released()
     {
         IsGrabbed = false;
-        RigidBody.GravityScale = 1;
+        GravityScale = 1;
 
-        if (MaxThrowVelocity > 0 && RigidBody.LinearVelocity.Length() > MaxThrowVelocity)
+        if (MaxThrowVelocity > 0 && LinearVelocity.Length() > MaxThrowVelocity)
         {
-            RigidBody.LinearVelocity = RigidBody.LinearVelocity.Normalized() * MaxThrowVelocity;
+            LinearVelocity = LinearVelocity.Normalized() * MaxThrowVelocity;
         }
 
         OnReleased?.Invoke();

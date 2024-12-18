@@ -45,7 +45,7 @@ public partial class WorldObject : ControlScript
             Tracked = false,
         });
 
-        item.RigidBody.ProcessMode = ProcessModeEnum.Disabled;
+        item.ProcessMode = ProcessModeEnum.Disabled;
         SetObject(item);
         UpdateCameraFromItemInfo(info);
         UpdateRotationOffsetFromItemInfo(info);

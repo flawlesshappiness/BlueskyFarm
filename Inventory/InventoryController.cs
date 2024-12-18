@@ -266,16 +266,16 @@ public partial class InventoryController : SingletonController
             var end_scale = start_scale * 0.25f;
 
             item.IsBeingHandled = true;
-            item.SetCollisionEnabled(false);
-            item.RigidBody.GravityScale = 0;
-            item.RigidBody.LinearVelocity = Vector3.Zero;
+            item.ClearCollisionLayerAndMask();
+            item.GravityScale = 0;
+            item.LinearVelocity = Vector3.Zero;
 
             PlayPickupSoundFx();
 
             yield return LerpEnumerator.Lerp01(0.1f, f =>
             {
-                item.RigidBody.GlobalPosition = start_position.Lerp(Player.Instance.MidPosition, f);
-                item.RigidBody.Scale = start_scale.Lerp(end_scale, f);
+                item.GlobalPosition = start_position.Lerp(Player.Instance.MidPosition, f);
+                item.Scale = start_scale.Lerp(end_scale, f);
             });
 
             Add(item.Data);
@@ -341,8 +341,8 @@ public partial class InventoryController : SingletonController
         var dir = Player.Instance.CameraTarget.GlobalBasis * Vector3.Forward;
         var vel = Player.Instance.Velocity;
         var item = ItemController.Instance.CreateItemFromData(data);
-        item.RigidBody.GlobalPosition = Player.Instance.MidPosition;
-        item.RigidBody.LinearVelocity = vel + dir * 5;
+        item.GlobalPosition = Player.Instance.MidPosition;
+        item.LinearVelocity = vel + dir * 5;
 
         PlayPickupSoundFx();
     }

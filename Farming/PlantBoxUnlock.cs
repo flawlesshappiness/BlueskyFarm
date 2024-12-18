@@ -34,7 +34,7 @@ public partial class PlantBoxUnlock : Node3DScript
             Data.Game.UnlockedPlantBoxes.Add(PlantArea.Id);
         }
 
-        StartCoroutine(Cr, "unlock");
+        this.StartCoroutine(Cr, "unlock");
         IEnumerator Cr()
         {
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);

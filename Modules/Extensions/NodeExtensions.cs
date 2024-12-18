@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public static partial class NodeExtensions
@@ -151,5 +152,16 @@ public static partial class NodeExtensions
             script = null;
             return false;
         }
+    }
+
+    public static Coroutine StartCoroutine(this Node node, Func<IEnumerator> enumerator, string id = null)
+    {
+        return node.StartCoroutine(enumerator(), id);
+    }
+
+    public static Coroutine StartCoroutine(this Node node, IEnumerator enumerator, string id = null)
+    {
+        id = (id ?? string.Empty) + node.GetInstanceId();
+        return Coroutine.Start(enumerator, id, node);
     }
 }

@@ -4,39 +4,37 @@ using System.Collections;
 
 public partial class Item : Grabbable
 {
-    [NodeName]
-    public Node3D ScaleNode;
+    [Export]
+    public bool OverrideCollisionMode;
 
     public ItemInfo Info { get; set; }
     public ItemData Data { get; set; }
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
-    public new Vector3 GlobalPosition { get => RigidBody.GlobalPosition; set => RigidBody.GlobalPosition = value; }
-    public new Vector3 GlobalRotation { get => RigidBody.GlobalRotation; set => RigidBody.GlobalRotation = value; }
-    public new Vector3 Scale { get => ScaleNode.Scale; set => ScaleNode.Scale = value; }
 
     public event Action OnUpdateData;
+
+    private bool _initialized;
 
     public override void _Ready()
     {
         base._Ready();
-        RigidBody.BodyEntered += OnBodyEntered;
+        BodyEntered += OnBodyEntered;
 
-        RigidBody.ContactMonitor = true;
-        RigidBody.MaxContactsReported = 1;
+        ContactMonitor = true;
+        MaxContactsReported = 1;
 
-        if (!OverrideInitialCollisionMode)
+        if (!OverrideCollisionMode)
         {
-            SetCollision_Item();
+            SetCollisionLayer(2, 3);
+            SetCollisionMask(2);
         }
     }
 
-    protected override void Initialize()
+    protected virtual void Initialize()
     {
-        base.Initialize();
-
         if (Info != null)
         {
-            InteractableText = string.IsNullOrEmpty(Info.ItemName) ? InteractableText : Info.ItemName;
+            HoverText = string.IsNullOrEmpty(Info.ItemName) ? HoverText : Info.ItemName;
         }
     }
 
@@ -44,24 +42,30 @@ public partial class Item : Grabbable
     {
         base._Process(delta);
 
-        if (RigidBody.GlobalPosition.Y < -50)
+        if (!_initialized)
+        {
+            _initialized = true;
+            Initialize();
+        }
+
+        if (GlobalPosition.Y < -50)
         {
             var bounds = FarmBounds.Instance;
             if (bounds != null)
             {
-                bounds.ThrowObject(RigidBody, Player.Instance.GlobalPosition);
+                bounds.ThrowObject(this, Player.Instance.GlobalPosition);
             }
         }
     }
 
     public void UpdateData()
     {
-        var p = RigidBody.GlobalPosition;
+        var p = GlobalPosition;
         Data.X_Position = p.X;
         Data.Y_Position = p.Y;
         Data.Z_Position = p.Z;
 
-        var r = RigidBody.GlobalRotation;
+        var r = GlobalRotation;
         Data.X_Rotation = r.X;
         Data.Y_Rotation = r.Y;
         Data.Z_Rotation = r.Z;
@@ -71,8 +75,8 @@ public partial class Item : Grabbable
 
     public virtual void LoadFromData()
     {
-        RigidBody.GlobalPosition = new Vector3(Data.X_Position, Data.Y_Position, Data.Z_Position);
-        RigidBody.GlobalRotation = new Vector3(Data.X_Rotation, Data.Y_Rotation, Data.Z_Rotation);
+        GlobalPosition = new Vector3(Data.X_Position, Data.Y_Position, Data.Z_Position);
+        GlobalRotation = new Vector3(Data.X_Rotation, Data.Y_Rotation, Data.Z_Rotation);
         Scale = Vector3.One * Data.Scale;
     }
 
@@ -88,7 +92,7 @@ public partial class Item : Grabbable
         var rig_other = other as RigidBody3D;
         var vel_other = -rig_other?.LinearVelocity ?? Vector3.Zero;
         var avg_mul = rig_other == null ? 1 : 0.5f;
-        var vel = RigidBody.LinearVelocity;
+        var vel = LinearVelocity;
         var vel_avg = (vel + vel_other) * avg_mul;
 
         if (vel_avg.Length() < vel_min) return;
@@ -97,7 +101,7 @@ public partial class Item : Grabbable
         var volume = Mathf.Lerp(vol_min, vol_max, t_vel);
         var pitch = Mathf.Lerp(pitch_max, pitch_min, t_vel);
 
-        var asp = SoundController.Instance.Play("sfx_impact_default", RigidBody.GlobalPosition);
+        var asp = SoundController.Instance.Play("sfx_impact_default", GlobalPosition);
         asp.VolumeDb = volume;
         asp.PitchScale = pitch;
     }
@@ -117,16 +121,6 @@ public partial class Item : Grabbable
         InventoryController.Instance.PickUpItem(this);
     }
 
-    public void ResetBodyPosition()
-    {
-        Body.Position = Vector3.Zero;
-    }
-
-    public void ResetBodyRotation()
-    {
-        Body.Rotation = Vector3.Zero;
-    }
-
     public void SetScale(float scale)
     {
         Data.Scale = scale;
@@ -135,7 +129,7 @@ public partial class Item : Grabbable
 
     public Coroutine AnimateWobble()
     {
-        return StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             var duration = 0.6f;
@@ -143,20 +137,20 @@ public partial class Item : Grabbable
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 var t = curve.Sample(f);
-                ScaleNode.Scale = Vector3.One * (Data.Scale * t);
+                Scale = Vector3.One * (Data.Scale * t);
             });
         }
     }
 
     public Coroutine AnimateDisappearAndQueueFree()
     {
-        RigidBody.LockPosition_All();
-        RigidBody.LockRotation_All();
-        SetCollision_None();
+        this.LockPosition_All();
+        this.LockRotation_All();
+        ClearCollisionLayerAndMask();
         IsBeingHandled = true;
         ItemController.Instance.UntrackItem(this);
 
-        return StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             var duration = 0.25f;
@@ -166,7 +160,7 @@ public partial class Item : Grabbable
             {
                 var t = curve.Evaluate(f);
                 var scale = Mathf.Lerp(start, 0f, t);
-                ScaleNode.Scale = Vector3.One * scale;
+                Scale = Vector3.One * scale;
             });
 
             QueueFree();

@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://40atbcrq0nka" path="res://Assets/KayLousberg/Dungeon/crateDark_NoLid.fbx" id="3_hvbmq"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_jwgmj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cm8tw"]
-size = Vector3(1, 0.18335, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2vwk"]
+size = Vector3(0.501709, 0.37207, 0.610352)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ae63e"]
 size = Vector3(1, 0.838013, 1)
@@ -364,11 +364,11 @@ material = SubResource("StandardMaterial3D_ogp5f")
 
 [node name="Crate" instance=ExtResource("1_jmng1")]
 
-[node name="StaticBody3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.924582, 0)
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.918294, 0.320113)
 
-[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_cm8tw")
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+shape = SubResource("BoxShape3D_r2vwk")
 
 [node name="ItemPosition" parent="." index="1"]
 transform = Transform3D(-1, -4.37114e-08, -7.57103e-08, 0, 0.866025, -0.5, 8.74228e-08, -0.5, -0.866025, 1.59995e-08, 0.878351, 0.363812)

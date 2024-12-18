@@ -175,7 +175,7 @@ public partial class ScreenEffects : Node3DScript
 
     private Coroutine _AnimateMinValue(MultiFloatMin controller, string id, float value, float duration_in, float duration_on, float duration_out)
     {
-        var cr = StartCoroutine(Cr, $"{nameof(_AnimateMinValue)}_{id}");
+        var cr = this.StartCoroutine(Cr, $"{nameof(_AnimateMinValue)}_{id}");
         AddCoroutine(id, cr);
         return cr;
 
@@ -204,7 +204,7 @@ public partial class ScreenEffects : Node3DScript
 
     private Coroutine _AnimateValue(Action<float> action, string id, float start, float end, float duration_in, float duration_on, float duration_out)
     {
-        var cr = StartCoroutine(Cr, $"{nameof(_AnimateValue)}_{id}");
+        var cr = this.StartCoroutine(Cr, $"{nameof(_AnimateValue)}_{id}");
         AddCoroutine(id, cr);
         return cr;
 

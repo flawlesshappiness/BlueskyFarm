@@ -34,12 +34,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00559816, 0.005, 0.223436)
 [node name="Counter3" parent="blueprint_flat" instance=ExtResource("4_q5oyf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25709, 0.005, 0.223436)
 
-[node name="Touchable" type="Node3D" parent="."]
-script = ExtResource("5_crf25")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Touchable"]
+[node name="Touchable" type="StaticBody3D" parent="."]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("5_crf25")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]
 shape = SubResource("BoxShape3D_3mhlo")

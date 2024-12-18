@@ -10,10 +10,9 @@ size = Vector3(0.325, 0.315, 0.395)
 [node name="WateringCan" instance=ExtResource("1_3f5mt")]
 script = ExtResource("2_q36dt")
 UseAnimation = "use_item"
-MaxUses = 10
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_rlbdg")
 
-[node name="WateringCan" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_30cir")]
+[node name="WateringCan" parent="Model" index="0" instance=ExtResource("2_30cir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.151859, 0)

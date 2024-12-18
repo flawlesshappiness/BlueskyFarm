@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc1dgxxsf744d"]
-
-[ext_resource type="Script" path="res://Demo/DemoCompleteItem.cs" id="1_dy3yt"]
-
-[node name="Debt" type="Node3D"]
-script = ExtResource("1_dy3yt")
-
-[node name="Body" type="RigidBody3D" parent="."]
-gravity_scale = 0.0

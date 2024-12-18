@@ -186,9 +186,9 @@ public partial class PlantArea : Node3DScript
     {
         item.GlobalPosition = SeedPosition.GlobalPosition;
         item.GlobalRotation = SeedPosition.GlobalRotation;
-        item.RigidBody.LockPosition_All();
-        item.RigidBody.LockRotation_All();
-        item.SetCollision_None();
+        item.LockPosition_All();
+        item.LockRotation_All();
+        item.ClearCollisionLayerAndMask();
     }
 
     private void DespawnSeedModel(Seed seed)
@@ -320,8 +320,8 @@ public partial class PlantArea : Node3DScript
 
         item.SetScale(data.Scale);
         item.GlobalPosition = SeedPosition.GlobalPosition.Add(y: 0.25f);
-        item.RigidBody.LinearVelocity = velocity;
-        item.RigidBody.AngularVelocity = torque;
+        item.LinearVelocity = velocity;
+        item.AngularVelocity = torque;
 
         SoundController.Instance.Play("sfx_seed_complete", GlobalPosition);
     }
@@ -498,7 +498,7 @@ public partial class PlantArea : Node3DScript
         var rng = new RandomNumberGenerator();
         WaterSprite.RotationDegrees = WaterSprite.RotationDegrees.Set(y: rng.RandfRange(0, 360f));
 
-        StartCoroutine(Cr, "water");
+        this.StartCoroutine(Cr, "water");
         IEnumerator Cr()
         {
             var duration = 0.5f;
@@ -517,7 +517,7 @@ public partial class PlantArea : Node3DScript
 
     private void AnimateUnwater()
     {
-        StartCoroutine(Cr, "water");
+        this.StartCoroutine(Cr, "water");
         IEnumerator Cr()
         {
             var duration = 0.25f;
@@ -542,7 +542,7 @@ public partial class PlantArea : Node3DScript
         Model.Scale = Vector3.One * 0.01f;
         Model.Show();
 
-        return StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             var curve = Curves.EaseOutBack;

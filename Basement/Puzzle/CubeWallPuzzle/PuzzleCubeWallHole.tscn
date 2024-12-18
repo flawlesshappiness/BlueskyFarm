@@ -29,11 +29,9 @@ shape = SubResource("BoxShape3D_gyb32")
 [node name="OutsidePosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.405263)
 
-[node name="EjectTouchable" type="Node3D" parent="."]
+[node name="EjectTouchable" type="StaticBody3D" parent="."]
 script = ExtResource("2_1olt8")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="EjectTouchable"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EjectTouchable/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EjectTouchable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.232483)
 shape = SubResource("BoxShape3D_olo5d")

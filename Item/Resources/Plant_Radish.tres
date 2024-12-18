@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://gpdwk15vfxgn"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://gpdwk15vfxgn"]
 
+[ext_resource type="PackedScene" uid="uid://dydqj13arxea" path="res://Item/Prefabs/Farming/Radish.tscn" id="1_3toc8"]
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_nt4wx"]
 
 [resource]
 script = ExtResource("1_nt4wx")
 Path = "res://Item/Prefabs/Farming/Radish.tscn"
+Scene = ExtResource("1_3toc8")
+ItemName = ""
+CustomId = ""
 Type = 1
+Uses = 0
 IsSeed = false
 SeedResultType = 0
 GrowTimeInSeconds = 60
-CanProcessToMaterial = true
-MaterialType = 0
 CanPickUp = true
 Untrack = false
 InventoryItemCameraDistance = 0.25

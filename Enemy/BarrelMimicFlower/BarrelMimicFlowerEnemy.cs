@@ -120,7 +120,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
             _ => null
         };
 
-        StartCoroutine(enumerator, "state");
+        this.StartCoroutine(enumerator, "state");
     }
 
     private IEnumerator StateCr_Waiting()
@@ -156,7 +156,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         var a_start = 0f;
         var a_end = 0.5f;
 
-        StartCoroutine(Cr, "overlay");
+        this.StartCoroutine(Cr, "overlay");
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(delay);
@@ -224,7 +224,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     private void FadeOutOverlayFromCurrent()
     {
         var a_start = _overlay.Color.A;
-        StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
+        this.StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
         {
             var a = Mathf.Lerp(a_start, 0f, f);
             _overlay.Color = _overlay.Color.SetA(a);
@@ -233,7 +233,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
 
     private void FadeOutOverlayFromFull()
     {
-        StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
+        this.StartCoroutine(LerpEnumerator.Lerp01(0.25f, f =>
         {
             var a = Mathf.Lerp(1f, 0f, f);
             _overlay.Color = _overlay.Color.SetA(a);

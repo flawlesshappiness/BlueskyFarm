@@ -26,7 +26,7 @@ public partial class SporeMushroomRoots : Node3DScript
         Animator.Play("appear");
         SfxRoots.Play();
 
-        StartCoroutine(Cr, nameof(AnimateAppear));
+        this.StartCoroutine(Cr, nameof(AnimateAppear));
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(Animator.CurrentAnimation.Length);

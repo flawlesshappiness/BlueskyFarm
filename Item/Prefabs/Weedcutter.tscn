@@ -11,9 +11,9 @@ size = Vector3(0.388916, 0.09375, 0.973022)
 script = ExtResource("2_gusbh")
 InteractableText = "Weedcutter"
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0336304)
 shape = SubResource("BoxShape3D_68jwh")
 
-[node name="Weedcutter" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_1y8tw")]
+[node name="Weedcutter" parent="Model" index="0" instance=ExtResource("2_1y8tw")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
+public partial class FirstPersonGrab : Node3DScript
 {
     [Export]
     public float GrabPositionOffsetMax;
@@ -41,7 +41,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
 
     private void CalculateGrabRotationOffset(Grabbable target)
     {
-        RotationNode.GlobalRotation = target.Body.GlobalRotation;
+        RotationNode.GlobalRotation = target.GlobalRotation;
     }
 
     public override void _Process(double delta)
@@ -70,7 +70,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
 
     private void CalculateGrabOffset(Grabbable target)
     {
-        var distance = PositionNode.GlobalPosition.DistanceTo(target.Body.GlobalPosition);
+        var distance = PositionNode.GlobalPosition.DistanceTo(target.GlobalPosition);
         SetGrabOffset(distance);
     }
 
@@ -136,7 +136,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
         return true;
     }
 
-    public bool TryHandleCursor(Interactable interactable)
+    public bool TryHandleCursor(IInteractable interactable)
     {
         if (Target != null)
         {
@@ -151,7 +151,7 @@ public partial class FirstPersonGrab : Node3DScript, IPlayerGrab, ICursorHandler
         Cursor.Show(new CursorSettings
         {
             Name = "Grab",
-            Text = interactable.InteractableText,
+            Text = interactable.GetHoverText(),
             Position = interactable.Body.GlobalPosition
         });
 

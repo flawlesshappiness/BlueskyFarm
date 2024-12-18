@@ -56,7 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06129, 0)
 [node name="wall_window_gated_room_bars" parent="Gate/GateAnim" instance=ExtResource("3_00ham")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Gate/GateAnim"]
-collision_layer = 3
+collision_layer = 7
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate/GateAnim/StaticBody3D"]

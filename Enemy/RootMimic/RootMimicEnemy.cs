@@ -252,12 +252,12 @@ public partial class RootMimicEnemy : NavEnemy
         var id = "state";
         switch (state)
         {
-            case State.Wander: StartCoroutine(StateCr_Wander, id); return;
-            case State.Waiting: StartCoroutine(StateCr_Waiting, id); return;
-            case State.Threat: StartCoroutine(StateCr_Threat, id); return;
-            case State.Fleeing: StartCoroutine(StateCr_Fleeing, id); return;
-            case State.Attacking: StartCoroutine(StateCr_Attacking, id); return;
-            case State.Debug_Follow: StartCoroutine(StateCr_Debug_Follow, id); return;
+            case State.Wander: this.StartCoroutine(StateCr_Wander, id); return;
+            case State.Waiting: this.StartCoroutine(StateCr_Waiting, id); return;
+            case State.Threat: this.StartCoroutine(StateCr_Threat, id); return;
+            case State.Fleeing: this.StartCoroutine(StateCr_Fleeing, id); return;
+            case State.Attacking: this.StartCoroutine(StateCr_Attacking, id); return;
+            case State.Debug_Follow: this.StartCoroutine(StateCr_Debug_Follow, id); return;
             default: return;
         }
     }
@@ -509,7 +509,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void AnimatePose_Threat()
     {
-        StartCoroutine(Cr, "pose");
+        this.StartCoroutine(Cr, "pose");
         IEnumerator Cr()
         {
             var curve = Curves.EaseOutQuad;
@@ -525,7 +525,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void AnimatePose_Walk()
     {
-        StartCoroutine(Cr, "pose");
+        this.StartCoroutine(Cr, "pose");
         IEnumerator Cr()
         {
             var curve = Curves.EaseOutQuad;
@@ -541,7 +541,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void AnimatePose_Wait()
     {
-        StartCoroutine(Cr, "pose");
+        this.StartCoroutine(Cr, "pose");
         IEnumerator Cr()
         {
             var curve = Curves.EaseOutQuad;

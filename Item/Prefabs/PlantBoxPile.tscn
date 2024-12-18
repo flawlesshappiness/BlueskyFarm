@@ -10,18 +10,18 @@ size = Vector3(1.19836, 0.331213, 0.325317)
 [node name="PlantBoxPile" instance=ExtResource("1_m3hxn")]
 InteractableText = "Plant box materials"
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0180054, -0.00563627, 0.00445557)
 shape = SubResource("BoxShape3D_0aw67")
 
-[node name="plant_box_plank_001" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_e14qo")]
+[node name="plant_box_plank_001" parent="Model" index="0" instance=ExtResource("2_e14qo")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.126086, -0.143576)
 
-[node name="plant_box_plank_002" parent="RigidBody3D/ScaleNode/Model" index="1" instance=ExtResource("3_rooif")]
+[node name="plant_box_plank_002" parent="Model" index="1" instance=ExtResource("3_rooif")]
 transform = Transform3D(0.999391, -0.0348995, 1.52551e-09, 0, -4.37114e-08, -1, 0.0348995, 0.999391, -4.36848e-08, -0.0184919, -0.0443462, -0.132481)
 
-[node name="plant_box_plank_003" parent="RigidBody3D/ScaleNode/Model" index="2" instance=ExtResource("2_e14qo")]
+[node name="plant_box_plank_003" parent="Model" index="2" instance=ExtResource("2_e14qo")]
 transform = Transform3D(0.990268, 0.139173, -6.08345e-09, 0, -4.37114e-08, -1, -0.139173, 0.990268, -4.3286e-08, -0.020341, 0.0379488, -0.141727)
 
-[node name="plant_box_plank_004" parent="RigidBody3D/ScaleNode/Model" index="3" instance=ExtResource("3_rooif")]
+[node name="plant_box_plank_004" parent="Model" index="3" instance=ExtResource("3_rooif")]
 transform = Transform3D(0.999848, -0.0174524, 7.62869e-10, 0, -4.37114e-08, -1, 0.0174524, 0.999848, -4.37047e-08, -0.0110952, 0.119689, -0.147274)

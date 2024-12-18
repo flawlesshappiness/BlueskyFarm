@@ -27,7 +27,7 @@ public partial class BlueprintDisplay : Node3DScript
     public override void _Ready()
     {
         base._Ready();
-        Touchable.InteractableText = Tr("##CANCEL##");
+        Touchable.HoverText = Tr("##CANCEL##");
         Touchable.OnTouched += Touched;
         SetCancelEnabled(false);
 
@@ -80,7 +80,7 @@ public partial class BlueprintDisplay : Node3DScript
 
     public Coroutine AnimateShow()
     {
-        return StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             Show();
@@ -98,7 +98,7 @@ public partial class BlueprintDisplay : Node3DScript
 
     public Coroutine AnimateHide()
     {
-        return StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             var duration = 0.25f;

@@ -57,9 +57,13 @@ public partial class BasementWellRoom : Node3DScript
         Well.Handle.Disable();
         Well.HandleTouchable.Disable();
 
-        var item_handle = ItemController.Instance.CreateItem("WellHandle");
-        item_handle.GlobalPosition = HandleItemPosition.GlobalPosition;
-        item_handle.GlobalRotation = HandleItemPosition.GlobalRotation;
+        var item_handle = ItemController.Instance.CreateItem("WellHandle", new CreateItemSettings
+        {
+            Parent = HandleItemPosition
+        });
+
+        item_handle.Position = Vector3.Zero;
+        item_handle.Rotation = Vector3.Zero;
     }
 
     private void OnWellAnimate()
@@ -91,7 +95,7 @@ public partial class BasementWellRoom : Node3DScript
 
             var dir = item.GlobalPosition.DirectionTo(Player.Instance.GlobalPosition);
             var vel = dir * 5f + Vector3.Up * 1.0f;
-            item.RigidBody.LinearVelocity = vel;
+            item.LinearVelocity = vel;
 
             Particle.PlayOneShot("ps_smoke_puff_small", item.GlobalPosition);
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);

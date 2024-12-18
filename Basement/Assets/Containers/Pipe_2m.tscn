@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dh2iukdlkvin0" path="res://Assets/FlawLizArt/Pipes/Pipe_2m_Hole.fbx" id="3_duxto"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_n8f0o"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hgk8w"]
-size = Vector3(0.15332, 0.353271, 0.351318)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mhxs"]
+size = Vector3(0.117188, 0.375244, 0.291016)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_53cdo"]
 radius = 0.253895
@@ -232,11 +232,11 @@ material = SubResource("StandardMaterial3D_ogp5f")
 
 [node name="Pipe" instance=ExtResource("1_ko5yy")]
 
-[node name="StaticBody3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.239097, 1, 0)
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.261292, 0.980559, 0)
 
-[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_hgk8w")
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+shape = SubResource("BoxShape3D_5mhxs")
 
 [node name="ItemPosition" parent="." index="1"]
 transform = Transform3D(-4.37114e-08, 0.258819, 0.965925, -2.08616e-07, 0.965925, -0.258819, -1, -2.12821e-07, 1.17719e-08, -0.246765, 0.982209, -1.19209e-07)

@@ -57,7 +57,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
 
     private void OnCancel()
     {
-        StartCoroutine(Cr, "animate");
+        this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             OnBlueprintCancelled?.Invoke();
@@ -109,7 +109,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
     {
         var bp_id = item.Data.Blueprint.Id;
 
-        StartCoroutine(Cr, "animate");
+        this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
@@ -132,7 +132,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
 
         Display.UpdateFromData(Data.Game.BlueprintCraftingData);
 
-        StartCoroutine(Cr, "animate");
+        this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             OnBlueprintStarted?.Invoke();
@@ -150,7 +150,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         var data = Data.Game.BlueprintCraftingData.Materials.FirstOrDefault(x => x.Type == item.Info.Type);
         data.Count++;
 
-        StartCoroutine(Cr, "material");
+        this.StartCoroutine(Cr, "material");
         IEnumerator Cr()
         {
             SetCancelEnabled(false);
@@ -169,7 +169,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         var has_materials = Data.Game.BlueprintCraftingData.Materials.All(x => x.Count >= x.Max);
         if (!has_materials) return;
 
-        StartCoroutine(Cr, "animate");
+        this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             SetCancelEnabled(false);
@@ -218,7 +218,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         var velocity = direction * 6f;
 
         item.GlobalPosition = start_position;
-        item.RigidBody.LinearVelocity = velocity;
+        item.LinearVelocity = velocity;
     }
 
     private void SetCancelEnabled(bool enabled)

@@ -89,7 +89,7 @@ public partial class Weed : Node3DScript
     {
         SoundController.Instance.Play("sfx_weed_cut", GlobalPosition);
 
-        return StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             var duration = 0.5f;

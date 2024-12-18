@@ -1,16 +1,21 @@
+using Godot;
 using System;
 
-public partial class Touchable : Interactable
+public partial class Touchable : InteractableStaticBody3D
 {
+    [Export]
+    public bool OverrideCollisionMode;
+
     public event Action OnTouched;
 
-    protected override void _ReadyPlayer()
+    public override void _Ready()
     {
-        base._ReadyPlayer();
+        base._Ready();
 
-        if (!OverrideInitialCollisionMode)
+        if (!OverrideCollisionMode)
         {
-            SetCollision_Interactable();
+            SetCollisionLayer(3);
+            SetCollisionMask();
         }
     }
 

@@ -217,15 +217,11 @@ bus = &"SFX"
 
 [node name="well_handle" parent="Handle/Anim" instance=ExtResource("4_b5avu")]
 
-[node name="HandleTouchable" type="Node3D" parent="Handle"]
+[node name="HandleTouchable" type="StaticBody3D" parent="Handle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325369, -0.257304, -1.19209e-07)
 script = ExtResource("5_ugx1h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Handle/HandleTouchable"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle/HandleTouchable/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle/HandleTouchable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0456532, 0.112058, 0)
 shape = SubResource("BoxShape3D_rs50b")
 

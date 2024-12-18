@@ -54,11 +54,11 @@ public partial class PuzzleCubeWallHole : Node3DScript
             cube.IsBeingHandled = true;
             cube.SetGrabbable(false);
             cube.SetCollisionEnabled(false);
-            cube.RigidBody.LockPosition_All();
-            cube.RigidBody.LockRotation_All();
+            cube.LockPosition_All();
+            cube.LockRotation_All();
 
             var end_rotation = WrappedEulerAngles(alignment.Rotation + GlobalRotationDegrees);
-            var start_rotation = ClosestEulerAngles(WrappedEulerAngles(cube.RigidBody.GlobalRotationDegrees), end_rotation);
+            var start_rotation = ClosestEulerAngles(WrappedEulerAngles(cube.GlobalRotationDegrees), end_rotation);
             var start_position = cube.GlobalPosition;
             var curve_out = Curves.EaseOutQuad;
             var curve_in_out = Curves.EaseInOutQuad;
@@ -68,7 +68,7 @@ public partial class PuzzleCubeWallHole : Node3DScript
             yield return LerpEnumerator.Lerp01(0.5f, f =>
             {
                 var t = curve_out.Evaluate(f);
-                cube.RigidBody.GlobalRotationDegrees = start_rotation.Lerp(end_rotation, t);
+                cube.GlobalRotationDegrees = start_rotation.Lerp(end_rotation, t);
                 cube.GlobalPosition = start_position.Lerp(OutsidePosition.GlobalPosition, t);
             });
 
@@ -126,7 +126,7 @@ public partial class PuzzleCubeWallHole : Node3DScript
     {
         var wall_normal = GlobalBasis * Vector3.Back;
         var closest = PuzzleCube.Alignments
-            .OrderByDescending(x => (cube.RigidBody.GlobalBasis * x.Direction).Dot(wall_normal))
+            .OrderByDescending(x => (cube.GlobalBasis * x.Direction).Dot(wall_normal))
             .First();
         return closest;
     }
@@ -161,8 +161,8 @@ public partial class PuzzleCubeWallHole : Node3DScript
             cube.IsBeingHandled = false;
             cube.SetGrabbable(true);
             cube.SetCollisionEnabled(true);
-            cube.RigidBody.UnlockPosition_All();
-            cube.RigidBody.UnlockRotation_All();
+            cube.UnlockPosition_All();
+            cube.UnlockRotation_All();
 
             yield return new WaitForSeconds(1);
 

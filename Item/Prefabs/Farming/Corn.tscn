@@ -8,8 +8,8 @@ size = Vector3(0.105225, 0.32574, 0.117188)
 
 [node name="Corn" instance=ExtResource("1_hwuhl")]
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157522, 0)
 shape = SubResource("BoxShape3D_udry6")
 
-[node name="corn" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_057hh")]
+[node name="corn" parent="Model" index="0" instance=ExtResource("2_057hh")]

@@ -11,8 +11,8 @@ size = Vector3(0.217773, 0.218994, 1.01953)
 script = ExtResource("2_atp3k")
 InteractableText = "Blueprint"
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_3ucp8")
 
-[node name="blueprint_roll" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_vpyyp")]
+[node name="blueprint_roll" parent="Model" index="0" instance=ExtResource("2_vpyyp")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)

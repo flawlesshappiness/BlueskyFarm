@@ -57,9 +57,9 @@ public partial class FirstPersonItemHold : Node3DScript
 
         if (IsInstanceValid(_current_item))
         {
-            _current_item.RigidBody.Freeze = true;
+            _current_item.Freeze = true;
             _current_item.SetParent(Position);
-            _current_item.SetCollision_None();
+            _current_item.ClearCollisionLayerAndMask();
             _current_item.GlobalPosition = Position.GlobalPosition;
             _current_item.GlobalRotation = Position.GlobalRotation;
         }

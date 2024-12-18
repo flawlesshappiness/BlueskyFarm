@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://bws14ev46uhsc"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bws14ev46uhsc"]
 
+[ext_resource type="PackedScene" uid="uid://cafny2o1xbe0w" path="res://Item/Prefabs/BlueprintRoll.tscn" id="1_gp6xp"]
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_nowr0"]
 
 [resource]
 script = ExtResource("1_nowr0")
 Path = "res://Item/Prefabs/BlueprintRoll.tscn"
+Scene = ExtResource("1_gp6xp")
+ItemName = ""
+CustomId = ""
 Type = 0
 Uses = 0
 IsSeed = false
 SeedResultType = 0
 GrowTimeInSeconds = 0
-CanProcessToMaterial = false
-MaterialType = 0
 CanPickUp = true
 Untrack = false
 InventoryItemCameraDistance = 0.75

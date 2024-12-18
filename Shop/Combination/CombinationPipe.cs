@@ -26,12 +26,12 @@ public partial class CombinationPipe : Node3DScript
 
     private void EnableDetaching()
     {
-        Detach.SetCollision_Interactable();
+        Detach.SetCollisionLayer(3);
     }
 
     private void DisableDetaching()
     {
-        Detach.SetCollision_None();
+        Detach.ClearCollisionLayerAndMask();
     }
 
     private void DetachTouched()
@@ -44,11 +44,11 @@ public partial class CombinationPipe : Node3DScript
         if (CurrentMaterial == null) return;
 
         DisableDetaching();
-        CurrentMaterial.SetCollision_Item();
-        CurrentMaterial.RigidBody.UnlockPosition_All();
-        CurrentMaterial.RigidBody.UnlockRotation_All();
+        CurrentMaterial.SetCollisionLayer(2, 3);
+        CurrentMaterial.UnlockPosition_All();
+        CurrentMaterial.UnlockRotation_All();
 
-        CurrentMaterial.RigidBody.LinearVelocity = Area.GlobalBasis * Vector3.Forward * 3;
+        CurrentMaterial.LinearVelocity = Area.GlobalBasis * Vector3.Forward * 3;
 
         SoundController.Instance.Play("sfx_pickup", Area.GlobalPosition);
     }
@@ -91,9 +91,9 @@ public partial class CombinationPipe : Node3DScript
 
     private void SnapMaterial(CraftingMaterial mat)
     {
-        mat.SetCollisionLayer(item: true);
-        mat.RigidBody.LockPosition_All();
-        mat.RigidBody.LockRotation_All();
+        mat.SetCollisionLayer(2, 3);
+        mat.LockPosition_All();
+        mat.LockRotation_All();
         mat.GlobalPosition = Area.GlobalPosition;
 
         CurrentMaterial = mat;

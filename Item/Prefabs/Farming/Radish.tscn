@@ -8,9 +8,9 @@ size = Vector3(0.130859, 0.25896, 0.145508)
 
 [node name="Radish" instance=ExtResource("1_sllll")]
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0298462, 0)
 shape = SubResource("BoxShape3D_udry6")
 
-[node name="radish" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("1_f812j")]
+[node name="radish" parent="Model" index="0" instance=ExtResource("1_f812j")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.150954, 0)

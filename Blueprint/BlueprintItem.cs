@@ -11,6 +11,6 @@ public partial class BlueprintItem : Item
         if (Data?.Blueprint == null) return;
 
         var info = BlueprintController.Instance.GetInfo(Data.Blueprint.Id);
-        InteractableText = $"{Tr("##BLUEPRINT##")}: {info.ResultItemInfo.ItemName}";
+        HoverText = $"{Tr("##BLUEPRINT##")}: {info.ResultItemInfo.ItemName}";
     }
 }

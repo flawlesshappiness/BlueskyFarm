@@ -3,8 +3,8 @@ using Godot;
 [GlobalClass]
 public partial class ItemInfo : Resource
 {
-    [Export(PropertyHint.File)]
-    public string Path;
+    [Export]
+    public PackedScene Scene;
 
     [Export]
     public string ItemName;

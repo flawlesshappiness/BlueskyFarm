@@ -51,7 +51,7 @@ public partial class WateringCan : Item
     {
         if (IsEmpty) return;
 
-        var vel = RigidBody.LinearVelocity.Length();
+        var vel = LinearVelocity.Length();
 
         _slosh_speed_max = Mathf.Max(_slosh_speed_max, vel);
         _slosh_speed_min =
@@ -102,7 +102,7 @@ public partial class WateringCan : Item
     {
         if (_using) return;
 
-        StartCoroutine(Cr, "use");
+        this.StartCoroutine(Cr, "use");
         IEnumerator Cr()
         {
             _using = true;

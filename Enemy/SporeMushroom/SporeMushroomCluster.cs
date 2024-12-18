@@ -70,7 +70,7 @@ public partial class SporeMushroomCluster : Node3DScript
     public void AnimateAppear()
     {
         var ordered_models = _models.OrderBy(x => x.Scale.Length()).ToList();
-        StartCoroutine(Cr, nameof(AnimateAppear));
+        this.StartCoroutine(Cr, nameof(AnimateAppear));
         IEnumerator Cr()
         {
             SfxAppear.Play();

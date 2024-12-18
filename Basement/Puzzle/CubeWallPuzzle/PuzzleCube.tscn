@@ -10,11 +10,11 @@ size = Vector3(0.362305, 0.363525, 0.361328)
 [node name="PuzzleCube" instance=ExtResource("1_4tdy4")]
 script = ExtResource("2_ouqws")
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_1geys")
 
-[node name="PuzzleCubeDisplay" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("3_vt7k3")]
+[node name="PuzzleCubeDisplay" parent="Model" index="0" instance=ExtResource("3_vt7k3")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D/ScaleNode/Model" index="1"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Model" index="1"]
 light_color = Color(1, 0, 0, 1)
 omni_range = 2.0

@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://b0mawrch4u8cp"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://b0mawrch4u8cp"]
 
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_6tnx7"]
+[ext_resource type="PackedScene" uid="uid://gklon2jq08v5" path="res://Item/Prefabs/Farming/Seed.tscn" id="1_71veo"]
 
 [resource]
 script = ExtResource("1_6tnx7")
 Path = "res://Item/Prefabs/Farming/Seed.tscn"
+Scene = ExtResource("1_71veo")
+ItemName = ""
+CustomId = ""
 Type = 0
+Uses = 0
 IsSeed = true
 SeedResultType = 0
 GrowTimeInSeconds = 0
-CanProcessToMaterial = false
-MaterialType = 0
 CanPickUp = true
 Untrack = false
 InventoryItemCameraDistance = 0.25

@@ -136,9 +136,9 @@ public partial class BarrelMimicEnemy : NavEnemy
         var id = "state";
         switch (state)
         {
-            case State.Debug_Follow: StartCoroutine(StateCr_DebugFollow, id); return;
-            case State.Debug_Scare: StartCoroutine(StateCr_DebugScare, id); return;
-            case State.Debug_Touch: StartCoroutine(StateCr_DebugTouch, id); return;
+            case State.Debug_Follow: this.StartCoroutine(StateCr_DebugFollow, id); return;
+            case State.Debug_Scare: this.StartCoroutine(StateCr_DebugScare, id); return;
+            case State.Debug_Touch: this.StartCoroutine(StateCr_DebugTouch, id); return;
             default: return;
         }
     }

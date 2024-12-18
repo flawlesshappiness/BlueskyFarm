@@ -2,18 +2,15 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
+public partial class FirstPersonInteract : RayCast3D
 {
     [Export]
     public float SearchRadius;
 
     public Vector3 RayEndPosition => RayStartPosition + GlobalBasis * TargetPosition;
     public Vector3 RayStartPosition => GlobalPosition;
-
-    public Interactable CurrentInteractable => current_interactable;
-    private Interactable current_interactable;
-
-    private Node3D current_collider;
+    public IInteractable CurrentInteractable { get; private set; }
+    public Node3D CurrentCollider { get; private set; }
 
     public override void _Process(double delta)
     {
@@ -25,8 +22,8 @@ public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
     {
         if (IsColliding())
         {
-            current_collider = GetCollider() as Node3D;
-            var interactable = current_collider.GetNodeInParents<Interactable>(2);
+            CurrentCollider = GetCollider() as Node3D;
+            var interactable = CurrentCollider.GetNodeInParents<IInteractable>(2);
             SetInteractable(interactable);
         }
         else if (OverlapInteract(out var closest) && HasLineOfSightTo(closest))
@@ -35,19 +32,19 @@ public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
         }
         else
         {
-            current_collider = null;
-            current_interactable = null;
+            CurrentCollider = null;
+            CurrentInteractable = null;
         }
     }
 
-    private bool OverlapInteract(out Interactable closest)
+    private bool OverlapInteract(out IInteractable closest)
     {
-        var valids = new List<Interactable>();
+        var valids = new List<IInteractable>();
         var hits = this.OverlapSphere(RayEndPosition, SearchRadius, CollisionMask);
         foreach (var hit in hits)
         {
             var node = hit.Collider as Node3D;
-            var interactable = node.GetNodeInParents<Interactable>(2);
+            var interactable = node.GetNodeInParents<IInteractable>(2);
             if (interactable == null) continue;
             valids.Add(interactable);
         }
@@ -59,9 +56,9 @@ public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
         return valids.Count > 0;
     }
 
-    private bool HasLineOfSightTo(Interactable interactable)
+    private bool HasLineOfSightTo(IInteractable interactable)
     {
-        if (!IsInstanceValid(interactable)) return false;
+        if (!IsInstanceValid(interactable.Body)) return false;
 
         var start = RayStartPosition;
         var end = interactable.Body.GlobalPosition;
@@ -72,17 +69,17 @@ public partial class FirstPersonInteract : RayCast3D, IPlayerInteract
         if (this.TryRaycast(start, dir, length, mask, out var result))
         {
             var n3 = result.Collider as Node3D;
-            var result_interactable = n3.GetNodeInParents<Interactable>();
+            var result_interactable = n3.GetNodeInParents<IInteractable>();
             return result_interactable == interactable;
         }
 
         return false;
     }
 
-    private void SetInteractable(Interactable interactable)
+    private void SetInteractable(IInteractable interactable)
     {
         if (interactable == null) return;
-        if (current_interactable == interactable) return;
-        current_interactable = interactable;
+        if (CurrentInteractable == interactable) return;
+        CurrentInteractable = interactable;
     }
 }

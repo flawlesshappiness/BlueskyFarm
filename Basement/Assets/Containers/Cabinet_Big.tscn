@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://psjxsmujgxnd" path="res://Assets/KenneyNL/Furniture/kitchenCabinetUpper.fbx" id="2_lh0qu"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="3_msicc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7rnys"]
-size = Vector3(2.30469, 2.07617, 0.320038)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dsgm"]
+size = Vector3(0.958984, 0.917969, 0.23822)
 
 [sub_resource type="Animation" id="Animation_tk1m5"]
 length = 0.001
@@ -231,13 +231,14 @@ proximity_fade_distance = 12.0
 [sub_resource type="QuadMesh" id="QuadMesh_sesmd"]
 material = SubResource("StandardMaterial3D_thck1")
 
-[node name="Container_Base" instance=ExtResource("1_ewylp")]
+[node name="Cabinet_Big" instance=ExtResource("1_ewylp")]
 
-[node name="StaticBody3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.973952, 0.490182)
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03403, 0.585041)
 
-[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_7rnys")
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169678, -0.0623169, -0.0572815)
+shape = SubResource("BoxShape3D_7dsgm")
 
 [node name="ItemPosition" parent="." index="1"]
 transform = Transform3D(-1, -2.26267e-08, -8.44439e-08, 0, 0.965925, -0.258819, 8.74228e-08, -0.258819, -0.965925, 6.55032e-15, 0.762413, 0.556575)

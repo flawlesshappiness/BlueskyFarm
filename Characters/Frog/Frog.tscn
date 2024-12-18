@@ -10,7 +10,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_et3n8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l5str"]
-size = Vector3(1, 1.53662, 1)
+size = Vector3(1, 1.53662, 0.475586)
 
 [node name="Frog" instance=ExtResource("1_jlthq")]
 script = ExtResource("2_e73ro")
@@ -66,17 +66,15 @@ bones/56/rotation = Quaternion(-3.55272e-15, -5.96047e-07, 1.69407e-21, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_et3n8")
 
-[node name="Touchable" type="Node3D" parent="." index="3"]
+[node name="Touchable" type="StaticBody3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18338, 0.445674)
-script = ExtResource("4_xkswj")
-OverrideCursorTexture = ExtResource("5_kdtbk")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Touchable" index="0"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("4_xkswj")
+HoverIcon = ExtResource("5_kdtbk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.937781, -0.134892)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.937781, -0.397099)
 shape = SubResource("BoxShape3D_l5str")
 
 [editable path="Frog"]

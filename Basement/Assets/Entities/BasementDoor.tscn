@@ -196,15 +196,13 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, 0)
 shape = SubResource("BoxShape3D_n0nwd")
 
-[node name="Touchable" type="Node3D" parent="Anim/Model"]
+[node name="Touchable" type="StaticBody3D" parent="Anim/Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-script = ExtResource("3_3pxfy")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Model/Touchable"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("3_3pxfy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Model/Touchable/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Model/Touchable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("BoxShape3D_3nku0")
 

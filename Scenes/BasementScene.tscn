@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvxlenqmx8s03"]
+
+[ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_jj0xq"]
+[ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Basement.tres" id="2_tu2bx"]
+[ext_resource type="Environment" uid="uid://ck8maewbx0shd" path="res://Environment/Forest.tres" id="3_b2cmq"]
+[ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="4_iyvpb"]
+[ext_resource type="AudioStream" uid="uid://bobxdxs61gw4f" path="res://Sound/Ambience/amb_basement_001.ogg" id="5_avtk3"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hft8w"]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4294967291
+agent_height = 0.5
+agent_radius = 0.25
+
+[node name="BasementScene" type="Node3D"]
+script = ExtResource("1_jj0xq")
+BasementEnvironment = ExtResource("2_tu2bx")
+ForestEnvironment = ExtResource("3_b2cmq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_tu2bx")
+
+[node name="Player" parent="." instance=ExtResource("4_iyvpb")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_avtk3")
+volume_db = 15.0
+autoplay = true
+bus = &"SFX"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_hft8w")
+
+[node name="DungeonParent" type="Node3D" parent="NavigationRegion3D"]

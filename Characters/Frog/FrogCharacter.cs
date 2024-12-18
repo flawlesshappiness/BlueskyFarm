@@ -131,11 +131,11 @@ public partial class FrogCharacter : Character
 
     private void ThrowItemToPlayer(Item item)
     {
-        var start_position = GlobalPosition.Add(y: 1);
+        var start_position = GlobalPosition.Add(y: 1.5f);
         var direction_to_player = start_position.DirectionTo(Player.Instance.MidPosition).Normalized();
         var direction = direction_to_player.Add(y: 1f);
         var velocity = direction * 2f;
         item.GlobalPosition = start_position;
-        item.RigidBody.LinearVelocity = velocity;
+        item.LinearVelocity = velocity;
     }
 }

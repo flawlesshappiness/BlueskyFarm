@@ -434,10 +434,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, -2)
 [node name="Wall_Hole_Gated" parent="Puzzle" index="1" instance=ExtResource("12_cd28f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -2)
 
-[node name="ItemPosition" type="Node3D" parent="Puzzle" index="2"]
-transform = Transform3D(0.810778, 0, 0.585354, 0, 1, 0, -0.585354, 0, 0.810778, 2.01353, 5.25, -2.92717)
+[node name="ItemPosition" type="Node3D" parent="Puzzle/Wall_Hole_Gated" index="3"]
+transform = Transform3D(0.810778, 0, 0.585354, 0, 1, 0, -0.585354, 0, 0.810778, -0.0930803, 1.25, -0.92717)
 
-[node name="CubePositions" type="Node" parent="Puzzle" index="3"]
+[node name="CubePositions" type="Node3D" parent="Puzzle" index="2"]
 
 [node name="CubePosition1" type="Node3D" parent="Puzzle/CubePositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 5, 3.5)

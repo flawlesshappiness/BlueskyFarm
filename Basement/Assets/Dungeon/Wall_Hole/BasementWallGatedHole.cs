@@ -17,7 +17,7 @@ public partial class BasementWallGatedHole : Node3DScript
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            var start_position = GateAnim.GlobalPosition;
+            var start_position = GateAnim.Position;
             var end_position = new Vector3(0, 1.25f, 0);
 
             SoundController.Instance.Play("sfx_stone_drag_long", GateAnim.GlobalPosition);
@@ -39,7 +39,7 @@ public partial class BasementWallGatedHole : Node3DScript
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            var start_position = GateAnim.GlobalPosition;
+            var start_position = GateAnim.Position;
             var end_position = Vector3.Zero;
 
             SoundController.Instance.Play("sfx_stone_drag_long", GateAnim.GlobalPosition);

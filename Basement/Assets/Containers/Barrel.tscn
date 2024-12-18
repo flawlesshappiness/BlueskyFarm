@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cq2haudvhcq6o" path="res://Assets/KayLousberg/Dungeon/barrelDark_NoLid.fbx" id="3_i58c2"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_5meeh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_124s1"]
-size = Vector3(0.633057, 0.173828, 0.616211)
+[sub_resource type="BoxShape3D" id="BoxShape3D_50gpm"]
+size = Vector3(0.68457, 0.165039, 0.599609)
 
 [sub_resource type="Animation" id="Animation_yvxw3"]
 length = 0.001
@@ -365,11 +365,11 @@ material = SubResource("StandardMaterial3D_ogp5f")
 
 [node name="Barrel" instance=ExtResource("1_ftn4q")]
 
-[node name="StaticBody3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0254, 0)
 
-[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_124s1")
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+shape = SubResource("BoxShape3D_50gpm")
 
 [node name="ItemPosition" parent="." index="1"]
 transform = Transform3D(-1, -6.18172e-08, -6.18172e-08, 0, 0.707106, -0.707107, 8.74228e-08, -0.707107, -0.707106, 1.19209e-07, 1.05968, 0.11734)

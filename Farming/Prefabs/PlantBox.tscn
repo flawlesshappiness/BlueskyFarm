@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bvbctpjxk6w4r"]
 
 [ext_resource type="Script" path="res://Farming/PlantArea.cs" id="1_qlu5f"]
+[ext_resource type="Script" path="res://Farming/PlantAreaTouchable.cs" id="2_1nlv7"]
 [ext_resource type="PackedScene" uid="uid://ctaphuje6j8mg" path="res://Assets/FlawLizArt/PlantBox/plant_box.fbx" id="3_05um6"]
 [ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://PlayerTools/Prefabs/Weed.tscn" id="3_qg5tq"]
-[ext_resource type="Script" path="res://Farming/PlantAreaTouchable.cs" id="3_sm5dc"]
 [ext_resource type="Script" path="res://PlayerTools/WateringCan/Waterable.cs" id="4_b6w7s"]
 [ext_resource type="Texture2D" uid="uid://deku6vb433a0g" path="res://Assets/KenneyNL/Particles/dirt_02.png" id="5_2gtwe"]
 
@@ -23,15 +23,13 @@ size = Vector3(1, 0.267517, 1)
 script = ExtResource("1_qlu5f")
 WeedArea = Vector3(0.5, 0, 0.5)
 
-[node name="TouchPlant" type="Node3D" parent="."]
-script = ExtResource("3_sm5dc")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="TouchPlant"]
+[node name="TouchPlant" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.358871, 0)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("2_1nlv7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TouchPlant/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TouchPlant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153931, 0)
 shape = SubResource("BoxShape3D_hg4ky")
 

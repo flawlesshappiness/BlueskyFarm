@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=86 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -69,6 +69,9 @@ size = Vector2(4, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1bpo"]
 size = Vector3(1.88379, 1, 1.78735)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4x8xl"]
+size = Vector3(3.5, 3, 4.5)
 
 [sub_resource type="Curve" id="Curve_qma48"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -455,8 +458,10 @@ transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412
 
 [node name="Trapdoor" parent="World/NavigationRegion3D/Basement" instance=ExtResource("8_je3mm")]
 transform = Transform3D(1, 0, 0, 0, 0.975423, 0.22034, 0, -0.22034, 0.975423, 0, 0.452668, -0.317729)
-SceneName = "basement"
-InteractableText = "Basement"
+SceneName = "BasementScene"
+
+[node name="Touchable" parent="World/NavigationRegion3D/Basement/Trapdoor" index="0"]
+HoverText = "Basement"
 
 [node name="StartBasement" type="Node3D" parent="World/NavigationRegion3D/Basement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
@@ -500,6 +505,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0,
 
 [node name="WoodenStand_Corner2" parent="World/NavigationRegion3D/WoodenStand" instance=ExtResource("21_gp4pu")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 0, 10.75)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/WoodenStand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 13.25)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/WoodenStand/StaticBody3D"]
+shape = SubResource("BoxShape3D_4x8xl")
 
 [node name="Grass" type="Node3D" parent="World"]
 
@@ -673,6 +686,7 @@ volume_db = 20.0
 autoplay = true
 bus = &"BGM"
 
+[editable path="World/NavigationRegion3D/Basement/Trapdoor"]
 [editable path="World/PlantBoxes/PlantBox_001"]
 [editable path="World/PlantBoxes/PlantBox_002"]
 [editable path="World/PlantBoxes/PlantBox_003"]

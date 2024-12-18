@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class SceneDoor : Touchable
+public partial class SceneDoor : Node3DScript
 {
     [Export]
     public string SceneName;
@@ -21,7 +21,16 @@ public partial class SceneDoor : Touchable
     [Export]
     public SoundInfo LockedSound;
 
-    protected override void Touched()
+    [NodeName]
+    public Touchable Touchable;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        Touchable.OnTouched += Touched;
+    }
+
+    private void Touched()
     {
         Debug.TraceMethod();
         Debug.Indent++;
@@ -52,7 +61,17 @@ public partial class SceneDoor : Touchable
             SoundController.Instance.Play(LockedSound, GlobalPosition);
         }
 
-        DialogueController.Instance.SetNode("##LOCKED##");
+        GameView.Instance.CreateText(new CreateTextSettings
+        {
+            Id = "locked_" + GetInstanceId(),
+            Text = "##LOCKED##",
+            Position = Touchable.GlobalPosition.Add(y: 0.4f),
+            Duration = 5.0f,
+            Shake_Duration = 0.4f,
+            Shake_Frequency = 0.04f,
+            Shake_Strength = 10f,
+            Shake_Dampening = 0.9f,
+        });
     }
 
     private void ChangeScene()

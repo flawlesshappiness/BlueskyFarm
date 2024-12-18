@@ -75,7 +75,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     public Item CreateItemFromData(ItemData data)
     {
         var info = GD.Load<ItemInfo>(data.Info);
-        var item = GDHelper.Instantiate<Item>(info.Path);
+        var item = GDHelper.Instantiate<Item>(info.Scene);
 
         item.Info = info;
         item.Data = data;
@@ -100,7 +100,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     public Item CreateItem(ItemInfo info, CreateItemSettings settings = null)
     {
         var parent = settings?.Parent ?? Scene.Current as Node;
-        var item = GDHelper.Instantiate<Item>(info.Path, parent);
+        var item = GDHelper.Instantiate<Item>(info.Scene, parent);
         item.Info = info;
         item.Data = CreateItemData(info);
 
@@ -184,7 +184,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         {
             var item = CreateItem(info);
             item.Data.CustomId = custom_id;
-            FarmBounds.Instance.ThrowObject(item.RigidBody, Player.Instance.GlobalPosition);
+            FarmBounds.Instance.ThrowObject(item, Player.Instance.GlobalPosition);
         }
     }
 }

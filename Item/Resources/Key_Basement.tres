@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://bg7qijtifphad"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bg7qijtifphad"]
 
+[ext_resource type="PackedScene" uid="uid://lvnxfxbildsm" path="res://Item/Prefabs/Key_Brown.tscn" id="1_fo7ph"]
 [ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_wpyor"]
 
 [resource]
 script = ExtResource("1_wpyor")
 Path = "res://Item/Prefabs/Key_Brown.tscn"
+Scene = ExtResource("1_fo7ph")
 ItemName = "Basement key"
 CustomId = "basement_key"
 Type = 0

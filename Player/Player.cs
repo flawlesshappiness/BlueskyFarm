@@ -237,7 +237,7 @@ public partial class Player : FirstPersonController
         }
     }
 
-    private bool TryHandleCursor_Touch(Interactable interactable)
+    private bool TryHandleCursor_Touch(IInteractable interactable)
     {
         var touchable = interactable as Touchable;
         if (!IsInstanceValid(touchable)) return false;
@@ -252,8 +252,8 @@ public partial class Player : FirstPersonController
             Cursor.Show(new CursorSettings
             {
                 Name = "Touch",
-                OverrideTexture = interactable.OverrideCursorTexture,
-                Text = interactable.InteractableText,
+                OverrideTexture = interactable.GetHoverIcon(),
+                Text = interactable.GetHoverText(),
                 Position = interactable.Body.GlobalPosition
             });
         }
@@ -261,7 +261,7 @@ public partial class Player : FirstPersonController
         return true;
     }
 
-    private bool TryGrab(Interactable interactable)
+    private bool TryGrab(IInteractable interactable)
     {
         if (Grab == null) return false;
         if (interactable == null) return false;
@@ -273,7 +273,7 @@ public partial class Player : FirstPersonController
         return true;
     }
 
-    private bool TryTouch(Interactable interactable)
+    private bool TryTouch(IInteractable interactable)
     {
         if (interactable == null) return false;
 

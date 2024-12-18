@@ -185,7 +185,7 @@ public partial class BasementScene : GameScene
         {
             var item = SeedController.Instance.CreateSeed(ItemType.Vegetable);
             item.SetEnabled(false);
-            item.RigidBody.LockPosition_All();
+            item.LockPosition_All();
 
             var container = containers.Random();
             containers.Remove(container);

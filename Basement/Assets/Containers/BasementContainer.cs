@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class BasementContainer : Touchable
+public partial class BasementContainer : Node3DScript
 {
     [Export]
     public string IdleClosed_AnimationName = "idle_closed";
@@ -18,6 +18,9 @@ public partial class BasementContainer : Touchable
     [NodeName]
     public GpuParticles3D ps_dust;
 
+    [NodeName]
+    public Touchable Touchable;
+
     public Item Item { get; set; }
 
     protected bool _open;
@@ -25,13 +28,15 @@ public partial class BasementContainer : Touchable
     public override void _Ready()
     {
         base._Ready();
+
+        Touchable.OnTouched += Touched;
+
         this.SetEnabled(IsVisibleInTree());
         Animation.Play(IdleClosed_AnimationName);
     }
 
-    protected override void Touched()
+    private void Touched()
     {
-        base.Touched();
         Open();
     }
 
@@ -40,13 +45,13 @@ public partial class BasementContainer : Touchable
         if (_open) return;
         _open = true;
 
-        StartCoroutine(Cr, nameof(Open));
+        this.StartCoroutine(Cr, nameof(Open));
         IEnumerator Cr()
         {
-            yield return Player.Instance.WaitForProgress(2f, Body);
+            yield return Player.Instance.WaitForProgress(2f, ItemPosition);
 
             AnimateOpen();
-            SetCollision_None();
+            Touchable.ClearCollisionLayerAndMask();
             SpawnItemCoroutine(0.1f);
 
             SoundController.Instance.Play("sfx_container_open", GlobalPosition);
@@ -74,10 +79,10 @@ public partial class BasementContainer : Touchable
     {
         if (!IsInstanceValid(Item)) return;
 
-        Item.RigidBody.UnlockPosition_All();
-        Item.RigidBody.UnlockRotation_All();
+        Item.UnlockPosition_All();
+        Item.UnlockRotation_All();
         Item.SetEnabled(true);
         Item.GlobalPosition = ItemPosition.GlobalPosition;
-        Item.RigidBody.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;
+        Item.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;
     }
 }

@@ -8,11 +8,9 @@ size = Vector3(0.305664, 0.889526, 0.1)
 
 [node name="Key_Brown" instance=ExtResource("1_repun")]
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0386353, 0)
 shape = SubResource("BoxShape3D_2skd2")
 
-[node name="Key" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_oq3mm")]
+[node name="Key" parent="Model" index="0" instance=ExtResource("2_oq3mm")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-
-[editable path="RigidBody3D/ScaleNode/Model/Key"]

@@ -9,8 +9,8 @@ size = Vector3(0.629883, 0.1, 0.362305)
 [node name="WellHandle" instance=ExtResource("1_qcwgi")]
 InteractableText = "Handle"
 
-[node name="CollisionShape3D" parent="RigidBody3D" index="0"]
+[node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_qihmv")
 
-[node name="well_handle" parent="RigidBody3D/ScaleNode/Model" index="0" instance=ExtResource("2_83uns")]
+[node name="well_handle" parent="Model" index="0" instance=ExtResource("2_83uns")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.168537, -0.00340478, -0.131084)

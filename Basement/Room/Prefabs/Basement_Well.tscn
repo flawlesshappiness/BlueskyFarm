@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://btp1aaeioslg2"]
+[gd_scene load_steps=32 format=3 uid="uid://btp1aaeioslg2"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_4wkfx"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Dungeon/Floor_Dirt.tscn" id="2_bsgfs"]
@@ -17,9 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="13_6jpv3"]
 [ext_resource type="Script" path="res://Basement/Room/BasementWellRoom.cs" id="15_5a6tu"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="18_pupgp"]
-[ext_resource type="Texture2D" uid="uid://j4de0xeenph1" path="res://Assets/KenneyNL/Cursors/transparent.png" id="19_ncmlv"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="19_rtbro"]
-[ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="20_x4nks"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="21_hcsgb"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="22_x150u"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel.tscn" id="23_dl8ae"]
@@ -609,30 +607,19 @@ CustomId = "well_handle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4148, 1.28711, 6.62752e-08)
 shape = SubResource("BoxShape3D_td8is")
 
-[node name="MissingHandleTouchable" type="Node3D" parent="BasementWellRoom/Well" index="6"]
+[node name="MissingHandleTouchable" type="StaticBody3D" parent="BasementWellRoom/Well" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29934, 1.32973, 5.67958e-08)
 script = ExtResource("18_pupgp")
-InteractableText = "##MISSING_HANDLE##"
-OverrideCursorTexture = ExtResource("19_ncmlv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BasementWellRoom/Well/MissingHandleTouchable" index="0"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/MissingHandleTouchable/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/MissingHandleTouchable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146362, 0, 0)
 shape = SubResource("BoxShape3D_7mmbs")
 
-[node name="SomethingInWellTouchable" type="Node3D" parent="BasementWellRoom/Well" index="7"]
+[node name="SomethingInWellTouchable" type="StaticBody3D" parent="BasementWellRoom/Well" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00787699, 0.800258, 1.19554e-07)
 script = ExtResource("18_pupgp")
-OverrideCursorTexture = ExtResource("20_x4nks")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BasementWellRoom/Well/SomethingInWellTouchable" index="0"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/SomethingInWellTouchable/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/SomethingInWellTouchable" index="0"]
 shape = SubResource("BoxShape3D_gfx1h")
 
 [node name="KeyOnRope" type="Node3D" parent="BasementWellRoom" index="1"]
@@ -640,16 +627,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, -
 
 [node name="key1_on_rope" parent="BasementWellRoom/KeyOnRope" index="0" instance=ExtResource("13_5p27i")]
 
-[node name="KeyOnRopeTouchable" type="Node3D" parent="BasementWellRoom/KeyOnRope" index="1"]
+[node name="KeyOnRopeTouchable" type="StaticBody3D" parent="BasementWellRoom/KeyOnRope" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.362034, 0)
 script = ExtResource("18_pupgp")
-InteractableText = "Workshop key"
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BasementWellRoom/KeyOnRope/KeyOnRopeTouchable" index="0"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/KeyOnRope/KeyOnRopeTouchable/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/KeyOnRope/KeyOnRopeTouchable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0220337, 0)
 shape = SubResource("BoxShape3D_1qe8c")
 

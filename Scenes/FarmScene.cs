@@ -21,6 +21,8 @@ public partial class FarmScene : GameScene
         ScreenEffects.Instance.Clear();
 
         LoadGame();
+
+        Data.Game.Save();
     }
 
     private void LoadGame()

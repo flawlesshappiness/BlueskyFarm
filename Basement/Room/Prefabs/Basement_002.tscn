@@ -297,6 +297,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
 [node name="Floor_Basement_019" parent="Floor" index="24" instance=ExtResource("7_lk8dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 
+[node name="Ceiling" parent="." index="6"]
+visible = false
+
 [node name="Ceiling17" parent="Ceiling" index="0" instance=ExtResource("6_auaqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 metadata/_edit_lock_ = true
@@ -637,7 +640,7 @@ transform = Transform3D(1.49688, 0, -0.0967724, 0, 1.5, 0, 0.0967724, 0, 1.49688
 transform = Transform3D(0.998929, 0, -0.0462696, 0, 1, 0, 0.0462696, 0, 0.998929, -4.01279, 4.76837e-07, -8.89858)
 
 [node name="Crate3" parent="InteriorGroups/Group 3/Interior 1" index="2" instance=ExtResource("13_gdxat")]
-transform = Transform3D(0.988618, 0, 0.15045, 0, 1, 0, -0.15045, 0, 0.988618, -0.749139, 4.76837e-07, -5.4411)
+transform = Transform3D(0.997357, 0, 0.0726639, 0, 1, 0, -0.0726639, 0, 0.997357, -1.72084, 4.76837e-07, -4.91425)
 
 [node name="Crate2" parent="InteriorGroups/Group 3/Interior 1" index="3" instance=ExtResource("20_mpl7o")]
 transform = Transform3D(0.946503, 0, -0.322695, 0, 1, 0, 0.322695, 0, 0.946503, -5.2658, 0, -8.67323)
@@ -658,10 +661,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.02151, 0, -7.35436)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99352, 0, -6.35193)
 
 [node name="Barrel4" parent="InteriorGroups/Group 3/Interior 2" index="4" instance=ExtResource("14_k6537")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.679843, -2.38419e-07, -5.31565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46176, -2.38419e-07, -4.85452)
 
 [node name="Barrel5" parent="InteriorGroups/Group 3/Interior 2" index="5" instance=ExtResource("14_k6537")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20402, -2.38419e-07, -6.18341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89572, -2.38419e-07, -5.84257)
 
 [node name="Barrel8" parent="InteriorGroups/Group 3/Interior 2" index="6" instance=ExtResource("14_k6537")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31999, -2.38419e-07, -8.97382)

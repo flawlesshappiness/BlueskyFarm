@@ -177,10 +177,19 @@ public partial class FrogBlueprintCrafting : Node3DScript
             yield return Display.AnimateHide();
 
             CreateResult(Data.Game.BlueprintCraftingData);
+            BlueprintTrigger(Data.Game.BlueprintCraftingData.Id);
             OnBlueprintCompleted?.Invoke(Data.Game.BlueprintCraftingData.Id);
             Data.Game.BlueprintCraftingData = null;
 
             SoundController.Instance.Play("sfx_crafting_complete");
+        }
+    }
+
+    private void BlueprintTrigger(string id)
+    {
+        if (id == "inventory_001")
+        {
+            Data.Game.State_BasementInventoryPuzzle = 2;
         }
     }
 

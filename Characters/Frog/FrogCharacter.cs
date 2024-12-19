@@ -111,6 +111,7 @@ public partial class FrogCharacter : Character
 
             case "workshop_key":
                 Data.Game.Flag_WorkshopKeyAvailable = true;
+                Data.Game.State_BasementInventoryPuzzle = 1;
                 break;
         }
     }

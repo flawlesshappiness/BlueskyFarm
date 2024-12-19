@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 public partial class BasementInventoryPuzzleRoom : Node3DScript
 {
@@ -25,16 +26,17 @@ public partial class BasementInventoryPuzzleRoom : Node3DScript
 
     private void CreateCubes()
     {
-        var nodes = CubePositions.GetChildren();
+        var nodes = CubePositions
+            .GetChildren()
+            .Select(x => x as Node3D)
+            .Where(x => x != null)
+            .TakeRandom(3);
 
         foreach (var node in nodes)
         {
-            var n3 = node as Node3D;
-            if (n3 == null) continue;
-
             var item = ItemController.Instance.CreateItem("PuzzleCube", new CreateItemSettings
             {
-                Parent = n3
+                Parent = node
             });
 
             item.Position = Vector3.Zero;

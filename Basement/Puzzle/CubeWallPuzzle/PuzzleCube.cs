@@ -95,7 +95,10 @@ public partial class PuzzleCube : Item
         var i = ((int)Display.CurrentColor + 1) % 4;
         SetColor(i);
 
-        SoundController.Instance.Play("sfx_stone_impact", GlobalPosition);
+        SoundController.Instance.Play("sfx_stone_impact", GlobalPosition, new SoundOverride
+        {
+            Volume = -30
+        });
     }
 
     private void SetColor(int i)

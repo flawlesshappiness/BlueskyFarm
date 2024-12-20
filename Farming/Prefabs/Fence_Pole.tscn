@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://boopdl1h5f2ou"]
+
+[ext_resource type="PackedScene" uid="uid://g1hp8aydybp0" path="res://Assets/FlawLizArt/Fence/fence_pole.fbx" id="1_ya772"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6pq0"]
+size = Vector3(0.405273, 4, 0.40625)
+
+[node name="FencePole" type="Node3D"]
+
+[node name="fence_pole" parent="." instance=ExtResource("1_ya772")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_j6pq0")

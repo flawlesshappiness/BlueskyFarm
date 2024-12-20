@@ -414,11 +414,11 @@ public partial class PlantArea : Node3DScript
         CurrentSeed.TimeWeed = GameTime.Time + data.TimeUntilNextWeed;
     }
 
-    private Weed CreateWeed()
+    private PlantWeed CreateWeed()
     {
-        var weed = WeedTemplate.Duplicate() as Weed;
+        var weed = WeedTemplate.Duplicate() as PlantWeed;
         weed.SetParent(WeedTemplate.GetParent());
-        weed.SetEnabled(weed.IsTouchable);
+        weed.Enable();
         weed.RandomizeModel();
         weed.RandomizeScale();
         weed.OnWeedCut += () => WeedCut(weed);

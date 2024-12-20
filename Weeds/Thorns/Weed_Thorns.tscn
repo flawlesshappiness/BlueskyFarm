@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1ns6lhxycaki"]
+
+[ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://Weeds/Base/Weed_Base.tscn" id="1_6nd0m"]
+[ext_resource type="PackedScene" uid="uid://r7n6pru2l7md" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_bottom.fbx" id="2_0kfq1"]
+[ext_resource type="PackedScene" uid="uid://tm2ybbn6v031" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_up.fbx" id="3_3l7ks"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0d5p6"]
+
+[node name="Weed_Thorns" instance=ExtResource("1_6nd0m")]
+ToolRequired = true
+
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+shape = SubResource("BoxShape3D_0d5p6")
+
+[node name="Model" type="Node3D" parent="." index="1"]
+
+[node name="thorned_weeds_bottom" parent="Model" index="0" instance=ExtResource("2_0kfq1")]
+
+[node name="thorned_weeds_up" parent="Model" index="1" instance=ExtResource("3_3l7ks")]

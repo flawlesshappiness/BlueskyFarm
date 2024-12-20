@@ -16,7 +16,7 @@ public partial class GDHelper
         if (!scene_path.EndsWith(ext)) sb.Append(ext);
         var path = sb.ToString();
 
-        var packed_scene = GD.Load(path) as PackedScene;
+        var packed_scene = (PackedScene)GD.Load(path);
         return Instantiate(packed_scene, parent);
     }
 

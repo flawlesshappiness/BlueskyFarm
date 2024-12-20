@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b31wvb4gftqua"]
 
-[ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://PlayerTools/Prefabs/Weed.tscn" id="1_4qgh0"]
+[ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://Weeds/Base/Weed_Base.tscn" id="1_4qgh0"]
 [ext_resource type="PackedScene" uid="uid://litevesi34j0" path="res://Basement/Assets/Dungeon/Roots_003.tscn" id="2_8mibf"]
 
 [node name="Weed" instance=ExtResource("1_4qgh0")]

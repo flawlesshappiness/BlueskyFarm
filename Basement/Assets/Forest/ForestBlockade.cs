@@ -26,7 +26,7 @@ public partial class ForestBlockade : Touchable
 
         foreach (var weed in weeds)
         {
-            weed.OnWeedCutFinished += WeedCut;
+            weed.OnWeedCut += WeedCut;
         }
     }
 

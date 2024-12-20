@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Farming/PlantArea.cs" id="1_qlu5f"]
 [ext_resource type="Script" path="res://Farming/PlantAreaTouchable.cs" id="2_1nlv7"]
 [ext_resource type="PackedScene" uid="uid://ctaphuje6j8mg" path="res://Assets/FlawLizArt/PlantBox/plant_box.fbx" id="3_05um6"]
-[ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://PlayerTools/Prefabs/Weed.tscn" id="3_qg5tq"]
 [ext_resource type="Script" path="res://PlayerTools/WateringCan/Waterable.cs" id="4_b6w7s"]
 [ext_resource type="Texture2D" uid="uid://deku6vb433a0g" path="res://Assets/KenneyNL/Particles/dirt_02.png" id="5_2gtwe"]
+[ext_resource type="PackedScene" uid="uid://bprmpu8melxmg" path="res://Weeds/Plant/Weed_Plant.tscn" id="6_f0ip7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hg4ky"]
 size = Vector3(1.0127, 0.192139, 0.996094)
@@ -56,9 +56,6 @@ shape = SubResource("BoxShape3D_qq5f6")
 [node name="SeedPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.233871, 0)
 
-[node name="WeedTemplate" parent="." instance=ExtResource("3_qg5tq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108871, 0)
-
 [node name="Waterable" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108871, 0)
 script = ExtResource("4_b6w7s")
@@ -75,3 +72,6 @@ shape = SubResource("BoxShape3D_1s655")
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0.027537, 0.129449, 0.0561455)
 modulate = Color(0.07, 0.0566183, 0.0441, 1)
 texture = ExtResource("5_2gtwe")
+
+[node name="WeedTemplate" parent="." instance=ExtResource("6_f0ip7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.216798, 0)

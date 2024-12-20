@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb1i55cd65jtq"]
+
+[ext_resource type="PackedScene" uid="uid://4ssxxkx0i58v" path="res://Assets/FlawLizArt/Shed/roof.fbx" id="1_ssvbp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxqkp"]
+size = Vector3(4, 0.200317, 4)
+
+[node name="Roof" type="Node3D"]
+
+[node name="roof" parent="." instance=ExtResource("1_ssvbp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100159, 0)
+shape = SubResource("BoxShape3D_nxqkp")

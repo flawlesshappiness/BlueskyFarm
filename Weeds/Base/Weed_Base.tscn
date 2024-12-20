@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d34kbvu0t4aco"]
+
+[ext_resource type="Script" path="res://Weeds/Base/Weed.cs" id="1_a4fav"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_1y6ys"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ey1d"]
+
+[node name="Weed_Base" type="Node3D"]
+script = ExtResource("1_a4fav")
+
+[node name="Touchable" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_1y6ys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]
+shape = SubResource("BoxShape3D_3ey1d")

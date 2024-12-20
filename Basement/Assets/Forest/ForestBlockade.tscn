@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csv45s26emb7f"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Forest/ForestBlockade.cs" id="1_hd8d2"]
-[ext_resource type="PackedScene" uid="uid://b31wvb4gftqua" path="res://PlayerTools/Prefabs/Weed_Roots.tscn" id="2_ekgud"]
+[ext_resource type="PackedScene" uid="uid://b31wvb4gftqua" path="res://Weeds/Weed_Roots.tscn" id="2_ekgud"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vv4n1"]
 size = Vector3(12, 4, 1)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1w0nnejblus3"]
+
+[ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="1_stml7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2xkg4"]
+size = Vector3(1, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nt71"]
+size = Vector3(1, 1, 2)
+
+[node name="Bush_Doorway" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.5)
+shape = SubResource("BoxShape3D_2xkg4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.5)
+shape = SubResource("BoxShape3D_2xkg4")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_7nt71")
+
+[node name="bush_doorway" parent="." instance=ExtResource("1_stml7")]

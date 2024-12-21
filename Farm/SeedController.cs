@@ -4,7 +4,7 @@ using System.Linq;
 public partial class SeedController : SingletonController
 {
     public static SeedController Instance => Singleton.Get<SeedController>();
-    public override string Directory => "Farming";
+    public override string Directory => "Farm";
 
     private List<ItemType> _valid_types = new()
     {

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6vlfgt4dy4o7"]
+
+[ext_resource type="PackedScene" uid="uid://b5msygsksww3j" path="res://Assets/KenneyNL/Furniture/chair.fbx" id="1_rk6n8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shmqk"]
+size = Vector3(0.423828, 0.950317, 0.416992)
+
+[node name="Chair" type="Node3D"]
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="chair" parent="Model" instance=ExtResource("1_rk6n8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475159, 0)
+shape = SubResource("BoxShape3D_shmqk")

@@ -1,39 +1,46 @@
-[gd_scene load_steps=90 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=97 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
 [ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
-[ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farming/Prefabs/Bush.tscn" id="5_wp138"]
-[ext_resource type="PackedScene" uid="uid://dfki383xt8r2n" path="res://Farming/Prefabs/Bush_Short.tscn" id="6_hfo2h"]
-[ext_resource type="PackedScene" uid="uid://bfpuj61fmlyb4" path="res://Farming/Prefabs/Bush_Side_Left.tscn" id="7_ua2xy"]
+[ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Prefabs/Bush.tscn" id="5_wp138"]
+[ext_resource type="PackedScene" uid="uid://dfki383xt8r2n" path="res://Farm/Prefabs/Bush_Short.tscn" id="6_hfo2h"]
+[ext_resource type="PackedScene" uid="uid://bfpuj61fmlyb4" path="res://Farm/Prefabs/Bush_Side_Left.tscn" id="7_ua2xy"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Dungeon/Trapdoor.tscn" id="8_je3mm"]
-[ext_resource type="PackedScene" uid="uid://cwaew6gcx5lxc" path="res://Farming/Prefabs/Bush_Side_Right.tscn" id="8_jo5qe"]
+[ext_resource type="PackedScene" uid="uid://cwaew6gcx5lxc" path="res://Farm/Prefabs/Bush_Side_Right.tscn" id="8_jo5qe"]
 [ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="8_q5w4g"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="8_vbfot"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="9_t030q"]
 [ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
-[ext_resource type="PackedScene" uid="uid://dln8bw24cwt0x" path="res://Farming/Prefabs/Bush_Top.tscn" id="9_y47lu"]
+[ext_resource type="PackedScene" uid="uid://dln8bw24cwt0x" path="res://Farm/Prefabs/Bush_Top.tscn" id="9_y47lu"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="10_70r2i"]
 [ext_resource type="Material" uid="uid://cviywgr8k8lo1" path="res://Assets/Materials/Darkness.tres" id="10_nsfwf"]
 [ext_resource type="PackedScene" uid="uid://ushvc4v1oc0j" path="res://Basement/Assets/Dungeon/Wall_Doorway.tscn" id="11_2axp7"]
 [ext_resource type="PackedScene" uid="uid://c4y6dw6sr015q" path="res://Basement/Assets/Entities/BasementDoor.tscn" id="12_gpvff"]
 [ext_resource type="PackedScene" uid="uid://d3qi3iiygfr1b" path="res://Basement/Assets/Dungeon/Floor_Stone.tscn" id="13_lrpql"]
-[ext_resource type="PackedScene" uid="uid://cr7x5dbwhu7er" path="res://Farming/Prefabs/PlantBoxUnlock.tscn" id="14_dcain"]
+[ext_resource type="PackedScene" uid="uid://cr7x5dbwhu7er" path="res://Farm/Prefabs/PlantBoxUnlock.tscn" id="14_dcain"]
 [ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
 [ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
-[ext_resource type="PackedScene" uid="uid://dqfefqemw241x" path="res://Farming/Prefabs/WoodenStand.tscn" id="20_jrme7"]
+[ext_resource type="PackedScene" uid="uid://dqfefqemw241x" path="res://Farm/Prefabs/WoodenStand.tscn" id="20_jrme7"]
 [ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
-[ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farming/Prefabs/WoodenStand_Corner.tscn" id="21_gp4pu"]
-[ext_resource type="PackedScene" uid="uid://bmm84whei4j2t" path="res://Farming/Prefabs/Fence_Short.tscn" id="22_g02v2"]
-[ext_resource type="PackedScene" uid="uid://bqulk87k5mqt4" path="res://Farming/Shed/Wall.tscn" id="23_n7h8b"]
-[ext_resource type="PackedScene" uid="uid://cb1i55cd65jtq" path="res://Farming/Shed/Roof.tscn" id="24_cvkvf"]
+[ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farm/Prefabs/WoodenStand_Corner.tscn" id="21_gp4pu"]
+[ext_resource type="PackedScene" uid="uid://bmm84whei4j2t" path="res://Farm/Prefabs/Fence_Short.tscn" id="22_g02v2"]
+[ext_resource type="PackedScene" uid="uid://bqulk87k5mqt4" path="res://Farm/Shed/Wall.tscn" id="23_n7h8b"]
+[ext_resource type="PackedScene" uid="uid://cb1i55cd65jtq" path="res://Farm/Shed/Roof.tscn" id="24_cvkvf"]
+[ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="25_jyqg2"]
+[ext_resource type="PackedScene" uid="uid://cqnhsdvqlpjs2" path="res://Farm/Shed/Doorway.tscn" id="26_23jav"]
+[ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Dungeon/Table.tscn" id="27_3ofo1"]
 [ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="28_enwrr"]
+[ext_resource type="PackedScene" uid="uid://dii4xuy2rldl2" path="res://Basement/Assets/Dungeon/Bed.tscn" id="28_m3xxf"]
 [ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="29_gcm1x"]
+[ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Dungeon/Chair.tscn" id="29_h6ntv"]
+[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel.tscn" id="30_721ta"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
+[ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon/Crate.tscn" id="31_t1p85"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
 [ext_resource type="PackedScene" uid="uid://d1ns6lhxycaki" path="res://Weeds/Thorns/Weed_Thorns.tscn" id="36_ufagv"]
 
@@ -55,8 +62,8 @@ size = Vector3(24, 50, 24)
 size = Vector3(31, 4, 31)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
-vertices = PackedVector3Array(-11.6, 4.49041, -11.6, 11.65, 4.49041, -12.1, -11.85, 4.49041, -11.85, 12.15, 4.49041, 11.65, 12.15, 4.49041, -11.6, 11.65, 4.49041, 11.65, -2.6, 4.49041, 15.9, 0.65, 4.49041, 15.9, 0.65, 4.49041, 12.65, -2.85, 4.49041, 11.9, -11.85, 4.49041, 11.9, -11.6, 4.49041, 11.4, 1.4, 4.49041, 11.9, -8.85, 0.490409, -10.1, -6.6, 0.490409, -10.1, -6.6, 0.490409, -10.85, -10.6, 0.490409, -10.85, -10.6, 0.490409, -1.85, -10.1, 0.490409, -1.85, -10.1, 0.490409, -9.35, -5.6, 0.490409, -4.6, -5.85, 0.490409, -8.1, -8.35, 0.490409, -8.1, -8.35, 0.490409, -1.85, 10.9, 0.490409, -10.85, -4.6, 0.490409, -10.85, -4.1, 0.490409, -4.6, 10.9, 0.490409, 0.15, -4.6, 0.490409, -1.85, -4.35, 0.490409, -0.35, -4.35, 0.490409, -0.1, -5.35, 4.49041, -5.1, -4.85, 4.49041, -5.85, -5.35, 4.49041, -6.85, -8.35, 4.49041, -9.1, -9.1, 4.49041, -8.6, -5.35, 4.49041, -9.1, -8.85, 4.49041, -1.1, -5.35, 4.49041, -1.1, -5.35, 0.490409, 0.15, -9.35, 0.490409, 0.15, -9.6, 0.490409, -0.6, -10.6, 0.490409, -0.6, -10.6, 0.490409, 10.65, -3.85, 0.490409, 10.65, -3.35, 0.490409, 9.9, 9.9, 0.490409, 8.4, 9.9, 0.490409, 10.65, 10.9, 0.490409, 10.65, 1.65, 0.490409, 9.9, 1.9, 0.490409, 10.65, 4.65, 0.490409, 10.65, 4.65, 0.490409, 8.4, 5.65, 0.740409, 8.4, 8.9, 0.740409, 8.4, 5.65, 1.24041, 10.65, 8.9, 1.24041, 10.65, -0.1, 0.490409, 11.65, -1.85, 0.490409, 11.65, -2.1, 0.490409, 13.15, -2.1, 0.490409, 15.15, 0.15, 0.490409, 15.15)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 9, 10), PackedInt32Array(12, 8, 9), PackedInt32Array(5, 3, 12), PackedInt32Array(9, 11, 12), PackedInt32Array(12, 11, 5), PackedInt32Array(0, 11, 2), PackedInt32Array(2, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 16), PackedInt32Array(16, 13, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(26, 28, 20), PackedInt32Array(20, 28, 23), PackedInt32Array(29, 26, 30), PackedInt32Array(30, 26, 27), PackedInt32Array(29, 28, 26), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(34, 31, 35), PackedInt32Array(34, 36, 33), PackedInt32Array(38, 37, 31), PackedInt32Array(31, 37, 35), PackedInt32Array(39, 29, 30), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 39), PackedInt32Array(39, 43, 40), PackedInt32Array(39, 30, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 27), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(27, 54, 53), PackedInt32Array(54, 56, 53), PackedInt32Array(53, 56, 55), PackedInt32Array(27, 53, 52), PackedInt32Array(49, 45, 52), PackedInt32Array(52, 45, 30), PackedInt32Array(52, 30, 27), PackedInt32Array(27, 46, 54), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(60, 57, 61)]
+vertices = PackedVector3Array(-11.6, 4.49041, -11.6, 11.65, 4.49041, -12.1, -11.85, 4.49041, -11.85, 12.15, 4.49041, 11.65, 12.15, 4.49041, -11.6, 11.65, 4.49041, 11.65, -2.6, 4.49041, 15.9, 0.65, 4.49041, 15.9, 0.65, 4.49041, 12.65, -2.85, 4.49041, 11.9, -11.85, 4.49041, 11.9, -11.6, 4.49041, 11.4, 1.4, 4.49041, 11.9, -8.85, 0.490409, -10.1, -6.6, 0.490409, -10.1, -6.6, 0.490409, -10.85, -10.6, 0.490409, -10.85, -10.6, 0.490409, -1.85, -10.1, 0.490409, -1.85, -10.1, 0.490409, -9.35, -6.85, 0.990409, -7.6, -5.85, 0.990409, -7.6, -5.85, 0.990409, -8.1, -7.85, 0.990409, -8.1, -4.6, 0.490409, -2.85, -4.1, 0.490409, -3.35, -5.35, 0.490409, -3.1, -5.6, 0.490409, -2.85, -7.85, 0.740409, -7.1, -7.1, 0.490409, -3.85, -6.93333, 0.490409, -6.35, -5.6, 0.490409, -3.6, -8.35, 0.490409, -1.85, -5.85, 0.490409, -1.85, 10.9, 0.490409, -10.85, -4.6, 0.490409, -10.85, -4.1, 0.490409, -8.6, -8.35, 0.740409, -7.1, 10.9, 0.490409, -0.85, -4.1, 0.490409, -0.85, -5.85, 4.49041, -0.85, -5.1, 4.49041, -1.1, -4.85, 4.49041, -1.85, -5.35, 4.49041, -2.85, -5.35, 4.49041, -5.1, -4.85, 4.49041, -6.1, -5.35, 4.49041, -6.85, -8.35, 4.49041, -9.1, -9.1, 4.49041, -8.6, -9.1, 4.49041, -1.35, -5.35, 4.49041, -9.1, 9.9, 0.490409, 8.4, 9.9, 0.490409, 10.65, 10.9, 0.490409, 10.65, 1.65, 0.490409, 9.9, 1.9, 0.490409, 10.65, 4.65, 0.490409, 10.65, 4.65, 0.490409, 8.4, 5.65, 0.740409, 8.4, 8.9, 0.740409, 8.4, 5.65, 1.24041, 10.65, 8.9, 1.24041, 10.65, -3.35, 0.490409, 9.9, -4.35, 0.490409, -0.35, -9.35, 0.490409, 0.15, -9.6, 0.490409, -0.6, -10.6, 0.490409, -0.6, -10.6, 0.490409, 10.65, -3.85, 0.490409, 10.65, -5.35, 0.490409, 0.15, -0.1, 0.490409, 11.65, -1.85, 0.490409, 11.65, -2.1, 0.490409, 13.15, -2.1, 0.490409, 15.15, 0.15, 0.490409, 15.15)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 9, 10), PackedInt32Array(12, 8, 9), PackedInt32Array(5, 3, 12), PackedInt32Array(9, 11, 12), PackedInt32Array(12, 11, 5), PackedInt32Array(0, 11, 2), PackedInt32Array(2, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 16), PackedInt32Array(16, 13, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(23, 20, 28), PackedInt32Array(28, 20, 30), PackedInt32Array(28, 30, 29), PackedInt32Array(26, 27, 31), PackedInt32Array(31, 27, 29), PackedInt32Array(27, 33, 29), PackedInt32Array(29, 33, 32), PackedInt32Array(36, 35, 34), PackedInt32Array(28, 29, 37), PackedInt32Array(37, 29, 32), PackedInt32Array(36, 34, 25), PackedInt32Array(25, 34, 38), PackedInt32Array(24, 25, 39), PackedInt32Array(39, 25, 38), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(47, 44, 48), PackedInt32Array(43, 40, 44), PackedInt32Array(44, 40, 49), PackedInt32Array(44, 49, 48), PackedInt32Array(47, 50, 46), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 38), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(38, 59, 58), PackedInt32Array(59, 61, 58), PackedInt32Array(58, 61, 60), PackedInt32Array(38, 58, 57), PackedInt32Array(54, 62, 57), PackedInt32Array(57, 62, 63), PackedInt32Array(57, 63, 39), PackedInt32Array(57, 39, 38), PackedInt32Array(38, 51, 59), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(68, 67, 62), PackedInt32Array(62, 67, 69), PackedInt32Array(69, 67, 64), PackedInt32Array(69, 63, 62), PackedInt32Array(71, 70, 72), PackedInt32Array(72, 70, 73), PackedInt32Array(73, 70, 74)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlevm"]
 albedo_color = Color(0.384314, 0.658824, 0.419608, 1)
@@ -547,6 +554,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 4, 2)
 [node name="Roof2" parent="World/NavigationRegion3D/Shed/House" instance=ExtResource("24_cvkvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 4, -2)
 
+[node name="Lantern" parent="World/NavigationRegion3D/Shed/House" instance=ExtResource("25_jyqg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 4, -2.25)
+
+[node name="ps_dust_falling" parent="World/NavigationRegion3D/Shed/House/Lantern" index="2"]
+visible = false
+
+[node name="Wall_Shed6" parent="World/NavigationRegion3D/Shed/House" instance=ExtResource("26_23jav")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.25, 0, 2)
+
+[node name="Interior" type="Node3D" parent="World/NavigationRegion3D/Shed"]
+
+[node name="Table" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("27_3ofo1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.94184, 0, -5.16446)
+
+[node name="Bed" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("28_m3xxf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.81832, 0, -8.03842)
+
+[node name="Chair" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("29_h6ntv")]
+transform = Transform3D(-0.271273, 0, -0.962503, 0, 1, 0, 0.962503, 0, -0.271273, -6.59636, 0, -5.2316)
+
+[node name="Barrel" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("30_721ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35087, 0, -1.75)
+
+[node name="Barrel2" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("30_721ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16543, 0, -4.46764)
+
+[node name="Barrel3" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("30_721ta")]
+transform = Transform3D(0.693502, 0, 0.720454, 0, 1, 0, -0.720454, 0, 0.693502, -4.10806, 0, -5.49817)
+
+[node name="Crate" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("31_t1p85")]
+transform = Transform3D(0.985874, 0, 0.167491, 0, 1, 0, -0.167491, 0, 0.985874, -7.21057, 0, -1.75)
+
 [node name="Shed_Thorns" parent="World/NavigationRegion3D/Shed" instance=ExtResource("36_ufagv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.58743, 0, -10.3912)
 
@@ -750,6 +789,8 @@ autoplay = true
 bus = &"BGM"
 
 [editable path="World/NavigationRegion3D/Basement/Trapdoor"]
+[editable path="World/NavigationRegion3D/Shed/House/Lantern"]
+[editable path="World/NavigationRegion3D/Shed/House/Lantern/hanging_lantern_new"]
 [editable path="World/PlantBoxes/PlantBox_001"]
 [editable path="World/PlantBoxes/PlantBox_002"]
 [editable path="World/PlantBoxes/PlantBox_003"]

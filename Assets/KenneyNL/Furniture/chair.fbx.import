@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dco4343is4u26"
-path="res://.godot/imported/bedSingle.glb-380565ad73cf5a7fdbba60cf1ad8f992.scn"
+uid="uid://b5msygsksww3j"
+path="res://.godot/imported/chair.fbx-2b8197f669d7bda7f57d298ac0a22584.scn"
 
 [deps]
 
-source_file="res://Assets/KenneyNL/Furniture/bedSingle.glb"
-dest_files=["res://.godot/imported/bedSingle.glb-380565ad73cf5a7fdbba60cf1ad8f992.scn"]
+source_file="res://Assets/KenneyNL/Furniture/chair.fbx"
+dest_files=["res://.godot/imported/chair.fbx-2b8197f669d7bda7f57d298ac0a22584.scn"]
 
 [params]
 
@@ -27,10 +27,18 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+_subresources={
+"materials": {
+"wood": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Wood.tres"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

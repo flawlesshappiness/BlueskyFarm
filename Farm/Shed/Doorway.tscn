@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqnhsdvqlpjs2"]
+
+[ext_resource type="PackedScene" uid="uid://dx57ugo0ay8n6" path="res://Assets/FlawLizArt/Shed/doorway.fbx" id="1_02jl1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsik0"]
+size = Vector3(1.33093, 4, 0.600952)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g08x8"]
+size = Vector3(1.33093, 1.5, 0.600952)
+
+[node name="Wall_Shed" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33667, 2, 0.0983276)
+shape = SubResource("BoxShape3D_nsik0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33136, 2, 0.0983276)
+shape = SubResource("BoxShape3D_nsik0")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0.098)
+shape = SubResource("BoxShape3D_g08x8")
+
+[node name="doorway" parent="." instance=ExtResource("1_02jl1")]

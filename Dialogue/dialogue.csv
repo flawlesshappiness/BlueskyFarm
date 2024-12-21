@@ -6,6 +6,7 @@ keys;en
 ##BLUEPRINT##;Blueprint
 ##MISSING_HANDLE##;Missing handle
 ##SOMETHING_DOWN_THERE##;There's something down there
+##TOOL_REQUIRED##;Tool required
 ##FROG_INTRO_001##;Did you just come in?
 ##FROG_INTRO_002##;I thought applications were closed...\nNo matter. Welcome to the farm!
 ##FROG_INTRO_003##;I understand that everything here is new for you, so consider me your supervisor.

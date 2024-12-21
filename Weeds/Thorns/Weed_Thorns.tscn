@@ -1,19 +1,37 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1ns6lhxycaki"]
 
 [ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://Weeds/Base/Weed_Base.tscn" id="1_6nd0m"]
-[ext_resource type="PackedScene" uid="uid://r7n6pru2l7md" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_bottom.fbx" id="2_0kfq1"]
-[ext_resource type="PackedScene" uid="uid://tm2ybbn6v031" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_up.fbx" id="3_3l7ks"]
+[ext_resource type="PackedScene" uid="uid://dapis468m67uv" path="res://Weeds/Thorns/ThornedStalk.tscn" id="2_5khq6"]
+[ext_resource type="Script" path="res://Weeds/Thorns/Weed_Thorns.cs" id="2_pvxo7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0d5p6"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddqic"]
+size = Vector3(2, 2, 0.5)
 
 [node name="Weed_Thorns" instance=ExtResource("1_6nd0m")]
+script = ExtResource("2_pvxo7")
 ToolRequired = true
 
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 7
+OverrideCollisionMode = true
+
 [node name="CollisionShape3D" parent="Touchable" index="0"]
-shape = SubResource("BoxShape3D_0d5p6")
+shape = SubResource("BoxShape3D_ddqic")
 
-[node name="Model" type="Node3D" parent="." index="1"]
+[node name="Models" type="Node3D" parent="." index="1"]
 
-[node name="thorned_weeds_bottom" parent="Model" index="0" instance=ExtResource("2_0kfq1")]
+[node name="ThornedStalk" parent="Models" index="0" instance=ExtResource("2_5khq6")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 
-[node name="thorned_weeds_up" parent="Model" index="1" instance=ExtResource("3_3l7ks")]
+[node name="ThornedStalk2" parent="Models" index="1" instance=ExtResource("2_5khq6")]
+transform = Transform3D(0.824541, 0, -0.565802, 0, 1, 0, 0.565802, 0, 0.824541, -0.394622, 0, 0)
+
+[node name="ThornedStalk3" parent="Models" index="2" instance=ExtResource("2_5khq6")]
+transform = Transform3D(0.276963, 0, 0.960881, 0, 1, 0, -0.960881, 0, 0.276963, -0.811175, 0, 0)
+
+[node name="ThornedStalk5" parent="Models" index="3" instance=ExtResource("2_5khq6")]
+transform = Transform3D(-0.105344, 0, -0.994436, 0, 1, 0, 0.994436, 0, -0.105344, 0.423561, 0, 0)
+
+[node name="ThornedStalk6" parent="Models" index="4" instance=ExtResource("2_5khq6")]
+transform = Transform3D(0.563324, 0, 0.826236, 0, 1, 0, -0.826236, 0, 0.563324, 0.819324, 0, 0)

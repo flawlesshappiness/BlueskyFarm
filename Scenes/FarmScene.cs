@@ -1,3 +1,4 @@
+using Godot;
 using System.Collections;
 
 public partial class FarmScene : GameScene
@@ -8,26 +9,56 @@ public partial class FarmScene : GameScene
     [NodeName]
     public ItemArea BasementUnlockArea;
 
+    [NodeName]
+    public Weed_Thorns Shed_Thorns;
+
+    [NodeName]
+    public Node3D Shed_InventoryItemPosition;
+
     protected override void Initialize()
     {
         base.Initialize();
 
-        BasementUnlockArea.OnItemEntered += BasementUnlockArea_ItemEntered;
+        InitializeView();
+        InitializeTrapdoor();
+        InitializeInventoryWeeds();
+        InitializeShedInventoryItem();
 
+        Data.Game.Flag_FarmFirstTimeLoad = false;
+        Data.Game.Save();
+    }
+
+    private void InitializeView()
+    {
         var view = View.Get<GameView>();
         view.Minimap.Clear();
         view.Minimap.Hide();
 
         ScreenEffects.Instance.Clear();
-
-        LoadGame();
-
-        Data.Game.Save();
     }
 
-    private void LoadGame()
+    private void InitializeTrapdoor()
     {
+        BasementUnlockArea.OnItemEntered += BasementUnlockArea_ItemEntered;
         Trapdoor.Locked = Data.Game.Flag_BasementLocked;
+    }
+
+    private void InitializeInventoryWeeds()
+    {
+        Shed_Thorns.OnWeedCut += () =>
+        {
+            Data.Game.State_FarmInventoryWeedsCut = 1;
+        };
+
+        Shed_Thorns.SetCut(Data.Game.State_FarmInventoryWeedsCut != 0);
+    }
+
+    private void InitializeShedInventoryItem()
+    {
+        if (!Data.Game.Flag_FarmFirstTimeLoad) return;
+
+        var item = ItemController.Instance.CreateItem("InventoryUpgrade");
+        item.GlobalPosition = Shed_InventoryItemPosition.GlobalPosition;
     }
 
     protected override void BeforeSave()

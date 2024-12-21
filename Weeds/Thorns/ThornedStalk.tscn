@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dapis468m67uv"]
+
+[ext_resource type="Script" path="res://Weeds/Thorns/ThornedStalk.cs" id="1_2oc7e"]
+[ext_resource type="PackedScene" uid="uid://r7n6pru2l7md" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_bottom.fbx" id="2_5f6nf"]
+[ext_resource type="PackedScene" uid="uid://tm2ybbn6v031" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_up.fbx" id="3_1nns8"]
+
+[node name="ThornedStalk" type="Node3D"]
+script = ExtResource("1_2oc7e")
+
+[node name="Bottom" type="Node3D" parent="."]
+
+[node name="thorned_weeds_bottom" parent="Bottom" instance=ExtResource("2_5f6nf")]
+
+[node name="Top" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785084, 0)
+
+[node name="TopAnim" type="Node3D" parent="Top"]
+
+[node name="thorned_weeds_up" parent="Top/TopAnim" instance=ExtResource("3_1nns8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.785084, 0)

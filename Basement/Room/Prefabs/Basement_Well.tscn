@@ -610,6 +610,7 @@ shape = SubResource("BoxShape3D_td8is")
 [node name="MissingHandleTouchable" type="StaticBody3D" parent="BasementWellRoom/Well" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29934, 1.32973, 5.67958e-08)
 script = ExtResource("18_pupgp")
+HoverText = "##MISSING_HANDLE##"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWellRoom/Well/MissingHandleTouchable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146362, 0, 0)

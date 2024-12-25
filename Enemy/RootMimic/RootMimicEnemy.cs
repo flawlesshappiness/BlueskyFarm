@@ -27,6 +27,7 @@ public partial class RootMimicEnemy : NavEnemy
     private float _time_step_sfx;
     private bool _spawned;
     private bool _state_change_disabled;
+    private bool _debug_force_attack;
     private RandomNumberGenerator _rng = new RandomNumberGenerator();
     private BasementRoomElement _current_room;
 
@@ -66,6 +67,14 @@ public partial class RootMimicEnemy : NavEnemy
         else
         {
             Spawn();
+        }
+    }
+
+    protected override void OnVelocityComputed(Vector3 v)
+    {
+        if (_state != State.Attacking)
+        {
+            base.OnVelocityComputed(v);
         }
     }
 
@@ -142,6 +151,13 @@ public partial class RootMimicEnemy : NavEnemy
             Category = DebugCategory,
             Text = "Set state (Threat)",
             Action = _ => SetState(State.Threat)
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = DebugCategory,
+            Text = "Force attack",
+            Action = _ => _debug_force_attack = true
         });
     }
 
@@ -238,7 +254,7 @@ public partial class RootMimicEnemy : NavEnemy
 
             if (DistanceToPlayer < DIST_THREAT && CanSeePlayer())
             {
-                if (_rng.RandfRange(0, 1) < CHANCE_THREAT)
+                if (_rng.RandfRange(0, 1) < CHANCE_THREAT || _debug_force_attack)
                 {
                     SetState(State.Threat);
                 }
@@ -278,8 +294,6 @@ public partial class RootMimicEnemy : NavEnemy
 
         if (DistanceToPlayer < DIST_THREAT_CLOSE)
         {
-            Player.StopLookingAt();
-            _param_threat.Set(false);
             SetState(State.Attacking);
         }
         else
@@ -309,20 +323,37 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Attacking()
     {
-        var id_lock = nameof(RootMimicEnemy) + GetInstanceId();
-        Player.MovementLock.AddLock(id_lock);
+        var dir = -DirectionToPlayer.Normalized();
+        var start_position = GlobalPosition;
+        var attack_position = Player.Instance.GlobalPosition + dir * 3f;
 
-        SfxGrowl.Play();
-        _param_attack.Trigger();
+        Player.MovementLock.AddLock(DebugCategory);
+        Player.LookLock.AddLock(DebugCategory);
+        Player.Instance.StartLookingAt(this, 0.1f);
 
-        while (DistanceToPlayer > DIST_THREAT_ATTACK)
+        yield return LerpEnumerator.Lerp01(0.25f, f =>
         {
-            Move(DirectionToPlayer * MoveSpeed * 2);
-            yield return null;
-        }
+            GlobalPosition = start_position.Lerp(attack_position, f);
+        });
 
-        Player.MovementLock.RemoveLock(id_lock);
-        GameScene.Current.KillPlayer();
+        SfxThreat.Play();
+        _param_attack.Trigger();
+    }
+
+    public void KillPlayer()
+    {
+        this.StartCoroutine(Cr, nameof(KillPlayer));
+        IEnumerator Cr()
+        {
+            Player.Instance.StopLookingAt();
+            Player.Instance.RagdollCamera(DirectionToPlayer.Normalized() * 2);
+
+            yield return new WaitForSeconds(2.0f);
+
+            Player.MovementLock.RemoveLock(DebugCategory);
+            Player.LookLock.RemoveLock(DebugCategory);
+            GameScene.Current.KillPlayer();
+        }
     }
 
     private IEnumerator StateCr_Debug_Follow()

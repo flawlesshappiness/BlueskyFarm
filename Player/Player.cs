@@ -101,7 +101,7 @@ public partial class Player : FirstPersonController
         {
             Category = category,
             Text = "Test camera ragdoll",
-            Action = v => { Instance.ThrowCamera(Instance.CameraTarget.GlobalBasis * (Vector3.Forward * 4)); v.Close(); }
+            Action = v => { Instance.RagdollCameraAndPickUp(Instance.CameraTarget.GlobalBasis * (Vector3.Forward * 4)); v.Close(); }
         });
 
         void ReplenishCloseItems(DebugView view)
@@ -437,41 +437,56 @@ public partial class Player : FirstPersonController
         CameraRagdoll.Rotation = Vector3.Zero;
     }
 
-    public void ThrowCamera(Vector3 velocity)
+    public Coroutine RagdollCameraAndPickUp(Vector3 velocity)
     {
-        Coroutine.Start(Cr, $"{nameof(ThrowCamera) + GetInstanceId()}", this);
+        return Coroutine.Start(Cr, $"{nameof(RagdollCameraAndPickUp) + GetInstanceId()}", this);
         IEnumerator Cr()
         {
-            yield return new WaitForSeconds(1);
+            yield return RagdollCamera(velocity);
+            yield return UnragdollCamera();
+        }
+    }
 
-            CameraRagdoll.UnlockPosition_All();
-            CameraRagdoll.UnlockRotation_All();
-            CameraRagdoll.SetParent(Scene.Current);
-            CameraRagdoll.GlobalRotation = CameraTarget.GlobalRotation;
-            ScreenEffects.View.SetCameraTarget(CameraRagdoll);
+    public Coroutine RagdollCamera(Vector3 velocity)
+    {
+        CameraRagdoll.UnlockPosition_All();
+        CameraRagdoll.UnlockRotation_All();
+        CameraRagdoll.SetParent(Scene.Current);
+        CameraRagdoll.GlobalRotation = CameraTarget.GlobalRotation;
+        ScreenEffects.View.SetCameraTarget(CameraRagdoll);
+        Cursor.Hide();
 
-            MovementLock.AddLock("ragdoll");
-            LookLock.AddLock("ragdoll");
-            InteractLock.AddLock("ragdoll");
-            Cursor.Hide();
+        var id_lock = "ragdoll";
+        MovementLock.AddLock(id_lock);
+        LookLock.AddLock(id_lock);
+        InteractLock.AddLock(id_lock);
 
-            CameraRagdoll.LinearVelocity = velocity;
-            CameraRagdoll.AngularVelocity = velocity.Normalized();
+        CameraRagdoll.LinearVelocity = velocity;
+        CameraRagdoll.AngularVelocity = velocity.Normalized();
 
-            yield return new WaitForSeconds(1);
+        return this.StartCoroutine(Cr, nameof(RagdollCamera));
+        IEnumerator Cr()
+        {
             while (CameraRagdoll.LinearVelocity.Length() > 0.2f)
             {
                 yield return null;
             }
-            yield return new WaitForSeconds(0.5f);
+        }
+    }
 
-            GlobalPosition = CameraRagdoll.GlobalPosition;
+    public Coroutine UnragdollCamera()
+    {
+        GlobalPosition = CameraRagdoll.GlobalPosition;
 
+        return this.StartCoroutine(Cr, nameof(UnragdollCamera));
+        IEnumerator Cr()
+        {
             var start_position = CameraRagdoll.GlobalPosition;
             var end_position = CameraTarget.GlobalPosition;
             var start_rotation = CameraRagdoll.GlobalRotation;
             var end_rotation = CameraTarget.GlobalRotation;
             var curve = Curves.EaseInOutQuad;
+
             yield return LerpEnumerator.Lerp01(1.0f, f =>
             {
                 var t = curve.Evaluate(f);
@@ -482,9 +497,10 @@ public partial class Player : FirstPersonController
             FreezeCameraRagdoll();
             ScreenEffects.View.SetCameraTarget(CameraTarget);
 
-            MovementLock.RemoveLock("ragdoll");
-            LookLock.RemoveLock("ragdoll");
-            InteractLock.RemoveLock("ragdoll");
+            var id_lock = "ragdoll";
+            MovementLock.RemoveLock(id_lock);
+            LookLock.RemoveLock(id_lock);
+            InteractLock.RemoveLock(id_lock);
         }
     }
 

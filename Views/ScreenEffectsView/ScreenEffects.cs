@@ -173,9 +173,52 @@ public partial class ScreenEffects : Node3DScript
         }
     }
 
-    private Coroutine _AnimateMinValue(MultiFloatMin controller, string id, float value, float duration_in, float duration_on, float duration_out)
+    private Coroutine _AnimateMinValueIn(MultiFloatMin controller, string id, float value, float duration_in)
     {
-        var cr = this.StartCoroutine(Cr, $"{nameof(_AnimateMinValue)}_{id}");
+        var cr = this.StartCoroutine(Cr, id);
+        AddCoroutine(id, cr);
+        return cr;
+
+        IEnumerator Cr()
+        {
+            var start = controller.Value;
+            var end = value;
+            var curve = Curves.EaseInOutQuad;
+
+            yield return LerpEnumerator.Lerp01(duration_in, f =>
+            {
+                controller.Set(id, Mathf.Lerp(start, end, curve.Evaluate(f)));
+            });
+
+            _coroutines.Remove(id);
+        }
+    }
+
+    private Coroutine _AnimateMinValueOut(MultiFloatMin controller, string id, float value, float duration_out)
+    {
+        var cr = this.StartCoroutine(Cr, id);
+        AddCoroutine(id, cr);
+        return cr;
+
+        IEnumerator Cr()
+        {
+            var start = controller.Value;
+            var end = value;
+            var curve = Curves.EaseInOutQuad;
+
+            yield return LerpEnumerator.Lerp01(duration_out, f =>
+            {
+                controller.Set(id, Mathf.Lerp(start, end, curve.Evaluate(f)));
+            });
+
+            controller.Remove(id);
+            _coroutines.Remove(id);
+        }
+    }
+
+    private Coroutine _AnimateMinValueInOut(MultiFloatMin controller, string id, float value, float duration_in, float duration_on, float duration_out)
+    {
+        var cr = this.StartCoroutine(Cr, id);
         AddCoroutine(id, cr);
         return cr;
 
@@ -204,7 +247,7 @@ public partial class ScreenEffects : Node3DScript
 
     private Coroutine _AnimateValue(Action<float> action, string id, float start, float end, float duration_in, float duration_on, float duration_out)
     {
-        var cr = this.StartCoroutine(Cr, $"{nameof(_AnimateValue)}_{id}");
+        var cr = this.StartCoroutine(Cr, id);
         AddCoroutine(id, cr);
         return cr;
 
@@ -230,26 +273,50 @@ public partial class ScreenEffects : Node3DScript
         }
     }
 
-    public static Coroutine AnimateGaussianBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateMinValue(Instance._gaussian_amount, id, strength, duration_in, duration_on, duration_out);
+    // GAUSSIAN BLUR //
+    public static Coroutine AnimateGaussianBlur(string id, float value, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValueInOut(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", value, duration_in, duration_on, duration_out);
 
-    public static Coroutine AnimateDistort(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateMinValue(Instance._distort_strength, id, strength, duration_in, duration_on, duration_out);
+    public static Coroutine AnimateGaussianBlurIn(string id, float value, float duration) =>
+        Instance._AnimateMinValueIn(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", value, duration);
 
-    public static Coroutine AnimateSqueezeX(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateMinValue(Instance._squeeze_x_strength, id, strength, duration_in, duration_on, duration_out);
+    public static Coroutine AnimateGaussianBlurOut(string id, float duration) =>
+        Instance._AnimateMinValueOut(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", 0, duration);
 
-    public static Coroutine AnimateSqueezeY(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateMinValue(Instance._squeeze_y_strength, id, strength, duration_in, duration_on, duration_out);
+    // DISTORT //
+    public static Coroutine AnimateDistort(string id, float value, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValueInOut(Instance._distort_strength, $"{nameof(AnimateDistort)}_{id}", value, duration_in, duration_on, duration_out);
 
-    public static Coroutine AnimateRadialBlur(string id, float strength, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateMinValue(Instance._radial_amount, id, strength, duration_in, duration_on, duration_out);
+    public static Coroutine AnimateDistortIn(string id, float value, float duration) =>
+        Instance._AnimateMinValueIn(Instance._distort_strength, $"{nameof(AnimateDistort)}_{id}", value, duration);
 
+    public static Coroutine AnimateDistortOut(string id, float duration) =>
+        Instance._AnimateMinValueOut(Instance._distort_strength, $"{nameof(AnimateDistort)}_{id}", 0, duration);
+
+    // SQUEEZE //
+    public static Coroutine AnimateSqueezeX(string id, float value, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValueInOut(Instance._squeeze_x_strength, $"{nameof(AnimateSqueezeX)}_{id}", value, duration_in, duration_on, duration_out);
+
+    public static Coroutine AnimateSqueezeY(string id, float value, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValueInOut(Instance._squeeze_y_strength, $"{nameof(AnimateSqueezeY)}_{id}", value, duration_in, duration_on, duration_out);
+
+    // RADIAL BLUR //
+    public static Coroutine AnimateRadialBlur(string id, float value, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValueInOut(Instance._radial_amount, $"{nameof(AnimateRadialBlur)}_{id}", value, duration_in, duration_on, duration_out);
+
+    // FOG //
     public static Coroutine AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateMinValue(Instance._fog_alpha, id, alpha, duration_in, duration_on, duration_out);
+        Instance._AnimateMinValueInOut(Instance._fog_alpha, $"{nameof(AnimateFog)}_{id}", alpha, duration_in, duration_on, duration_out);
 
+    public static Coroutine AnimateFogIn(string id, float alpha, float duration) =>
+        Instance._AnimateMinValueIn(Instance._fog_alpha, $"{nameof(AnimateFog)}_{id}", alpha, duration);
+
+    public static Coroutine AnimateFogOut(string id, float duration) =>
+        Instance._AnimateMinValueOut(Instance._fog_alpha, $"{nameof(AnimateFog)}_{id}", 0, duration);
+
+    // FOV //
     public static Coroutine AnimateFov(string id, float fov, float duration_in, float duration_on, float duration_out) =>
-        Instance._AnimateValue(v => Instance._camera_fov = v, id, Instance._camera_fov_default, fov, duration_in, duration_on, duration_out);
+        Instance._AnimateValue(v => Instance._camera_fov = v, $"{nameof(AnimateFov)}_{id}", Instance._camera_fov_default, fov, duration_in, duration_on, duration_out);
 
     public static void SetGaussianBlur(string id, float strength) =>
         Instance._gaussian_amount.Set(id, strength);

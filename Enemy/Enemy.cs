@@ -9,6 +9,51 @@ public partial class Enemy : Node3DScript
     protected Vector3 DirectionToPlayer => GlobalPosition.DirectionTo(PlayerPosition);
     protected IEnumerable<BasementRoomElement> RoomElements => BasementController.Instance.CurrentBasement.Grid.Elements;
     protected bool IsDebug { get; private set; }
+    protected string DebugCategory => $"{Name} {GetInstanceId()}";
+
+    private Label _show_position_label;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        RegisterDebugActions();
+    }
+
+    private void RegisterDebugActions()
+    {
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = DebugCategory,
+            Text = "Show position",
+            Action = v => ShowPosition()
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = DebugCategory,
+            Text = "Hide position",
+            Action = v => HidePosition()
+        });
+
+        void ShowPosition()
+        {
+            _show_position_label = GameView.Instance.CreateText(new CreateTextSettings
+            {
+                Id = DebugCategory,
+                Text = DebugCategory,
+                Duration = -1,
+                Target = this,
+                Offset = new Vector3(0, 1, 0)
+            });
+        }
+
+        void HidePosition()
+        {
+            if (_show_position_label == null) return;
+            _show_position_label.QueueFree();
+            _show_position_label = null;
+        }
+    }
 
     public bool CanSeePlayer()
     {

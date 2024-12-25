@@ -83,7 +83,8 @@ public partial class BasementDoor : Node3DScript
         {
             Id = "locked_" + GetInstanceId(),
             Text = "##LOCKED##",
-            Position = Touchable.GlobalPosition.Add(y: 0.2f),
+            Target = Touchable,
+            Offset = new Vector3(0, 0.2f, 0),
             Duration = 5.0f,
             Shake_Duration = 0.4f,
             Shake_Frequency = 0.04f,

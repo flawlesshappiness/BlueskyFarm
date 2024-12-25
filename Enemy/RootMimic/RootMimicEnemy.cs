@@ -108,11 +108,9 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void RegisterDebugActions()
     {
-        var category = "Enemy (RoomMimic)";
-
         Debug.RegisterAction(new DebugAction
         {
-            Category = category,
+            Category = DebugCategory,
             Text = "Teleport to player",
             Action = _ => DebugTeleportToPlayer()
         });
@@ -127,21 +125,21 @@ public partial class RootMimicEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = category,
+            Category = DebugCategory,
             Text = "Follow player",
             Action = _ => SetState(State.Debug_Follow)
         });
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = category,
+            Category = DebugCategory,
             Text = "Set state (Waiting)",
             Action = _ => SetState(State.Waiting)
         });
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = category,
+            Category = DebugCategory,
             Text = "Set state (Threat)",
             Action = _ => SetState(State.Threat)
         });
@@ -347,15 +345,5 @@ public partial class RootMimicEnemy : NavEnemy
     public void PlayStepSfx()
     {
         SoundController.Instance.Play("sfx_root_mimic_walk", GlobalPosition);
-    }
-
-    private Vector3 GetRandomPositionInRoom(BasementRoom room)
-    {
-        var room_size = BasementRoom.ROOM_SIZE;
-        var min = room_size * 0.2f;
-        var max = room_size * 0.5f;
-        var x = _rng.RandfRange(min, max);
-        var z = _rng.RandfRange(min, max);
-        return room.GlobalPosition + new Vector3(x, 0, z);
     }
 }

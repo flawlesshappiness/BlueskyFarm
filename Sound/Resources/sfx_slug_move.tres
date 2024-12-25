@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=14 format=3 uid="uid://q24wplf1wplf"]
+
+[ext_resource type="AudioStream" uid="uid://d1knnvorte7gi" path="res://Sound/Sounds/sfx_slug_move_001.wav" id="1_nlnfb"]
+[ext_resource type="AudioStream" uid="uid://bts34miisuk1m" path="res://Sound/Sounds/sfx_slug_move_002.wav" id="2_0fl05"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_vc5c7"]
+[ext_resource type="AudioStream" uid="uid://deixg2mfshoag" path="res://Sound/Sounds/sfx_slug_move_003.wav" id="3_unbs7"]
+[ext_resource type="AudioStream" uid="uid://cysdbrvny4ftp" path="res://Sound/Sounds/sfx_slug_move_004.wav" id="4_arapg"]
+[ext_resource type="AudioStream" uid="uid://1glys26d8s26" path="res://Sound/Sounds/sfx_slug_move_005.wav" id="5_e4lny"]
+[ext_resource type="AudioStream" uid="uid://6hf8ekonyxms" path="res://Sound/Sounds/sfx_slug_move_006.wav" id="6_m7w06"]
+[ext_resource type="AudioStream" uid="uid://di1i8ikvpqtdp" path="res://Sound/Sounds/sfx_slug_move_007.wav" id="7_0bxnd"]
+[ext_resource type="AudioStream" uid="uid://brbbeyu4b88pu" path="res://Sound/Sounds/sfx_slug_move_008.wav" id="8_wyqfe"]
+[ext_resource type="AudioStream" uid="uid://cgihtdn8oofn6" path="res://Sound/Sounds/sfx_slug_move_009.wav" id="9_qneck"]
+[ext_resource type="AudioStream" uid="uid://cb4y5fohj0f62" path="res://Sound/Sounds/sfx_slug_move_010.wav" id="10_spxyr"]
+[ext_resource type="AudioStream" uid="uid://brdre3acfu4wy" path="res://Sound/Sounds/sfx_slug_move_011.wav" id="11_54bw6"]
+[ext_resource type="AudioStream" uid="uid://dfq6a1vqbo85w" path="res://Sound/Sounds/sfx_slug_move_012.wav" id="12_0qspw"]
+
+[resource]
+script = ExtResource("2_vc5c7")
+AudioStreams = Array[AudioStream]([ExtResource("1_nlnfb"), ExtResource("2_0fl05"), ExtResource("3_unbs7"), ExtResource("4_arapg"), ExtResource("5_e4lny"), ExtResource("6_m7w06"), ExtResource("7_0bxnd"), ExtResource("8_wyqfe"), ExtResource("9_qneck"), ExtResource("10_spxyr"), ExtResource("11_54bw6"), ExtResource("12_0qspw")])
+Volume = -30.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 1

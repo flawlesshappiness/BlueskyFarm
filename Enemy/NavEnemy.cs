@@ -104,4 +104,15 @@ public partial class NavEnemy : Enemy
         return GetClosestRoomElements(area, validate)
             .FirstOrDefault();
     }
+
+    public Vector3 GetRandomPositionInRoom(BasementRoom room)
+    {
+        var rng = new RandomNumberGenerator();
+        var room_size = BasementRoom.ROOM_SIZE;
+        var min = room_size * 0.2f;
+        var max = room_size * 0.5f;
+        var x = rng.RandfRange(min, max);
+        var z = rng.RandfRange(min, max);
+        return room.GlobalPosition + new Vector3(x, 0, z);
+    }
 }

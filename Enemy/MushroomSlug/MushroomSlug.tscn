@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://c51q3liaxrtvl"]
+
+[ext_resource type="Script" path="res://Enemy/MushroomSlug/MushroomSlugEnemy.cs" id="1_0gc5v"]
+[ext_resource type="PackedScene" uid="uid://dot3772f7nr4s" path="res://Assets/FlawLizArt/MushroomSlug/mushroom_slug.fbx" id="2_u8r1u"]
+[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_72rul"]
+[ext_resource type="AudioStream" uid="uid://c8ib2sn4kgmej" path="res://Sound/Sounds/sfx_slug_spore.wav" id="4_dpvg4"]
+[ext_resource type="PackedScene" uid="uid://coto7cum8fqjm" path="res://Particle/Prefabs/ps_slug_spores_up.tscn" id="5_ntph1"]
+[ext_resource type="PackedScene" uid="uid://clm85cmba8iv0" path="res://Particle/Prefabs/ps_slug_spores_idle.tscn" id="6_ffbft"]
+[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="7_1fbyp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x316y"]
+size = Vector3(6, 6, 6)
+
+[node name="MushroomSlug" type="Node3D"]
+script = ExtResource("1_0gc5v")
+MoveSpeed = 0.1
+TurnSpeed = 0.2
+
+[node name="mushroom_slug" parent="." instance=ExtResource("2_u8r1u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Armature" parent="mushroom_slug" index="0"]
+transform = Transform3D(-100, 1.50996e-05, 6.60024e-13, 0, -4.37114e-06, 100, 1.50996e-05, 100, 4.37114e-06, 0, 0, 0)
+
+[node name="Skeleton3D" parent="mushroom_slug/Armature" index="0"]
+bones/0/position = Vector3(-0.00043606, 6.58433e-11, 0)
+bones/1/position = Vector3(-1.61022e-10, 8.66183e-25, -0.0010664)
+bones/1/rotation = Quaternion(3.92595e-08, -2.06609e-07, -0.0148593, 0.99989)
+bones/2/position = Vector3(-1.85401e-17, 0.00303558, 2.1684e-19)
+bones/2/rotation = Quaternion(2.30952e-08, 8.73533e-08, -0.0398494, 0.999206)
+bones/3/position = Vector3(-2.47496e-17, 0.00288115, 0)
+bones/3/rotation = Quaternion(-7.85082e-09, -9.15421e-14, -0.0337645, 0.99943)
+bones/4/position = Vector3(0.000790057, 0.000887628, -0.000658449)
+bones/4/rotation = Quaternion(-0.468886, -0.116444, -0.182095, 0.856404)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.000790058, 0.000887628, -0.000658449)
+bones/6/rotation = Quaternion(-0.468886, 0.116445, 0.182095, 0.856404)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-3.87955e-10, 5.76665e-24, -0.000687547)
+bones/8/rotation = Quaternion(-0.705065, -0.0366622, -0.0366622, 0.707245)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.999997, -0.00236291, -7.58115e-08, 1.32979e-07)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(1.49493e-17, 0.00288867, 2.38419e-11)
+bones/11/rotation = Quaternion(1.03116e-07, -3.33289e-09, 0.0323049, 0.999478)
+bones/12/position = Vector3(-4.91318e-17, 0.00296222, 0)
+bones/12/rotation = Quaternion(2.08461e-16, 1.42704e-15, 0.0501247, 0.998743)
+
+[node name="AnimationPlayer" parent="mushroom_slug" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_postprocessing = 1
+
+[node name="AnimationStateMachine" type="Node" parent="."]
+script = ExtResource("3_72rul")
+
+[node name="SfxSpores" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_dpvg4")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
+
+[node name="ps_slug_spores_up" parent="." instance=ExtResource("5_ntph1")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.11454e-08, 0.48375, 0)
+
+[node name="ps_slug_spores" parent="." instance=ExtResource("6_ffbft")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="PlayerArea" type="Area3D" parent="."]
+script = ExtResource("7_1fbyp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+shape = SubResource("BoxShape3D_x316y")
+
+[editable path="mushroom_slug"]

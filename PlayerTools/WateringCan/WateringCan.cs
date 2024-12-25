@@ -35,8 +35,8 @@ public partial class WateringCan : Item
     {
         base._Ready();
 
-        Area.BodyEntered += v => CallDeferred(nameof(BodyEntered), v);
-        Area.BodyExited += v => CallDeferred(nameof(BodyExited), v);
+        Area.BodyEntered += v => CallDeferred(nameof(OnBodyEntered), v);
+        Area.BodyExited += v => CallDeferred(nameof(OnBodyExited), v);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -161,12 +161,12 @@ public partial class WateringCan : Item
         closest.Water();
     }
 
-    private void BodyEntered(GodotObject go)
+    private void OnBodyEntered(GodotObject go)
     {
         _bodies.Add(go);
     }
 
-    private void BodyExited(GodotObject go)
+    private void OnBodyExited(GodotObject go)
     {
         _bodies.Remove(go);
     }

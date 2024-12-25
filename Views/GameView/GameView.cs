@@ -90,14 +90,15 @@ public partial class GameView : View
 
         IEnumerator Cr()
         {
-            while (GameTime.Time < time_end)
+            while (GameTime.Time < time_end || settings.Duration == -1)
             {
-                var viewport_position = camera.UnprojectPosition(settings.Position);
+                var world_position = settings.Target.GlobalPosition + settings.Offset;
+                var viewport_position = camera.UnprojectPosition(world_position);
                 var size = label.Size;
                 var label_position = viewport_position - size * 0.5f;
                 var offset = GetOffsetPosition();
                 label.Position = label_position + offset;
-                label.Visible = !camera.IsPositionBehind(settings.Position);
+                label.Visible = !camera.IsPositionBehind(world_position);
                 yield return null;
             }
 
@@ -136,8 +137,9 @@ public class CreateTextSettings
 {
     public string Id { get; set; }
     public string Text { get; set; }
-    public Vector3 Position { get; set; }
-    public float Duration { get; set; }
+    public Vector3 Offset { get; set; }
+    public Node3D Target { get; set; }
+    public float Duration { get; set; } = -1;
     public float Shake_Strength { get; set; }
     public float Shake_Frequency { get; set; }
     public float Shake_Duration { get; set; }

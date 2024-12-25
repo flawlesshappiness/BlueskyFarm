@@ -127,7 +127,8 @@ public partial class BasementWellRoom : Node3DScript
         {
             Id = "something_in_well_" + GetInstanceId(),
             Duration = 5.0f,
-            Position = SomethingInWellTouchable.GlobalPosition.Add(y: 0.2f),
+            Target = SomethingInWellTouchable,
+            Offset = new Vector3(0, 0.2f, 0),
             Text = "##SOMETHING_DOWN_THERE##"
         });
     }

@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq3swuycvr8vk"]
+
+[ext_resource type="PackedScene" uid="uid://diovirg6qs1mb" path="res://Enemy/EggClusters/egg_cluster_base.tscn" id="1_4uo6i"]
+[ext_resource type="PackedScene" uid="uid://6okvj38nr3d" path="res://Assets/FlawLizArt/EggClusters/egg.fbx" id="2_7hvyv"]
+
+[node name="egg_cluster" instance=ExtResource("1_4uo6i")]
+
+[node name="slime" parent="." index="0"]
+transform = Transform3D(-0.0884484, 0, 1.09644, 0, 1.1, 0, -1.09644, 0, -0.0884484, 0, 0, 0)
+
+[node name="egg" parent="." index="1" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.015033, 0, 0.0174256)
+
+[node name="egg2" parent="." index="2" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.0545096, 0, -0.0652871)
+
+[node name="egg3" parent="." index="3" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0338426, 0, -0.0464888)
+
+[node name="egg4" parent="." index="4" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -0.101506, 0, 0.00802649)
+
+[node name="egg5" parent="." index="5" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0770676, 0, 0.0869795)
+
+[node name="egg6" parent="." index="6" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -0.16918, 0, 0.0644215)
+
+[node name="egg7" parent="." index="7" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0.129714, 0, -0.00701218)
+
+[node name="egg8" parent="." index="8" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.06392, 0, 0.0418635)
+
+[node name="egg9" parent="." index="9" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.154152, 0, 0.0681813)
+
+[node name="egg10" parent="." index="10" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0.105276, 0, -0.0897249)
+
+[node name="egg11" parent="." index="11" instance=ExtResource("2_7hvyv")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.144742, 0, -0.065287)

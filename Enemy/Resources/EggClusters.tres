@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=2 format=3 uid="uid://1gxfqer0hto8"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_ynxpl"]
+
+[resource]
+script = ExtResource("1_ynxpl")
+Path = "res://Enemy/EggClusters/egg_cluster_enemy.tscn"
+Enabled = true

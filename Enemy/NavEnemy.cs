@@ -109,10 +109,10 @@ public partial class NavEnemy : Enemy
     {
         var rng = new RandomNumberGenerator();
         var room_size = BasementRoom.ROOM_SIZE;
-        var min = room_size * 0.2f;
-        var max = room_size * 0.5f;
+        var min = -0.4f;
+        var max = 0.4f;
         var x = rng.RandfRange(min, max);
         var z = rng.RandfRange(min, max);
-        return room.GlobalPosition + new Vector3(x, 0, z);
+        return room.GlobalPosition + new Vector3(x, 0, z) * room_size;
     }
 }

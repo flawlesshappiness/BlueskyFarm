@@ -1,0 +1,93 @@
+[gd_scene load_steps=18 format=3 uid="uid://diovirg6qs1mb"]
+
+[ext_resource type="PackedScene" uid="uid://dn4u2phiwht52" path="res://Assets/FlawLizArt/EggClusters/slime.fbx" id="1_rudwy"]
+[ext_resource type="Script" path="res://Enemy/EggClusters/EggCluster.cs" id="1_t0oha"]
+[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_p6l4g"]
+[ext_resource type="PackedScene" uid="uid://clm85cmba8iv0" path="res://Particle/Prefabs/ps_slug_spores_idle.tscn" id="4_m8pex"]
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="5_vi0dv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jamus"]
+size = Vector3(1.5, 1, 1.5)
+
+[sub_resource type="Curve" id="Curve_5vyu4"]
+_data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.49697, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.45369, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l1j8a"]
+curve = SubResource("Curve_5vyu4")
+
+[sub_resource type="Curve" id="Curve_kk045"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r8ybw"]
+curve = SubResource("Curve_kk045")
+
+[sub_resource type="Curve" id="Curve_abiti"]
+_data = [Vector2(0, 0.8), 0.0, 0.2, 0, 1, Vector2(1, 1), 0.2, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bkj36"]
+curve = SubResource("Curve_abiti")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kywts"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(1.5, 0.5, 1.5)
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_r8ybw")
+spread = 25.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_bkj36")
+scale_over_velocity_max = 40.1
+color = Color(1, 1, 1, 0.490196)
+alpha_curve = SubResource("CurveTexture_l1j8a")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ne75y"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10m2h"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.1892, 0.2, 0.176, 0.294118)
+albedo_texture = SubResource("CompressedTexture2D_ne75y")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_t3eg1"]
+material = SubResource("StandardMaterial3D_10m2h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ejjl"]
+size = Vector3(2.5, 0.5, 2.5)
+
+[node name="egg_cluster_base" type="Node3D"]
+script = ExtResource("1_t0oha")
+
+[node name="slime" parent="." instance=ExtResource("1_rudwy")]
+
+[node name="SlowArea" type="Area3D" parent="."]
+script = ExtResource("2_p6l4g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlowArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_jamus")
+
+[node name="ps_slug_spores" parent="." instance=ExtResource("4_m8pex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+process_material = SubResource("ParticleProcessMaterial_kywts")
+draw_pass_1 = SubResource("QuadMesh_t3eg1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("5_vi0dv")
+Type = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24, 0)
+shape = SubResource("BoxShape3D_5ejjl")

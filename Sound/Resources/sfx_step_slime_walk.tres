@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=7 format=3 uid="uid://dpgqplxq32ufk"]
+
+[ext_resource type="AudioStream" uid="uid://dhcpqhwway6dd" path="res://Sound/Sounds/sfx_step_slime_001.wav" id="1_bovq2"]
+[ext_resource type="AudioStream" uid="uid://b0cd47myluego" path="res://Sound/Sounds/sfx_step_slime_002.wav" id="2_a2e40"]
+[ext_resource type="AudioStream" uid="uid://bwurocxjh6pva" path="res://Sound/Sounds/sfx_step_slime_003.wav" id="3_n4ax8"]
+[ext_resource type="AudioStream" uid="uid://34flpdtpoff0" path="res://Sound/Sounds/sfx_step_slime_004.wav" id="4_4dx52"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="5_4cygq"]
+[ext_resource type="AudioStream" uid="uid://b0wsx1vc4mvjr" path="res://Sound/Sounds/sfx_step_slime_005.wav" id="5_hufbc"]
+
+[resource]
+script = ExtResource("5_4cygq")
+AudioStreams = Array[AudioStream]([ExtResource("1_bovq2"), ExtResource("2_a2e40"), ExtResource("3_n4ax8"), ExtResource("4_4dx52"), ExtResource("5_hufbc")])
+Volume = -15.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

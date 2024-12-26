@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvm5wrggg0doj"]
+
+[ext_resource type="PackedScene" uid="uid://diovirg6qs1mb" path="res://Enemy/EggClusters/egg_cluster_base.tscn" id="1_yp6mh"]
+[ext_resource type="PackedScene" uid="uid://6okvj38nr3d" path="res://Assets/FlawLizArt/EggClusters/egg.fbx" id="2_k7qyk"]
+
+[node name="egg_cluster" instance=ExtResource("1_yp6mh")]
+
+[node name="slime" parent="." index="0"]
+transform = Transform3D(0.975038, 0, -0.699501, 0, 1.2, 0, 0.699501, 0, 0.975038, 0, 0, 0)
+
+[node name="egg" parent="." index="1" instance=ExtResource("2_k7qyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103432, 0, -0.0956743)
+
+[node name="egg4" parent="." index="2" instance=ExtResource("2_k7qyk")]
+transform = Transform3D(0.482963, -0.12941, 0, 0.125, 0.466506, 0.12941, -0.0334937, -0.125, 0.482963, -0.0982608, 0, -0.0572428)
+
+[node name="egg2" parent="." index="3" instance=ExtResource("2_k7qyk")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.0761508, 0, 0.0324811)
+
+[node name="egg3" parent="." index="4" instance=ExtResource("2_k7qyk")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0536256, 0, 0.0507578)

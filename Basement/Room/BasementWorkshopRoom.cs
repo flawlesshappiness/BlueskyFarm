@@ -61,6 +61,7 @@ public partial class BasementWorkshopRoom : Node3DScript
         if (cancel) return;
 
         var item = BlueprintController.Instance.CreateBlueprintRoll(bp_id);
-        item.GlobalPosition = BlueprintPosition.GlobalPosition;
+        item.SetParent(BlueprintPosition);
+        item.Position = Vector3.Zero;
     }
 }

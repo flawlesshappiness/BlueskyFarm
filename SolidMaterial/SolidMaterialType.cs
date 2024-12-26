@@ -4,5 +4,6 @@ public enum SolidMaterialType
     Dirt,
     Wood,
     Grass,
-    Water
+    Water,
+    Slime
 }

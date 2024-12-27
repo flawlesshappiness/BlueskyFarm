@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=95 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="8_vbfot"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Dungeon/Ceiling.tscn" id="9_t030q"]
-[ext_resource type="AudioStream" uid="uid://cb45fwu756qoj" path="res://Sound/Music/bgm_farm_001.ogg" id="9_xc34j"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Dungeon/Wall.tscn" id="10_70r2i"]
 [ext_resource type="Material" uid="uid://cviywgr8k8lo1" path="res://Assets/Materials/Darkness.tres" id="10_nsfwf"]
 [ext_resource type="PackedScene" uid="uid://ushvc4v1oc0j" path="res://Basement/Assets/Dungeon/Wall_Doorway.tscn" id="11_2axp7"]
@@ -26,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farm/WoodenStand/WoodenStand_Corner.tscn" id="21_gp4pu"]
 [ext_resource type="PackedScene" uid="uid://bmm84whei4j2t" path="res://Farm/Fence/Fence_Short.tscn" id="22_g02v2"]
 [ext_resource type="PackedScene" uid="uid://bqulk87k5mqt4" path="res://Farm/Shed/Wall.tscn" id="23_n7h8b"]
+[ext_resource type="PackedScene" uid="uid://b1o1knh0ci4n0" path="res://Basement/Assets/Scaffold/Scaffold.tscn" id="24_bxx43"]
 [ext_resource type="PackedScene" uid="uid://cb1i55cd65jtq" path="res://Farm/Shed/Roof.tscn" id="24_cvkvf"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="25_jyqg2"]
 [ext_resource type="PackedScene" uid="uid://cqnhsdvqlpjs2" path="res://Farm/Shed/Doorway.tscn" id="26_23jav"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon/Crate.tscn" id="31_t1p85"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
 [ext_resource type="PackedScene" uid="uid://d1ns6lhxycaki" path="res://Weeds/Thorns/Weed_Thorns.tscn" id="36_ufagv"]
+[ext_resource type="AudioStream" uid="uid://byc6auvovq4x1" path="res://Sound/Music/bgm_farm_002.ogg" id="40_mug2t"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
 panorama = ExtResource("1_u4lhc")
@@ -546,6 +547,12 @@ visible = false
 [node name="Wall_Shed6" parent="World/NavigationRegion3D/Shed/House" instance=ExtResource("26_23jav")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.25, 0, 2)
 
+[node name="Scaffold" parent="World/NavigationRegion3D/Shed/House" instance=ExtResource("24_bxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.0921431, 2)
+
+[node name="Scaffold2" parent="World/NavigationRegion3D/Shed/House" instance=ExtResource("24_bxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.0921431, -2)
+
 [node name="Interior" type="Node3D" parent="World/NavigationRegion3D/Shed"]
 
 [node name="Table" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("27_3ofo1")]
@@ -766,8 +773,8 @@ autoplay = true
 bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_xc34j")
-volume_db = 20.0
+stream = ExtResource("40_mug2t")
+volume_db = 10.0
 autoplay = true
 bus = &"BGM"
 

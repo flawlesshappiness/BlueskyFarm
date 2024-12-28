@@ -151,11 +151,11 @@ public partial class MushroomSlugEnemy : NavEnemy
     {
         while (true)
         {
-            if (DistanceToPlayer < 4)
+            if (DistanceToPlayer < 2)
             {
                 Agent.TargetPosition = GlobalPosition;
             }
-            else if (DistanceToPlayer > 6)
+            else if (DistanceToPlayer > 3)
             {
                 Agent.TargetPosition = Player.GlobalPosition;
             }

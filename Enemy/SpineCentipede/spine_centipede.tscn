@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2fyvvqopxen5"]
+
+[ext_resource type="Script" path="res://Enemy/SpineCentipede/SpineCentipedeEnemy.cs" id="1_eaxmr"]
+[ext_resource type="PackedScene" uid="uid://baelcq0i7suwh" path="res://Assets/FlawLizArt/SpineCentipede/spine_centipede.fbx" id="1_ihhei"]
+[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_8xfex"]
+
+[node name="spine_centipede" type="Node3D"]
+script = ExtResource("1_eaxmr")
+MoveSpeed = 1.0
+TurnSpeed = 1.0
+
+[node name="spine_centipede" parent="." instance=ExtResource("1_ihhei")]
+
+[node name="Skeleton3D" parent="spine_centipede/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/3/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/5/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/7/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/9/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/11/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/13/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/15/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/17/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/19/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
+bones/21/rotation = Quaternion(0.0172298, 3.8055e-16, 2.20834e-14, 0.999852)
+bones/22/rotation = Quaternion(-0.367919, -2.03123e-07, 1.35315e-07, 0.929858)
+bones/23/rotation = Quaternion(0.545409, -1.17017e-08, -3.28958e-07, 0.83817)
+bones/24/rotation = Quaternion(0.596098, -4.4295e-08, -3.47517e-07, 0.802912)
+bones/26/rotation = Quaternion(-0.00129211, 0.005115, -0.461539, 0.887104)
+bones/27/rotation = Quaternion(0.000469487, -0.00780798, 0.705523, 0.708644)
+bones/28/rotation = Quaternion(-0.00574144, -0.00453183, 0.753106, 0.657858)
+bones/30/rotation = Quaternion(-0.000130573, -0.000525734, 0.263624, 0.964626)
+bones/31/rotation = Quaternion(3.53386e-05, 0.000627638, -0.442103, 0.896964)
+bones/32/rotation = Quaternion(-0.00040596, 0.000320576, -0.523062, 0.852295)
+
+[node name="AnimationPlayer" parent="spine_centipede" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="."]
+script = ExtResource("3_8xfex")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_postprocessing = 1
+
+[editable path="spine_centipede"]

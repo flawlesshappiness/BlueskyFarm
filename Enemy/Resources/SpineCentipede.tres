@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=2 format=3 uid="uid://cy1j5mrdl7xdh"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_4civf"]
+
+[resource]
+script = ExtResource("1_4civf")
+Path = "res://Enemy/SpineCentipede/spine_centipede.tscn"
+Enabled = true

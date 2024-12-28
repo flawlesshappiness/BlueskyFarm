@@ -74,7 +74,7 @@ public partial class EggClusterEnemy : NavEnemy
         cluster.SetParent(this);
 
         var room_position = GetRandomPositionAroundMe();
-        var position = NavigationServer3D.MapGetClosestPoint(GetWorld3D().NavigationMap, room_position).Set(y: 0f);
+        var position = NavigationServer3D.MapGetClosestPoint(GetWorld3D().NavigationMap, room_position).Add(y: -Agent.PathHeightOffset);
         cluster.GlobalPosition = position;
 
         _clusters.Add(cluster);

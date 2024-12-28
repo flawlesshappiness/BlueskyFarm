@@ -119,7 +119,7 @@ public partial class RootMimicEnemy : NavEnemy
     {
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Teleport to player",
             Action = _ => DebugTeleportToPlayer()
         });
@@ -134,28 +134,28 @@ public partial class RootMimicEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Follow player",
             Action = _ => SetState(State.Debug_Follow)
         });
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Set state (Waiting)",
             Action = _ => SetState(State.Waiting)
         });
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Set state (Threat)",
             Action = _ => SetState(State.Threat)
         });
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Force attack",
             Action = _ => _debug_force_attack = true
         });
@@ -279,7 +279,7 @@ public partial class RootMimicEnemy : NavEnemy
         SfxGrowl.Play();
 
         var duration = 4f;
-        Player.StartLookingAt(this, 0.05f);
+        AnimatePlayerLookAt(1f);
         ScreenEffects.AnimateRadialBlur(nameof(RootMimicEnemy) + GetInstanceId(), 0.02f, 0.1f, duration, 1f);
         ScreenEffects.AnimateHeartbeatFrequency(nameof(RootMimicEnemy) + GetInstanceId(), 0.5f, 0, 1f, 10f);
         SoundController.Instance.Play("sfx_horror_chord");
@@ -298,9 +298,24 @@ public partial class RootMimicEnemy : NavEnemy
         }
         else
         {
-            Player.StopLookingAt();
             _param_threat.Set(false);
             SetState(State.Fleeing);
+        }
+    }
+
+    private Coroutine AnimatePlayerLookAt(float duration)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimatePlayerLookAt));
+        IEnumerator Cr()
+        {
+            var id = $"{nameof(AnimatePlayerLookAt)}{EnemyId}";
+            Player.LookLock.AddLock(id);
+            Player.StartLookingAt(this, 0.05f);
+
+            yield return new WaitForSeconds(duration);
+
+            Player.LookLock.RemoveLock(id);
+            Player.StopLookingAt(this);
         }
     }
 
@@ -327,8 +342,8 @@ public partial class RootMimicEnemy : NavEnemy
         var start_position = GlobalPosition;
         var attack_position = Player.Instance.GlobalPosition + dir * 3f;
 
-        Player.MovementLock.AddLock(DebugCategory);
-        Player.LookLock.AddLock(DebugCategory);
+        Player.MovementLock.AddLock(EnemyId);
+        Player.LookLock.AddLock(EnemyId);
         Player.Instance.StartLookingAt(this, 0.1f);
 
         yield return LerpEnumerator.Lerp01(0.25f, f =>
@@ -350,8 +365,8 @@ public partial class RootMimicEnemy : NavEnemy
 
             yield return new WaitForSeconds(2.0f);
 
-            Player.MovementLock.RemoveLock(DebugCategory);
-            Player.LookLock.RemoveLock(DebugCategory);
+            Player.MovementLock.RemoveLock(EnemyId);
+            Player.LookLock.RemoveLock(EnemyId);
             GameScene.Current.KillPlayer();
         }
     }

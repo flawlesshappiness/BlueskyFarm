@@ -1,13 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2fyvvqopxen5"]
+[gd_scene load_steps=13 format=3 uid="uid://b2fyvvqopxen5"]
 
 [ext_resource type="Script" path="res://Enemy/SpineCentipede/SpineCentipedeEnemy.cs" id="1_eaxmr"]
 [ext_resource type="PackedScene" uid="uid://baelcq0i7suwh" path="res://Assets/FlawLizArt/SpineCentipede/spine_centipede.fbx" id="1_ihhei"]
+[ext_resource type="Resource" uid="uid://d38mvxk222ncp" path="res://Sound/Resources/sfx_spine_centipede_wheeze_short.tres" id="2_tns7j"]
 [ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_8xfex"]
+[ext_resource type="Resource" uid="uid://yhf55fy5i0ma" path="res://Sound/Resources/sfx_spine_centipede_wheeze_long.tres" id="3_r3w5v"]
+[ext_resource type="AudioStream" uid="uid://daqn5bfgwieyu" path="res://Sound/Sounds/sfx_spine_centipede_moving.wav" id="4_ln6r8"]
+[ext_resource type="Resource" uid="uid://dxnqn281lcrdr" path="res://Sound/Resources/sfx_spine_centipede_tick.tres" id="4_mnyih"]
+[ext_resource type="Resource" uid="uid://dah2ovm2e2bs4" path="res://Sound/Resources/sfx_spine_centipede_attack.tres" id="5_t6ovc"]
+[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="8_pgec4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_735ul"]
+size = Vector3(2, 1, 6.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ljp5s"]
+size = Vector3(1.25, 1, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8qcn"]
+size = Vector3(1.25, 1, 3.75)
 
 [node name="spine_centipede" type="Node3D"]
 script = ExtResource("1_eaxmr")
+SfxWheezeShort = ExtResource("2_tns7j")
+SfxWheezeLong = ExtResource("3_r3w5v")
+SfxTick = ExtResource("4_mnyih")
+SfxAttack = ExtResource("5_t6ovc")
 MoveSpeed = 1.0
-TurnSpeed = 1.0
+TurnSpeed = 0.6
 
 [node name="spine_centipede" parent="." instance=ExtResource("1_ihhei")]
 
@@ -22,16 +41,16 @@ bones/13/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
 bones/15/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
 bones/17/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
 bones/19/rotation = Quaternion(-0.707107, 1.37679e-07, 1.37679e-07, 0.707107)
-bones/21/rotation = Quaternion(0.0172298, 3.8055e-16, 2.20834e-14, 0.999852)
-bones/22/rotation = Quaternion(-0.367919, -2.03123e-07, 1.35315e-07, 0.929858)
-bones/23/rotation = Quaternion(0.545409, -1.17017e-08, -3.28958e-07, 0.83817)
-bones/24/rotation = Quaternion(0.596098, -4.4295e-08, -3.47517e-07, 0.802912)
-bones/26/rotation = Quaternion(-0.00129211, 0.005115, -0.461539, 0.887104)
-bones/27/rotation = Quaternion(0.000469487, -0.00780798, 0.705523, 0.708644)
-bones/28/rotation = Quaternion(-0.00574144, -0.00453183, 0.753106, 0.657858)
-bones/30/rotation = Quaternion(-0.000130573, -0.000525734, 0.263624, 0.964626)
-bones/31/rotation = Quaternion(3.53386e-05, 0.000627638, -0.442103, 0.896964)
-bones/32/rotation = Quaternion(-0.00040596, 0.000320576, -0.523062, 0.852295)
+bones/21/rotation = Quaternion(-6.94787e-08, 1.56935e-28, 2.20867e-14, 1)
+bones/22/rotation = Quaternion(-0.267229, -1.87626e-07, 1.56094e-07, 0.963633)
+bones/23/rotation = Quaternion(0.438964, 2.85604e-08, -3.27924e-07, 0.898505)
+bones/24/rotation = Quaternion(0.489795, 1.2483e-14, -3.50329e-07, 0.871838)
+bones/26/rotation = Quaternion(-1.72147e-07, 1.59976e-07, -0.244887, 0.969552)
+bones/27/rotation = Quaternion(2.79021e-07, -1.67313e-07, 0.42122, 0.906958)
+bones/28/rotation = Quaternion(1.96141e-07, 2.33226e-13, 0.50368, 0.86389)
+bones/30/rotation = Quaternion(-1.05928e-07, 3.01466e-07, 0.240732, 0.970592)
+bones/31/rotation = Quaternion(3.21709e-07, 9.10206e-08, -0.417332, 0.908754)
+bones/32/rotation = Quaternion(1.9614e-07, -1.35673e-13, -0.50368, 0.86389)
 
 [node name="AnimationPlayer" parent="spine_centipede" index="1"]
 playback_default_blend_time = 0.25
@@ -42,5 +61,32 @@ script = ExtResource("3_8xfex")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5
 path_postprocessing = 1
+
+[node name="SfxMoving" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ln6r8")
+volume_db = -10.0
+max_distance = 16.0
+bus = &"SFX"
+
+[node name="ChargeArea" type="Area3D" parent="."]
+script = ExtResource("8_pgec4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChargeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.875)
+shape = SubResource("BoxShape3D_735ul")
+
+[node name="AttackArea" type="Area3D" parent="."]
+script = ExtResource("8_pgec4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.875)
+shape = SubResource("BoxShape3D_ljp5s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
+shape = SubResource("BoxShape3D_f8qcn")
 
 [editable path="spine_centipede"]

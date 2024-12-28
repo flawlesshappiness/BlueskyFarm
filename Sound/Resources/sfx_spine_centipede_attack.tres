@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=4 format=3 uid="uid://dah2ovm2e2bs4"]
+
+[ext_resource type="AudioStream" uid="uid://ci2vwdgl0usmc" path="res://Sound/Sounds/sfx_spine_centipede_hiss_001.wav" id="1_efbix"]
+[ext_resource type="AudioStream" uid="uid://bxfqksw2qd4l3" path="res://Sound/Sounds/sfx_spine_centipede_hiss_002.wav" id="2_c3ckx"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_lft38"]
+
+[resource]
+script = ExtResource("4_lft38")
+AudioStreams = Array[AudioStream]([ExtResource("1_efbix"), ExtResource("2_c3ckx")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

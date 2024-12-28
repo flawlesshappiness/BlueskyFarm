@@ -51,14 +51,14 @@ public partial class MushroomSlugEnemy : NavEnemy
     {
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Idle",
             Action = v => SetState(State.Debug_Idle)
         });
 
         Debug.RegisterAction(new DebugAction
         {
-            Category = DebugCategory,
+            Category = EnemyId,
             Text = "Follow",
             Action = v => SetState(State.Debug_Follow)
         });

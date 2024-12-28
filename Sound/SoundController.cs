@@ -24,6 +24,14 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         return asp;
     }
 
+    public AudioStreamPlayer3D Play(SoundInfo info, Node3D target, SoundOverride settings = null) => Play(info.ResourcePath, target, settings);
+    public AudioStreamPlayer3D Play(string name, Node3D target, SoundOverride settings = null)
+    {
+        var asp = CreateAudioStreamPlayer(target);
+        Play(asp, Collection.GetEntry(name), settings);
+        return asp;
+    }
+
     private AudioStreamPlayer CreateAudioStreamPlayer()
     {
         var asp = new AudioStreamPlayer();
@@ -36,6 +44,14 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         var asp = new AudioStreamPlayer3D();
         asp.SetParent(Scene.Root);
         asp.GlobalPosition = position;
+        return asp;
+    }
+
+    private AudioStreamPlayer3D CreateAudioStreamPlayer(Node3D target)
+    {
+        var asp = new AudioStreamPlayer3D();
+        asp.SetParent(target);
+        asp.Position = Vector3.Zero;
         return asp;
     }
 
@@ -56,7 +72,11 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(delay);
-            node.QueueFree();
+
+            if (IsInstanceValid(node) && !node.IsQueuedForDeletion())
+            {
+                node.QueueFree();
+            }
         }
     }
 

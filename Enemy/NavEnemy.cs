@@ -59,7 +59,12 @@ public partial class NavEnemy : Enemy
 
     protected void TurnTowardsDirection(Vector3 direction)
     {
-        var y = Mathf.LerpAngle(GlobalRotation.Y, Mathf.Atan2(direction.X, direction.Z), TurnSpeed * GameTime.DeltaTime);
+        TurnTowardsDirection(direction, TurnSpeed);
+    }
+
+    protected void TurnTowardsDirection(Vector3 direction, float turn_speed)
+    {
+        var y = Mathf.LerpAngle(GlobalRotation.Y, Mathf.Atan2(direction.X, direction.Z), turn_speed * GameTime.DeltaTime);
         GlobalRotation = GlobalRotation.Set(y: y);
     }
 

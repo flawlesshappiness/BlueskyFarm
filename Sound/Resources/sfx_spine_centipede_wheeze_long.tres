@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=4 format=3 uid="uid://yhf55fy5i0ma"]
+
+[ext_resource type="AudioStream" uid="uid://bd4x41v22a5bg" path="res://Sound/Sounds/sfx_spine_centipede_wheeze_long_001.wav" id="1_q1wud"]
+[ext_resource type="AudioStream" uid="uid://bj1j2tu44oqqg" path="res://Sound/Sounds/sfx_spine_centipede_wheeze_long_002.wav" id="2_86kc4"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_it0ss"]
+
+[resource]
+script = ExtResource("4_it0ss")
+AudioStreams = Array[AudioStream]([ExtResource("1_q1wud"), ExtResource("2_86kc4")])
+Volume = 0.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

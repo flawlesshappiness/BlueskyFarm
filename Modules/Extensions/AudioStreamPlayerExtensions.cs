@@ -26,4 +26,33 @@ public static class AudioStreamPlayerExtensions
             });
         }
     }
+
+    /// <summary>
+    /// Sets AudioStreamPlayer's playing toggle, without requeing
+    /// </summary>
+    public static void SetPlaying(this AudioStreamPlayer3D asp, bool playing) =>
+        _SetPlaying(asp, playing);
+
+    /// <summary>
+    /// Sets AudioStreamPlayer's playing toggle, without requeing
+    /// </summary>
+    public static void SetPlaying(this AudioStreamPlayer2D asp, bool playing) =>
+        _SetPlaying(asp, playing);
+
+    /// <summary>
+    /// Sets AudioStreamPlayer's playing toggle, without requeing
+    /// </summary>
+    public static void SetPlaying(this AudioStreamPlayer asp, bool playing) =>
+        _SetPlaying(asp, playing);
+
+    private static void _SetPlaying(Node node, bool playing)
+    {
+        var id = "playing";
+        var currently_playing = node.Get(id).AsBool();
+
+        if (playing != currently_playing)
+        {
+            node.Set(id, playing);
+        }
+    }
 }

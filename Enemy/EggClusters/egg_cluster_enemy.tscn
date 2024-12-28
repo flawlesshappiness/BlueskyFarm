@@ -9,6 +9,8 @@
 script = ExtResource("1_ybr4b")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_postprocessing = 1
 
 [node name="Clusters" type="Node3D" parent="."]
 

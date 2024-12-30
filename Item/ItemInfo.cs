@@ -19,9 +19,6 @@ public partial class ItemInfo : Resource
     public int Uses;
 
     [Export]
-    public bool IsSeed;
-
-    [Export]
     public ItemType SeedResultType;
 
     [Export]
@@ -29,6 +26,9 @@ public partial class ItemInfo : Resource
 
     [Export]
     public bool CanPickUp;
+
+    [Export]
+    public bool PerishesOnFarm;
 
     [Export]
     public bool Untrack;

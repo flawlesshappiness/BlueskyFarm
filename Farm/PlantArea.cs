@@ -96,7 +96,7 @@ public partial class PlantArea : Node3DScript
 
         var item = body.GetNodeInParents<Item>();
         if (item == null) return;
-        if (!item.Info.IsSeed) return;
+        if (item.Info.Type != ItemType.Seed) return;
         if (string.IsNullOrEmpty(item.Data.Seed?.Info)) return;
 
         var plant_info = GD.Load<ItemInfo>(item.Data.Seed.Info);

@@ -367,4 +367,22 @@ public partial class InventoryController : SingletonController
         Data.Game.InventorySize = Mathf.Clamp(Data.Game.InventorySize + amount, 1, MAX_INVENTORY_SIZE);
         OnInventorySizeChanged?.Invoke();
     }
+
+    public void RemoveNonFarmItems()
+    {
+        for (int i = 0; i < CurrentInventoryItems.Length; i++)
+        {
+            var data = CurrentInventoryItems[i];
+            if (data == null) continue;
+
+            var info = ItemController.Instance.GetInfoFromPath(data.Info);
+            if (info == null) continue;
+
+            if (info.PerishesOnFarm)
+            {
+                CurrentInventoryItems[i] = null;
+                OnItemRemoved?.Invoke(i);
+            }
+        }
+    }
 }

@@ -5,13 +5,11 @@
 
 [resource]
 script = ExtResource("1_6tnx7")
-Path = "res://Item/Prefabs/Farming/Seed.tscn"
 Scene = ExtResource("1_71veo")
 ItemName = ""
 CustomId = ""
-Type = 0
+Type = 2
 Uses = 0
-IsSeed = true
 SeedResultType = 0
 GrowTimeInSeconds = 0
 CanPickUp = true

@@ -23,6 +23,7 @@ public partial class FarmScene : GameScene
         InitializeTrapdoor();
         InitializeInventoryWeeds();
         InitializeShedInventoryItem();
+        InitializePlayerInventory();
 
         Data.Game.Flag_FarmFirstTimeLoad = false;
         Data.Game.Save();
@@ -59,6 +60,11 @@ public partial class FarmScene : GameScene
 
         var item = ItemController.Instance.CreateItem("InventoryUpgrade");
         item.GlobalPosition = Shed_InventoryItemPosition.GlobalPosition;
+    }
+
+    private void InitializePlayerInventory()
+    {
+        InventoryController.Instance.RemoveNonFarmItems();
     }
 
     protected override void BeforeSave()

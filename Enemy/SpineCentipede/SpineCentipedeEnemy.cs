@@ -163,13 +163,11 @@ public partial class SpineCentipedeEnemy : NavEnemy
     {
         var grid = BasementController.Instance.CurrentBasement.Grid;
 
-        _start_room = grid.Elements
-            .Where(x => x.AreaName == AreaNames.Basement && !x.IsStart)
+        _start_room = GetRooms()
             .OrderBy(x => grid.GetNeighbours(x.Coordinates).Count)
             .FirstOrDefault();
 
-        _end_room = grid.Elements
-            .Where(x => x.AreaName == AreaNames.Basement && !x.IsStart)
+        _end_room = GetRooms()
             .OrderByDescending(x => x.Room.GlobalPosition.DistanceSquaredTo(_start_room.Room.GlobalPosition))
             .FirstOrDefault();
 

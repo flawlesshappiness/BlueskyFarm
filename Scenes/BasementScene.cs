@@ -34,7 +34,7 @@ public partial class BasementScene : GameScene
             {
                 new BasementSettingsArea
                 {
-                    AreaName = "Basement",
+                    AreaName = AreaNames.Basement,
                     MaxRooms = 5,
                     MaxCorridorDepth = 3,
                     PuzzleCount = 0,
@@ -42,8 +42,8 @@ public partial class BasementScene : GameScene
                 /*
                 new BasementSettingsArea
                 {
-                    AreaName = "Forest",
-                    ConnectedAreaName = "Basement",
+                    AreaName = AreaNames.Forest,
+                    ConnectedAreaName = AreaNames.Basement,
                     MaxRooms = 10,
                     MaxCorridorDepth = 3,
                     PuzzleCount = 0,

@@ -163,7 +163,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private void Spawn()
     {
-        _current_room = GetFurthestRoomElementToPlayer(AreaNames.Basement);
+        _current_room = GetFurthestRoomElementToPlayer();
         var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
         GlobalPosition = spawn.GlobalPosition;
 
@@ -321,7 +321,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Fleeing()
     {
-        _current_room = GetFurthestRoomElementToPlayer(AreaNames.Basement);
+        _current_room = GetFurthestRoomElementToPlayer();
         Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
         SfxThreat.Play();
 

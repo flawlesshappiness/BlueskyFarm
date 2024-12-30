@@ -1,8 +1,11 @@
 using Godot;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Enemy : Node3DScript
 {
+    public string TargetArea { get; set; }
     protected Player Player => global::Player.Instance;
     protected Vector3 PlayerPosition => Player.GlobalPosition;
     protected float DistanceToPlayer => GlobalPosition.DistanceTo(PlayerPosition);
@@ -70,5 +73,11 @@ public partial class Enemy : Node3DScript
     public virtual void DebugSpawn()
     {
         IsDebug = true;
+    }
+
+    protected IEnumerable<BasementRoomElement> GetRooms(Func<BasementRoomElement, bool> func = null)
+    {
+        return RoomElements
+            .Where(x => !x.IsStart && x.AreaName == TargetArea && (func == null || func(x)));
     }
 }

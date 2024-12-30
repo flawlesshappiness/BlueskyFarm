@@ -20,6 +20,7 @@ public partial class MushroomSlugEnemy : NavEnemy
     private BoolParameter _param_moving;
     private float _time_player_enter;
     private BasementRoomElement _current_room;
+    private bool _spawned;
 
     public enum State
     {
@@ -37,6 +38,11 @@ public partial class MushroomSlugEnemy : NavEnemy
 
         RegisterDebugActions();
         InitializeAnimations();
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
 
         if (IsDebug)
         {
@@ -91,17 +97,21 @@ public partial class MushroomSlugEnemy : NavEnemy
 
     private void Spawn()
     {
-        _current_room = GetFurthestRoomElementToPlayer(AreaNames.Basement);
+        _current_room = GetFurthestRoomElementToPlayer();
         var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
         GlobalPosition = spawn.GlobalPosition;
 
         PlayerArea.Enable();
 
         SetState(State.Travel);
+
+        _spawned = true;
     }
 
     private void PlayerEntered(Player player)
     {
+        if (!_spawned) return;
+
         _time_player_enter = GameTime.Time;
 
         ScreenEffects.AnimateDistortIn(FxId, 0.08f, 5f);
@@ -111,6 +121,8 @@ public partial class MushroomSlugEnemy : NavEnemy
 
     private void PlayerExited(Player player)
     {
+        if (!_spawned) return;
+
         var t = Mathf.Clamp((GameTime.Time - _time_player_enter) / 5f, 0, 1);
         var duration = 15f * t;
 
@@ -166,8 +178,7 @@ public partial class MushroomSlugEnemy : NavEnemy
 
     private IEnumerator StateCr_Travel()
     {
-        var room = BasementController.Instance.CurrentBasement.Grid.Elements
-            .Where(x => x.AreaName == AreaNames.Basement && x != _current_room)
+        var room = GetRooms(x => x != _current_room)
             .ToList().Random();
 
         Agent.TargetPosition = GetRandomPositionInRoom(room.Room);

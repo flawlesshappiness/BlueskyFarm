@@ -81,26 +81,20 @@ public partial class NavEnemy : Enemy
 
     public IEnumerable<BasementRoomElement> GetClosestRoomElementsToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
     {
-        return RoomElements
-            .Where(x => string.IsNullOrEmpty(area) || x.AreaName == area)
-            .Where(x => validate == null || validate.Invoke(x))
+        return GetRooms(validate)
             .OrderBy(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition));
     }
 
-    public BasementRoomElement GetFurthestRoomElementToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
+    public BasementRoomElement GetFurthestRoomElementToPlayer(Func<BasementRoomElement, bool> validate = null)
     {
-        return RoomElements
-            .Where(x => string.IsNullOrEmpty(area) || x.AreaName == area)
-            .Where(x => validate == null || validate.Invoke(x))
+        return GetRooms(validate)
             .OrderByDescending(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition))
             .FirstOrDefault();
     }
 
     public IEnumerable<BasementRoomElement> GetClosestRoomElements(string area = null, Func<BasementRoomElement, bool> validate = null)
     {
-        return RoomElements
-            .Where(x => string.IsNullOrEmpty(area) || x.AreaName == area)
-            .Where(x => validate == null || validate.Invoke(x))
+        return GetRooms(validate)
             .OrderBy(x => GlobalPosition.DistanceTo(x.Room.GlobalPosition));
     }
 

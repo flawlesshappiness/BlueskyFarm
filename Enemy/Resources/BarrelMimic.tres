@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyInfo" load_steps=2 format=3 uid="uid://dqw81lh0b2pxk"]
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://dqw81lh0b2pxk"]
 
 [ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_h85n2"]
+[ext_resource type="PackedScene" uid="uid://b2r5gd5rrhgdb" path="res://Enemy/BarrelMimicFlower/BarrelMimicFlower.tscn" id="1_plis0"]
 
 [resource]
 script = ExtResource("1_h85n2")
-Path = "res://Enemy/BarrelMimicFlower/BarrelMimicFlower.tscn"
+Scene = ExtResource("1_plis0")
+Enabled = false
+IsDangerous = false

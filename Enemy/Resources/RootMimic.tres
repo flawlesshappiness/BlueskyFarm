@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyInfo" load_steps=2 format=3 uid="uid://cyiqeg1ldlluo"]
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://cyiqeg1ldlluo"]
 
 [ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_ctyfm"]
+[ext_resource type="PackedScene" uid="uid://cxfgevkl7ilyk" path="res://Enemy/RootMimic/RootMimic.tscn" id="1_qf2n0"]
 
 [resource]
 script = ExtResource("1_ctyfm")
-Path = "res://Enemy/RootMimic/RootMimic.tscn"
+Scene = ExtResource("1_qf2n0")
 Enabled = true
+IsDangerous = true

@@ -1,3 +1,5 @@
+using System.Linq;
+
 public partial class EnemyController : ResourceController<EnemyInfoCollection, EnemyInfo>
 {
     public static EnemyController Instance => Singleton.Get<EnemyController>();
@@ -16,18 +18,40 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
     private Enemy CreateEnemy(EnemyInfo info)
     {
-        var enemy = GDHelper.Instantiate<Enemy>(info.Path, Scene.Current);
+        var enemy = GDHelper.Instantiate<Enemy>(info.Scene, Scene.Current);
         enemy.SetParent(Scene.Current);
         return enemy;
     }
 
     public void SpawnEnemies()
     {
-        foreach (var info in Collection.Resources)
+        Debug.TraceMethod();
+        Debug.Indent++;
+
+        var areas = BasementController.Instance.CurrentBasement.Settings.Areas
+            .Select(x => x.AreaName);
+
+        foreach (var area in areas)
         {
-            if (!info.Enabled) continue;
-            var enemy = CreateEnemy(info);
+            var safe_enemies = Collection.Resources
+            .Where(x => x.Enabled && !x.IsDangerous)
+            .TakeRandom(2);
+
+            var dangerous_enemies = Collection.Resources
+                .Where(x => x.Enabled && x.IsDangerous)
+                .TakeRandom(1);
+
+            var enemies = safe_enemies.Concat(dangerous_enemies);
+
+            foreach (var info in enemies)
+            {
+                var enemy = CreateEnemy(info);
+                enemy.TargetArea = area;
+                Debug.Trace($"Spawned {enemy.Name} in {area}");
+            }
         }
+
+        Debug.Indent--;
     }
 
     private void DebugSpawnEnemy(EnemyInfo info)
@@ -54,10 +78,10 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
             view.ContentSearch.Show();
             view.ContentSearch.ClearItems();
 
-            foreach (var enemy in Collection.Resources)
+            foreach (var info in Collection.Resources)
             {
-                var filename = System.IO.Path.GetFileNameWithoutExtension(enemy.Path);
-                view.ContentSearch.AddItem(filename, () => DebugSpawnEnemy(enemy));
+                var filename = System.IO.Path.GetFileNameWithoutExtension(info.Scene.ResourcePath);
+                view.ContentSearch.AddItem(filename, () => DebugSpawnEnemy(info));
             }
 
             view.ContentSearch.UpdateButtons();

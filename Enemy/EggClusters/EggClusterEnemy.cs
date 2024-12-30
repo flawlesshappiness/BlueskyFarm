@@ -45,12 +45,8 @@ public partial class EggClusterEnemy : NavEnemy
 
     private void Spawn()
     {
-        var room = BasementController.Instance.CurrentBasement.Grid.Elements
-            .Where(x => x.AreaName == AreaNames.Basement && !x.IsStart)
-            .ToList().Random();
-
+        var room = GetRooms().ToList().Random();
         GlobalPosition = room.Room.GlobalPosition;
-
         CreateClusters();
     }
 

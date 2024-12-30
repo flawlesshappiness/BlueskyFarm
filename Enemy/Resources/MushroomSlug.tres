@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyInfo" load_steps=2 format=3 uid="uid://eohqpm1axyk5"]
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://eohqpm1axyk5"]
 
+[ext_resource type="PackedScene" uid="uid://c51q3liaxrtvl" path="res://Enemy/MushroomSlug/MushroomSlug.tscn" id="1_olwuj"]
 [ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_vscfn"]
 
 [resource]
 script = ExtResource("1_vscfn")
-Path = "res://Enemy/MushroomSlug/MushroomSlug.tscn"
+Scene = ExtResource("1_olwuj")
 Enabled = true
+IsDangerous = false

@@ -257,9 +257,21 @@ public partial class SpineCentipedeEnemy : NavEnemy
     {
         _param_charge.Set(true);
 
-        var time_end = GameTime.Time + 2f;
+        var duration = 2f;
+        ScreenEffects.AnimateRadialBlur(nameof(SpineCentipedeEnemy) + GetInstanceId(), 0.02f, 0.1f, duration, 1f);
+        ScreenEffects.AnimateHeartbeatFrequency(nameof(SpineCentipedeEnemy) + GetInstanceId(), 0.5f, 0, 1f, 5f);
+        SoundController.Instance.Play("sfx_horror_chord");
+        SoundController.Instance.Play("sfx_horror_boom");
+
+        var time_end = GameTime.Time + duration;
+        var time_charge = GameTime.Time + duration * 0.5f;
         while (GameTime.Time < time_end)
         {
+            if (GameTime.Time < time_charge)
+            {
+                _attack_position = Player.Instance.GlobalPosition;
+            }
+
             TurnTowardsDirection(GlobalPosition.DirectionTo(_attack_position), 2f);
             yield return null;
         }

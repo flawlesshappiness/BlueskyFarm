@@ -75,11 +75,11 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     public Item CreateItemFromData(ItemData data)
     {
         var info = GD.Load<ItemInfo>(data.Info);
-        var item = GDHelper.Instantiate<Item>(info.Scene);
+        var item = info.Scene.Instantiate<Item>();
+        item.SetParent(Scene.Current);
 
         item.Info = info;
         item.Data = data;
-        item.SetParent(Scene.Current);
         item.LoadFromData();
         ActiveItems.Add(item);
         return item;
@@ -100,7 +100,8 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     public Item CreateItem(ItemInfo info, CreateItemSettings settings = null)
     {
         var parent = settings?.Parent ?? Scene.Current as Node;
-        var item = GDHelper.Instantiate<Item>(info.Scene, parent);
+        var item = info.Scene.Instantiate<Item>();
+        item.SetParent(parent);
         item.Info = info;
         item.Data = CreateItemData(info);
 

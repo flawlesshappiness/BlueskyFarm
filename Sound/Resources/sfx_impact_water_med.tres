@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://cnpag728mfptk"]
+
+[ext_resource type="AudioStream" uid="uid://dpfxapep6pp6o" path="res://Sound/Sounds/sfx_impact_water_high_001.wav" id="1_6pici"]
+[ext_resource type="AudioStream" uid="uid://bhstxk4snq5t0" path="res://Sound/Sounds/sfx_impact_water_high_002.wav" id="2_uuukq"]
+[ext_resource type="AudioStream" uid="uid://debkvnkqkgq51" path="res://Sound/Sounds/sfx_impact_water_high_003.wav" id="3_gkq58"]
+[ext_resource type="AudioStream" uid="uid://bo7qvkvwblxd5" path="res://Sound/Sounds/sfx_impact_water_high_004.wav" id="4_6ofjq"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="5_vni0c"]
+
+[resource]
+script = ExtResource("5_vni0c")
+AudioStreams = Array[AudioStream]([ExtResource("1_6pici"), ExtResource("2_uuukq"), ExtResource("3_gkq58"), ExtResource("4_6ofjq")])
+Volume = -20.0
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 2
+Attenuation = 0

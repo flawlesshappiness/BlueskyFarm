@@ -18,7 +18,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
     private Enemy CreateEnemy(EnemyInfo info)
     {
-        var enemy = GDHelper.Instantiate<Enemy>(info.Scene, Scene.Current);
+        var enemy = info.Scene.Instantiate<Enemy>();
         enemy.SetParent(Scene.Current);
         return enemy;
     }

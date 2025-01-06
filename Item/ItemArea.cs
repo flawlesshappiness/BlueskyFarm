@@ -19,10 +19,7 @@ public partial class ItemArea : Area3D
     {
         if (!IsInstanceValid(go)) return;
 
-        var node = go as Node3D;
-        if (node == null) return;
-
-        var item = node.GetNodeInParents<Item>();
+        var item = go as Item;
         if (item == null) return;
 
         if (ValidateItem(item))

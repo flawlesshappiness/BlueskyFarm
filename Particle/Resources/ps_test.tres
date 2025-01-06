@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ParticleInfo" load_steps=3 format=3 uid="uid://c0dh8v1yr337v"]
+
+[ext_resource type="PackedScene" uid="uid://d3ktexfn4aqnn" path="res://Particle/Prefabs/ps_test.tscn" id="1_mfoim"]
+[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="2_k5ub4"]
+
+[resource]
+script = ExtResource("2_k5ub4")
+Scene = ExtResource("1_mfoim")

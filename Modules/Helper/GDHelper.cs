@@ -3,11 +3,15 @@ using System.Text;
 
 public partial class GDHelper
 {
-    public static T Instantiate<T>(string scene_path, Node parent = null) where T : Node => Instantiate(scene_path, parent) as T;
-    public static Node Instantiate(string scene_path, Node parent = null)
+    public static T Instantiate<T>(string scene_path, Node parent = null) where T : GodotObject
     {
-        Debug.TraceMethod(scene_path);
+        var packed_scene = LoadPackedScene(scene_path);
+        var instance = packed_scene.Instantiate<T>();
+        return instance;
+    }
 
+    private static PackedScene LoadPackedScene(string scene_path)
+    {
         var prefix = "res://";
         var ext = ".tscn";
         var sb = new StringBuilder();
@@ -17,15 +21,6 @@ public partial class GDHelper
         var path = sb.ToString();
 
         var packed_scene = (PackedScene)GD.Load(path);
-        return Instantiate(packed_scene, parent);
-    }
-
-    public static T Instantiate<T>(PackedScene packed_scene, Node parent = null) where T : Node => Instantiate(packed_scene, parent) as T;
-    public static Node Instantiate(PackedScene packed_scene, Node parent = null)
-    {
-        var node = packed_scene.Instantiate();
-        parent ??= Scene.Root;
-        parent.AddChild(node);
-        return node;
+        return packed_scene;
     }
 }

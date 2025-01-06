@@ -9,8 +9,7 @@ public static class Node3DExtensions
     public static void SetEnabled(this Node3D node, bool enabled)
     {
         node.Visible = enabled;
-        node.SetCollisionEnabled(enabled);
-        node.SetSoundsEnabled(enabled);
+        node.ProcessMode = enabled ? Node.ProcessModeEnum.Inherit : Node.ProcessModeEnum.Disabled;
     }
 
     public static void SetCollisionEnabled(this Node3D node, bool enabled)

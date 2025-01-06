@@ -18,8 +18,12 @@ public partial class Scene : NodeScript
 
     protected virtual void OnDestroy() { }
 
-    public static T Instantiate<T>(string path) where T : Scene =>
-        GDHelper.Instantiate<T>(path);
+    public static T Instantiate<T>(string path) where T : Scene
+    {
+        var scene = GDHelper.Instantiate<T>(path);
+        scene.SetParent(Scene.Root);
+        return scene;
+    }
 
     private void LoadData()
     {

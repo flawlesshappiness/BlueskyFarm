@@ -25,7 +25,9 @@ public partial class ParticleController : ResourceController<ParticleCollection,
         if (_particles.ContainsKey(name))
         {
             var info = _particles[name];
-            return GDHelper.Instantiate<GpuParticles3D>(info.Path);
+            var ps = info.Scene.Instantiate<GpuParticles3D>();
+            ps.SetParent(Scene.Current);
+            return ps;
         }
 
         Debug.LogError($"Failed to create particle with name: {name}");

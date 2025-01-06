@@ -296,7 +296,6 @@ public partial class InventoryController : SingletonController
         _dropping_inventory = true;
         var items = CurrentInventoryItems.ToList().ToArray();
         ClearCurrentInventory();
-        Data.Game.Save();
 
         Coroutine.Start(DropAllCr);
         IEnumerator DropAllCr()

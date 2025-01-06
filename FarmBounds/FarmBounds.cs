@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class FarmBounds : NodeScript
+public partial class FarmBounds : Node3DScript
 {
     public static FarmBounds Instance { get; private set; }
 
@@ -32,7 +32,7 @@ public partial class FarmBounds : NodeScript
         if (!IsInstanceValid(node)) return;
         if (node.IsQueuedForDeletion()) return;
 
-        var item = node.GetNodeInParents<Item>();
+        var item = node as Item;
 
         if (item?.IsBeingHandled ?? false) return;
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=95 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=93 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
-[ext_resource type="Script" path="res://FarmBounds/FarmBounds.cs" id="2_muofh"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
@@ -53,9 +52,6 @@ background_mode = 2
 sky = SubResource("Sky_b8lqf")
 adjustment_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ujqkt"]
-size = Vector3(24, 50, 24)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(31, 4, 31)
 
@@ -80,7 +76,7 @@ size = Vector2(4, 4)
 size = Vector3(1.88379, 1, 1.78735)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4x8xl"]
-size = Vector3(3.5, 3, 4.5)
+size = Vector3(3.5, 6.42957, 4.5)
 
 [sub_resource type="Curve" id="Curve_qma48"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -306,23 +302,13 @@ transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558
 light_color = Color(0.721569, 0.631373, 1, 1)
 shadow_enabled = true
 
-[node name="World" type="Node" parent="."]
+[node name="World" type="Node3D" parent="."]
 
-[node name="Bounds" type="Node" parent="World"]
-script = ExtResource("2_muofh")
-
-[node name="Area3D" type="Area3D" parent="World/Bounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bounds/Area3D"]
-shape = SubResource("BoxShape3D_ujqkt")
-
-[node name="SkyBlock" type="Node" parent="World"]
+[node name="SkyBlock" type="Node3D" parent="World"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/SkyBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+collision_layer = 3
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
@@ -507,6 +493,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/WoodenStand/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71478, 0)
 shape = SubResource("BoxShape3D_4x8xl")
 
 [node name="Shed" type="Node3D" parent="World/NavigationRegion3D"]

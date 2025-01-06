@@ -76,7 +76,8 @@ public partial class BasementController : SingletonController
             UpdateRoomConnection(basement, element);
 
             var parent = IsInstanceValid(basement.Settings.RoomParent) ? basement.Settings.RoomParent : Scene.Current;
-            var room = GDHelper.Instantiate<BasementRoom>(element.Info.Scene, parent);
+            var room = element.Info.Scene.Instantiate<BasementRoom>();
+            room.SetParent(parent);
             element.Room = room;
             room.Element = element;
             room.GlobalPosition = position;

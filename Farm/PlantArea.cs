@@ -18,7 +18,7 @@ public partial class PlantArea : Node3DScript
     public Touchable TouchPlant;
 
     [NodeType]
-    public Area3D Area;
+    public ItemArea ItemArea;
 
     [NodeName]
     public Node3D SeedPosition;
@@ -43,12 +43,14 @@ public partial class PlantArea : Node3DScript
     {
         base._ReadyPlayer();
 
-        Area.BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
+        ItemArea.OnItemEntered += ItemEntered;
         WeedTemplate.SetEnabled(false);
 
         Waterable.OnWatered += Watered;
         TouchPlant.OnTouched += Touched;
     }
+
+    private float _time_test;
 
     protected override void _ProcessPlayer(double delta)
     {
@@ -82,6 +84,7 @@ public partial class PlantArea : Node3DScript
         }
 
         CreateWeedsFromData(data);
+        UpdateTouchable();
     }
 
     public void UpdateData()
@@ -90,21 +93,14 @@ public partial class PlantArea : Node3DScript
         CurrentSeed.UpdateData();
     }
 
-    private void OnBodyEntered(Node3D body)
+    private void ItemEntered(Item item)
     {
         if (CurrentSeed != null) return;
-
-        var item = body.GetNodeInParents<Item>();
-        if (item == null) return;
         if (item.Info.Type != ItemType.Seed) return;
         if (string.IsNullOrEmpty(item.Data.Seed?.Info)) return;
 
         var plant_info = GD.Load<ItemInfo>(item.Data.Seed.Info);
         if (plant_info == null) return;
-
-        ItemController.Instance.UntrackItem(item);
-        var item_position = item.GlobalPosition;
-        item.QueueFree();
 
         var data = new PlantAreaData
         {
@@ -116,9 +112,13 @@ public partial class PlantArea : Node3DScript
         SetData(data);
         PlantSeedFromData(data);
 
-        CurrentSeed.SeedItem.GlobalPosition = item_position;
-        PlayThrowSFX();
-        AnimateSeedToGround(CurrentSeed.SeedItem);
+        PlayDirtPuffParticle();
+        PlayDirtSFX();
+        UpdateTouchable();
+
+        ItemController.Instance.UntrackItem(item);
+        item.Disable();
+        item.QueueFree();
     }
 
     private PlantAreaData GetOrCreateData()
@@ -282,7 +282,7 @@ public partial class PlantArea : Node3DScript
 
     private void UpdateTouchable()
     {
-        TouchPlant.SetEnabled(CurrentSeed != null && CurrentSeed.Data.WeedCount <= 0);
+        TouchPlant.SetEnabled(CurrentSeed != null && !HasWeeds());
     }
 
     private void Touched()
@@ -334,6 +334,7 @@ public partial class PlantArea : Node3DScript
 
     private void AnimateSeedToGround(Item item)
     {
+        /*
         var p1 = item.GlobalPosition;
         var p1_out = Vector3.Up * 0.5f;
         var p2 = SeedPosition.GlobalPosition;
@@ -343,10 +344,12 @@ public partial class PlantArea : Node3DScript
         curve.ClearPoints();
         curve.AddPoint(p1, @out: p1_out);
         curve.AddPoint(p2, @in: p2_in);
+        */
 
         Coroutine.Start(Cr, this);
         IEnumerator Cr()
         {
+            /*
             var length = curve.GetBakedLength();
             var duration = 0.5f;
             var time_start = GameTime.Time;
@@ -360,12 +363,15 @@ public partial class PlantArea : Node3DScript
                 item.GlobalPosition = position;
                 yield return null;
             }
+            */
 
             item.GlobalPosition = SeedPosition.GlobalPosition;
 
-            UpdateTouchable();
-            PlayDirtPuffParticle();
-            PlayDirtSFX();
+            //UpdateTouchable();
+            //PlayDirtPuffParticle();
+            //PlayDirtSFX();
+
+            yield return null;
         }
     }
 

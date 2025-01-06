@@ -332,49 +332,6 @@ public partial class PlantArea : Node3DScript
         seed.PlantItem.AnimateWobble();
     }
 
-    private void AnimateSeedToGround(Item item)
-    {
-        /*
-        var p1 = item.GlobalPosition;
-        var p1_out = Vector3.Up * 0.5f;
-        var p2 = SeedPosition.GlobalPosition;
-        var p2_in = Vector3.Up * 1.5f;
-
-        var curve = new Curve3D();
-        curve.ClearPoints();
-        curve.AddPoint(p1, @out: p1_out);
-        curve.AddPoint(p2, @in: p2_in);
-        */
-
-        Coroutine.Start(Cr, this);
-        IEnumerator Cr()
-        {
-            /*
-            var length = curve.GetBakedLength();
-            var duration = 0.5f;
-            var time_start = GameTime.Time;
-            var time_end = time_start + duration;
-
-            while (GameTime.Time < time_end - 0.1f)
-            {
-                var t = GameTime.T(time_start, duration);
-                var offset = Mathf.Lerp(0f, length, t);
-                var position = curve.SampleBaked(offset);
-                item.GlobalPosition = position;
-                yield return null;
-            }
-            */
-
-            item.GlobalPosition = SeedPosition.GlobalPosition;
-
-            //UpdateTouchable();
-            //PlayDirtPuffParticle();
-            //PlayDirtSFX();
-
-            yield return null;
-        }
-    }
-
     private void PlayDirtPuffParticle()
     {
         Particle.PlayOneShot("ps_dirt_puff", SeedPosition.GlobalPosition);

@@ -64,8 +64,12 @@ public partial class BasementScene : GameScene
         AmbientParticleController.Instance.Start(AreaNames.Basement);
 
         // Navigation
+        NavRegion.NavigationMeshChanged += NavigationMeshChanged;
         NavRegion.BakeNavigationMesh();
+    }
 
+    private void NavigationMeshChanged()
+    {
         // Enemies
         EnemyController.Instance.SpawnEnemies();
     }

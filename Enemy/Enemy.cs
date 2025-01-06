@@ -22,10 +22,17 @@ public partial class Enemy : Node3DScript
         RegisterDebugActions();
     }
 
-    private void RegisterDebugActions()
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(EnemyId);
+    }
+
+    protected virtual void RegisterDebugActions()
     {
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Show position",
             Action = v => ShowPosition()
@@ -33,6 +40,7 @@ public partial class Enemy : Node3DScript
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Hide position",
             Action = v => HidePosition()

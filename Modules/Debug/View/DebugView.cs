@@ -38,6 +38,7 @@ public partial class DebugView : View
     public AudioStreamPlayer SfxOpen;
 
     private Dictionary<string, Label> _categories = new();
+    private List<Button> _buttons = new();
     private Action<Dictionary<string, string>> _onInputPopupSuccess;
 
     public override void _Ready()
@@ -49,8 +50,6 @@ public partial class DebugView : View
         HideContent();
         SetVisible(false);
 
-        CreateActionButtons();
-        Debug.OnActionAdded += CreateAction;
         Debug.RegisterDebugActions();
 
         InputPopup.OnSuccess += InputPopupSuccess;
@@ -98,6 +97,8 @@ public partial class DebugView : View
 
             var idx_max = parent.GetChildCount() - 1;
             parent.MoveChild(this, idx_max);
+
+            CreateActionButtons();
         }
         else
         {
@@ -108,6 +109,7 @@ public partial class DebugView : View
 
             HideContent();
 
+            Clear();
         }
     }
 
@@ -139,6 +141,21 @@ public partial class DebugView : View
     private void ToggleVisible() =>
         SetVisible(!Main.Visible);
 
+    private void Clear()
+    {
+        foreach (var button in _buttons)
+        {
+            button.QueueFree();
+        }
+        _buttons.Clear();
+
+        foreach (var label in _categories.Values)
+        {
+            label.QueueFree();
+        }
+        _categories.Clear();
+    }
+
     private void CreateActionButtons()
     {
         foreach (var action in Debug.RegisteredActions)
@@ -149,10 +166,11 @@ public partial class DebugView : View
 
     private Button CreateActionButton()
     {
-        var instance = ButtonPrefab.Duplicate() as Button;
-        instance.SetParent(ButtonPrefab.GetParent());
-        instance.Visible = true;
-        return instance;
+        var button = ButtonPrefab.Duplicate() as Button;
+        button.SetParent(ButtonPrefab.GetParent());
+        button.Visible = true;
+        _buttons.Add(button);
+        return button;
     }
 
     private void CreateAction(DebugAction debug_action)

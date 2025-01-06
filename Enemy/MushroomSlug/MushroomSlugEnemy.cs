@@ -53,10 +53,11 @@ public partial class MushroomSlugEnemy : NavEnemy
         }
     }
 
-    private void RegisterDebugActions()
+    protected override void RegisterDebugActions()
     {
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Idle",
             Action = v => SetState(State.Debug_Idle)
@@ -64,6 +65,7 @@ public partial class MushroomSlugEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Follow",
             Action = v => SetState(State.Debug_Follow)

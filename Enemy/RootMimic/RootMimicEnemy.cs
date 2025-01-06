@@ -47,13 +47,6 @@ public partial class RootMimicEnemy : NavEnemy
     private const float DIST_THREAT_CLOSE = 4;
     private const float DIST_THREAT_ATTACK = 2;
 
-    public override void _Ready()
-    {
-        base._Ready();
-
-        RegisterDebugActions();
-    }
-
     protected override void Initialize()
     {
         base.Initialize();
@@ -115,10 +108,11 @@ public partial class RootMimicEnemy : NavEnemy
         _param_moving.Set(!Agent.IsNavigationFinished());
     }
 
-    private void RegisterDebugActions()
+    protected override void RegisterDebugActions()
     {
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Teleport to player",
             Action = _ => DebugTeleportToPlayer()
@@ -134,6 +128,7 @@ public partial class RootMimicEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Follow player",
             Action = _ => SetState(State.Debug_Follow)
@@ -141,6 +136,7 @@ public partial class RootMimicEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Set state (Waiting)",
             Action = _ => SetState(State.Waiting)
@@ -148,6 +144,7 @@ public partial class RootMimicEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Set state (Threat)",
             Action = _ => SetState(State.Threat)
@@ -155,6 +152,7 @@ public partial class RootMimicEnemy : NavEnemy
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = EnemyId,
             Category = EnemyId,
             Text = "Force attack",
             Action = _ => _debug_force_attack = true

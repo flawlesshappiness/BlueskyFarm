@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 public static class Debug
@@ -114,6 +115,15 @@ public static class Debug
         OnActionAdded?.Invoke(action);
     }
 
+    public static void RemoveActions(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return;
+
+        RegisteredActions = RegisteredActions
+            .Where(x => x.Id != id)
+            .ToList();
+    }
+
     public static void RegisterDebugActions()
     {
         var category = "DEBUG";
@@ -160,10 +170,9 @@ public static class Debug
 
 public class DebugAction
 {
+    public string Id { get; set; }
     public string Text { get; set; }
-
     public string Category { get; set; }
-
     public System.Action<DebugView> Action { get; set; }
 }
 

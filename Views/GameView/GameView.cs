@@ -29,17 +29,6 @@ public partial class GameView : View
         OverlayTemplate.Hide();
         TextTemplate.Hide();
         _overlay_black = CreateOverlay(Colors.Black.SetA(0));
-        Show();
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-
-        if (PlayerInput.ShowUI.Pressed)
-        {
-            ShowAllDynamicUI();
-        }
     }
 
     public ColorRect CreateOverlay(Color color)

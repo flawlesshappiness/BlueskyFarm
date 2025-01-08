@@ -249,8 +249,8 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
     private IEnumerator StateCr_Teleporting()
     {
         var basement = BasementController.Instance.CurrentBasement;
-        var player_room = GetClosestRoomElementToPlayer(AreaNames.Basement);
-        var room = GetClosestRoomElementsToPlayer(AreaNames.Basement, x => x != player_room).FirstOrDefault();
+        var player_room = GetClosestRoomElementToPlayer();
+        var room = GetClosestRoomElementsToPlayer(x => x != player_room).FirstOrDefault();
         var rnd = new RandomNumberGenerator();
         var d = 8;
         var x = rnd.RandfRange(-d, d);

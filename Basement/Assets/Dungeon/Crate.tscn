@@ -1,15 +1,31 @@
 [gd_scene load_steps=3 format=3 uid="uid://douwt0nkok02p"]
 
-[ext_resource type="PackedScene" uid="uid://sm3uihmiqy0x" path="res://Assets/KayLousberg/Dungeon/crateDark.gltf.glb" id="1_rd131"]
+[ext_resource type="PackedScene" uid="uid://bx52wawv7dd5i" path="res://Assets/FlawLizArt/CratePieces/crate_pieces.fbx" id="1_yuwyq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnbom"]
 
 [node name="Crate" type="StaticBody3D"]
 collision_layer = 3
 
-[node name="crateDark_gltf" parent="." instance=ExtResource("1_rd131")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506317, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504659, 0)
 shape = SubResource("BoxShape3D_pnbom")
+
+[node name="crate_pieces" parent="." instance=ExtResource("1_yuwyq")]
+
+[node name="planks_R_001" parent="crate_pieces/Crate" index="5"]
+visible = false
+
+[node name="planks_T_002" parent="crate_pieces/Crate" index="8"]
+visible = false
+
+[node name="planks_F_003" parent="crate_pieces/Crate" index="13"]
+visible = false
+
+[node name="planks_Ba_003" parent="crate_pieces/Crate" index="15"]
+visible = false
+
+[node name="planks_F_002" parent="crate_pieces/Crate" index="16"]
+visible = false
+
+[editable path="crate_pieces"]

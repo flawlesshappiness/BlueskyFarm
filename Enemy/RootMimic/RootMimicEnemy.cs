@@ -110,6 +110,8 @@ public partial class RootMimicEnemy : NavEnemy
 
     protected override void RegisterDebugActions()
     {
+        base.RegisterDebugActions();
+
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
@@ -319,7 +321,7 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Fleeing()
     {
-        _current_room = GetFurthestRoomElementToPlayer();
+        _current_room = GetFurthestRoomElementToPlayer(x => x != _current_room);
         Agent.TargetPosition = GetRandomPositionInRoom(_current_room.Room);
         SfxThreat.Play();
 

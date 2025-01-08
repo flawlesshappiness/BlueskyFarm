@@ -79,6 +79,8 @@ public partial class SpineCentipedeEnemy : NavEnemy
 
     protected override void RegisterDebugActions()
     {
+        base.RegisterDebugActions();
+
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,

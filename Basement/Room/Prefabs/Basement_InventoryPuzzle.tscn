@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Dungeon/Lantern.tscn" id="15_b7n76"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="19_kph5u"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="20_7jgka"]
-[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel.tscn" id="21_trswi"]
+[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel_001.tscn" id="21_trswi"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon/Crate.tscn" id="22_aemho"]
 
 [node name="Basement_008" instance=ExtResource("1_qpf4d")]

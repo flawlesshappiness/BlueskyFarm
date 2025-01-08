@@ -1,0 +1,14 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://d4jf7bq3a0x4m"]
+
+[ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_rofii"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vhd6n"]
+panorama = ExtResource("1_rofii")
+
+[sub_resource type="Sky" id="Sky_b8lqf"]
+sky_material = SubResource("PanoramaSkyMaterial_vhd6n")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_b8lqf")
+adjustment_enabled = true

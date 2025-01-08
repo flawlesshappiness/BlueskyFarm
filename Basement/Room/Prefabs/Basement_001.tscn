@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bbowyttubfi37" path="res://Basement/Assets/Dungeon/BookcaseShort_Filled.tscn" id="13_ms8dd"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon/Crate.tscn" id="14_if3pg"]
 [ext_resource type="PackedScene" uid="uid://bofym4piivjan" path="res://Basement/Assets/Dungeon/Roots_002.tscn" id="14_vbac0"]
-[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel.tscn" id="15_5na4i"]
+[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel_001.tscn" id="15_5na4i"]
 [ext_resource type="PackedScene" uid="uid://d2svb82x6jbwc" path="res://Basement/Assets/Dungeon/BookcaseWide.tscn" id="16_205qq"]
 [ext_resource type="PackedScene" uid="uid://c7bd7hebhf4sg" path="res://Basement/Assets/Containers/Chest_Common.tscn" id="16_m42kl"]
 [ext_resource type="PackedScene" uid="uid://mmdxnth7s87i" path="res://Basement/Assets/Dungeon/Roots_005.tscn" id="16_r4och"]

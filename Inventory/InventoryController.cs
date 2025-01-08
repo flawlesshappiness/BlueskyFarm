@@ -30,7 +30,6 @@ public partial class InventoryController : SingletonController
         base.Initialize();
         RegisterDebugActions();
         LoadData();
-        Input_SetInventoryIndex(0);
     }
 
     private void RegisterDebugActions()
@@ -162,8 +161,7 @@ public partial class InventoryController : SingletonController
         if (GameTime.Time < _time_select_index) return;
         _time_select_index = GameTime.Time + 0.01f;
 
-        SelectedIndex = Mathf.Clamp(i, 0, Data.Game.InventorySize - 1);
-        OnSelectedItemChanged?.Invoke(SelectedIndex);
+        SetInventoryIndex(i);
     }
 
     private void Input_DropInventoryPressed()
@@ -190,6 +188,12 @@ public partial class InventoryController : SingletonController
         if (!IsInstanceValid(item)) return;
 
         item.PickUp();
+    }
+
+    public void SetInventoryIndex(int i)
+    {
+        SelectedIndex = Mathf.Clamp(i, 0, Data.Game.InventorySize - 1);
+        OnSelectedItemChanged?.Invoke(SelectedIndex);
     }
 
     public void ClearInventory()

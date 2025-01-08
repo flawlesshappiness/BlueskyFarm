@@ -75,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_g7exa")
-ChildOrder = -1
+ChildOrder = -10
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1

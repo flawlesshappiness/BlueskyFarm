@@ -55,6 +55,8 @@ public partial class MushroomSlugEnemy : NavEnemy
 
     protected override void RegisterDebugActions()
     {
+        base.RegisterDebugActions();
+
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,

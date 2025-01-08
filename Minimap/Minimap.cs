@@ -47,6 +47,12 @@ public partial class Minimap : ControlScript
     public override void _Process(double delta)
     {
         base._Process(delta);
+        Process_Minimap();
+    }
+
+    private void Process_Minimap()
+    {
+        if (global::Player.Instance == null) return;
 
         var pos_player = WorldToMinimapPosition(-global::Player.Instance.GlobalPosition);
         Scroll.Position = pos_player + Player.Position;

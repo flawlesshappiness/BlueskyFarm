@@ -22,6 +22,7 @@ public static class IEnumerableExtensions
         for (int i = 0; i < count; i++)
         {
             var v = list.Random();
+            if (v == null) break;
             list.Remove(v);
             result.Add(v);
         }

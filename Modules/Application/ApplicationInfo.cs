@@ -11,4 +11,7 @@ public partial class ApplicationInfo : Resource
 
     [Export]
     public bool Release { get; set; }
+
+    [Export]
+    public string StartScene;
 }

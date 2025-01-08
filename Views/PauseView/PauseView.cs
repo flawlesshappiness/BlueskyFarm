@@ -3,6 +3,7 @@ using Godot;
 public partial class PauseView : View
 {
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(PauseView)}";
+    public static PauseView Instance => View.Get<PauseView>();
 
     [NodeName]
     public Button ResumeButton;
@@ -16,7 +17,9 @@ public partial class PauseView : View
     [NodeName]
     public Control Buttons;
 
-    private OptionsView OptionsView { get; set; }
+    private OptionsView OptionsView => View.Get<OptionsView>();
+
+    public MultiLock ToggleLock { get; set; } = new();
 
     public override void _Ready()
     {
@@ -24,26 +27,29 @@ public partial class PauseView : View
         ResumeButton.Pressed += ResumePressed;
         OptionsButton.Pressed += OptionsPressed;
         MainMenuButton.Pressed += MainMenuPressed;
-
-        OptionsView = Get<OptionsView>();
-        OptionsView.OnBack += OptionsBackPressed;
     }
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
 
-        if (PlayerInput.Pause.Pressed)
+        if (PlayerInput.Pause.Released)
         {
-            if (Get<OptionsView>().Visible) return;
-            if (Visible)
-            {
-                ResumePressed();
-            }
-            else
-            {
-                Show();
-            }
+            ToggleView();
+            GetViewport().SetInputAsHandled();
+        }
+    }
+
+    private void ToggleView()
+    {
+        if (ToggleLock.IsLocked) return;
+        if (Visible)
+        {
+            ResumePressed();
+        }
+        else
+        {
+            Show();
         }
     }
 
@@ -74,10 +80,12 @@ public partial class PauseView : View
     {
         Buttons.Visible = false;
         OptionsView.Show();
+        OptionsView.OnBack += OptionsBackPressed;
     }
 
     private void OptionsBackPressed()
     {
+        OptionsView.OnBack -= OptionsBackPressed;
         Buttons.Visible = true;
     }
 

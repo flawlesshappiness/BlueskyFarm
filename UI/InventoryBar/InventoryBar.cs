@@ -13,10 +13,13 @@ public partial class InventoryBar : DynamicUI
         base._Ready();
         ElementTemplate.Hide();
         InitializeElements();
+
         InventoryController.Instance.OnItemAdded += ItemAdded;
         InventoryController.Instance.OnItemRemoved += ItemRemoved;
         InventoryController.Instance.OnSelectedItemChanged += SelectedItemChanged;
         InventoryController.Instance.OnInventorySizeChanged += InventorySizeChanged;
+
+        SetHidden();
     }
 
     private void InitializeElements()
@@ -47,13 +50,12 @@ public partial class InventoryBar : DynamicUI
         {
             _elements[i].Visible = i < size;
         }
-
-        AnimateShow();
     }
 
     private void InventorySizeChanged()
     {
         UpdateElementVisibility();
+        AnimateShow();
     }
 
     private void ItemRemoved(int i)

@@ -41,7 +41,7 @@ public partial class OptionsView : View
     [NodeType]
     public OptionsKeys Keys;
 
-    public Action OnBack;
+    public event Action OnBack;
 
     public override void _Ready()
     {
@@ -74,6 +74,17 @@ public partial class OptionsView : View
 
         Keys.OnRebindStart += RebindStart;
         Keys.OnRebindEnd += RebindEnd;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && Visible)
+        {
+            BackPressed();
+            GetViewport().SetInputAsHandled();
+        }
     }
 
     protected override void OnShow()

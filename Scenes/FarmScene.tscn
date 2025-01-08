@@ -1,7 +1,7 @@
-[gd_scene load_steps=93 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=90 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
-[ext_resource type="Texture2D" uid="uid://dvagly5ecp1nd" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_u4lhc"]
+[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Farm.tres" id="2_g724s"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
@@ -33,24 +33,13 @@
 [ext_resource type="PackedScene" uid="uid://dii4xuy2rldl2" path="res://Basement/Assets/Dungeon/Bed.tscn" id="28_m3xxf"]
 [ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="29_gcm1x"]
 [ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Dungeon/Chair.tscn" id="29_h6ntv"]
-[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel.tscn" id="30_721ta"]
+[ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Dungeon/Barrel_001.tscn" id="30_721ta"]
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="31_2mgum"]
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Dungeon/Crate.tscn" id="31_t1p85"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
 [ext_resource type="PackedScene" uid="uid://d1ns6lhxycaki" path="res://Weeds/Thorns/Weed_Thorns.tscn" id="36_ufagv"]
 [ext_resource type="AudioStream" uid="uid://byc6auvovq4x1" path="res://Sound/Music/bgm_farm_002.ogg" id="40_mug2t"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wi325"]
-panorama = ExtResource("1_u4lhc")
-
-[sub_resource type="Sky" id="Sky_b8lqf"]
-sky_material = SubResource("PanoramaSkyMaterial_wi325")
-
-[sub_resource type="Environment" id="Environment_3hgua"]
-background_mode = 2
-sky = SubResource("Sky_b8lqf")
-adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(31, 4, 31)
@@ -295,7 +284,7 @@ size = Vector3(1, 1.51624, 1.22208)
 script = ExtResource("1_mng5r")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3hgua")
+environment = ExtResource("2_g724s")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 21.5836, 0)

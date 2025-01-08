@@ -73,13 +73,13 @@ public partial class NavEnemy : Enemy
         Agent.TargetPosition = GlobalPosition;
     }
 
-    public BasementRoomElement GetClosestRoomElementToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
+    public BasementRoomElement GetClosestRoomElementToPlayer(Func<BasementRoomElement, bool> validate = null)
     {
-        return GetClosestRoomElementsToPlayer(area, validate)
+        return GetClosestRoomElementsToPlayer(validate)
             .FirstOrDefault();
     }
 
-    public IEnumerable<BasementRoomElement> GetClosestRoomElementsToPlayer(string area = null, Func<BasementRoomElement, bool> validate = null)
+    public IEnumerable<BasementRoomElement> GetClosestRoomElementsToPlayer(Func<BasementRoomElement, bool> validate = null)
     {
         return GetRooms(validate)
             .OrderBy(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition));

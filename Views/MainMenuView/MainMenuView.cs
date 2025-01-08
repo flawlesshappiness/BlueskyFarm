@@ -4,6 +4,7 @@ using System.Collections;
 public partial class MainMenuView : View
 {
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(MainMenuView)}";
+    public static MainMenuView Instance => View.Get<MainMenuView>();
 
     [Export]
     public Button PlayButton;
@@ -22,19 +23,13 @@ public partial class MainMenuView : View
 
     private OptionsView OptionsView => View.Get<OptionsView>();
 
-    protected override void OnShow()
+    public override void _Ready()
     {
-        base.OnShow();
-        InventoryController.Instance.InventoryLock.AddLock(nameof(MainMenuView));
-        MouseVisibility.Instance.Lock.AddLock(nameof(MainMenuView));
-        PauseView.Instance.ToggleLock.AddLock(nameof(MainMenuView));
+        base._Ready();
 
         PlayButton.Pressed += ClickPlay;
         OptionsButton.Pressed += ClickOptions;
         QuitButton.Pressed += ClickQuit;
-
-        MainControl.Show();
-        MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
 
         InitializeButton(PlayButton);
         InitializeButton(OptionsButton);
@@ -45,6 +40,14 @@ public partial class MainMenuView : View
     {
         button.MouseEntered += () => SoundController.Instance.Play("sfx_ui_hover");
         button.Pressed += () => SoundController.Instance.Play("sfx_ui_click");
+    }
+
+    protected override void OnShow()
+    {
+        base.OnShow();
+        InventoryController.Instance.InventoryLock.AddLock(nameof(MainMenuView));
+        MouseVisibility.Instance.Lock.AddLock(nameof(MainMenuView));
+        PauseView.Instance.ToggleLock.AddLock(nameof(MainMenuView));
     }
 
     protected override void OnHide()
@@ -80,7 +83,9 @@ public partial class MainMenuView : View
 
     private void AnimateTransitionToPlay()
     {
-        Coroutine.Start(Cr);
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused(true);
+
         IEnumerator Cr()
         {
             var bus = AudioBus.Get(SoundBus.Transition.ToString());
@@ -115,6 +120,49 @@ public partial class MainMenuView : View
             Overlay.Hide();
             Hide();
             GameView.Instance.Show();
+        }
+    }
+
+    public void AnimateTransitionToMainMenu()
+    {
+        var cr = Coroutine.Start(Cr)
+            .SetRunWhilePaused(true);
+
+        IEnumerator Cr()
+        {
+            var bus = AudioBus.Get(SoundBus.Transition.ToString());
+            Scene.PauseLock.AddLock(nameof(MainMenuView));
+
+            Show();
+            MainControl.Hide();
+
+            Overlay.Color = Overlay.Color.SetA(0);
+            Overlay.Show();
+
+            yield return LerpEnumerator.Lerp01(1f, f =>
+            {
+                var a = Mathf.Lerp(0f, 1f, f);
+                Overlay.Color = Overlay.Color.SetA(a);
+
+                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
+                bus.SetVolume(volume);
+            });
+
+            MainControl.Show();
+            Scene.Goto<MainMenuScene>();
+            Scene.PauseLock.RemoveLock(nameof(MainMenuView));
+            MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
+
+            yield return LerpEnumerator.Lerp01(1f, f =>
+            {
+                var a = Mathf.Lerp(1f, 0f, f);
+                Overlay.Color = Overlay.Color.SetA(a);
+
+                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
+                bus.SetVolume(volume);
+            });
+
+            Overlay.Hide();
         }
     }
 }

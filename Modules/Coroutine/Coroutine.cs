@@ -11,6 +11,7 @@ public class Coroutine : CustomYieldInstruction
     public bool HasEnded { get; set; }
     public Node ConnectedNode { get; private set; }
     public bool HasConnectedNode { get; private set; }
+    public bool RunWhilePaused { get; private set; }
     public override bool KeepWaiting => !HasEnded;
 
     public Coroutine(IEnumerator enumerator)
@@ -75,6 +76,12 @@ public class Coroutine : CustomYieldInstruction
     public Coroutine SetId(string id)
     {
         StringId = id;
+        return this;
+    }
+
+    public Coroutine SetRunWhilePaused(bool run_while_paused)
+    {
+        RunWhilePaused = run_while_paused;
         return this;
     }
 }

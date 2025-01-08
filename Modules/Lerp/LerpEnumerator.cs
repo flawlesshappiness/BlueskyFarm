@@ -41,10 +41,10 @@ public class LerpEnumerator : CustomYieldInstruction
 
     public static IEnumerator Lerp01(float duration, Action<float> onLerp)
     {
-        var start = GameTime.Time;
+        var start = GameTime.UnscaledTime;
         while (true)
         {
-            var v = duration == 0 ? 1 : (GameTime.Time - start) / duration;
+            var v = duration == 0 ? 1 : (GameTime.UnscaledTime - start) / duration;
             var t = Math.Clamp(v, 0, 1);
             var tf = Convert.ToSingle(t);
             onLerp?.Invoke(tf);

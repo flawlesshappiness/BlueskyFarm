@@ -21,10 +21,16 @@ public partial class CoroutineHandler : Node
     public override void _Process(double delta)
     {
         base._Process(delta);
-        if (Scene.PauseLock.IsLocked) return;
+
+        var paused = Scene.PauseLock.IsLocked;
 
         foreach (var coroutine in _coroutines.Values.ToList())
         {
+            if (paused && !coroutine.RunWhilePaused)
+            {
+                continue;
+            }
+
             if (CoroutineShouldBeRemoved(coroutine))
             {
                 RemoveCoroutine(coroutine);

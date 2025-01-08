@@ -52,7 +52,7 @@ public partial class Minimap : ControlScript
 
     private void Process_Minimap()
     {
-        if (global::Player.Instance == null) return;
+        if (!IsInstanceValid(global::Player.Instance)) return;
 
         var pos_player = WorldToMinimapPosition(-global::Player.Instance.GlobalPosition);
         Scroll.Position = pos_player + Player.Position;

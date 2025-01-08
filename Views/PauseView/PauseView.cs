@@ -92,6 +92,7 @@ public partial class PauseView : View
     private void MainMenuPressed()
     {
         Data.Game.Save();
-        Scene.Tree.Quit();
+        Hide();
+        MainMenuView.Instance.AnimateTransitionToMainMenu();
     }
 }

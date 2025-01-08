@@ -4,4 +4,5 @@ public enum SoundBus
     SFX,
     UI,
     BGM,
+    Transition
 }

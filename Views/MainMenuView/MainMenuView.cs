@@ -35,6 +35,16 @@ public partial class MainMenuView : View
 
         MainControl.Show();
         MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
+
+        InitializeButton(PlayButton);
+        InitializeButton(OptionsButton);
+        InitializeButton(QuitButton);
+    }
+
+    private void InitializeButton(Button button)
+    {
+        button.MouseEntered += () => SoundController.Instance.Play("sfx_ui_hover");
+        button.Pressed += () => SoundController.Instance.Play("sfx_ui_click");
     }
 
     protected override void OnHide()
@@ -73,6 +83,8 @@ public partial class MainMenuView : View
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            var bus = AudioBus.Get(SoundBus.Transition.ToString());
+
             MainControl.SetMouseFilterRec(MouseFilterEnum.Ignore);
             MouseVisibility.Instance.Lock.RemoveLock(nameof(MainMenuView));
 
@@ -83,6 +95,9 @@ public partial class MainMenuView : View
             {
                 var a = Mathf.Lerp(0f, 1f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
+
+                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
+                bus.SetVolume(volume);
             });
 
             MainControl.Hide();
@@ -92,6 +107,9 @@ public partial class MainMenuView : View
             {
                 var a = Mathf.Lerp(1f, 0f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
+
+                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
+                bus.SetVolume(volume);
             });
 
             Overlay.Hide();

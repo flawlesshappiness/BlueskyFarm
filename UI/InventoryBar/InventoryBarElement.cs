@@ -5,11 +5,13 @@ public partial class InventoryBarElement : ControlScript
     [Export]
     public Label UseLabel;
 
-    [NodeName]
-    public TextureRect Selected;
+    [Export]
+    public TextureRect SelectedTexture;
 
-    [NodeName]
+    [Export]
     public WorldObject WorldObject;
+
+    public bool Selected { get; private set; }
 
     public void Clear()
     {
@@ -18,13 +20,15 @@ public partial class InventoryBarElement : ControlScript
 
     public void Select()
     {
-        Selected.Show();
+        Selected = true;
+        SelectedTexture.Show();
         WorldObject.StartAnimateSpin();
     }
 
     public void Deselect()
     {
-        Selected.Hide();
+        Selected = false;
+        SelectedTexture.Hide();
         UseLabel.Hide();
         WorldObject.StopAnimateSpin();
     }

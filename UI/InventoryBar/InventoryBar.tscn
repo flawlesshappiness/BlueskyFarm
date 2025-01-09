@@ -36,13 +36,15 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5
 columns = 15
 
-[node name="InventoryBarElement" type="Control" parent="GridContainer" node_paths=PackedStringArray("UseLabel")]
+[node name="InventoryBarElement" type="Control" parent="GridContainer" node_paths=PackedStringArray("UseLabel", "SelectedTexture", "WorldObject")]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("2_emgjy")
 script = ExtResource("1_03bnl")
 UseLabel = NodePath("UseLabel")
+SelectedTexture = NodePath("Selected")
+WorldObject = NodePath("MarginContainer/WorldObject")
 
 [node name="Panel" type="Panel" parent="GridContainer/InventoryBarElement"]
 layout_mode = 1

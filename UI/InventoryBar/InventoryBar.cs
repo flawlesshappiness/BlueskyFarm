@@ -58,13 +58,6 @@ public partial class InventoryBar : DynamicUI
         AnimateShow();
     }
 
-    private void ItemRemoved(int i)
-    {
-        var e = GetElement(i);
-        e.Clear();
-        SelectedItemChanged(i);
-    }
-
     private void ItemAdded(int i)
     {
         var info = GetInfo(i);
@@ -73,7 +66,16 @@ public partial class InventoryBar : DynamicUI
         var e = GetElement(i);
         e.WorldObject.LoadItem(info);
 
-        SelectedItemChanged(i);
+        UpdateUseLabel(i);
+        AnimateShow();
+    }
+
+    private void ItemRemoved(int i)
+    {
+        var e = GetElement(i);
+        e.Clear();
+        UpdateUseLabel(i);
+        AnimateShow();
     }
 
     private void SelectedItemChanged(int i)
@@ -81,13 +83,16 @@ public partial class InventoryBar : DynamicUI
         DeselectAllElements();
         var e = GetElement(i);
         e.Select();
-
+        UpdateUseLabel(i);
         AnimateShow();
 
-        var info = GetInfo(i);
-        if (info == null) return;
+    }
 
-        e.UseLabel.Visible = info != null && info.CanUse;
+    private void UpdateUseLabel(int i)
+    {
+        var info = GetInfo(i);
+        var e = GetElement(i);
+        e.UseLabel.Visible = e.Selected && info != null && info.CanUse;
     }
 
     private void DeselectAllElements()

@@ -34,7 +34,7 @@ public partial class WorldObject : ControlScript
 
         _current = obj;
         _current.SetParent(Origin);
-        _current.Transform = Origin.GlobalTransform;
+        _current.Transform = Origin.Transform;
     }
 
     public void LoadItem(ItemInfo info)

@@ -37,6 +37,18 @@ public partial class OptionsKeys : NodeScript
         ResetAllButton.Pressed += PressResetAllRebinds;
     }
 
+    private void RebindStarted()
+    {
+        SetButtonsEnabled(false);
+        OnRebindStart?.Invoke();
+    }
+
+    private void RebindStopped()
+    {
+        SetButtonsEnabled(true);
+        OnRebindEnd?.Invoke();
+    }
+
     public void PersistDefaultBindings()
     {
         DefaultBindings.Clear();
@@ -121,9 +133,7 @@ public partial class OptionsKeys : NodeScript
 
         _current_rebind = rebind;
         _current_rebind.Control.SetWaitingForInput(true);
-        SetButtonsEnabled(false);
-
-        OnRebindStart?.Invoke();
+        RebindStarted();
     }
 
     private void PressResetAllRebinds()
@@ -207,9 +217,7 @@ public partial class OptionsKeys : NodeScript
         _current_rebind = null;
         UpdateAllKeyStrings();
         UpdateDuplicateWarnings();
-        SetButtonsEnabled(true);
-
-        OnRebindEnd?.Invoke();
+        RebindStopped();
     }
 
     private void SetButtonsEnabled(bool enabled)
@@ -217,6 +225,9 @@ public partial class OptionsKeys : NodeScript
         foreach (var rebind in Rebinds)
         {
             rebind.Control.RebindButton.Disabled = !enabled;
+            rebind.Control.ResetButton.Disabled = !enabled;
         }
+
+        ResetAllButton.Disabled = !enabled;
     }
 }

@@ -27,6 +27,12 @@ public partial class OptionsView : View
     public Slider BrightnessSlider;
 
     [NodeName]
+    public Slider MouseSensitivitySlider;
+
+    [NodeName]
+    public Label MouseSensitivityLabel;
+
+    [NodeName]
     public OptionButton WindowModeDropdown;
 
     [NodeName]
@@ -60,6 +66,7 @@ public partial class OptionsView : View
         SFXSlider.Value = Data.Options.VolumeSFX;
         BGMSlider.Value = Data.Options.VolumeBGM;
         BrightnessSlider.Value = Data.Options.Brightness;
+        MouseSensitivitySlider.Value = Data.Options.MouseSensitivity;
         WindowModeDropdown.Selected = Data.Options.WindowMode;
         ResolutionDropdown.Selected = Data.Options.Resolution;
         VSyncDropdown.Selected = Data.Options.VSync;
@@ -70,6 +77,7 @@ public partial class OptionsView : View
         SFXSlider.ValueChanged += SFXSlider_ValueChanged;
         BGMSlider.ValueChanged += BGMSlider_ValueChanged;
         BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
+        MouseSensitivitySlider.ValueChanged += MouseSensitivitySlider_ValueChanged;
         WindowModeDropdown.ItemSelected += WindowMode_SelectionChanged;
         ResolutionDropdown.ItemSelected += Resolution_SelectionChanged;
         VSyncDropdown.ItemSelected += VSync_SelectionChanged;
@@ -150,6 +158,13 @@ public partial class OptionsView : View
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateBrightness(f);
         Data.Options.Brightness = f;
+    }
+
+    private void MouseSensitivitySlider_ValueChanged(double v)
+    {
+        var f = Convert.ToSingle(v);
+        MouseSensitivityLabel.Text = $"{f.ToString("0.00")}";
+        Data.Options.MouseSensitivity = f;
     }
 
     private void WindowMode_AddItems()

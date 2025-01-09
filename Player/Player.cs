@@ -171,8 +171,9 @@ public partial class Player : FirstPersonController
         if (Grab?.IsRotating ?? false) return;
 
         var factor = 0.001f;
+        var sens = Data.Options.MouseSensitivity;
         var motion = e as InputEventMouseMotion;
-        var speed = factor * LookSpeedMultiplier;
+        var speed = factor * sens * LookSpeedMultiplier;
         Look(motion, speed);
     }
 

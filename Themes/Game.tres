@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bc2oqceig8sg8"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bc2oqceig8sg8"]
 
 [ext_resource type="Texture2D" uid="uid://c7pre67ne2fhs" path="res://Assets/KenneyNL/UI/blue_panel.png" id="1_u4bq5"]
 
@@ -13,11 +13,12 @@ texture_margin_top = 14.0
 texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3apdt"]
+
 [resource]
-default_font_size = 25
-Button/font_sizes/font_size = 40
 Button/styles/focus = SubResource("StyleBoxEmpty_61gpr")
 Button/styles/normal = SubResource("StyleBoxEmpty_ej5t8")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.392157)
 Panel/styles/panel = SubResource("StyleBoxTexture_odiwo")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_3apdt")

@@ -78,14 +78,17 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Quit"
 
 [node name="R" type="Control" parent="Main/MarginContainer/Control/HSplitContainer"]

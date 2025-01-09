@@ -508,7 +508,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
 [node name="Lights" type="Node3D" parent="." index="11"]
 
 [node name="Lantern2" parent="Lights" index="0" instance=ExtResource("15_xm8a2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.116, 8, 0.0620003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.116, 8, -3.938)
 
 [node name="Lantern3" parent="Lights" index="1" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.116, 8, -1.938)

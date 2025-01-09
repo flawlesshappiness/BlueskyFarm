@@ -12,9 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vp35q")
 script = ExtResource("1_85mjl")
-PlayButton = NodePath("Main/MarginContainer/Control/HSplitContainer/L/MainButtons/PlayButton")
-OptionsButton = NodePath("Main/MarginContainer/Control/HSplitContainer/L/MainButtons/OptionsButton")
-QuitButton = NodePath("Main/MarginContainer/Control/HSplitContainer/L/MainButtons/QuitButton")
+PlayButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/PlayButton")
+OptionsButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/OptionsButton")
+QuitButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/QuitButton")
 MainControl = NodePath("Main")
 Overlay = NodePath("Overlay")
 
@@ -41,59 +41,49 @@ theme_override_constants/margin_bottom = 50
 [node name="Control" type="Control" parent="Main/MarginContainer"]
 layout_mode = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Main/MarginContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-dragger_visibility = 1
 
-[node name="L" type="Control" parent="Main/MarginContainer/Control/HSplitContainer"]
+[node name="MainButtons" type="VBoxContainer" parent="Main/MarginContainer/Control/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MainButtons" type="VBoxContainer" parent="Main/MarginContainer/Control/HSplitContainer/L"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 12.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
+[node name="Title" type="Label" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Sprouting Depths"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Space" type="Control" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
+[node name="Space" type="Control" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
+[node name="PlayButton" type="Button" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
+[node name="OptionsButton" type="Button" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="Main/MarginContainer/Control/HSplitContainer/L/MainButtons"]
+[node name="QuitButton" type="Button" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Quit"
-
-[node name="R" type="Control" parent="Main/MarginContainer/Control/HSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Overlay" type="ColorRect" parent="."]
 visible = false

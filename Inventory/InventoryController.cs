@@ -341,11 +341,11 @@ public partial class InventoryController : SingletonController
     {
         if (data == null) return;
 
-        var dir = Player.Instance.CameraTarget.GlobalBasis * Vector3.Forward;
+        var dir = Player.Instance.CameraTarget.GlobalBasis * (Vector3.Forward + Vector3.Up * 0.35f);
         var vel = Player.Instance.Velocity;
         var item = ItemController.Instance.CreateItemFromData(data);
-        item.GlobalPosition = Player.Instance.MidPosition;
-        item.LinearVelocity = vel + dir * 5;
+        item.GlobalPosition = Player.Instance.CameraTarget.GlobalPosition.Add(y: -0.5f);
+        item.LinearVelocity = vel + dir * 6;
 
         PlayPickupSoundFx();
     }

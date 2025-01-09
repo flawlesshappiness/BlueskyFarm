@@ -435,6 +435,7 @@ public partial class Player : FirstPersonController
         CameraRagdoll.SetParent(CameraTarget);
         CameraRagdoll.Position = Vector3.Zero;
         CameraRagdoll.Rotation = Vector3.Zero;
+        CameraRagdoll.Disable();
     }
 
     public Coroutine RagdollCameraAndPickUp(Vector3 velocity)
@@ -449,6 +450,7 @@ public partial class Player : FirstPersonController
 
     public Coroutine RagdollCamera(Vector3 velocity)
     {
+        CameraRagdoll.Enable();
         CameraRagdoll.UnlockPosition_All();
         CameraRagdoll.UnlockRotation_All();
         CameraRagdoll.SetParent(Scene.Current);

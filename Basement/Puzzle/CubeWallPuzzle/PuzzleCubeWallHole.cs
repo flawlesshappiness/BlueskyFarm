@@ -41,6 +41,8 @@ public partial class PuzzleCubeWallHole : Node3DScript
     {
         var cube = item as PuzzleCube;
         if (cube == null) return;
+        if (cube.IsBeingHandled) return;
+        cube.IsBeingHandled = true;
 
         var alignment = GetAlignment(cube);
 
@@ -51,7 +53,6 @@ public partial class PuzzleCubeWallHole : Node3DScript
         IEnumerator Cr()
         {
             AreaHole.Disable();
-            cube.IsBeingHandled = true;
             cube.SetGrabbable(false);
             cube.SetCollisionEnabled(false);
             cube.LockPosition_All();

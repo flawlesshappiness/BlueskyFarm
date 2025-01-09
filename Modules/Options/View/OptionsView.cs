@@ -5,6 +5,9 @@ public partial class OptionsView : View
 {
     public override string Directory => $"{Paths.Modules}/Options/View";
 
+    [Export]
+    public Label VersionLabel;
+
     [NodeName]
     public Button BackButton;
 
@@ -96,6 +99,15 @@ public partial class OptionsView : View
         Tabs.CurrentTab = 0;
         Keys.UpdateAllKeyStrings();
         Keys.UpdateDuplicateWarnings();
+
+        UpdateVersionLabel();
+    }
+
+    private void UpdateVersionLabel()
+    {
+        var released = ApplicationInfo.Instance.Release ? "RELEASE" : "BETA";
+        var version = ApplicationInfo.Instance.Version;
+        VersionLabel.Text = $"{released} {version}";
     }
 
     protected override void OnHide()

@@ -10,5 +10,5 @@ Id = "inventory_001"
 ResultIcon = ExtResource("1_5vd1k")
 ResultItemInfo = ExtResource("2_qv2cs")
 ResultDialogueNode = ""
-VegetableCount = 10
+VegetableCount = 5
 CanCancel = true

@@ -5,6 +5,12 @@ public partial class OptionsView : View
 {
     public override string Directory => $"{Paths.ViewDirectory}/OptionsView";
 
+    [Export]
+    public SoundInfo HoverSound;
+
+    [Export]
+    public SoundInfo PressedSound;
+
     [NodeType]
     public OptionsControl OptionsControl;
 
@@ -22,6 +28,52 @@ public partial class OptionsView : View
 
         BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
         OptionsControl.OnBack += BackPressed;
+
+        InitializeSounds();
+    }
+
+    private void InitializeSounds()
+    {
+        Rec(OptionsControl);
+
+        void Rec(Node node)
+        {
+            foreach (var child in node.GetChildren())
+            {
+                if (child is Slider slider && slider != null)
+                {
+                    slider.MouseEntered += PlayHoverSfx;
+                }
+                else if (child is Button button && button != null)
+                {
+                    button.MouseEntered += PlayHoverSfx;
+                    button.Pressed += PlayPressedSfx;
+                }
+                else if (child is OptionButton dropdown && dropdown != null)
+                {
+                    dropdown.MouseEntered += PlayHoverSfx;
+                    dropdown.Pressed += PlayPressedSfx;
+                    dropdown.ItemSelected += _ => PlayPressedSfx();
+                }
+                else if (child is TabContainer tabs && tabs != null)
+                {
+                    tabs.TabHovered += _ => PlayHoverSfx();
+                    tabs.TabClicked += _ => PlayPressedSfx();
+                }
+
+                Rec(child);
+            }
+        }
+
+        void PlayHoverSfx()
+        {
+            SoundController.Instance.Play(HoverSound);
+        }
+
+        void PlayPressedSfx()
+        {
+            SoundController.Instance.Play(PressedSound);
+        }
     }
 
     private void BackPressed()

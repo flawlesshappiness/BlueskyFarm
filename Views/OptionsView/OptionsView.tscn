@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuq3tmolqjujr"]
+[gd_scene load_steps=6 format=3 uid="uid://cuq3tmolqjujr"]
 
 [ext_resource type="Script" path="res://Views/OptionsView/OptionsView.cs" id="1_dqdy7"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="1_n2tvo"]
 [ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="2_n2tdx"]
+[ext_resource type="Resource" uid="uid://b506t8j55td27" path="res://Sound/Resources/sfx_ui_hover.tres" id="3_6edqp"]
+[ext_resource type="Resource" uid="uid://216xnyaqdp3o" path="res://Sound/Resources/sfx_ui_click.tres" id="4_1o27w"]
 
 [node name="OptionsView" type="Control"]
 layout_mode = 3
@@ -15,6 +17,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_n2tvo")
 script = ExtResource("1_dqdy7")
+HoverSound = ExtResource("3_6edqp")
+PressedSound = ExtResource("4_1o27w")
 ChildOrder = 25
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

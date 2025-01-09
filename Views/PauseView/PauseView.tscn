@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://w1gaqqx2eca8"]
+[gd_scene load_steps=4 format=3 uid="uid://w1gaqqx2eca8"]
 
 [ext_resource type="Script" path="res://Views/PauseView/PauseView.cs" id="1_wckvo"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_41t0w"]
+[ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="3_w4sp4"]
 
 [node name="PauseView" type="Control"]
 layout_mode = 3
@@ -44,20 +45,17 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Buttons/CenterContainer/VBoxContainer"]
+[node name="ResumeButton" parent="Buttons/CenterContainer/VBoxContainer" instance=ExtResource("3_w4sp4")]
 layout_mode = 2
-theme = ExtResource("2_41t0w")
 theme_override_font_sizes/font_size = 30
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="Buttons/CenterContainer/VBoxContainer"]
+[node name="OptionsButton" parent="Buttons/CenterContainer/VBoxContainer" instance=ExtResource("3_w4sp4")]
 layout_mode = 2
-theme = ExtResource("2_41t0w")
 theme_override_font_sizes/font_size = 30
 text = "Options"
 
-[node name="MainMenuButton" type="Button" parent="Buttons/CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" parent="Buttons/CenterContainer/VBoxContainer" instance=ExtResource("3_w4sp4")]
 layout_mode = 2
-theme = ExtResource("2_41t0w")
 theme_override_font_sizes/font_size = 30
-text = "Quit"
+text = "Main menu"

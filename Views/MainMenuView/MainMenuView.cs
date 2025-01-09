@@ -30,16 +30,6 @@ public partial class MainMenuView : View
         PlayButton.Pressed += ClickPlay;
         OptionsButton.Pressed += ClickOptions;
         QuitButton.Pressed += ClickQuit;
-
-        InitializeButton(PlayButton);
-        InitializeButton(OptionsButton);
-        InitializeButton(QuitButton);
-    }
-
-    private void InitializeButton(Button button)
-    {
-        button.MouseEntered += () => SoundController.Instance.Play("sfx_ui_hover");
-        button.Pressed += () => SoundController.Instance.Play("sfx_ui_click");
     }
 
     protected override void OnShow()

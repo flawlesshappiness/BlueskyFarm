@@ -139,13 +139,6 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         entry.LastPlayedStream = stream;
         return stream;
     }
-
-    public float PercentageToDecibel(float value)
-    {
-        var t = Mathf.Clamp(value, 0.0001f, 1.0f);
-        var dcb = Math.Log10(t) * 20;
-        return Convert.ToSingle(dcb);
-    }
 }
 
 public class SoundOverride

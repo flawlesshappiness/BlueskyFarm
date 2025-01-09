@@ -116,7 +116,7 @@ public partial class SceneDoor : Node3DScript
 
             yield return LerpEnumerator.Lerp01(0.5f, f =>
             {
-                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
+                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
                 bus.SetVolume(volume);
             });
 
@@ -132,7 +132,7 @@ public partial class SceneDoor : Node3DScript
 
             yield return LerpEnumerator.Lerp01(0.5f, f =>
             {
-                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
+                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
                 bus.SetVolume(volume);
             });
 

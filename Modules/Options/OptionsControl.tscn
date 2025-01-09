@@ -1,0 +1,248 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk5e5unescpcn"]
+
+[ext_resource type="Script" path="res://Modules/Options/OptionsKeys.cs" id="1_m2unh"]
+[ext_resource type="Script" path="res://Modules/Options/OptionsControl.cs" id="1_xgqu1"]
+[ext_resource type="Script" path="res://Modules/Options/OptionsKeyRebindControl.cs" id="2_b02h4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hi6fc"]
+font_size = 20
+font_color = Color(1, 0.764706, 0, 1)
+
+[node name="Options" type="VBoxContainer"]
+theme_override_constants/separation = 25
+script = ExtResource("1_xgqu1")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+current_tab = 0
+
+[node name="Audio" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFXLabel" type="Label" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="BGMLabel" type="Label" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "BGM"
+
+[node name="BGMSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Video" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="TabContainer/Video"]
+layout_mode = 2
+
+[node name="WindowMode" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/Video/HBoxContainer/WindowMode/Left"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowModeDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/WindowMode/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resolution" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/Video/HBoxContainer/Resolution/Left"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResolutionDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/Resolution/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSync" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/VSync"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/Video/HBoxContainer/VSync/Left"]
+layout_mode = 2
+text = "VSync"
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/VSync"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSyncDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/VSync/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FPSLimit" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/FPSLimit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/Video/HBoxContainer/FPSLimit/Left"]
+layout_mode = 2
+text = "FPS Limit"
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/FPSLimit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FPSLimitDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/FPSLimit/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Brightness" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/Video/HBoxContainer/Brightness/Left"]
+layout_mode = 2
+text = "Brightness"
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/Video/HBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BrightnessSlider" type="HSlider" parent="TabContainer/Video/HBoxContainer/Brightness/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 6.0
+step = 0.1
+
+[node name="Keys" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_m2unh")
+Actions = PackedStringArray("Forward", "Left", "Back", "Right", "Run", "Interact", "UseItem", "Rotate", "PickUp", "DropInventory")
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Keys"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Keys/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="KeyRebindTemp" type="HBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_b02h4")
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RebindLabel" type="Label" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp/Left"]
+layout_mode = 2
+text = "Temp"
+
+[node name="DuplicateWarningLabel" type="Label" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp"]
+layout_mode = 2
+text = "!"
+label_settings = SubResource("LabelSettings_hi6fc")
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RebindButton" type="Button" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="WaitingForInputLabel" type="Label" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp/Right"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Waiting for input..."
+horizontal_alignment = 1
+
+[node name="ResetButton" type="Button" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "X"
+
+[node name="ResetAllButton" type="Button" parent="TabContainer/Keys/VBoxContainer"]
+layout_mode = 2
+text = "Reset all"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Save & Back"

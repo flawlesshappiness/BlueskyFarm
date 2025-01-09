@@ -80,13 +80,13 @@ public partial class PauseView : View
     {
         Buttons.Visible = false;
         OptionsView.Show();
-        OptionsView.OnBack += OptionsBackPressed;
+        OptionsView.OptionsControl.OnBack += OptionsBackPressed;
     }
 
     private void OptionsBackPressed()
     {
-        OptionsView.OnBack -= OptionsBackPressed;
         Buttons.Visible = true;
+        OptionsView.OptionsControl.OnBack -= OptionsBackPressed;
     }
 
     private void MainMenuPressed()

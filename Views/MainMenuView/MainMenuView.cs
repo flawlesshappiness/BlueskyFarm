@@ -65,7 +65,7 @@ public partial class MainMenuView : View
 
     private void ClickOptions()
     {
-        OptionsView.OnBack += ClickOptionsBack;
+        OptionsView.OptionsControl.OnBack += ClickOptionsBack;
         OptionsView.Show();
         MainControl.Hide();
     }
@@ -77,7 +77,7 @@ public partial class MainMenuView : View
 
     private void ClickOptionsBack()
     {
-        OptionsView.OnBack -= ClickOptionsBack;
+        OptionsView.OptionsControl.OnBack -= ClickOptionsBack;
         MainControl.Show();
     }
 
@@ -101,7 +101,7 @@ public partial class MainMenuView : View
                 var a = Mathf.Lerp(0f, 1f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
 
-                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
+                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
                 bus.SetVolume(volume);
             });
 
@@ -113,7 +113,7 @@ public partial class MainMenuView : View
                 var a = Mathf.Lerp(1f, 0f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
 
-                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
+                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
                 bus.SetVolume(volume);
             });
 
@@ -144,7 +144,7 @@ public partial class MainMenuView : View
                 var a = Mathf.Lerp(0f, 1f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
 
-                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
+                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
                 bus.SetVolume(volume);
             });
 
@@ -158,7 +158,7 @@ public partial class MainMenuView : View
                 var a = Mathf.Lerp(1f, 0f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
 
-                var volume = SoundController.Instance.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
+                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
                 bus.SetVolume(volume);
             });
 

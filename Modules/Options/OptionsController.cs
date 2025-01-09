@@ -9,6 +9,8 @@ public partial class OptionsController : SingletonController
     public static OptionsController Instance => Singleton.Get<OptionsController>();
     public static Window.ModeEnum CurrentWindowMode => WindowModes.GetClamped(Data.Options.WindowMode);
     public static DisplayServer.VSyncMode CurrentVSyncMode => VSyncModes.GetClamped(Data.Options.VSync);
+    public static Dictionary<string, InputEvent> DefaultBindings { get; set; } = new();
+    public static List<OptionsKeyRebind> Rebinds { get; set; } = new();
 
     public event Action OnBrightnessChanged;
 
@@ -60,12 +62,11 @@ public partial class OptionsController : SingletonController
     private void BeforeSave()
     {
         var view = View.Get<OptionsView>();
-        var keys = view.Keys;
-        var key_overrides = keys.Rebinds
+        var key_overrides = Rebinds
             .Select(x => x?.Data as InputEventKeyData)
             .Where(x => x != null)
             .ToList();
-        var mouse_button_overrides = keys.Rebinds
+        var mouse_button_overrides = Rebinds
             .Select(x => x?.Data as InputEventMouseButtonData)
             .Where(x => x != null)
             .ToList();
@@ -94,8 +95,7 @@ public partial class OptionsController : SingletonController
 
     private void LoadActionOverrides()
     {
-        var view = View.Get<OptionsView>();
-        view.Keys.PersistDefaultBindings();
+        PersistDefaultBindings();
 
         foreach (var action_override in Data.Options.KeyOverrides)
         {
@@ -108,23 +108,33 @@ public partial class OptionsController : SingletonController
         }
     }
 
+    public void PersistDefaultBindings()
+    {
+        DefaultBindings.Clear();
+        var actions = InputMap.GetActions();
+        foreach (var action in actions)
+        {
+            var e = InputMap.ActionGetEvents(action).FirstOrDefault();
+            if (e == null) continue;
+            DefaultBindings.Add(action, e);
+        }
+    }
+
     public void UpdateVolume(string name, float value)
     {
         var bus = AudioBus.Get(name);
-        bus.SetVolume(PercentageToDecibel(value));
-    }
-
-    public float PercentageToDecibel(float value)
-    {
-        var t = Mathf.Clamp(value, 0.0001f, 1.0f);
-        var dcb = Math.Log10(t) * 20;
-        return Convert.ToSingle(dcb);
+        bus.SetVolume(AudioMath.PercentageToDecibel(value));
     }
 
     public void UpdateWindowMode(int i)
     {
         var mode = WindowModes.GetClamped(i);
         Scene.Root.Mode = mode;
+
+        if (mode == Window.ModeEnum.Windowed)
+        {
+            UpdateResolution(Data.Options.Resolution);
+        }
     }
 
     public void UpdateResolution(int i)

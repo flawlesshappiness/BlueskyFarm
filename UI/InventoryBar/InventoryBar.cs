@@ -62,22 +62,18 @@ public partial class InventoryBar : DynamicUI
     {
         var e = GetElement(i);
         e.Clear();
-
-        AnimateShow();
+        SelectedItemChanged(i);
     }
 
     private void ItemAdded(int i)
     {
-        var data = InventoryController.Instance.GetItem(i);
-        if (data == null) return;
-
-        var info = GD.Load<ItemInfo>(data.Info);
+        var info = GetInfo(i);
         if (info == null) return;
 
         var e = GetElement(i);
         e.WorldObject.LoadItem(info);
 
-        AnimateShow();
+        SelectedItemChanged(i);
     }
 
     private void SelectedItemChanged(int i)
@@ -87,6 +83,11 @@ public partial class InventoryBar : DynamicUI
         e.Select();
 
         AnimateShow();
+
+        var info = GetInfo(i);
+        if (info == null) return;
+
+        e.UseLabel.Visible = info != null && info.CanUse;
     }
 
     private void DeselectAllElements()
@@ -107,5 +108,16 @@ public partial class InventoryBar : DynamicUI
         e.Show();
         e.WorldObject.SubViewportContainer.Stretch = true;
         return e;
+    }
+
+    private ItemInfo GetInfo(int i)
+    {
+        var data = InventoryController.Instance.GetItem(i);
+        if (data == null) return null;
+
+        var info = GD.Load<ItemInfo>(data.Info);
+        if (info == null) return null;
+
+        return info;
     }
 }

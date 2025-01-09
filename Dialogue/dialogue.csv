@@ -3,6 +3,7 @@ keys;en
 ##CANCEL##;Cancel
 ##ACCEPT##;Accept
 ##OK##;OK
+##USE##;USE
 ##BLUEPRINT##;Blueprint
 ##MISSING_HANDLE##;Missing handle
 ##SOMETHING_DOWN_THERE##;There's something down there

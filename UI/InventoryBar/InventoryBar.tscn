@@ -2,15 +2,9 @@
 
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
 [ext_resource type="Script" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
+[ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_emgjy"]
 [ext_resource type="Texture2D" uid="uid://c48ol1afhicfm" path="res://Assets/KenneyNL/Particles/circle_03.png" id="4_nuabn"]
 [ext_resource type="PackedScene" uid="uid://5m538famp4ae" path="res://UI/WorldObject/WorldObject.tscn" id="5_vu27v"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la47w"]
-bg_color = Color(0, 0, 0, 0.490196)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
 
 [node name="InventoryBar" type="Control"]
 layout_mode = 3
@@ -42,11 +36,13 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5
 columns = 15
 
-[node name="InventoryBarElement" type="Control" parent="GridContainer"]
+[node name="InventoryBarElement" type="Control" parent="GridContainer" node_paths=PackedStringArray("UseLabel")]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 size_flags_vertical = 8
+theme = ExtResource("2_emgjy")
 script = ExtResource("1_03bnl")
+UseLabel = NodePath("UseLabel")
 
 [node name="Panel" type="Panel" parent="GridContainer/InventoryBarElement"]
 layout_mode = 1
@@ -55,7 +51,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_la47w")
 
 [node name="Selected" type="TextureRect" parent="GridContainer/InventoryBarElement"]
 modulate = Color(1, 1, 1, 0.392157)
@@ -83,3 +78,16 @@ theme_override_constants/margin_bottom = 5
 
 [node name="WorldObject" parent="GridContainer/InventoryBarElement/MarginContainer" instance=ExtResource("5_vu27v")]
 layout_mode = 2
+
+[node name="UseLabel" type="Label" parent="GridContainer/InventoryBarElement"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = -25.0
+offset_right = 36.0
+offset_bottom = -2.0
+grow_horizontal = 2
+text = "##USE##"
+horizontal_alignment = 1

@@ -5,16 +5,16 @@
 
 [resource]
 script = ExtResource("1_kqwuk")
-Path = "res://Item/Prefabs/WateringCan.tscn"
 Scene = ExtResource("1_22o5u")
 ItemName = ""
 CustomId = ""
 Type = 0
+CanUse = true
 Uses = 10
-IsSeed = false
 SeedResultType = 0
 GrowTimeInSeconds = 0
 CanPickUp = true
+PerishesOnFarm = false
 Untrack = false
 InventoryItemCameraDistance = 0.75
 InventoryItemRotationOffset = 0.0

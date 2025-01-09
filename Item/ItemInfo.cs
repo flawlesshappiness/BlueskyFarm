@@ -16,6 +16,9 @@ public partial class ItemInfo : Resource
     public ItemType Type;
 
     [Export]
+    public bool CanUse;
+
+    [Export]
     public int Uses;
 
     [Export]

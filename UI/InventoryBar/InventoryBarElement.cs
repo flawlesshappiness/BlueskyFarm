@@ -2,6 +2,9 @@ using Godot;
 
 public partial class InventoryBarElement : ControlScript
 {
+    [Export]
+    public Label UseLabel;
+
     [NodeName]
     public TextureRect Selected;
 
@@ -15,13 +18,14 @@ public partial class InventoryBarElement : ControlScript
 
     public void Select()
     {
-        Selected.Visible = true;
+        Selected.Show();
         WorldObject.StartAnimateSpin();
     }
 
     public void Deselect()
     {
-        Selected.Visible = false;
+        Selected.Hide();
+        UseLabel.Hide();
         WorldObject.StopAnimateSpin();
     }
 }

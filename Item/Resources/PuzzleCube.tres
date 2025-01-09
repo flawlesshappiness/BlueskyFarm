@@ -9,6 +9,7 @@ Scene = ExtResource("1_klrjp")
 ItemName = ""
 CustomId = "puzzle_cube"
 Type = 0
+CanUse = true
 Uses = 0
 SeedResultType = 0
 GrowTimeInSeconds = 0

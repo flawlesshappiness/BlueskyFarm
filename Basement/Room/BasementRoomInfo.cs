@@ -22,5 +22,8 @@ public partial class BasementRoomInfo : Resource
     public string RoomLayout;
 
     [Export]
+    public bool HasUnevenGround;
+
+    [Export]
     public bool Disabled;
 }

@@ -45,7 +45,11 @@ public partial class EggClusterEnemy : NavEnemy
 
     private void Spawn()
     {
-        var room = GetRooms().ToList().Random();
+        var room = GetRooms()
+            .Where(x => !x.Info.HasUnevenGround)
+            .ToList()
+            .Random();
+
         GlobalPosition = room.Room.GlobalPosition;
         CreateClusters();
     }

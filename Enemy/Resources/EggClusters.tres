@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_ynxpl")
 Scene = ExtResource("1_jkwcw")
-Enabled = false
+Enabled = true
 IsDangerous = false

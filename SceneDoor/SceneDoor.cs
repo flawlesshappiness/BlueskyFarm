@@ -103,6 +103,7 @@ public partial class SceneDoor : Node3DScript
             Player.Instance.MovementLock.AddLock(nameof(SceneDoor));
             Player.Instance.LookLock.AddLock(nameof(SceneDoor));
             Player.Instance.InteractLock.AddLock(nameof(SceneDoor));
+            PauseView.Instance.ToggleLock.AddLock(nameof(SceneDoor));
             Cursor.Hide();
             view.HideAllDynamicUI();
 
@@ -141,6 +142,8 @@ public partial class SceneDoor : Node3DScript
             {
                 view.SetBlackOverlayAlpha(Mathf.Lerp(1, 0, f));
             });
+
+            PauseView.Instance.ToggleLock.RemoveLock(nameof(SceneDoor));
         }
     }
 }

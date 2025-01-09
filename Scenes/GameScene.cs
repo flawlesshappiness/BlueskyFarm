@@ -81,14 +81,17 @@ public partial class GameScene : Scene
 
     protected virtual void OnPlayerDeath()
     {
+        string id_lock = "death";
+
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
             var view = View.Get<GameView>();
             view.SetBlackOverlayAlpha(1);
 
-            Player.Instance.MovementLock.AddLock("death");
-            Player.Instance.InteractLock.AddLock("death");
+            Player.Instance.MovementLock.AddLock(id_lock);
+            Player.Instance.InteractLock.AddLock(id_lock);
+            PauseView.Instance.ToggleLock.AddLock(id_lock);
 
             var bus = AudioBus.Get(SoundBus.Master.ToString());
             bus.SetMuted(true);
@@ -102,8 +105,9 @@ public partial class GameScene : Scene
             bus.SetMuted(false);
 
             Player.Instance.GlobalPosition = Vector3.Zero;
-            Player.Instance.MovementLock.RemoveLock("death");
-            Player.Instance.InteractLock.RemoveLock("death");
+            Player.Instance.MovementLock.RemoveLock(id_lock);
+            Player.Instance.InteractLock.RemoveLock(id_lock);
+            PauseView.Instance.ToggleLock.RemoveLock(id_lock);
         }
     }
 }

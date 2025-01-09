@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 using System.Linq;
 
 public partial class InventoryBar : DynamicUI
@@ -85,7 +86,6 @@ public partial class InventoryBar : DynamicUI
         e.Select();
         UpdateUseLabel(i);
         AnimateShow();
-
     }
 
     private void UpdateUseLabel(int i)
@@ -124,5 +124,28 @@ public partial class InventoryBar : DynamicUI
         if (info == null) return null;
 
         return info;
+    }
+
+    public void WarnPerishableItems()
+    {
+        for (int i = 0; i < _elements.Length; i++)
+        {
+            var info = GetInfo(i);
+            if (info == null) continue;
+            if (info.PerishesOnFarm)
+            {
+                var element = GetElement(i);
+                element.AnimateDisabledWarning();
+            }
+        }
+
+        StartCoroutine(Cr, nameof(WarnPerishableItems));
+        IEnumerator Cr()
+        {
+            AnimateShow();
+            KeepShowing = true;
+            yield return new WaitForSeconds(2f);
+            KeepShowing = false;
+        }
     }
 }

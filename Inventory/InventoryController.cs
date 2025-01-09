@@ -388,4 +388,13 @@ public partial class InventoryController : SingletonController
             }
         }
     }
+
+    public bool HasNonFarmItems()
+    {
+        return CurrentInventoryItems
+            .Where(x => x != null)
+            .Select(x => ItemController.Instance.GetInfoFromPath(x.Info))
+            .Where(x => x != null)
+            .Any(x => x.PerishesOnFarm);
+    }
 }

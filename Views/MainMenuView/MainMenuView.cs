@@ -86,7 +86,7 @@ public partial class MainMenuView : View
             Overlay.Color = Overlay.Color.SetA(0);
             Overlay.Show();
 
-            yield return LerpEnumerator.Lerp01(1f, f =>
+            yield return LerpEnumerator.Lerp01_Unscaled(1f, f =>
             {
                 var a = Mathf.Lerp(0f, 1f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
@@ -98,7 +98,7 @@ public partial class MainMenuView : View
             MainControl.Hide();
             Scene.Goto<FarmScene>();
 
-            yield return LerpEnumerator.Lerp01(1f, f =>
+            yield return LerpEnumerator.Lerp01_Unscaled(1f, f =>
             {
                 var a = Mathf.Lerp(1f, 0f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
@@ -129,7 +129,7 @@ public partial class MainMenuView : View
             Overlay.Color = Overlay.Color.SetA(0);
             Overlay.Show();
 
-            yield return LerpEnumerator.Lerp01(1f, f =>
+            yield return LerpEnumerator.Lerp01_Unscaled(1f, f =>
             {
                 var a = Mathf.Lerp(0f, 1f, f);
                 Overlay.Color = Overlay.Color.SetA(a);
@@ -143,7 +143,7 @@ public partial class MainMenuView : View
             Scene.PauseLock.RemoveLock(nameof(MainMenuView));
             MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
 
-            yield return LerpEnumerator.Lerp01(1f, f =>
+            yield return LerpEnumerator.Lerp01_Unscaled(1f, f =>
             {
                 var a = Mathf.Lerp(1f, 0f, f);
                 Overlay.Color = Overlay.Color.SetA(a);

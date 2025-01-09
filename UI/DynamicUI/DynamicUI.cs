@@ -6,6 +6,8 @@ public partial class DynamicUI : ControlScript
     [Export]
     public bool HideWhenInvisible;
 
+    public bool KeepShowing { get; set; }
+
     private Coroutine _cr;
     private bool _showing;
     private bool _hiding;
@@ -43,6 +45,12 @@ public partial class DynamicUI : ControlScript
 
             yield return new WaitForSeconds(duration);
 
+            while (KeepShowing)
+            {
+                yield return null;
+            }
+
+            _showing = false;
             start = Modulate;
             end = start.SetA(0);
             yield return LerpEnumerator.Lerp01(0.5f, f =>
@@ -54,8 +62,6 @@ public partial class DynamicUI : ControlScript
             {
                 Hide();
             }
-
-            _showing = false;
         }
     }
 

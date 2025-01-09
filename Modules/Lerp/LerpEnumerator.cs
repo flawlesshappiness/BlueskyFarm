@@ -41,10 +41,20 @@ public class LerpEnumerator : CustomYieldInstruction
 
     public static IEnumerator Lerp01(float duration, Action<float> onLerp)
     {
-        var start = GameTime.UnscaledTime;
+        return _Lerp01(duration, false, onLerp);
+    }
+
+    public static IEnumerator Lerp01_Unscaled(float duration, Action<float> onLerp)
+    {
+        return _Lerp01(duration, true, onLerp);
+    }
+
+    private static IEnumerator _Lerp01(float duration, bool unscaled, Action<float> onLerp)
+    {
+        var start = GetTime();
         while (true)
         {
-            var v = duration == 0 ? 1 : (GameTime.UnscaledTime - start) / duration;
+            var v = duration == 0 ? 1 : (GetTime() - start) / duration;
             var t = Math.Clamp(v, 0, 1);
             var tf = Convert.ToSingle(t);
             onLerp?.Invoke(tf);
@@ -55,6 +65,8 @@ public class LerpEnumerator : CustomYieldInstruction
                 break;
             }
         }
+
+        float GetTime() => unscaled ? GameTime.UnscaledTime : GameTime.Time;
     }
 
     #region PROPERTY

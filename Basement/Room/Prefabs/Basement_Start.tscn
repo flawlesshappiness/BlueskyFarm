@@ -319,6 +319,7 @@ omni_range = 8.40261
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 3.92304, 0)
 SceneName = "FarmScene"
 StartNode = "StartBasement"
+PerishableWarning = true
 
 [node name="Touchable" parent="Interior/Trapdoor" index="0"]
 HoverText = "Exit"

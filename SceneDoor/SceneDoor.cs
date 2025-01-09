@@ -21,6 +21,9 @@ public partial class SceneDoor : Node3DScript
     [Export]
     public SoundInfo LockedSound;
 
+    [Export]
+    public bool PerishableWarning;
+
     [NodeName]
     public Touchable Touchable;
 
@@ -34,6 +37,14 @@ public partial class SceneDoor : Node3DScript
     {
         Debug.TraceMethod();
         Debug.Indent++;
+
+        if (PerishableWarning && InventoryController.Instance.HasNonFarmItems())
+        {
+            GameView.Instance.InventoryBar.WarnPerishableItems();
+            SoundController.Instance.Play("sfx_throw_light");
+            Debug.Indent--;
+            return;
+        }
 
         if (string.IsNullOrEmpty(SceneName))
         {

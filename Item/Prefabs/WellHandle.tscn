@@ -7,10 +7,13 @@
 size = Vector3(0.629883, 0.1, 0.362305)
 
 [node name="WellHandle" instance=ExtResource("1_qcwgi")]
-InteractableText = "Handle"
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_qihmv")
 
 [node name="well_handle" parent="Model" index="0" instance=ExtResource("2_83uns")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.168537, -0.00340478, -0.131084)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Model" index="1"]
+light_color = Color(0.125, 0.19375, 0.25, 1)
+omni_range = 1.0

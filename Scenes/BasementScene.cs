@@ -37,18 +37,14 @@ public partial class BasementScene : GameScene
                     AreaName = AreaNames.Basement,
                     MaxRooms = 5,
                     MaxCorridorDepth = 3,
-                    PuzzleCount = 0,
                 },
-                /*
                 new BasementSettingsArea
                 {
                     AreaName = AreaNames.Forest,
                     ConnectedAreaName = AreaNames.Basement,
                     MaxRooms = 10,
                     MaxCorridorDepth = 3,
-                    PuzzleCount = 0,
                 }
-                */
             }
         });
 

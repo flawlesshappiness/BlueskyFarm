@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8pl05r0sc17o"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Dungeon/Well/BasementWell.cs" id="1_uafog"]
+[ext_resource type="Script" path="res://Basement/Assets/Walls/Well/BasementWell.cs" id="1_uafog"]
 [ext_resource type="PackedScene" uid="uid://daq4rn3tvghd3" path="res://Assets/FlawLizArt/Well/well.fbx" id="2_uygh0"]
 [ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="3_7txne"]
 [ext_resource type="PackedScene" uid="uid://cu48ee0sfxvpe" path="res://Assets/FlawLizArt/Well/well_handle.fbx" id="4_b5avu"]

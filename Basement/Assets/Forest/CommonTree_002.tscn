@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://vffrsoavok86"]
+
+[ext_resource type="PackedScene" uid="uid://dsvb4girn154q" path="res://Basement/Assets/Forest/Tree_Base.tscn" id="1_mvtbp"]
+[ext_resource type="PackedScene" uid="uid://bccaqdvo0n7a8" path="res://Assets/Quaternius/Nature/CommonTree_2.gltf" id="2_he3oa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ngkb4"]
+radius = 0.645841
+height = 9.58441
+
+[node name="CommonTree" instance=ExtResource("1_mvtbp")]
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_ngkb4")
+
+[node name="CommonTree_22" parent="." index="1" instance=ExtResource("2_he3oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200701, 0)

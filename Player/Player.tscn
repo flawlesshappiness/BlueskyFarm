@@ -18,6 +18,7 @@ size = Vector3(0.25, 0.25, 0.25)
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Player" instance=ExtResource("1_pwey1")]
+floor_max_angle = 1.0472
 script = ExtResource("2_w0i0x")
 WalkSpeed = 4.0
 RunSpeed = 6.0

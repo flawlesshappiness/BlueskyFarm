@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://0roctpujtyhs"]
+
+[ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://Weeds/Base/Weed_Base.tscn" id="1_wfopx"]
+[ext_resource type="Script" path="res://Weeds/Thorns/Weed_Thorns.cs" id="2_r1fxi"]
+[ext_resource type="PackedScene" uid="uid://dapis468m67uv" path="res://Weeds/Thorns/ThornedStalk.tscn" id="3_rk0qa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddqic"]
+size = Vector3(4, 4, 4)
+
+[node name="Weed_Thorns" instance=ExtResource("1_wfopx")]
+script = ExtResource("2_r1fxi")
+ToolRequired = true
+
+[node name="Touchable" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 7
+OverrideCollisionMode = true
+
+[node name="CollisionShape3D" parent="Touchable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_ddqic")
+
+[node name="Models" type="Node3D" parent="." index="1"]
+
+[node name="ThornedStalk" parent="Models" index="0" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, 0, 0, 0)
+
+[node name="ThornedStalk2" parent="Models" index="1" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-1.09784, 0, -1.36281, 0, 1.75, 0, 1.36281, 0, -1.09784, -0.542461, 0, -0.612457)
+
+[node name="ThornedStalk3" parent="Models" index="2" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-1.74995, 0, -0.013164, 0, 1.75, 0, 0.013164, 0, -1.74995, -0.148739, 0, 0.778696)
+
+[node name="ThornedStalk4" parent="Models" index="3" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.452874, 0, -1.69039, 0, 1.75, 0, 1.69039, 0, 0.452874, 0.813694, 0, -0.148739)
+
+[node name="ThornedStalk5" parent="Models" index="4" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(1.34211, 0, 0.669882, 0, 1.5, 0, -0.669882, 0, 1.34211, 0.297481, 0, -0.953683)
+
+[node name="ThornedStalk6" parent="Models" index="5" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-1.40722, 0, -0.519347, 0, 1.5, 0, 0.519347, 0, -1.40722, -0.822441, 0, 0.262482)
+
+[node name="ThornedStalk7" parent="Models" index="6" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.999232, 0, -1.11872, 0, 1.5, 0, 1.11872, 0, 0.999232, 0.542463, 0, 0.638705)
+
+[node name="ThornedStalk8" parent="Models" index="7" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.475006, 0, -1.15623, 0, 1.25, 0, 1.15623, 0, 0.475006, -1.09367, 0, 0.909936)
+
+[node name="ThornedStalk9" parent="Models" index="8" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.554915, 0, -1.12008, 0, 1.25, 0, 1.12008, 0, -0.554915, -1.32116, 0, -0.507465)
+
+[node name="ThornedStalk10" parent="Models" index="9" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-1.04961, 0, -0.67884, 0, 1.25, 0, 0.67884, 0, -1.04961, -0.262481, 0, -1.4349)
+
+[node name="ThornedStalk11" parent="Models" index="10" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.0977906, 0, 1.24617, 0, 1.25, 0, -1.24617, 0, -0.0977906, 1.11117, 0, -0.909937)
+
+[node name="ThornedStalk12" parent="Models" index="11" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(1.24698, 0, -0.086848, 0, 1.25, 0, 0.086848, 0, 1.24698, 0.306229, 0, 1.31241)
+
+[node name="ThornedStalk13" parent="Models" index="12" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.997583, 0, -0.0694783, 0, 1, 0, 0.0694783, 0, 0.997583, -0.481216, 0, 1.4524)
+
+[node name="ThornedStalk14" parent="Models" index="13" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.73736, 0, 0.6755, 0, 1, 0, -0.6755, 0, -0.73736, -1.49615, 0, 1.3649)
+
+[node name="ThornedStalk15" parent="Models" index="14" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.0823736, 0, -0.996602, 0, 1, 0, 0.996602, 0, -0.0823736, -1.61864, 0, 0.393722)
+
+[node name="ThornedStalk16" parent="Models" index="15" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.999239, 0, -0.0390154, 0, 1, 0, 0.0390154, 0, -0.999239, -1.3649, 0, -1.15492)
+
+[node name="ThornedStalk17" parent="Models" index="16" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.872257, 0, -0.489048, 0, 1, 0, 0.489048, 0, 0.872257, -1.01493, 0, -1.63614)
+
+[node name="ThornedStalk18" parent="Models" index="17" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.951218, 0, 0.308519, 0, 1, 0, -0.308519, 0, -0.951218, 0.629956, 0, -1.61864)
+
+[node name="ThornedStalk19" parent="Models" index="18" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.406195, 0, 0.913787, 0, 1, 0, -0.913787, 0, 0.406195, 1.55739, 0, -1.4524)
+
+[node name="ThornedStalk20" parent="Models" index="19" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(-0.531591, 0, -0.847001, 0, 1, 0, 0.847001, 0, -0.531591, 1.60989, 0, -0.559961)
+
+[node name="ThornedStalk21" parent="Models" index="20" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.337243, 0, 0.941418, 0, 1, 0, -0.941418, 0, 0.337243, 1.4524, 0, 0.463717)
+
+[node name="ThornedStalk22" parent="Models" index="21" instance=ExtResource("3_rk0qa")]
+transform = Transform3D(0.223029, 0, -0.974812, 0, 1, 0, 0.974812, 0, 0.223029, 1.32116, 0, 1.18117)

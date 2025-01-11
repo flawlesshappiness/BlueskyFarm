@@ -166,7 +166,6 @@ public class BasementSettingsArea
     public string ConnectedAreaName { get; set; }
     public int MaxCorridorDepth { get; set; }
     public int MaxRooms { get; set; }
-    public int PuzzleCount { get; set; }
 }
 
 public class BasementRoomElement

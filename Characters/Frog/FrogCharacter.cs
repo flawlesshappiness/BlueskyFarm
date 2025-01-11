@@ -114,6 +114,8 @@ public partial class FrogCharacter : Character
                 Data.Game.State_BasementInventoryPuzzle = 1;
                 break;
         }
+
+        Data.Game.Save();
     }
 
     private void ThrowSeedToPlayer()

@@ -75,7 +75,7 @@ public partial class BasementController : SingletonController
             element.Info ??= GetRandomRoomInfo(element);
             UpdateRoomConnection(basement, element);
 
-            var parent = IsInstanceValid(basement.Settings.RoomParent) ? basement.Settings.RoomParent : Scene.Current;
+            var parent = basement.Settings.RoomParent;
             var room = element.Info.Scene.Instantiate<BasementRoom>();
             room.SetParent(parent);
             element.Room = room;

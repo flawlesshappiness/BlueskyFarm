@@ -47,7 +47,6 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
             {
                 var enemy = CreateEnemy(info);
                 enemy.TargetArea = area;
-                Debug.Trace($"Spawned {enemy.Name} in {area}");
             }
         }
 

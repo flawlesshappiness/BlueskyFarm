@@ -178,12 +178,6 @@ public partial class RootMimicEnemy : NavEnemy
         _spawned = true;
     }
 
-    private bool IsValidRoomElement(BasementRoomElement element)
-    {
-        var valid_area = element.AreaName == AreaNames.Basement;
-        return valid_area;
-    }
-
     private void SetState(State state)
     {
         if (_state_change_disabled) return;

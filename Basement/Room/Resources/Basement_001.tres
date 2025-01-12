@@ -7,7 +7,7 @@
 script = ExtResource("1_qowr4")
 Area = "Basement"
 ConnectedArea = ""
-Path = "res://Basement/Room/Prefabs/Basement_001.tscn"
+AmbienceArea = "Basement"
 Scene = ExtResource("1_fcsru")
 IsStartRoom = false
 IsConnectedToAllFromSameArea = false
@@ -18,4 +18,5 @@ WW111EE
 0111100
 011S000
 000S000"
+HasUnevenGround = false
 Disabled = false

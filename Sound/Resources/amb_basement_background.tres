@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://bjdg1elpanrmm"]
+
+[ext_resource type="AudioStream" uid="uid://bobxdxs61gw4f" path="res://Sound/Ambience/amb_basement_001.ogg" id="1_lby0g"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_swfnv"]
+
+[resource]
+script = ExtResource("3_swfnv")
+AudioStreams = Array[AudioStream]([ExtResource("1_lby0g")])
+Volume = 15.0
+Looping = true
+PitchRange = Vector2(1, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

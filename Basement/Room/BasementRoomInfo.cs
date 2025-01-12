@@ -10,6 +10,9 @@ public partial class BasementRoomInfo : Resource
     public string ConnectedArea;
 
     [Export]
+    public string AmbienceArea;
+
+    [Export]
     public PackedScene Scene;
 
     [Export]

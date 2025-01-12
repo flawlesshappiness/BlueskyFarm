@@ -11,6 +11,9 @@ public partial class SoundInfo : Resource
     public float Volume = 0f;
 
     [Export]
+    public bool Looping;
+
+    [Export]
     public Vector2 PitchRange = new Vector2(1, 1);
 
     [Export]

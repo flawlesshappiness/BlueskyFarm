@@ -48,6 +48,7 @@ public partial class BasementScene : GameScene
             }
         });
 
+        // Containers
         InitializeContainers();
 
         // Screen effects
@@ -55,9 +56,7 @@ public partial class BasementScene : GameScene
         ScreenEffects.StartHeartbeat();
 
         // Audio
-        SetAudioEffectEnabled(true);
-        AmbienceController.Instance.Start(AreaNames.Basement);
-        AmbientParticleController.Instance.Start(AreaNames.Basement);
+        SetAudioEffectEnabled(true); // TODO: Should be tied to area
 
         // Navigation
         NavRegion.NavigationMeshChanged += NavigationMeshChanged;
@@ -68,6 +67,9 @@ public partial class BasementScene : GameScene
     {
         // Enemies
         EnemyController.Instance.SpawnEnemies();
+
+        // Enter
+        BasementController.Instance.EnterBasement();
     }
 
     protected override void OnDestroy()
@@ -76,10 +78,12 @@ public partial class BasementScene : GameScene
 
         // Audio
         SetAudioEffectEnabled(false);
-        AmbienceController.Instance.Stop();
 
         // Screen effects
         ScreenEffects.StopHeartbeat();
+
+        // Exit
+        BasementController.Instance.ExitBasement();
     }
 
     protected override void BeforeSave()

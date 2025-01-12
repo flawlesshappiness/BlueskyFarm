@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://sg081u4ctj3u"]
+[gd_scene load_steps=4 format=3 uid="uid://sg081u4ctj3u"]
 
 [ext_resource type="Script" path="res://Basement/Room/BasementRoom.cs" id="1_sat65"]
+[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_iecj3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_osv8p"]
 size = Vector3(28, 32, 28)
 
-[node name="Room_Base" type="Node3D"]
+[node name="Room_Base" type="Node3D" node_paths=PackedStringArray("Ceiling", "Floor", "Walls", "PlayerArea")]
 script = ExtResource("1_sat65")
+Ceiling = NodePath("Ceiling")
+Floor = NodePath("Floor")
+Walls = NodePath("Walls")
+PlayerArea = NodePath("RoomArea")
 
 [node name="North" type="Node3D" parent="."]
 
@@ -39,6 +44,7 @@ script = ExtResource("1_sat65")
 [node name="Ceiling" type="Node3D" parent="."]
 
 [node name="RoomArea" type="Area3D" parent="."]
+script = ExtResource("2_iecj3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)

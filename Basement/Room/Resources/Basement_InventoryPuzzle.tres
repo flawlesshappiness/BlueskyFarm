@@ -7,6 +7,7 @@
 script = ExtResource("1_i7fei")
 Area = "Basement"
 ConnectedArea = ""
+AmbienceArea = "Basement"
 Scene = ExtResource("1_rlhti")
 IsStartRoom = false
 IsConnectedToAllFromSameArea = false

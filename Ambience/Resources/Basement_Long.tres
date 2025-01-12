@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="AmbienceGroupInfo" load_steps=4 format=3 uid="uid://dtwxlyjcmcvlh"]
+[gd_resource type="Resource" script_class="AmbienceGroupInfo" load_steps=3 format=3 uid="uid://dtwxlyjcmcvlh"]
 
-[ext_resource type="AudioStream" uid="uid://dmgonnb2mml4d" path="res://Sound/Sounds/sfx_amb_mushroom_roots.wav" id="1_uew25"]
 [ext_resource type="Resource" uid="uid://dlq3c7uvdq8hk" path="res://Sound/Resources/amb_basement_long.tres" id="1_uiim2"]
 [ext_resource type="Script" path="res://Ambience/AmbienceGroupInfo.cs" id="7_1aove"]
 
 [resource]
 script = ExtResource("7_1aove")
-Name = "Basement"
+Area = "Basement"
 DelayMin = 5.0
 DelayMax = 15.0
-Sounds = Array[AudioStream]([ExtResource("1_uew25")])
 Infos = Array[Object]([ExtResource("1_uiim2")])

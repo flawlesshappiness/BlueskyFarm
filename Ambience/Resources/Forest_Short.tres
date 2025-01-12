@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmbienceGroupInfo" load_steps=3 format=3 uid="uid://c5kju2fcpjsud"]
+
+[ext_resource type="Resource" uid="uid://dqh42cxm3xx7e" path="res://Sound/Resources/amb_forest_short.tres" id="1_720dp"]
+[ext_resource type="Script" path="res://Ambience/AmbienceGroupInfo.cs" id="2_tjfta"]
+
+[resource]
+script = ExtResource("2_tjfta")
+Area = "Forest"
+DelayMin = 10.0
+DelayMax = 20.0
+Infos = Array[Object]([ExtResource("1_720dp")])

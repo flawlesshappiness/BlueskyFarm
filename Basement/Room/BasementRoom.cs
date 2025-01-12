@@ -6,14 +6,17 @@ public partial class BasementRoom : Node3DScript
     public const int SECTION_COUNT = 7;
     public static int ROOM_SIZE => SECTION_SIZE * SECTION_COUNT;
 
-    [NodeName]
+    [Export]
     public Node3D Ceiling;
 
-    [NodeName]
+    [Export]
     public Node3D Floor;
 
-    [NodeName]
+    [Export]
     public Node3D Walls;
+
+    [Export]
+    public PlayerArea PlayerArea;
 
     public BasementRoomElement Element { get; set; }
     public Section North { get; private set; }
@@ -58,6 +61,9 @@ public partial class BasementRoom : Node3DScript
     {
         base._Ready();
 
+        PlayerArea.PlayerEntered += PlayerEntered;
+        PlayerArea.PlayerExited += PlayerExited;
+
         North = FindSection(nameof(North));
         East = FindSection(nameof(East));
         South = FindSection(nameof(South));
@@ -93,5 +99,14 @@ public partial class BasementRoom : Node3DScript
         };
 
         return section;
+    }
+
+    private void PlayerEntered(Player player)
+    {
+        BasementController.Instance.EnterRoom(Element);
+    }
+
+    private void PlayerExited(Player player)
+    {
     }
 }

@@ -10,19 +10,42 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
 
     private List<Coroutine> _coroutines = new();
 
-    public void Start(string group_name)
-    {
-        Stop();
+    private string _current_area;
 
-        var infos = Collection.Resources.Where(x => x.Name == group_name);
+    protected override void Initialize()
+    {
+        base.Initialize();
+        BasementController.Instance.OnBasementExited += BasementExited;
+        BasementController.Instance.OnRoomEntered += RoomEntered;
+    }
+
+    private void BasementExited()
+    {
+        StopAmbientSounds();
+    }
+
+    private void RoomEntered(BasementRoomElement element)
+    {
+        var area = element.Info.AmbienceArea;
+        if (_current_area == area) return;
+
+        _current_area = area;
+        StartAmbientSounds(_current_area);
+    }
+
+    public void StartAmbientSounds(string area_name)
+    {
+        StopAmbientSounds();
+
+        var infos = Collection.Resources.Where(x => x.Area == area_name);
         foreach (var info in infos)
         {
-            var cr = Coroutine.Start(CrAmbience(info));
+            var cr = Coroutine.Start(CrAmbientSounds(info));
             _coroutines.Add(cr);
         }
     }
 
-    public void Stop()
+    public void StopAmbientSounds()
     {
         foreach (var cr in _coroutines)
         {
@@ -32,11 +55,11 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
         _coroutines.Clear();
     }
 
-    private IEnumerator CrAmbience(AmbienceGroupInfo info)
+    private IEnumerator CrAmbientSounds(AmbienceGroupInfo info)
     {
         var rng = new RandomNumberGenerator();
         var mul_debug = 1f;
-        yield return new WaitForSeconds(rng.RandfRange(15, 30) * mul_debug);
+        yield return new WaitForSeconds(rng.RandfRange(info.DelayMin, info.DelayMax) * mul_debug);
 
         SoundInfo previous = null;
         while (true)
@@ -53,7 +76,7 @@ public partial class AmbienceController : ResourceController<AmbienceGroupCollec
             var position = Player.Instance.GlobalPosition + offset;
             var asp = SoundController.Instance.Play(sound, position);
 
-            var delay = rng.RandfRange(15, 30) * mul_debug;
+            var delay = rng.RandfRange(info.DelayMin, info.DelayMax) * mul_debug;
             var length = asp.Stream.GetLength();
             yield return new WaitForSeconds(length + delay);
             previous = sound;

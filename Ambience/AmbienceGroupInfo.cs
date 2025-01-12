@@ -5,7 +5,7 @@ using Godot.Collections;
 public partial class AmbienceGroupInfo : Resource
 {
     [Export]
-    public string Name;
+    public string Area;
 
     [Export]
     public float DelayMin = 10f;

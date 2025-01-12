@@ -124,8 +124,12 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         go.Set("attenuation_filter_cutoff_hz", attenuation_filter_cutoff_hz);
         go.Set("max_db", 10); // Subject to change
 
-        var duration = Convert.ToSingle(stream.GetLength());
-        DestroyDelay(go, duration);
+        // Destroy if not looping
+        if (!info.Looping)
+        {
+            var duration = Convert.ToSingle(stream.GetLength());
+            DestroyDelay(go, duration);
+        }
     }
 
     private AudioStream GetRandomAudioStream(SoundEntry entry)

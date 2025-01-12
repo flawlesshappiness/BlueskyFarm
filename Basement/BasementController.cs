@@ -7,8 +7,11 @@ public partial class BasementController : SingletonController
     public override string Directory => "Basement";
     public static BasementController Instance => Singleton.Get<BasementController>();
     public Basement CurrentBasement { get; set; }
+    public BasementRoomElement CurrentRoom { get; set; }
 
-    public Action<Basement> OnBasementGenerated;
+    public event Action<Basement> OnBasementGenerated;
+    public event Action OnBasementEntered, OnBasementExited;
+    public event Action<BasementRoomElement> OnRoomEntered;
 
     public void GenerateBasement(BasementSettings settings)
     {
@@ -142,5 +145,24 @@ public partial class BasementController : SingletonController
         if (element == null) return;
 
         element.Info = BasementRoomController.Instance.Collection.GetResource(info_name);
+    }
+
+    public void EnterBasement()
+    {
+        OnBasementEntered?.Invoke();
+    }
+
+    public void ExitBasement()
+    {
+        OnBasementExited?.Invoke();
+    }
+
+    public void EnterRoom(BasementRoomElement element)
+    {
+        if (CurrentRoom != element)
+        {
+            CurrentRoom = element;
+            OnRoomEntered?.Invoke(element);
+        }
     }
 }

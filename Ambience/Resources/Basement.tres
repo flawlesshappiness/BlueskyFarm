@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AmbienceInfo" load_steps=6 format=3 uid="uid://r67iuge1hxl3"]
+
+[ext_resource type="Resource" uid="uid://bjdg1elpanrmm" path="res://Sound/Resources/amb_basement_background.tres" id="1_1sow2"]
+[ext_resource type="Resource" uid="uid://fcetjxgeuxd8" path="res://Sound/Resources/amb_basement_enemy.tres" id="2_pporr"]
+[ext_resource type="Resource" uid="uid://dlq3c7uvdq8hk" path="res://Sound/Resources/amb_basement_long.tres" id="3_6g3e7"]
+[ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="3_8lbtw"]
+[ext_resource type="Resource" uid="uid://vlh4one0arug" path="res://Sound/Resources/amb_basement_short.tres" id="4_g1yhm"]
+
+[resource]
+script = ExtResource("3_8lbtw")
+Area = "Basement"
+BackgroundSound = ExtResource("1_1sow2")
+Noises = Array[Object]([ExtResource("2_pporr"), ExtResource("3_6g3e7"), ExtResource("4_g1yhm")])
+ReverbAmount = 0.3

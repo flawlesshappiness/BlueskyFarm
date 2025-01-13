@@ -26,6 +26,9 @@ public partial class BasementScene : GameScene
 
         RegisterDebugActions();
 
+        // Ambience
+        AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Basement);
+
         // Basement
         BasementController.Instance.GenerateBasement(new BasementSettings
         {
@@ -55,9 +58,6 @@ public partial class BasementScene : GameScene
         ScreenEffects.Instance.Clear();
         ScreenEffects.StartHeartbeat();
 
-        // Audio
-        SetAudioEffectEnabled(true); // TODO: Should be tied to area
-
         // Navigation
         NavRegion.NavigationMeshChanged += NavigationMeshChanged;
         NavRegion.BakeNavigationMesh();
@@ -75,9 +75,6 @@ public partial class BasementScene : GameScene
     protected override void OnDestroy()
     {
         base.OnDestroy();
-
-        // Audio
-        SetAudioEffectEnabled(false);
 
         // Screen effects
         ScreenEffects.StopHeartbeat();
@@ -105,12 +102,6 @@ public partial class BasementScene : GameScene
                 data.TimeUntilNextWeed -= time_passed;
             }
         }
-    }
-
-    private void SetAudioEffectEnabled(bool enabled)
-    {
-        var bus = AudioBus.Get(SoundBus.SFX.ToString());
-        bus.SetEffectEnabled<AudioEffectReverb>(enabled);
     }
 
     private void RegisterDebugActions()

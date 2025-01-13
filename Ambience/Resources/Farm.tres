@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmbienceInfo" load_steps=3 format=3 uid="uid://2uh4dpphfmh8"]
+
+[ext_resource type="Resource" uid="uid://bmqumbn681odb" path="res://Sound/Resources/amb_farm_background.tres" id="1_83wdc"]
+[ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="3_ewea4"]
+
+[resource]
+script = ExtResource("3_ewea4")
+Area = "Farm"
+BackgroundSound = ExtResource("1_83wdc")
+Noises = null
+ReverbAmount = 0.0

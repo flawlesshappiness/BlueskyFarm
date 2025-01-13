@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_jj0xq"]
 [ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Basement.tres" id="2_tu2bx"]
-[ext_resource type="Environment" uid="uid://ck8maewbx0shd" path="res://Environment/Forest.tres" id="3_b2cmq"]
+[ext_resource type="Environment" uid="uid://ck8maewbx0shd" path="res://Environment/Forest_Dark.tres" id="3_b2cmq"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="4_iyvpb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hft8w"]

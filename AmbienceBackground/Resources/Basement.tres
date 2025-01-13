@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="AmbienceBackgroundInfo" load_steps=3 format=3 uid="uid://bbuajdho3dus6"]
-
-[ext_resource type="Resource" uid="uid://bjdg1elpanrmm" path="res://Sound/Resources/amb_basement_background.tres" id="1_kqqxf"]
-[ext_resource type="Script" path="res://AmbienceBackground/AmbienceBackgroundInfo.cs" id="1_vxn41"]
-
-[resource]
-script = ExtResource("1_vxn41")
-Area = "Basement"
-Sound = ExtResource("1_kqqxf")

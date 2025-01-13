@@ -615,7 +615,7 @@ transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -7.03472, 0, -0.1744
 transform = Transform3D(0.177851, 0, -1.74094, 0, 1.75, 0, 1.74094, 0, 0.177851, -3.6627, 0, -3.89526)
 
 [node name="CommonTree11" parent="Interior" index="10" instance=ExtResource("8_2j4o1")]
-transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 1.30811, 0, 0.261622)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.30811, 0, 0.261622)
 
 [node name="CommonTree12" parent="Interior" index="11" instance=ExtResource("8_2j4o1")]
 transform = Transform3D(0.905946, 0, 1.49725, 0, 1.75, 0, -1.49725, 0, 0.905946, 1.27904, 0, -4.94174)

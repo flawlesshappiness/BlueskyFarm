@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_iecj3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_osv8p"]
-size = Vector3(28, 32, 28)
+size = Vector3(27, 32, 27)
 
 [node name="Room_Base" type="Node3D" node_paths=PackedStringArray("Ceiling", "Floor", "Walls", "PlayerArea")]
 script = ExtResource("1_sat65")

@@ -25,6 +25,8 @@ public partial class FarmScene : GameScene
         InitializeShedInventoryItem();
         InitializePlayerInventory();
 
+        AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Farm);
+
         Data.Game.Flag_FarmFirstTimeLoad = false;
         Data.Game.Save();
     }

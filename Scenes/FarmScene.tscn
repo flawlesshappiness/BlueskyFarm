@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=89 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Farm.tres" id="2_g724s"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Interior/Trapdoor.tscn" id="8_je3mm"]
-[ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="8_q5w4g"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="8_vbfot"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="9_t030q"]
@@ -741,12 +740,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.217
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97852, 0, -3.07958)
-
-[node name="Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_q5w4g")
-volume_db = 20.0
-autoplay = true
-bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("40_mug2t")

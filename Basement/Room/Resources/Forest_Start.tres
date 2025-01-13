@@ -10,7 +10,7 @@ ConnectedArea = "Basement"
 AmbienceArea = "Basement"
 Scene = ExtResource("1_8ylyx")
 IsStartRoom = true
-IsConnectedToAllFromSameArea = false
+IsConnectedToAllFromSameArea = true
 RoomLayout = "00NNN00
 00NNN00
 WW111EE

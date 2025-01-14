@@ -8,3 +8,4 @@ script = ExtResource("1_ynxpl")
 Scene = ExtResource("1_jkwcw")
 Enabled = true
 IsDangerous = false
+Areas = Array[int]([1])

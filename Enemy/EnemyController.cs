@@ -34,11 +34,11 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
         foreach (var area in areas)
         {
             var safe_enemies = Collection.Resources
-            .Where(x => x.Enabled && !x.IsDangerous)
+            .Where(x => x.Enabled && !x.IsDangerous && x.Areas.Any(target_area => target_area.ToString() == area))
             .TakeRandom(2);
 
             var dangerous_enemies = Collection.Resources
-                .Where(x => x.Enabled && x.IsDangerous)
+                .Where(x => x.Enabled && x.IsDangerous && x.Areas.Any(target_area => target_area.ToString() == area))
                 .TakeRandom(1);
 
             var enemies = safe_enemies.Concat(dangerous_enemies);

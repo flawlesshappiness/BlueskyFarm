@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckgxoywxbij28"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Containers/GraveContainer.cs" id="1_yr5uu"]
+[ext_resource type="PackedScene" uid="uid://tnrf71bemvbd" path="res://Assets/FlawLizArt/Grave/grave_001.fbx" id="2_mfsr0"]
+[ext_resource type="PackedScene" uid="uid://n1uxahi7207l" path="res://Assets/FlawLizArt/Grave/grave_002.fbx" id="3_57366"]
+[ext_resource type="PackedScene" uid="uid://dhmj74r768utg" path="res://Assets/FlawLizArt/Grave/grave_003.fbx" id="4_rf5lv"]
+[ext_resource type="PackedScene" uid="uid://ddy6bo1lrm8u1" path="res://Assets/FlawLizArt/Grave/grave_004.fbx" id="5_kca67"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="6_olw2l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6eyuv"]
+size = Vector3(0.5, 0.278442, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ou53w"]
+size = Vector3(0.793945, 0.0352783, 1.43726)
+
+[node name="Grave" type="Node3D" node_paths=PackedStringArray("Touchable", "ParticlesNode", "ItemNode", "Models")]
+script = ExtResource("1_yr5uu")
+Touchable = NodePath("Touchable")
+ParticlesNode = NodePath("PsPosition")
+ItemNode = NodePath("ItemPosition")
+Models = [NodePath("Models/State 0"), NodePath("Models/State 1"), NodePath("Models/State 2"), NodePath("Models/State 3")]
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="State 0" type="Node3D" parent="Models"]
+
+[node name="grave_001" parent="Models/State 0" instance=ExtResource("2_mfsr0")]
+
+[node name="State 1" type="Node3D" parent="Models"]
+
+[node name="grave_002" parent="Models/State 1" instance=ExtResource("3_57366")]
+
+[node name="State 2" type="Node3D" parent="Models"]
+
+[node name="grave_003" parent="Models/State 2" instance=ExtResource("4_rf5lv")]
+
+[node name="State 3" type="Node3D" parent="Models"]
+
+[node name="grave_004" parent="Models/State 3" instance=ExtResource("5_kca67")]
+
+[node name="Touchable" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_olw2l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110779, 0)
+shape = SubResource("BoxShape3D_6eyuv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0176392, 0)
+shape = SubResource("BoxShape3D_ou53w")
+
+[node name="PsPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133845, 0)
+
+[node name="ItemPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210606, 0)

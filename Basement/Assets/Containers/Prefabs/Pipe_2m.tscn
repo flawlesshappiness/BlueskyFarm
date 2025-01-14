@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://c4cdceqnwo0xw"]
 
-[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_ko5yy"]
+[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Prefabs/BasementContainer_Base.tscn" id="1_ko5yy"]
 [ext_resource type="PackedScene" uid="uid://cqmp5d2oinalk" path="res://Assets/FlawLizArt/Pipes/Door.fbx" id="2_ymx1s"]
 [ext_resource type="PackedScene" uid="uid://dh2iukdlkvin0" path="res://Assets/FlawLizArt/Pipes/Pipe_2m_Hole.fbx" id="3_duxto"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_n8f0o"]

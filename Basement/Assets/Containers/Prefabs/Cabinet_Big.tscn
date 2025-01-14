@@ -1,18 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://cxopjg75h0emf"]
+[gd_scene load_steps=23 format=3 uid="uid://d2elwn50afrrc"]
 
-[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_56urg"]
-[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="3_tctef"]
-[ext_resource type="PackedScene" uid="uid://jkha8sp2ysg2" path="res://Assets/KenneyNL/Furniture/cabinetBed.fbx" id="4_oc0op"]
+[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Prefabs/BasementContainer_Base.tscn" id="1_ewylp"]
+[ext_resource type="PackedScene" uid="uid://psjxsmujgxnd" path="res://Assets/KenneyNL/Furniture/kitchenCabinetUpper.fbx" id="2_lh0qu"]
+[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="3_msicc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o7viw"]
-size = Vector3(0.711182, 0.65332, 0.172119)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dsgm"]
+size = Vector3(0.958984, 0.917969, 0.23822)
 
-[sub_resource type="Animation" id="Animation_hekon"]
+[sub_resource type="Animation" id="Animation_tk1m5"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:x")
+tracks/0/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:y")
+tracks/1/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,7 +34,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:z")
+tracks/2/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -43,13 +43,13 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_y2emj"]
+[sub_resource type="Animation" id="Animation_l8mpl"]
 resource_name = "idle_closed"
 length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:x")
+tracks/0/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:y")
+tracks/1/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,7 +71,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:z")
+tracks/2/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -80,13 +80,13 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_jmkfe"]
+[sub_resource type="Animation" id="Animation_lon88"]
 resource_name = "idle_open"
 length = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:x")
+tracks/0/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:y")
+tracks/1/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -108,7 +108,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:z")
+tracks/2/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -117,108 +117,110 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_yk3cv"]
+[sub_resource type="Animation" id="Animation_g3avf"]
 resource_name = "move_open"
-length = 0.7
+length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:x")
+tracks/0/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.7)
+"times": PackedFloat32Array(0, 0.3, 0.6)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:y")
+tracks/1/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -2.18166, -0.25, 0, 0.25, 0, -2.0944, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.7)
+"times": PackedFloat32Array(0, 0.3, 0.6)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Origin/Cabinet/RootNode/cabinetBed/door:rotation:z")
+tracks/2/path = NodePath("Origin/Cabinet/RootNode/kitchenCabinetUpper/door:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.7)
+"times": PackedFloat32Array(0, 0.3, 0.6)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_51tfp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5e5sp"]
 _data = {
-"RESET": SubResource("Animation_hekon"),
-"idle_closed": SubResource("Animation_y2emj"),
-"idle_open": SubResource("Animation_jmkfe"),
-"move_open": SubResource("Animation_yk3cv")
+"RESET": SubResource("Animation_tk1m5"),
+"idle_closed": SubResource("Animation_l8mpl"),
+"idle_open": SubResource("Animation_lon88"),
+"move_open": SubResource("Animation_g3avf")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q7vgr"]
-size = Vector3(2.45313, 2.32971, 2.06042)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2he5b"]
+size = Vector3(4.32813, 3.91339, 2.10275)
 
-[sub_resource type="Curve" id="Curve_0lbvj"]
+[sub_resource type="Curve" id="Curve_47exe"]
 _data = [Vector2(0, 0), 0.0, 1.47321, 0, 0, Vector2(0.5, 0.5), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -1.69621, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_8dvby"]
-curve = SubResource("Curve_0lbvj")
+[sub_resource type="CurveTexture" id="CurveTexture_2hl48"]
+curve = SubResource("Curve_47exe")
 
-[sub_resource type="Curve" id="Curve_05g2m"]
+[sub_resource type="Curve" id="Curve_qigb4"]
 max_value = 5.0
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_pvm6t"]
-curve = SubResource("Curve_05g2m")
+[sub_resource type="CurveTexture" id="CurveTexture_tk54c"]
+curve = SubResource("Curve_qigb4")
 
-[sub_resource type="Curve" id="Curve_ps7ve"]
+[sub_resource type="Curve" id="Curve_5cold"]
 _data = [Vector2(0, 0.21978), 0.0, 0.78022, 0, 1, Vector2(1, 1), 0.78022, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_5pl8l"]
-curve = SubResource("Curve_ps7ve")
+[sub_resource type="CurveTexture" id="CurveTexture_pdyfd"]
+curve = SubResource("Curve_5cold")
 
-[sub_resource type="Curve" id="Curve_dgr0q"]
+[sub_resource type="Curve" id="Curve_c6pik"]
 _data = [Vector2(0, 1), 0.0, -1.45055, 0, 0, Vector2(1, 0), -0.281521, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_fland"]
-curve = SubResource("Curve_dgr0q")
+[sub_resource type="CurveTexture" id="CurveTexture_mpsmx"]
+curve = SubResource("Curve_c6pik")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nwh1"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eewvp"]
 lifetime_randomness = 0.2
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
 angle_min = -25.0
 angle_max = 25.0
-angle_curve = SubResource("CurveTexture_pvm6t")
+angle_curve = SubResource("CurveTexture_tk54c")
 direction = Vector3(0, 0, -1)
-spread = 30.0
 initial_velocity_min = 0.2
 initial_velocity_max = 0.5
-velocity_limit_curve = SubResource("CurveTexture_fland")
+velocity_limit_curve = SubResource("CurveTexture_mpsmx")
 gravity = Vector3(0, -0.2, 0)
 scale_min = 2.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_5pl8l")
+scale_curve = SubResource("CurveTexture_pdyfd")
 scale_over_velocity_max = 40.1
-alpha_curve = SubResource("CurveTexture_8dvby")
+alpha_curve = SubResource("CurveTexture_2hl48")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6qdro"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ii2x1"]
 load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dtg5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thck1"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.870588, 0.968627, 1, 1)
-albedo_texture = SubResource("CompressedTexture2D_6qdro")
+albedo_texture = SubResource("CompressedTexture2D_ii2x1")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -226,49 +228,50 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 proximity_fade_distance = 12.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_ywvxu"]
-material = SubResource("StandardMaterial3D_4dtg5")
+[sub_resource type="QuadMesh" id="QuadMesh_sesmd"]
+material = SubResource("StandardMaterial3D_thck1")
 
-[node name="Container_Base" instance=ExtResource("1_56urg")]
+[node name="Cabinet_Big" instance=ExtResource("1_ewylp")]
 
 [node name="Touchable" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519282, 0.4995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03403, 0.585041)
 
 [node name="CollisionShape3D" parent="Touchable" index="0"]
-shape = SubResource("BoxShape3D_o7viw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169678, -0.0623169, -0.0572815)
+shape = SubResource("BoxShape3D_7dsgm")
 
 [node name="ItemPosition" parent="." index="1"]
-transform = Transform3D(-1, -2.26267e-08, -8.44438e-08, 0, 0.965926, -0.258819, 8.74228e-08, -0.258819, -0.965926, -1.19209e-07, 0.517908, 0.562142)
+transform = Transform3D(-1, -2.26267e-08, -8.44439e-08, 0, 0.965925, -0.258819, 8.74228e-08, -0.258819, -0.965925, 6.55032e-15, 0.762413, 0.556575)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_51tfp")
+"": SubResource("AnimationLibrary_5e5sp")
 }
 
 [node name="Origin" type="Node3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Cabinet" parent="Origin" index="0" instance=ExtResource("4_oc0op")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.27542, 0, 0.983962)
+[node name="Cabinet" parent="Origin" index="0" instance=ExtResource("2_lh0qu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.17523, 0, 1.05448)
 
-[node name="door" parent="Origin/Cabinet/RootNode/cabinetBed" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00246, 0.00246, -2.13273e-06)
+[node name="door" parent="Origin/Cabinet/RootNode/kitchenCabinetUpper" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268442, 0.00268442, 0.001)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Origin" index="1"]
 collision_layer = 3
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Origin/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0454102, 1.16534, -0.0391235)
-shape = SubResource("BoxShape3D_q7vgr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0302734, 1.95718, 0.00178528)
+shape = SubResource("BoxShape3D_2he5b")
 
-[node name="ps_dust" parent="." index="4" instance=ExtResource("3_tctef")]
-transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0.505769, 0.49296)
-amount = 5
+[node name="ps_dust" parent="." index="4" instance=ExtResource("3_msicc")]
+transform = Transform3D(1, 0, 0, 0, -0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 1.01895, 0.599322)
+amount = 10
 lifetime = 5.0
 explosiveness = 1.0
 visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
-process_material = SubResource("ParticleProcessMaterial_6nwh1")
-draw_pass_1 = SubResource("QuadMesh_ywvxu")
+process_material = SubResource("ParticleProcessMaterial_eewvp")
+draw_pass_1 = SubResource("QuadMesh_sesmd")
 
 [editable path="Origin/Cabinet"]

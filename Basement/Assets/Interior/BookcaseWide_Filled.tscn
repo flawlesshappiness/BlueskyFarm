@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bn3dw22pge74l"]
 
 [ext_resource type="PackedScene" uid="uid://c427t0ivprmob" path="res://Assets/KayLousberg/Dungeon/bookcaseWideFilled.gltf.glb" id="1_p8lph"]
-[ext_resource type="PackedScene" uid="uid://d2elwn50afrrc" path="res://Basement/Assets/Containers/Cabinet_Big.tscn" id="2_kdfxj"]
-[ext_resource type="PackedScene" uid="uid://0rjg4mdnfwn7" path="res://Basement/Assets/Containers/Cabinet_Big_Double.tscn" id="3_1rpl7"]
+[ext_resource type="PackedScene" uid="uid://d2elwn50afrrc" path="res://Basement/Assets/Containers/Prefabs/Cabinet_Big.tscn" id="2_kdfxj"]
+[ext_resource type="PackedScene" uid="uid://0rjg4mdnfwn7" path="res://Basement/Assets/Containers/Prefabs/Cabinet_Big_Double.tscn" id="3_1rpl7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvpqg"]
 size = Vector3(0.19818, 2.0296, 0.549072)

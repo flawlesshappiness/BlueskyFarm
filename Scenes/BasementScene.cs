@@ -28,7 +28,7 @@ public partial class BasementScene : GameScene
         EnvironmentController.Instance.SetEnvironment(AreaNameType.Basement);
 
         // Basement
-        BasementController.Instance.GenerateBasement(new BasementSettings
+        var settings = new BasementSettings
         {
             RoomParent = DungeonParent,
             Areas = new()
@@ -38,6 +38,8 @@ public partial class BasementScene : GameScene
                     AreaName = AreaNames.Basement,
                     MaxRooms = 5,
                     MaxCorridorDepth = 3,
+                    SeedType = ItemType.Vegetable,
+                    SeedCount = 5
                 },
                 new BasementSettingsArea
                 {
@@ -45,12 +47,16 @@ public partial class BasementScene : GameScene
                     ConnectedAreaName = AreaNames.Basement,
                     MaxRooms = 10,
                     MaxCorridorDepth = 3,
+                    SeedType = ItemType.Vegetable,
+                    SeedCount = 5
                 }
             }
-        });
+        };
+
+        BasementController.Instance.GenerateBasement(settings);
 
         // Containers
-        InitializeContainers();
+        InitializeContainers(settings);
 
         // Screen effects
         ScreenEffects.Instance.Clear();
@@ -153,29 +159,26 @@ public partial class BasementScene : GameScene
         }
     }
 
-    private void InitializeContainers()
+    private void InitializeContainers(BasementSettings settings)
     {
-        var basement_rooms = BasementController.Instance.CurrentBasement.Grid.Elements
-            .Where(x => x.AreaName == AreaNames.Basement);
-
-        var containers = basement_rooms
-            .SelectMany(x => x.Room.GetNodesInChildren<BasementContainer>())
-            .Where(x => x.IsVisibleInTree())
-            .ToList();
-
-        if (containers.Count == 0) return;
-
-        var item_count = 5;
-
-        for (var i = 0; i < item_count; i++)
+        foreach (var area in settings.Areas)
         {
-            var item = SeedController.Instance.CreateSeed(ItemType.Vegetable);
-            item.SetEnabled(false);
-            item.LockPosition_All();
+            var basement_rooms = BasementController.Instance.CurrentBasement.Grid.Elements
+                .Where(x => x.AreaName == area.AreaName);
 
-            var container = containers.Random();
-            containers.Remove(container);
-            container.Item = item;
+            var containers = basement_rooms
+                .SelectMany(x => x.Room.GetNodesInChildren<ItemContainer>())
+                .Where(x => x.IsVisibleInTree())
+                .TakeRandom(area.SeedCount);
+
+            foreach (var container in containers)
+            {
+                var item = SeedController.Instance.CreateSeed(area.SeedType);
+                item.Disable();
+                item.LockPosition_All();
+
+                container.Item = item;
+            }
         }
     }
 }

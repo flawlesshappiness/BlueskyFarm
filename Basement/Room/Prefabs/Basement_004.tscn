@@ -19,8 +19,8 @@
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="17_ccjqp"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="17_e2bqe"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="19_j13iw"]
-[ext_resource type="PackedScene" uid="uid://b0nvr88bjty6" path="res://Basement/Assets/Containers/Barrel.tscn" id="20_qaeam"]
-[ext_resource type="PackedScene" uid="uid://dv5bvqe43lho4" path="res://Basement/Assets/Containers/Crate.tscn" id="21_funyw"]
+[ext_resource type="PackedScene" uid="uid://b0nvr88bjty6" path="res://Basement/Assets/Containers/Prefabs/Barrel.tscn" id="20_qaeam"]
+[ext_resource type="PackedScene" uid="uid://dv5bvqe43lho4" path="res://Basement/Assets/Containers/Prefabs/Crate.tscn" id="21_funyw"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="22_jjq0v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d8vr"]

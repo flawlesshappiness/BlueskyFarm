@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://0rjg4mdnfwn7"]
 
-[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Container_Base.tscn" id="1_fynhj"]
+[ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Prefabs/BasementContainer_Base.tscn" id="1_fynhj"]
 [ext_resource type="PackedScene" uid="uid://dbht5uvt5srxm" path="res://Assets/KenneyNL/Furniture/kitchenCabinetUpperDouble.fbx" id="2_u6muw"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="3_v8k75"]
 

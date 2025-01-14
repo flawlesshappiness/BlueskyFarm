@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class BasementContainer : Node3DScript
+public partial class BasementContainer : ItemContainer
 {
     [Export]
     public string IdleClosed_AnimationName = "idle_closed";
@@ -20,8 +20,6 @@ public partial class BasementContainer : Node3DScript
 
     [NodeName]
     public Touchable Touchable;
-
-    public Item Item { get; set; }
 
     protected bool _open;
 
@@ -71,18 +69,7 @@ public partial class BasementContainer : Node3DScript
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(delay);
-            SpawnItem();
+            SpawnItem(ItemPosition.GlobalPosition, ItemPosition.GlobalBasis * Vector3.Forward * 4);
         }
-    }
-
-    private void SpawnItem()
-    {
-        if (!IsInstanceValid(Item)) return;
-
-        Item.UnlockPosition_All();
-        Item.UnlockRotation_All();
-        Item.SetEnabled(true);
-        Item.GlobalPosition = ItemPosition.GlobalPosition;
-        Item.LinearVelocity = ItemPosition.GlobalBasis * Vector3.Forward * 4;
     }
 }

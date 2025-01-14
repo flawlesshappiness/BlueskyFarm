@@ -26,6 +26,8 @@ public partial class EnvironmentFadeArea : Node3DScript
 
         Area.BodyEntered += v => CallDeferred(nameof(BodyEntered), v);
         Area.BodyExited += v => CallDeferred(nameof(BodyExited), v);
+
+        OptionsController.Instance.OnBrightnessChanged += BrightnessChanged;
     }
 
     private void BodyEntered(GodotObject obj)
@@ -34,13 +36,28 @@ public partial class EnvironmentFadeArea : Node3DScript
         if (player == null) return;
 
         _tracking = true;
+        CreateLerp();
+    }
 
+    private void CreateLerp()
+    {
         var scene = Scene.Current as GameScene;
         if (scene == null) return;
 
         _lerp = EnvStart.CreateLerp(EnvEnd);
         _lerp.UpdateLerp(GetLerpValue());
         scene.WorldEnvironment.Environment = _lerp.Result;
+    }
+
+    private void BrightnessChanged()
+    {
+        EnvStart.AdjustmentBrightness = Data.Options.Brightness;
+        EnvEnd.AdjustmentBrightness = Data.Options.Brightness;
+
+        if (_tracking)
+        {
+            CreateLerp();
+        }
     }
 
     private void BodyExited(GodotObject obj)

@@ -50,8 +50,15 @@ public partial class EggClusterEnemy : NavEnemy
             .ToList()
             .Random();
 
-        GlobalPosition = room.Room.GlobalPosition;
-        CreateClusters();
+        if (room == null)
+        {
+            // Do nothing
+        }
+        else
+        {
+            GlobalPosition = room.Room.GlobalPosition;
+            CreateClusters();
+        }
     }
 
     private void SpawnDebug()

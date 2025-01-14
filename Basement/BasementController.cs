@@ -49,13 +49,16 @@ public partial class BasementController : SingletonController
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)
     {
         if (element == null) return;
-        if (!element.Info.IsConnectedToAllFromSameArea) return;
 
-        var neis = basement.Grid.GetNeighbours(element.Coordinates, x => x.AreaName == element.AreaName);
-        foreach (var nei in neis)
+        if (element.Info.IsConnectedToAllFromSameArea)
         {
-            if (element.Connections.Contains(nei)) continue;
-            element.Connections.Add(nei);
+            var neis = basement.Grid.GetNeighbours(element.Coordinates, x => x.AreaName == element.AreaName);
+            foreach (var nei in neis)
+            {
+                if (!nei.Info.IsConnectedToAllFromSameArea) continue;
+                if (element.Connections.Contains(nei)) continue;
+                element.Connections.Add(nei);
+            }
         }
     }
 
@@ -70,12 +73,16 @@ public partial class BasementController : SingletonController
         var elements = basement.Grid.Elements;
         foreach (var element in elements)
         {
+            element.Info ??= GetRandomRoomInfo(element);
+        }
+
+        foreach (var element in elements)
+        {
             var coords = element.Coordinates;
             var x = coords.X * room_size.X;
             var z = -coords.Y * room_size.Z;
             var position = offset + new Vector3(x, 0, z);
 
-            element.Info ??= GetRandomRoomInfo(element);
             UpdateRoomConnection(basement, element);
 
             var parent = basement.Settings.RoomParent;
@@ -85,15 +92,12 @@ public partial class BasementController : SingletonController
             room.Element = element;
             room.GlobalPosition = position;
 
-            room.North.SetOpen(element.HasNorth);
-            room.East.SetOpen(element.HasEast);
-            room.South.SetOpen(element.HasSouth);
-            room.West.SetOpen(element.HasWest);
-
+            /*
             room.North.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.NorthElement);
             room.East.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.EastElement);
             room.South.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.SouthElement);
             room.West.SetAreaConnection(element.AreaName, element.ConnectedAreaName, element.WestElement);
+            */
         }
 
         Player.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;

@@ -174,10 +174,10 @@ public partial class Minimap : ControlScript
     private bool IsSectionActiveInLayout(string layout, int i, BasementRoomElement element)
     {
         var c = layout.Length > i ? layout[i] : '0';
-        var is_north = c == 'N' && element.Room.North.IsOpen;
-        var is_east = c == 'E' && element.Room.East.IsOpen;
-        var is_south = c == 'S' && element.Room.South.IsOpen;
-        var is_west = c == 'W' && element.Room.West.IsOpen;
+        var is_north = c == 'N' && element.Room.North.Open.Visible;
+        var is_east = c == 'E' && element.Room.East.Open.Visible;
+        var is_south = c == 'S' && element.Room.South.Open.Visible;
+        var is_west = c == 'W' && element.Room.West.Open.Visible;
         var is_active = c == '1';
         return is_north || is_east || is_south || is_west || is_active;
     }

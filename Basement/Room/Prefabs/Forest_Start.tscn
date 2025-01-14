@@ -32,6 +32,9 @@ size = Vector3(4, 12, 12)
 
 [node name="Forest_Start" instance=ExtResource("1_2l5d1")]
 
+[node name="North" parent="." index="0" node_paths=PackedStringArray("Areas")]
+Areas = [NodePath("Open/Forest"), NodePath("Open/Basement")]
+
 [node name="Wall_Middle3" parent="North/Closed" index="0" instance=ExtResource("20_1xaet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
 
@@ -304,6 +307,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0,
 
 [node name="Wall12" parent="North/Open/Basement" index="15" instance=ExtResource("10_bydop")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -12)
+
+[node name="East" parent="." index="1" node_paths=PackedStringArray("Areas")]
+Areas = [NodePath("Open/Forest"), NodePath("Open/Basement")]
 
 [node name="Wall_Middle5" parent="East/Closed" index="0" instance=ExtResource("20_1xaet")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 4, 0)
@@ -579,6 +585,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0,
 [node name="Wall12" parent="East/Open/Basement" index="15" instance=ExtResource("10_bydop")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -12)
 
+[node name="South" parent="." index="2" node_paths=PackedStringArray("Areas")]
+Areas = [NodePath("Open/Forest"), NodePath("Open/Basement")]
+
 [node name="Wall_Middle7" parent="South/Closed" index="0" instance=ExtResource("20_1xaet")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4, 2)
 
@@ -853,6 +862,9 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, -
 
 [node name="Wall12" parent="South/Open/Basement" index="15" instance=ExtResource("10_bydop")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, -12)
+
+[node name="West" parent="." index="3" node_paths=PackedStringArray("Areas")]
+Areas = [NodePath("Open/Forest"), NodePath("Open/Basement")]
 
 [node name="Wall_Middle" parent="West/Closed" index="0" instance=ExtResource("20_1xaet")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 4, 0)

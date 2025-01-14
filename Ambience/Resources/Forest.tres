@@ -9,4 +9,4 @@ script = ExtResource("1_ujg58")
 Area = "Forest"
 BackgroundSound = ExtResource("1_ayia1")
 Noises = Array[Object]([ExtResource("2_qy4wj")])
-ReverbAmount = 0.0
+ReverbAmount = 0.1

@@ -1,37 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://sg081u4ctj3u"]
+[gd_scene load_steps=5 format=3 uid="uid://sg081u4ctj3u"]
 
 [ext_resource type="Script" path="res://Basement/Room/BasementRoom.cs" id="1_sat65"]
 [ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_iecj3"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomSection.cs" id="2_wg3tq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_osv8p"]
 size = Vector3(27, 32, 27)
 
-[node name="Room_Base" type="Node3D" node_paths=PackedStringArray("Ceiling", "Floor", "Walls", "PlayerArea")]
+[node name="Room_Base" type="Node3D" node_paths=PackedStringArray("Ceiling", "Floor", "Walls", "PlayerArea", "North", "East", "South", "West")]
 script = ExtResource("1_sat65")
 Ceiling = NodePath("Ceiling")
 Floor = NodePath("Floor")
 Walls = NodePath("Walls")
 PlayerArea = NodePath("RoomArea")
+North = NodePath("North")
+East = NodePath("East")
+South = NodePath("South")
+West = NodePath("West")
 
-[node name="North" type="Node3D" parent="."]
+[node name="North" type="Node3D" parent="." node_paths=PackedStringArray("Open", "Closed", "Areas")]
+script = ExtResource("2_wg3tq")
+Open = NodePath("Open")
+Closed = NodePath("Closed")
+Areas = []
 
 [node name="Closed" type="Node3D" parent="North"]
 
 [node name="Open" type="Node3D" parent="North"]
 
-[node name="East" type="Node3D" parent="."]
+[node name="East" type="Node3D" parent="." node_paths=PackedStringArray("Open", "Closed", "Areas")]
+script = ExtResource("2_wg3tq")
+Open = NodePath("Open")
+Closed = NodePath("Closed")
+Areas = []
 
 [node name="Closed" type="Node3D" parent="East"]
 
 [node name="Open" type="Node3D" parent="East"]
 
-[node name="South" type="Node3D" parent="."]
+[node name="South" type="Node3D" parent="." node_paths=PackedStringArray("Open", "Closed", "Areas")]
+script = ExtResource("2_wg3tq")
+Open = NodePath("Open")
+Closed = NodePath("Closed")
+Areas = []
 
 [node name="Closed" type="Node3D" parent="South"]
 
 [node name="Open" type="Node3D" parent="South"]
 
-[node name="West" type="Node3D" parent="."]
+[node name="West" type="Node3D" parent="." node_paths=PackedStringArray("Open", "Closed", "Areas")]
+script = ExtResource("2_wg3tq")
+Open = NodePath("Open")
+Closed = NodePath("Closed")
+Areas = []
 
 [node name="Closed" type="Node3D" parent="West"]
 

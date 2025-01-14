@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 public partial class BasementRoom : Node3DScript
 {
@@ -18,44 +19,19 @@ public partial class BasementRoom : Node3DScript
     [Export]
     public PlayerArea PlayerArea;
 
+    [Export]
+    public BasementRoomSection North;
+
+    [Export]
+    public BasementRoomSection East;
+
+    [Export]
+    public BasementRoomSection South;
+
+    [Export]
+    public BasementRoomSection West;
+
     public BasementRoomElement Element { get; set; }
-    public Section North { get; private set; }
-    public Section East { get; private set; }
-    public Section South { get; private set; }
-    public Section West { get; private set; }
-
-    public class Section
-    {
-        public Node3D Root { get; set; }
-        public Node3D Open { get; set; }
-        public Node3D Closed { get; set; }
-
-        public bool IsOpen => Open.Visible;
-
-        public void SetOpen(bool open)
-        {
-            Open.SetEnabled(open);
-            Closed.SetEnabled(!open);
-        }
-
-        public void SetAreaConnection(string area1, string area2, BasementRoomElement section_element)
-        {
-            if (!Open.Visible) return;
-            if (string.IsNullOrEmpty(area1)) return;
-            if (string.IsNullOrEmpty(area2)) return;
-            if (section_element == null) return;
-
-            var children = Open.GetChildren();
-            foreach (var child in children)
-            {
-                var n3 = child as Node3D;
-                if (n3 == null) continue;
-
-                var valid = n3.Name == section_element.AreaName;
-                n3.SetEnabled(valid);
-            }
-        }
-    }
 
     public override void _Ready()
     {
@@ -63,11 +39,6 @@ public partial class BasementRoom : Node3DScript
 
         PlayerArea.PlayerEntered += PlayerEntered;
         PlayerArea.PlayerExited += PlayerExited;
-
-        North = FindSection(nameof(North));
-        East = FindSection(nameof(East));
-        South = FindSection(nameof(South));
-        West = FindSection(nameof(West));
 
         if (IsInstanceValid(Ceiling))
         {
@@ -85,20 +56,47 @@ public partial class BasementRoom : Node3DScript
         }
     }
 
-    private Section FindSection(string name)
+    protected override void Initialize()
     {
-        var root = GetNode<Node3D>(name);
-        var open = root.GetNode<Node3D>("Open");
-        var closed = root.GetNode<Node3D>("Closed");
+        base.Initialize();
 
-        var section = new Section
+        North.SetOpen(Element.HasNorth);
+        East.SetOpen(Element.HasEast);
+        South.SetOpen(Element.HasSouth);
+        West.SetOpen(Element.HasWest);
+
+        UpdateSectionConnection(North, Element.NorthElement);
+        UpdateSectionConnection(East, Element.EastElement);
+        UpdateSectionConnection(South, Element.SouthElement);
+        UpdateSectionConnection(West, Element.WestElement);
+    }
+
+    private void UpdateSectionConnection(BasementRoomSection section, BasementRoomElement neighbour)
+    {
+        if (neighbour == null) return;
+
+        UpdateSectionAreaConnection(section, neighbour);
+        UpdateSectionStartConnection(section, neighbour);
+    }
+
+    private void UpdateSectionAreaConnection(BasementRoomSection section, BasementRoomElement neighbour)
+    {
+        var child = section.Areas.FirstOrDefault(x => x.Name == neighbour.AreaName);
+        if (child == null) return;
+
+        section.SetArea(neighbour.AreaName);
+    }
+
+    private void UpdateSectionStartConnection(BasementRoomSection section, BasementRoomElement neighbour)
+    {
+        if (neighbour.IsStart)
         {
-            Root = root,
-            Open = open,
-            Closed = closed,
-        };
-
-        return section;
+            section.SetStart();
+        }
+        else
+        {
+            section.SetNotStart();
+        }
     }
 
     private void PlayerEntered(Player player)

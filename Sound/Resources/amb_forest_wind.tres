@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://dqh42cxm3xx7e"]
+
+[ext_resource type="AudioStream" uid="uid://dhwe2e3m056no" path="res://Sound/Sounds/sfx_amb_forest_wind_001.wav" id="1_0wec2"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_8llaf"]
+
+[resource]
+script = ExtResource("2_8llaf")
+AudioStreams = Array[AudioStream]([ExtResource("1_0wec2")])
+Volume = 10.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 1

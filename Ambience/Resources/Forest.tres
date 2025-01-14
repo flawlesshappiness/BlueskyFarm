@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="AmbienceInfo" load_steps=4 format=3 uid="uid://ivgvrj8j23go"]
+[gd_resource type="Resource" script_class="AmbienceInfo" load_steps=5 format=3 uid="uid://ivgvrj8j23go"]
 
 [ext_resource type="Resource" uid="uid://bun7c5x74kkug" path="res://Sound/Resources/amb_forest_background.tres" id="1_ayia1"]
 [ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="1_ujg58"]
-[ext_resource type="Resource" uid="uid://dqh42cxm3xx7e" path="res://Sound/Resources/amb_forest_short.tres" id="2_qy4wj"]
+[ext_resource type="Resource" uid="uid://dqh42cxm3xx7e" path="res://Sound/Resources/amb_forest_wind.tres" id="2_qy4wj"]
+[ext_resource type="Resource" uid="uid://2h15c00m4evy" path="res://Sound/Resources/amb_forest_twig.tres" id="3_qst8b"]
 
 [resource]
 script = ExtResource("1_ujg58")
 Area = "Forest"
 BackgroundSound = ExtResource("1_ayia1")
-Noises = Array[Object]([ExtResource("2_qy4wj")])
+Noises = Array[Object]([ExtResource("2_qy4wj"), ExtResource("3_qst8b")])
 ReverbAmount = 0.1

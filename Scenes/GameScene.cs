@@ -5,8 +5,11 @@ public partial class GameScene : Scene
 {
     public static new GameScene Current => Scene.Current as GameScene;
 
-    [NodeType]
+    [Export]
     public WorldEnvironment WorldEnvironment;
+
+    [Export]
+    public DirectionalLight3D DirectionalLight;
 
     private bool _player_is_dying;
 

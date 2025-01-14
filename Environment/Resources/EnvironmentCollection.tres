@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="EnvironmentCollection" load_steps=2 format=3 uid="uid://ba7s8sspnlj3o"]
+
+[ext_resource type="Script" path="res://Environment/EnvironmentCollection.cs" id="1_nr0kx"]
+
+[resource]
+script = ExtResource("1_nr0kx")

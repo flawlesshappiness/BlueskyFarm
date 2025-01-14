@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvxlenqmx8s03"]
+[gd_scene load_steps=5 format=3 uid="uid://dvxlenqmx8s03"]
 
 [ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_jj0xq"]
-[ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Basement.tres" id="2_tu2bx"]
-[ext_resource type="Environment" uid="uid://ck8maewbx0shd" path="res://Environment/Forest_Dark.tres" id="3_b2cmq"]
+[ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Environments/Basement.tres" id="2_tu2bx"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="4_iyvpb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hft8w"]
@@ -11,13 +10,17 @@ geometry_collision_mask = 4294967283
 agent_height = 0.5
 agent_radius = 0.25
 
-[node name="BasementScene" type="Node3D"]
+[node name="BasementScene" type="Node3D" node_paths=PackedStringArray("WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_jj0xq")
-BasementEnvironment = ExtResource("2_tu2bx")
-ForestEnvironment = ExtResource("3_b2cmq")
+WorldEnvironment = NodePath("WorldEnvironment")
+DirectionalLight = NodePath("DirectionalLight3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_tu2bx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_iyvpb")]
 

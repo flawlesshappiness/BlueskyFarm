@@ -1,7 +1,7 @@
 [gd_scene load_steps=89 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
-[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Farm.tres" id="2_g724s"]
+[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_g724s"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
@@ -279,8 +279,10 @@ material = SubResource("StandardMaterial3D_s1u3r")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
 size = Vector3(1, 1.51624, 1.22208)
 
-[node name="FarmScene" type="Node3D"]
+[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_mng5r")
+WorldEnvironment = NodePath("WorldEnvironment")
+DirectionalLight = NodePath("Sun")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_g724s")

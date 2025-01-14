@@ -3,10 +3,10 @@ using Godot;
 public partial class EnvironmentFadeArea : Node3DScript
 {
     [Export]
-    public Environment EnvStart;
+    public AreaNameType StartArea;
 
     [Export]
-    public Environment EnvEnd;
+    public AreaNameType EndArea;
 
     [NodeType]
     public Area3D Area;
@@ -18,7 +18,10 @@ public partial class EnvironmentFadeArea : Node3DScript
     public Node3D End;
 
     private bool _tracking;
-    private EnvironmentLerp _lerp;
+    private EnvironmentLerp _env_lerp;
+    private EnvironmentInfo _info_start;
+    private EnvironmentInfo _info_end;
+    private GameScene _scene;
 
     public override void _Ready()
     {
@@ -28,6 +31,17 @@ public partial class EnvironmentFadeArea : Node3DScript
         Area.BodyExited += v => CallDeferred(nameof(BodyExited), v);
 
         OptionsController.Instance.OnBrightnessChanged += BrightnessChanged;
+
+        _info_start = EnvironmentController.Instance.GetInfo(StartArea);
+        _info_end = EnvironmentController.Instance.GetInfo(EndArea);
+
+        _scene = Scene.Current as GameScene;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        OptionsController.Instance.OnBrightnessChanged -= BrightnessChanged;
     }
 
     private void BodyEntered(GodotObject obj)
@@ -41,18 +55,15 @@ public partial class EnvironmentFadeArea : Node3DScript
 
     private void CreateLerp()
     {
-        var scene = Scene.Current as GameScene;
-        if (scene == null) return;
-
-        _lerp = EnvStart.CreateLerp(EnvEnd);
-        _lerp.UpdateLerp(GetLerpValue());
-        scene.WorldEnvironment.Environment = _lerp.Result;
+        _env_lerp = _info_start.Environment.CreateLerp(_info_end.Environment);
+        _env_lerp.UpdateLerp(GetLerpValue());
+        _scene.WorldEnvironment.Environment = _env_lerp.Result;
     }
 
     private void BrightnessChanged()
     {
-        EnvStart.AdjustmentBrightness = Data.Options.Brightness;
-        EnvEnd.AdjustmentBrightness = Data.Options.Brightness;
+        _info_start.Environment.AdjustmentBrightness = Data.Options.Brightness;
+        _info_end.Environment.AdjustmentBrightness = Data.Options.Brightness;
 
         if (_tracking)
         {
@@ -78,7 +89,9 @@ public partial class EnvironmentFadeArea : Node3DScript
     {
         if (!_tracking) return;
         var t = GetLerpValue();
-        _lerp.UpdateLerp(t);
+        _env_lerp.UpdateLerp(t);
+
+        _scene.DirectionalLight.LightColor = _info_start.DirectionalLightColor.Lerp(_info_end.DirectionalLightColor, t);
     }
 
     private float GetLerpValue()

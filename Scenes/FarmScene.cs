@@ -24,8 +24,8 @@ public partial class FarmScene : GameScene
         InitializeInventoryWeeds();
         InitializeShedInventoryItem();
         InitializePlayerInventory();
-
-        AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Farm);
+        InitializeAmbience();
+        InitializeEnvironment();
 
         Data.Game.Flag_FarmFirstTimeLoad = false;
         Data.Game.Save();
@@ -67,6 +67,16 @@ public partial class FarmScene : GameScene
     private void InitializePlayerInventory()
     {
         InventoryController.Instance.RemoveNonFarmItems();
+    }
+
+    private void InitializeAmbience()
+    {
+        AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Farm);
+    }
+
+    private void InitializeEnvironment()
+    {
+        EnvironmentController.Instance.SetEnvironment(AreaNameType.Farm);
     }
 
     protected override void BeforeSave()

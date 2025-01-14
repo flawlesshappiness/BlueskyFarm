@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://lvakb8ikdk8s"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenuScene.cs" id="1_nes0y"]
-[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Farm.tres" id="2_76nmt"]
+[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_76nmt"]
 [ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="3_tsr2i"]
 [ext_resource type="PackedScene" uid="uid://tm2ybbn6v031" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_up.fbx" id="4_j7hen"]
 

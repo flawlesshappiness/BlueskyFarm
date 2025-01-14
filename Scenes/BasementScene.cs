@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class BasementScene : GameScene
@@ -9,12 +10,6 @@ public partial class BasementScene : GameScene
 
     [NodeName]
     public Node3D DungeonParent;
-
-    [Export]
-    public Environment BasementEnvironment;
-
-    [Export]
-    public Environment ForestEnvironment;
 
     private float time_scene_started;
     private static bool _registered_debug_actions;
@@ -28,6 +23,9 @@ public partial class BasementScene : GameScene
 
         // Ambience
         AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Basement);
+
+        // Environment
+        EnvironmentController.Instance.SetEnvironment(AreaNameType.Basement);
 
         // Basement
         BasementController.Instance.GenerateBasement(new BasementSettings
@@ -114,37 +112,30 @@ public partial class BasementScene : GameScene
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Animate Basement environment",
-            Action = _ => AnimateToEnvironment(BasementEnvironment, 5f)
+            Text = "Teleport to area",
+            Action = TeleportToSearch
         });
 
-        Debug.RegisterAction(new DebugAction
+        void TeleportToSearch(DebugView view)
         {
-            Category = category,
-            Text = "Animate Forest environment",
-            Action = _ => AnimateToEnvironment(ForestEnvironment, 5f)
-        });
+            view.SetContent_Search();
 
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Set Forest environment",
-            Action = _ => WorldEnvironment.Environment = ForestEnvironment
-        });
+            var types = new List<AreaNameType> { AreaNameType.Basement, AreaNameType.Forest };
+            foreach (var type in types)
+            {
+                view.ContentSearch.AddItem(type.ToString(), () => TeleportTo(view, type));
+            }
 
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Set Basement environment",
-            Action = _ => WorldEnvironment.Environment = BasementEnvironment
-        });
+            view.ContentSearch.UpdateButtons();
+        }
 
-        Debug.RegisterAction(new DebugAction
+        void TeleportTo(DebugView view, AreaNameType area)
         {
-            Category = category,
-            Text = "Teleport to Forest",
-            Action = _ => Player.Instance.GlobalPosition = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == AreaNames.Forest).Room.GlobalPosition
-        });
+            view.SetVisible(false);
+
+            var room = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == area.ToString());
+            Player.Instance.GlobalPosition = room.Room.GlobalPosition;
+        }
     }
 
     private void AnimateToEnvironment(Environment env, float duration)

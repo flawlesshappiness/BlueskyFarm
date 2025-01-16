@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cuvpda7b6svie"]
+[gd_scene load_steps=24 format=3 uid="uid://cuvpda7b6svie"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_sipjv"]
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Walls/Pillar.tscn" id="2_myptf"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://drla07ki6n810" path="res://Basement/Assets/Pipes/Pipe_Plus_2m.tscn" id="12_hong2"]
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="12_vtl4r"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="13_j7q3c"]
-[ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="16_a8182"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="17_ccjqp"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="17_e2bqe"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="19_j13iw"]
@@ -1013,30 +1012,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6.76233, 2)
 [node name="Lantern3" parent="Lights" index="1" instance=ExtResource("13_j7q3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6.76233, -2)
 
-[node name="Mushrooms" type="Node3D" parent="." index="12"]
-
-[node name="SporeMushroomCluster" parent="Mushrooms" index="0" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9942, 0, 0.663633)
-
-[node name="SporeMushroomCluster2" parent="Mushrooms" index="1" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.697301, 0, 8.75926)
-
-[node name="SporeMushroomCluster3" parent="Mushrooms" index="2" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4438, 0, -0.589616)
-
-[node name="SporeMushroomCluster4" parent="Mushrooms" index="3" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590768, -2.38419e-07, -8.9665)
-
-[node name="SporeMushroomCluster5" parent="Mushrooms" index="4" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19585, -2.38419e-07, -2.29305)
-
-[node name="SporeMushroomCluster6" parent="Mushrooms" index="5" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14352, -2.38419e-07, 0.113469)
-
-[node name="SporeMushroomCluster7" parent="Mushrooms" index="6" instance=ExtResource("16_a8182")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94524, -2.38419e-07, 2.63689)
-
-[node name="Interior" type="Node3D" parent="." index="13"]
+[node name="Interior" type="Node3D" parent="." index="12"]
 
 [node name="Group 1" type="Node3D" parent="Interior" index="0"]
 script = ExtResource("17_ccjqp")

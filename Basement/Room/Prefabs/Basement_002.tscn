@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bndxt1mqdexn3"]
+[gd_scene load_steps=28 format=3 uid="uid://bndxt1mqdexn3"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_n0ayg"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Walls/Wall.tscn" id="2_08v5d"]
@@ -17,14 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="13_gdxat"]
 [ext_resource type="PackedScene" uid="uid://litevesi34j0" path="res://Basement/Assets/Interior/Roots_003.tscn" id="13_kd11k"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="14_k6537"]
-[ext_resource type="PackedScene" uid="uid://dbtefn1sw1qpl" path="res://Basement/Assets/Interior/Roots_004.tscn" id="14_xrnp5"]
 [ext_resource type="PackedScene" uid="uid://cxudfwv0x6f1" path="res://Basement/Assets/Interior/Roots_001.tscn" id="15_2wpkn"]
 [ext_resource type="PackedScene" uid="uid://bofym4piivjan" path="res://Basement/Assets/Interior/Roots_002.tscn" id="16_ce62p"]
-[ext_resource type="PackedScene" uid="uid://b7e153e2kx8aq" path="res://Enemy/SporeMushroom/SporeMushroomCluster.tscn" id="17_bhwak"]
 [ext_resource type="PackedScene" uid="uid://dv5bvqe43lho4" path="res://Basement/Assets/Containers/Prefabs/Crate.tscn" id="20_mpl7o"]
 [ext_resource type="PackedScene" uid="uid://b0nvr88bjty6" path="res://Basement/Assets/Containers/Prefabs/Barrel.tscn" id="22_ix5w4"]
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="26_d17dj"]
 [ext_resource type="PackedScene" uid="uid://c35ni2u8na2no" path="res://Basement/Assets/Pipes/Pipe_4m.tscn" id="26_yca3b"]
+[ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="27_re302"]
 [ext_resource type="PackedScene" uid="uid://b1noby45off82" path="res://Basement/Assets/Pipes/Pipe_Curve_1x1.tscn" id="28_at4st"]
 [ext_resource type="PackedScene" uid="uid://cfaegae8onu57" path="res://Basement/Assets/Pipes/Pipe_2m.tscn" id="29_0ivup"]
 [ext_resource type="PackedScene" uid="uid://bhic38genrbbj" path="res://Basement/Assets/Pipes/Pipe_T_2m.tscn" id="30_ao74d"]
@@ -492,13 +491,10 @@ transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 
 [node name="Barrel4" parent="InteriorGroups/Group 1/Interior 2" index="7" instance=ExtResource("10_hy26g")]
 transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -7.89237, 0, 3.42498)
 
-[node name="Roots_004" parent="InteriorGroups/Group 1/Interior 2" index="8" instance=ExtResource("14_xrnp5")]
-transform = Transform3D(0.198342, 0, 0.980133, 0, 1, 0, -0.980133, 0, 0.198342, -1.98646, 0, 2.78872)
-
-[node name="Roots_001" parent="InteriorGroups/Group 1/Interior 2" index="9" instance=ExtResource("15_2wpkn")]
+[node name="Roots_001" parent="InteriorGroups/Group 1/Interior 2" index="8" instance=ExtResource("15_2wpkn")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 5.95433, 0, 1.84359)
 
-[node name="Roots_002" parent="InteriorGroups/Group 1/Interior 2" index="10" instance=ExtResource("16_ce62p")]
+[node name="Roots_002" parent="InteriorGroups/Group 1/Interior 2" index="9" instance=ExtResource("16_ce62p")]
 transform = Transform3D(0.206665, 0, -0.978412, 0, 1, 0, 0.978412, 0, 0.206665, -6.04466, 0, -2.63774)
 
 [node name="Interior 3" type="Node3D" parent="InteriorGroups/Group 1" index="2"]
@@ -759,51 +755,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0103, 0.0307164, 7.17915)
 [node name="Barrel5" parent="InteriorGroups/Group 5/Interior 2" index="4" instance=ExtResource("22_ix5w4")]
 transform = Transform3D(0.984656, 0, 0.174508, 0, 1, 0, -0.174508, 0, 0.984656, 7.10663, 0, 5.16871)
 
-[node name="Mushrooms" type="Node3D" parent="." index="12"]
-
-[node name="SporeMushroomCluster" parent="Mushrooms" index="0" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4942, 0, 0.663633)
-
-[node name="SporeMushroomCluster2" parent="Mushrooms" index="1" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93073, 0, -1.21038)
-
-[node name="SporeMushroomCluster3" parent="Mushrooms" index="2" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22856, 0, 0.675217)
-
-[node name="SporeMushroomCluster4" parent="Mushrooms" index="3" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51517, 4.76837e-07, -0.525919)
-
-[node name="SporeMushroomCluster5" parent="Mushrooms" index="4" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.77477, 9.53674e-07, -4.99212)
-
-[node name="SporeMushroomCluster6" parent="Mushrooms" index="5" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57142, 9.53674e-07, 1.02944)
-
-[node name="SporeMushroomCluster13" parent="Mushrooms" index="6" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9894, 9.53674e-07, -0.772248)
-
-[node name="SporeMushroomCluster7" parent="Mushrooms" index="7" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39658, 9.53674e-07, 5.50468)
-
-[node name="SporeMushroomCluster8" parent="Mushrooms" index="8" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90247, 9.53674e-07, 6.08637)
-
-[node name="SporeMushroomCluster14" parent="Mushrooms" index="9" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.731032, 1.90735e-06, 11.3539)
-
-[node name="SporeMushroomCluster9" parent="Mushrooms" index="10" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60021, 9.53674e-07, 8.03757)
-
-[node name="SporeMushroomCluster10" parent="Mushrooms" index="11" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42898, 9.53674e-07, -5.21776)
-
-[node name="SporeMushroomCluster11" parent="Mushrooms" index="12" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7717, 4.76837e-07, -6.87555)
-
-[node name="SporeMushroomCluster12" parent="Mushrooms" index="13" instance=ExtResource("17_bhwak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.680352, 4.76837e-07, -12.5267)
-
-[node name="Pipes" type="Node3D" parent="." index="13"]
+[node name="Pipes" type="Node3D" parent="." index="12"]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Pipes" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 3, 0)
@@ -881,6 +833,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15694, 0, -13.5)
 
 [node name="Pipe_2m6" parent="Pipes" index="18" instance=ExtResource("29_0ivup")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.9944, 2.80947, 0.208908)
+
+[node name="Notes" type="Node3D" parent="." index="13"]
+
+[node name="Note" parent="Notes" index="0" instance=ExtResource("27_re302")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00965, 1.34799, -2.93747)
+DialogueNode = "##NOTE_ROOTMIMIC_001##"
 
 [editable path="InteriorGroups/Group 1/Interior 3/BookcaseWide_Filled8"]
 [editable path="InteriorGroups/Group 1/Interior 3/BookcaseWide_Filled14"]

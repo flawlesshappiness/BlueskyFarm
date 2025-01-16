@@ -12,6 +12,14 @@
 	},
 	
 	{
+		"id": "##NOTE_ROOTMIMIC_001##",
+		"next": "##NOTE_ROOTMIMIC_002##"
+	},
+	{
+		"id": "##NOTE_ROOTMIMIC_002##"
+	},
+	
+	{
 		"id": "##FROG_INTRO_001##",
 		"next": "##FROG_INTRO_002##"
 	},

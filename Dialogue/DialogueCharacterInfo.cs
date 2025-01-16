@@ -4,5 +4,8 @@ using Godot;
 public partial class DialogueCharacterInfo : Resource
 {
     [Export]
-    public SoundInfo TextSound { get; set; }
+    public SoundInfo TextSound;
+
+    [Export]
+    public SoundInfo VoiceDefault;
 }

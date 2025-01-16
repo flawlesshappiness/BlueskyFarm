@@ -34,4 +34,5 @@ public partial class InteractableRigidBody3D : RigidBody3D, IInteractable
 
     public string GetHoverText() => HoverText;
     public Texture2D GetHoverIcon() => HoverIcon;
+    public Vector3 GetHoverIconPosition() => GlobalPosition;
 }

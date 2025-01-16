@@ -6,4 +6,5 @@ public interface IInteractable
 
     public string GetHoverText();
     public Texture2D GetHoverIcon();
+    public Vector3 GetHoverIconPosition();
 }

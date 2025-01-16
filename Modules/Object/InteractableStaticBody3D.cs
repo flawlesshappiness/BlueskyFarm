@@ -8,6 +8,9 @@ public partial class InteractableStaticBody3D : StaticBody3D, IInteractable
     [Export]
     public Texture2D HoverIcon;
 
+    [Export]
+    public Node3D HoverIconPosition;
+
     public PhysicsBody3D Body => this;
 
     public override void _Ready()
@@ -34,4 +37,5 @@ public partial class InteractableStaticBody3D : StaticBody3D, IInteractable
 
     public string GetHoverText() => HoverText;
     public Texture2D GetHoverIcon() => HoverIcon;
+    public Vector3 GetHoverIconPosition() => HoverIconPosition?.GlobalPosition ?? GlobalPosition;
 }

@@ -12,7 +12,8 @@ public partial class DialogueControl : ControlScript
     private bool _animating_text;
     private Coroutine _cr_animate_text;
     private float _time_next_voice;
-    private AudioStreamPlayer3D _prev_character_voice;
+    private Node _prev_text_sound;
+    private Node _prev_voice_sound;
 
     public override void _Ready()
     {
@@ -56,6 +57,7 @@ public partial class DialogueControl : ControlScript
     private void OnDialogue(DialogueNode node)
     {
         SetText(node.id);
+        PlayVoiceSFX();
         AnimateText();
     }
 
@@ -80,13 +82,13 @@ public partial class DialogueControl : ControlScript
 
             var start = 0f;
             var end = Tr(DialogueLabel.Text).Length;
-            var speed = 30f;
+            var speed = 60f;
             var value = start;
             while (value < end)
             {
                 value += speed * GameTime.DeltaTime;
                 DialogueLabel.VisibleCharacters = (int)value;
-                PlayVoiceSFX();
+                PlayTextSFX();
                 yield return null;
             }
 
@@ -102,20 +104,46 @@ public partial class DialogueControl : ControlScript
         _animating_text = false;
     }
 
-    private void PlayVoiceSFX()
+    private void PlayTextSFX()
     {
         if (GameTime.Time < _time_next_voice) return;
         _time_next_voice = GameTime.Time + 0.07f;
 
-        if (IsInstanceValid(_prev_character_voice) && !_prev_character_voice.IsQueuedForDeletion())
+        if (IsInstanceValid(_prev_text_sound))
         {
-            _prev_character_voice.Stop();
+            _prev_text_sound.Call("stop");
         }
 
         var character = DialogueController.Instance.CurrentCharacter;
-        if (character != null)
+        if (character != null && character.Info.TextSound != null)
         {
-            _prev_character_voice = SoundController.Instance.Play(character.Info.TextSound, character.SoundOrigin.GlobalPosition);
+            _prev_text_sound = PlaySfx(character.Info.TextSound, null);
+        }
+    }
+
+    private void PlayVoiceSFX()
+    {
+        if (IsInstanceValid(_prev_voice_sound))
+        {
+            _prev_voice_sound.Call("stop");
+        }
+
+        var character = DialogueController.Instance.CurrentCharacter;
+        if (character != null && character.Info.VoiceDefault != null)
+        {
+            _prev_voice_sound = PlaySfx(character.Info.VoiceDefault, character.SoundOrigin);
+        }
+    }
+
+    private Node PlaySfx(SoundInfo info, Node3D position)
+    {
+        if (position == null)
+        {
+            return SoundController.Instance.Play(info);
+        }
+        else
+        {
+            return SoundController.Instance.Play(info, position.GlobalPosition);
         }
     }
 

@@ -255,7 +255,7 @@ public partial class Player : FirstPersonController
                 Name = "Touch",
                 OverrideTexture = interactable.GetHoverIcon(),
                 Text = interactable.GetHoverText(),
-                Position = interactable.Body.GlobalPosition
+                Position = interactable.GetHoverIconPosition()
             });
         }
 

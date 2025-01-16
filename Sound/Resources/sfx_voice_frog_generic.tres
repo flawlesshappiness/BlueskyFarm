@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=8 format=3 uid="uid://cpgsuyn3ji4kp"]
+
+[ext_resource type="AudioStream" uid="uid://dgqw25ktxidjt" path="res://Sound/Sounds/sfx_voice_frog_default_001.wav" id="1_lmuye"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_js2pf"]
+[ext_resource type="AudioStream" uid="uid://csvv4mhextf3q" path="res://Sound/Sounds/sfx_voice_frog_default_002.wav" id="2_x4hkq"]
+[ext_resource type="AudioStream" uid="uid://clwjwxxavpnqd" path="res://Sound/Sounds/sfx_voice_frog_default_003.wav" id="3_kowad"]
+[ext_resource type="AudioStream" uid="uid://5cuoqs2dw58u" path="res://Sound/Sounds/sfx_voice_frog_default_004.wav" id="4_ln0v7"]
+[ext_resource type="AudioStream" uid="uid://dvup8tb6gkt00" path="res://Sound/Sounds/sfx_voice_frog_default_005.wav" id="5_0stpa"]
+[ext_resource type="AudioStream" uid="uid://1e4ei6nk7xga" path="res://Sound/Sounds/sfx_voice_frog_default_006.wav" id="6_20vrt"]
+
+[resource]
+script = ExtResource("2_js2pf")
+AudioStreams = Array[AudioStream]([ExtResource("1_lmuye"), ExtResource("2_x4hkq"), ExtResource("3_kowad"), ExtResource("4_ln0v7"), ExtResource("5_0stpa"), ExtResource("6_20vrt")])
+Volume = 10.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 0

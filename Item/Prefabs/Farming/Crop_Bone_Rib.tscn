@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwynp4i85ox88"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_fkj23"]
+[ext_resource type="PackedScene" uid="uid://bae7h67ape8cs" path="res://Assets/FlawLizArt/Crops/crop_bone_ribs.fbx" id="2_v80j1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xorgu"]
+size = Vector3(0.55249, 0.497153, 0.125)
+
+[node name="Crob_Bone_Rib" instance=ExtResource("1_fkj23")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183168, 0)
+shape = SubResource("BoxShape3D_xorgu")
+
+[node name="crop_bone_ribs" parent="Model" index="0" instance=ExtResource("2_v80j1")]

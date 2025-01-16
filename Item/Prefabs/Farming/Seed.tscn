@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://gklon2jq08v5"]
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_sx3f4"]
-[ext_resource type="PackedScene" uid="uid://b2mfb2q37j8f6" path="res://Assets/KenneyNL/Food/avocado.glb" id="2_dxukr"]
+[ext_resource type="PackedScene" uid="uid://c6dxidob53yh" path="res://Assets/FlawLizArt/Seed/seed.fbx" id="2_y3qqx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_it7bp"]
 size = Vector3(0.164063, 0.221436, 0.183594)
 
-[node name="Item_Base" instance=ExtResource("1_sx3f4")]
+[node name="Seed" instance=ExtResource("1_sx3f4")]
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00744629, 0)
 shape = SubResource("BoxShape3D_it7bp")
 
-[node name="avocado" parent="Model" index="0" instance=ExtResource("2_dxukr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.102002, 0)
+[node name="seed" parent="Model" index="0" instance=ExtResource("2_y3qqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.102, 0)

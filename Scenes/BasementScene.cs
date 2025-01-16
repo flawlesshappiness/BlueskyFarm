@@ -38,7 +38,7 @@ public partial class BasementScene : GameScene
                     AreaName = AreaNames.Basement,
                     MaxRooms = 5,
                     MaxCorridorDepth = 3,
-                    SeedType = ItemType.Vegetable,
+                    SeedType = ItemType.Crop_Vegetable,
                     SeedCount = 5
                 },
                 new BasementSettingsArea
@@ -47,7 +47,7 @@ public partial class BasementScene : GameScene
                     ConnectedAreaName = AreaNames.Basement,
                     MaxRooms = 10,
                     MaxCorridorDepth = 3,
-                    SeedType = ItemType.Vegetable,
+                    SeedType = ItemType.Crop_Bone,
                     SeedCount = 5
                 }
             }

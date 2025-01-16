@@ -1,6 +1,7 @@
 public enum ItemType
 {
     Other,
-    Vegetable,
+    Crop_Vegetable,
+    Crop_Bone,
     Seed
 }

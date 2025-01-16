@@ -140,14 +140,16 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         void GiveSeed(DebugView view)
         {
             view.SetContent_Search();
-            view.ContentSearch.AddItem(ItemType.Vegetable.ToString(), () => SelectItemType(ItemType.Vegetable));
+            foreach (var seed_info in SeedController.Instance.Collection.Resources)
+            {
+                view.ContentSearch.AddItem(seed_info.ItemType.ToString(), () => SelectItemType(seed_info));
+            }
             view.ContentSearch.UpdateButtons();
 
-            void SelectItemType(ItemType type)
+            void SelectItemType(SeedInfo seed_info)
             {
-                var info = Collection.GetResource("Seed_Plant");
-                var data = CreateItemData(info);
-                var plant_infos = Collection.Resources.Where(info => info.Type == type);
+                var data = CreateItemData(seed_info.ItemInfo);
+                var plant_infos = Collection.Resources.Where(info => info.Type == seed_info.ItemType);
                 data.Seed = new SeedData
                 {
                     Info = plant_infos.ToList().Random().ResourcePath

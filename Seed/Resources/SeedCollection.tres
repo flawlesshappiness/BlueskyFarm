@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="SeedCollection" load_steps=2 format=3 uid="uid://0ulybhbec4wj"]
+
+[ext_resource type="Script" path="res://Seed/SeedCollection.cs" id="1_r7kgl"]
+
+[resource]
+script = ExtResource("1_r7kgl")

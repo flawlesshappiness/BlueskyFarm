@@ -120,7 +120,7 @@ public partial class FrogCharacter : Character
 
     private void ThrowSeedToPlayer()
     {
-        var item = SeedController.Instance.CreateSeed(ItemType.Vegetable);
+        var item = SeedController.Instance.CreateSeed(ItemType.Crop_Vegetable);
         item.Data.Seed.OverrideGrowTime = 10;
 
         ThrowItemToPlayer(item);

@@ -128,7 +128,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
             Id = bp_id,
         };
 
-        Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Vegetable, Max = bp_info.VegetableCount });
+        Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Crop_Vegetable, Max = bp_info.VegetableCount });
 
         Display.UpdateFromData(Data.Game.BlueprintCraftingData);
 

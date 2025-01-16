@@ -72,7 +72,7 @@ public partial class PlantArea : Node3DScript
 
         SetWatered(data.IsWatered);
 
-        if (string.IsNullOrEmpty(data.PlantInfo)) return;
+        if (string.IsNullOrEmpty(data.PlantInfoPath)) return;
 
         if (data.TimeLeft <= 0)
         {
@@ -105,7 +105,8 @@ public partial class PlantArea : Node3DScript
         var data = new PlantAreaData
         {
             Id = Id,
-            PlantInfo = item.Data.Seed.Info,
+            SeedInfoPath = item.Info.ResourcePath,
+            PlantInfoPath = item.Data.Seed.Info,
             TimeLeft = item.Data.Seed.OverrideGrowTime ?? plant_info.GrowTimeInSeconds,
         };
 
@@ -153,7 +154,7 @@ public partial class PlantArea : Node3DScript
 
     private void PlantSeedFromData(PlantAreaData data)
     {
-        Debug.TraceMethod($"{data.PlantInfo}");
+        Debug.TraceMethod($"{data.PlantInfoPath}");
         Debug.Indent++;
 
         if (data == null)
@@ -163,7 +164,8 @@ public partial class PlantArea : Node3DScript
             return;
         }
 
-        var seed_item = ItemController.Instance.CreateItem("Seed_Plant", new CreateItemSettings
+        var info = ItemController.Instance.GetInfoFromPath(data.SeedInfoPath);
+        var seed_item = ItemController.Instance.CreateItem(info, new CreateItemSettings
         {
             Tracked = false
         });
@@ -205,7 +207,7 @@ public partial class PlantArea : Node3DScript
 
     private void SpawnPlantFromData(PlantAreaData data)
     {
-        Debug.TraceMethod($"{data.PlantInfo}");
+        Debug.TraceMethod($"{data.PlantInfoPath}");
         Debug.Indent++;
 
         if (data == null)
@@ -239,7 +241,7 @@ public partial class PlantArea : Node3DScript
             return;
         }
 
-        seed.PlantItem = ItemController.Instance.CreateItemFromPath(seed.Data.PlantInfo, new CreateItemSettings
+        seed.PlantItem = ItemController.Instance.CreateItemFromPath(seed.Data.PlantInfoPath, new CreateItemSettings
         {
             Tracked = false
         });

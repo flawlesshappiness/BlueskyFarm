@@ -15,7 +15,7 @@ public partial class BlueprintDisplayCounter : Node3DScript
 
     private Texture2D GetIcon(ItemType type) => type switch
     {
-        ItemType.Vegetable => VegetableIcon,
+        ItemType.Crop_Vegetable => VegetableIcon,
         _ => null
     };
 

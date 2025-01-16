@@ -1,5 +1,9 @@
 [
 	{
+		"id": "##NOTE_MANTRA_001##"
+	},
+	
+	{
 		"id": "##NOTE_WORKSHOP_001##",
 		"next": "##NOTE_WORKSHOP_002##"
 	},
@@ -13,10 +17,12 @@
 	
 	{
 		"id": "##NOTE_ROOTMIMIC_001##",
-		"next": "##NOTE_ROOTMIMIC_002##"
+		"next": "##NOTE_MANTRA_001##"
 	},
+	
 	{
-		"id": "##NOTE_ROOTMIMIC_002##"
+		"id": "##NOTE_BASEMENT_OVERGROWN_001##",
+		"next": "##NOTE_MANTRA_001##"
 	},
 	
 	{

@@ -6,7 +6,13 @@ public static class Particle
 {
     public static GpuParticles3D PlayOneShot(string name, Vector3 position)
     {
-        var ps = ParticleController.Instance.CreateParticle(name);
+        var info = ParticleController.Instance.Collection.GetResource(name);
+        return PlayOneShot(info, position);
+    }
+
+    public static GpuParticles3D PlayOneShot(ParticleInfo info, Vector3 position)
+    {
+        var ps = ParticleController.Instance.CreateParticle(info);
         if (!GodotObject.IsInstanceValid(ps)) return null;
 
         ps.GlobalPosition = position;

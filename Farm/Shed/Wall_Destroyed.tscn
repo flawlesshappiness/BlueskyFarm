@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bal2ut1om714c"]
+
+[ext_resource type="PackedScene" uid="uid://butmq8wt22vs1" path="res://Assets/FlawLizArt/Shed/wall_destroyed.fbx" id="1_5we2r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ereie"]
+size = Vector3(4, 0.75, 0.600952)
+
+[node name="Wall_Shed" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0.0983276)
+shape = SubResource("BoxShape3D_ereie")
+
+[node name="wall_destroyed" parent="." instance=ExtResource("1_5we2r")]

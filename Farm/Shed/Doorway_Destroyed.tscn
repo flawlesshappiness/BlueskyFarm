@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dovtr6wbl2fo3"]
+
+[ext_resource type="PackedScene" uid="uid://cv36pt6ljxk1x" path="res://Assets/FlawLizArt/Shed/doorway_destroyed.fbx" id="1_01qnm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y18lc"]
+size = Vector3(1.33093, 0.75, 0.600952)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tphnp"]
+size = Vector3(1.33093, 0.75, 0.600952)
+
+[node name="Wall_Shed" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33667, 0.375, 0.0983276)
+shape = SubResource("BoxShape3D_y18lc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33136, 0.375, 0.0983276)
+shape = SubResource("BoxShape3D_tphnp")
+
+[node name="doorway_destroyed" parent="." instance=ExtResource("1_01qnm")]

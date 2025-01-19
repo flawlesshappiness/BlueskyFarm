@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=98 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_g724s"]
@@ -75,6 +75,9 @@ size = Vector3(3.5, 6.42957, 4.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mged6"]
 size = Vector3(0.438, 4, 7.878)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ekyso"]
+size = Vector3(3.314, 4, 7.598)
 
 [sub_resource type="Curve" id="Curve_qma48"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0484848, 1), 0.0, 0.0, 0, 0, Vector2(0.50303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -496,9 +499,10 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71478, 0)
 shape = SubResource("BoxShape3D_4x8xl")
 
-[node name="Shed" type="Node3D" parent="World/NavigationRegion3D" node_paths=PackedStringArray("UnlockGroup")]
+[node name="Shed" type="Node3D" parent="World/NavigationRegion3D" node_paths=PackedStringArray("UnlockGroup", "UnlockItemArea")]
 script = ExtResource("18_t1h8v")
 UnlockGroup = NodePath("House")
+UnlockItemArea = NodePath("ItemArea")
 
 [node name="House" type="Node3D" parent="World/NavigationRegion3D/Shed" node_paths=PackedStringArray("NotUnlocked", "Unlocked")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31536, 0, -4.99753)
@@ -611,6 +615,16 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Shed/Behind/InteractionBlocker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.357, 2, -5.02)
 shape = SubResource("BoxShape3D_mged6")
+
+[node name="ItemArea" type="Area3D" parent="World/NavigationRegion3D/Shed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.029, 2, -4.95)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_vbfot")
+CustomId = "shed_unlock"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Shed/ItemArea"]
+shape = SubResource("BoxShape3D_ekyso")
 
 [node name="Grass" type="Node3D" parent="World"]
 

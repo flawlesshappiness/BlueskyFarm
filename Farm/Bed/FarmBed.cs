@@ -54,7 +54,6 @@ public partial class FarmBed : Node3D
 
         UnlockArea.Disable();
         Data.Game.Flag_BedRepaired = true;
-        Data.Game.Save();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -62,6 +61,7 @@ public partial class FarmBed : Node3D
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             yield return UnlockGroup.AnimateUnlock();
+            Data.Game.Save();
         }
     }
 

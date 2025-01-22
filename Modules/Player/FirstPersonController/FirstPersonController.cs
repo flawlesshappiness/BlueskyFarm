@@ -15,6 +15,8 @@ public partial class FirstPersonController : CharacterBody3D
     protected CapsuleShape3D Capsule => PlayerCollisionShape.Shape as CapsuleShape3D;
     public Vector3 DesiredMoveVelocity { get; private set; }
     public Vector3 DesiredJumpVelocity { get; private set; }
+    public MultiLock GravityLock { get; private set; } = new MultiLock();
+    private float Gravity => GravityLock.IsLocked ? 0 : _gravity;
 
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private bool _moving;
@@ -143,7 +145,7 @@ public partial class FirstPersonController : CharacterBody3D
         }
         else
         {
-            velocity.Y -= _gravity * (float)delta;
+            velocity.Y -= Gravity * (float)delta;
         }
 
         Velocity = velocity;

@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class PuzzleCubeWallHole : Node3DScript
@@ -58,8 +57,8 @@ public partial class PuzzleCubeWallHole : Node3DScript
             cube.LockPosition_All();
             cube.LockRotation_All();
 
-            var end_rotation = WrappedEulerAngles(alignment.Rotation + GlobalRotationDegrees);
-            var start_rotation = ClosestEulerAngles(WrappedEulerAngles(cube.GlobalRotationDegrees), end_rotation);
+            var end_rotation = EulerMath.WrappedEulerAngles(alignment.Rotation + GlobalRotationDegrees);
+            var start_rotation = EulerMath.ClosestEulerAngles(EulerMath.WrappedEulerAngles(cube.GlobalRotationDegrees), end_rotation);
             var start_position = cube.GlobalPosition;
             var curve_out = Curves.EaseOutQuad;
             var curve_in_out = Curves.EaseInOutQuad;
@@ -88,39 +87,6 @@ public partial class PuzzleCubeWallHole : Node3DScript
             OnCubeEntered?.Invoke();
             OnCubeChanged?.Invoke();
         }
-    }
-
-    private Vector3 WrappedEulerAngles(Vector3 v)
-    {
-        return new Vector3(
-            WrappedEulerAngle(v.X),
-            WrappedEulerAngle(v.Y),
-            WrappedEulerAngle(v.Z));
-    }
-
-    private float WrappedEulerAngle(float v)
-    {
-        v %= 360;
-        v += v < -180 ? 360 : v > 180 ? -360 : 0;
-        return v;
-    }
-
-    private Vector3 ClosestEulerAngles(Vector3 from, Vector3 to)
-    {
-        return new Vector3(
-            ClosestEulerAngle(from.X, to.X),
-            ClosestEulerAngle(from.Y, to.Y),
-            ClosestEulerAngle(from.Z, to.Z)
-            );
-    }
-
-    private float ClosestEulerAngle(float from, float to)
-    {
-        var list = new List<float> { from, from - 360, from + 360 };
-        var closest = list
-            .OrderBy(x => Mathf.Abs(x - to))
-            .First();
-        return closest;
     }
 
     private PuzzleCube.Alignment GetAlignment(PuzzleCube cube)

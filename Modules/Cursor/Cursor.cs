@@ -6,6 +6,7 @@ public static class Cursor
 
     public static void Show(CursorSettings settings)
     {
+        //Debug.Log("show");
         var texture = settings.OverrideTexture ?? CursorController.Instance.GetCursorTexture(settings.Name);
         View.SetCursorTexture(texture);
         View.SetCursorText(settings.Text);
@@ -23,6 +24,7 @@ public static class Cursor
 
     public static void Hide()
     {
+        //Debug.Log("hide");
         View.Hide();
     }
 }

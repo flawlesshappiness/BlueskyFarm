@@ -37,5 +37,5 @@ public partial class InteractableStaticBody3D : StaticBody3D, IInteractable
 
     public string GetHoverText() => HoverText;
     public Texture2D GetHoverIcon() => HoverIcon;
-    public Vector3 GetHoverIconPosition() => HoverIconPosition?.GlobalPosition ?? GlobalPosition;
+    public Vector3 GetHoverIconPosition() => IsInstanceValid(HoverIconPosition) ? HoverIconPosition.GlobalPosition : GlobalPosition;
 }

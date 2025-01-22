@@ -10,6 +10,12 @@ public partial class LadderArea : Touchable
     [Export]
     public SolidMaterialType SolidMaterialType;
 
+    [Export]
+    public Node3D TopExitNode;
+
+    [Export]
+    public Node3D BottomExitNode;
+
     private Vector3 Center => GlobalPosition;
     private Vector3 Top => Center + Vector3.Up * Extents;
     private Vector3 Bottom => Center + Vector3.Down * Extents;
@@ -17,10 +23,12 @@ public partial class LadderArea : Touchable
 
     private bool _animating;
     private bool _attached;
+    private float _time_detach;
     private float _time_sfx_step;
 
     private const float STEP_SFX_DELAY = 0.5f;
 
+    private Node3D _enter_node;
     private SolidMaterialInfo _material_info;
 
     public override void _Ready()
@@ -30,6 +38,9 @@ public partial class LadderArea : Touchable
 
         HoverIconPosition = new Node3D();
         AddChild(HoverIconPosition);
+
+        _enter_node = new Node3D();
+        AddChild(_enter_node);
     }
 
     protected override void Touched()
@@ -69,9 +80,12 @@ public partial class LadderArea : Touchable
         Player.Instance.Velocity = velocity;
 
         var y = Player.Instance.GlobalPosition.Y;
-        if (y > Top.Y || y < Bottom.Y)
+        var at_top = y > Top.Y;
+        var at_bottom = y < Bottom.Y;
+        if (at_bottom || at_top)
         {
-            EndLadder();
+            var exit_node = at_top ? TopExitNode : at_bottom ? BottomExitNode : null;
+            EndLadder(exit_node);
         }
     }
 
@@ -95,7 +109,7 @@ public partial class LadderArea : Touchable
     private void Process_HoverNode()
     {
         var y_player = Player.Instance.CameraTarget.GlobalPosition.Y;
-        var y = Mathf.Clamp(y_player, Bottom.Y, Top.Y);
+        var y = Mathf.Clamp(y_player, Bottom.Y + 0.25f, Top.Y - 0.25f);
         HoverIconPosition.GlobalPosition = Center.Set(y: y);
     }
 
@@ -103,6 +117,7 @@ public partial class LadderArea : Touchable
     {
         if (_attached) return;
         if (_animating) return;
+        if (GameTime.Time < _time_detach) return;
 
         var id_lock = nameof(LadderArea);
         Player.Instance.MovementLock.AddLock(id_lock);
@@ -113,49 +128,79 @@ public partial class LadderArea : Touchable
         Cursor.Hide();
 
         _attached = true;
+        _animating = true;
 
         SoundController.Instance.Play(_material_info.WalkSound);
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            _animating = true;
-            var start_position = Player.Instance.GlobalPosition;
-            var end_position = GetPlayerLadderPosition();
-            var end_rotation = EulerMath.WrappedEulerAngles(PlayerRotationDegrees);
-            var start_rotation = EulerMath.ClosestEulerAngles(EulerMath.WrappedEulerAngles(Player.Instance.NeckHorizontal.GlobalRotationDegrees), end_rotation);
-            var curve = Curves.EaseOutQuad;
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                var t = curve.Evaluate(f);
-                Player.Instance.GlobalPosition = start_position.Lerp(end_position, t);
-                Player.Instance.NeckHorizontal.GlobalRotationDegrees = start_rotation.Lerp(end_rotation, t);
-            });
+            _enter_node.GlobalPosition = GetPlayerLadderPosition();
+            _enter_node.GlobalRotationDegrees = EulerMath.WrappedEulerAngles(PlayerRotationDegrees);
+            yield return AnimateToNode(_enter_node, 0.5f);
             _animating = false;
 
             Player.Instance.LookLock.RemoveLock(id_lock);
         }
     }
 
-    private void EndLadder()
+    private void EndLadder(Node3D exit_node = null)
     {
         if (!_attached) return;
         if (_animating) return;
 
         var id_lock = nameof(LadderArea);
-        Player.Instance.MovementLock.RemoveLock(id_lock);
-        Player.Instance.InteractLock.RemoveLock(id_lock);
-        Player.Instance.LookLock.RemoveLock(id_lock);
-        Player.Instance.GravityLock.RemoveLock(id_lock);
-        Player.Instance.PlayerCollisionShape.Enable();
+        Player.Instance.LookLock.AddLock(id_lock);
+        _animating = true;
 
-        _attached = false;
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            if (IsInstanceValid(exit_node))
+            {
+                yield return AnimateToNode(exit_node, 1.0f);
+            }
+
+            SoundController.Instance.Play(_material_info.WalkSound);
+
+            Player.Instance.MovementLock.RemoveLock(id_lock);
+            Player.Instance.InteractLock.RemoveLock(id_lock);
+            Player.Instance.LookLock.RemoveLock(id_lock);
+            Player.Instance.GravityLock.RemoveLock(id_lock);
+            Player.Instance.PlayerCollisionShape.Enable();
+
+            _animating = false;
+            _attached = false;
+            _time_detach = GameTime.Time + 0.2f;
+        }
+    }
+
+    private Coroutine AnimateToNode(Node3D target, float duration)
+    {
+        _animating = true;
+        return Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            var start_position = Player.Instance.GlobalPosition;
+            var end_position = target.GlobalPosition;
+            var end_rotation = EulerMath.WrappedEulerAngles(target.GlobalRotationDegrees);
+            var start_rotation = EulerMath.ClosestEulerAngles(EulerMath.WrappedEulerAngles(Player.Instance.NeckHorizontal.GlobalRotationDegrees), end_rotation);
+            var curve = Curves.EaseOutQuad;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Evaluate(f);
+                Player.Instance.GlobalPosition = start_position.Lerp(end_position, t);
+                Player.Instance.NeckHorizontal.GlobalRotationDegrees = start_rotation.Lerp(end_rotation, t);
+            });
+
+            _animating = false;
+        }
     }
 
     private Vector3 GetPlayerLadderPosition()
     {
         var player_pos = Player.Instance.GlobalPosition;
-        var y = Mathf.Clamp(player_pos.Y, Bottom.Y, Top.Y);
+        var y = Mathf.Clamp(player_pos.Y, Bottom.Y + 0.1f, Top.Y - 0.1f);
         return Center.Set(y: y);
     }
 }

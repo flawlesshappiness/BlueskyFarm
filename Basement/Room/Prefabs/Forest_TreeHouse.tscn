@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bt2potjyleh8k"]
+[gd_scene load_steps=28 format=3 uid="uid://bt2potjyleh8k"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_ucf5g"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Walls/Wall_Middle.tscn" id="2_t8eg1"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://b1o1knh0ci4n0" path="res://Basement/Assets/Scaffold/Scaffold.tscn" id="17_1thfi"]
 [ext_resource type="PackedScene" uid="uid://dubjb7me16kau" path="res://Basement/Assets/Scaffold/Scaffold_Railing.tscn" id="18_8156b"]
 [ext_resource type="PackedScene" uid="uid://dmxoif37bmfxi" path="res://Assets/Quaternius/Nature/CommonTree_1.gltf" id="19_kppdx"]
+[ext_resource type="Script" path="res://Ladder/LadderArea.cs" id="20_612gc"]
+[ext_resource type="Texture2D" uid="uid://bwjdekv4gfciw" path="res://Assets/KenneyNL/Cursors/resize_a_vertical.png" id="21_lroa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -41,11 +43,13 @@ radius = 1.12298
 height = 7.8326
 radius = 1.3108
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_u5mlq"]
+size = Vector3(1, 6, 1)
+
 [node name="Forest_001" instance=ExtResource("1_ucf5g")]
 
 [node name="North" parent="." index="0" node_paths=PackedStringArray("NotStart")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 NotStart = NodePath("Open/NotStart")
 
 [node name="Closed" parent="North" index="0"]
@@ -174,7 +178,6 @@ transform = Transform3D(0.480009, 0, 0.877263, 0, 1, 0, -0.877263, 0, 0.480009, 
 
 [node name="East" parent="." index="1" node_paths=PackedStringArray("NotStart")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 NotStart = NodePath("Open/NotStart")
 
 [node name="Closed" parent="East" index="0"]
@@ -304,7 +307,6 @@ transform = Transform3D(-0.99037, 0, -0.138447, 0, 1, 0, 0.138447, 0, -0.99037, 
 
 [node name="South" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 
 [node name="Closed" parent="South" index="0"]
 visible = false
@@ -410,7 +412,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
 
 [node name="West" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 
 [node name="Closed" parent="West" index="0"]
 visible = false
@@ -681,7 +682,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05407, 8, 1.70103)
 
 [node name="Trees" type="Node3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 
 [node name="CommonTree" parent="Trees" index="0" instance=ExtResource("11_fwh5h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.96487, 0, -4.92152)
@@ -714,68 +714,48 @@ transform = Transform3D(-0.0628217, 0, -1.99901, 0, 2, 0, 1.99901, 0, -0.0628217
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -7.03472, 0, -0.174415)
 
 [node name="CommonTree10" parent="Trees" index="10" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(0.177851, 0, -1.74094, 0, 1.75, 0, 1.74094, 0, 0.177851, -3.6627, 0, -3.89526)
+transform = Transform3D(1.49414, 0, -0.911064, 0, 1.75, 0, 0.911064, 0, 1.49414, -4.0955, 0, -5.44782)
 
-[node name="CommonTree11" parent="Trees" index="11" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.30811, 0, 0.261622)
+[node name="CommonTree15" parent="Trees" index="11" instance=ExtResource("12_hh3xu")]
+transform = Transform3D(-0.885823, 0, 1.50924, 0, 1.75, 0, -1.50924, 0, -0.885823, -1.74953, 0, 7.24739)
 
-[node name="CommonTree12" parent="Trees" index="12" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(0.905946, 0, 1.49725, 0, 1.75, 0, -1.49725, 0, 0.905946, 1.27904, 0, -4.94174)
-
-[node name="CommonTree21" parent="Trees" index="13" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(1.72239, 0, 0.309627, 0, 1.75, 0, -0.309627, 0, 1.72239, 5.53774, 0, -5.96646)
-
-[node name="CommonTree13" parent="Trees" index="14" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(-0.151488, 0, -1.74343, 0, 1.75, 0, 1.74343, 0, -0.151488, 6.27892, 0, 0.843002)
-
-[node name="CommonTree14" parent="Trees" index="15" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(-1.74492, 0, -0.133284, 0, 1.75, 0, 0.133284, 0, -1.74492, 1.45345, 0, 5.87195)
-
-[node name="CommonTree15" parent="Trees" index="16" instance=ExtResource("12_hh3xu")]
-transform = Transform3D(-0.885823, 0, 1.50924, 0, 1.75, 0, -1.50924, 0, -0.885823, -3.08132, 0, 3.54643)
-
-[node name="CommonTree16" parent="Trees" index="17" instance=ExtResource("13_l5xv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99871, 0, 0.578642)
-
-[node name="CommonTree27" parent="Trees" index="18" instance=ExtResource("13_l5xv6")]
-transform = Transform3D(-0.0066322, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066322, 5.88373, 0, -1.12645)
-
-[node name="CommonTree17" parent="Trees" index="19" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree17" parent="Trees" index="12" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240881, 0, -6.15385)
 
-[node name="CommonTree18" parent="Trees" index="20" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree18" parent="Trees" index="13" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24653, 0, -2.08418)
 
-[node name="CommonTree19" parent="Trees" index="21" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree19" parent="Trees" index="14" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(-0.0274331, 0, -0.999624, 0, 1, 0, 0.999624, 0, -0.0274331, -9.7174, 0, 12.2059)
 
-[node name="CommonTree20" parent="Trees" index="22" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree20" parent="Trees" index="15" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(0.913119, 0, -0.407693, 0, 1, 0, 0.407693, 0, 0.913119, -11.9578, 0, 8.49696)
 
-[node name="CommonTree22" parent="Trees" index="23" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree22" parent="Trees" index="16" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(-0.479029, 0, -0.877799, 0, 1, 0, 0.877799, 0, -0.479029, 8.82867, 0, 11.4317)
 
-[node name="CommonTree23" parent="Trees" index="24" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree23" parent="Trees" index="17" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(-0.479029, 0, -0.877799, 0, 1, 0, 0.877799, 0, -0.479029, 10.6484, 0, -9.29355)
 
-[node name="CommonTree24" parent="Trees" index="25" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree24" parent="Trees" index="18" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(0.378503, 0, -0.9256, 0, 1, 0, 0.9256, 0, 0.378503, 6.49156, 0, -10.2819)
 
-[node name="CommonTree25" parent="Trees" index="26" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree25" parent="Trees" index="19" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(0.378503, 0, -0.9256, 0, 1, 0, 0.9256, 0, 0.378503, -9.06041, 0, -7.11337)
 
-[node name="CommonTree26" parent="Trees" index="27" instance=ExtResource("13_l5xv6")]
+[node name="CommonTree26" parent="Trees" index="20" instance=ExtResource("13_l5xv6")]
 transform = Transform3D(0.999771, 0, -0.0213961, 0, 1, 0, 0.0213961, 0, 0.999771, -10.2522, 0, -10.2819)
 
 [node name="Interior" type="Node3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 
 [node name="Group 1" type="Node3D" parent="Interior" index="0"]
 script = ExtResource("14_e8jdo")
 
 [node name="Interior 1" type="Node3D" parent="Interior/Group 1" index="0"]
+visible = false
 script = ExtResource("15_tacg6")
+ExcludedFromGroup = true
 
 [node name="Grave" parent="Interior/Group 1/Interior 1" index="0" instance=ExtResource("16_kw1y0")]
 transform = Transform3D(0.556644, 0, -0.830752, 0, 1, 0, 0.830752, 0, 0.556644, 0.092156, 0, -1.19511)
@@ -787,7 +767,9 @@ transform = Transform3D(0.856934, 0, -0.515427, 0, 1, 0, 0.515427, 0, 0.856934, 
 transform = Transform3D(0.929687, 0, 0.368352, 0, 1, 0, -0.368352, 0, 0.929687, 7.89754, -4.76837e-07, 0.162721)
 
 [node name="Interior 2" type="Node3D" parent="Interior/Group 1" index="1"]
+visible = false
 script = ExtResource("15_tacg6")
+ExcludedFromGroup = true
 
 [node name="Grave" parent="Interior/Group 1/Interior 2" index="0" instance=ExtResource("16_kw1y0")]
 transform = Transform3D(0.880196, 0, -0.474611, 0, 1, 0, 0.474611, 0, 0.880196, -4.14262, 0, 0.0774755)
@@ -802,7 +784,9 @@ transform = Transform3D(0.880196, 0, -0.474611, 0, 1, 0, 0.474611, 0, 0.880196, 
 transform = Transform3D(0.880196, 0, -0.474611, 0, 1, 0, 0.474611, 0, 0.880196, 8.6446, 0, -7.5918)
 
 [node name="Interior 3" type="Node3D" parent="Interior/Group 1" index="2"]
+visible = false
 script = ExtResource("15_tacg6")
+ExcludedFromGroup = true
 
 [node name="Grave" parent="Interior/Group 1/Interior 3" index="0" instance=ExtResource("16_kw1y0")]
 transform = Transform3D(0.12999, 0, -0.991515, 0, 1, 0, 0.991515, 0, 0.12999, -2.49631, 0, 5.60809)
@@ -872,3 +856,17 @@ shape = SubResource("CylinderShape3D_h51fl")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Treehouse/Tree/StaticBody3D" index="1"]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -0.247466, 1.15678, 0)
 shape = SubResource("CylinderShape3D_smhot")
+
+[node name="LadderArea" type="StaticBody3D" parent="Treehouse" index="14" node_paths=PackedStringArray("TopExitNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.008, 3, 2.013)
+script = ExtResource("20_612gc")
+Extents = 3.0
+SolidMaterialType = 2
+TopExitNode = NodePath("../LadderTopExitNode")
+HoverIcon = ExtResource("21_lroa2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Treehouse/LadderArea" index="0"]
+shape = SubResource("BoxShape3D_u5mlq")
+
+[node name="LadderTopExitNode" type="Node3D" parent="Treehouse" index="15"]
+transform = Transform3D(-0.0605433, 0, -0.998166, 0, 1, 0, 0.998166, 0, -0.0605433, -1.292, 6.1, 1.983)

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://clurwp1jfabaj"]
+
+[ext_resource type="PackedScene" uid="uid://bt2potjyleh8k" path="res://Basement/Room/Prefabs/Forest_TreeHouse.tscn" id="1_u3vu5"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_clura"]
+
+[resource]
+script = ExtResource("2_clura")
+Area = "Forest"
+ConnectedArea = ""
+AmbienceArea = "Forest"
+Scene = ExtResource("1_u3vu5")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = true
+RoomLayout = "1111111
+1111111
+1111111
+1111111
+1111111
+1111111
+1111111"
+HasUnevenGround = false
+Disabled = false

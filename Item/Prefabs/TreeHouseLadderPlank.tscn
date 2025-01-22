@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ms1fdce56vur"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_dew3x"]
+[ext_resource type="PackedScene" uid="uid://1s0e8x13hwgw" path="res://Assets/FlawLizArt/PlantBox/plant_box_plank_001.fbx" id="2_mvvxk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wv8m3"]
+size = Vector3(1.50415, 0.481445, 0.132813)
+
+[node name="TreeHouseLadderPlank" instance=ExtResource("1_dew3x")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_wv8m3")
+
+[node name="plant_box_plank_001" parent="Model" index="0" instance=ExtResource("2_mvvxk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.223462, 0)

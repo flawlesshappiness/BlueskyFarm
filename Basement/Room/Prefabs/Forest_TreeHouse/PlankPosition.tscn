@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbol0wx4dip4a"]
+
+[ext_resource type="PackedScene" uid="uid://1s0e8x13hwgw" path="res://Assets/FlawLizArt/PlantBox/plant_box_plank_001.fbx" id="1_mp0ep"]
+[ext_resource type="Script" path="res://Basement/Room/Prefabs/Forest_TreeHouse/ForestTreeHousePlankPosition.cs" id="1_yvoft"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="2_3qa68"]
+[ext_resource type="Resource" uid="uid://cgcwdxvpavo73" path="res://Sound/Resources/sfx_attach_wood.tres" id="2_japke"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7ofg"]
+size = Vector3(1.70703, 0.666504, 0.344482)
+
+[node name="PlankPosition" type="Node3D" node_paths=PackedStringArray("ItemArea", "Plank")]
+transform = Transform3D(0.951444, 0, 0.307822, 0, 1, 0, -0.307822, 0, 0.951444, 0.652457, 1, 1.64833)
+script = ExtResource("1_yvoft")
+ItemArea = NodePath("ItemArea")
+Plank = NodePath("Plank")
+SfxAttach = ExtResource("2_japke")
+
+[node name="Plank" type="Node3D" parent="."]
+
+[node name="plant_box_plank_001" parent="Plank" instance=ExtResource("1_mp0ep")]
+transform = Transform3D(1.5, 0, 5.96046e-08, 0, 1.5, 0, -5.96046e-08, 0, 1.5, 0, 0, 0)
+
+[node name="ItemArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_3qa68")
+CustomId = "tree_house_ladder_plank"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43051e-06, 0.166748, 0.0555416)
+shape = SubResource("BoxShape3D_f7ofg")

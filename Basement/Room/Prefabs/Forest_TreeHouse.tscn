@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bt2potjyleh8k"]
+[gd_scene load_steps=38 format=3 uid="uid://bt2potjyleh8k"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_ucf5g"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Walls/Wall_Middle.tscn" id="2_t8eg1"]
@@ -16,15 +16,19 @@
 [ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="14_e8jdo"]
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="15_tacg6"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="16_gnsoc"]
+[ext_resource type="PackedScene" uid="uid://ckgxoywxbij28" path="res://Basement/Assets/Containers/Prefabs/Grave.tscn" id="16_kw1y0"]
 [ext_resource type="PackedScene" uid="uid://b1o1knh0ci4n0" path="res://Basement/Assets/Scaffold/Scaffold.tscn" id="17_1thfi"]
 [ext_resource type="PackedScene" uid="uid://dubjb7me16kau" path="res://Basement/Assets/Scaffold/Scaffold_Railing.tscn" id="18_8156b"]
 [ext_resource type="PackedScene" uid="uid://1s0e8x13hwgw" path="res://Assets/FlawLizArt/PlantBox/plant_box_plank_001.fbx" id="19_i6u7d"]
 [ext_resource type="PackedScene" uid="uid://dmxoif37bmfxi" path="res://Assets/Quaternius/Nature/CommonTree_1.gltf" id="19_kppdx"]
 [ext_resource type="Script" path="res://Ladder/LadderArea.cs" id="20_612gc"]
+[ext_resource type="PackedScene" uid="uid://cbol0wx4dip4a" path="res://Basement/Room/Prefabs/Forest_TreeHouse/PlankPosition.tscn" id="20_fnak7"]
 [ext_resource type="Texture2D" uid="uid://bwjdekv4gfciw" path="res://Assets/KenneyNL/Cursors/resize_a_vertical.png" id="21_lroa2"]
 [ext_resource type="PackedScene" uid="uid://cqt8nkrp1kjem" path="res://Assets/FlawLizArt/Bed/bed_frame.fbx" id="22_dwmbh"]
 [ext_resource type="Script" path="res://Basement/Room/ForestTreeHouseRoom.cs" id="24_45jd0"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="24_qvql8"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="24_t7rdf"]
+[ext_resource type="Resource" uid="uid://dfqkt7oi06jcd" path="res://Item/Resources/TreeHouseLadderPlank.tres" id="26_puuvn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -49,6 +53,9 @@ radius = 1.3108
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5mlq"]
 size = Vector3(1, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5exb0"]
+size = Vector3(1.82056, 3.24976, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_42pqo"]
 size = Vector3(1.59766, 0.315918, 2.6189)
@@ -812,11 +819,10 @@ shape = SubResource("CylinderShape3D_smhot")
 
 [node name="Steps" type="Node3D" parent="Treehouse/Tree" index="2"]
 
-[node name="plant_box_plank_001" parent="Treehouse/Tree/Steps" index="0" instance=ExtResource("19_i6u7d")]
-transform = Transform3D(1.42717, 0, 0.461732, 0, 1.5, 0, -0.461732, 0, 1.42717, 0.652457, 1, 1.64833)
+[node name="PlankPosition1" parent="Treehouse/Tree/Steps" index="0" instance=ExtResource("20_fnak7")]
 
-[node name="plant_box_plank_002" parent="Treehouse/Tree/Steps" index="1" instance=ExtResource("19_i6u7d")]
-transform = Transform3D(1.43479, 0, 0.437481, 0, 1.5, 0, -0.437481, 0, 1.43479, 0.792048, 2, 1.53398)
+[node name="PlankPosition2" parent="Treehouse/Tree/Steps" index="1" instance=ExtResource("20_fnak7")]
+transform = Transform3D(0.936121, 0, 0.351679, 0, 1, 0, -0.351679, 0, 0.936121, 0.811177, 2, 1.52706)
 
 [node name="plant_box_plank_003" parent="Treehouse/Tree/Steps" index="2" instance=ExtResource("19_i6u7d")]
 transform = Transform3D(1.46606, 0, 0.317294, 0, 1.5, 0, -0.317294, 0, 1.46606, 0.784732, 3, 1.50042)
@@ -839,6 +845,20 @@ HoverIcon = ExtResource("21_lroa2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.549506)
 shape = SubResource("BoxShape3D_u5mlq")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Treehouse/Tree" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30944, 3.07067, 3.63468)
+light_color = Color(0.3, 0.3, 0.3, 1)
+omni_range = 73.99
+
+[node name="Touchable" type="StaticBody3D" parent="Treehouse/Tree" index="5"]
+transform = Transform3D(0.943968, 0, 0.330037, 0, 1, 0, -0.330037, 0, 0.943968, 0.753747, 1.5, 1.60775)
+script = ExtResource("24_qvql8")
+HoverIcon = ExtResource("21_lroa2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Treehouse/Tree/Touchable" index="0"]
+transform = Transform3D(1.00001, 0, 1.41561e-07, 0, 1, 0, -1.41561e-07, 0, 1.00001, 0, 0, 0)
+shape = SubResource("BoxShape3D_5exb0")
+
 [node name="bed_frame" parent="Treehouse" index="7" instance=ExtResource("22_dwmbh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 6, 0.0943264)
 
@@ -857,7 +877,29 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6.5
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.310626, 8, 2.90159)
 DialogueNode = "##NOTE_FOREST_BED_001##"
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("BlueprintItemSpawn")]
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("MissingStepsTouchable", "BlueprintItemSpawn", "LadderArea", "PlankSpawns", "PlankPositions")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 script = ExtResource("24_45jd0")
+MissingStepsTouchable = NodePath("../Treehouse/Tree/Touchable")
 BlueprintItemSpawn = NodePath("../Treehouse/BlueprintItemNode")
+PlankInfo = ExtResource("26_puuvn")
+LadderArea = NodePath("../Treehouse/Tree/LadderArea")
+PlankSpawns = [NodePath("Grave/Plank1"), NodePath("Grave2/Plank2")]
+PlankPositions = [NodePath("../Treehouse/Tree/Steps/PlankPosition1"), NodePath("../Treehouse/Tree/Steps/PlankPosition2")]
+
+[node name="Grave" parent="RoomScript" index="0" instance=ExtResource("16_kw1y0")]
+transform = Transform3D(0.560003, 0, 0.828491, 0, 1, 0, -0.828491, 0, 0.560003, -2.65097, 0, -8.62867)
+
+[node name="Plank1" type="Node3D" parent="RoomScript/Grave" index="5"]
+transform = Transform3D(0.209259, -0.975795, 0.0635219, 0.933723, 0.218688, 0.283438, -0.290468, 0, 0.956885, 0.102427, 0.519053, -0.785329)
+
+[node name="Grave2" parent="RoomScript" index="1" node_paths=PackedStringArray("Models") instance=ExtResource("16_kw1y0")]
+transform = Transform3D(0.438685, 0, 0.898641, 0, 1, 0, -0.898641, 0, 0.438685, 8.31169, 0, 4.4099)
+Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1"), NodePath("../Grave/Models/State 2"), NodePath("../Grave/Models/State 3")]
+
+[node name="Plank2" type="Node3D" parent="RoomScript/Grave2" index="5"]
+transform = Transform3D(-0.07346, -0.997155, 0.0169002, 0.97177, -0.075379, -0.223565, 0.224203, 0, 0.974543, -0.0508843, 0.673126, 0.793346)
+
+[node name="Grave3" parent="RoomScript" index="2" node_paths=PackedStringArray("Models") instance=ExtResource("16_kw1y0")]
+transform = Transform3D(0.597331, 0, 0.801995, 0, 1, 0, -0.801995, 0, 0.597331, -3.47614, 0, 8.62556)
+Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1"), NodePath("../Grave/Models/State 2"), NodePath("../Grave/Models/State 3")]

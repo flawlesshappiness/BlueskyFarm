@@ -56,10 +56,8 @@ public partial class BasementRoom : Node3DScript
         }
     }
 
-    protected override void Initialize()
+    public void InitializeAfterGeneration()
     {
-        base.Initialize();
-
         North.SetOpen(Element.HasNorth);
         East.SetOpen(Element.HasEast);
         South.SetOpen(Element.HasSouth);

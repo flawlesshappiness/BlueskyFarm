@@ -36,7 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://cqnhsdvqlpjs2" path="res://Farm/Shed/Doorway.tscn" id="26_23jav"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="27_3ofo1"]
 [ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="28_enwrr"]
-[ext_resource type="PackedScene" uid="uid://dii4xuy2rldl2" path="res://Basement/Assets/Interior/Bed.tscn" id="28_m3xxf"]
 [ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="29_gcm1x"]
 [ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="29_h6ntv"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="30_721ta"]
@@ -44,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://c2m50nhx4vtld" path="res://Assets/KenneyNL/Particles/light_01.png" id="31_q1fnc"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="31_t1p85"]
 [ext_resource type="Texture2D" uid="uid://cexn5bimbysxh" path="res://Assets/KenneyNL/Particles/star_09.png" id="32_hltal"]
+[ext_resource type="PackedScene" uid="uid://bfbakxow5wdyt" path="res://Farm/Bed/Bed.tscn" id="34_dbjn3"]
 [ext_resource type="PackedScene" uid="uid://d1ns6lhxycaki" path="res://Weeds/Thorns/Weed_Thorns.tscn" id="36_ufagv"]
 [ext_resource type="AudioStream" uid="uid://byc6auvovq4x1" path="res://Sound/Music/bgm_farm_002.ogg" id="40_mug2t"]
 
@@ -577,16 +577,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.0921431, -2)
 [node name="Interior" type="Node3D" parent="World/NavigationRegion3D/Shed"]
 
 [node name="Table" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("27_3ofo1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.94184, 0, -5.16446)
-
-[node name="Bed" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("28_m3xxf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.81832, 0, -8.03842)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.94184, 0.0890019, -5.16446)
 
 [node name="Chair" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("29_h6ntv")]
-transform = Transform3D(-0.271273, 0, -0.962503, 0, 1, 0, 0.962503, 0, -0.271273, -6.59636, 0, -5.2316)
+transform = Transform3D(-0.271273, 0, -0.962503, 0, 1, 0, 0.962503, 0, -0.271273, -6.59636, 0.0890019, -5.2316)
 
 [node name="Barrel" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("30_721ta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35087, 0, -1.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35087, 0.0915053, -1.75)
 
 [node name="Barrel2" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("30_721ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16543, 0, -4.46764)
@@ -595,7 +592,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16543, 0, -4.46764)
 transform = Transform3D(0.693502, 0, 0.720454, 0, 1, 0, -0.720454, 0, 0.693502, -4.10806, 0, -5.49817)
 
 [node name="Crate" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("31_t1p85")]
-transform = Transform3D(0.985874, 0, 0.167491, 0, 1, 0, -0.167491, 0, 0.985874, -7.21057, 0, -1.75)
+transform = Transform3D(0.985874, 0, 0.167491, 0, 1, 0, -0.167491, 0, 0.985874, -7.21057, 0.0915053, -1.75)
+
+[node name="Bed" parent="World/NavigationRegion3D/Shed/Interior" instance=ExtResource("34_dbjn3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.06932, 0.0950829, -7.98629)
 
 [node name="Behind" type="Node3D" parent="World/NavigationRegion3D/Shed"]
 

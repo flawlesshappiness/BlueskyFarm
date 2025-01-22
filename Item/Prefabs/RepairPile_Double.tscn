@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqyy8kc7r8887"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_gotod"]
+[ext_resource type="PackedScene" uid="uid://1s0e8x13hwgw" path="res://Assets/FlawLizArt/PlantBox/plant_box_plank_001.fbx" id="2_et4gm"]
+[ext_resource type="PackedScene" uid="uid://biifa1eco7cgr" path="res://Assets/FlawLizArt/PlantBox/plant_box_plank_002.fbx" id="3_2kk8f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44ert"]
+size = Vector3(1.19836, 0.331213, 0.654297)
+
+[node name="PlantBoxPile" instance=ExtResource("1_gotod")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0180054, -0.00563627, 0.00445557)
+shape = SubResource("BoxShape3D_44ert")
+
+[node name="plant_box_plank_001" parent="Model" index="0" instance=ExtResource("2_et4gm")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.126086, -0.3155)
+
+[node name="plant_box_plank_002" parent="Model" index="1" instance=ExtResource("3_2kk8f")]
+transform = Transform3D(0.999391, -0.0348995, 1.52551e-09, 0, -4.37114e-08, -1, 0.0348995, 0.999391, -4.36848e-08, -0.0184919, -0.0443462, -0.304405)
+
+[node name="plant_box_plank_003" parent="Model" index="2" instance=ExtResource("2_et4gm")]
+transform = Transform3D(0.990268, 0.139173, -6.08345e-09, 0, -4.37114e-08, -1, -0.139173, 0.990268, -4.3286e-08, -0.020341, 0.0379488, -0.313651)
+
+[node name="plant_box_plank_004" parent="Model" index="3" instance=ExtResource("3_2kk8f")]
+transform = Transform3D(0.999848, -0.0174524, 7.62869e-10, 0, -4.37114e-08, -1, 0.0174524, 0.999848, -4.37047e-08, -0.0110952, 0.119689, -0.319198)
+
+[node name="plant_box_plank_005" parent="Model" index="4" instance=ExtResource("2_et4gm")]
+transform = Transform3D(-0.999923, -0.0124264, 5.43177e-10, 0, -4.37114e-08, -1, 0.0124264, -0.999923, 4.3708e-08, -0.0249344, -0.126086, 0.320928)
+
+[node name="plant_box_plank_006" parent="Model" index="5" instance=ExtResource("3_2kk8f")]
+transform = Transform3D(-0.999748, 0.0224779, -9.82546e-10, 1.10955e-16, -4.37114e-08, -1, -0.0224779, -0.999748, 4.37004e-08, -0.00658176, -0.0443462, 0.309604)
+
+[node name="plant_box_plank_007" parent="Model" index="6" instance=ExtResource("2_et4gm")]
+transform = Transform3D(-0.988462, -0.151468, 6.62087e-09, 0, -4.37114e-08, -1, 0.151468, -0.988462, 4.32071e-08, -0.00461791, 0.0379488, 0.318827)
+
+[node name="plant_box_plank_008" parent="Model" index="7" instance=ExtResource("3_2kk8f")]
+transform = Transform3D(-0.999988, 0.0050265, -2.19716e-10, -5.55027e-17, -4.37114e-08, -1, -0.0050265, -0.999988, 4.37108e-08, -0.0137941, 0.119689, 0.324488)

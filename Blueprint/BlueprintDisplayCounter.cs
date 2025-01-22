@@ -5,6 +5,9 @@ public partial class BlueprintDisplayCounter : Node3DScript
     [Export]
     public Texture2D VegetableIcon;
 
+    [Export]
+    public Texture2D BoneIcon;
+
     [NodeType]
     public Sprite3D Icon;
 
@@ -16,6 +19,7 @@ public partial class BlueprintDisplayCounter : Node3DScript
     private Texture2D GetIcon(ItemType type) => type switch
     {
         ItemType.Crop_Vegetable => VegetableIcon,
+        ItemType.Crop_Bone => BoneIcon,
         _ => null
     };
 

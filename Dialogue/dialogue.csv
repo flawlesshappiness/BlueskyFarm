@@ -8,6 +8,7 @@ keys;en
 ##MISSING_HANDLE##;Missing handle
 ##SOMETHING_DOWN_THERE##;There's something down there
 ##TOOL_REQUIRED##;Tool required
+##BED_CANT_SLEEP##;I can't sleep on this
 ##NOTE_WORKSHOP_001##;For your information:\nAll tools moved to new workshop.
 ##NOTE_WORKSHOP_002##;Only blueprints and interior in this room.
 ##NOTE_WORKSHOP_003##;Key is safely stored in the deep.

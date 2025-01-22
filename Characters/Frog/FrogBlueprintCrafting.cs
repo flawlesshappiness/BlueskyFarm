@@ -129,6 +129,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         };
 
         Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Crop_Vegetable, Max = bp_info.VegetableCount });
+        Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Crop_Bone, Max = bp_info.BoneCount });
 
         Display.UpdateFromData(Data.Game.BlueprintCraftingData);
 

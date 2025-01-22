@@ -122,6 +122,10 @@ public partial class MainMenuView : View
         {
             var bus = AudioBus.Get(SoundBus.Transition.ToString());
             Scene.PauseLock.AddLock(nameof(MainMenuView));
+            Player.Instance.MovementLock.AddLock(nameof(MainMenuView));
+            Player.Instance.LookLock.AddLock(nameof(MainMenuView));
+            Player.Instance.InteractLock.AddLock(nameof(MainMenuView));
+            Cursor.Hide();
 
             Show();
             MainControl.Hide();
@@ -151,6 +155,10 @@ public partial class MainMenuView : View
                 var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
                 bus.SetVolume(volume);
             });
+
+            Player.Instance.MovementLock.RemoveLock(nameof(MainMenuView));
+            Player.Instance.LookLock.RemoveLock(nameof(MainMenuView));
+            Player.Instance.InteractLock.RemoveLock(nameof(MainMenuView));
 
             Overlay.Hide();
         }

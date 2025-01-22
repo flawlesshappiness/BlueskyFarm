@@ -9,7 +9,7 @@ public partial class FarmShed : Node3D
     [Export]
     public ItemArea UnlockItemArea;
 
-    private string DebugCategory = "SHED";
+    private string DebugCategory = "FARM - SHED";
 
     public override void _Ready()
     {
@@ -40,21 +40,7 @@ public partial class FarmShed : Node3D
 
     private void RegisterDebugActions()
     {
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = DebugCategory,
-            Category = DebugCategory,
-            Text = "Unlock Shed",
-            Action = v => UnlockGroup.AnimateUnlock()
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = DebugCategory,
-            Category = DebugCategory,
-            Text = "Lock Shed",
-            Action = v => UnlockGroup.SetNotUnlocked()
-        });
+        UnlockGroup.RegisterDebugActions(DebugCategory);
 
         Debug.RegisterAction(new DebugAction
         {

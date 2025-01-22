@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class FarmScene : GameScene
 {
@@ -14,6 +15,14 @@ public partial class FarmScene : GameScene
 
     [NodeName]
     public Node3D Shed_InventoryItemPosition;
+
+    public List<PlantArea> PlantAreas = new();
+
+    public override void _Ready()
+    {
+        base._Ready();
+        PlantAreas = this.GetNodesInChildren<PlantArea>();
+    }
 
     protected override void Initialize()
     {
@@ -91,8 +100,7 @@ public partial class FarmScene : GameScene
 
     private void UpdateData_PlantArea()
     {
-        var areas = Scene.Current.GetNodesInChildren<PlantArea>();
-        foreach (var area in areas)
+        foreach (var area in PlantAreas)
         {
             area.UpdateData();
         }

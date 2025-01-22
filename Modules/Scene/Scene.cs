@@ -27,7 +27,7 @@ public partial class Scene : NodeScript
 
     private void LoadData()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         SceneData ??= GetOrCreateData();
@@ -51,7 +51,7 @@ public partial class Scene : NodeScript
     #region SCENE
     public static Scene Goto(string scene_name)
     {
-        Debug.LogMethod(scene_name);
+        Debug.TraceMethod(scene_name);
         Debug.Indent++;
 
         if (string.IsNullOrEmpty(scene_name))

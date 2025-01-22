@@ -14,5 +14,7 @@ public partial class MainMenuScene : Scene
         _view.Show();
 
         ScreenEffects.View.SetCameraTarget(CameraTarget);
+
+        AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Farm);
     }
 }

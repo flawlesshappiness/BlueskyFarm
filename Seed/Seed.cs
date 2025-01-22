@@ -16,6 +16,11 @@ public class Seed
             Data.TimeLeft = TimeEnd - GameTime.Time;
             Data.TimeUntilNextWeed = TimeWeed - GameTime.Time;
         }
+        else
+        {
+            Data.TimeLeft = 0;
+            Data.TimeUntilNextWeed = 1;
+        }
     }
 
     public void DecreaseTimeFromWeeds()

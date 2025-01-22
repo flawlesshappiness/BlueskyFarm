@@ -22,6 +22,25 @@ public partial class UnlockableGroup : Node3D
     [Export]
     public Array<Node3D> Unlocked;
 
+    public void RegisterDebugActions(string category)
+    {
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = category,
+            Category = category,
+            Text = "Animate unlock",
+            Action = v => AnimateUnlock()
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = category,
+            Category = category,
+            Text = "Set locked",
+            Action = v => SetNotUnlocked()
+        });
+    }
+
     public void SetUnlocked(bool unlocked)
     {
         if (unlocked)
@@ -51,10 +70,13 @@ public partial class UnlockableGroup : Node3D
         return Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            NotUnlocked.ForEach(x => AnimateHide(x));
-            SoundController.Instance.Play(HideSound, GlobalPosition);
+            if (NotUnlocked != null && NotUnlocked.Count > 0)
+            {
+                NotUnlocked.ForEach(x => AnimateHide(x));
+                SoundController.Instance.Play(HideSound, GlobalPosition);
 
-            yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(0.25f);
+            }
 
             foreach (var node in Unlocked)
             {

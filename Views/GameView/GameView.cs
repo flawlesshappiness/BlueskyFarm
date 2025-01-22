@@ -81,6 +81,11 @@ public partial class GameView : View
         {
             while (GameTime.Time < time_end || settings.Duration == -1)
             {
+                if (!IsInstanceValid(settings.Target))
+                {
+                    break;
+                }
+
                 var world_position = settings.Target.GlobalPosition + settings.Offset;
                 var viewport_position = camera.UnprojectPosition(world_position);
                 var size = label.Size;
@@ -119,6 +124,51 @@ public partial class GameView : View
 
         Coroutine.Start(Cr, settings.Id, label);
         return label;
+    }
+
+    public IEnumerator TransitionStartCr(string id)
+    {
+        var bus = AudioBus.Get(SoundBus.Transition.ToString());
+
+        Player.Instance.MovementLock.AddLock(id);
+        Player.Instance.LookLock.AddLock(id);
+        Player.Instance.InteractLock.AddLock(id);
+        PauseView.Instance.ToggleLock.AddLock(id);
+        Cursor.Hide();
+        HideAllDynamicUI();
+
+        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        {
+            SetBlackOverlayAlpha(Mathf.Lerp(0, 1, f));
+        });
+
+        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        {
+            var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
+            bus.SetVolume(volume);
+        });
+    }
+
+    public IEnumerator TransitionEndCr(string id)
+    {
+        var bus = AudioBus.Get(SoundBus.Transition.ToString());
+
+        Player.Instance.MovementLock.RemoveLock(id);
+        Player.Instance.LookLock.RemoveLock(id);
+
+        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        {
+            var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
+            bus.SetVolume(volume);
+        });
+
+        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        {
+            SetBlackOverlayAlpha(Mathf.Lerp(1, 0, f));
+        });
+
+        Player.Instance.InteractLock.RemoveLock(id);
+        PauseView.Instance.ToggleLock.RemoveLock(id);
     }
 }
 

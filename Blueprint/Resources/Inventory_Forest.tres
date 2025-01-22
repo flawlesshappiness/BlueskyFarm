@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://br3jugnyab4b0"]
+
+[ext_resource type="Texture2D" uid="uid://cce86y6lbhnua" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_inventory.png" id="1_04mch"]
+[ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_2al40"]
+[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_7na75"]
+
+[resource]
+script = ExtResource("3_7na75")
+Id = "inventory_001"
+ResultIcon = ExtResource("1_04mch")
+ResultItemInfo = ExtResource("2_2al40")
+ResultDialogueNode = ""
+VegetableCount = 2
+BoneCount = 5
+CanCancel = true
+Areas = Array[int]([2])

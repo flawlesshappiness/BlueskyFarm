@@ -25,7 +25,7 @@ public partial class Boot : Node
 
     private void Initialize()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         InitializeTree();
@@ -39,7 +39,7 @@ public partial class Boot : Node
 
     private void InitializeTree()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         Scene.Tree = GetTree();
@@ -52,7 +52,7 @@ public partial class Boot : Node
 
     private void LoadScene()
     {
-        Debug.LogMethod();
+        Debug.TraceMethod();
         Debug.Indent++;
 
         Scene.Goto(ApplicationInfo.Instance.StartScene);

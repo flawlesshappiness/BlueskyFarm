@@ -55,8 +55,9 @@ public partial class BasementScene : GameScene
 
         BasementController.Instance.GenerateBasement(settings);
 
-        // Containers
-        InitializeContainers(settings);
+        // Items
+        InitializeSeeds(settings);
+        InitializeRandomBlueprints(settings);
 
         // Screen effects
         ScreenEffects.Instance.Clear();
@@ -159,7 +160,7 @@ public partial class BasementScene : GameScene
         }
     }
 
-    private void InitializeContainers(BasementSettings settings)
+    private void InitializeSeeds(BasementSettings settings)
     {
         foreach (var area in settings.Areas)
         {
@@ -168,7 +169,7 @@ public partial class BasementScene : GameScene
 
             var containers = basement_rooms
                 .SelectMany(x => x.Room.GetNodesInChildren<ItemContainer>())
-                .Where(x => x.IsVisibleInTree())
+                .Where(x => x.IsVisibleInTree() && x.Item == null)
                 .TakeRandom(area.SeedCount);
 
             foreach (var container in containers)
@@ -179,6 +180,62 @@ public partial class BasementScene : GameScene
 
                 container.Item = item;
             }
+        }
+    }
+
+    private void InitializeRandomBlueprints(BasementSettings settings)
+    {
+        var rng = new RandomNumberGenerator();
+        var selected_bps = new List<BlueprintInfo>();
+
+        foreach (var area in settings.Areas)
+        {
+            if (rng.Randf() > 0.5f) continue;
+
+            var basement_rooms = BasementController.Instance.CurrentBasement.Grid.Elements
+                .Where(x => x.AreaName == area.AreaName);
+
+            var container = basement_rooms
+                .SelectMany(x => x.Room.GetNodesInChildren<ItemContainer>())
+                .Where(x => x.IsVisibleInTree() && x.Item == null)
+                .ToList()
+                .Random();
+
+            if (container == null) continue;
+
+            //Debug.Log(area.AreaName);
+            var blueprints_not_selected = BlueprintController.Instance.Collection.Resources.Where(x => !selected_bps.Contains(x));
+            //Debug.Log($"{nameof(blueprints_not_selected)}: {blueprints_not_selected.Count()}");
+            var blueprints_area = blueprints_not_selected.Where(x => x.Areas != null && x.Areas.Any(bp_area => bp_area.ToString() == area.AreaName));
+            //Debug.Log($"{nameof(blueprints_area)}: {blueprints_area.Count()}");
+            var blueprints_access = blueprints_area.Where(x => !Player.Instance.HasAccessToBlueprint(x.Id) && !Player.Instance.HasAccessToItem(x.ResultItemInfo));
+            //Debug.Log($"{nameof(blueprints_access)}: {blueprints_access.Count()}");
+            var blueprints = blueprints_access.ToList();
+
+            RemoveUnlockedBlueprints(blueprints);
+            //Debug.Log($"{nameof(blueprints)}: {blueprints.Count()}");
+
+            var blueprint = blueprints
+                .Random();
+
+            if (blueprint == null) continue;
+
+            selected_bps.Add(blueprint);
+
+            var item = BlueprintController.Instance.CreateBlueprintRoll(blueprint.Id);
+            item.Disable();
+            item.LockPosition_All();
+            container.Item = item;
+
+            Debug.Log($"Created blueprint {blueprint.Id} in {area.AreaName}");
+        }
+    }
+
+    private void RemoveUnlockedBlueprints(List<BlueprintInfo> blueprints)
+    {
+        if (Data.Game.Flag_ShedRepaired)
+        {
+            blueprints.Remove(blueprints.FirstOrDefault(x => x.Id == "shed_repair"));
         }
     }
 }

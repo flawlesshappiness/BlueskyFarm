@@ -661,6 +661,9 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_q4lmo")
 
+[node name="EnemySpawn" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05407, 8, 1.70103)
+
 [node name="Trees" type="Node3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 

@@ -193,6 +193,21 @@ public partial class PlantArea : Node3DScript
         item.ClearCollisionLayerAndMask();
     }
 
+    public void CompleteSeed()
+    {
+        if (!HasSeed) return;
+
+        var time_left = CurrentSeed.TimeEnd - GameTime.Time;
+        var weeds = (int)(time_left / WEED_TIME) + 1;
+        for (int i = 0; i < weeds; i++)
+        {
+            CreateWeed();
+            CurrentSeed.Data.WeedCount++;
+        }
+
+        CurrentSeed.TimeEnd = GameTime.Time;
+    }
+
     private void DespawnSeedModel(Seed seed)
     {
         Debug.TraceMethod();

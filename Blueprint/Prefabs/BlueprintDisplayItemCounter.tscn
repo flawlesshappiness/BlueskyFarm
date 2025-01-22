@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbffc4txaji8b"]
+[gd_scene load_steps=4 format=3 uid="uid://dbffc4txaji8b"]
 
 [ext_resource type="Script" path="res://Blueprint/BlueprintDisplayCounter.cs" id="1_nnk5s"]
 [ext_resource type="Texture2D" uid="uid://upqdiafpad5r" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_vegetable.png" id="2_i7tgm"]
+[ext_resource type="Texture2D" uid="uid://b8nnejfwvylgb" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_bone.png" id="3_fmuet"]
 
 [node name="BlueprintDisplayItemCounter" type="Node3D"]
 script = ExtResource("1_nnk5s")
 VegetableIcon = ExtResource("2_i7tgm")
+BoneIcon = ExtResource("3_fmuet")
 
 [node name="Scale" type="Node3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
-[node name="VegetableIcon" type="Sprite3D" parent="Scale"]
+[node name="Icon" type="Sprite3D" parent="Scale"]
 transform = Transform3D(0.15, 2.26494e-08, 1.65006e-15, 0, -6.55668e-09, 0.25, 2.26494e-08, -0.15, -1.09278e-08, -0.0187511, 0.00576145, 0.0388785)
 texture = ExtResource("2_i7tgm")
 

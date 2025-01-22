@@ -93,6 +93,11 @@ public partial class BasementController : SingletonController
             room.GlobalPosition = position;
         }
 
+        foreach (var element in elements)
+        {
+            element.Room.InitializeAfterGeneration();
+        }
+
         Player.Instance.GlobalPosition = elements.FirstOrDefault(x => x.IsStart).Room.GlobalPosition;
 
         Debug.Indent--;

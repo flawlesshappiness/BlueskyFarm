@@ -109,52 +109,16 @@ public partial class SceneDoor : Node3DScript
         IEnumerator Cr()
         {
             var view = View.Get<GameView>();
-            var bus = AudioBus.Get(SoundBus.Transition.ToString());
-
-            Player.Instance.MovementLock.AddLock(nameof(SceneDoor));
-            Player.Instance.LookLock.AddLock(nameof(SceneDoor));
-            Player.Instance.InteractLock.AddLock(nameof(SceneDoor));
-            PauseView.Instance.ToggleLock.AddLock(nameof(SceneDoor));
-            Cursor.Hide();
-            view.HideAllDynamicUI();
 
             SoundController.Instance.Play(OpenSound?.ResourcePath);
 
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                view.SetBlackOverlayAlpha(Mathf.Lerp(0, 1, f));
-            });
-
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
-                bus.SetVolume(volume);
-            });
-
-            yield return new WaitForSeconds(0.25f);
+            yield return view.TransitionStartCr(nameof(SceneDoor));
 
             ChangeScene();
 
-            yield return new WaitForSeconds(0.25f);
-
-            Player.Instance.MovementLock.RemoveLock(nameof(SceneDoor));
-            Player.Instance.LookLock.RemoveLock(nameof(SceneDoor));
-            Player.Instance.InteractLock.RemoveLock(nameof(SceneDoor));
-
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
-                bus.SetVolume(volume);
-            });
+            yield return view.TransitionEndCr(nameof(SceneDoor));
 
             SoundController.Instance.Play(CloseSound?.ResourcePath);
-
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                view.SetBlackOverlayAlpha(Mathf.Lerp(1, 0, f));
-            });
-
-            PauseView.Instance.ToggleLock.RemoveLock(nameof(SceneDoor));
         }
     }
 }

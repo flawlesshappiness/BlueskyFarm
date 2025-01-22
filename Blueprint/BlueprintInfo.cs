@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class BlueprintInfo : Resource
@@ -19,5 +20,11 @@ public partial class BlueprintInfo : Resource
     public int VegetableCount;
 
     [Export]
+    public int BoneCount;
+
+    [Export]
     public bool CanCancel;
+
+    [Export]
+    public Array<AreaNameType> Areas;
 }

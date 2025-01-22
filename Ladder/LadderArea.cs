@@ -159,9 +159,8 @@ public partial class LadderArea : Touchable
             if (IsInstanceValid(exit_node))
             {
                 yield return AnimateToNode(exit_node, 1.0f);
+                Player.Instance.Velocity = Vector3.Zero;
             }
-
-            SoundController.Instance.Play(_material_info.WalkSound);
 
             Player.Instance.MovementLock.RemoveLock(id_lock);
             Player.Instance.InteractLock.RemoveLock(id_lock);

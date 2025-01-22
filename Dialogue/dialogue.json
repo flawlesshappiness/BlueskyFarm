@@ -21,6 +21,22 @@
 	},
 	
 	{
+		"id": "##NOTE_FOREST_BED_001##",
+		"next": "##NOTE_FOREST_BED_002##"
+	},
+	{
+		"id": "##NOTE_FOREST_BED_002##",
+		"next": "##NOTE_FOREST_BED_003##"
+	},
+	{
+		"id": "##NOTE_FOREST_BED_003##",
+		"next": "##NOTE_FOREST_BED_004##"
+	},
+	{
+		"id": "##NOTE_FOREST_BED_004##"
+	},
+	
+	{
 		"id": "##NOTE_BASEMENT_OVERGROWN_001##",
 		"next": "##NOTE_MANTRA_001##"
 	},

@@ -27,6 +27,12 @@ public partial class FarmBed : Node3D
         UnlockArea.SetEnabled(!Data.Game.Flag_BedRepaired);
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(DebugCategory);
+    }
+
     private void RegisterDebugActions()
     {
         UnlockGroup.RegisterDebugActions(DebugCategory);
@@ -44,7 +50,7 @@ public partial class FarmBed : Node3D
             Id = DebugCategory,
             Category = DebugCategory,
             Text = "Clear data",
-            Action = v => Data.Game.Flag_BedRepaired = false
+            Action = v => { Data.Game.Flag_BedRepaired = false; UnlockArea.Enable(); }
         });
     }
 

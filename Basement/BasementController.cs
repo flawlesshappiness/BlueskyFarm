@@ -44,6 +44,12 @@ public partial class BasementController : SingletonController
                 RoomInfo = BasementRoomController.Instance.Collection.GetResource("Basement_Well")
             });
         }
+
+        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+        {
+            AreaName = AreaNames.Forest,
+            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Forest_TreeHouse")
+        });
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

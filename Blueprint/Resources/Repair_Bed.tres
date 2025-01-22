@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://4j5ka2248ftp"]
 
 [ext_resource type="Texture2D" uid="uid://mx52i2hjbrm2" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_bed.png" id="1_g4h5w"]
-[ext_resource type="Resource" uid="uid://bwlcqsgs6xyj7" path="res://Item/Resources/Repair_Shed.tres" id="2_blqe0"]
+[ext_resource type="Resource" uid="uid://bxijqp5l8vbw3" path="res://Item/Resources/Repair_Bed.tres" id="2_obj1h"]
 [ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_qp7ug"]
 
 [resource]
 script = ExtResource("3_qp7ug")
 Id = "bed_repair"
 ResultIcon = ExtResource("1_g4h5w")
-ResultItemInfo = ExtResource("2_blqe0")
+ResultItemInfo = ExtResource("2_obj1h")
+OverrideResultName = ""
 ResultDialogueNode = ""
 VegetableCount = 2
 BoneCount = 5

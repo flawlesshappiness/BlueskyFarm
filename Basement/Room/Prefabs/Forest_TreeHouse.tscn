@@ -52,7 +52,7 @@ height = 7.8326
 radius = 1.3108
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5mlq"]
-size = Vector3(1, 6, 1)
+size = Vector3(1, 6, 0.458984)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5exb0"]
 size = Vector3(1.82056, 3.24976, 1)
@@ -797,7 +797,7 @@ transform = Transform3D(4.37114e-08, 8.74228e-08, -1, 1, -4.37114e-08, 4.37114e-
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 6, 1)
 
 [node name="LadderTopExitNode" type="Node3D" parent="Treehouse" index="5"]
-transform = Transform3D(-0.0605433, 0, -0.998166, 0, 1, 0, 0.998166, 0, -0.0605433, -1.292, 6.25, 1.983)
+transform = Transform3D(-0.0605433, 0, -0.998166, 0, 1, 0, 0.998166, 0, -0.0605433, -1.292, 6, 1.983)
 
 [node name="Tree" type="Node3D" parent="Treehouse" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84113, 0, 0)
@@ -842,7 +842,7 @@ TopExitNode = NodePath("../../LadderTopExitNode")
 HoverIcon = ExtResource("21_lroa2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Treehouse/Tree/LadderArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.549506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.820014)
 shape = SubResource("BoxShape3D_u5mlq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Treehouse/Tree" index="4"]

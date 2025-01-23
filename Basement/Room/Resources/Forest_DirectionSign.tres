@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://di83xeoj55rgy"]
+
+[ext_resource type="PackedScene" uid="uid://dr77yshvfrf6h" path="res://Basement/Room/Prefabs/Forest_DirectionSign.tscn" id="1_ooto8"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_oak0v"]
+
+[resource]
+script = ExtResource("2_oak0v")
+Area = "Forest"
+ConnectedArea = ""
+AmbienceArea = "Forest"
+Scene = ExtResource("1_ooto8")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = true
+RoomLayout = "1111111
+1111111
+1111111
+1111111
+1111111
+1111111
+1111111"
+HasUnevenGround = false
+Disabled = false

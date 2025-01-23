@@ -34,6 +34,8 @@ public partial class ForestTreeHouseRoom : Node3D
 
     private void CreatePlanks()
     {
+        if (Data.Game.Flag_ForestTreeHouseRepaired) return;
+
         foreach (var node in PlankSpawns)
         {
             var item = ItemController.Instance.CreateItem(PlankInfo);

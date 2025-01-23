@@ -108,9 +108,9 @@ public partial class LadderArea : Touchable
 
     private void Process_HoverNode()
     {
-        var y_player = Player.Instance.CameraTarget.GlobalPosition.Y;
-        var y = Mathf.Clamp(y_player, Bottom.Y + 0.25f, Top.Y - 0.25f);
-        HoverIconPosition.GlobalPosition = Center.Set(y: y);
+        var target = Player.Instance.CameraTarget;
+        var position = target.GlobalPosition + target.GlobalBasis * Vector3.Forward;
+        HoverIconPosition.GlobalPosition = position;
     }
 
     private void StartLadder()

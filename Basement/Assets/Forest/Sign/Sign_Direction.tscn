@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqns6n77f2jdv"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Forest/Sign/SignDirection.cs" id="1_dbpk6"]
+[ext_resource type="PackedScene" uid="uid://b1l6fwx240yvu" path="res://Assets/FlawLizArt/Sign/direction_post.fbx" id="2_fs8ru"]
+[ext_resource type="Script" path="res://Basement/Assets/Forest/Sign/SignDirectionBoard.cs" id="3_qb3jx"]
+[ext_resource type="PackedScene" uid="uid://clb1jf7tpqf1p" path="res://Assets/FlawLizArt/Sign/direction_board.fbx" id="4_a471f"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_j5s28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bfqj"]
+size = Vector3(0.131836, 0.22876, 0.728027)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0njsb"]
+size = Vector3(0.25, 2.25, 0.25)
+
+[node name="Sign_Direction" type="Node3D" node_paths=PackedStringArray("BoardTemplate")]
+script = ExtResource("1_dbpk6")
+BoardTemplate = NodePath("BoardTemplate")
+MaxHeight = 1.75
+Spacing = 0.25
+
+[node name="Post" type="Node3D" parent="."]
+
+[node name="direction_post" parent="Post" instance=ExtResource("2_fs8ru")]
+
+[node name="BoardTemplate" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+script = ExtResource("3_qb3jx")
+
+[node name="Rotation" type="Node3D" parent="BoardTemplate"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="direction_board" parent="BoardTemplate/Rotation" instance=ExtResource("4_a471f")]
+
+[node name="Touchable" type="StaticBody3D" parent="BoardTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.351001)
+collision_layer = 7
+collision_mask = 0
+script = ExtResource("5_j5s28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoardTemplate/Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0915527)
+shape = SubResource("BoxShape3D_0bfqj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
+shape = SubResource("BoxShape3D_0njsb")

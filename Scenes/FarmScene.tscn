@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=96 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_g724s"]
@@ -19,9 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
 [ext_resource type="Script" path="res://Farm/FarmShed.cs" id="18_t1h8v"]
 [ext_resource type="Script" path="res://Farm/UnlockableGroup.cs" id="19_07ii3"]
-[ext_resource type="PackedScene" uid="uid://crc8qg0s3ga14" path="res://Assets/FlawLizArt/sign.tscn" id="19_up103"]
 [ext_resource type="PackedScene" uid="uid://dqfefqemw241x" path="res://Farm/WoodenStand/WoodenStand.tscn" id="20_jrme7"]
-[ext_resource type="Texture2D" uid="uid://c5ofdytg5eano" path="res://Assets/FlawLizArt/smudge.png" id="20_uqr56"]
 [ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farm/WoodenStand/WoodenStand_Corner.tscn" id="21_gp4pu"]
 [ext_resource type="Resource" uid="uid://cqb7celmadjfl" path="res://Sound/Resources/sfx_throw_light.tres" id="21_u58xy"]
 [ext_resource type="PackedScene" uid="uid://bal2ut1om714c" path="res://Farm/Shed/Wall_Destroyed.tscn" id="21_w6j06"]
@@ -458,25 +456,6 @@ CustomId = "basement_key"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Basement/BasementUnlockArea"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.349139, -0.359888)
 shape = SubResource("BoxShape3D_w1bpo")
-
-[node name="PotSign" parent="World/NavigationRegion3D" instance=ExtResource("19_up103")]
-transform = Transform3D(0.884622, 0, 0.46631, 0, 1, 0, -0.46631, 0, 0.884622, -3.1084, -2, 2.45581)
-visible = false
-
-[node name="Label3D" type="Label3D" parent="World/NavigationRegion3D/PotSign"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805047, 0.0826511)
-text = "Pot"
-outline_size = 0
-
-[node name="Sprite3D" type="Sprite3D" parent="World/NavigationRegion3D/PotSign"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0612478, 0.577809, 0.085988)
-modulate = Color(0.4, 1, 0.4, 1)
-texture = ExtResource("20_uqr56")
-
-[node name="Sprite3D2" type="Sprite3D" parent="World/NavigationRegion3D/PotSign"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.119944, 0.577809, 0.0859871)
-modulate = Color(0.4, 1, 0.4, 1)
-texture = ExtResource("20_uqr56")
 
 [node name="WoodenStand" type="Node3D" parent="World/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://c4y5vevqcfxcx"]
+
+[ext_resource type="Texture2D" uid="uid://dkoujqg32vl11" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_plantbox.png" id="1_dtkk5"]
+[ext_resource type="Resource" uid="uid://cpp3cxsfm31s3" path="res://Item/Resources/Repair_PlantBox.tres" id="2_8fdbd"]
+[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_fsnac"]
+
+[resource]
+script = ExtResource("3_fsnac")
+Id = "plantbox_forest"
+ResultIcon = ExtResource("1_dtkk5")
+ResultItemInfo = ExtResource("2_8fdbd")
+OverrideResultName = ""
+ResultDialogueNode = ""
+VegetableCount = 0
+BoneCount = 5
+CanCancel = true
+Areas = Array[int]([2])

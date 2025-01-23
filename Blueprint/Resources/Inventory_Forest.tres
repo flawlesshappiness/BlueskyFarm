@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_7na75")
-Id = "inventory_001"
+Id = "inventory_forest"
 ResultIcon = ExtResource("1_04mch")
 ResultItemInfo = ExtResource("2_2al40")
 OverrideResultName = ""

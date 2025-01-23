@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://vf332xuy8kvx"]
+[gd_scene load_steps=6 format=3 uid="uid://vf332xuy8kvx"]
 
 [ext_resource type="PackedScene" uid="uid://dsvb4girn154q" path="res://Basement/Assets/Forest/Tree_Base.tscn" id="1_vtevb"]
 [ext_resource type="PackedScene" uid="uid://dmxoif37bmfxi" path="res://Assets/Quaternius/Nature/CommonTree_1.gltf" id="2_qch1g"]
+[ext_resource type="Material" uid="uid://20l650k6hgj2" path="res://Assets/Materials/Wood.tres" id="3_i528d"]
+[ext_resource type="Material" uid="uid://dx4ynolfcumax" path="res://Assets/Materials/CommonTree_Leaves.tres" id="4_7su3k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v44ra"]
 radius = 0.588168
@@ -15,3 +17,9 @@ shape = SubResource("CapsuleShape3D_v44ra")
 
 [node name="CommonTree_12" parent="." index="1" instance=ExtResource("2_qch1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204796, -0.181827)
+
+[node name="CommonTree_1" parent="CommonTree_12" index="0"]
+surface_material_override/0 = ExtResource("3_i528d")
+surface_material_override/1 = ExtResource("4_7su3k")
+
+[editable path="CommonTree_12"]

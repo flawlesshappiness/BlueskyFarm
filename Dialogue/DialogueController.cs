@@ -173,16 +173,7 @@ public partial class DialogueController : SingletonController
 
         foreach (var flag in flags)
         {
-            Debug.TraceMethod(flag.id);
-
-            var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == flag.id);
-            if (data == null)
-            {
-                data = new DialogueFlagBool { id = flag.id };
-                Data.Game.DialogFlags_Bool.Add(data);
-            }
-
-            data.value = flag.value;
+            SetFlag(flag.id, flag.value);
         }
     }
 
@@ -192,17 +183,48 @@ public partial class DialogueController : SingletonController
 
         foreach (var flag in flags)
         {
-            Debug.TraceMethod(flag.id);
-
-            var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == flag.id);
-            if (data == null)
-            {
-                data = new DialogueFlagInt { id = flag.id };
-                Data.Game.DialogFlags_Int.Add(data);
-            }
-
-            data.value = flag.value;
+            SetFlag(flag.id, flag.value);
         }
+    }
+
+    public void SetFlag(string id, bool value)
+    {
+        Debug.TraceMethod($"{id}: {value}");
+
+        var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == id);
+        if (data == null)
+        {
+            data = new DialogueFlagBool { id = id };
+            Data.Game.DialogFlags_Bool.Add(data);
+        }
+
+        data.value = value;
+    }
+
+    public void SetFlag(string id, int value)
+    {
+        Debug.TraceMethod($"{id}: {value}");
+
+        var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == id);
+        if (data == null)
+        {
+            data = new DialogueFlagInt { id = id };
+            Data.Game.DialogFlags_Int.Add(data);
+        }
+
+        data.value = value;
+    }
+
+    public int GetIntFlag(string id)
+    {
+        var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == id);
+        return data?.value ?? 0;
+    }
+
+    public bool GetBoolFlag(string id)
+    {
+        var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == id);
+        return data?.value ?? false;
     }
 
     private void UpdateTriggers(DialogueNode node)

@@ -226,8 +226,6 @@ public partial class BasementScene : GameScene
             item.Disable();
             item.LockPosition_All();
             container.Item = item;
-
-            Debug.Log($"Created blueprint {blueprint.Id} in {area.AreaName}");
         }
     }
 

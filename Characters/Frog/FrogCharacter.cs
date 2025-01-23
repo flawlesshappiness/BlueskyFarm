@@ -71,21 +71,33 @@ public partial class FrogCharacter : Character
 
     private void Touched()
     {
-        if (HasFlag("frog_intro"))
+        if (HasFlag(DialogueFlags.FirstDeath, 1))
+        {
+            StartDialogue("##FROG_FIRST_DEATH_001##");
+        }
+        else if (HasFlag(DialogueFlags.FrogIntro, 1))
         {
             StartDialogue("##FROG_INTRO_REPEAT_001##");
         }
-        else if (HasFlag("frog_find_seeds"))
+        else if (HasFlag(DialogueFlags.FrogIntro, 2))
         {
             StartDialogue("##FROG_FIND_SEEDS_REPEAT_001##");
         }
-        else if (HasFlag("frog_find_weedcutter"))
+        else if (HasFlag(DialogueFlags.FrogWeedcutter, 1))
         {
             StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_001##");
         }
-        else if (HasFlag("frog_find_weedcutter_repeat"))
+        else if (HasFlag(DialogueFlags.FrogWeedcutter, 2))
         {
             StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##");
+        }
+        else if (HasFlag(DialogueFlags.FrogWeedcutter, 3) && Player.Instance.HasAccessToBlueprint("weedcutter"))
+        {
+            StartDialogue("##FROG_WEEDCUTTER_CREATE_001##");
+        }
+        else if (HasFlag(DialogueFlags.FrogWeedcutter, 4))
+        {
+            StartDialogue("##FROG_FOREST_ENTER_REPEAT_001##");
         }
         else
         {

@@ -9,6 +9,7 @@ script = ExtResource("3_7na75")
 Id = "inventory_001"
 ResultIcon = ExtResource("1_04mch")
 ResultItemInfo = ExtResource("2_2al40")
+OverrideResultName = ""
 ResultDialogueNode = ""
 VegetableCount = 2
 BoneCount = 5

@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("2_s7x64")
 Id = "tutorial_001"
+OverrideResultName = ""
 ResultDialogueNode = "##FROG_FIND_SEEDS_001##"
 VegetableCount = 1
 BoneCount = 0

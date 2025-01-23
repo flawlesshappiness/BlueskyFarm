@@ -24,30 +24,34 @@ keys;en
 ##NOTE_FOREST_BED_002##;The wood in this area is unique. Sturdy and pale.\nI will bring some to the new place.
 ##NOTE_FOREST_BED_003##;I used it for the bed. I can make a blueprint, so do not take it.
 ##NOTE_FOREST_BED_004##;It was really hard to get up here.
-##FROG_INTRO_001##;Did you just come in?
-##FROG_INTRO_002##;I thought applications were closed...\nNo matter. Welcome to the farm!
-##FROG_INTRO_003##;I understand that everything here is new for you, so consider me your supervisor.
-##FROG_INTRO_004##;Now for your first task...
-##FROG_INTRO_005##;Take this seed, plant it, and come back to me with the crop.
+##FROG_INTRO_001##;Welcome to the farm!\nYou can call me Fren.
+##FROG_INTRO_002##;I've been assigned as your supervisor, and will be the one to give you your introductory tasks.
+##FROG_INTRO_003##;I understand that everything here is new for you, so let's start with something simple.
+##FROG_INTRO_004##;Take this seed, plant it, and come back to me with the crop.
 ##FROG_INTRO_REPEAT_001##;I gave you a seed. Plant it, and wait for it to grow.
 ##FROG_INTRO_REPEAT_002##;Bring me the crop once it has fully grown.
 ##FROG_FIND_SEEDS_001##;Excellent!\nLooks like you will be good at this in no time.
-##FROG_FIND_SEEDS_002##;We've been storing seeds down in the basement.
+##FROG_FIND_SEEDS_002##;We used to store seeds down in the basement.
 ##FROG_FIND_SEEDS_003##;Here is the key.\nLet's see you grow a few more crops.
 ##FROG_FIND_SEEDS_004##;Oh also, I shouldn't have to say this but, uh...\nLet the wild life be, alright?
-##FROG_FIND_SEEDS_REPEAT_001##;We've been storing seeds down in the basement.
+##FROG_FIND_SEEDS_REPEAT_001##;We used to store seeds down in the basement.
 ##FROG_FIND_SEEDS_REPEAT_002##;Go collect some, and grow a few more crops.
 ##FROG_FIND_SEEDS_REPEAT_003##;Don't get lost down there.
 ##FROG_FARM_MESS_001##;Great work!
 ##FROG_FARM_MESS_002##;This farm is in a bit of disarray.\nTake those planks and make another plant box for yourself.
-##FROG_FARM_MESS_003##;With this kind of progress you're shaping up to be employee of the month!
-##FROG_FARM_MESS_004##;If only... that title existed anymore.
-##FROG_FARM_MESS_005##;Unfortunately things have changed a bit, as you saw down there. It's a bit of a mess.
-##FROG_FARM_MESS_006##;But messes are only here until someone cleans them up.\nSo let's get to work!
-##FROG_BLUEPRINT_WEEDCUTTER_001##;I'm sure you've noticed. Nature here is slightly... bigger.
-##FROG_BLUEPRINT_WEEDCUTTER_002##;Plants grow at explosive rates, and wildlife adapts in turn.
-##FROG_BLUEPRINT_WEEDCUTTER_003##;There's a forest near here, the basement connects to it. Only it's been some time since anyone's been through there.
-##FROG_BLUEPRINT_WEEDCUTTER_004##;If we could gain entrance then the mines won't be far, and the...\nWe'd have all the materials we need!
+##FROG_FARM_MESS_003##;Then we will talk about your next task.
+##FROG_BLUEPRINT_WEEDCUTTER_001##;Listen, to tell you the truth...
+##FROG_BLUEPRINT_WEEDCUTTER_002##;This whole company thing...\nIt's kind of on pause right now.
+##FROG_BLUEPRINT_WEEDCUTTER_003##;Someone was a little lax during the hiring process.\nEnded up letting in some nasty people. Real nasty...
+##FROG_BLUEPRINT_WEEDCUTTER_004##;I think there's a way we can deal with this issue, but I'm going to need your help. From the basement there is a way into the forest, but it might be heavily overgrown.
 ##FROG_BLUEPRINT_WEEDCUTTER_005##;We'll need a tool to cut our way through. Try and look for something, like a workshop, down there.
 ##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##;You'll need a tool to cut your way into the forest.
 ##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##;Look for a workshop down there. Maybe they left some things behind.
+##FROG_WEEDCUTTER_CREATE_001##;Good work out there. Let's get that weedcutter crafted, so that you can proceed to the forest.
+##FROG_FOREST_ENTER_001##;Excellent!\nWith this you can cut your way through the overgrowth.
+##FROG_FOREST_ENTER_002##;There's a mine entrance in the forest, where you will be able to find most of the material we are going to need.
+##FROG_FOREST_ENTER_003##;Those nasty people have also settled in a building near the forest. Try to avoid a confrontation.
+##FROG_FOREST_ENTER_REPEAT_001##;There's a mine entrace in the forest. We are going to need the materials from there.
+##FROG_FOREST_ENTER_REPEAT_002##;If you get lost, try to look for signs. They will point you in the right direction.
+##FROG_FIRST_DEATH_001##;Woah, you're looking worse for wear.\nYou alright?
+##FROG_FIRST_DEATH_002##;Listen, most things down there don't want nothing to do with you. Try to keep distance and you should be good.

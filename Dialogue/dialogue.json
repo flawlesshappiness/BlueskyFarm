@@ -55,14 +55,10 @@
 	},
 	{
 		"id": "##FROG_INTRO_004##",
-		"next": "##FROG_INTRO_005##"
-	},
-	{
-		"id": "##FROG_INTRO_005##",
-		"flags_b": [
+		"flags_i": [
 			{
 				"id": "frog_intro",
-				"value": true
+				"value": 1
 			}
 		],
 		"triggers": [
@@ -92,14 +88,10 @@
 	},
 	{
 		"id": "##FROG_FIND_SEEDS_004##",
-		"flags_b": [
+		"flags_i": [
 			{
 				"id": "frog_intro",
-				"value": false
-			},
-			{
-				"id": "frog_find_seeds",
-				"value": true
+				"value": 2
 			}
 		],
 		"triggers": [
@@ -112,7 +104,11 @@
 		"next": "##FROG_FIND_SEEDS_REPEAT_002##"
 	},
 	{
-		"id": "##FROG_FIND_SEEDS_REPEAT_002##"
+		"id": "##FROG_FIND_SEEDS_REPEAT_002##",
+		"next": "##FROG_FIND_SEEDS_REPEAT_003##"
+	},
+	{
+		"id": "##FROG_FIND_SEEDS_REPEAT_003##"
 	},
 	
 	{
@@ -125,26 +121,14 @@
 	},
 	{
 		"id": "##FROG_FARM_MESS_003##",
-		"next": "##FROG_FARM_MESS_004##"
-	},
-	{
-		"id": "##FROG_FARM_MESS_004##",
-		"next": "##FROG_FARM_MESS_005##"
-	},
-	{
-		"id": "##FROG_FARM_MESS_005##",
-		"next": "##FROG_FARM_MESS_006##"
-	},
-	{
-		"id": "##FROG_FARM_MESS_006##",
-		"flags_b": [
+		"flags_i": [
 			{
-				"id": "frog_find_seeds",
-				"value": false
+				"id": "frog_intro",
+				"value": 3
 			},
 			{
-				"id": "frog_find_weedcutter",
-				"value": true
+				"id": "frog_weedcutter",
+				"value": 1
 			}
 		]
 	},
@@ -167,14 +151,10 @@
 	},
 	{
 		"id": "##FROG_BLUEPRINT_WEEDCUTTER_005##",
-		"flags_b": [
+		"flags_i": [
 			{
-				"id": "frog_find_weedcutter",
-				"value": false
-			},
-			{
-				"id": "frog_find_weedcutter_repeat",
-				"value": true
+				"id": "frog_weedcutter",
+				"value": 2
 			}
 		],
 		"triggers": [
@@ -188,5 +168,49 @@
 	},
 	{
 		"id": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##"
+	},
+	
+	{
+		"id": "##FROG_WEEDCUTTER_CREATE_001##"
+	},
+	
+	{
+		"id": "##FROG_FOREST_ENTER_001##",
+		"next": "##FROG_FOREST_ENTER_002##"
+	},
+	{
+		"id": "##FROG_FOREST_ENTER_002##",
+		"next": "##FROG_FOREST_ENTER_003##"
+	},
+	{
+		"id": "##FROG_FOREST_ENTER_003##",
+		"flags_i": [
+			{
+				"id": "frog_weedcutter",
+				"value": 4
+			}
+		]
+	},
+	
+	{
+		"id": "##FROG_FOREST_ENTER_REPEAT_001##",
+		"next": "##FROG_FOREST_ENTER_REPEAT_002##"
+	},
+	{
+		"id": "##FROG_FOREST_ENTER_REPEAT_002##"
+	},
+	
+	{
+		"id": "##FROG_FIRST_DEATH_001##",
+		"next": "##FROG_FIRST_DEATH_002##"
+	},
+	{
+		"id": "##FROG_FIRST_DEATH_002##",
+		"flags_i": [
+			{
+				"id": "first_death",
+				"value": 2
+			}
+		]
 	}
 ]

@@ -132,14 +132,12 @@ public partial class Character : Node3DScript
 
     protected bool HasFlag(string id)
     {
-        var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == id);
-        return data?.value ?? false;
+        return DialogueController.Instance.GetBoolFlag(id);
     }
 
-    protected int GetFlag(string id)
+    protected bool HasFlag(string id, int i)
     {
-        var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == id);
-        return data?.value ?? 0;
+        return DialogueController.Instance.GetIntFlag(id) == i;
     }
 
     protected void TurnTowardsPlayer()

@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://d0hfm0472u26n"]
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://d0hfm0472u26n"]
 
-[ext_resource type="AudioStream" uid="uid://dbqed3nf8eif" path="res://Sound/Sounds/sfx_puzzle_drone_001.wav" id="1_bncqx"]
-[ext_resource type="AudioStream" uid="uid://dfxboht3gq7ya" path="res://Sound/Sounds/sfx_puzzle_drone_002.wav" id="2_yq37x"]
-[ext_resource type="AudioStream" uid="uid://bw40osdlm3d3b" path="res://Sound/Sounds/sfx_puzzle_drone_003.wav" id="3_332pf"]
-[ext_resource type="AudioStream" uid="uid://c8wneial5xwvc" path="res://Sound/Sounds/sfx_puzzle_drone_004.wav" id="4_hmgmc"]
 [ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_knkhd"]
 
 [resource]
 script = ExtResource("4_knkhd")
-AudioStreams = Array[AudioStream]([ExtResource("1_bncqx"), ExtResource("2_yq37x"), ExtResource("3_332pf"), ExtResource("4_hmgmc")])
+AudioStreams = Array[AudioStream]([])
 Volume = 0.0
+Looping = false
 PitchRange = Vector2(1, 1)
 Bus = 1
 Distance = 0

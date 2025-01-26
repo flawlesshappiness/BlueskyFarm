@@ -115,9 +115,14 @@ public partial class Character : Node3DScript
 
     protected virtual void OnDialogue(DialogueNode node)
     {
-        if (!string.IsNullOrEmpty(node.animation))
+        OnDialogueAnimation(node.animation);
+    }
+
+    protected virtual void OnDialogueAnimation(string animation)
+    {
+        if (!string.IsNullOrEmpty(animation))
         {
-            var state = AnimationStateMachine.Animations.TryGetValue(node.animation, out var value) ? value : null;
+            var state = AnimationStateMachine.Animations.TryGetValue(animation, out var value) ? value : null;
             if (state != null)
             {
                 AnimationStateMachine.SetCurrentState(state.Node);

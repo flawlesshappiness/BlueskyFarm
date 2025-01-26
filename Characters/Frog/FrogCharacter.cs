@@ -1,4 +1,7 @@
+using FlawLizArt.Animation.StateMachine;
 using Godot;
+using System.Collections;
+using System.Collections.Generic;
 
 public partial class FrogCharacter : Character
 {
@@ -11,6 +14,11 @@ public partial class FrogCharacter : Character
     private bool _active_dialogue;
     private Vector3 _init_direction;
 
+    private AnimationState _anim_grab;
+    private TriggerParameter _param_wave;
+    private IntParameter _param_idle;
+    private List<AnimationState> _anims_dialogue = new();
+
     public override void _Ready()
     {
         base._Ready();
@@ -18,27 +26,12 @@ public partial class FrogCharacter : Character
         _init_direction = GlobalBasis * -Vector3.Forward;
 
         Touchable.OnTouched += Touched;
+        BlueprintCrafting.OnBlueprintStarted += OnBlueprintStarted;
         BlueprintCrafting.OnBlueprintCompleted += OnBlueprintCompleted;
+        BlueprintCrafting.OnMaterialReceived += OnMaterialReceived;
+        AnimationPlayer.AnimationStarted += AnimationStarted;
 
         InitializeAnimations();
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
-        PhysicsProcess_Turn();
-    }
-
-    private void PhysicsProcess_Turn()
-    {
-        if (ActiveDialogue)
-        {
-            TurnTowardsPlayer();
-        }
-        else
-        {
-            TurnTowardsDirection(_init_direction);
-        }
     }
 
     private void InitializeAnimations()
@@ -46,16 +39,79 @@ public partial class FrogCharacter : Character
         AnimationPlayer.PlaybackDefaultBlendTime = 0.25f;
         AnimationStateMachine.Initialize(AnimationPlayer);
 
-        var anim_idle = AnimationStateMachine.CreateAnimation("CharacterArmature|Idle", true);
-        var anim_yes = AnimationStateMachine.CreateAnimation("CharacterArmature|Yes", false);
-        var anim_no = AnimationStateMachine.CreateAnimation("CharacterArmature|No", false);
-        var anim_wave = AnimationStateMachine.CreateAnimation("CharacterArmature|Wave", false);
+        var anim_idle = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand", true);
+        var anim_idle_var1 = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Variant1", true);
+        var anim_idle_var2 = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Variant2", true);
+        _anim_grab = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Grab", false);
+        var anim_wave = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Wave", false);
+        var anim_dialogue_hand = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Dialogue_Hand", false);
+        var anim_dialogue_nod = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Dialogue_Nod", false);
+        var anim_dialogue_tilt = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand_Dialogue_Tilt", false);
 
-        AnimationStateMachine.Connect(anim_yes.Node, anim_idle.Node);
-        AnimationStateMachine.Connect(anim_no.Node, anim_idle.Node);
+        _anims_dialogue.Add(anim_dialogue_hand);
+        _anims_dialogue.Add(anim_dialogue_nod);
+        _anims_dialogue.Add(anim_dialogue_tilt);
+
+        _param_wave = new TriggerParameter("wave");
+        _param_idle = new IntParameter("idle", 0);
+
+        AnimationStateMachine.Connect(anim_idle_var1.Node, anim_idle.Node);
+        AnimationStateMachine.Connect(anim_idle_var2.Node, anim_idle.Node);
+        AnimationStateMachine.Connect(_anim_grab.Node, anim_idle.Node);
         AnimationStateMachine.Connect(anim_wave.Node, anim_idle.Node);
+        AnimationStateMachine.Connect(anim_dialogue_hand.Node, anim_idle.Node);
+        AnimationStateMachine.Connect(anim_dialogue_nod.Node, anim_idle.Node);
+        AnimationStateMachine.Connect(anim_dialogue_tilt.Node, anim_idle.Node);
+
+        AnimationStateMachine.Connect(anim_idle.Node, anim_idle_var1.Node, _param_idle.When(ComparisonType.Equal, 1));
+        AnimationStateMachine.Connect(anim_idle.Node, anim_idle_var2.Node, _param_idle.When(ComparisonType.Equal, 2));
+        AnimationStateMachine.Connect(anim_idle_var1.Node, anim_idle.Node, _param_idle.When(ComparisonType.Equal, 0));
+        AnimationStateMachine.Connect(anim_idle_var2.Node, anim_idle.Node, _param_idle.When(ComparisonType.Equal, 0));
 
         AnimationStateMachine.Start(anim_idle.Node);
+    }
+
+    protected override void OnDialogueAnimation(string animation)
+    {
+        if (string.IsNullOrEmpty(animation))
+        {
+            var anim = _anims_dialogue.Random();
+            AnimationStateMachine.SetCurrentState(anim.Node);
+            _param_idle.Set(0);
+        }
+        else
+        {
+            base.OnDialogueAnimation(animation);
+        }
+    }
+
+    private void AnimationStarted(StringName animName)
+    {
+        if (animName.ToString().Contains("Idle_Stand"))
+        {
+            this.StartCoroutine(IdleCr, "animation");
+        }
+
+        IEnumerator IdleCr()
+        {
+            var rng = new RandomNumberGenerator();
+            var delay = rng.RandfRange(5, 20);
+            yield return new WaitForSeconds(delay);
+
+            if (_param_idle.Value == 0)
+            {
+                _param_idle.Set(rng.RandiRange(1, 2));
+            }
+            else
+            {
+                _param_idle.Set(0);
+            }
+        }
+    }
+
+    private void OnBlueprintStarted()
+    {
+        AnimationStateMachine.SetCurrentState(_anim_grab.Node);
     }
 
     private void OnBlueprintCompleted(string id)
@@ -67,6 +123,11 @@ public partial class FrogCharacter : Character
         {
             StartDialogue(info.ResultDialogueNode);
         }
+    }
+
+    private void OnMaterialReceived()
+    {
+        AnimationStateMachine.SetCurrentState(_anim_grab.Node);
     }
 
     private void Touched()

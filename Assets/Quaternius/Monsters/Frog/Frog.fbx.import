@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ct1km3fnayoe1"
-path="res://.godot/imported/Frog.fbx-a583999df926a3cf06963367489cd779.scn"
+path="res://.godot/imported/frog.fbx-73e9269b58285c650b16030b4cf809e8.scn"
 
 [deps]
 
-source_file="res://Assets/Quaternius/Monsters/Frog/Frog.fbx"
-dest_files=["res://.godot/imported/Frog.fbx-a583999df926a3cf06963367489cd779.scn"]
+source_file="res://Assets/Quaternius/Monsters/Frog/frog.fbx"
+dest_files=["res://.godot/imported/frog.fbx-73e9269b58285c650b16030b4cf809e8.scn"]
 
 [params]
 
@@ -31,7 +31,39 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Cloth_Red": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Cloth_Red.tres"
+},
+"Darkness": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Darkness.tres"
+},
+"Eye": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Frog_Eye.tres"
+},
+"Frog_Primary": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Frog_Primary.tres"
+},
+"Frog_Secondary": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Frog_Secondary.tres"
+},
+"Leather": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Rope.tres"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"optimizer/enabled": false
+}
+}
+}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

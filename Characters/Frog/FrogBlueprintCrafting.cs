@@ -48,6 +48,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
         if (HasBlueprint && IsValidMaterial(item))
         {
             AddMaterial(item);
+            OnMaterialReceived?.Invoke();
         }
         else if (!HasBlueprint && IsValidBlueprint(item))
         {

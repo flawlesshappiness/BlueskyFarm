@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://djf4wspv2r46j"]
+
+[ext_resource type="AudioStream" uid="uid://bibi2p7miep36" path="res://Sound/Sounds/sfx_area_enter_005.wav" id="1_vxa65"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_2d3jw"]
+
+[resource]
+script = ExtResource("2_2d3jw")
+AudioStreams = Array[AudioStream]([ExtResource("1_vxa65")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(1, 1)
+Bus = 3
+Distance = 0
+Attenuation = 1

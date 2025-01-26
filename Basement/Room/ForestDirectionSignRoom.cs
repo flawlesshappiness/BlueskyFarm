@@ -26,7 +26,7 @@ public partial class ForestDirectionSignRoom : Node3DScript
         foreach (var room in area_rooms)
         {
             var area_name = room.Element.Info.Area;
-            Sign.CreateDirection($"##{area_name}##", room.GlobalPosition);
+            Sign.CreateDirection($"##{area_name.ToUpper()}##", room.GlobalPosition);
         }
     }
 }

@@ -112,6 +112,7 @@ public partial class FrogCharacter : Character
     private void OnBlueprintStarted()
     {
         AnimationStateMachine.SetCurrentState(_anim_grab.Node);
+        _param_idle.Set(0);
     }
 
     private void OnBlueprintCompleted(string id)
@@ -128,6 +129,7 @@ public partial class FrogCharacter : Character
     private void OnMaterialReceived()
     {
         AnimationStateMachine.SetCurrentState(_anim_grab.Node);
+        _param_idle.Set(0);
     }
 
     private void Touched()

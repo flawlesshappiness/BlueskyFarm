@@ -38,12 +38,24 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         CurrentArea = area;
         StartBackgroundAmbience();
         StartAmbientNoise();
+        PlayAreaEnterMusic();
         FadeEffects();
     }
 
     private AmbienceInfo GetInfo(string area)
     {
         return Collection.Resources.FirstOrDefault(x => x.Area == area);
+    }
+
+    private void PlayAreaEnterMusic()
+    {
+        this.StartCoroutine(Cr, "area_enter");
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(5f);
+            var sfx = $"sfx_enter_{CurrentArea}".ToLower();
+            SoundController.Instance.Play(sfx);
+        }
     }
 
     public void StartAmbienceImmediate(string area)
@@ -60,6 +72,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         _current_background_asp = SoundController.Instance.Play(CurrentInfo.BackgroundSound);
         StartAmbientNoise();
         SetEffectsImmediate();
+        PlayAreaEnterMusic();
     }
 
     // Background ambience

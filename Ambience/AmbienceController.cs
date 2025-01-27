@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
     public string CurrentArea { get; private set; }
     public AmbienceInfo CurrentInfo { get; private set; }
 
+    private float _time_bgm_area_enter;
     private AudioStreamPlayer _current_background_asp;
     private List<Coroutine> _cr_noises = new();
 
@@ -49,12 +51,21 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
 
     private void PlayAreaEnterMusic()
     {
+        if (GameTime.Time < _time_bgm_area_enter) return;
+
+        var sfx = $"sfx_enter_{CurrentArea}".ToLower();
+        var info = SoundController.Instance.Collection.GetResource(sfx);
+        if (info == null) return;
+
         this.StartCoroutine(Cr, "area_enter");
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(5f);
-            var sfx = $"sfx_enter_{CurrentArea}".ToLower();
-            SoundController.Instance.Play(sfx);
+
+            var asp = SoundController.Instance.Play(info);
+            var stream = asp.Stream;
+
+            _time_bgm_area_enter = GameTime.Time + Convert.ToSingle(stream.GetLength());
         }
     }
 

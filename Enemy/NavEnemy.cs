@@ -14,6 +14,21 @@ public partial class NavEnemy : Enemy
     [Export]
     public float TurnSpeed = 10;
 
+    public bool Spawned { get; private set; }
+    protected float CurrentSpeed { get; set; }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        Spawn(IsDebug);
+    }
+
+    protected virtual void Spawn(bool debug)
+    {
+        Spawned = true;
+        CurrentSpeed = MoveSpeed;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -33,11 +48,11 @@ public partial class NavEnemy : Enemy
 
         if (Agent.AvoidanceEnabled)
         {
-            Agent.Velocity = dir * MoveSpeed * GameTime.DeltaTime;
+            Agent.Velocity = dir * CurrentSpeed * GameTime.DeltaTime;
         }
         else
         {
-            OnVelocityComputed(dir * MoveSpeed);
+            OnVelocityComputed(dir * CurrentSpeed);
         }
     }
 
@@ -92,15 +107,15 @@ public partial class NavEnemy : Enemy
             .FirstOrDefault();
     }
 
-    public IEnumerable<BasementRoomElement> GetClosestRoomElements(string area = null, Func<BasementRoomElement, bool> validate = null)
+    public IEnumerable<BasementRoomElement> GetClosestRoomElements(Func<BasementRoomElement, bool> validate = null)
     {
         return GetRooms(validate)
             .OrderBy(x => GlobalPosition.DistanceTo(x.Room.GlobalPosition));
     }
 
-    public BasementRoomElement GetClosestRoomElement(string area = null, Func<BasementRoomElement, bool> validate = null)
+    public BasementRoomElement GetClosestRoomElement(Func<BasementRoomElement, bool> validate = null)
     {
-        return GetClosestRoomElements(area, validate)
+        return GetClosestRoomElements(validate)
             .FirstOrDefault();
     }
 

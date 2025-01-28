@@ -8,4 +8,4 @@ script = ExtResource("1_vscfn")
 Scene = ExtResource("1_olwuj")
 Enabled = true
 IsDangerous = false
-Areas = Array[int]([1, 2])
+Areas = Array[int]([1])

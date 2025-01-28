@@ -15,7 +15,7 @@ public partial class ForestDirectionSignRoom : Node3DScript
 
     private void FindDirections()
     {
-        var area_names = new List<string>() { AreaNames.Basement, AreaNames.Mine, AreaNames.Cult };
+        var area_names = new List<string>() { AreaNames.Forest, AreaNames.Mine, AreaNames.Cult };
 
         var area_rooms = BasementController.Instance.CurrentBasement.Grid.Elements
             .Where(x => x.IsStart && area_names.Any(area => x.AreaName == area.ToString()))
@@ -25,7 +25,7 @@ public partial class ForestDirectionSignRoom : Node3DScript
         // Create directions
         foreach (var room in area_rooms)
         {
-            var area_name = room.Element.Info.Area;
+            var area_name = room.Element.Info.Area == AreaNames.Forest ? AreaNames.Basement : room.Element.Info.Area;
             Sign.CreateDirection($"##{area_name.ToUpper()}##", room.GlobalPosition);
         }
     }

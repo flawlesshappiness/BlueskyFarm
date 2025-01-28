@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="SoundInfo" load_steps=2 format=3 uid="uid://d0hfm0472u26n"]
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://d0hfm0472u26n"]
 
+[ext_resource type="AudioStream" uid="uid://cqr1jndxq0fwu" path="res://Sound/Sounds/sfx_puzzle_basement_001.wav" id="1_2g4ed"]
+[ext_resource type="AudioStream" uid="uid://sbumlnqfkgyf" path="res://Sound/Sounds/sfx_puzzle_basement_002.wav" id="2_a3ewy"]
+[ext_resource type="AudioStream" uid="uid://csg5kjjkyq7ae" path="res://Sound/Sounds/sfx_puzzle_basement_003.wav" id="3_cb1te"]
 [ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_knkhd"]
 
 [resource]
 script = ExtResource("4_knkhd")
-AudioStreams = Array[AudioStream]([])
+AudioStreams = Array[AudioStream]([ExtResource("1_2g4ed"), ExtResource("2_a3ewy"), ExtResource("3_cb1te")])
 Volume = 0.0
 Looping = false
 PitchRange = Vector2(1, 1)

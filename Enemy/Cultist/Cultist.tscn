@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://l3ku74dceqne"]
+
+[ext_resource type="Script" path="res://Enemy/Cultist/CultistEnemy.cs" id="1_m3wvw"]
+[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ohgjn"]
+[ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/frog.fbx" id="2_ech83"]
+
+[node name="Cultist" type="Node3D"]
+script = ExtResource("1_m3wvw")
+RunSpeed = 5.0
+MoveSpeed = 0.5
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_postprocessing = 1
+
+[node name="AnimationStateMachine" type="Node" parent="."]
+script = ExtResource("1_ohgjn")
+
+[node name="frog" parent="." instance=ExtResource("2_ech83")]
+
+[node name="Skeleton3D" parent="frog/Armature" index="0"]
+bones/3/rotation = Quaternion(0.143732, 4.33385e-07, 8.87617e-08, 0.989617)
+bones/4/rotation = Quaternion(0.0402403, -8.31589e-07, 9.10248e-09, 0.99919)
+bones/5/rotation = Quaternion(0.205488, 1.01371e-06, 8.77979e-08, 0.97866)
+bones/6/rotation = Quaternion(0.422575, -0.000233853, -0.000164508, 0.906328)
+bones/7/rotation = Quaternion(0.4848, 0.849225, 0.06169, -0.199952)
+bones/11/rotation = Quaternion(-0.00313614, 0.0544906, -0.40839, 0.911174)
+bones/12/rotation = Quaternion(0.405541, 0.544623, 0.527945, -0.510095)
+bones/13/rotation = Quaternion(0.0402123, 0.259585, -0.860144, 0.437209)
+bones/15/rotation = Quaternion(-0.0283751, -0.0048229, -0.167482, 0.985455)
+bones/16/rotation = Quaternion(-0.106642, -0.0009224, 0.00859772, 0.99426)
+bones/19/rotation = Quaternion(-0.112773, 0.000768107, 0.0145153, 0.993514)
+bones/20/rotation = Quaternion(0.0205605, -0.000987742, -0.00125055, 0.999787)
+bones/23/rotation = Quaternion(0.0422546, 0.0256416, 0.232305, 0.971386)
+bones/24/rotation = Quaternion(-0.0766131, -0.001527, -0.0198675, 0.996862)
+bones/27/rotation = Quaternion(-0.011629, 0.00251732, 0.212192, 0.977156)
+bones/29/rotation = Quaternion(-0.00313566, -0.0544901, 0.40839, 0.911174)
+bones/30/rotation = Quaternion(-0.471847, 0.540901, 0.512718, 0.47107)
+bones/31/rotation = Quaternion(-0.0163431, -0.258269, 0.860928, 0.437987)
+bones/47/rotation = Quaternion(0.995139, 0.00448899, 0.0169721, 0.0969067)
+bones/47/scale = Vector3(1, 0.999996, 1.00002)
+bones/48/rotation = Quaternion(0.166805, -0.000243509, 0.00176049, 0.985988)
+bones/49/rotation = Quaternion(4.74002e-05, -0.646659, 0.762766, -0.00444867)
+bones/51/rotation = Quaternion(0.995138, -0.00448938, -0.0169721, 0.0969135)
+bones/52/rotation = Quaternion(0.166818, 0.000244116, -0.00176105, 0.985986)
+bones/52/scale = Vector3(1, 0.999995, 1.00001)
+bones/53/rotation = Quaternion(-4.71625e-05, -0.646658, 0.762767, 0.00444834)
+bones/55/position = Vector3(0.0289749, 0.00875964, 0.00386579)
+bones/57/position = Vector3(-0.0289749, 0.00875964, 0.00386579)
+bones/63/position = Vector3(0.00414724, -0.00434487, 0.0120493)
+bones/63/rotation = Quaternion(-0.494215, 0.505719, 0.505719, -0.494215)
+bones/65/position = Vector3(-0.00414724, -0.00434487, 0.0120493)
+
+[editable path="frog"]

@@ -28,7 +28,7 @@ public partial class SignDirection : Node3D
         board.Text = text;
         board.GlobalPosition = GlobalPosition.Add(y: GetBoardHeight(_boards.Count));
         var direction = GlobalPosition.Set(y: 0).DirectionTo(target.Set(y: 0)).Normalized();
-        board.GlobalRotation = RotationTowards(direction);
+        board.GlobalRotationDegrees = RotationTowards(direction);
         _boards.Add(board);
     }
 
@@ -39,7 +39,7 @@ public partial class SignDirection : Node3D
 
     private Vector3 RotationTowards(Vector3 target)
     {
-        var angle = Vector3.Forward.AngleTo(target);
+        var angle = Mathf.RadToDeg(Vector3.Forward.SignedAngleTo(target, Vector3.Up));
         return new Vector3(0, angle, 0);
     }
 }

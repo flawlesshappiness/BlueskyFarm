@@ -93,6 +93,12 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         var volume = settings?.Volume ?? info.Volume;
         var stream = GetRandomAudioStream(entry);
 
+        if (stream == null)
+        {
+            Debug.LogError($"SetupAudioStreamPlayer for {info.ResourcePath}: Stream was null");
+            return;
+        }
+
         // 3D
         var distance = settings?.Distance ?? info.Distance;
         var max_distance = distance switch

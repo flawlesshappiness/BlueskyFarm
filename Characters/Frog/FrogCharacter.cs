@@ -36,7 +36,7 @@ public partial class FrogCharacter : Character
 
     private void InitializeAnimations()
     {
-        AnimationPlayer.PlaybackDefaultBlendTime = 0.25f;
+        AnimationPlayer.PlaybackDefaultBlendTime = 0.15f;
         AnimationStateMachine.Initialize(AnimationPlayer);
 
         var anim_idle = AnimationStateMachine.CreateAnimation("Armature|Idle_Stand", true);

@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dh65tfqa1nwh7"]
+
+[sub_resource type="Curve" id="Curve_lb60o"]
+_data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.248485, 1), -0.543956, -0.543956, 0, 0, Vector2(1, 0), -1.25196, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_007lr"]
+curve = SubResource("Curve_lb60o")
+
+[sub_resource type="Curve" id="Curve_vpcnt"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hquym"]
+curve = SubResource("Curve_vpcnt")
+
+[sub_resource type="Curve" id="Curve_vwy2u"]
+max_value = 3.0
+_data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e0h3u"]
+curve = SubResource("Curve_vwy2u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_efltg"]
+lifetime_randomness = 0.2
+emission_shape_offset = Vector3(0, -0.75, 0)
+emission_shape = 3
+emission_box_extents = Vector3(14, 0, 14)
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_hquym")
+gravity = Vector3(0, -0.01, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_e0h3u")
+color = Color(1, 1, 1, 0.490196)
+alpha_curve = SubResource("CurveTexture_007lr")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2up02"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emp2i"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.870588, 0.968627, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_2up02")
+emission_enabled = true
+emission = Color(0.468, 0.6, 0.567, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_wop8f"]
+material = SubResource("StandardMaterial3D_emp2i")
+
+[node name="ps_mist" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 0)
+amount = 200
+lifetime = 20.0
+preprocess = 20.0
+fixed_fps = 60
+visibility_aabb = AABB(-14, -4, -14, 28, 8, 28)
+process_material = SubResource("ParticleProcessMaterial_efltg")
+draw_pass_1 = SubResource("QuadMesh_wop8f")

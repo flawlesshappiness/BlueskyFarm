@@ -213,6 +213,7 @@ public partial class RootMimicEnemy : NavEnemy
             {
                 var next_room = BasementController.Instance.CurrentBasement.Grid
                         .GetNeighbours(_current_room.Coordinates) // Get neighbours
+                        .Where(x => x.Info.Area == TargetArea) // In target area
                         .OrderBy(x => x.Room.GlobalPosition.DistanceTo(Player.Instance.GlobalPosition)) // that is closest to player
                         .Where(x => x.Room.GlobalPosition.DistanceTo(Player.Instance.GlobalPosition) > BasementRoom.ROOM_SIZE * 0.5f) // that player is not in
                         .FirstOrDefault();

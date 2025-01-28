@@ -7,6 +7,8 @@ public partial class EggClusterEnemy : NavEnemy
     [NodeName]
     public Node3D Clusters;
 
+    protected override string EnemyName => "EggCluster";
+
     private List<Node3D> _cluster_templates = new();
     private List<Node3D> _clusters = new();
 

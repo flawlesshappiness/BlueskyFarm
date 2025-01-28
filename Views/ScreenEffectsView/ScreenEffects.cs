@@ -76,7 +76,7 @@ public partial class ScreenEffects : Node3DScript
 
     private void RegisterDebugActions()
     {
-        var category = "ScreenEffects";
+        var category = "SCREEN EFFECTS";
 
         Debug.RegisterAction(new DebugAction
         {

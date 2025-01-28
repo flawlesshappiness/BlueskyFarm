@@ -92,7 +92,7 @@ public partial class BarrelMimicFlowerEnemy : NavEnemy
         {
             Category = category,
             Text = "Teleport player",
-            Action = v => { Player.GlobalPosition = GlobalPosition; v.SetVisible(false); }
+            Action = v => { Player.GlobalPosition = GlobalPosition; v.Close(); }
         });
     }
 

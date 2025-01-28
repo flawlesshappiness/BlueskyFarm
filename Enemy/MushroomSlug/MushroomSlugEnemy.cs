@@ -14,6 +14,7 @@ public partial class MushroomSlugEnemy : NavEnemy
     [NodeType]
     public PlayerArea PlayerArea;
 
+    protected override string EnemyName => "MushroomSlug";
     private string FxId => $"{nameof(MushroomSlugEnemy)}_{GetInstanceId()}";
 
     private State _state = State.Wander;
@@ -60,7 +61,7 @@ public partial class MushroomSlugEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Idle",
             Action = v => SetState(State.Debug_Idle)
         });
@@ -68,7 +69,7 @@ public partial class MushroomSlugEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Follow",
             Action = v => SetState(State.Debug_Follow)
         });

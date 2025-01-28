@@ -138,7 +138,7 @@ public partial class BasementScene : GameScene
 
         void TeleportTo(DebugView view, AreaNameType area)
         {
-            view.SetVisible(false);
+            view.Close();
 
             var room = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == area.ToString());
             Player.Instance.GlobalPosition = room.Room.GlobalPosition;

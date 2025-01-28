@@ -29,7 +29,7 @@ public partial class DialogueController : SingletonController
 
     private void RegisterDebugActions()
     {
-        var category = "Dialogue";
+        var category = "DIALOGUE";
 
         Debug.RegisterAction(new DebugAction
         {

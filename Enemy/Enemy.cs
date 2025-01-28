@@ -12,13 +12,15 @@ public partial class Enemy : Node3DScript
     protected Vector3 DirectionToPlayer => GlobalPosition.DirectionTo(PlayerPosition);
     protected IEnumerable<BasementRoomElement> RoomElements => BasementController.Instance.CurrentBasement.Grid.Elements;
     protected bool IsDebug { get; private set; }
-    protected string EnemyId => $"{Name} {GetInstanceId()}";
+    protected string EnemyId => $"{EnemyName} {GetInstanceId()}";
+    protected string EnemyCategory => $"{EnemyName} {TargetArea}";
+    protected virtual string EnemyName => $"{Name}";
 
     private Label _show_position_label;
 
-    public override void _Ready()
+    protected override void Initialize()
     {
-        base._Ready();
+        base.Initialize();
         RegisterDebugActions();
     }
 
@@ -33,7 +35,7 @@ public partial class Enemy : Node3DScript
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Show position",
             Action = v => ShowPosition()
         });
@@ -41,7 +43,7 @@ public partial class Enemy : Node3DScript
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Hide position",
             Action = v => HidePosition()
         });
@@ -51,7 +53,7 @@ public partial class Enemy : Node3DScript
             _show_position_label = GameView.Instance.CreateText(new CreateTextSettings
             {
                 Id = EnemyId,
-                Text = EnemyId,
+                Text = EnemyName,
                 Duration = -1,
                 Target = this,
                 Offset = new Vector3(0, 1, 0)

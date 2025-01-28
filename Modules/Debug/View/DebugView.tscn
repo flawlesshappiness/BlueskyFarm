@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://vqmou3q71vox"]
+[gd_scene load_steps=10 format=3 uid="uid://vqmou3q71vox"]
 
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugView.cs" id="1_7hao7"]
+[ext_resource type="Theme" uid="uid://brrs1nf6nb7c7" path="res://Modules/Debug/Theme/DebugTheme.tres" id="1_di162"]
+[ext_resource type="Script" path="res://Modules/Debug/View/DebugCategoryControl.cs" id="2_4cytp"]
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugContentSearch.cs" id="2_fggti"]
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugContentList.cs" id="3_42i5k"]
 [ext_resource type="AudioStream" uid="uid://uh3r80m3q205" path="res://Modules/Debug/Sounds/debug_click.wav" id="4_dnfps"]
@@ -8,35 +10,16 @@
 [ext_resource type="Script" path="res://Modules/Debug/View/DebugInputString.cs" id="5_7vbeg"]
 [ext_resource type="AudioStream" uid="uid://b244yejtrn8we" path="res://Modules/Debug/Sounds/debug_hover.wav" id="5_btliy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f0ys"]
-bg_color = Color(0.2, 0.546667, 1, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqpwc"]
-bg_color = Color(0, 0.303333, 0.7, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v5jt"]
-bg_color = Color(0, 0.345098, 0.8, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[node name="DebugView" type="Control"]
+[node name="DebugView" type="Control" node_paths=PackedStringArray("CategoryTemplate")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_di162")
 script = ExtResource("1_7hao7")
+CategoryTemplate = NodePath("Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate")
 ChildOrder = -999
 
 [node name="Main" type="Control" parent="."]
@@ -54,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 350
+split_offset = 450
 dragger_visibility = 1
 
 [node name="Left" type="Control" parent="Main/HSplitContainer"]
@@ -85,7 +68,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Left/Buttons/MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 0.392157)
+color = Color(0, 0, 0, 0.588235)
 
 [node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer"]
 layout_mode = 2
@@ -96,24 +79,68 @@ theme_override_constants/margin_bottom = 20
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer"]
 layout_mode = 2
+vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="CategoryPrefab" type="Label" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="CategoryTemplate" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("View", "CategoryLabel", "ExpandButton", "ButtonsParent", "ActionButtonTemplate", "SfxButtonHover", "SfxButtonPress")]
 layout_mode = 2
+script = ExtResource("2_4cytp")
+View = NodePath("../../../../../../../../../..")
+CategoryLabel = NodePath("MarginContainer/VBoxContainer/Category/CategoryLabel")
+ExpandButton = NodePath("MarginContainer/VBoxContainer/Category/ExpandButton")
+ButtonsParent = NodePath("MarginContainer/VBoxContainer/Buttons")
+ActionButtonTemplate = NodePath("MarginContainer/VBoxContainer/Buttons/ActionButtonTemplate")
+SfxButtonHover = NodePath("../../../../../../../../../../SfxHover")
+SfxButtonPress = NodePath("../../../../../../../../../../SfxClick")
+
+[node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer"]
+layout_mode = 2
+
+[node name="Category" type="HBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CategoryLabel" type="Label" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer/Category"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "CATEGORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonPrefab" type="Button" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="ExpandButton" type="Button" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer/Category"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_6f0ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lqpwc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_8v5jt")
+text = ">"
+
+[node name="Buttons" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ActionButtonTemplate" type="Button" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
 text = "PREFAB"
 
 [node name="Right" type="Control" parent="Main/HSplitContainer"]
@@ -141,7 +168,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Right/Content/MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 0.392157)
+color = Color(0, 0, 0, 0.588235)
 
 [node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer"]
 layout_mode = 2

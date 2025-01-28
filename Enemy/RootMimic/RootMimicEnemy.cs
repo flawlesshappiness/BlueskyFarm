@@ -17,6 +17,8 @@ public partial class RootMimicEnemy : NavEnemy
     [NodeName]
     public AudioStreamPlayer3D SfxGrowl;
 
+    protected override string EnemyName => "RootMimic";
+
     private enum State
     {
         Wander, Waiting, Threat, Fleeing, Attacking,
@@ -115,7 +117,7 @@ public partial class RootMimicEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Teleport to player",
             Action = _ => DebugTeleportToPlayer()
         });
@@ -131,7 +133,7 @@ public partial class RootMimicEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Follow player",
             Action = _ => SetState(State.Debug_Follow)
         });
@@ -139,7 +141,7 @@ public partial class RootMimicEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Set state (Waiting)",
             Action = _ => SetState(State.Waiting)
         });
@@ -147,7 +149,7 @@ public partial class RootMimicEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Set state (Threat)",
             Action = _ => SetState(State.Threat)
         });
@@ -155,7 +157,7 @@ public partial class RootMimicEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Force attack",
             Action = _ => _debug_force_attack = true
         });

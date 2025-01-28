@@ -61,7 +61,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
     private void RegisterDebugActions()
     {
-        var category = "Enemy";
+        var category = "ENEMY";
 
         Debug.RegisterAction(new DebugAction
         {

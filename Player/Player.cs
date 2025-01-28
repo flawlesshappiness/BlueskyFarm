@@ -81,7 +81,7 @@ public partial class Player : FirstPersonController
         if (_debug_actions_registered) return;
         _debug_actions_registered = true;
 
-        var category = "Player";
+        var category = "PLAYER";
 
         Debug.RegisterAction(new DebugAction
         {

@@ -32,6 +32,8 @@ public partial class SpineCentipedeEnemy : NavEnemy
     [NodeName]
     public PlayerArea AttackArea;
 
+    protected override string EnemyName => "SpineCentipede";
+
     private BoolParameter _param_moving;
     private BoolParameter _param_charge;
     private TriggerParameter _param_attack;
@@ -84,7 +86,7 @@ public partial class SpineCentipedeEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Idle",
             Action = v => SetState(State.Debug_Idle)
         });
@@ -92,7 +94,7 @@ public partial class SpineCentipedeEnemy : NavEnemy
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
-            Category = EnemyId,
+            Category = EnemyCategory,
             Text = "Follow",
             Action = v => SetState(State.Debug_Follow)
         });

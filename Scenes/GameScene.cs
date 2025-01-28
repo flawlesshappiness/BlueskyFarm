@@ -67,7 +67,7 @@ public partial class GameScene : Scene
             Action = v =>
             {
                 GameScene.Current.KillPlayer();
-                v.SetVisible(false);
+                v.Close();
             }
         });
     }

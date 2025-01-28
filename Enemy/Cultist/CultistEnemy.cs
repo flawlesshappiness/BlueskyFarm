@@ -23,6 +23,8 @@ public partial class CultistEnemy : NavEnemy
     [NodeType]
     public AnimationPlayer AnimationPlayer;
 
+    protected override string EnemyName => "Cultist";
+
     private BoolParameter _param_moving;
     private BoolParameter _param_running;
     private AnimationState _anim_startled;

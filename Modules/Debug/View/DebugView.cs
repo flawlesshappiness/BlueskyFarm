@@ -7,6 +7,9 @@ public partial class DebugView : View
 {
     public override string Directory => $"{Paths.Modules}/Debug/View";
 
+    [Export]
+    public DebugCategoryControl CategoryTemplate;
+
     [NodeName]
     public Control Main;
 
@@ -15,12 +18,6 @@ public partial class DebugView : View
 
     [NodeName]
     public DebugInputPopup InputPopup;
-
-    [NodeName]
-    public Button ButtonPrefab;
-
-    [NodeName]
-    public Label CategoryPrefab;
 
     [NodeName]
     public DebugContentSearch ContentSearch;
@@ -37,18 +34,16 @@ public partial class DebugView : View
     [NodeName]
     public AudioStreamPlayer SfxOpen;
 
-    private Dictionary<string, Label> _categories = new();
-    private List<Button> _buttons = new();
+    private Dictionary<string, DebugCategoryControl> _categories = new();
     private Action<Dictionary<string, string>> _onInputPopupSuccess;
 
     public override void _Ready()
     {
         base._Ready();
-        Visible = true;
-        ButtonPrefab.Visible = false;
-        CategoryPrefab.Visible = false;
+        Show();
+        CategoryTemplate.Hide();
         HideContent();
-        SetVisible(false);
+        Close();
 
         Debug.RegisterDebugActions();
 
@@ -83,7 +78,10 @@ public partial class DebugView : View
         }
     }
 
-    public void SetVisible(bool visible)
+    private void ToggleVisible() => SetMenuVisible(!Main.Visible);
+    public void Open() => SetMenuVisible(true);
+    public void Close() => SetMenuVisible(false);
+    public void SetMenuVisible(bool visible)
     {
         Main.Visible = visible;
         InputPopup.Visible = false;
@@ -113,7 +111,6 @@ public partial class DebugView : View
         }
     }
 
-    public void Close() => SetVisible(false);
 
     public void HideContent()
     {
@@ -138,20 +135,12 @@ public partial class DebugView : View
         ContentList.Clear();
     }
 
-    private void ToggleVisible() =>
-        SetVisible(!Main.Visible);
 
     private void Clear()
     {
-        foreach (var button in _buttons)
+        foreach (var category in _categories.Values)
         {
-            button.QueueFree();
-        }
-        _buttons.Clear();
-
-        foreach (var label in _categories.Values)
-        {
-            label.QueueFree();
+            category.QueueFree();
         }
         _categories.Clear();
     }
@@ -160,61 +149,29 @@ public partial class DebugView : View
     {
         foreach (var action in Debug.RegisteredActions)
         {
-            CreateAction(action);
+            var category = GetOrCreateCategory(action.Category);
+            category.CreateButton(action.Text, action.Action);
         }
     }
 
-    private Button CreateActionButton()
+    private DebugCategoryControl GetOrCreateCategory(string name)
     {
-        var button = ButtonPrefab.Duplicate() as Button;
-        button.SetParent(ButtonPrefab.GetParent());
-        button.Visible = true;
-        _buttons.Add(button);
-        return button;
-    }
-
-    private void CreateAction(DebugAction debug_action)
-    {
-        var button = CreateActionButton();
-        button.Text = debug_action.Text;
-
-        button.Pressed += () =>
+        if (!_categories.ContainsKey(name))
         {
-            debug_action.Action(this);
-            SfxClick.Play();
-        };
-
-        button.MouseEntered += () =>
-        {
-            SfxHover.Play();
-        };
-
-        TryCreateCategory(debug_action);
-        OrderActionButton(button, debug_action);
-    }
-
-    private void TryCreateCategory(DebugAction debug_action)
-    {
-        if (!_categories.ContainsKey(debug_action.Category))
-        {
-            CreateActionLabel(debug_action.Category);
+            var category = CategoryTemplate.Duplicate() as DebugCategoryControl;
+            category.SetParent(CategoryTemplate.GetParent());
+            category.Show();
+            category.CategoryLabel.Text = name;
+            _categories.Add(name, category);
         }
+
+        return _categories[name];
     }
 
     private void OrderActionButton(Button button, DebugAction debug_action)
     {
         var label = _categories[debug_action.Category];
         button.GetParent().MoveChild(button, label.GetIndex() + 1);
-    }
-
-    private Label CreateActionLabel(string text)
-    {
-        var instance = CategoryPrefab.Duplicate() as Label;
-        instance.SetParent(CategoryPrefab.GetParent());
-        instance.Text = text;
-        instance.Visible = true;
-        _categories.Add(text, instance);
-        return instance;
     }
 
     public void PopupStringInput(string label, Action<string> onSuccess)

@@ -12,6 +12,8 @@ public partial class EggClusterEnemy : NavEnemy
     private List<Node3D> _cluster_templates = new();
     private List<Node3D> _clusters = new();
 
+    private BasementRoomElement _current_room;
+
     public override void _Ready()
     {
         base._Ready();
@@ -48,7 +50,7 @@ public partial class EggClusterEnemy : NavEnemy
     private void Spawn()
     {
         var room = GetRooms()
-            .Where(x => !x.Info.HasUnevenGround)
+            .Where(x => x.Info.ValidGroundHeights != null && x.Info.ValidGroundHeights.Count > 0)
             .ToList()
             .Random();
 
@@ -58,6 +60,7 @@ public partial class EggClusterEnemy : NavEnemy
         }
         else
         {
+            _current_room = room;
             GlobalPosition = room.Room.GlobalPosition;
             CreateClusters();
         }
@@ -82,14 +85,27 @@ public partial class EggClusterEnemy : NavEnemy
         var cluster = _cluster_templates.Random().Duplicate() as Node3D;
         cluster.SetParent(this);
 
-        var room_position = GetRandomPositionAroundMe();
-        var position = NavigationServer3D.MapGetClosestPoint(GetWorld3D().NavigationMap, room_position).Add(y: -Agent.PathHeightOffset);
+        var position = GetValidEggPosition();
         cluster.GlobalPosition = position;
 
         _clusters.Add(cluster);
 
         cluster.Enable();
         return cluster;
+    }
+
+    private Vector3 GetValidEggPosition()
+    {
+        var position = Vector3.Zero;
+        var valid = false;
+        while (!valid)
+        {
+            var room_position = GetRandomPositionAroundMe();
+            position = NavigationServer3D.MapGetClosestPoint(GetWorld3D().NavigationMap, room_position).Add(y: -Agent.PathHeightOffset);
+            valid = _current_room.Info.ValidGroundHeights.Any(y => position.Y == y);
+        }
+
+        return position;
     }
 
     private Vector3 GetRandomPositionAroundMe()

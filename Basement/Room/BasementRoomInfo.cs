@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class BasementRoomInfo : Resource
@@ -25,7 +26,7 @@ public partial class BasementRoomInfo : Resource
     public string RoomLayout;
 
     [Export]
-    public bool HasUnevenGround;
+    public Array<float> ValidGroundHeights;
 
     [Export]
     public bool Disabled;

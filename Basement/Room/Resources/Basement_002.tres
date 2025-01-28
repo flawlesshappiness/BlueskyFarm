@@ -19,4 +19,5 @@ WW111EE
 00111E0
 000S000"
 HasUnevenGround = false
+ValidGroundHeights = Array[float]([0.0])
 Disabled = false

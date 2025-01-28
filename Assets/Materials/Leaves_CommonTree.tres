@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dx4ynolfcumax"]
+
+[ext_resource type="Shader" uid="uid://d4h3s6gttx3fv" path="res://Shaders/Leaves.tres" id="1_7tete"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7tete")
+shader_parameter/ColorParameter = Color(0.69, 0.2277, 0.2277, 1)

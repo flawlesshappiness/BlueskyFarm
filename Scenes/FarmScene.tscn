@@ -290,9 +290,8 @@ material = SubResource("StandardMaterial3D_s1u3r")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
 size = Vector3(1, 1.51624, 1.22208)
 
-[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("TestSign", "WorldEnvironment", "DirectionalLight")]
+[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_mng5r")
-TestSign = NodePath("")
 WorldEnvironment = NodePath("WorldEnvironment")
 DirectionalLight = NodePath("Sun")
 

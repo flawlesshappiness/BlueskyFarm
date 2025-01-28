@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dx4ynolfcumax"]
-
-[ext_resource type="Shader" uid="uid://d4h3s6gttx3fv" path="res://Shaders/Leaves.tres" id="1_fhm4h"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_fhm4h")

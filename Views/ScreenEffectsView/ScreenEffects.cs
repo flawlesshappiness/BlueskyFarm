@@ -274,9 +274,15 @@ public partial class ScreenEffects : Node3DScript
     }
 
     // GAUSSIAN BLUR //
+    /// <summary>
+    /// Value range: 0 - 20
+    /// </summary>
     public static Coroutine AnimateGaussianBlur(string id, float value, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValueInOut(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", value, duration_in, duration_on, duration_out);
 
+    /// <summary>
+    /// Value range: 0 - 20
+    /// </summary>
     public static Coroutine AnimateGaussianBlurIn(string id, float value, float duration) =>
         Instance._AnimateMinValueIn(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", value, duration);
 
@@ -284,9 +290,15 @@ public partial class ScreenEffects : Node3DScript
         Instance._AnimateMinValueOut(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", 0, duration);
 
     // DISTORT //
+    /// <summary>
+    /// Value range: 0 - 0.05f
+    /// </summary>
     public static Coroutine AnimateDistort(string id, float value, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValueInOut(Instance._distort_strength, $"{nameof(AnimateDistort)}_{id}", value, duration_in, duration_on, duration_out);
 
+    /// <summary>
+    /// Value range: 0 - 0.05f
+    /// </summary>
     public static Coroutine AnimateDistortIn(string id, float value, float duration) =>
         Instance._AnimateMinValueIn(Instance._distort_strength, $"{nameof(AnimateDistort)}_{id}", value, duration);
 

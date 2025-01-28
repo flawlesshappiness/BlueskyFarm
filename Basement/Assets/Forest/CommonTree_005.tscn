@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dsvb4girn154q" path="res://Basement/Assets/Forest/Tree_Base.tscn" id="1_ttk7x"]
 [ext_resource type="PackedScene" uid="uid://ctsrjlypoyaly" path="res://Assets/Quaternius/Nature/CommonTree_5.gltf" id="2_rhn5i"]
-[ext_resource type="Material" uid="uid://20l650k6hgj2" path="res://Assets/Materials/Wood.tres" id="3_hl5oc"]
-[ext_resource type="Material" uid="uid://dx4ynolfcumax" path="res://Assets/Materials/CommonTree_Leaves.tres" id="4_o31pq"]
+[ext_resource type="Material" uid="uid://bn46esnk76kim" path="res://Assets/Materials/Bone.tres" id="3_aqb66"]
+[ext_resource type="Material" uid="uid://dx4ynolfcumax" path="res://Assets/Materials/Leaves_CommonTree.tres" id="4_o31pq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ytrm4"]
 radius = 0.552219
@@ -18,7 +18,7 @@ shape = SubResource("CapsuleShape3D_ytrm4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142874, 0)
 
 [node name="CommonTree_5" parent="CommonTree_52" index="0"]
-surface_material_override/0 = ExtResource("3_hl5oc")
+surface_material_override/0 = ExtResource("3_aqb66")
 surface_material_override/1 = ExtResource("4_o31pq")
 
 [editable path="CommonTree_52"]

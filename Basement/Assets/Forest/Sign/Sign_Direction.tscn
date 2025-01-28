@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqns6n77f2jdv"]
+[gd_scene load_steps=9 format=3 uid="uid://cqns6n77f2jdv"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Forest/Sign/SignDirection.cs" id="1_dbpk6"]
 [ext_resource type="PackedScene" uid="uid://b1l6fwx240yvu" path="res://Assets/FlawLizArt/Sign/direction_post.fbx" id="2_fs8ru"]
 [ext_resource type="Script" path="res://Basement/Assets/Forest/Sign/SignDirectionBoard.cs" id="3_qb3jx"]
 [ext_resource type="PackedScene" uid="uid://clb1jf7tpqf1p" path="res://Assets/FlawLizArt/Sign/direction_board.fbx" id="4_a471f"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_j5s28"]
+[ext_resource type="Texture2D" uid="uid://b3xggixhv3rhm" path="res://Assets/KenneyNL/Cursors/zoom.png" id="6_vaqc1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0bfqj"]
 size = Vector3(0.131836, 0.22876, 0.728027)
@@ -36,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.351001)
 collision_layer = 7
 collision_mask = 0
 script = ExtResource("5_j5s28")
+HoverIcon = ExtResource("6_vaqc1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoardTemplate/Touchable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0915527)

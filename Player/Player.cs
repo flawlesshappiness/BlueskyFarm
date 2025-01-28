@@ -439,12 +439,13 @@ public partial class Player : FirstPersonController
         CameraRagdoll.Disable();
     }
 
-    public Coroutine RagdollCameraAndPickUp(Vector3 velocity)
+    public Coroutine RagdollCameraAndPickUp(Vector3 velocity, float delay_pickup = 0f)
     {
         return Coroutine.Start(Cr, $"{nameof(RagdollCameraAndPickUp) + GetInstanceId()}", this);
         IEnumerator Cr()
         {
             yield return RagdollCamera(velocity);
+            yield return new WaitForSeconds(delay_pickup);
             yield return UnragdollCamera();
         }
     }

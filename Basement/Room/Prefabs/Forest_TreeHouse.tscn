@@ -781,6 +781,17 @@ script = ExtResource("14_e8jdo")
 [node name="Interior 1" type="Node3D" parent="Interior/Group 1" index="0"]
 script = ExtResource("15_tacg6")
 
+[node name="Grave3" parent="Interior/Group 1/Interior 1" index="0" node_paths=PackedStringArray("Models") instance=ExtResource("16_kw1y0")]
+transform = Transform3D(0.924573, 0, -0.381005, 0, 1, 0, 0.381005, 0, 0.924573, -2.37051, 0, 8.7081)
+Models = [NodePath("../../../../RoomScript/Grave/Models/State 0"), NodePath("../../../../RoomScript/Grave/Models/State 1"), NodePath("../../../../RoomScript/Grave/Models/State 2"), NodePath("../../../../RoomScript/Grave/Models/State 3")]
+
+[node name="Interior 2" type="Node3D" parent="Interior/Group 1" index="1"]
+script = ExtResource("15_tacg6")
+
+[node name="Grave3" parent="Interior/Group 1/Interior 2" index="0" node_paths=PackedStringArray("Models") instance=ExtResource("16_kw1y0")]
+transform = Transform3D(0.380764, 0, -0.924672, 0, 1, 0, 0.924672, 0, 0.380764, -8.33624, 0, 3.99737)
+Models = [NodePath("../../../../RoomScript/Grave/Models/State 0"), NodePath("../../../../RoomScript/Grave/Models/State 1"), NodePath("../../../../RoomScript/Grave/Models/State 2"), NodePath("../../../../RoomScript/Grave/Models/State 3")]
+
 [node name="Treehouse" type="Node3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
@@ -906,10 +917,6 @@ Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1
 
 [node name="Plank2" type="Node3D" parent="RoomScript/Grave2" index="5"]
 transform = Transform3D(-0.07346, -0.997155, 0.0169002, 0.97177, -0.075379, -0.223565, 0.224203, 0, 0.974543, -0.0508843, 0.673126, 0.793346)
-
-[node name="Grave3" parent="RoomScript" index="2" node_paths=PackedStringArray("Models") instance=ExtResource("16_kw1y0")]
-transform = Transform3D(0.597331, 0, 0.801995, 0, 1, 0, -0.801995, 0, 0.597331, -3.47614, 0, 8.62556)
-Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1"), NodePath("../Grave/Models/State 2"), NodePath("../Grave/Models/State 3")]
 
 [node name="ps_mist" parent="." index="14" instance=ExtResource("32_2lqwo")]
 

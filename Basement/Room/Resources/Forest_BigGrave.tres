@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://cciom7466a5w"]
+
+[ext_resource type="PackedScene" uid="uid://bytl1yyerusgb" path="res://Basement/Room/Prefabs/Forest_BigGrave.tscn" id="1_7eit7"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_il8f6"]
+
+[resource]
+script = ExtResource("2_il8f6")
+Area = "Forest"
+ConnectedArea = ""
+AmbienceArea = "Forest"
+Scene = ExtResource("1_7eit7")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = true
+RoomLayout = "1111111
+1111111
+1111111
+1111111
+1111111
+1111111
+1111111"
+ValidGroundHeights = null
+Disabled = true

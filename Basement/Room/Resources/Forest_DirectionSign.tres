@@ -18,5 +18,5 @@ RoomLayout = "1111111
 1111111
 1111111
 1111111"
-HasUnevenGround = false
+ValidGroundHeights = Array[float]([8.0])
 Disabled = false

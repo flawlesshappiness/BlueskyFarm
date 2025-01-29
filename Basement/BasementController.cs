@@ -50,6 +50,11 @@ public partial class BasementController : SingletonController
             AreaName = AreaNames.Forest,
             RoomInfo = BasementRoomController.Instance.Collection.GetResource("Forest_TreeHouse")
         });
+
+        for (int i = 0; i < 2; i++)
+        {
+            SetRandomElementInfo(AreaNames.Forest, "Forest_BigGrave");
+        }
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

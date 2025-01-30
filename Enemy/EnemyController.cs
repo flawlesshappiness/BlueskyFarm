@@ -1,3 +1,5 @@
+using Godot;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class EnemyController : ResourceController<EnemyInfoCollection, EnemyInfo>
@@ -5,10 +7,15 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     public static EnemyController Instance => Singleton.Get<EnemyController>();
     public override string Directory => $"Enemy";
 
+    private List<Enemy> _enemies = new();
+
     public override void _Ready()
     {
         base._Ready();
         RegisterDebugActions();
+
+        BasementController.Instance.OnAreaEntered += AreaEntered;
+        BasementController.Instance.OnBasementEntered += BasementEntered;
     }
 
     private EnemyInfo GetRandomEnemyInfo()
@@ -20,6 +27,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     {
         var enemy = info.Scene.Instantiate<Enemy>();
         enemy.SetParent(Scene.Current);
+        _enemies.Add(enemy);
         return enemy;
     }
 
@@ -28,26 +36,37 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
         Debug.TraceMethod();
         Debug.Indent++;
 
-        var areas = BasementController.Instance.CurrentBasement.Settings.Areas
-            .Select(x => x.AreaName);
-
-        foreach (var area in areas)
+        var basement = BasementController.Instance.CurrentBasement;
+        foreach (var area in basement.Settings.Areas)
         {
-            var safe_enemies = Collection.Resources
+            SpawnAreaEnemies(area.AreaName);
+        }
+
+        Debug.Indent--;
+    }
+
+    public void SpawnAreaEnemies(string area)
+    {
+        Debug.TraceMethod(area);
+        Debug.Indent++;
+
+        var safe_enemies = Collection.Resources
             .Where(x => x.Enabled && !x.IsDangerous && x.Areas.Any(target_area => target_area.ToString() == area))
             .TakeRandom(2);
 
-            var dangerous_enemies = Collection.Resources
-                .Where(x => x.Enabled && x.IsDangerous && x.Areas.Any(target_area => target_area.ToString() == area))
-                .TakeRandom(1);
+        var dangerous_enemies = Collection.Resources
+            .Where(x => x.Enabled && x.IsDangerous && x.Areas.Any(target_area => target_area.ToString() == area))
+            .TakeRandom(1);
 
-            var enemies = safe_enemies.Concat(dangerous_enemies);
+        var enemies = safe_enemies.Concat(dangerous_enemies);
 
-            foreach (var info in enemies)
-            {
-                var enemy = CreateEnemy(info);
-                enemy.TargetArea = area;
-            }
+        foreach (var info in enemies)
+        {
+            var enemy = CreateEnemy(info);
+            enemy.GlobalPosition = Vector3.Down * 100;
+            enemy.TargetArea = area;
+            enemy.InitializeEnemy();
+            enemy.Despawn();
         }
 
         Debug.Indent--;
@@ -85,5 +104,25 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
             view.ContentSearch.UpdateButtons();
         }
+    }
+
+    private void AreaEntered(string area)
+    {
+        foreach (var enemy in _enemies)
+        {
+            if (enemy.TargetArea == area)
+            {
+                enemy.Respawn();
+            }
+            else
+            {
+                enemy.Despawn();
+            }
+        }
+    }
+
+    private void BasementEntered()
+    {
+        AreaEntered(AreaNames.Basement);
     }
 }

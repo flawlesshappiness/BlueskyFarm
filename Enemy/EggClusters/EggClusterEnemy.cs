@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,14 +11,20 @@ public partial class EggClusterEnemy : NavEnemy
 
     protected override string EnemyName => "EggCluster";
 
+    private List<Node3D> _cluster_templates;
     private List<Node3D> _clusters = new();
 
     private BasementRoomElement _current_room;
 
-    protected override void Initialize()
+    public override void InitializeEnemy()
     {
-        base.Initialize();
-        Spawn();
+        base.InitializeEnemy();
+        _cluster_templates = ClusterTemplates.ToList();
+
+        foreach (var cluster in _cluster_templates)
+        {
+            cluster.Disable();
+        }
     }
 
     public override void Spawn(bool debug)
@@ -31,12 +38,13 @@ public partial class EggClusterEnemy : NavEnemy
         else
         {
             var room = GetRooms()
-            .Where(x => x.Info.ValidGroundHeights != null && x.Info.ValidGroundHeights.Count > 0)
-            .ToList()
-            .Random();
+                .Where(x => x.Info.ValidGroundHeights != null && x.Info.ValidGroundHeights.Count > 0)
+                .ToList()
+                .Random();
 
             if (room == null)
             {
+                // Failed to get a valid room
                 // Do nothing
             }
             else
@@ -66,19 +74,26 @@ public partial class EggClusterEnemy : NavEnemy
 
     private void CreateClusters()
     {
-        var count = 60;
-        for (int i = 0; i < count; i++)
+        Coroutine.Start(Cr);
+        IEnumerator Cr()
         {
-            CreateCluster();
+            yield return new WaitForSeconds(0.1f);
+
+            var count = 60;
+            for (int i = 0; i < count; i++)
+            {
+                CreateCluster();
+            }
         }
     }
 
     private Node3D CreateCluster()
     {
-        var cluster = ClusterTemplates.ToList().Random().Duplicate() as Node3D;
-        cluster.SetParent(this);
-
         var position = GetValidEggPosition();
+        if (position == Vector3.Zero) return null;
+
+        var cluster = _cluster_templates.Random().Duplicate() as Node3D;
+        cluster.SetParent(this);
         cluster.GlobalPosition = position;
 
         _clusters.Add(cluster);
@@ -91,11 +106,16 @@ public partial class EggClusterEnemy : NavEnemy
     {
         var position = Vector3.Zero;
         var valid = false;
-        while (!valid)
+        var safety = 5;
+        while (!valid && safety > 0)
         {
+            safety--;
             var room_position = GetRandomPositionAroundMe();
-            position = NavigationServer3D.MapGetClosestPoint(GetWorld3D().NavigationMap, room_position).Add(y: -Agent.PathHeightOffset);
+            var map = GetWorld3D().NavigationMap;
+            position = NavigationServer3D.MapGetClosestPoint(map, room_position).Add(y: -Agent.PathHeightOffset);
             valid = _current_room.Info.ValidGroundHeights.Any(y => position.Y == y);
+
+            if (position == Vector3.Zero) break;
         }
 
         return position;

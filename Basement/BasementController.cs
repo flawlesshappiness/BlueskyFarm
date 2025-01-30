@@ -6,12 +6,14 @@ public partial class BasementController : SingletonController
 {
     public override string Directory => "Basement";
     public static BasementController Instance => Singleton.Get<BasementController>();
-    public Basement CurrentBasement { get; set; }
-    public BasementRoomElement CurrentRoom { get; set; }
+    public Basement CurrentBasement { get; private set; }
+    public BasementRoomElement CurrentRoom { get; private set; }
+    public string CurrentPlayerArea { get; private set; }
 
     public event Action<Basement> OnBasementGenerated;
     public event Action OnBasementEntered, OnBasementExited;
     public event Action<BasementRoomElement> OnRoomEntered;
+    public event Action<string> OnAreaEntered;
 
     public void GenerateBasement(BasementSettings settings)
     {
@@ -175,7 +177,15 @@ public partial class BasementController : SingletonController
         if (CurrentRoom != element)
         {
             CurrentRoom = element;
+            EnterArea(element.Info.Area);
             OnRoomEntered?.Invoke(element);
         }
+    }
+
+    private void EnterArea(string area)
+    {
+        if (CurrentPlayerArea == area) return;
+        CurrentPlayerArea = area;
+        OnAreaEntered?.Invoke(area);
     }
 }

@@ -25,11 +25,10 @@ public partial class Enemy : Node3DScript
 
     private Label _debug_info_label;
 
-    protected override void Initialize()
+    public virtual void InitializeEnemy()
     {
-        base.Initialize();
-        RegisterDebugActions();
         RegisterStates();
+        RegisterDebugActions();
     }
 
     public override void _ExitTree()
@@ -117,10 +116,17 @@ public partial class Enemy : Node3DScript
         IsDebug = debug;
     }
 
+    public virtual void Respawn()
+    {
+        Show();
+        Spawn();
+    }
+
     public virtual void Despawn()
     {
+        Spawned = false;
+        Hide();
         StopState();
-        this.Disable();
     }
 
     protected virtual void RegisterStates()
@@ -177,6 +183,7 @@ public partial class Enemy : Node3DScript
 
     protected virtual string GetInfoString()
     {
-        return $"{EnemyName}\n{CurrentState}";
+        var state = Spawned ? CurrentState : "Despawned";
+        return $"{EnemyName}\n{state}";
     }
 }

@@ -51,9 +51,9 @@ public partial class SpineCentipedeEnemy : NavEnemy
     private const string StateCharge = "Charge";
     private const string StateAttack = "Attack";
 
-    protected override void Initialize()
+    public override void InitializeEnemy()
     {
-        base.Initialize();
+        base.InitializeEnemy();
 
         InitializeAnimations();
 
@@ -61,7 +61,6 @@ public partial class SpineCentipedeEnemy : NavEnemy
         AttackArea.PlayerEntered += AttackArea_PlayerEntered;
 
         AttackArea.Disable();
-        Spawn(IsDebug);
     }
 
     public override void Spawn(bool debug)

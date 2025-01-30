@@ -46,11 +46,10 @@ public partial class RootMimicEnemy : NavEnemy
     private const float DIST_THREAT_CLOSE = 4;
     private const float DIST_THREAT_ATTACK = 2;
 
-    protected override void Initialize()
+    public override void InitializeEnemy()
     {
-        base.Initialize();
+        base.InitializeEnemy();
         InitializeAnimations();
-        Spawn();
     }
 
     protected override void OnVelocityComputed(Vector3 v)

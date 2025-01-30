@@ -11,14 +11,6 @@ public partial class WispEnemy : NavEnemy
     private float _current_distance;
     private Vector3 _target_position;
 
-    private enum State { Move, Wait }
-
-    protected override void Initialize()
-    {
-        base.Initialize();
-        Spawn();
-    }
-
     public override void Spawn(bool debug)
     {
         base.Spawn(debug);

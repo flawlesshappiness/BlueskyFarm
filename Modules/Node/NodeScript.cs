@@ -31,9 +31,6 @@ public partial class NodeScript : Node
 
     public static void FindNodesFromAttribute(Node root, Type type)
     {
-        Debug.TraceMethod(root.Name);
-        Debug.Indent++;
-
         var fields = type.GetFields(BindingFlags.Instance | BindingFlags.Public);
 
         foreach (FieldInfo field in fields)
@@ -49,8 +46,6 @@ public partial class NodeScript : Node
                 Debug.LogError($"{field.Name} field value not found: " + e.Message);
             }
         }
-
-        Debug.Indent--;
     }
 
     private static Node FindNodeFromAttribute(Node root, FieldInfo field)

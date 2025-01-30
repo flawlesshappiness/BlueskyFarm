@@ -37,11 +37,10 @@ public partial class CultistEnemy : NavEnemy
     private const string StateFlee = "Flee";
     private const string StateRespawn = "Respawn";
 
-    protected override void Initialize()
+    public override void InitializeEnemy()
     {
-        base.Initialize();
+        base.InitializeEnemy();
         InitializeAnimations();
-        Spawn();
     }
 
     private void InitializeAnimations()
@@ -111,9 +110,9 @@ public partial class CultistEnemy : NavEnemy
 
     private void ProcessFlee()
     {
-        if (IsState(StateFlee, StateRespawn)) return;
+        if (!Spawned) return;
 
-        if (DistanceToPlayer < BasementRoom.ROOM_SIZE * 0.3f)
+        if (IsState(StatePatrol) && DistanceToPlayer < BasementRoom.ROOM_SIZE * 0.3f)
         {
             SetState(StateFlee);
         }

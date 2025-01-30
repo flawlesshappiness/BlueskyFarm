@@ -25,15 +25,14 @@ public partial class MushroomSlugEnemy : NavEnemy
     private const string StateWander = "Wander";
     private const string StateTravel = "Travel";
 
-    protected override void Initialize()
+    public override void InitializeEnemy()
     {
-        base.Initialize();
+        base.InitializeEnemy();
         PlayerArea.Disable();
         PlayerArea.PlayerEntered += PlayerEntered;
         PlayerArea.PlayerExited += PlayerExited;
 
         InitializeAnimations();
-        Spawn();
     }
 
     public override void Spawn(bool debug)

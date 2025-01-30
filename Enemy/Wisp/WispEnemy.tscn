@@ -1,0 +1,139 @@
+[gd_scene load_steps=21 format=3 uid="uid://w0y75ud1yq32"]
+
+[ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="1_34maf"]
+[ext_resource type="Script" path="res://Enemy/Wisp/WispEnemy.cs" id="1_jxsbr"]
+
+[sub_resource type="Curve" id="Curve_oa6np"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), -2.83716, -2.83716, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3c010"]
+curve = SubResource("Curve_oa6np")
+
+[sub_resource type="Curve" id="Curve_wqumc"]
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.86116, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bafc1"]
+curve = SubResource("Curve_wqumc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tde86"]
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_bafc1")
+alpha_curve = SubResource("CurveTexture_3c010")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4gif"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_34maf")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_gqvql"]
+material = SubResource("StandardMaterial3D_p4gif")
+
+[sub_resource type="Curve" id="Curve_ncc1g"]
+_data = [Vector2(0, 0), 0.0, 27.4872, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ws456"]
+curve = SubResource("Curve_ncc1g")
+
+[sub_resource type="Curve" id="Curve_22prd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t6q2b"]
+curve = SubResource("Curve_22prd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m0f83"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+spread = 180.0
+initial_velocity_min = 0.05
+initial_velocity_max = 0.05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_t6q2b")
+alpha_curve = SubResource("CurveTexture_ws456")
+
+[sub_resource type="Curve" id="Curve_4y8gf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), -2.80175, -2.80175, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8x17g"]
+curve = SubResource("Curve_4y8gf")
+
+[sub_resource type="Curve" id="Curve_t63pv"]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.32544, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jmhgr"]
+curve = SubResource("Curve_t63pv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v7snu"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jmhgr")
+color = Color(1, 1, 1, 0.00784314)
+alpha_curve = SubResource("CurveTexture_8x17g")
+
+[sub_resource type="Curve3D" id="Curve3D_ybgyw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -1, 0.5, 0, 1, 1, 1, 1, 1, 1, -0.5, -0.5, -1, -1, -1, 1, 0, -1, 0, -0.5, 1.5, 0, 1, 1, -1, 0, 1, 0, 0, -0.5, 0, -1, 1, -1, -1, -1, -1, 1, 1, 0, 1, -1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="WispEnemy" type="Node3D" node_paths=PackedStringArray("AnimNode", "Path")]
+script = ExtResource("1_jxsbr")
+AnimNode = NodePath("Offset/Anim")
+Path = NodePath("Offset/Path3D")
+MoveSpeed = 1.0
+
+[node name="Offset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Anim" type="Node3D" parent="Offset"]
+
+[node name="ps_glow" type="GPUParticles3D" parent="Offset/Anim"]
+amount = 10
+lifetime = 4.0
+preprocess = 10.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_tde86")
+draw_pass_1 = SubResource("QuadMesh_gqvql")
+
+[node name="ps_shards" type="GPUParticles3D" parent="Offset/Anim"]
+amount = 20
+lifetime = 8.0
+preprocess = 10.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_m0f83")
+draw_pass_1 = SubResource("QuadMesh_gqvql")
+
+[node name="ps_trail" type="GPUParticles3D" parent="Offset/Anim"]
+amount = 50
+lifetime = 4.0
+preprocess = 10.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v7snu")
+draw_pass_1 = SubResource("QuadMesh_gqvql")
+
+[node name="Path3D" type="Path3D" parent="Offset"]
+curve = SubResource("Curve3D_ybgyw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_postprocessing = 1

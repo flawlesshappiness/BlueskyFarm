@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://dg86r8ajifwq8"]
+
+[ext_resource type="PackedScene" uid="uid://w0y75ud1yq32" path="res://Enemy/Wisp/WispEnemy.tscn" id="1_6a42o"]
+[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="2_v5er4"]
+
+[resource]
+script = ExtResource("2_v5er4")
+Scene = ExtResource("1_6a42o")
+Enabled = true
+IsDangerous = false
+Areas = Array[int]([2])

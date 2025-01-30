@@ -5,30 +5,27 @@ using System.Linq;
 
 public partial class RootMimicEnemy : NavEnemy
 {
-    [NodeType]
+    [Export]
     public AnimationStateMachine AnimationStateMachine;
 
-    [NodeType]
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [NodeName]
-    public AudioStreamPlayer3D SfxThreat;
+    [Export]
+    public SoundInfo SfxThreat;
 
-    [NodeName]
-    public AudioStreamPlayer3D SfxGrowl;
+    [Export]
+    public SoundInfo SfxGrowl;
 
     protected override string EnemyName => "RootMimic";
+    protected override string DefaultState => StateWander;
 
-    private enum State
-    {
-        Wander, Waiting, Threat, Fleeing, Attacking,
-        Debug_Follow
-    }
+    private const string StateWander = "Wander";
+    private const string StateWaiting = "Waiting";
+    private const string StateThreat = "Threat";
+    private const string StateFleeing = "Fleeing";
+    private const string StateAttacking = "Attacking";
 
-    private State _state;
-    private float _time_step_sfx;
-    private bool _spawned;
-    private bool _state_change_disabled;
     private bool _debug_force_attack;
     private RandomNumberGenerator _rng = new RandomNumberGenerator();
     private BasementRoomElement _current_room;
@@ -52,22 +49,13 @@ public partial class RootMimicEnemy : NavEnemy
     protected override void Initialize()
     {
         base.Initialize();
-
         InitializeAnimations();
-
-        if (IsDebug)
-        {
-            SpawnDebug();
-        }
-        else
-        {
-            Spawn();
-        }
+        Spawn();
     }
 
     protected override void OnVelocityComputed(Vector3 v)
     {
-        if (_state != State.Attacking)
+        if (!IsState(StateAttacking))
         {
             base.OnVelocityComputed(v);
         }
@@ -99,6 +87,16 @@ public partial class RootMimicEnemy : NavEnemy
         AnimationStateMachine.Start(_anim_waiting.Node);
     }
 
+    protected override void RegisterStates()
+    {
+        base.RegisterStates();
+        RegisterState(StateWander, StateCr_Wander);
+        RegisterState(StateWaiting, StateCr_Waiting);
+        RegisterState(StateThreat, StateCr_Threat);
+        RegisterState(StateFleeing, StateCr_Fleeing);
+        RegisterState(StateAttacking, StateCr_Attacking);
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -118,83 +116,26 @@ public partial class RootMimicEnemy : NavEnemy
         {
             Id = EnemyId,
             Category = EnemyCategory,
-            Text = "Teleport to player",
-            Action = _ => DebugTeleportToPlayer()
-        });
-
-        void DebugTeleportToPlayer()
-        {
-            GlobalPosition = Player.GlobalPosition;
-            Agent.TargetPosition = GlobalPosition;
-            SetState(State.Waiting);
-            _state_change_disabled = true;
-        }
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Follow player",
-            Action = _ => SetState(State.Debug_Follow)
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Set state (Waiting)",
-            Action = _ => SetState(State.Waiting)
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Set state (Threat)",
-            Action = _ => SetState(State.Threat)
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
             Text = "Force attack",
             Action = _ => _debug_force_attack = true
         });
     }
 
-    private void Spawn()
+    public override void Spawn(bool debug)
     {
-        _current_room = GetFurthestRoomElementToPlayer();
-        var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
-        GlobalPosition = spawn.GlobalPosition;
+        base.Spawn(debug);
 
-        _spawned = true;
-
-        SetState(State.Wander);
-    }
-
-    private void SpawnDebug()
-    {
-        GlobalPosition = Player.GlobalPosition;
-        _spawned = true;
-    }
-
-    private void SetState(State state)
-    {
-        if (_state_change_disabled) return;
-        _state = state;
-
-        var id = "state";
-        switch (state)
+        if (debug)
         {
-            case State.Wander: this.StartCoroutine(StateCr_Wander, id); return;
-            case State.Waiting: this.StartCoroutine(StateCr_Waiting, id); return;
-            case State.Threat: this.StartCoroutine(StateCr_Threat, id); return;
-            case State.Fleeing: this.StartCoroutine(StateCr_Fleeing, id); return;
-            case State.Attacking: this.StartCoroutine(StateCr_Attacking, id); return;
-            case State.Debug_Follow: this.StartCoroutine(StateCr_Debug_Follow, id); return;
-            default: return;
+            GlobalPosition = Player.GlobalPosition;
+        }
+        else
+        {
+            _current_room = GetFurthestRoomElementToPlayer();
+            var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
+            GlobalPosition = spawn.GlobalPosition;
+
+            SetState(StateWander);
         }
     }
 
@@ -205,7 +146,7 @@ public partial class RootMimicEnemy : NavEnemy
         {
             if (DistanceToPlayer < DIST_WAIT_NEAR)
             {
-                SetState(State.Waiting);
+                SetState(StateWaiting);
                 break;
             }
 
@@ -245,7 +186,7 @@ public partial class RootMimicEnemy : NavEnemy
 
             if (DistanceToPlayer > DIST_WAIT_FAR)
             {
-                SetState(State.Wander);
+                SetState(StateWander);
                 break;
             }
 
@@ -253,12 +194,12 @@ public partial class RootMimicEnemy : NavEnemy
             {
                 if (_rng.RandfRange(0, 1) < CHANCE_THREAT || _debug_force_attack)
                 {
-                    SetState(State.Threat);
+                    SetState(StateThreat);
                 }
                 else
                 {
                     ScreenEffects.AnimateRadialBlur(nameof(RootMimicEnemy) + GetInstanceId(), 0.02f, 0.1f, 0f, 1f);
-                    SetState(State.Fleeing);
+                    SetState(StateFleeing);
                 }
 
                 break;
@@ -291,12 +232,12 @@ public partial class RootMimicEnemy : NavEnemy
 
         if (DistanceToPlayer < DIST_THREAT_CLOSE)
         {
-            SetState(State.Attacking);
+            SetState(StateAttacking);
         }
         else
         {
             _param_threat.Set(false);
-            SetState(State.Fleeing);
+            SetState(StateFleeing);
         }
     }
 
@@ -326,7 +267,7 @@ public partial class RootMimicEnemy : NavEnemy
         {
             if (Agent.IsNavigationFinished())
             {
-                SetState(State.Wander);
+                SetState(StateWander);
             }
 
             yield return null;
@@ -365,23 +306,6 @@ public partial class RootMimicEnemy : NavEnemy
             Player.MovementLock.RemoveLock(EnemyId);
             Player.LookLock.RemoveLock(EnemyId);
             GameScene.Current.KillPlayer();
-        }
-    }
-
-    private IEnumerator StateCr_Debug_Follow()
-    {
-        while (true)
-        {
-            if (DistanceToPlayer < DIST_THREAT_ATTACK)
-            {
-                Agent.TargetPosition = GlobalPosition;
-            }
-            else if (DistanceToPlayer > DIST_THREAT)
-            {
-                Agent.TargetPosition = Player.GlobalPosition;
-            }
-
-            yield return null;
         }
     }
 

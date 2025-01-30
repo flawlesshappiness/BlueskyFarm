@@ -11,8 +11,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_x316y"]
 size = Vector3(6, 6, 6)
 
-[node name="MushroomSlug" type="Node3D"]
+[node name="MushroomSlug" type="Node3D" node_paths=PackedStringArray("AnimationStateMachine", "AnimationPlayer", "PlayerArea")]
 script = ExtResource("1_0gc5v")
+AnimationStateMachine = NodePath("AnimationStateMachine")
+AnimationPlayer = NodePath("mushroom_slug/AnimationPlayer")
+PlayerArea = NodePath("PlayerArea")
 MoveSpeed = 0.1
 TurnSpeed = 0.2
 
@@ -69,6 +72,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.114
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.5, 0)
 
 [node name="PlayerArea" type="Area3D" parent="."]
+collision_layer = 0
 script = ExtResource("7_1fbyp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea"]

@@ -56,7 +56,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     private void DebugSpawnEnemy(EnemyInfo info)
     {
         var enemy = CreateEnemy(info);
-        enemy.DebugSpawn();
+        enemy.IsDebug = true;
     }
 
     private void RegisterDebugActions()
@@ -79,7 +79,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
             foreach (var info in Collection.Resources)
             {
-                var filename = System.IO.Path.GetFileNameWithoutExtension(info.Scene.ResourcePath);
+                var filename = System.IO.Path.GetFileNameWithoutExtension(info.ResourcePath);
                 view.ContentSearch.AddItem(filename, () => DebugSpawnEnemy(info));
             }
 

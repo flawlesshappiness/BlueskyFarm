@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cq3swuycvr8vk" path="res://Enemy/EggClusters/egg_cluster_002.tscn" id="3_h2wno"]
 [ext_resource type="PackedScene" uid="uid://baufg0ge04ovg" path="res://Enemy/EggClusters/egg_cluster_003.tscn" id="4_wvdp7"]
 
-[node name="egg_cluster_enemy" type="Node3D"]
+[node name="EggClusterEnemy" type="Node3D" node_paths=PackedStringArray("ClusterTemplates")]
 script = ExtResource("1_ybr4b")
+ClusterTemplates = [NodePath("Clusters/egg_cluster"), NodePath("Clusters/egg_cluster2"), NodePath("Clusters/egg_cluster3")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5

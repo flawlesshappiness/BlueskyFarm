@@ -19,12 +19,17 @@ size = Vector3(1.25, 1, 1.25)
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8qcn"]
 size = Vector3(1.25, 1, 3.75)
 
-[node name="spine_centipede" type="Node3D"]
+[node name="spine_centipede" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "AnimationStateMachine", "SfxMoving", "ChargeArea", "AttackArea")]
 script = ExtResource("1_eaxmr")
 SfxWheezeShort = ExtResource("2_tns7j")
 SfxWheezeLong = ExtResource("3_r3w5v")
 SfxTick = ExtResource("4_mnyih")
 SfxAttack = ExtResource("5_t6ovc")
+AnimationPlayer = NodePath("spine_centipede/AnimationPlayer")
+AnimationStateMachine = NodePath("AnimationStateMachine")
+SfxMoving = NodePath("SfxMoving")
+ChargeArea = NodePath("ChargeArea")
+AttackArea = NodePath("AttackArea")
 MoveSpeed = 1.0
 TurnSpeed = 0.6
 

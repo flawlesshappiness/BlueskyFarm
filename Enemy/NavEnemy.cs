@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,18 +15,35 @@ public partial class NavEnemy : Enemy
     [Export]
     public float TurnSpeed = 10;
 
-    public bool Spawned { get; private set; }
     protected float CurrentSpeed { get; set; }
 
-    protected override void Initialize()
+    protected const string StateDebugIdle = "DebugIdle";
+    protected const string StateDebugFollow = "DebugFollow";
+
+    protected override void RegisterDebugActions()
     {
-        base.Initialize();
-        Spawn(IsDebug);
+        base.RegisterDebugActions();
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = EnemyId,
+            Category = EnemyCategory,
+            Text = "Set state: DebugIdle",
+            Action = _ => SetState(StateDebugIdle)
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = EnemyId,
+            Category = EnemyCategory,
+            Text = "Set state: DebugFollow",
+            Action = _ => SetState(StateDebugFollow)
+        });
     }
 
-    protected virtual void Spawn(bool debug)
+    public override void Spawn(bool debug)
     {
-        Spawned = true;
+        base.Spawn(debug);
         CurrentSpeed = MoveSpeed;
     }
 
@@ -33,6 +51,43 @@ public partial class NavEnemy : Enemy
     {
         base._PhysicsProcess(delta);
         Process_MoveTowardsTarget();
+    }
+
+    protected override void RegisterStates()
+    {
+        base.RegisterStates();
+        RegisterState(StateDebugIdle, StateCr_Debug_Idle);
+        RegisterState(StateDebugFollow, StateCr_Debug_Follow);
+    }
+
+    private IEnumerator StateCr_Debug_Idle()
+    {
+        while (true)
+        {
+            if (!Agent.IsNavigationFinished())
+            {
+                Agent.TargetPosition = GlobalPosition;
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator StateCr_Debug_Follow()
+    {
+        while (true)
+        {
+            if (DistanceToPlayer < 2)
+            {
+                Agent.TargetPosition = GlobalPosition;
+            }
+            else if (DistanceToPlayer > 3)
+            {
+                Agent.TargetPosition = Player.GlobalPosition;
+            }
+
+            yield return null;
+        }
     }
 
     private void Process_MoveTowardsTarget()

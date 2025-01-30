@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,17 +12,24 @@ public partial class Enemy : Node3DScript
     protected float DistanceToPlayer => GlobalPosition.DistanceTo(PlayerPosition);
     protected Vector3 DirectionToPlayer => GlobalPosition.DirectionTo(PlayerPosition);
     protected IEnumerable<BasementRoomElement> RoomElements => BasementController.Instance.CurrentBasement.Grid.Elements;
-    protected bool IsDebug { get; private set; }
+    public bool IsDebug { get; set; }
     protected string EnemyId => $"{EnemyName} {GetInstanceId()}";
     protected string EnemyCategory => $"{EnemyName} {TargetArea}";
     protected virtual string EnemyName => $"{Name}";
+    public bool Spawned { get; private set; }
+    protected MultiLock StateLock { get; private set; } = new MultiLock();
+    protected string CurrentState { get; private set; }
+    protected virtual string DefaultState { get; }
+    protected Dictionary<string, Func<IEnumerator>> States { get; private set; } = new();
+    protected Coroutine CurrentStateCoroutine { get; private set; }
 
-    private Label _show_position_label;
+    private Label _debug_info_label;
 
     protected override void Initialize()
     {
         base.Initialize();
         RegisterDebugActions();
+        RegisterStates();
     }
 
     public override void _ExitTree()
@@ -30,13 +38,19 @@ public partial class Enemy : Node3DScript
         Debug.RemoveActions(EnemyId);
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        ProcessDebugLabel();
+    }
+
     protected virtual void RegisterDebugActions()
     {
         Debug.RegisterAction(new DebugAction
         {
             Id = EnemyId,
             Category = EnemyCategory,
-            Text = "Show position",
+            Text = "Show info",
             Action = v => ShowPosition()
         });
 
@@ -44,13 +58,13 @@ public partial class Enemy : Node3DScript
         {
             Id = EnemyId,
             Category = EnemyCategory,
-            Text = "Hide position",
+            Text = "Hide info",
             Action = v => HidePosition()
         });
 
         void ShowPosition()
         {
-            _show_position_label = GameView.Instance.CreateText(new CreateTextSettings
+            _debug_info_label = GameView.Instance.CreateText(new CreateTextSettings
             {
                 Id = EnemyId,
                 Text = EnemyName,
@@ -62,10 +76,26 @@ public partial class Enemy : Node3DScript
 
         void HidePosition()
         {
-            if (_show_position_label == null) return;
-            _show_position_label.QueueFree();
-            _show_position_label = null;
+            if (_debug_info_label == null) return;
+            _debug_info_label.QueueFree();
+            _debug_info_label = null;
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = EnemyId,
+            Category = EnemyCategory,
+            Text = "Respawn",
+            Action = _ => Spawn()
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = EnemyId,
+            Category = EnemyCategory,
+            Text = "Set state: Default",
+            Action = _ => SetState(DefaultState)
+        });
     }
 
     public bool CanSeePlayer()
@@ -80,14 +110,73 @@ public partial class Enemy : Node3DScript
         return false;
     }
 
-    public virtual void DebugSpawn()
+    public void Spawn() => Spawn(IsDebug);
+    public virtual void Spawn(bool debug)
     {
-        IsDebug = true;
+        Spawned = true;
+        IsDebug = debug;
+    }
+
+    public virtual void Despawn()
+    {
+        StopState();
+        this.Disable();
+    }
+
+    protected virtual void RegisterStates()
+    {
+        // Register states here
+        // RegisterState(state_name, StateCr_State);
+    }
+
+    protected void RegisterState(string state, Func<IEnumerator> enumerator)
+    {
+        if (!States.ContainsKey(state))
+        {
+            States.Add(state, enumerator);
+        }
+    }
+
+    protected bool IsState(params string[] states)
+    {
+        return states.Any(x => x == CurrentState);
+    }
+
+    protected void SetState(string state)
+    {
+        if (StateLock.IsLocked) return;
+        CurrentState = state;
+
+        var id = "state";
+        var enumerator = States.TryGetValue(state, out var _enumerator) ? _enumerator : null;
+        if (enumerator == null)
+        {
+            Debug.LogError($"{EnemyName} unable to set state: {state}");
+            return;
+        }
+
+        CurrentStateCoroutine = this.StartCoroutine(enumerator, id);
+    }
+
+    protected void StopState()
+    {
+        Coroutine.Stop(CurrentStateCoroutine);
     }
 
     protected IEnumerable<BasementRoomElement> GetRooms(Func<BasementRoomElement, bool> func = null)
     {
         return RoomElements
             .Where(x => !x.IsStart && x.AreaName == TargetArea && (func == null || func(x)));
+    }
+
+    private void ProcessDebugLabel()
+    {
+        if (_debug_info_label == null) return;
+        _debug_info_label.Text = GetInfoString();
+    }
+
+    protected virtual string GetInfoString()
+    {
+        return $"{EnemyName}\n{CurrentState}";
     }
 }

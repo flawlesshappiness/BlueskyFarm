@@ -17,13 +17,14 @@ public partial class CultistEnemy : NavEnemy
     [Export]
     public SoundInfo SfxRun;
 
-    [NodeType]
+    [Export]
     public AnimationStateMachine AnimationStateMachine;
 
-    [NodeType]
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
     protected override string EnemyName => "Cultist";
+    protected override string DefaultState => StatePatrol;
 
     private BoolParameter _param_moving;
     private BoolParameter _param_running;
@@ -31,13 +32,16 @@ public partial class CultistEnemy : NavEnemy
 
     private BasementRoomElement _current_element;
 
-    private enum State { Wait, Patrol, Flee, Respawn }
-    private State _state;
+    private const string StateWait = "Wait";
+    private const string StatePatrol = "Patrol";
+    private const string StateFlee = "Flee";
+    private const string StateRespawn = "Respawn";
 
-    public override void _Ready()
+    protected override void Initialize()
     {
-        base._Ready();
+        base.Initialize();
         InitializeAnimations();
+        Spawn();
     }
 
     private void InitializeAnimations()
@@ -66,7 +70,16 @@ public partial class CultistEnemy : NavEnemy
         AnimationStateMachine.Start(anim_idle.Node);
     }
 
-    protected override void Spawn(bool debug)
+    protected override void RegisterStates()
+    {
+        base.RegisterStates();
+        RegisterState(StatePatrol, StateCr_Patrol);
+        RegisterState(StateWait, StateCr_Wait);
+        RegisterState(StateFlee, StateCr_Flee);
+        RegisterState(StateRespawn, StateCr_Respawn);
+    }
+
+    public override void Spawn(bool debug)
     {
         base.Spawn(debug);
 
@@ -76,11 +89,11 @@ public partial class CultistEnemy : NavEnemy
         }
         else
         {
-            var room = GetFurthestRoomElementToPlayer();
-            var spawn = room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
+            _current_element = GetFurthestRoomElementToPlayer();
+            var spawn = _current_element.Room.GetNodeInChildren<Node3D>("EnemySpawn");
             GlobalPosition = spawn.GlobalPosition;
 
-            SetState(State.Patrol);
+            SetState(StatePatrol);
         }
     }
 
@@ -98,26 +111,11 @@ public partial class CultistEnemy : NavEnemy
 
     private void ProcessFlee()
     {
-        if (_state == State.Flee || _state == State.Respawn) return;
+        if (IsState(StateFlee, StateRespawn)) return;
 
         if (DistanceToPlayer < BasementRoom.ROOM_SIZE * 0.3f)
         {
-            SetState(State.Flee);
-        }
-    }
-
-    private void SetState(State state)
-    {
-        _state = state;
-
-        var id = "state";
-        switch (state)
-        {
-            case State.Wait: this.StartCoroutine(StateCr_Wait, id); return;
-            case State.Patrol: this.StartCoroutine(StateCr_Patrol, id); return;
-            case State.Flee: this.StartCoroutine(StateCr_Flee, id); return;
-            case State.Respawn: this.StartCoroutine(StateCr_Respawn, id); return;
-            default: return;
+            SetState(StateFlee);
         }
     }
 
@@ -133,7 +131,7 @@ public partial class CultistEnemy : NavEnemy
             yield return null;
         }
 
-        SetState(State.Patrol);
+        SetState(StatePatrol);
     }
 
     private IEnumerator StateCr_Patrol()
@@ -149,7 +147,7 @@ public partial class CultistEnemy : NavEnemy
         {
             if (Agent.IsNavigationFinished())
             {
-                SetState(State.Wait);
+                SetState(StateWait);
             }
 
             yield return null;
@@ -186,7 +184,7 @@ public partial class CultistEnemy : NavEnemy
         {
             if (Agent.IsNavigationFinished())
             {
-                SetState(State.Respawn);
+                SetState(StateRespawn);
             }
 
             yield return null;
@@ -198,17 +196,11 @@ public partial class CultistEnemy : NavEnemy
         Coroutine.Start(Cr, $"{nameof(CultistEnemy)}_Ragdoll");
         IEnumerator Cr()
         {
-            Player.MovementLock.AddLock(EnemyId);
-            Player.LookLock.AddLock(EnemyId);
-
             ScreenEffects.AnimateGaussianBlur(EnemyId, 15, 0.2f, 3f, 5f);
             ScreenEffects.AnimateHeartbeatFrequency(EnemyId, 0.75f, 0, 2f, 5f);
 
             var v_ragdoll = DirectionToPlayer.Normalized() * 2f;
             yield return Player.Instance.RagdollCameraAndPickUp(v_ragdoll, 3f);
-
-            Player.MovementLock.RemoveLock(EnemyId);
-            Player.LookLock.RemoveLock(EnemyId);
         }
     }
 

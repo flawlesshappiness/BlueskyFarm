@@ -17,87 +17,78 @@ public partial class SpineCentipedeEnemy : NavEnemy
     [Export]
     public SoundInfo SfxAttack;
 
-    [NodeType]
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [NodeType]
+    [Export]
     public AnimationStateMachine AnimationStateMachine;
 
-    [NodeName]
+    [Export]
     public AudioStreamPlayer3D SfxMoving;
 
-    [NodeName]
+    [Export]
     public PlayerArea ChargeArea;
 
-    [NodeName]
+    [Export]
     public PlayerArea AttackArea;
 
     protected override string EnemyName => "SpineCentipede";
+    protected override string DefaultState => StatePatrol;
+    private bool IsAttacking => IsState(StateCharge, StateAttack);
 
     private BoolParameter _param_moving;
     private BoolParameter _param_charge;
     private TriggerParameter _param_attack;
-    private State _state = State.Patrol;
     private float _time_next_wheeze;
     private bool _killed_player;
 
     private BasementRoomElement _start_room;
     private BasementRoomElement _end_room;
     private bool _patrol_to_end;
-    private bool _spawned;
     private Vector3 _attack_position;
 
-    public enum State
-    {
-        Patrol, Charge, Attack,
-        Debug_Idle, Debug_Follow,
-    }
+    private const string StatePatrol = "Patrol";
+    private const string StateCharge = "Charge";
+    private const string StateAttack = "Attack";
 
-    public override void _Ready()
+    protected override void Initialize()
     {
-        base._Ready();
-        RegisterDebugActions();
+        base.Initialize();
+
         InitializeAnimations();
 
         ChargeArea.PlayerEntered += ChargeArea_PlayerEntered;
         AttackArea.PlayerEntered += AttackArea_PlayerEntered;
 
         AttackArea.Disable();
+        Spawn(IsDebug);
     }
 
-    protected override void Initialize()
+    public override void Spawn(bool debug)
     {
-        base.Initialize();
+        base.Spawn(debug);
 
-        if (IsDebug)
+        if (debug)
         {
-            SetState(State.Debug_Idle);
+            SetState(StateDebugIdle);
         }
         else
         {
-            Spawn();
+            var grid = BasementController.Instance.CurrentBasement.Grid;
+
+            _start_room = GetRooms()
+                .OrderBy(x => grid.GetNeighbours(x.Coordinates).Count)
+                .FirstOrDefault();
+
+            _end_room = GetRooms()
+                .OrderByDescending(x => x.Room.GlobalPosition.DistanceSquaredTo(_start_room.Room.GlobalPosition))
+                .FirstOrDefault();
+
+            var spawn = _start_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
+            GlobalPosition = spawn.GlobalPosition;
+
+            SetState(DefaultState);
         }
-    }
-
-    protected override void RegisterDebugActions()
-    {
-        base.RegisterDebugActions();
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Idle",
-            Action = v => SetState(State.Debug_Idle)
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Follow",
-            Action = v => SetState(State.Debug_Follow)
-        });
     }
 
     private void InitializeAnimations()
@@ -127,12 +118,18 @@ public partial class SpineCentipedeEnemy : NavEnemy
         AnimationStateMachine.Start(idle.Node);
     }
 
+    protected override void RegisterStates()
+    {
+        base.RegisterStates();
+        RegisterState(StatePatrol, StateCr_Patrol);
+        RegisterState(StateCharge, StateCr_Charge);
+        RegisterState(StateAttack, StateCr_Attack);
+    }
+
     protected override void OnVelocityComputed(Vector3 v)
     {
-        if (_state == State.Patrol || _state == State.Debug_Follow)
-        {
-            base.OnVelocityComputed(v);
-        }
+        if (IsState(StateCharge, StateAttack)) return;
+        base.OnVelocityComputed(v);
     }
 
     public override void _Process(double delta)
@@ -144,8 +141,7 @@ public partial class SpineCentipedeEnemy : NavEnemy
 
     private void ProcessAnimations()
     {
-        var attacking = _state == State.Charge || _state == State.Attack;
-        var moving = !Agent.IsNavigationFinished() && !attacking;
+        var moving = !Agent.IsNavigationFinished() && !IsAttacking;
         _param_moving.Set(moving);
 
         SfxMoving.SetPlaying(moving);
@@ -158,46 +154,10 @@ public partial class SpineCentipedeEnemy : NavEnemy
             var rng = new RandomNumberGenerator();
             _time_next_wheeze = GameTime.Time + rng.RandfRange(10, 20);
 
-            if (_state != State.Charge && _state != State.Attack)
+            if (!IsAttacking)
             {
                 PlayWheezeShortSfx();
             }
-        }
-    }
-
-    private void Spawn()
-    {
-        var grid = BasementController.Instance.CurrentBasement.Grid;
-
-        _start_room = GetRooms()
-            .OrderBy(x => grid.GetNeighbours(x.Coordinates).Count)
-            .FirstOrDefault();
-
-        _end_room = GetRooms()
-            .OrderByDescending(x => x.Room.GlobalPosition.DistanceSquaredTo(_start_room.Room.GlobalPosition))
-            .FirstOrDefault();
-
-        var spawn = _start_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
-        GlobalPosition = spawn.GlobalPosition;
-
-        SetState(State.Patrol);
-
-        _spawned = true;
-    }
-
-    private void SetState(State state)
-    {
-        _state = state;
-
-        var id = "state";
-        switch (state)
-        {
-            case State.Debug_Idle: this.StartCoroutine(StateCr_Debug_Idle, id); return;
-            case State.Debug_Follow: this.StartCoroutine(StateCr_Debug_Follow, id); return;
-            case State.Patrol: this.StartCoroutine(StateCr_Patrol, id); return;
-            case State.Charge: this.StartCoroutine(StateCr_Charge, id); return;
-            case State.Attack: this.StartCoroutine(StateCr_Attack, id); return;
-            default: return;
         }
     }
 
@@ -281,7 +241,7 @@ public partial class SpineCentipedeEnemy : NavEnemy
         }
 
         _param_charge.Set(false);
-        SetState(State.Attack);
+        SetState(StateAttack);
     }
 
     private IEnumerator StateCr_Attack()
@@ -305,7 +265,7 @@ public partial class SpineCentipedeEnemy : NavEnemy
 
             if (!_killed_player)
             {
-                SetState(State.Patrol);
+                SetState(StatePatrol);
             }
         }
     }
@@ -342,14 +302,12 @@ public partial class SpineCentipedeEnemy : NavEnemy
 
     private void ChargeArea_PlayerEntered(Player player)
     {
-        if (!_spawned) return;
+        if (!Spawned) return;
+        if (!IsState(StatePatrol)) return;
 
-        if (_state == State.Patrol)
-        {
-            ChargeArea.Disable();
-            _attack_position = player.GlobalPosition;
-            SetState(State.Charge);
-        }
+        ChargeArea.Disable();
+        _attack_position = player.GlobalPosition;
+        SetState(StateCharge);
     }
 
     private void AttackArea_PlayerEntered(Player player)

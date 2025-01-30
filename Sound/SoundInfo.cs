@@ -24,6 +24,9 @@ public partial class SoundInfo : Resource
 
     [Export]
     public SoundAttenuation Attenuation = SoundAttenuation.Default;
+
+    public AudioStreamPlayer Play(SoundOverride settings = null) => SoundController.Instance.Play(this, settings);
+    public AudioStreamPlayer3D Play(Vector3 position, SoundOverride settings = null) => SoundController.Instance.Play(this, position, settings);
 }
 
 public enum SoundDistance

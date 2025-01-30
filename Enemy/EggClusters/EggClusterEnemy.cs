@@ -1,74 +1,67 @@
 using Godot;
+using Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class EggClusterEnemy : NavEnemy
 {
-    [NodeName]
-    public Node3D Clusters;
+    [Export]
+    public Array<Node3D> ClusterTemplates;
 
     protected override string EnemyName => "EggCluster";
 
-    private List<Node3D> _cluster_templates = new();
     private List<Node3D> _clusters = new();
 
     private BasementRoomElement _current_room;
 
-    public override void _Ready()
-    {
-        base._Ready();
-
-        InitializeClusters();
-    }
-
     protected override void Initialize()
     {
         base.Initialize();
+        Spawn();
+    }
 
-        if (IsDebug)
+    public override void Spawn(bool debug)
+    {
+        base.Spawn(debug);
+
+        if (debug)
         {
-            SpawnDebug();
+            CreateClusters();
         }
         else
         {
-            Spawn();
-        }
-    }
-
-    private void InitializeClusters()
-    {
-        foreach (var child in Clusters.GetChildren())
-        {
-            var n3 = child as Node3D;
-            if (!IsInstanceValid(n3)) continue;
-
-            n3.Disable();
-            _cluster_templates.Add(n3);
-        }
-    }
-
-    private void Spawn()
-    {
-        var room = GetRooms()
+            var room = GetRooms()
             .Where(x => x.Info.ValidGroundHeights != null && x.Info.ValidGroundHeights.Count > 0)
             .ToList()
             .Random();
 
-        if (room == null)
-        {
-            // Do nothing
-        }
-        else
-        {
-            _current_room = room;
-            GlobalPosition = room.Room.GlobalPosition;
-            CreateClusters();
+            if (room == null)
+            {
+                // Do nothing
+            }
+            else
+            {
+                _current_room = room;
+                GlobalPosition = room.Room.GlobalPosition;
+                CreateClusters();
+            }
         }
     }
 
-    private void SpawnDebug()
+    public override void Despawn()
     {
-        CreateClusters();
+        base.Despawn();
+        ClearClusters();
+    }
+
+    private void ClearClusters()
+    {
+        foreach (var cluster in _clusters)
+        {
+            cluster.QueueFree();
+        }
+
+        _clusters.Clear();
     }
 
     private void CreateClusters()
@@ -82,7 +75,7 @@ public partial class EggClusterEnemy : NavEnemy
 
     private Node3D CreateCluster()
     {
-        var cluster = _cluster_templates.Random().Duplicate() as Node3D;
+        var cluster = ClusterTemplates.ToList().Random().Duplicate() as Node3D;
         cluster.SetParent(this);
 
         var position = GetValidEggPosition();

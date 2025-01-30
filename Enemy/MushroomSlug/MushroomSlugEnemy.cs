@@ -5,74 +5,55 @@ using System.Linq;
 
 public partial class MushroomSlugEnemy : NavEnemy
 {
-    [NodeType]
+    [Export]
     public AnimationStateMachine AnimationStateMachine;
 
-    [NodeType]
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [NodeType]
+    [Export]
     public PlayerArea PlayerArea;
 
     protected override string EnemyName => "MushroomSlug";
+    protected override string DefaultState => StateWander;
     private string FxId => $"{nameof(MushroomSlugEnemy)}_{GetInstanceId()}";
 
-    private State _state = State.Wander;
     private BoolParameter _param_moving;
     private float _time_player_enter;
     private BasementRoomElement _current_room;
-    private bool _spawned;
 
-    public enum State
-    {
-        Wander, Travel,
-        Debug_Idle, Debug_Follow,
-    }
-
-    public override void _Ready()
-    {
-        base._Ready();
-
-        PlayerArea.Disable();
-        PlayerArea.PlayerEntered += PlayerEntered;
-        PlayerArea.PlayerExited += PlayerExited;
-
-        RegisterDebugActions();
-        InitializeAnimations();
-    }
+    private const string StateWander = "Wander";
+    private const string StateTravel = "Travel";
 
     protected override void Initialize()
     {
         base.Initialize();
+        PlayerArea.Disable();
+        PlayerArea.PlayerEntered += PlayerEntered;
+        PlayerArea.PlayerExited += PlayerExited;
 
-        if (IsDebug)
+        InitializeAnimations();
+        Spawn();
+    }
+
+    public override void Spawn(bool debug)
+    {
+        base.Spawn(debug);
+
+        if (debug)
         {
+
         }
         else
         {
-            Spawn();
+            _current_room = GetFurthestRoomElementToPlayer();
+            var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
+            GlobalPosition = spawn.GlobalPosition;
+
+            PlayerArea.Enable();
+
+            SetState(StateTravel);
         }
-    }
-
-    protected override void RegisterDebugActions()
-    {
-        base.RegisterDebugActions();
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Idle",
-            Action = v => SetState(State.Debug_Idle)
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = EnemyId,
-            Category = EnemyCategory,
-            Text = "Follow",
-            Action = v => SetState(State.Debug_Follow)
-        });
     }
 
     private void InitializeAnimations()
@@ -89,6 +70,13 @@ public partial class MushroomSlugEnemy : NavEnemy
         AnimationStateMachine.Start(idle.Node);
     }
 
+    protected override void RegisterStates()
+    {
+        base.RegisterStates();
+        RegisterState(StateWander, StateCr_Wander);
+        RegisterState(StateTravel, StateCr_Travel);
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -100,22 +88,9 @@ public partial class MushroomSlugEnemy : NavEnemy
         _param_moving.Set(!Agent.IsNavigationFinished());
     }
 
-    private void Spawn()
-    {
-        _current_room = GetFurthestRoomElementToPlayer();
-        var spawn = _current_room.Room.GetNodeInChildren<Node3D>("EnemySpawn");
-        GlobalPosition = spawn.GlobalPosition;
-
-        PlayerArea.Enable();
-
-        SetState(State.Travel);
-
-        _spawned = true;
-    }
-
     private void PlayerEntered(Player player)
     {
-        if (!_spawned) return;
+        if (!Spawned) return;
 
         _time_player_enter = GameTime.Time;
 
@@ -126,7 +101,7 @@ public partial class MushroomSlugEnemy : NavEnemy
 
     private void PlayerExited(Player player)
     {
-        if (!_spawned) return;
+        if (!Spawned) return;
 
         var t = Mathf.Clamp((GameTime.Time - _time_player_enter) / 5f, 0, 1);
         var duration = 15f * t;
@@ -134,51 +109,6 @@ public partial class MushroomSlugEnemy : NavEnemy
         ScreenEffects.AnimateDistortOut(FxId, duration);
         ScreenEffects.AnimateGaussianBlurOut(FxId, duration);
         ScreenEffects.AnimateFogOut(FxId, duration);
-    }
-
-    private void SetState(State state)
-    {
-        _state = state;
-
-        var id = "state";
-        switch (state)
-        {
-            case State.Debug_Idle: this.StartCoroutine(StateCr_Debug_Idle, id); return;
-            case State.Debug_Follow: this.StartCoroutine(StateCr_Debug_Follow, id); return;
-            case State.Travel: this.StartCoroutine(StateCr_Travel, id); return;
-            case State.Wander: this.StartCoroutine(StateCr_Wander, id); return;
-            default: return;
-        }
-    }
-
-    private IEnumerator StateCr_Debug_Idle()
-    {
-        while (true)
-        {
-            if (!Agent.IsNavigationFinished())
-            {
-                Agent.TargetPosition = GlobalPosition;
-            }
-
-            yield return null;
-        }
-    }
-
-    private IEnumerator StateCr_Debug_Follow()
-    {
-        while (true)
-        {
-            if (DistanceToPlayer < 2)
-            {
-                Agent.TargetPosition = GlobalPosition;
-            }
-            else if (DistanceToPlayer > 3)
-            {
-                Agent.TargetPosition = Player.GlobalPosition;
-            }
-
-            yield return null;
-        }
     }
 
     private IEnumerator StateCr_Travel()
@@ -193,7 +123,7 @@ public partial class MushroomSlugEnemy : NavEnemy
             if (Agent.IsNavigationFinished())
             {
                 _current_room = room;
-                SetState(State.Wander);
+                SetState(StateWander);
                 break;
             }
 
@@ -219,7 +149,7 @@ public partial class MushroomSlugEnemy : NavEnemy
 
                 if (count == 0)
                 {
-                    SetState(State.Travel);
+                    SetState(StateTravel);
                     break;
                 }
                 else

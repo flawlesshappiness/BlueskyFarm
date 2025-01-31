@@ -15,6 +15,7 @@ SfxRun = ExtResource("3_pl6b7")
 AnimationStateMachine = NodePath("AnimationStateMachine")
 AnimationPlayer = NodePath("frog/AnimationPlayer")
 MoveSpeed = 0.5
+TurnSpeed = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5

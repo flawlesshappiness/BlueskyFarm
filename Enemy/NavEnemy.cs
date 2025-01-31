@@ -159,7 +159,9 @@ public partial class NavEnemy : Enemy
     {
         return GetRooms(validate)
             .OrderByDescending(x => PlayerPosition.DistanceTo(x.Room.GlobalPosition))
-            .FirstOrDefault();
+            .Take(5)
+            .ToList()
+            .Random();
     }
 
     public IEnumerable<BasementRoomElement> GetClosestRoomElements(Func<BasementRoomElement, bool> validate = null)
@@ -172,6 +174,11 @@ public partial class NavEnemy : Enemy
     {
         return GetClosestRoomElements(validate)
             .FirstOrDefault();
+    }
+
+    public IEnumerable<BasementRoomElement> GetConnnectedNeighbours(BasementRoomElement target)
+    {
+        return target.Connections.Where(x => x.AreaName == target.AreaName && !x.IsStart);
     }
 
     public Vector3 GetRandomPositionInRoom(BasementRoom room)

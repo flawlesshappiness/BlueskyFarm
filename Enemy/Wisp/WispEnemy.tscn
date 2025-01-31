@@ -99,7 +99,8 @@ point_count = 6
 script = ExtResource("1_jxsbr")
 AnimNode = NodePath("Offset/Anim")
 Path = NodePath("Offset/Path3D")
-MoveSpeed = 1.0
+MoveSpeed = 0.5
+TurnSpeed = 1.0
 
 [node name="Offset" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

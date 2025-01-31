@@ -8,6 +8,9 @@ public partial class EnemyInfo : Resource
     public PackedScene Scene;
 
     [Export]
+    public int Count = 1;
+
+    [Export]
     public bool Enabled;
 
     [Export]

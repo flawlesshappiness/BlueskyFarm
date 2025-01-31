@@ -61,7 +61,7 @@ public partial class SoundController : ResourceController<SoundCollection, Sound
         if (entry == null) return;
 
         SetupAudioStreamPlayer(go, entry, settings);
-        go.Call("play");
+        go.Call("play", settings?.PlaybackPosition ?? 0);
     }
 
     private void DestroyDelay(GodotObject go, float delay)
@@ -156,6 +156,7 @@ public class SoundOverride
     public SoundBus? Bus { get; set; }
     public float? Volume { get; set; }
     public Vector2? PitchRange { get; set; } = new Vector2(1, 1);
+    public float? PlaybackPosition { get; set; }
 
     // 3D
     public SoundDistance? Distance { get; set; }

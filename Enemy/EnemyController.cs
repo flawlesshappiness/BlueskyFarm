@@ -62,11 +62,15 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
         foreach (var info in enemies)
         {
-            var enemy = CreateEnemy(info);
-            enemy.GlobalPosition = Vector3.Down * 100;
-            enemy.TargetArea = area;
-            enemy.InitializeEnemy();
-            enemy.Despawn();
+            var count = Mathf.Max(1, info.Count);
+            for (int i = 0; i < count; i++)
+            {
+                var enemy = CreateEnemy(info);
+                enemy.GlobalPosition = Vector3.Down * 100;
+                enemy.TargetArea = area;
+                enemy.InitializeEnemy();
+                enemy.Despawn();
+            }
         }
 
         Debug.Indent--;

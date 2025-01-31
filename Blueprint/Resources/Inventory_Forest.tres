@@ -14,4 +14,4 @@ ResultDialogueNode = ""
 VegetableCount = 2
 BoneCount = 5
 CanCancel = true
-Areas = Array[int]([2])
+Areas = null

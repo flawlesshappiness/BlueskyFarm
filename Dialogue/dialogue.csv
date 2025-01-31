@@ -24,6 +24,10 @@ keys;en
 ##NOTE_FOREST_BED_002##;The wood in this area is unique. Sturdy and pale.\nI will bring some to the new place.
 ##NOTE_FOREST_BED_003##;I used it for the bed. I can make a blueprint, so do not take it.
 ##NOTE_FOREST_BED_004##;It was really hard to get up here.
+##NOTE_BUSINESS_NAMES_001##;It's a list of names. All stricken through, except for the last one.
+##NOTE_BUSINESS_NAMES_002##;Grow-Good Veggies\nGrow-Good Farm
+##NOTE_BUSINESS_NAMES_003##;Big Growth Farm\nVeggies from the rift
+##NOTE_BUSINESS_NAMES_004##;Riftwood Farm
 ##FROG_INTRO_001##;Welcome to the farm!\nYou can call me Fren.
 ##FROG_INTRO_002##;I've been assigned as your supervisor, and will be the one to give you your introductory tasks.
 ##FROG_INTRO_003##;I understand that everything here is new for you, so let's start with something simple.

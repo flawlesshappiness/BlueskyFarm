@@ -32,13 +32,13 @@ public partial class BasementController : SingletonController
         // Set priority rooms
         SetRandomElementInfo(AreaNames.Basement, "Basement_Workshop");
 
-        if (Data.Game.State_BasementInventoryPuzzle == 1 && !Player.Instance.HasAccessToBlueprint("inventory_001"))
+        if (Data.Game.State_BasementInventoryPuzzle == 1 && !Player.HasAccessToBlueprint("inventory_001"))
         {
             SetRandomElementInfo(AreaNames.Basement, "Basement_InventoryPuzzle");
         }
 
         // Add special rooms
-        if (Data.Game.Flag_WorkshopKeyAvailable && !Player.Instance.HasAccessToItem("Key_Workshop"))
+        if (Data.Game.Flag_WorkshopKeyAvailable && !Player.HasAccessToItem("Key_Workshop"))
         {
             BasementGridGenerator.AddRoom(grid, new AddRoomSettings
             {
@@ -51,6 +51,12 @@ public partial class BasementController : SingletonController
         {
             AreaName = AreaNames.Forest,
             RoomInfo = BasementRoomController.Instance.Collection.GetResource("Forest_TreeHouse")
+        });
+
+        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+        {
+            AreaName = AreaNames.Forest,
+            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Forest_FounderHut")
         });
 
         for (int i = 0; i < 2; i++)

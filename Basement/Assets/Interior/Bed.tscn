@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl6accmjb08lp"]
+
+[ext_resource type="PackedScene" uid="uid://cqt8nkrp1kjem" path="res://Assets/FlawLizArt/Bed/bed_frame.fbx" id="1_nsmq3"]
+[ext_resource type="PackedScene" uid="uid://dxrlnky8m2c2h" path="res://Assets/FlawLizArt/Bed/bed_mattress.fbx" id="2_q7o8x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1tb5"]
+size = Vector3(1.59741, 0.381958, 2.5957)
+
+[node name="Bed" type="Node3D"]
+
+[node name="bed_frame" parent="." instance=ExtResource("1_nsmq3")]
+
+[node name="bed_mattress" parent="." instance=ExtResource("2_q7o8x")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190979, 0)
+shape = SubResource("BoxShape3D_d1tb5")

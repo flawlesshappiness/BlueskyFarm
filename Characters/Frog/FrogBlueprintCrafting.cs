@@ -187,11 +187,29 @@ public partial class FrogBlueprintCrafting : Node3DScript
 
             CreateResult(Data.Game.BlueprintCraftingData);
             BlueprintTrigger(Data.Game.BlueprintCraftingData.Id);
+            IncrementBlueprintCraftedData(Data.Game.BlueprintCraftingData.Id);
             OnBlueprintCompleted?.Invoke(Data.Game.BlueprintCraftingData.Id);
             Data.Game.BlueprintCraftingData = null;
 
             SoundController.Instance.Play("sfx_crafting_complete");
         }
+    }
+
+    private void IncrementBlueprintCraftedData(string id)
+    {
+        var data = Data.Game.BlueprintCraftedCounts.FirstOrDefault(x => x.Id == id);
+
+        if (data == null)
+        {
+            data = new BlueprintCraftedCountData
+            {
+                Id = id
+            };
+
+            Data.Game.BlueprintCraftedCounts.Add(data);
+        }
+
+        data.Count++;
     }
 
     private void BlueprintTrigger(string id)

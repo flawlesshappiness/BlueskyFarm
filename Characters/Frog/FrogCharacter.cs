@@ -154,7 +154,7 @@ public partial class FrogCharacter : Character
         {
             StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##");
         }
-        else if (HasFlag(DialogueFlags.FrogWeedcutter, 3) && Player.Instance.HasAccessToBlueprint("weedcutter"))
+        else if (HasFlag(DialogueFlags.FrogWeedcutter, 3) && Player.HasAccessToBlueprint("weedcutter"))
         {
             StartDialogue("##FROG_WEEDCUTTER_CREATE_001##");
         }

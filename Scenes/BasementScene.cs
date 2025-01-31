@@ -208,7 +208,7 @@ public partial class BasementScene : GameScene
             //Debug.Log($"{nameof(blueprints_not_selected)}: {blueprints_not_selected.Count()}");
             var blueprints_area = blueprints_not_selected.Where(x => x.Areas != null && x.Areas.Any(bp_area => bp_area.ToString() == area.AreaName));
             //Debug.Log($"{nameof(blueprints_area)}: {blueprints_area.Count()}");
-            var blueprints_access = blueprints_area.Where(x => !Player.Instance.HasAccessToBlueprint(x.Id) && !Player.Instance.HasAccessToItem(x.ResultItemInfo));
+            var blueprints_access = blueprints_area.Where(x => !Player.HasAccessToBlueprint(x.Id) && !Player.HasAccessToItem(x.ResultItemInfo));
             //Debug.Log($"{nameof(blueprints_access)}: {blueprints_access.Count()}");
             var blueprints = blueprints_access.ToList();
 
@@ -231,9 +231,17 @@ public partial class BasementScene : GameScene
 
     private void RemoveUnlockedBlueprints(List<BlueprintInfo> blueprints)
     {
-        if (Data.Game.Flag_ShedRepaired)
+        foreach (var bp in blueprints.ToList())
         {
-            blueprints.Remove(blueprints.FirstOrDefault(x => x.Id == "shed_repair"));
+            if (HasCraftedBlueprintBefore(bp.Id))
+            {
+                blueprints.Remove(bp);
+            }
         }
+    }
+
+    private bool HasCraftedBlueprintBefore(string id)
+    {
+        return Data.Game.BlueprintCraftedCounts.Any(x => x.Id == id && x.Count > 0);
     }
 }

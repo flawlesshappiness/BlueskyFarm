@@ -45,6 +45,13 @@ public partial class BlueprintController : ResourceController<BlueprintCollectio
                 view.HideContent();
             }
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Clear crafted blueprints data",
+            Action = v => Data.Game.BlueprintCraftedCounts = new()
+        });
     }
 
     public BlueprintInfo GetInfo(string id)

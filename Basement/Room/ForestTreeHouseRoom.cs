@@ -56,11 +56,8 @@ public partial class ForestTreeHouseRoom : Node3D
     private void CreateBlueprint()
     {
         var bp_id = "bed_repair";
-        var has_bp = Player.Instance.HasAccessToBlueprint(bp_id);
-        var has_item = Data.Game.Flag_BedRepaired;
-        var cancel = has_bp || has_item;
-
-        if (cancel) return;
+        if (Player.HasAccessToBlueprint(bp_id)) return;
+        if (Data.Game.Flag_BedRepaired) return;
 
         var item = BlueprintController.Instance.CreateBlueprintRoll(bp_id);
         item.SetParent(BlueprintItemSpawn);

@@ -55,11 +55,9 @@ public partial class BasementWorkshopRoom : Node3DScript
     {
         var bp_id = "weedcutter";
         var item_id = "Weedcutter";
-        var has_bp = Player.Instance.HasAccessToBlueprint(bp_id);
-        var has_item = Player.Instance.HasAccessToItem(item_id);
-        var cancel = has_bp || has_item;
 
-        if (cancel) return;
+        if (Player.HasAccessToBlueprint(bp_id)) return;
+        if (Player.HasAccessToItem(item_id)) return;
 
         var item = BlueprintController.Instance.CreateBlueprintRoll(bp_id);
         item.SetParent(BlueprintPosition);

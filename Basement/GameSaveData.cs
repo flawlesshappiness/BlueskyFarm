@@ -6,6 +6,7 @@ public partial class GameSaveData
     public bool Flag_WorkshopKeyAvailable { get; set; } = false;
     public bool Flag_WorkshopDoorUnlocked { get; set; } = false;
     public bool Flag_WorkshopWellRepaired { get; set; } = false;
+    public bool Flag_FounderHutWeedsCut { get; set; } = false;
     public bool Flag_ShedRepaired { get; set; } = false;
     public bool Flag_BedRepaired { get; set; } = false;
     public bool Flag_ForestTreeHouseRepaired { get; set; } = false;

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://h08lktpioj5d"]
+
+[ext_resource type="Script" path="res://Note/DialoguePaper.cs" id="1_hspf0"]
+[ext_resource type="Resource" uid="uid://d2ecbuc64hxcl" path="res://Characters/Paper/PaperDialogueCharacter.tres" id="2_8l1dh"]
+[ext_resource type="PackedScene" uid="uid://cbdl32u4linne" path="res://Assets/FlawLizArt/Paper/paper.fbx" id="3_or554"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_jws1f"]
+[ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="5_rrh41"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57b5p"]
+size = Vector3(0.601318, 0.827881, 0.0419922)
+
+[node name="Note" type="Node3D" node_paths=PackedStringArray("Touchable")]
+script = ExtResource("1_hspf0")
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("2_8l1dh")
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="paper" parent="Model" instance=ExtResource("3_or554")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_jws1f")
+HoverIcon = ExtResource("5_rrh41")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_57b5p")

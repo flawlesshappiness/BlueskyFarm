@@ -537,8 +537,8 @@ public partial class Player : FirstPersonController
         }
     }
 
-    public bool HasAccessToItem(string item_id) => HasAccessToItem(ItemController.Instance.Collection.GetResource(item_id));
-    public bool HasAccessToItem(ItemInfo info)
+    public static bool HasAccessToItem(string item_id) => HasAccessToItem(ItemController.Instance.Collection.GetResource(item_id));
+    public static bool HasAccessToItem(ItemInfo info)
     {
         var item_path = info.ResourcePath;
         var scene_data = Data.Game.Scenes.FirstOrDefault(x => x.Name == nameof(FarmScene));
@@ -547,12 +547,17 @@ public partial class Player : FirstPersonController
         return item_in_scene || item_in_inv;
     }
 
-    public bool HasAccessToBlueprint(string bp_id)
+    public static bool HasAccessToBlueprint(string bp_id)
     {
         var scene_data = Data.Game.Scenes.FirstOrDefault(x => x.Name == nameof(FarmScene));
         var bp_in_scene = scene_data.Items.Any(x => x.Blueprint?.Id == bp_id);
         var bp_in_inv = Data.Game.InventoryItems.Any(x => x != null && x.Blueprint?.Id == bp_id);
         var bp_in_progress = Data.Game.BlueprintCraftingData?.Id == bp_id;
         return bp_in_scene || bp_in_inv || bp_in_progress;
+    }
+
+    public static bool HasCraftedBlueprint(string bp_id)
+    {
+        return Data.Game.BlueprintCraftedCounts.Any(x => x.Id == bp_id && x.Count > 0);
     }
 }

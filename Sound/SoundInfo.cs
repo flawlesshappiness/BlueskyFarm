@@ -27,6 +27,7 @@ public partial class SoundInfo : Resource
 
     public AudioStreamPlayer Play(SoundOverride settings = null) => SoundController.Instance.Play(this, settings);
     public AudioStreamPlayer3D Play(Vector3 position, SoundOverride settings = null) => SoundController.Instance.Play(this, position, settings);
+    public AudioStreamPlayer3D Play(Node3D target, SoundOverride settings = null) => SoundController.Instance.Play(this, target, settings);
 }
 
 public enum SoundDistance

@@ -290,8 +290,12 @@ material = SubResource("StandardMaterial3D_s1u3r")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
 size = Vector3(1, 1.51624, 1.22208)
 
-[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("WorldEnvironment", "DirectionalLight")]
+[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_mng5r")
+Trapdoor = NodePath("World/NavigationRegion3D/Basement/Trapdoor")
+BasementUnlockArea = NodePath("World/NavigationRegion3D/Basement/BasementUnlockArea")
+Shed_Thorns = NodePath("World/NavigationRegion3D/Shed/Behind/Shed_Thorns")
+Shed_InventoryItemPosition = NodePath("World/NavigationRegion3D/Shed/Behind/Shed_InventoryItemPosition")
 WorldEnvironment = NodePath("WorldEnvironment")
 DirectionalLight = NodePath("Sun")
 

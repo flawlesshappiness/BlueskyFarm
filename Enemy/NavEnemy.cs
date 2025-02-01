@@ -118,12 +118,17 @@ public partial class NavEnemy : Enemy
 
     protected virtual void OnVelocityComputed(Vector3 v)
     {
-        Move(v);
+        MoveAndTurn(v);
     }
 
     protected void Move(Vector3 v)
     {
         GlobalPosition += v * GameTime.DeltaTime;
+    }
+
+    protected void MoveAndTurn(Vector3 v)
+    {
+        Move(v);
         TurnTowardsDirection(v);
     }
 

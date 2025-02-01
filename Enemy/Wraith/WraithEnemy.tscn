@@ -1,0 +1,180 @@
+[gd_scene load_steps=26 format=3 uid="uid://bwnpxwaecsnms"]
+
+[ext_resource type="Script" path="res://Enemy/Wraith/WraithEnemy.cs" id="1_024qk"]
+[ext_resource type="Resource" uid="uid://3jthhnssob4o" path="res://Sound/Resources/sfx_wraith_spawn.tres" id="2_4817f"]
+[ext_resource type="Resource" uid="uid://3bny6bat6j6f" path="res://Sound/Resources/sfx_wraith_loop.tres" id="3_o1kgk"]
+
+[sub_resource type="Curve" id="Curve_bi8xo"]
+_data = [Vector2(0, 0), 0.0, 23.2479, 0, 0, Vector2(0.03125, 1), 0.0, 0.0, 0, 0, Vector2(0.665179, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jwott"]
+curve = SubResource("Curve_bi8xo")
+
+[sub_resource type="Curve" id="Curve_wpql7"]
+_data = [Vector2(0, 0.692308), 0.0, 0.0, 0, 0, Vector2(0.200893, 0.989011), -1.998, -1.998, 0, 0, Vector2(0.464286, 0.461538), -0.868778, -0.868778, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_i8ejb"]
+curve = SubResource("Curve_wpql7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kdlck"]
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_i8ejb")
+color = Color(0.088, 0.0946, 0.22, 1)
+alpha_curve = SubResource("CurveTexture_jwott")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cw0gm"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4028l"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_cw0gm")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_uypet"]
+material = SubResource("StandardMaterial3D_4028l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grh3l"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_aa21v"]
+material = SubResource("StandardMaterial3D_grh3l")
+
+[sub_resource type="Curve" id="Curve_5a5wi"]
+_data = [Vector2(0, 0), 0.0, 23.2479, 0, 0, Vector2(0.03125, 1), 0.0, 0.0, 0, 0, Vector2(0.665179, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1wpup"]
+curve = SubResource("Curve_5a5wi")
+
+[sub_resource type="Curve" id="Curve_qbwkt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s0tdc"]
+curve = SubResource("Curve_qbwkt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ii51b"]
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_s0tdc")
+color = Color(0.088, 0.0946, 0.22, 1)
+alpha_curve = SubResource("CurveTexture_1wpup")
+
+[sub_resource type="Curve" id="Curve_6hbt6"]
+_data = [Vector2(0, 0), 0.0, 23.2479, 0, 0, Vector2(0.03125, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5oc8n"]
+curve = SubResource("Curve_6hbt6")
+
+[sub_resource type="Curve" id="Curve_ajdy4"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ovl1l"]
+curve = SubResource("Curve_ajdy4")
+
+[sub_resource type="Curve" id="Curve_rul3n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xk5ky"]
+curve = SubResource("Curve_rul3n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqvby"]
+lifetime_randomness = 0.8
+angle_min = -45.0
+angle_max = 45.0
+spread = 180.0
+initial_velocity_max = 2.0
+angular_velocity_min = -5.00002
+angular_velocity_max = 4.99998
+velocity_limit_curve = SubResource("CurveTexture_xk5ky")
+gravity = Vector3(0, 1, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_ovl1l")
+color = Color(0.088, 0.0946, 0.22, 1)
+alpha_curve = SubResource("CurveTexture_5oc8n")
+
+[node name="WraithEnemy" type="Node3D" node_paths=PackedStringArray("ps_body", "ps_spawn", "ps_despawn", "Model", "Eyes")]
+script = ExtResource("1_024qk")
+ps_body = NodePath("Model/ps_body")
+ps_spawn = NodePath("ps_spawn")
+ps_despawn = NodePath("ps_despawn")
+Model = NodePath("Model")
+Eyes = NodePath("Model/Eyes")
+SfxSpawn = ExtResource("2_4817f")
+SfxLoop = ExtResource("3_o1kgk")
+MoveSpeed = 0.5
+TurnSpeed = 4.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_postprocessing = 1
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ps_body" type="GPUParticles3D" parent="Model"]
+amount = 32
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_kdlck")
+draw_pass_1 = SubResource("QuadMesh_uypet")
+
+[node name="Eyes" type="Node3D" parent="Model"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Eyes"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.15, -0.25, -0.25)
+mesh = SubResource("SphereMesh_aa21v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Eyes"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.15, -0.25, -0.25)
+mesh = SubResource("SphereMesh_aa21v")
+
+[node name="ps_spawn" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ii51b")
+draw_pass_1 = SubResource("QuadMesh_uypet")
+
+[node name="ps_despawn" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+emitting = false
+amount = 10
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_gqvby")
+draw_pass_1 = SubResource("QuadMesh_uypet")

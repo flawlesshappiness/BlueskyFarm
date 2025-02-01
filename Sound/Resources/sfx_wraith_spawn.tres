@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://3jthhnssob4o"]
+
+[ext_resource type="AudioStream" uid="uid://b041p7c7tryyu" path="res://Sound/Sounds/sfx_wraith_spawn_001.wav" id="1_k5hac"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_njcko"]
+[ext_resource type="AudioStream" uid="uid://6apdfbjd4yey" path="res://Sound/Sounds/sfx_wraith_spawn_002.wav" id="2_w7hp5"]
+[ext_resource type="AudioStream" uid="uid://bpr8w0uxu3qvx" path="res://Sound/Sounds/sfx_wraith_spawn_003.wav" id="3_umt3h"]
+
+[resource]
+script = ExtResource("2_njcko")
+AudioStreams = Array[AudioStream]([ExtResource("1_k5hac"), ExtResource("2_w7hp5"), ExtResource("3_umt3h")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

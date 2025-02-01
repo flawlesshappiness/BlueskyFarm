@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 public partial class FarmScene : GameScene
 {
-    [NodeName]
+    [Export]
     public SceneDoor Trapdoor;
 
-    [NodeName]
+    [Export]
     public ItemArea BasementUnlockArea;
 
-    [NodeName]
+    [Export]
     public Weed_Thorns Shed_Thorns;
 
-    [NodeName]
+    [Export]
     public Node3D Shed_InventoryItemPosition;
 
     public List<PlantArea> PlantAreas = new();

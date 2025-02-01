@@ -217,6 +217,14 @@
 	},
 	
 	{
+		"id": "##FROG_SEEDS_AUTO_GROW_001##",
+		"next": "##FROG_SEEDS_AUTO_GROW_002##"
+	},
+	{
+		"id": "##FROG_SEEDS_AUTO_GROW_002##"
+	},
+	
+	{
 		"id": "##FROG_FIRST_DEATH_001##",
 		"next": "##FROG_FIRST_DEATH_002##"
 	},

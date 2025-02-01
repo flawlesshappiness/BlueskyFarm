@@ -130,6 +130,11 @@ public partial class BasementController : SingletonController
                 .Where(info => IsValidStartRoom(element, info))
                 .FirstOrDefault();
 
+            if (room == null)
+            {
+                Debug.LogError($"Failed to get start room info in area: {element.AreaName}");
+            }
+
             return room;
         }
         else
@@ -137,6 +142,11 @@ public partial class BasementController : SingletonController
             var room = BasementRoomController.Instance.Collection.Resources
                 .Where(x => !x.Disabled && !x.IsStartRoom && x.Area == element.AreaName)
                 .ToList().Random();
+
+            if (room == null)
+            {
+                Debug.LogError($"Failed to get room info in area: {element.AreaName}");
+            }
 
             return room;
         }

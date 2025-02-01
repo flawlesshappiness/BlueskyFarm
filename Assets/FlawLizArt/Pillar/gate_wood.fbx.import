@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://sm38xdqyls6b"
-path="res://.godot/imported/pillar_wood_damaged.fbx-8d0e4eb732eee87ae7681025f723d9ba.scn"
+uid="uid://cvsknsy6y7f31"
+path="res://.godot/imported/gate_wood.fbx-eeb8688d1759a8e96546610fa3048247.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Pillar/pillar_wood_damaged.fbx"
-dest_files=["res://.godot/imported/pillar_wood_damaged.fbx-8d0e4eb732eee87ae7681025f723d9ba.scn"]
+source_file="res://Assets/FlawLizArt/Pillar/gate_wood.fbx"
+dest_files=["res://.godot/imported/gate_wood.fbx-eeb8688d1759a8e96546610fa3048247.scn"]
 
 [params]
 
@@ -31,14 +31,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"WoodDark": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Wood.tres"
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

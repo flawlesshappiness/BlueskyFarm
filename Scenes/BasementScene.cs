@@ -49,6 +49,15 @@ public partial class BasementScene : GameScene
                     MaxCorridorDepth = 3,
                     SeedType = ItemType.Crop_Bone,
                     SeedCount = 5
+                },
+                new BasementSettingsArea
+                {
+                    AreaName = AreaNames.Mine,
+                    ConnectedAreaName = AreaNames.Forest,
+                    MaxRooms = 10,
+                    MaxCorridorDepth = 3,
+                    SeedType = ItemType.Crop_Stone,
+                    SeedCount = 5
                 }
             }
         };

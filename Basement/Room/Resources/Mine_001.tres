@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://b2fng6qr6tqxy"]
+
+[ext_resource type="PackedScene" uid="uid://tf4qub5evl6k" path="res://Basement/Room/Prefabs/Mine_001.tscn" id="1_x6tdp"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_poesl"]
+
+[resource]
+script = ExtResource("2_poesl")
+Area = "Mine"
+ConnectedArea = ""
+AmbienceArea = "Mine"
+Scene = ExtResource("1_x6tdp")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "0000000
+0000000
+0000000
+0001000
+0000000
+0000000
+0000000"
+ValidGroundHeights = null
+Disabled = false

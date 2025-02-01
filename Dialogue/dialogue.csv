@@ -57,5 +57,7 @@ keys;en
 ##FROG_FOREST_ENTER_003##;Those nasty people have also settled in a building near the forest. Try to avoid a confrontation.
 ##FROG_FOREST_ENTER_REPEAT_001##;There's a mine entrace in the forest. We are going to need the materials from there.
 ##FROG_FOREST_ENTER_REPEAT_002##;If you get lost, try to look for signs. They will point you in the right direction.
+##FROG_SEEDS_AUTO_GROW_001##;Seeds will grow, even while you're down there collecting more.\nSo you don't have to hang around here waiting.
+##FROG_SEEDS_AUTO_GROW_002##;Not that I don't enjoy your company...
 ##FROG_FIRST_DEATH_001##;Woah, you're looking worse for wear.\nYou alright?
 ##FROG_FIRST_DEATH_002##;Listen, most things down there don't want nothing to do with you. Try to keep distance and you should be good.

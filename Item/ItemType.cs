@@ -3,5 +3,6 @@ public enum ItemType
     Other,
     Crop_Vegetable,
     Crop_Bone,
-    Seed
+    Seed,
+    Crop_Stone,
 }

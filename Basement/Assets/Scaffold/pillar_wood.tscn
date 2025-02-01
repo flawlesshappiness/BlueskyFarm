@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dt0t3jbuwaufg" path="res://Assets/FlawLizArt/Pillar/pillar_wood.fbx" id="1_wa205"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2u4d4"]
-size = Vector3(0.571289, 4, 0.56543)
+size = Vector3(0.410156, 4, 0.419922)
 
 [node name="Pillar_Wood" type="Node3D"]
 

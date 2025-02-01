@@ -37,6 +37,22 @@
 	},
 	
 	{
+		"id": "##NOTE_BUSINESS_NAMES_001##",
+		"next": "##NOTE_BUSINESS_NAMES_002##"
+	},
+	{
+		"id": "##NOTE_BUSINESS_NAMES_002##",
+		"next": "##NOTE_BUSINESS_NAMES_003##"
+	},
+	{
+		"id": "##NOTE_BUSINESS_NAMES_003##",
+		"next": "##NOTE_BUSINESS_NAMES_004##"
+	},
+	{
+		"id": "##NOTE_BUSINESS_NAMES_004##"
+	},
+	
+	{
 		"id": "##NOTE_BASEMENT_OVERGROWN_001##",
 		"next": "##NOTE_MANTRA_001##"
 	},

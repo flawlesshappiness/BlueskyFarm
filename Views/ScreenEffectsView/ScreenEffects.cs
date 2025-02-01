@@ -289,6 +289,15 @@ public partial class ScreenEffects : Node3DScript
     public static Coroutine AnimateGaussianBlurOut(string id, float duration) =>
         Instance._AnimateMinValueOut(Instance._gaussian_amount, $"{nameof(AnimateGaussianBlur)}_{id}", 0, duration);
 
+    /// <summary>
+    /// Value range: 0 - 20
+    /// </summary>
+    public static void SetGaussianBlur(string id, float strength) =>
+        Instance._gaussian_amount.Set(id, strength);
+
+    public static void RemoveGaussianBlur(string id) =>
+        Instance._gaussian_amount.Remove(id);
+
     // DISTORT //
     /// <summary>
     /// Value range: 0 - 0.05f
@@ -313,8 +322,29 @@ public partial class ScreenEffects : Node3DScript
         Instance._AnimateMinValueInOut(Instance._squeeze_y_strength, $"{nameof(AnimateSqueezeY)}_{id}", value, duration_in, duration_on, duration_out);
 
     // RADIAL BLUR //
+    /// <summary>
+    /// Value range: 0 - 0.02f
+    /// </summary>
     public static Coroutine AnimateRadialBlur(string id, float value, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValueInOut(Instance._radial_amount, $"{nameof(AnimateRadialBlur)}_{id}", value, duration_in, duration_on, duration_out);
+
+    /// <summary>
+    /// Value range: 0 - 02f
+    /// </summary>
+    public static Coroutine AnimateRadialBlurIn(string id, float value, float duration) =>
+        Instance._AnimateMinValueIn(Instance._radial_amount, $"{nameof(AnimateRadialBlur)}_{id}", value, duration);
+
+    public static Coroutine AnimateRadialBlurOut(string id, float duration) =>
+        Instance._AnimateMinValueOut(Instance._radial_amount, $"{nameof(AnimateRadialBlur)}_{id}", 0, duration);
+
+    /// <summary>
+    /// Value range: 0 - 0.02f
+    /// </summary>
+    public static void SetRadialBlur(string id, float strength) =>
+        Instance._radial_amount.Set(id, strength);
+
+    public static void RemoveRadialBlur(string id) =>
+        Instance._radial_amount.Remove(id);
 
     // FOG //
     public static Coroutine AnimateFog(string id, float alpha, float duration_in, float duration_on, float duration_out) =>
@@ -330,12 +360,6 @@ public partial class ScreenEffects : Node3DScript
     public static Coroutine AnimateFov(string id, float fov, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateValue(v => Instance._camera_fov = v, $"{nameof(AnimateFov)}_{id}", Instance._camera_fov_default, fov, duration_in, duration_on, duration_out);
 
-    public static void SetGaussianBlur(string id, float strength) =>
-        Instance._gaussian_amount.Set(id, strength);
-
-    public static void RemoveGaussianBlur(string id) =>
-        Instance._gaussian_amount.Remove(id);
-
     public static void SetCameraOffset(Vector3 offset) =>
         Instance._camera_offset = offset;
 
@@ -345,6 +369,7 @@ public partial class ScreenEffects : Node3DScript
     public static void RemoveCameraOffsetForward(string id) =>
         Instance._camera_offset_forward.Remove(id);
 
+    // HEARTBEAT //
     public static Coroutine AnimateHeartbeatFrequency(string id, float frequency, float duration_in, float duration_on, float duration_out)
     {
         var cr_id = $"{nameof(AnimateHeartbeatFrequency)}_{id}";
@@ -358,6 +383,12 @@ public partial class ScreenEffects : Node3DScript
             Instance._coroutines.Remove(cr_id);
         }
     }
+
+    public static void SetHeartbeatFrequency(string id, float strength) =>
+        Instance._heartbeat_frequency.Set(id, strength);
+
+    public static void RemoveHeartbeatFrequency(string id) =>
+        Instance._heartbeat_frequency.Remove(id);
 
     public static void StartHeartbeat()
     {

@@ -560,4 +560,13 @@ public partial class Player : FirstPersonController
     {
         return Data.Game.BlueprintCraftedCounts.Any(x => x.Id == bp_id && x.Count > 0);
     }
+
+    public float GetLookAtT(Vector3 target)
+    {
+        var hor = Mathf.Abs(GetHorizontalAngleToPoint(target));
+        var ver = Mathf.Abs(GetVerticalAngleToPoint(target));
+        var t_hor = (180f - hor) / 180f;
+        var t_ver = (180f - ver) / 180f;
+        return t_hor * t_ver;
+    }
 }

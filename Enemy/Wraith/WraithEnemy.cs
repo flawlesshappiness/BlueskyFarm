@@ -35,6 +35,9 @@ public partial class WraithEnemy : NavEnemy
     private BasementRoomElement _current_element;
     private AudioStreamPlayer3D _asp_loop;
 
+    private bool _is_seen;
+    private bool _look_at_blur_enabled;
+
     public override void _Ready()
     {
         base._Ready();
@@ -70,15 +73,53 @@ public partial class WraithEnemy : NavEnemy
         }
     }
 
+    public override void Despawn()
+    {
+        base.Despawn();
+        RemoveEffects();
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
         ProcessLookAtPlayer();
+        ProcessLookAtEffects();
     }
 
     private void ProcessLookAtPlayer()
     {
         TurnTowardsDirection(-DirectionToPlayer);
+    }
+
+    private void ProcessLookAtEffects()
+    {
+        if (!_look_at_blur_enabled) return;
+
+        var max_distance = BasementRoom.ROOM_SIZE * 0.6f;
+        var t_distance = Mathf.Clamp(1f - DistanceToPlayer / max_distance, 0, 1);
+        var t_look = Player.Instance.GetLookAtT(GlobalPosition);
+        var t = t_distance * t_look;
+        var blur = Mathf.Lerp(0f, 0.02f, t);
+        ScreenEffects.SetRadialBlur(EnemyId, blur);
+
+        var hbfreq = Mathf.Lerp(1f, 0.25f, t);
+        ScreenEffects.SetHeartbeatFrequency(EnemyId, hbfreq);
+
+        if (!_is_seen && t > 0.25f)
+        {
+            _is_seen = true;
+            SoundController.Instance.Play("sfx_horror_boom");
+            SoundController.Instance.Play("sfx_horror_chord");
+        }
+    }
+
+    private void RemoveEffects()
+    {
+        _is_seen = false;
+        _look_at_blur_enabled = false;
+        ScreenEffects.RemoveRadialBlur(EnemyId);
+        ScreenEffects.RemoveHeartbeatFrequency(EnemyId);
+        ScreenEffects.AnimateRadialBlurOut(EnemyId, 4f);
     }
 
     protected override void OnVelocityComputed(Vector3 v)
@@ -124,6 +165,8 @@ public partial class WraithEnemy : NavEnemy
         ps_spawn.Emitting = true;
         yield return new WaitForSeconds(2f);
 
+        _look_at_blur_enabled = true;
+
         // Show body
         Model.Show();
         ps_body.Emitting = true;
@@ -160,7 +203,9 @@ public partial class WraithEnemy : NavEnemy
         Model.Hide();
         Eyes.Show();
 
-        yield return new WaitForSeconds(10f);
+        RemoveEffects();
+
+        yield return new WaitForSeconds(30f);
 
         SetState(StateIdle);
     }

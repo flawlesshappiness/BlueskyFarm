@@ -20,22 +20,24 @@ size = Vector3(4, 12, 12)
 
 [node name="Forest" type="Node3D"]
 
-[node name="EnvironmentFadeArea" type="Node3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("Start", "End")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -8)
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("1_d5uef")
 StartArea = 1
 EndArea = 2
+Start = NodePath("Start")
+End = NodePath("End")
 
-[node name="Area3D" type="Area3D" parent="EnvironmentFadeArea"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentFadeArea/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_n5228")
 
-[node name="Start" type="Node3D" parent="EnvironmentFadeArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+[node name="Start" type="Marker3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
-[node name="End" type="Node3D" parent="EnvironmentFadeArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+[node name="End" type="Marker3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
 [node name="Outer2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0, 8, -14)

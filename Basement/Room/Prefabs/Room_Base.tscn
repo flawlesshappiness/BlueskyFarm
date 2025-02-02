@@ -69,6 +69,8 @@ Areas = []
 [node name="Ceiling" type="Node3D" parent="."]
 
 [node name="RoomArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("2_iecj3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomArea"]
@@ -80,6 +82,8 @@ shape = SubResource("BoxShape3D_osv8p")
 [node name="Particles" type="Node3D" parent="."]
 
 [node name="AmbienceArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("4_a23vm")
 Area = 1
 

@@ -151,6 +151,17 @@ public partial class BasementScene : GameScene
 
             var room = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == area.ToString());
             Player.Instance.GlobalPosition = room.Room.GlobalPosition;
+
+            var amb_area = area;
+            var env_area = area;
+            if (area == AreaNameType.Forest)
+            {
+                amb_area = AreaNameType.Basement;
+                env_area = AreaNameType.Basement;
+            }
+
+            AmbienceController.Instance.StartAmbience(amb_area);
+            EnvironmentController.Instance.SetEnvironment(env_area);
         }
     }
 

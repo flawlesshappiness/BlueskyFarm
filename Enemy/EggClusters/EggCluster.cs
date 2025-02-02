@@ -9,8 +9,8 @@ public partial class EggCluster : Node3DScript
     {
         base._Ready();
 
-        SlowArea.PlayerEntered += PlayerEntered;
-        SlowArea.PlayerExited += PlayerExited;
+        SlowArea.OnPlayerEntered += PlayerEntered;
+        SlowArea.OnPlayerExited += PlayerExited;
     }
 
     private void PlayerEntered(Player player)

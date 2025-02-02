@@ -140,6 +140,7 @@ public partial class LadderArea : Touchable
             yield return AnimateToNode(_enter_node, 0.5f);
             _animating = false;
 
+            Player.Instance.PlayerCollisionShape.Enable();
             Player.Instance.LookLock.RemoveLock(id_lock);
         }
     }
@@ -166,7 +167,6 @@ public partial class LadderArea : Touchable
             Player.Instance.InteractLock.RemoveLock(id_lock);
             Player.Instance.LookLock.RemoveLock(id_lock);
             Player.Instance.GravityLock.RemoveLock(id_lock);
-            Player.Instance.PlayerCollisionShape.Enable();
 
             _animating = false;
             _attached = false;

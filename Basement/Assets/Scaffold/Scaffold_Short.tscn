@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8h3wxdtvnj0d"]
+
+[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_33st8"]
+[ext_resource type="PackedScene" uid="uid://cv64fcjsits31" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low.fbx" id="2_lq0om"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86yec"]
+size = Vector3(4, 0.199097, 2)
+
+[node name="Scaffold" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_33st8")
+Type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0995483, 0)
+shape = SubResource("BoxShape3D_86yec")
+
+[node name="scaffold_small_low" parent="." instance=ExtResource("2_lq0om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.09, 0)
+
+[node name="scaffold_small_low2" parent="." instance=ExtResource("2_lq0om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.09, 0)

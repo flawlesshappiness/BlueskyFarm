@@ -57,8 +57,8 @@ public partial class SpineCentipedeEnemy : NavEnemy
 
         InitializeAnimations();
 
-        ChargeArea.PlayerEntered += ChargeArea_PlayerEntered;
-        AttackArea.PlayerEntered += AttackArea_PlayerEntered;
+        ChargeArea.OnPlayerEntered += ChargeArea_PlayerEntered;
+        AttackArea.OnPlayerEntered += AttackArea_PlayerEntered;
 
         AttackArea.Disable();
     }

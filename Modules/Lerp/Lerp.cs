@@ -6,6 +6,9 @@ public static class Lerp
     private static T _Lerp<T>(T v1, T v2, float t, Func<float, T, T> mul_func, Func<T, T, T> add_func) =>
         add_func(mul_func(1 - t, v1), mul_func(t, v2));
 
+    public static int Int(int v1, int v2, float t) =>
+        Mathf.RoundToInt(Mathf.Lerp(v1, v2, t));
+
     public static float Float(float v1, float v2, float t) =>
         Mathf.Lerp(v1, v2, t);
 
@@ -31,8 +34,11 @@ public static class Lerp
 
         switch (v1.VariantType)
         {
+            case Godot.Variant.Type.Int:
+                return Int(v1.AsInt32(), v2.AsInt32(), t);
+
             case Godot.Variant.Type.Float:
-                return Float(((float)v1), ((float)v2), t);
+                return Float(v1.AsSingle(), v2.AsSingle(), t);
 
             case Godot.Variant.Type.Vector2:
                 return Vector(v1.AsVector2(), v2.AsVector2(), t);

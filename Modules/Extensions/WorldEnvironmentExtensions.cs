@@ -195,6 +195,7 @@ public class EnvironmentLerp
 
         List<string> properties = new()
         {
+            "fog_mode",
             "fog_light_color",
             "fog_light_energy",
             "fog_sun_scatter",
@@ -202,6 +203,9 @@ public class EnvironmentLerp
             "fog_sky_affect",
             "fog_height",
             "fog_height_density",
+            "fog_depth_curve",
+            "fog_depth_begin",
+            "fog_depth_end",
         };
 
         LerpProperties("fog_enabled", properties, t);
@@ -217,6 +221,7 @@ public class EnvironmentLerp
             "volumetric_fog_density",
             "volumetric_fog_albedo",
             "volumetric_fog_emission",
+            "volumetric_fog_detail_spread",
         };
 
         LerpProperties("volumetric_fog_enabled", properties, t);

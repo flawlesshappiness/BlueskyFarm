@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5t8hksye6x30"]
+
+[ext_resource type="PackedScene" uid="uid://cvsknsy6y7f31" path="res://Assets/FlawLizArt/Pillar/gate_wood.fbx" id="1_bti5n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxpmg"]
+size = Vector3(0.624023, 5.0249, 0.604492)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uaqh6"]
+size = Vector3(3.71509, 0.395142, 0.411865)
+
+[node name="Gate_Wood" type="Node3D"]
+
+[node name="gate_wood" parent="." instance=ExtResource("1_bti5n")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.51245, 0)
+shape = SubResource("BoxShape3D_yxpmg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.51245, 0)
+shape = SubResource("BoxShape3D_yxpmg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.999289, -0.0377076, 0, 0.0377076, 0.999289, 0, 0, 0, 1, -0.00176064, 3.65228, 0)
+shape = SubResource("BoxShape3D_uaqh6")

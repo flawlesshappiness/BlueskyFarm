@@ -37,8 +37,8 @@ public partial class BasementRoom : Node3DScript
     {
         base._Ready();
 
-        PlayerArea.PlayerEntered += PlayerEntered;
-        PlayerArea.PlayerExited += PlayerExited;
+        PlayerArea.OnPlayerEntered += PlayerEntered;
+        PlayerArea.OnPlayerExited += PlayerExited;
 
         if (IsInstanceValid(Ceiling))
         {

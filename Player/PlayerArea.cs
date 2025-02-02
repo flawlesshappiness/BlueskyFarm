@@ -4,7 +4,7 @@ using System;
 [GlobalClass]
 public partial class PlayerArea : Area3D
 {
-    public event Action<Player> PlayerEntered, PlayerExited;
+    public event Action<Player> OnPlayerEntered, OnPlayerExited;
 
     public override void _Ready()
     {
@@ -21,7 +21,7 @@ public partial class PlayerArea : Area3D
         var player = node as Player;
         if (!IsInstanceValid(player)) return;
 
-        PlayerEntered?.Invoke(player);
+        PlayerEntered(player);
     }
 
     private void OnBodyExited(GodotObject go)
@@ -32,6 +32,16 @@ public partial class PlayerArea : Area3D
         var player = node as Player;
         if (!IsInstanceValid(player)) return;
 
-        PlayerExited?.Invoke(player);
+        PlayerExited(player);
+    }
+
+    protected virtual void PlayerEntered(Player player)
+    {
+        OnPlayerEntered?.Invoke(player);
+    }
+
+    protected virtual void PlayerExited(Player player)
+    {
+        OnPlayerExited?.Invoke(player);
     }
 }

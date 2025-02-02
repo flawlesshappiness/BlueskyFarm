@@ -136,7 +136,7 @@ public partial class BasementScene : GameScene
         {
             view.SetContent_Search();
 
-            var types = new List<AreaNameType> { AreaNameType.Basement, AreaNameType.Forest };
+            var types = new List<AreaNameType> { AreaNameType.Basement, AreaNameType.Forest, AreaNameType.Mine };
             foreach (var type in types)
             {
                 view.ContentSearch.AddItem(type.ToString(), () => TeleportTo(view, type));

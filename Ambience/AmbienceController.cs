@@ -17,23 +17,9 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
 
     private const float FADE_TIME = 1f;
 
-    protected override void Initialize()
+    public void StartAmbience(AreaNameType type) => StartAmbience(type.ToString());
+    public void StartAmbience(string area)
     {
-        base.Initialize();
-        BasementController.Instance.OnBasementExited += BasementExited;
-        BasementController.Instance.OnRoomEntered += RoomEntered;
-    }
-
-    private void BasementExited()
-    {
-        StopAmbientNoise();
-    }
-
-    private void RoomEntered(BasementRoomElement element)
-    {
-        var area = element.Info.AmbienceArea;
-        if (CurrentArea == area) return;
-
         CurrentInfo = GetInfo(area);
         if (CurrentInfo == null) return;
 

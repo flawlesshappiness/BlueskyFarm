@@ -29,8 +29,8 @@ public partial class MushroomSlugEnemy : NavEnemy
     {
         base.InitializeEnemy();
         PlayerArea.Disable();
-        PlayerArea.PlayerEntered += PlayerEntered;
-        PlayerArea.PlayerExited += PlayerExited;
+        PlayerArea.OnPlayerEntered += PlayerEntered;
+        PlayerArea.OnPlayerExited += PlayerExited;
 
         InitializeAnimations();
     }

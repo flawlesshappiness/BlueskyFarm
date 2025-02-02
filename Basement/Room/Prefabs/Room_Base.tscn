@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://sg081u4ctj3u"]
+[gd_scene load_steps=7 format=3 uid="uid://sg081u4ctj3u"]
 
 [ext_resource type="Script" path="res://Basement/Room/BasementRoom.cs" id="1_sat65"]
 [ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_iecj3"]
 [ext_resource type="Script" path="res://Basement/Room/BasementRoomSection.cs" id="2_wg3tq"]
+[ext_resource type="Script" path="res://Ambience/AmbienceArea.cs" id="4_a23vm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_osv8p"]
 size = Vector3(27, 32, 27)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8mu2"]
+size = Vector3(27, 8, 27)
 
 [node name="Room_Base" type="Node3D" node_paths=PackedStringArray("Ceiling", "Floor", "Walls", "PlayerArea", "North", "East", "South", "West")]
 script = ExtResource("1_sat65")
@@ -74,3 +78,11 @@ shape = SubResource("BoxShape3D_osv8p")
 [node name="EnemySpawn" type="Node3D" parent="."]
 
 [node name="Particles" type="Node3D" parent="."]
+
+[node name="AmbienceArea" type="Area3D" parent="."]
+script = ExtResource("4_a23vm")
+Area = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AmbienceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_m8mu2")

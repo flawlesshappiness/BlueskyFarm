@@ -79,10 +79,10 @@ public partial class BasementRoom : Node3DScript
 
     private void UpdateSectionAreaConnection(BasementRoomSection section, BasementRoomElement neighbour)
     {
-        var child = section.Areas.FirstOrDefault(x => x.Name == neighbour.AreaName);
-        if (child == null) return;
-
-        section.SetArea(neighbour.AreaName);
+        if (section.Areas.Any(x => x.Name == neighbour.AreaName))
+        {
+            section.SetArea(neighbour.AreaName);
+        }
     }
 
     private void UpdateSectionStartConnection(BasementRoomSection section, BasementRoomElement neighbour)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://cu5yx1rkv6ibc"]
+[gd_scene load_steps=35 format=3 uid="uid://cu5yx1rkv6ibc"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_3ordo"]
 [ext_resource type="PackedScene" uid="uid://jhhl4rfjyt72" path="res://Assets/FlawLizArt/MinesRooms/room_start.fbx" id="2_hbps5"]
 [ext_resource type="PackedScene" uid="uid://c2lf41gnu0iuv" path="res://Basement/Room/Prefabs/Mine_Start/Walls.tscn" id="2_n3qt3"]
+[ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="3_02dgx"]
 [ext_resource type="PackedScene" uid="uid://b1uj17gto8p8a" path="res://Basement/Assets/Forest/CommonTree_005.tscn" id="8_jgwyv"]
 [ext_resource type="PackedScene" uid="uid://dwlwds3sef74u" path="res://Basement/Assets/Forest/CommonTree_004.tscn" id="9_nhelf"]
 [ext_resource type="PackedScene" uid="uid://vf332xuy8kvx" path="res://Basement/Assets/Forest/CommonTree_001.tscn" id="10_d4wg8"]
@@ -64,12 +65,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 NotStart = NodePath("Open/Forest/NotStart")
 Areas = [NodePath("Open/Mine"), NodePath("Open/Forest")]
 
-[node name="Closed" parent="North" index="0"]
-visible = false
-
 [node name="Walls" parent="North/Closed" index="0" instance=ExtResource("2_n3qt3")]
 
 [node name="Trees" type="Node3D" parent="North/Closed" index="1"]
+
+[node name="Rocks_CaveIn" parent="North/Closed" index="2" instance=ExtResource("3_02dgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, -7.5)
 
 [node name="Mine" type="Node3D" parent="North/Open" index="0"]
 
@@ -109,6 +110,9 @@ transform = Transform3D(-0.168489, 0, 0.985703, 0, 1, 0, -0.985703, 0, -0.168489
 [node name="CommonTree7" parent="North/Open/Forest/NotStart" index="6" instance=ExtResource("9_nhelf")]
 transform = Transform3D(0.480009, 0, 0.877263, 0, 1, 0, -0.877263, 0, 0.480009, -7.44079, 0, -12.4577)
 
+[node name="Rocks_CaveIn2" parent="North/Open/Forest" index="1" instance=ExtResource("3_02dgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, -7.5)
+
 [node name="East" parent="." index="1" node_paths=PackedStringArray("NotStart", "Areas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 NotStart = NodePath("Open/Forest/NotStart")
@@ -118,6 +122,9 @@ Areas = [NodePath("Open/Mine"), NodePath("Open/Forest")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Trees" type="Node3D" parent="East/Closed" index="1"]
+
+[node name="Rocks_CaveIn" parent="East/Closed" index="2" instance=ExtResource("3_02dgx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.31301, -8, 3.19662e-07)
 
 [node name="Mine" type="Node3D" parent="East/Open" index="0"]
 
@@ -158,6 +165,9 @@ transform = Transform3D(0.54209, 0, 0.840321, 0, 1, 0, -0.840321, 0, 0.54209, 12
 [node name="CommonTree7" parent="East/Open/Forest/NotStart" index="6" instance=ExtResource("9_nhelf")]
 transform = Transform3D(-0.99037, 0, -0.138447, 0, 1, 0, 0.138447, 0, -0.99037, 13.9866, 0, 8.3091)
 
+[node name="Rocks_CaveIn2" parent="East/Open/Forest" index="1" instance=ExtResource("3_02dgx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.31301, -8, 3.19662e-07)
+
 [node name="South" parent="." index="2" node_paths=PackedStringArray("NotStart", "Areas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 NotStart = NodePath("Open/Forest/NotStart")
@@ -167,6 +177,9 @@ Areas = [NodePath("Open/Mine"), NodePath("Open/Forest")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Trees" type="Node3D" parent="South/Closed" index="1"]
+
+[node name="Rocks_CaveIn" parent="South/Closed" index="2" instance=ExtResource("3_02dgx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85292e-07, -8, 6.69496)
 
 [node name="Mine" type="Node3D" parent="South/Open" index="0"]
 
@@ -189,6 +202,9 @@ transform = Transform3D(0.94958, 0, 0.0282327, 0, 0.95, 0, -0.0282327, 0, 0.9495
 [node name="CommonTree36" parent="South/Open/Forest/NotStart" index="0" instance=ExtResource("10_d4wg8")]
 transform = Transform3D(-0.362146, 0, -1.19639, 0, 1.25, 0, 1.19639, 0, -0.362146, -0.0682663, 0, 11.8118)
 
+[node name="Rocks_CaveIn2" parent="South/Open/Forest" index="1" instance=ExtResource("3_02dgx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85292e-07, -8, 6.69496)
+
 [node name="West" parent="." index="3" node_paths=PackedStringArray("NotStart", "Areas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 NotStart = NodePath("Open/Forest/NotStart")
@@ -198,6 +214,9 @@ Areas = [NodePath("Open/Mine"), NodePath("Open/Forest")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="Trees" type="Node3D" parent="West/Closed" index="1"]
+
+[node name="Rocks_CaveIn" parent="West/Closed" index="2" instance=ExtResource("3_02dgx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -8, 3.0598e-07)
 
 [node name="Mine" type="Node3D" parent="West/Open" index="0"]
 
@@ -219,6 +238,9 @@ transform = Transform3D(-0.0981477, 0, -0.944916, 0, 0.95, 0, 0.944916, 0, -0.09
 
 [node name="CommonTree39" parent="West/Open/Forest/NotStart" index="0" instance=ExtResource("11_rs8gi")]
 transform = Transform3D(0.0652021, 0, -1.2483, 0, 1.25, 0, 1.2483, 0, 0.0652021, -11.6686, 0, -0.146352)
+
+[node name="Rocks_CaveIn2" parent="West/Open/Forest" index="1" instance=ExtResource("3_02dgx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -8, 3.0598e-07)
 
 [node name="Floor_Moss" parent="Floor" index="0" instance=ExtResource("12_xu5wt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 0)

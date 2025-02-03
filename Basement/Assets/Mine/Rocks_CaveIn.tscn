@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://y8n00kr1ceis"]
+
+[ext_resource type="PackedScene" uid="uid://c72e4lxg6cy8c" path="res://Assets/FlawLizArt/Rocks/rocks.fbx" id="1_xj7gt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1hjy"]
+size = Vector3(4, 4, 4)
+
+[node name="Rocks_CaveIn" type="Node3D"]
+
+[node name="Models" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="rocks" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(0.21756, 0, -1.98813, 0, 2, 0, 1.98813, 0, 0.21756, 0.0676193, 0, 0.10564)
+
+[node name="rocks2" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(-0.324701, 0.176249, -1.96558, -1.57838, 1.17255, 0.365877, 1.18461, 1.61061, -0.0512705, 0.269121, 0.746964, -1.53223)
+
+[node name="rocks3" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(-0.324701, 0.176249, -1.96558, 1.94652, 0.356688, -0.289569, 0.325032, -1.96003, -0.229444, 0.45737, 0.837934, 1.48058)
+
+[node name="rocks4" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(1.97125, 0.311603, 0.130617, -0.0922587, -0.247373, 1.9825, 0.325032, -1.96003, -0.229444, 1.05486, 1.17473, 0.0116478)
+
+[node name="rocks5" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(0.251502, 1.94181, -0.407582, 1.9743, -0.204086, 0.245949, 0.197202, -0.433273, -1.94252, 1.28688, 2.2735, -1.44892)
+
+[node name="rocks6" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(1.73152, -0.925114, 0.382125, -0.981309, -1.71943, 0.283892, 0.197202, -0.433273, -1.94252, 1.81396, 1.79999, 1.64273)
+
+[node name="rocks7" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(1.73152, -0.925114, 0.382125, -0.403147, 0.0542838, 1.95819, -0.916148, -1.77235, -0.139482, 2.09893, 2.07709, -0.0758978)
+
+[node name="rocks8" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(1.73152, -0.925114, 0.382125, -0.403147, 0.0542838, 1.95819, -0.916148, -1.77235, -0.139482, 2.09893, 3.41857, -0.990989)
+
+[node name="rocks9" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(1.73152, -0.925114, 0.382125, 0.994988, 1.67392, -0.456047, -0.108876, 0.584931, 1.90945, 2.09893, 3.2383, 0.914262)
+
+[node name="rocks10" parent="Models" instance=ExtResource("1_xj7gt")]
+transform = Transform3D(1.73152, -0.925114, 0.382125, 0.211184, 1.08401, 1.66743, -0.978395, -1.40324, 1.03618, 2.09893, 3.92097, 0.0542883)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+shape = SubResource("BoxShape3D_y1hjy")

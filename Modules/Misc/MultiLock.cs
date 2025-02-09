@@ -33,4 +33,16 @@ public class MultiLock
             OnFree?.Invoke();
         }
     }
+
+    public void SetLock(string key, bool locked)
+    {
+        if (locked)
+        {
+            AddLock(key);
+        }
+        else
+        {
+            RemoveLock(key);
+        }
+    }
 }

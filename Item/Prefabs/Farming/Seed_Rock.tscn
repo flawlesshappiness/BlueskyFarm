@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpvqjtat1xkrv"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_usf64"]
+[ext_resource type="PackedScene" uid="uid://cg0kfqba3063w" path="res://Assets/FlawLizArt/Seed/seed_rock.fbx" id="2_mrebm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_it7bp"]
+size = Vector3(0.164063, 0.221436, 0.183594)
+
+[node name="Seed_Rock" instance=ExtResource("1_usf64")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00744629, 0)
+shape = SubResource("BoxShape3D_it7bp")
+
+[node name="seed_rock" parent="Model" index="0" instance=ExtResource("2_mrebm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0911269, 0)

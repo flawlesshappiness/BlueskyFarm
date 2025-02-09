@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw5tvm1q58a5i"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_ifrjg"]
+[ext_resource type="PackedScene" uid="uid://ctxjfijs8qs1c" path="res://Assets/KenneyNL/Food/carrot.fbx" id="2_wn1vx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udry6"]
+size = Vector3(0.103271, 0.412195, 0.107666)
+
+[node name="Crop_Rock_Test" instance=ExtResource("1_ifrjg")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106464, 0)
+shape = SubResource("BoxShape3D_udry6")
+
+[node name="carrot" parent="Model" index="0" instance=ExtResource("2_wn1vx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.303199, 0)

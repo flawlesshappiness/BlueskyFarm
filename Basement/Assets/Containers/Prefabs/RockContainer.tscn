@@ -1,0 +1,168 @@
+[gd_scene load_steps=25 format=3 uid="uid://dtlqc4fijqlaq"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Containers/RockContainer.cs" id="1_h7utd"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_plcbo"]
+[ext_resource type="PackedScene" uid="uid://dow4r0sirqpsf" path="res://Assets/FlawLizArt/Rocks/rock_breakable.fbx" id="3_7ewy8"]
+[ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="4_5fy32"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqbcm"]
+size = Vector3(1.00452, 0.839294, 0.875)
+
+[sub_resource type="Curve" id="Curve_1i6n1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.76726, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vjmfp"]
+curve = SubResource("Curve_1i6n1")
+
+[sub_resource type="Curve" id="Curve_qkjun"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h2kvt"]
+curve = SubResource("Curve_qkjun")
+
+[sub_resource type="Curve" id="Curve_7cltt"]
+max_value = 3.0
+_data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pqhh6"]
+curve = SubResource("Curve_7cltt")
+
+[sub_resource type="Curve" id="Curve_ydin4"]
+_data = [Vector2(0, 1), 0.0, -3.16484, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u6f0h"]
+curve = SubResource("Curve_ydin4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqtc3"]
+lifetime_randomness = 0.3
+angle_min = -4.99999
+angle_max = 5.00001
+angle_curve = SubResource("CurveTexture_h2kvt")
+spread = 180.0
+initial_velocity_min = 0.3
+initial_velocity_max = 0.3
+velocity_limit_curve = SubResource("CurveTexture_u6f0h")
+gravity = Vector3(0, -0.01, 0)
+scale_min = 0.7
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_pqhh6")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_vjmfp")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0vpp3"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0j25"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_0vpp3")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_gofkd"]
+material = SubResource("StandardMaterial3D_l0j25")
+
+[sub_resource type="Curve" id="Curve_ew8ih"]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uav4u"]
+curve = SubResource("Curve_ew8ih")
+
+[sub_resource type="Curve" id="Curve_8gime"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_penyv"]
+curve = SubResource("Curve_8gime")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uun78"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -90.0
+angle_max = 90.0
+angle_curve = SubResource("CurveTexture_uav4u")
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -4, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_penyv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxbpf"]
+albedo_color = Color(0.3204, 0.34812, 0.36, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PrismMesh" id="PrismMesh_q6avx"]
+material = SubResource("StandardMaterial3D_hxbpf")
+
+[node name="RockContainer" type="Node3D" node_paths=PackedStringArray("ItemMarker", "ModelUnbroken", "ModelBroken", "Touchable", "ps_dust_break", "ps_bits_break")]
+script = ExtResource("1_h7utd")
+ItemMarker = NodePath("ItemMarker")
+ModelUnbroken = NodePath("Unbroken")
+ModelBroken = NodePath("Broken")
+Touchable = NodePath("Unbroken/Touchable")
+ps_dust_break = NodePath("ps_dust_break")
+ps_bits_break = NodePath("ps_bits_break")
+
+[node name="Unbroken" type="Node3D" parent="."]
+
+[node name="rock_breakable" parent="Unbroken" instance=ExtResource("3_7ewy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.303584, 0)
+
+[node name="Touchable" type="StaticBody3D" parent="Unbroken" node_paths=PackedStringArray("HoverIconPosition")]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("2_plcbo")
+HoverIconPosition = NodePath("Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Unbroken/Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0831909, 0.419647, 0.0625)
+shape = SubResource("BoxShape3D_xqbcm")
+
+[node name="Marker3D" type="Marker3D" parent="Unbroken/Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0887455, 0.78657, 0.110685)
+
+[node name="Broken" type="Node3D" parent="."]
+
+[node name="rock_broken" parent="Broken" instance=ExtResource("4_5fy32")]
+
+[node name="ItemMarker" type="Marker3D" parent="."]
+transform = Transform3D(0.965926, 0, -0.258819, -0.258819, -4.37114e-08, -0.965926, -1.13133e-08, 1, -4.2222e-08, -0.0805164, 0.689378, 0.12306)
+
+[node name="ps_dust_break" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428848, 0)
+emitting = false
+amount = 10
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
+process_material = SubResource("ParticleProcessMaterial_dqtc3")
+draw_pass_1 = SubResource("QuadMesh_gofkd")
+
+[node name="ps_bits_break" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186624, 0)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_uun78")
+draw_pass_1 = SubResource("PrismMesh_q6avx")

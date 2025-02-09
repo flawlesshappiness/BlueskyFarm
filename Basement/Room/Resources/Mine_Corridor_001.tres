@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://c8gamjthtnhjd"]
+
+[ext_resource type="PackedScene" uid="uid://dxgbq6mwdmdfu" path="res://Basement/Room/Prefabs/Mine_Corridor_001.tscn" id="1_w4tep"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_m8esn"]
+
+[resource]
+script = ExtResource("2_m8esn")
+Area = "Mine"
+ConnectedArea = ""
+AmbienceArea = "Mine"
+Scene = ExtResource("1_w4tep")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "0000000
+0000000
+0000000
+0001000
+0000000
+0000000
+0000000"
+ValidGroundHeights = null
+Disabled = false

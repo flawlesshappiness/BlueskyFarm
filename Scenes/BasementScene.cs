@@ -57,7 +57,7 @@ public partial class BasementScene : GameScene
                     MaxRooms = 10,
                     MaxCorridorDepth = 3,
                     SeedType = ItemType.Crop_Stone,
-                    SeedCount = 5
+                    SeedCount = 99
                 }
             }
         };

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://b1mginx8tdtvf"]
+
+[ext_resource type="PackedScene" uid="uid://cpvqjtat1xkrv" path="res://Item/Prefabs/Farming/Seed_Rock.tscn" id="1_wqkge"]
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_mfpmw"]
+
+[resource]
+script = ExtResource("2_mfpmw")
+Scene = ExtResource("1_wqkge")
+ItemName = ""
+CustomId = ""
+Type = 3
+CanUse = false
+Uses = 0
+SeedResultType = 4
+GrowTimeInSeconds = 0
+CanPickUp = true
+PerishesOnFarm = false
+Untrack = false
+InventoryItemCameraDistance = 0.25
+InventoryItemRotationOffset = 0.0

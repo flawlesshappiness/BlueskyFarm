@@ -17,5 +17,9 @@ public partial class MineForgeRoom : Node3D
     private void CreatePickaxeItem()
     {
         if (Player.HasAccessToItem(PickaxeInfo)) return;
+
+        var item = ItemController.Instance.CreateItem(PickaxeInfo);
+        item.SetParent(PickaxeMarker);
+        item.Transform = Transform3D.Identity;
     }
 }

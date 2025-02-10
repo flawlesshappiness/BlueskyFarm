@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8rn6dc7j04ak"]
+
+[ext_resource type="PackedScene" uid="uid://c72e4lxg6cy8c" path="res://Assets/FlawLizArt/Rocks/rocks.fbx" id="1_lmo4d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5m3y"]
+size = Vector3(1.00452, 0.883514, 0.875)
+
+[node name="Rock" type="Node3D"]
+
+[node name="rocks" parent="." instance=ExtResource("1_lmo4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.358528, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0831909, 0.441757, 0.0625)
+shape = SubResource("BoxShape3D_o5m3y")

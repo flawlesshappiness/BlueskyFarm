@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bmh1lg5sdk4r6"
-path="res://.godot/imported/room_start_collision_bottom.fbx-15cf6cea50da20b3444a3b2f1c10d510.scn"
+uid="uid://cv70ka7lv3hst"
+path="res://.godot/imported/corridor_002.fbx-a929c1259fe8211a8028743f6f6ced2a.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/MinesRooms/room_start_collision_bottom.fbx"
-dest_files=["res://.godot/imported/room_start_collision_bottom.fbx-15cf6cea50da20b3444a3b2f1c10d510.scn"]
+source_file="res://Assets/FlawLizArt/MinesRooms/corridor_002.fbx"
+dest_files=["res://.godot/imported/corridor_002.fbx-a929c1259fe8211a8028743f6f6ced2a.scn"]
 
 [params]
 

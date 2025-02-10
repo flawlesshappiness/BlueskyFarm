@@ -63,6 +63,12 @@ public partial class BasementController : SingletonController
         {
             SetRandomElementInfo(AreaNames.Forest, "Forest_BigGrave");
         }
+
+        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+        {
+            AreaName = AreaNames.Mine,
+            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Mine_Forge")
+        });
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

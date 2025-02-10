@@ -22,12 +22,6 @@ public partial class Item : Grabbable
 
         ContactMonitor = true;
         MaxContactsReported = 1;
-
-        if (!OverrideCollisionMode)
-        {
-            SetCollisionLayer(2, 3);
-            SetCollisionMask(2);
-        }
     }
 
     protected virtual void Initialize()

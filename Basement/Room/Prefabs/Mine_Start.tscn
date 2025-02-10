@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cu5yx1rkv6ibc"]
+[gd_scene load_steps=40 format=3 uid="uid://cu5yx1rkv6ibc"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_3ordo"]
 [ext_resource type="PackedScene" uid="uid://jhhl4rfjyt72" path="res://Assets/FlawLizArt/MinesRooms/room_start.fbx" id="2_hbps5"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cwsqw6boqqr1n" path="res://Basement/Assets/Scaffold/pillar_wood.tscn" id="19_sny6s"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="20_hxb7u"]
 [ext_resource type="PackedScene" uid="uid://c23ij5pxy3gpw" path="res://Basement/Assets/Scaffold/pillar_wood_middle.tscn" id="20_nomhg"]
+[ext_resource type="PackedScene" uid="uid://c8rn6dc7j04ak" path="res://Basement/Assets/Mine/Rock.tscn" id="21_1o2r2"]
 [ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="21_wnbjf"]
 [ext_resource type="Script" path="res://Ambience/AmbienceArea.cs" id="22_jwc88"]
 [ext_resource type="Script" path="res://Environment/EnvironmentFadeArea.cs" id="23_vrvip"]
@@ -529,50 +530,49 @@ script = ExtResource("14_yafqf")
 [node name="Interior 1" type="Node3D" parent="Interior/Group 1" index="0"]
 script = ExtResource("15_hq34d")
 
-[node name="ps_mist" parent="." index="12" instance=ExtResource("19_h65uj")]
+[node name="Other" type="Node3D" parent="Interior" index="1"]
 
-[node name="room_start" parent="." index="13" instance=ExtResource("2_hbps5")]
+[node name="Ladder" type="Node3D" parent="Interior/Other" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
 
-[node name="Ladder" type="Node3D" parent="." index="14"]
-
-[node name="Model" type="Node3D" parent="Ladder" index="0"]
+[node name="Model" type="Node3D" parent="Interior/Other/Ladder" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0818288)
 
-[node name="ladder" parent="Ladder/Model" index="0" instance=ExtResource("18_ehx0s")]
+[node name="ladder" parent="Interior/Other/Ladder/Model" index="0" instance=ExtResource("18_ehx0s")]
 
-[node name="ladder9" parent="Ladder/Model" index="1" instance=ExtResource("18_ehx0s")]
+[node name="ladder9" parent="Interior/Other/Ladder/Model" index="1" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="ladder2" parent="Ladder/Model" index="2" instance=ExtResource("18_ehx0s")]
+[node name="ladder2" parent="Interior/Other/Ladder/Model" index="2" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="ladder3" parent="Ladder/Model" index="3" instance=ExtResource("18_ehx0s")]
+[node name="ladder3" parent="Interior/Other/Ladder/Model" index="3" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="ladder4" parent="Ladder/Model" index="4" instance=ExtResource("18_ehx0s")]
+[node name="ladder4" parent="Interior/Other/Ladder/Model" index="4" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="ladder5" parent="Ladder/Model" index="5" instance=ExtResource("18_ehx0s")]
+[node name="ladder5" parent="Interior/Other/Ladder/Model" index="5" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
-[node name="ladder6" parent="Ladder/Model" index="6" instance=ExtResource("18_ehx0s")]
+[node name="ladder6" parent="Interior/Other/Ladder/Model" index="6" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
-[node name="ladder7" parent="Ladder/Model" index="7" instance=ExtResource("18_ehx0s")]
+[node name="ladder7" parent="Interior/Other/Ladder/Model" index="7" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="ladder8" parent="Ladder/Model" index="8" instance=ExtResource("18_ehx0s")]
+[node name="ladder8" parent="Interior/Other/Ladder/Model" index="8" instance=ExtResource("18_ehx0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ladder/Model" index="9"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Interior/Other/Ladder/Model" index="9"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladder/Model/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Other/Ladder/Model/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.74185, 0)
 shape = SubResource("BoxShape3D_qt4hv")
 
-[node name="LadderArea" type="StaticBody3D" parent="Ladder" index="1" node_paths=PackedStringArray("TopExitNode")]
+[node name="LadderArea" type="StaticBody3D" parent="Interior/Other/Ladder" index="1" node_paths=PackedStringArray("TopExitNode")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.16611e-08, 4, -0.685066)
 script = ExtResource("19_nvkhe")
 Extents = 3.8
@@ -580,92 +580,146 @@ SolidMaterialType = 2
 TopExitNode = NodePath("../LadderExitTop")
 HoverIcon = ExtResource("18_w7tbn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladder/LadderArea" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Other/Ladder/LadderArea" index="0"]
 shape = SubResource("BoxShape3D_1f11s")
 
-[node name="LadderExitTop" type="Marker3D" parent="Ladder" index="2"]
+[node name="LadderExitTop" type="Marker3D" parent="Interior/Other/Ladder" index="2"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.27835e-07, 8.1315, 1.01768)
 
-[node name="Wood_Pillars_Top" type="Node3D" parent="." index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+[node name="Wood_Pillars_Top" type="Node3D" parent="Interior/Other" index="1"]
 
-[node name="Pillar_Wood" parent="Wood_Pillars_Top" index="0" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood" parent="Interior/Other/Wood_Pillars_Top" index="0" instance=ExtResource("19_sny6s")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, -0.0975132, -2)
 
-[node name="Pillar_Wood2" parent="Wood_Pillars_Top" index="1" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood2" parent="Interior/Other/Wood_Pillars_Top" index="1" instance=ExtResource("19_sny6s")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, -0.1, 2)
 
-[node name="Pillar_Wood3" parent="Wood_Pillars_Top" index="2" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood3" parent="Interior/Other/Wood_Pillars_Top" index="2" instance=ExtResource("20_nomhg")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -2, -0.0999999, 0)
 
-[node name="Pillar_Wood4" parent="Wood_Pillars_Top" index="3" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood4" parent="Interior/Other/Wood_Pillars_Top" index="3" instance=ExtResource("20_nomhg")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 2, -0.0999999, 0)
 
-[node name="Scaffold" parent="Wood_Pillars_Top" index="4" instance=ExtResource("17_xaiky")]
+[node name="Scaffold" parent="Interior/Other/Wood_Pillars_Top" index="4" instance=ExtResource("17_xaiky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="Wood_Pillars_Bottom" type="Node3D" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+[node name="Wood_Pillars_Bottom" type="Node3D" parent="Interior/Other" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)
 
-[node name="Pillar_Wood" parent="Wood_Pillars_Bottom" index="0" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood" parent="Interior/Other/Wood_Pillars_Bottom" index="0" instance=ExtResource("19_sny6s")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, -0.0975132, -2)
 
-[node name="Pillar_Wood2" parent="Wood_Pillars_Bottom" index="1" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood2" parent="Interior/Other/Wood_Pillars_Bottom" index="1" instance=ExtResource("19_sny6s")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, -0.0975132, 2)
 
-[node name="Pillar_Wood3" parent="Wood_Pillars_Bottom" index="2" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood3" parent="Interior/Other/Wood_Pillars_Bottom" index="2" instance=ExtResource("20_nomhg")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.79911, -0.0975132, 1.8)
 
-[node name="Pillar_Wood4" parent="Wood_Pillars_Bottom" index="3" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood4" parent="Interior/Other/Wood_Pillars_Bottom" index="3" instance=ExtResource("20_nomhg")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.80019, -0.0975132, 1.8)
 
-[node name="Building" type="Node3D" parent="." index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+[node name="Building" type="Node3D" parent="Interior/Other" index="3"]
 
-[node name="Pillar_Wood" parent="Building" index="0" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood" parent="Interior/Other/Building" index="0" instance=ExtResource("19_sny6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
-[node name="Pillar_Wood2" parent="Building" index="1" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood2" parent="Interior/Other/Building" index="1" instance=ExtResource("19_sny6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
-[node name="Pillar_Wood3" parent="Building" index="2" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood3" parent="Interior/Other/Building" index="2" instance=ExtResource("19_sny6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
-[node name="Pillar_Wood4" parent="Building" index="3" instance=ExtResource("19_sny6s")]
+[node name="Pillar_Wood4" parent="Interior/Other/Building" index="3" instance=ExtResource("19_sny6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="Pillar_Wood5" parent="Building" index="4" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood5" parent="Interior/Other/Building" index="4" instance=ExtResource("20_nomhg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 3.75, 0)
 
-[node name="Pillar_Wood7" parent="Building" index="5" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood7" parent="Interior/Other/Building" index="5" instance=ExtResource("20_nomhg")]
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 3.75, -2)
 
-[node name="Pillar_Wood8" parent="Building" index="6" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood8" parent="Interior/Other/Building" index="6" instance=ExtResource("20_nomhg")]
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 3.75, 2)
 
-[node name="Pillar_Wood6" parent="Building" index="7" instance=ExtResource("20_nomhg")]
+[node name="Pillar_Wood6" parent="Interior/Other/Building" index="7" instance=ExtResource("20_nomhg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 3.75, 0)
 
-[node name="Scaffold" parent="Building" index="8" instance=ExtResource("19_2cmfu")]
+[node name="Scaffold" parent="Interior/Other/Building" index="8" instance=ExtResource("19_2cmfu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82708, 0)
 
-[node name="Scaffold2" parent="Building" index="9" instance=ExtResource("19_2cmfu")]
+[node name="Scaffold2" parent="Interior/Other/Building" index="9" instance=ExtResource("19_2cmfu")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.10441, 1.84475, 0)
 
-[node name="Scaffold3" parent="Building" index="10" instance=ExtResource("19_2cmfu")]
+[node name="Scaffold3" parent="Interior/Other/Building" index="10" instance=ExtResource("19_2cmfu")]
 transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, 2.14559, 1.84475, 0)
 
-[node name="Scaffold4" parent="Building" index="11" instance=ExtResource("19_2cmfu")]
+[node name="Scaffold4" parent="Interior/Other/Building" index="11" instance=ExtResource("19_2cmfu")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0.145589, 1.84475, -2)
 
-[node name="Lantern" parent="Building" index="12" instance=ExtResource("20_hxb7u")]
+[node name="Lantern" parent="Interior/Other/Building" index="12" instance=ExtResource("20_hxb7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12096, 3.69919, 2)
 
-[node name="AmbienceArea" parent="." index="18"]
+[node name="Containers" type="Node3D" parent="Interior/Other" index="4"]
+
+[node name="Rocks" type="Node3D" parent="Interior" index="2"]
+
+[node name="Rock" parent="Interior/Rocks" index="0" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(1.43771, 0, -1.39032, 0, 2, 0, 1.39032, 0, 1.43771, 2.8327, -8.1107, 4.36192)
+
+[node name="Rock16" parent="Interior/Rocks" index="1" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(1.95003, 0, 0.444288, 0, 2, 0, -0.444288, 0, 1.95003, -1.89651, -8.1107, 12.1061)
+
+[node name="Rock2" parent="Interior/Rocks" index="2" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.29629, 0, -1.52303, 0, 2, 0, 1.52303, 0, -1.29629, 3.53766, -6.97778, 3.4169)
+
+[node name="Rock3" parent="Interior/Rocks" index="3" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.29629, 0, -1.52303, 0, 2, 0, 1.52303, 0, -1.29629, 3.66932, -8.45184, -3.11339)
+
+[node name="Rock14" parent="Interior/Rocks" index="4" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.9957, 0, 0.131085, 0, 2, 0, -0.131085, 0, -1.9957, 12.8967, -8.34074, -1.60311)
+
+[node name="Rock15" parent="Interior/Rocks" index="5" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(0.102545, 0, 1.99737, 0, 2, 0, -1.99737, 0, 0.102545, 11.7974, -7.27459, -2.34126)
+
+[node name="Rock5" parent="Interior/Rocks" index="6" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.29629, 0, -1.52303, 0, 2, 0, 1.52303, 0, -1.29629, -2.36718, -8.45184, -3.57562)
+
+[node name="Rock12" parent="Interior/Rocks" index="7" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-0.209612, 0, -1.98899, 0, 2, 0, 1.98899, 0, -0.209612, 2.27666, -7.11146, -12.0368)
+
+[node name="Rock13" parent="Interior/Rocks" index="8" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-0.209612, 0, -1.98899, 0, 2, 0, 1.98899, 0, -0.209612, -1.74055, -7.69503, -12.6636)
+
+[node name="Rock6" parent="Interior/Rocks" index="9" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.28536, 0, 1.53227, 0, 2, 0, -1.53227, 0, -1.28536, -4.0693, -8.45184, -2.6519)
+
+[node name="Rock10" parent="Interior/Rocks" index="10" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.98927, 0, 0.206939, 0, 2, 0, -0.206939, 0, -1.98927, -12.8607, -8.45184, 2.01023)
+
+[node name="Rock11" parent="Interior/Rocks" index="11" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-0.920059, 0, -1.77581, 0, 2, 0, 1.77581, 0, -0.920059, -11.7306, -4.91444, -0.672215)
+
+[node name="Rock8" parent="Interior/Rocks" index="12" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.28536, 0, 1.53227, 0, 2, 0, -1.53227, 0, -1.28536, -3.23456, -7.5024, 3.77346)
+
+[node name="Rock9" parent="Interior/Rocks" index="13" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(1.36619, 0, 1.46066, 0, 2, 0, -1.46066, 0, 1.36619, -4.05787, -8.45184, 2.49546)
+
+[node name="Rock7" parent="Interior/Rocks" index="14" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(1.43168, 0, 1.39653, 0, 2, 0, -1.39653, 0, 1.43168, -4.49128, -5.97436, -2.37463)
+
+[node name="Rock4" parent="Interior/Rocks" index="15" instance=ExtResource("21_1o2r2")]
+transform = Transform3D(-1.80187, 0, 0.867916, 0, 2, 0, -0.867916, 0, -1.80187, 2.83897, -4.97947, -3.63115)
+
+[node name="ps_mist" parent="." index="12" instance=ExtResource("19_h65uj")]
+
+[node name="room_start" parent="." index="13" instance=ExtResource("2_hbps5")]
+
+[node name="AmbienceArea" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 Area = 2
 
-[node name="AmbienceArea2" type="Area3D" parent="." index="19"]
+[node name="AmbienceArea2" type="Area3D" parent="." index="15"]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("22_jwc88")
@@ -675,7 +729,7 @@ Area = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("BoxShape3D_f26s4")
 
-[node name="EnvironmentFadeArea2" type="Area3D" parent="." index="20" node_paths=PackedStringArray("Start", "End")]
+[node name="EnvironmentFadeArea2" type="Area3D" parent="." index="16" node_paths=PackedStringArray("Start", "End")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 collision_layer = 0
 collision_mask = 16
@@ -694,7 +748,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="End" type="Marker3D" parent="EnvironmentFadeArea2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="21"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="17"]
+collision_mask = 0
 script = ExtResource("25_8lw1n")
 Type = 1
 

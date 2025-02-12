@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dt0t3jbuwaufg"
-path="res://.godot/imported/pillar_wood.fbx-7d30bcff55a55bac5e5ba01383f8350d.scn"
+uid="uid://dpgw067uk2r7g"
+path="res://.godot/imported/wood_plank_1m.fbx-0641d18bf837b8162bd6055e0a1c8943.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Pillar/pillar_wood.fbx"
-dest_files=["res://.godot/imported/pillar_wood.fbx-7d30bcff55a55bac5e5ba01383f8350d.scn"]
+source_file="res://Assets/FlawLizArt/Wood/wood_plank_1m.fbx"
+dest_files=["res://.godot/imported/wood_plank_1m.fbx-0641d18bf837b8162bd6055e0a1c8943.scn"]
 
 [params]
 
@@ -33,7 +33,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Wood.001": {
+"Wood": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Wood.tres"
 }

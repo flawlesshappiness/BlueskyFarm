@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqk1imkksfq8g"
-path="res://.godot/imported/pillar_wood_middle.fbx-8a1b69a9a71bdc4ac331a5cc8bd0d234.scn"
+uid="uid://cvsknsy6y7f31"
+path="res://.godot/imported/gate_wood.fbx-989d216577c6604a0b345c6f9da27efd.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Pillar/pillar_wood_middle.fbx"
-dest_files=["res://.godot/imported/pillar_wood_middle.fbx-8a1b69a9a71bdc4ac331a5cc8bd0d234.scn"]
+source_file="res://Assets/FlawLizArt/Wood/gate_wood.fbx"
+dest_files=["res://.godot/imported/gate_wood.fbx-989d216577c6604a0b345c6f9da27efd.scn"]
 
 [params]
 

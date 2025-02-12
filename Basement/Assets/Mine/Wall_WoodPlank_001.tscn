@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://ben2qbeyvpvpc"]
+
+[ext_resource type="PackedScene" uid="uid://dt0t3jbuwaufg" path="res://Assets/FlawLizArt/Wood/pillar_wood.fbx" id="1_oka6n"]
+[ext_resource type="PackedScene" uid="uid://du58iilyh4oo" path="res://Assets/FlawLizArt/Wood/wood_plank_3m.fbx" id="2_mvsu0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjts0"]
+size = Vector3(0.398682, 4, 0.402344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gun0"]
+size = Vector3(3.5752, 4, 0.195801)
+
+[node name="Mine_Wall_WoodPlank_001" type="Node3D"]
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="pillar_wood" parent="Models" instance=ExtResource("1_oka6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+
+[node name="pillar_wood2" parent="Models" instance=ExtResource("1_oka6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+
+[node name="wood_plank_3m" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14969, 0.0232806, 0, -0.0267727, 0.999729, 0, 0, 0, 1, 0, 0.3058, 0.192148)
+
+[node name="wood_plank_3m2" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14912, -0.0390505, 0, 0.0449081, 0.999237, 0, 0, 0, 1, 0, 0.88633, 0.192148)
+
+[node name="wood_plank_3m3" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14983, 0.0172779, 0, -0.0198696, 0.999851, 0, 0, 0, 1, 0, 1.44813, 0.192148)
+
+[node name="wood_plank_3m4" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14996, -0.00825531, 0, 0.00949361, 0.999966, 0, 0, 0, 1, 0, 1.99121, 0.192148)
+
+[node name="wood_plank_3m5" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14965, 0.0245718, 0, -0.0282575, 0.999698, 0, 0, 0, 1, 0, 2.53428, 0.192148)
+
+[node name="wood_plank_3m6" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14996, -0.00804588, 0, 0.00925276, 0.999968, 0, 0, 0, 1, 0, 3.068, 0.192148)
+
+[node name="wood_plank_3m7" parent="Models" instance=ExtResource("2_mvsu0")]
+transform = Transform3D(1.14952, 0.0288812, 0, -0.0332134, 0.999583, 0, 0, 0, 1, 0, 3.61107, 0.192148)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74288, 2, 0)
+shape = SubResource("BoxShape3D_cjts0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74721, 2, 0)
+shape = SubResource("BoxShape3D_cjts0")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00930786, 2, 0.196906)
+shape = SubResource("BoxShape3D_7gun0")

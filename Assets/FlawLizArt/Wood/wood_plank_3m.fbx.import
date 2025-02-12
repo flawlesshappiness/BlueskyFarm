@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cvsknsy6y7f31"
-path="res://.godot/imported/gate_wood.fbx-eeb8688d1759a8e96546610fa3048247.scn"
+uid="uid://du58iilyh4oo"
+path="res://.godot/imported/wood_plank_3m.fbx-1d80055e5e35bebf288da3d4e9202967.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Pillar/gate_wood.fbx"
-dest_files=["res://.godot/imported/gate_wood.fbx-eeb8688d1759a8e96546610fa3048247.scn"]
+source_file="res://Assets/FlawLizArt/Wood/wood_plank_3m.fbx"
+dest_files=["res://.godot/imported/wood_plank_3m.fbx-1d80055e5e35bebf288da3d4e9202967.scn"]
 
 [params]
 
@@ -33,7 +33,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Wood.001": {
+"Wood": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Wood.tres"
 }

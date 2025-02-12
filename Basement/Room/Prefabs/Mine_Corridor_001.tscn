@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxgbq6mwdmdfu"]
+[gd_scene load_steps=32 format=3 uid="uid://dxgbq6mwdmdfu"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_jxcx3"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_otn2u"]
@@ -64,6 +64,18 @@ height = 6.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_myc6a"]
 size = Vector3(12, 1, 11.5)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_dwdr4"]
+size = Vector3(28, 1, 28)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_r4nm3"]
+size = Vector3(28, 1, 28)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_jlcnb"]
+size = Vector3(12, 6, 12)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_asdpq"]
+size = Vector3(6, 6, 12)
 
 [node name="Mine_Corridor_001" instance=ExtResource("1_jxcx3")]
 
@@ -386,3 +398,29 @@ shape = SubResource("BoxShape3D_mnuqf")
 [node name="Ceiling2" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4.25, -7.75)
 shape = SubResource("BoxShape3D_myc6a")
+
+[node name="Occlusion" type="Node3D" parent="corridor_002" index="2"]
+
+[node name="OccluderInstance3D9" type="OccluderInstance3D" parent="corridor_002/Occlusion" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+occluder = SubResource("BoxOccluder3D_dwdr4")
+
+[node name="OccluderInstance3D10" type="OccluderInstance3D" parent="corridor_002/Occlusion" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.865096, 0)
+occluder = SubResource("BoxOccluder3D_r4nm3")
+
+[node name="OccluderInstance3D11" type="OccluderInstance3D" parent="corridor_002/Occlusion" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.02786, 8)
+occluder = SubResource("BoxOccluder3D_jlcnb")
+
+[node name="OccluderInstance3D14" type="OccluderInstance3D" parent="corridor_002/Occlusion" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.02786, -8)
+occluder = SubResource("BoxOccluder3D_jlcnb")
+
+[node name="OccluderInstance3D12" type="OccluderInstance3D" parent="corridor_002/Occlusion" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.028, 8)
+occluder = SubResource("BoxOccluder3D_asdpq")
+
+[node name="OccluderInstance3D13" type="OccluderInstance3D" parent="corridor_002/Occlusion" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.028, -8)
+occluder = SubResource("BoxOccluder3D_asdpq")

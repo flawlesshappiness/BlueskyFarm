@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c23ij5pxy3gpw"]
 
-[ext_resource type="PackedScene" uid="uid://bqk1imkksfq8g" path="res://Assets/FlawLizArt/Pillar/pillar_wood_middle.fbx" id="1_epu1b"]
+[ext_resource type="PackedScene" uid="uid://bqk1imkksfq8g" path="res://Assets/FlawLizArt/Wood/pillar_wood_middle.fbx" id="1_epu1b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oic2q"]
 size = Vector3(3.6189, 0.422852, 0.398682)

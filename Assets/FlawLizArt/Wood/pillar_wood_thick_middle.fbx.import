@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbgt6loiv3vgp"
-path="res://.godot/imported/pillar_wood_thick_middle.fbx-0aa26310d331a3030fe5a438ba59a7f4.scn"
+path="res://.godot/imported/pillar_wood_thick_middle.fbx-259cbc1571d2044f3b27109b7e475be4.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Pillar/pillar_wood_thick_middle.fbx"
-dest_files=["res://.godot/imported/pillar_wood_thick_middle.fbx-0aa26310d331a3030fe5a438ba59a7f4.scn"]
+source_file="res://Assets/FlawLizArt/Wood/pillar_wood_thick_middle.fbx"
+dest_files=["res://.godot/imported/pillar_wood_thick_middle.fbx-259cbc1571d2044f3b27109b7e475be4.scn"]
 
 [params]
 

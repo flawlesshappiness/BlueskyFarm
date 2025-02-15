@@ -853,6 +853,8 @@ transform = Transform3D(1.49709, 0, 0.093428, 0, 1.5, 0, -0.093428, 0, 1.49709, 
 
 [node name="LadderArea" type="StaticBody3D" parent="Treehouse/Tree" index="3" node_paths=PackedStringArray("TopExitNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83313, 3, 2.33301)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("20_612gc")
 Extents = 3.0
 SolidMaterialType = 2
@@ -919,5 +921,11 @@ Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1
 transform = Transform3D(-0.07346, -0.997155, 0.0169002, 0.97177, -0.075379, -0.223565, 0.224203, 0, 0.974543, -0.0508843, 0.673126, 0.793346)
 
 [node name="ps_mist" parent="." index="14" instance=ExtResource("32_2lqwo")]
+
+[node name="AmbienceArea" parent="." index="15"]
+Area = 2
+
+[node name="CollisionShape3D" parent="AmbienceArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
 [editable path="Treehouse/Tree/CommonTree_12"]

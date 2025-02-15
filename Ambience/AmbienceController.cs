@@ -32,7 +32,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
 
     private AmbienceInfo GetInfo(string area)
     {
-        return Collection.Resources.FirstOrDefault(x => x.Area == area);
+        return Collection.Resources.FirstOrDefault(x => x.Area.ToString() == area);
     }
 
     private void PlayAreaEnterMusic()

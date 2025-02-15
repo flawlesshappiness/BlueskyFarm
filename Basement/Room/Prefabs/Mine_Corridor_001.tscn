@@ -91,6 +91,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Rocks_CaveIn" parent="West/Closed" index="0" instance=ExtResource("2_otn2u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, 0, 0)
 
+[node name="AmbienceArea" parent="." index="10"]
+Area = 3
+
 [node name="Interior" type="Node3D" parent="." index="11"]
 
 [node name="Other" type="Node3D" parent="Interior" index="0"]

@@ -341,6 +341,9 @@ occluder = SubResource("BoxOccluder3D_2fio3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05345, -12)
 occluder = SubResource("BoxOccluder3D_2fio3")
 
+[node name="AmbienceArea" parent="." index="11"]
+Area = 3
+
 [node name="Interior" type="Node3D" parent="." index="12"]
 visible = false
 

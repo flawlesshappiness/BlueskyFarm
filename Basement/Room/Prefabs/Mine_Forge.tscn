@@ -53,6 +53,9 @@ size = Vector3(4, 6, 1)
 
 [node name="Room_Base" instance=ExtResource("1_kl3r3")]
 
+[node name="AmbienceArea" parent="." index="10"]
+Area = 3
+
 [node name="room_001" parent="." index="11" instance=ExtResource("2_ik3ym")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="room_001" index="1"]

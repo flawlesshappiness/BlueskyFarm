@@ -5,7 +5,7 @@ using Godot.Collections;
 public partial class AmbienceInfo : Resource
 {
     [Export]
-    public string Area;
+    public AreaNameType Area;
 
     [Export]
     public SoundInfo BackgroundSound;

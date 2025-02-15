@@ -835,3 +835,9 @@ Sign = NodePath("Sign_Direction")
 [node name="Sign_Direction" parent="RoomScript" index="0" instance=ExtResource("16_oo28o")]
 
 [node name="ps_mist" parent="." index="13" instance=ExtResource("18_5wbcs")]
+
+[node name="AmbienceArea" parent="." index="14"]
+Area = 2
+
+[node name="CollisionShape3D" parent="AmbienceArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)

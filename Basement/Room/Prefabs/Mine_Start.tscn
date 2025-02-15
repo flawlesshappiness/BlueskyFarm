@@ -88,7 +88,7 @@ size = Vector3(1, 4, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w3pya"]
 size = Vector3(1, 4, 4)
 
-[node name="Forest_DirectionSign" instance=ExtResource("1_3ordo")]
+[node name="Mine_Start" instance=ExtResource("1_3ordo")]
 
 [node name="North" parent="." index="0" node_paths=PackedStringArray("NotStart", "Areas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
@@ -592,6 +592,8 @@ shape = SubResource("BoxShape3D_qt4hv")
 
 [node name="LadderArea" type="StaticBody3D" parent="Interior/Other/Ladder" index="1" node_paths=PackedStringArray("TopExitNode")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.16611e-08, 4, -0.685066)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("19_nvkhe")
 Extents = 3.8
 SolidMaterialType = 2
@@ -811,7 +813,7 @@ Area = 2
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("22_jwc88")
-Area = 1
+Area = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AmbienceArea2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

@@ -798,3 +798,9 @@ transform = Transform3D(0.659005, 0, -0.752139, 0, 1, 0, 0.752139, 0, 0.659005, 
 transform = Transform3D(-0.987655, 0, 0.156641, 0, 1, 0, -0.156641, 0, -0.987655, 10.2766, 0, -6.20794)
 
 [node name="ps_mist" parent="." index="12" instance=ExtResource("17_ijaty")]
+
+[node name="AmbienceArea" parent="." index="13"]
+Area = 2
+
+[node name="CollisionShape3D" parent="AmbienceArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)

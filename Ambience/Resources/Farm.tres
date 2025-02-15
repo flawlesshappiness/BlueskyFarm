@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("3_ewea4")
-Area = "Farm"
+Area = 0
 BackgroundSound = ExtResource("1_83wdc")
 Noises = null
 ReverbAmount = 0.0

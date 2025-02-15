@@ -961,3 +961,9 @@ script = ExtResource("25_skuty")
 BlockingWeeds = NodePath("../Hut/Weeds/Weed_Thorns")
 BlueprintInventoryNode = NodePath("../Hut/Items/BlueprintInventory")
 BlueprintInventory = ExtResource("27_s14vm")
+
+[node name="AmbienceArea" parent="." index="15"]
+Area = 2
+
+[node name="CollisionShape3D" parent="AmbienceArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)

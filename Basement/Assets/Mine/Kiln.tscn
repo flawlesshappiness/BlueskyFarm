@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvpws86oh1yy"]
+
+[ext_resource type="PackedScene" uid="uid://d0swp4rrpds4o" path="res://Assets/FlawLizArt/Forge/kiln.fbx" id="1_piuk7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm6ho"]
+size = Vector3(3.5, 2.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ixl4"]
+size = Vector3(1, 12.75, 1)
+
+[node name="Kiln" type="Node3D"]
+
+[node name="kiln" parent="." instance=ExtResource("1_piuk7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.125, 0)
+shape = SubResource("BoxShape3D_vm6ho")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0377979, 8.625, 0)
+shape = SubResource("BoxShape3D_6ixl4")

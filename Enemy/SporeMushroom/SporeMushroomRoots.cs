@@ -1,13 +1,9 @@
 using Godot;
-using System.Collections;
 
 public partial class SporeMushroomRoots : Node3DScript
 {
     [NodeType]
     public AnimationPlayer Animator;
-
-    [NodeName]
-    public Sound3D SfxRoots;
 
     public override void _Ready()
     {
@@ -18,12 +14,12 @@ public partial class SporeMushroomRoots : Node3DScript
     public void AnimateIdle()
     {
         Animator.Play("idle");
-        SfxRoots.Stop();
     }
 
     public void AnimateAppear()
     {
         Animator.Play("appear");
+        /*
         SfxRoots.Play();
 
         this.StartCoroutine(Cr, nameof(AnimateAppear));
@@ -40,5 +36,6 @@ public partial class SporeMushroomRoots : Node3DScript
 
             SfxRoots.Stop();
         }
+        */
     }
 }

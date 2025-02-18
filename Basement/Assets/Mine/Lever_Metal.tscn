@@ -1,0 +1,177 @@
+[gd_scene load_steps=16 format=3 uid="uid://byhc1gxfdkmjm"]
+
+[ext_resource type="PackedScene" uid="uid://lof141bho64m" path="res://Assets/FlawLizArt/Forge/lever_box.fbx" id="1_3sjwg"]
+[ext_resource type="Script" path="res://Modules/Object/InteractableLever.cs" id="1_arcpt"]
+[ext_resource type="PackedScene" uid="uid://c4eovvpdrtg7q" path="res://Assets/FlawLizArt/Forge/lever.fbx" id="2_w2481"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_3okxw"]
+[ext_resource type="Script" path="res://Sound/Sound3D.cs" id="5_ewadn"]
+[ext_resource type="Resource" uid="uid://dovh52dplmbgr" path="res://Sound/Resources/sfx_lever_toggle.tres" id="6_boch0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tflok"]
+size = Vector3(0.311523, 0.293457, 1.06738)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v86do"]
+size = Vector3(0.124023, 1.60303, 0.120117)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3mc7"]
+size = Vector3(0.259766, 1.67297, 0.245117)
+
+[sub_resource type="Animation" id="Animation_w61px"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pqeeg"]
+resource_name = "idle_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4wdxo"]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fjwdl"]
+resource_name = "move_down"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 0), Vector3(-0.261799, 0, 0), Vector3(-0.523599, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx_lever_toggle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_th30f"]
+resource_name = "move_up"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(0.261799, 0, 0), Vector3(0.523599, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx_lever_toggle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxfnw"]
+_data = {
+"RESET": SubResource("Animation_w61px"),
+"idle_down": SubResource("Animation_pqeeg"),
+"idle_up": SubResource("Animation_4wdxo"),
+"move_down": SubResource("Animation_fjwdl"),
+"move_up": SubResource("Animation_th30f")
+}
+
+[node name="Lever_Metal" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+script = ExtResource("1_arcpt")
+IdleUp_AnimationName = "idle_up"
+IdleDown_AnimationName = "idle_down"
+MoveUp_AnimationName = "move_up"
+MoveDown_AnimationName = "move_down"
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="lever_box" parent="." instance=ExtResource("1_3sjwg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lever_box"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lever_box/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.146729, 0)
+shape = SubResource("BoxShape3D_tflok")
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+
+[node name="lever" parent="Anim" instance=ExtResource("2_w2481")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/lever"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/lever/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801514, 0)
+shape = SubResource("BoxShape3D_v86do")
+
+[node name="Touchable" type="StaticBody3D" parent="Anim/lever"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_3okxw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/lever/Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.836487, 0)
+shape = SubResource("BoxShape3D_t3mc7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xxfnw")
+}
+playback_default_blend_time = 0.25
+
+[node name="sfx_lever_toggle" type="Node3D" parent="."]
+script = ExtResource("5_ewadn")
+SoundInfo = ExtResource("6_boch0")

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class InteractableLever : Touchable
+public partial class InteractableLever : Node3D
 {
     [Export]
     public AnimationType Type;
@@ -22,13 +22,10 @@ public partial class InteractableLever : Touchable
     public string MoveBoth_AnimationName;
 
     [Export]
-    public string Toggle_SFX;
+    public AnimationPlayer AnimationPlayer;
 
     [Export]
-    public string Pull_SFX;
-
-    [NodeType]
-    public AnimationPlayer Animation;
+    public Touchable Touchable;
 
     public int CurrentState => (int)_state;
 
@@ -52,30 +49,29 @@ public partial class InteractableLever : Touchable
     public override void _Ready()
     {
         base._Ready();
-        Animation.Play(IdleUp_AnimationName);
+        AnimationPlayer.AnimationFinished += AnimationFinished;
+        Touchable.OnTouched += Touched;
     }
 
-    private void SetupEvents()
+    public void SetLeverUp()
     {
-        if (_first_time_setup) return;
-        _first_time_setup = true;
+        AnimationPlayer.Play(IdleUp_AnimationName);
+    }
 
-        Animation.AnimationFinished += AnimationFinished;
+    public void SetLeverDown()
+    {
+        AnimationPlayer.Play(IdleDown_AnimationName);
     }
 
     private void AnimationFinished(StringName animName)
     {
-        OnStateChanged?.Invoke((int)_state);
         _animating = false;
+        OnStateChanged?.Invoke((int)_state);
     }
 
-    protected override void Touched()
+    private void Touched()
     {
-        base.Touched();
-
         if (_animating) return;
-
-        SetupEvents();
 
         if (Type == AnimationType.Toggle)
         {
@@ -92,16 +88,12 @@ public partial class InteractableLever : Touchable
         _animating = true;
         _state = _state == State.Up ? State.Down : State.Up;
         var animation = _state == State.Up ? MoveUp_AnimationName : MoveDown_AnimationName;
-        Animation.Play(animation);
-
-        SoundController.Instance.Play(Toggle_SFX, GlobalPosition);
+        AnimationPlayer.Play(animation);
     }
 
     private void Pull()
     {
         _animating = true;
-        Animation.Play(MoveBoth_AnimationName);
-
-        SoundController.Instance.Play(Pull_SFX, GlobalPosition);
+        AnimationPlayer.Play(MoveBoth_AnimationName);
     }
 }

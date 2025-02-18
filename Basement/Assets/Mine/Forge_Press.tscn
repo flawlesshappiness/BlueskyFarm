@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqkgy5g5n1eu3"]
+
+[ext_resource type="PackedScene" uid="uid://cmcfhnhbqwgoi" path="res://Assets/FlawLizArt/Forge/forge_press.fbx" id="1_a4xf0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uc7nx"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgb38"]
+size = Vector3(1, 8, 1)
+
+[node name="Forge_Press" type="Node3D"]
+
+[node name="forge_press" parent="." instance=ExtResource("1_a4xf0")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_uc7nx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+shape = SubResource("BoxShape3D_jgb38")

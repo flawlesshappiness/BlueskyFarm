@@ -1,28 +1,21 @@
 using Godot;
 
-public partial class Sound : AudioStreamPlayer
+[GlobalClass]
+public partial class Sound : Node
 {
     [Export]
-    public float PitchMin = 1;
+    public SoundInfo SoundInfo;
 
-    [Export]
-    public float PitchMax = 1;
+    private AudioStreamPlayer _asp;
 
     public void Play()
     {
-        if (Stream == null)
-        {
-            Debug.LogError(Name);
-        }
-
-        RandomizePitch();
-        base.Play();
+        _asp = SoundController.Instance.Play(SoundInfo);
     }
 
-    private void RandomizePitch()
+    public void Stop()
     {
-        var rng = new RandomNumberGenerator();
-        var pitch = rng.RandfRange(PitchMin, PitchMax);
-        PitchScale = pitch;
+        if (!IsInstanceValid(_asp)) return;
+        _asp.Stop();
     }
 }

@@ -236,7 +236,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0hq4"]
 size = Vector3(0.207031, 0.963867, 0.493042)
 
-[node name="Lever" type="Node3D"]
+[node name="Lever" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("1_a0vd4")
 IdleUp_AnimationName = "idle_up"
 IdleDown_AnimationName = "idle_down"
@@ -245,7 +245,7 @@ MoveDown_AnimationName = "move_down"
 MoveBoth_AnimationName = "move_both"
 Toggle_SFX = "sfx_lever_toggle"
 Pull_SFX = "sfx_lever_pull"
-InteractableText = "Lever"
+AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="Anim" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)

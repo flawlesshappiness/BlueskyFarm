@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm3w6pabwhvli"]
+
+[ext_resource type="PackedScene" uid="uid://c346h4uda7dm1" path="res://Assets/FlawLizArt/Forge/forge_top.fbx" id="1_hip6v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pek4y"]
+size = Vector3(4, 8.75, 4)
+
+[node name="Forge_Top" type="Node3D"]
+
+[node name="forge_top" parent="." instance=ExtResource("1_hip6v")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.375, 0)
+shape = SubResource("BoxShape3D_pek4y")

@@ -1,10 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://deraagtunvj6m"]
+[gd_scene load_steps=29 format=3 uid="uid://deraagtunvj6m"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_kl3r3"]
+[ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_endc6"]
 [ext_resource type="PackedScene" uid="uid://chvbpx06hrx5q" path="res://Assets/FlawLizArt/MinesRooms/room_001.fbx" id="2_ik3ym"]
+[ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="3_2eqcu"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="3_kpcqe"]
 [ext_resource type="Script" path="res://Basement/Room/MineForgeRoom.cs" id="4_hwhmy"]
 [ext_resource type="Resource" uid="uid://cxfii3j7jtj01" path="res://Item/Resources/Tool_Pickaxe.tres" id="5_6stet"]
+[ext_resource type="PackedScene" uid="uid://ben2qbeyvpvpc" path="res://Basement/Assets/Mine/Wall_WoodPlank_001.tscn" id="6_1cpd1"]
+[ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="7_a3rtp"]
+[ext_resource type="PackedScene" uid="uid://dfnotbmshj8j5" path="res://Basement/Assets/Mine/Forge_Bottom.tscn" id="10_b2vk1"]
+[ext_resource type="PackedScene" uid="uid://cm3w6pabwhvli" path="res://Basement/Assets/Mine/Forge_Top.tscn" id="11_3sm3m"]
+[ext_resource type="PackedScene" uid="uid://dqkgy5g5n1eu3" path="res://Basement/Assets/Mine/Forge_Press.tscn" id="12_45yw4"]
+[ext_resource type="PackedScene" uid="uid://bvpws86oh1yy" path="res://Basement/Assets/Mine/Kiln.tscn" id="13_ftp28"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_024da"]
 size = Vector3(20, 1, 20)
@@ -53,16 +61,36 @@ size = Vector3(4, 6, 1)
 
 [node name="Room_Base" instance=ExtResource("1_kl3r3")]
 
+[node name="Rocks_CaveIn" parent="North/Closed" index="0" instance=ExtResource("2_endc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.7359)
+
+[node name="Lantern" parent="North/Open" index="0" instance=ExtResource("3_2eqcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57583, -10.5556)
+
+[node name="Rocks_CaveIn" parent="East/Closed" index="0" instance=ExtResource("2_endc6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.9105, 0, 0)
+
+[node name="Lantern" parent="East/Open" index="0" instance=ExtResource("3_2eqcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6385, 3.60225, 0)
+
+[node name="Rocks_CaveIn" parent="South/Closed" index="0" instance=ExtResource("2_endc6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 11.7815)
+
+[node name="Lantern" parent="South/Open" index="0" instance=ExtResource("3_2eqcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58648, 10.4951)
+
+[node name="Rocks_CaveIn" parent="West/Closed" index="0" instance=ExtResource("2_endc6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.613, 0, 0)
+
+[node name="Lantern" parent="West/Open" index="0" instance=ExtResource("3_2eqcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4485, 3.61704, 0)
+
 [node name="AmbienceArea" parent="." index="10"]
 Area = 3
 
 [node name="room_001" parent="." index="11" instance=ExtResource("2_ik3ym")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="room_001" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.27467, 0)
-omni_range = 18.8198
-
-[node name="StaticBody3D" type="StaticBody3D" parent="room_001" index="2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="room_001" index="1"]
 collision_mask = 0
 script = ExtResource("3_kpcqe")
 Type = 1
@@ -203,7 +231,7 @@ shape = SubResource("BoxShape3D_4s0nd")
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.5, 5.25, 8.25)
 shape = SubResource("BoxShape3D_4s0nd")
 
-[node name="Occlusion" type="Node3D" parent="room_001" index="3"]
+[node name="Occlusion" type="Node3D" parent="room_001" index="2"]
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="room_001/Occlusion" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39647, 5, -10.1313)
@@ -333,4 +361,94 @@ PickaxeMarker = NodePath("PickaxeMarker")
 PickaxeInfo = ExtResource("5_6stet")
 
 [node name="PickaxeMarker" type="Marker3D" parent="RoomScript" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.560311, 0)
+transform = Transform3D(0.742093, -0.396249, -0.540634, 0, 0.806558, -0.591155, 0.670297, 0.438692, 0.598541, -7.2805, 0.527551, 4.6374)
+
+[node name="Interior" type="Node3D" parent="." index="13"]
+
+[node name="Walls" type="Node3D" parent="Interior" index="0"]
+
+[node name="WoodWall" type="Node3D" parent="Interior/Walls" index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.5, 0, -6.5)
+
+[node name="Mine_Wall_WoodPlank_001" parent="Interior/Walls/WoodWall" index="0" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_002" parent="Interior/Walls/WoodWall" index="1" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_003" parent="Interior/Walls/WoodWall" index="2" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+
+[node name="Mine_Wall_WoodPlank_004" parent="Interior/Walls/WoodWall" index="3" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 0)
+
+[node name="WoodWall2" type="Node3D" parent="Interior/Walls" index="1"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 6.5, 0, -6.5)
+
+[node name="Mine_Wall_WoodPlank_001" parent="Interior/Walls/WoodWall2" index="0" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_002" parent="Interior/Walls/WoodWall2" index="1" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_003" parent="Interior/Walls/WoodWall2" index="2" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+
+[node name="Mine_Wall_WoodPlank_004" parent="Interior/Walls/WoodWall2" index="3" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 0)
+
+[node name="WoodWall3" type="Node3D" parent="Interior/Walls" index="2"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 6.5, 0, 6.5)
+
+[node name="Mine_Wall_WoodPlank_001" parent="Interior/Walls/WoodWall3" index="0" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_002" parent="Interior/Walls/WoodWall3" index="1" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_003" parent="Interior/Walls/WoodWall3" index="2" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+
+[node name="Mine_Wall_WoodPlank_004" parent="Interior/Walls/WoodWall3" index="3" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 0)
+
+[node name="WoodWall4" type="Node3D" parent="Interior/Walls" index="3"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -6.5, 0, 6.5)
+
+[node name="Mine_Wall_WoodPlank_001" parent="Interior/Walls/WoodWall4" index="0" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_002" parent="Interior/Walls/WoodWall4" index="1" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Mine_Wall_WoodPlank_003" parent="Interior/Walls/WoodWall4" index="2" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+
+[node name="Mine_Wall_WoodPlank_004" parent="Interior/Walls/WoodWall4" index="3" instance=ExtResource("6_1cpd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 0)
+
+[node name="Gates" type="Node3D" parent="Interior" index="1"]
+
+[node name="Gate_Wood" parent="Interior/Gates" index="0" instance=ExtResource("7_a3rtp")]
+transform = Transform3D(0.998606, 0, 0.0527891, 0, 1, 0, -0.0527891, 0, 0.998606, 0, 0.116511, -10.5)
+
+[node name="Gate_Wood2" parent="Interior/Gates" index="1" instance=ExtResource("7_a3rtp")]
+transform = Transform3D(-0.0718281, 0, 0.997417, 0, 1, 0, -0.997417, 0, -0.0718281, -10.449, 0.116511, 0)
+
+[node name="Gate_Wood3" parent="Interior/Gates" index="2" instance=ExtResource("7_a3rtp")]
+transform = Transform3D(0.0527892, 0, 0.998606, 0, 1, 0, -0.998606, 0, 0.0527892, 10.579, 0.116511, -0.0748324)
+
+[node name="Gate_Wood4" parent="Interior/Gates" index="3" instance=ExtResource("7_a3rtp")]
+transform = Transform3D(0.999999, 0, 0.00157071, 0, 1, 0, -0.00157071, 0, 0.999999, -0.00985336, 0.116511, 10.4766)
+
+[node name="Forge" type="Node3D" parent="Interior" index="2"]
+
+[node name="Forge_Bottom" parent="Interior/Forge" index="0" instance=ExtResource("10_b2vk1")]
+
+[node name="Forge_Top" parent="Interior/Forge" index="1" instance=ExtResource("11_3sm3m")]
+
+[node name="Forge_Press" parent="Interior/Forge" index="2" instance=ExtResource("12_45yw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40395, 0)
+
+[node name="Kiln" parent="Interior/Forge" index="3" instance=ExtResource("13_ftp28")]
+transform = Transform3D(-0.705488, 0, -0.708721, 0, 1, 0, 0.708721, 0, -0.705488, 5.125, 0, 5.808)

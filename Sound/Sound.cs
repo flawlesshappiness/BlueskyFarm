@@ -10,6 +10,7 @@ public partial class Sound : Node
 
     public void Play()
     {
+        Stop();
         _asp = SoundController.Instance.Play(SoundInfo);
     }
 

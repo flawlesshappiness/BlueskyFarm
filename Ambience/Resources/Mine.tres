@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="AmbienceInfo" load_steps=6 format=3 uid="uid://ci77bkdw4dhru"]
 
 [ext_resource type="Resource" uid="uid://bjdg1elpanrmm" path="res://Sound/Resources/amb_basement_background.tres" id="1_56pxr"]
-[ext_resource type="Resource" uid="uid://fcetjxgeuxd8" path="res://Sound/Resources/amb_basement_enemy.tres" id="2_kp0u6"]
-[ext_resource type="Resource" uid="uid://dlq3c7uvdq8hk" path="res://Sound/Resources/amb_basement_long.tres" id="3_2e375"]
-[ext_resource type="Resource" uid="uid://vlh4one0arug" path="res://Sound/Resources/amb_basement_short.tres" id="4_maqtt"]
+[ext_resource type="Resource" uid="uid://cocv7h1vdtrp6" path="res://Sound/Resources/amb_mine_pickaxe.tres" id="2_q1ocn"]
+[ext_resource type="Resource" uid="uid://c0ey7f6cy31om" path="res://Sound/Resources/amb_mine_drone.tres" id="3_4in1x"]
+[ext_resource type="Resource" uid="uid://yrpjythfjb1c" path="res://Sound/Resources/amb_mine_boom.tres" id="4_qe7u7"]
 [ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="5_nsjix"]
 
 [resource]
 script = ExtResource("5_nsjix")
 Area = 3
 BackgroundSound = ExtResource("1_56pxr")
-Noises = Array[Object]([ExtResource("2_kp0u6"), ExtResource("3_2e375"), ExtResource("4_maqtt")])
-ReverbAmount = 0.3
+Noises = Array[Object]([ExtResource("2_q1ocn"), ExtResource("3_4in1x"), ExtResource("4_qe7u7")])
+ReverbAmount = 0.4

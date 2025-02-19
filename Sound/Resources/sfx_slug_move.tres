@@ -18,6 +18,7 @@
 script = ExtResource("2_vc5c7")
 AudioStreams = Array[AudioStream]([ExtResource("1_nlnfb"), ExtResource("2_0fl05"), ExtResource("3_unbs7"), ExtResource("4_arapg"), ExtResource("5_e4lny"), ExtResource("6_m7w06"), ExtResource("7_0bxnd"), ExtResource("8_wyqfe"), ExtResource("9_qneck"), ExtResource("10_spxyr"), ExtResource("11_54bw6"), ExtResource("12_0qspw")])
 Volume = -30.0
+Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0

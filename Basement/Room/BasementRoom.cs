@@ -31,6 +31,9 @@ public partial class BasementRoom : Node3DScript
     [Export]
     public BasementRoomSection West;
 
+    [Export]
+    public Node3D EnemyMarker;
+
     public BasementRoomElement Element { get; set; }
 
     public override void _Ready()

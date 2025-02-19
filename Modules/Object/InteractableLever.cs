@@ -27,6 +27,12 @@ public partial class InteractableLever : Node3D
     [Export]
     public Touchable Touchable;
 
+    [Export]
+    public AudioStreamPlayer3D sfx_metal_scraping;
+
+    [Export]
+    public AudioStreamPlayer3D sfx_metal_click;
+
     public int CurrentState => (int)_state;
 
     public event Action<int> OnStateChanged;
@@ -51,6 +57,8 @@ public partial class InteractableLever : Node3D
         base._Ready();
         AnimationPlayer.AnimationFinished += AnimationFinished;
         Touchable.OnTouched += Touched;
+
+        sfx_metal_scraping.VolumeDb = AudioMath.PercentageToDecibel(0);
     }
 
     public void SetLeverUp()
@@ -95,5 +103,20 @@ public partial class InteractableLever : Node3D
     {
         _animating = true;
         AnimationPlayer.Play(MoveBoth_AnimationName);
+    }
+
+    public void SfxScrapingStart()
+    {
+        sfx_metal_scraping.FadeIn(0.2f, 0f);
+    }
+
+    public void SfxScrapingStop()
+    {
+        sfx_metal_scraping.FadeOut(0.2f);
+    }
+
+    public void PlaySfxClick()
+    {
+        sfx_metal_click.Play();
     }
 }

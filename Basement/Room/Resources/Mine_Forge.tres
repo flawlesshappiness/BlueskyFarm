@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://cd83scyi5sygt"]
 
-[ext_resource type="PackedScene" uid="uid://tf4qub5evl6k" path="res://Basement/Room/Prefabs/Mine_001.tscn" id="1_xh3d4"]
+[ext_resource type="PackedScene" uid="uid://deraagtunvj6m" path="res://Basement/Room/Prefabs/Mine_Forge.tscn" id="1_pwuvf"]
 [ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_vveaf"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("2_vveaf")
 Area = "Mine"
 ConnectedArea = ""
 AmbienceArea = "Mine"
-Scene = ExtResource("1_xh3d4")
+Scene = ExtResource("1_pwuvf")
 IsStartRoom = false
 IsConnectedToAllFromSameArea = false
 RoomLayout = "0000000

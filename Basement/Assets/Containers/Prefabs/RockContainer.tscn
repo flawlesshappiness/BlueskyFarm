@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://dtlqc4fijqlaq"]
+[gd_scene load_steps=27 format=3 uid="uid://dtlqc4fijqlaq"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Containers/RockContainer.cs" id="1_h7utd"]
+[ext_resource type="Resource" uid="uid://bu58s1oc0iikj" path="res://Sound/Resources/sfx_pickaxe_hit.tres" id="2_7foab"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_plcbo"]
 [ext_resource type="PackedScene" uid="uid://dow4r0sirqpsf" path="res://Assets/FlawLizArt/Rocks/rock_breakable.fbx" id="3_7ewy8"]
+[ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="3_dtfq3"]
 [ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="4_5fy32"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqbcm"]
@@ -118,6 +120,8 @@ ModelBroken = NodePath("Broken")
 Touchable = NodePath("Unbroken/Touchable")
 ps_dust_break = NodePath("ps_dust_break")
 ps_bits_break = NodePath("ps_bits_break")
+sfx_break = ExtResource("2_7foab")
+sfx_touch = ExtResource("3_dtfq3")
 
 [node name="Unbroken" type="Node3D" parent="."]
 

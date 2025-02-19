@@ -20,6 +20,12 @@ public partial class RockContainer : ItemContainer
     [Export]
     public GpuParticles3D ps_bits_break;
 
+    [Export]
+    public SoundInfo sfx_break;
+
+    [Export]
+    public SoundInfo sfx_touch;
+
     private bool _broken;
 
     public override void _Ready()
@@ -38,7 +44,7 @@ public partial class RockContainer : ItemContainer
         ps_dust_break.Emitting = true;
         ps_bits_break.Emitting = true;
 
-        SoundController.Instance.Play("sfx_stone_impact", Touchable.GlobalPosition);
+        SoundController.Instance.Play(sfx_break, Touchable.GlobalPosition);
 
         SpawnItem(ItemMarker.GlobalPosition, Vector3.Up * 2f);
         ModelUnbroken.Disable();
@@ -47,7 +53,7 @@ public partial class RockContainer : ItemContainer
 
     private void Touched()
     {
-        SoundController.Instance.Play("sfx_stone_impact", Touchable.GlobalPosition);
+        SoundController.Instance.Play(sfx_touch, Touchable.GlobalPosition);
 
         GameView.Instance.CreateText(new CreateTextSettings
         {

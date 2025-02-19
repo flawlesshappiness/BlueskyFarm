@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://deraagtunvj6m"]
+[gd_scene load_steps=27 format=3 uid="uid://deraagtunvj6m"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_kl3r3"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_endc6"]
@@ -9,9 +9,7 @@
 [ext_resource type="Resource" uid="uid://cxfii3j7jtj01" path="res://Item/Resources/Tool_Pickaxe.tres" id="5_6stet"]
 [ext_resource type="PackedScene" uid="uid://ben2qbeyvpvpc" path="res://Basement/Assets/Mine/Wall_WoodPlank_001.tscn" id="6_1cpd1"]
 [ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="7_a3rtp"]
-[ext_resource type="PackedScene" uid="uid://dfnotbmshj8j5" path="res://Basement/Assets/Mine/Forge_Bottom.tscn" id="10_b2vk1"]
-[ext_resource type="PackedScene" uid="uid://cm3w6pabwhvli" path="res://Basement/Assets/Mine/Forge_Top.tscn" id="11_3sm3m"]
-[ext_resource type="PackedScene" uid="uid://dqkgy5g5n1eu3" path="res://Basement/Assets/Mine/Forge_Press.tscn" id="12_45yw4"]
+[ext_resource type="PackedScene" uid="uid://bl6j88k43qkpp" path="res://Basement/Assets/Mine/Forge/Forge.tscn" id="11_3j2dn"]
 [ext_resource type="PackedScene" uid="uid://bvpws86oh1yy" path="res://Basement/Assets/Mine/Kiln.tscn" id="13_ftp28"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_024da"]
@@ -84,6 +82,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.61
 
 [node name="Lantern" parent="West/Open" index="0" instance=ExtResource("3_2eqcu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4485, 3.61704, 0)
+
+[node name="EnemySpawn" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40457, 0, 0)
 
 [node name="AmbienceArea" parent="." index="10"]
 Area = 3
@@ -355,8 +356,9 @@ occluder = SubResource("BoxOccluder3D_5bq6l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05345, -12)
 occluder = SubResource("BoxOccluder3D_5bq6l")
 
-[node name="RoomScript" type="Node3D" parent="." index="12" node_paths=PackedStringArray("PickaxeMarker")]
+[node name="RoomScript" type="Node3D" parent="." index="12" node_paths=PackedStringArray("Room", "PickaxeMarker")]
 script = ExtResource("4_hwhmy")
+Room = NodePath("..")
 PickaxeMarker = NodePath("PickaxeMarker")
 PickaxeInfo = ExtResource("5_6stet")
 
@@ -441,14 +443,9 @@ transform = Transform3D(0.0527892, 0, 0.998606, 0, 1, 0, -0.998606, 0, 0.0527892
 [node name="Gate_Wood4" parent="Interior/Gates" index="3" instance=ExtResource("7_a3rtp")]
 transform = Transform3D(0.999999, 0, 0.00157071, 0, 1, 0, -0.00157071, 0, 0.999999, -0.00985336, 0.116511, 10.4766)
 
-[node name="Forge" type="Node3D" parent="Interior" index="2"]
+[node name="Machines" type="Node3D" parent="Interior" index="2"]
 
-[node name="Forge_Bottom" parent="Interior/Forge" index="0" instance=ExtResource("10_b2vk1")]
-
-[node name="Forge_Top" parent="Interior/Forge" index="1" instance=ExtResource("11_3sm3m")]
-
-[node name="Forge_Press" parent="Interior/Forge" index="2" instance=ExtResource("12_45yw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40395, 0)
-
-[node name="Kiln" parent="Interior/Forge" index="3" instance=ExtResource("13_ftp28")]
+[node name="Kiln" parent="Interior/Machines" index="0" instance=ExtResource("13_ftp28")]
 transform = Transform3D(-0.705488, 0, -0.708721, 0, 1, 0, 0.708721, 0, -0.705488, 5.125, 0, 5.808)
+
+[node name="Forge" parent="Interior/Machines" index="1" instance=ExtResource("11_3j2dn")]

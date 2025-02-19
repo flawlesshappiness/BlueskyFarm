@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://bsu1tsqd26l8h"]
+
+[ext_resource type="AudioStream" uid="uid://jaxo4rhiestc" path="res://Sound/Sounds/sfx_forge_press_impact.wav" id="1_c8c81"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_by32b"]
+
+[resource]
+script = ExtResource("4_by32b")
+AudioStreams = Array[AudioStream]([ExtResource("1_c8c81")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.9, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

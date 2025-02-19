@@ -20,6 +20,8 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
     public void StartAmbience(AreaNameType type) => StartAmbience(type.ToString());
     public void StartAmbience(string area)
     {
+        if (CurrentArea == area) return;
+
         CurrentInfo = GetInfo(area);
         if (CurrentInfo == null) return;
 

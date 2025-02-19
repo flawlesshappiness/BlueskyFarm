@@ -1,0 +1,577 @@
+[gd_scene load_steps=40 format=3 uid="uid://bl6j88k43qkpp"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Mine/Forge/ForgeMachine.cs" id="1_fqhgb"]
+[ext_resource type="PackedScene" uid="uid://dfnotbmshj8j5" path="res://Basement/Assets/Mine/Forge_Bottom.tscn" id="1_u2agg"]
+[ext_resource type="Resource" uid="uid://bsu1tsqd26l8h" path="res://Sound/Resources/sfx_forge_press_impact.tres" id="2_4vbjf"]
+[ext_resource type="PackedScene" uid="uid://dqkgy5g5n1eu3" path="res://Basement/Assets/Mine/Forge_Press.tscn" id="2_rad7t"]
+[ext_resource type="PackedScene" uid="uid://cm3w6pabwhvli" path="res://Basement/Assets/Mine/Forge_Top.tscn" id="3_es3k5"]
+[ext_resource type="Resource" uid="uid://bb6xbqwhf1wex" path="res://Sound/Resources/sfx_forge_steam_release.tres" id="3_hqx7k"]
+[ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="4_02hmc"]
+[ext_resource type="Resource" uid="uid://b5lpsp5su3kc0" path="res://Particle/Resources/ps_forge_dirt_impact.tres" id="4_11xsb"]
+[ext_resource type="PackedScene" uid="uid://byhc1gxfdkmjm" path="res://Basement/Assets/Mine/Lever_Metal.tscn" id="4_s24jo"]
+[ext_resource type="AudioStream" uid="uid://b818474gu1yo1" path="res://Sound/Sounds/sfx_metal_scraping_loop_002.wav" id="5_wwwxw"]
+[ext_resource type="PackedScene" uid="uid://dpml1oeho8msf" path="res://Assets/FlawLizArt/Forge/mold_key.fbx" id="10_bi2ql"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed8q2"]
+shading_mode = 0
+albedo_color = Color(1, 0.65, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wn2px"]
+material = SubResource("StandardMaterial3D_ed8q2")
+size = Vector3(1.9, 1, 1.9)
+
+[sub_resource type="Curve" id="Curve_bdjko"]
+_data = [Vector2(0, 0), 0.0, 0.805861, 0, 0, Vector2(0.3, 0.2), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -0.147015, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1l8jr"]
+curve = SubResource("Curve_bdjko")
+
+[sub_resource type="Curve" id="Curve_jduk8"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fdtog"]
+curve = SubResource("Curve_jduk8")
+
+[sub_resource type="Curve" id="Curve_3ya6o"]
+max_value = 3.0
+_data = [Vector2(0, 0.3), 0.0, 4.17013, 0, 0, Vector2(1, 3), -0.220076, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5k4t3"]
+curve = SubResource("Curve_3ya6o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ylulp"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(2, 0, 2)
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_fdtog")
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 1.5
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0.3, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5k4t3")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_1l8jr")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_822l3"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bb3l"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_822l3")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_dfd4l"]
+material = SubResource("StandardMaterial3D_3bb3l")
+
+[sub_resource type="Curve" id="Curve_tvt54"]
+_data = [Vector2(0, 0), 0.0, 0.805861, 0, 0, Vector2(0.3, 0.2), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -0.147015, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_isaax"]
+curve = SubResource("Curve_tvt54")
+
+[sub_resource type="Curve" id="Curve_j2nwa"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_777vh"]
+curve = SubResource("Curve_j2nwa")
+
+[sub_resource type="Curve" id="Curve_cirnx"]
+max_value = 3.0
+_data = [Vector2(0, 0.3), 0.0, 4.17013, 0, 0, Vector2(1, 3), -0.220076, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_28fjv"]
+curve = SubResource("Curve_cirnx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gvy3r"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(0.2, 0, 0.2)
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_777vh")
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0.3, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_28fjv")
+scale_over_velocity_max = 40.1
+alpha_curve = SubResource("CurveTexture_isaax")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsn25"]
+shading_mode = 0
+albedo_color = Color(1, 0.65, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wewye"]
+material = SubResource("StandardMaterial3D_fsn25")
+size = Vector3(0.99, 1.5, 0.99)
+
+[sub_resource type="Animation" id="Animation_kytvn"]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Press:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.56412, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0304454, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Forge_Bottom/ps_steam_product:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bgo0w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Press:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.56412, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.14078, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0304454, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Forge_Bottom/ps_steam_release:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Forge_Bottom/ps_steam_product:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rv1bx"]
+resource_name = "move_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Press:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(6.49801, 1),
+"update": 0,
+"values": [Vector3(0, 4.56412, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.494556, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}, {
+"args": [],
+"method": &"PlayDirtImpactPS"
+}, {
+"args": [],
+"method": &"PlayPressImpactSfx"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.14078, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fwhci"]
+resource_name = "lava_fill"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Press:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 5.14078, 0), Vector3(0, 3.59565, 0), Vector3(0, 3.59565, 0), Vector3(0, 2.05081, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.63333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"StartLavaMoveSfx"
+}, {
+"args": [],
+"method": &"StopLavaMoveSfx"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0304454, 0), Vector3(0, 0.469555, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kso3d"]
+resource_name = "move_up_impact"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Press:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 1.06667, 1.13333, 1.3, 1.4, 1.6, 2.5, 2.6, 3),
+"transitions": PackedFloat32Array(0.707106, 1, 0.435275, 0.435275, 1, 1, 2.2974, 1, 1, 2.54912),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.14078, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.06667, 1.1, 1.13333, 1.36667, 1.4, 1.43333, 1.6, 2.56667, 2.6, 2.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}, {
+"args": [],
+"method": &"PlayPressImpactSfx"
+}, {
+"args": [],
+"method": &"PlayDirtImpactPS"
+}, {
+"args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}, {
+"args": [],
+"method": &"PlayPressImpactSfx"
+}, {
+"args": [],
+"method": &"PlayDirtImpactPS"
+}, {
+"args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}, {
+"args": [],
+"method": &"PlayPressImpactSfx"
+}, {
+"args": [],
+"method": &"PlayDirtImpactPS"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.469555, 0), Vector3(0, 0.469555, 0), Vector3(0, -0.0304454, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_38mxs"]
+resource_name = "move_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Press:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 3),
+"transitions": PackedFloat32Array(0.366021, 1, 3.03143, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0.2, 0), Vector3(0, 4.564, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"PlaySteamSfx"
+}, {
+"args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Forge_Bottom/ps_steam_release:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Forge_Bottom/ps_steam_product:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1yye"]
+_data = {
+"RESET": SubResource("Animation_bgo0w"),
+"hammer": SubResource("Animation_kso3d"),
+"idle_up": SubResource("Animation_kytvn"),
+"lava_fill": SubResource("Animation_fwhci"),
+"move_down": SubResource("Animation_rv1bx"),
+"move_up": SubResource("Animation_38mxs")
+}
+
+[node name="Forge" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "SfxPressMove", "SfxLavaMove", "PressImpactMarker")]
+script = ExtResource("1_fqhgb")
+Lever = NodePath("Lever_Metal")
+AnimationPlayer = NodePath("AnimationPlayer")
+SfxPressMove = NodePath("Anim_Press/SfxPressMove")
+SfxLavaMove = NodePath("Anim_Press/SfxLavaMove")
+SfxPressImpact = ExtResource("2_4vbjf")
+SfxSteam = ExtResource("3_hqx7k")
+PressImpactMarker = NodePath("Anim_Press/Forge_Press/SoundMarker")
+ps_dirt_impact = ExtResource("4_11xsb")
+
+[node name="Forge_Bottom" parent="." instance=ExtResource("1_u2agg")]
+
+[node name="Anim_LavaBottom" type="Node3D" parent="Forge_Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0304454, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Forge_Bottom/Anim_LavaBottom"]
+mesh = SubResource("BoxMesh_wn2px")
+
+[node name="ps_steam_release" type="GPUParticles3D" parent="Forge_Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.966235, 0)
+emitting = false
+amount = 50
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+visibility_aabb = AABB(-6, -6, -6, 12, 12, 12)
+process_material = SubResource("ParticleProcessMaterial_ylulp")
+draw_pass_1 = SubResource("QuadMesh_dfd4l")
+
+[node name="ps_steam_product" type="GPUParticles3D" parent="Forge_Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.966235, 0)
+emitting = false
+amount = 20
+lifetime = 3.0
+fixed_fps = 60
+visibility_aabb = AABB(-6, -6, -6, 12, 12, 12)
+process_material = SubResource("ParticleProcessMaterial_gvy3r")
+draw_pass_1 = SubResource("QuadMesh_dfd4l")
+
+[node name="Anim_Press" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.56412, 0)
+
+[node name="SfxPressMove" type="AudioStreamPlayer3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46702, 0)
+stream = ExtResource("5_wwwxw")
+volume_db = -80.0
+autoplay = true
+bus = &"SFX"
+
+[node name="SfxLavaMove" type="AudioStreamPlayer3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46702, 0)
+stream = ExtResource("4_02hmc")
+volume_db = -80.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Forge_Press" parent="Anim_Press" instance=ExtResource("2_rad7t")]
+
+[node name="Anim_Lava" type="Node3D" parent="Anim_Press/Forge_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.14078, 0)
+
+[node name="Lava" type="Node3D" parent="Anim_Press/Forge_Press/Anim_Lava"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anim_Press/Forge_Press/Anim_Lava/Lava"]
+mesh = SubResource("BoxMesh_wewye")
+
+[node name="SoundMarker" type="Marker3D" parent="Anim_Press/Forge_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12013, 0)
+
+[node name="Forge_Top" parent="." instance=ExtResource("3_es3k5")]
+
+[node name="Lever_Metal" parent="." instance=ExtResource("4_s24jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -0.75)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r1yye")
+}
+
+[node name="mold_key" parent="." instance=ExtResource("10_bi2ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)

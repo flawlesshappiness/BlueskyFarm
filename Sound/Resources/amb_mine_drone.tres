@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://c0ey7f6cy31om"]
+
+[ext_resource type="AudioStream" uid="uid://bandltk4ombi1" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_001.wav" id="1_ebb7m"]
+[ext_resource type="AudioStream" uid="uid://qyfeakds0j7s" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_002.wav" id="2_231wr"]
+[ext_resource type="AudioStream" uid="uid://sa1vxvobn0p2" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_003.wav" id="3_k6qaj"]
+[ext_resource type="AudioStream" uid="uid://dnx6cjyi7pask" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_004.wav" id="4_flfrl"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="5_csbaw"]
+
+[resource]
+script = ExtResource("5_csbaw")
+AudioStreams = Array[AudioStream]([ExtResource("1_ebb7m"), ExtResource("2_231wr"), ExtResource("3_k6qaj"), ExtResource("4_flfrl")])
+Volume = 10.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 1

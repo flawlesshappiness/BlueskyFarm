@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ParticleInfo" load_steps=3 format=3 uid="uid://b5lpsp5su3kc0"]
+
+[ext_resource type="PackedScene" uid="uid://dobrah5xtb86h" path="res://Particle/Prefabs/ps_forge_dirt_impact.tscn" id="1_1t3bh"]
+[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="2_e5h2e"]
+
+[resource]
+script = ExtResource("2_e5h2e")
+Scene = ExtResource("1_1t3bh")

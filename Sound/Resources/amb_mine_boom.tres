@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://yrpjythfjb1c"]
+
+[ext_resource type="AudioStream" uid="uid://gq0c4r5rk1kf" path="res://Sound/Sounds/sfx_amb_mine_boom_001.wav" id="1_o1ol2"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_ev126"]
+
+[resource]
+script = ExtResource("3_ev126")
+AudioStreams = Array[AudioStream]([ExtResource("1_o1ol2")])
+Volume = 10.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 1

@@ -10,6 +10,7 @@ public partial class Sound3D : Node3D
 
     public void Play()
     {
+        Stop();
         _asp = SoundController.Instance.Play(SoundInfo, GlobalPosition);
     }
 

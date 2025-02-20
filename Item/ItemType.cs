@@ -5,4 +5,5 @@ public enum ItemType
     Crop_Bone,
     Seed,
     Crop_Stone,
+    ForgeMold,
 }

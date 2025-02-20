@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://3miphk3dbqu8"]
+
+[ext_resource type="PackedScene" uid="uid://be04vrrp72nx7" path="res://Item/Prefabs/Mold_Key.tscn" id="1_lc3g6"]
+[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_6mhk8"]
+
+[resource]
+script = ExtResource("2_6mhk8")
+Scene = ExtResource("1_lc3g6")
+ItemName = "Key mold"
+CustomId = "mold_key"
+Type = 5
+CanUse = false
+Uses = 0
+SeedResultType = 0
+GrowTimeInSeconds = 0
+CanPickUp = true
+PerishesOnFarm = false
+Untrack = false
+InventoryItemCameraDistance = 0.6
+InventoryItemRotationOffset = 0.0

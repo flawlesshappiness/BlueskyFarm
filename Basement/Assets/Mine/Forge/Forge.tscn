@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://b5lpsp5su3kc0" path="res://Particle/Resources/ps_forge_dirt_impact.tres" id="4_11xsb"]
 [ext_resource type="PackedScene" uid="uid://byhc1gxfdkmjm" path="res://Basement/Assets/Mine/Lever_Metal.tscn" id="4_s24jo"]
 [ext_resource type="AudioStream" uid="uid://b818474gu1yo1" path="res://Sound/Sounds/sfx_metal_scraping_loop_002.wav" id="5_wwwxw"]
-[ext_resource type="PackedScene" uid="uid://dpml1oeho8msf" path="res://Assets/FlawLizArt/Forge/mold_key.fbx" id="10_bi2ql"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="11_gkw6y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed8q2"]
 shading_mode = 0
@@ -125,45 +125,6 @@ albedo_color = Color(1, 0.65, 0, 1)
 material = SubResource("StandardMaterial3D_fsn25")
 size = Vector3(0.99, 1.5, 0.99)
 
-[sub_resource type="Animation" id="Animation_kytvn"]
-resource_name = "idle_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim_Press:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 4.56412, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.0304454, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Forge_Bottom/ps_steam_product:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_bgo0w"]
 length = 0.001
 tracks/0/type = "value"
@@ -226,10 +187,82 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anim_Press/LightLavaClose:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Anim_Press/LightLavaFar 1:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Anim_Press/LightLavaFar 2:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Anim_Press/LightLavaFar 3:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Anim_Press/LightLavaFar 4:light_energy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ItemArea_Mold/CreatedItemMarker:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.727751, 0)]
+}
 
-[sub_resource type="Animation" id="Animation_rv1bx"]
-resource_name = "move_down"
-length = 0.5
+[sub_resource type="Animation" id="Animation_kso3d"]
+resource_name = "move_up_impact"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -237,20 +270,32 @@ tracks/0/path = NodePath("Anim_Press:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(6.49801, 1),
+"times": PackedFloat32Array(0, 0.966667, 1.06667, 1.13333, 1.3, 1.4, 1.6, 2.5, 2.6, 3),
+"transitions": PackedFloat32Array(0.707106, 1, 0.435275, 0.435275, 1, 1, 2.2974, 1, 1, 2.54912),
 "update": 0,
-"values": [Vector3(0, 4.56412, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.494556, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.14078, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.06667, 1.1, 1.13333, 1.36667, 1.4, 1.43333, 1.6, 2.56667, 2.6, 2.63333, 2.66667, 2.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"StartPressMoveSfx"
@@ -259,23 +304,53 @@ tracks/1/keys = {
 "method": &"StopPressMoveSfx"
 }, {
 "args": [],
+"method": &"PlayPressImpactSfx"
+}, {
+"args": [],
 "method": &"PlayDirtImpactPS"
 }, {
 "args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}, {
+"args": [],
 "method": &"PlayPressImpactSfx"
+}, {
+"args": [],
+"method": &"PlayDirtImpactPS"
+}, {
+"args": [],
+"method": &"StartPressMoveSfx"
+}, {
+"args": [],
+"method": &"StopPressMoveSfx"
+}, {
+"args": [],
+"method": &"PlayPressImpactSfx"
+}, {
+"args": [],
+"method": &"PlayDirtImpactPS"
+}, {
+"args": [],
+"method": &"DestroyMold"
+}, {
+"args": [],
+"method": &"CreateMoldItem"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 5.14078, 0)]
+"values": [Vector3(0, 0.469555, 0), Vector3(0, 0.469555, 0), Vector3(0, -0.0304454, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fwhci"]
@@ -334,10 +409,70 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, -0.0304454, 0), Vector3(0, 0.469555, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anim_Press/LightLavaClose:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.233333, 2.5, 3.5, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.0, 3.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anim_Press/LightLavaFar 1:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.233333, 2.5, 3.5, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Anim_Press/LightLavaFar 2:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.233333, 2.5, 3.5, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Anim_Press/LightLavaFar 3:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.233333, 2.5, 3.5, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Anim_Press/LightLavaFar 4:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.233333, 2.5, 3.5, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
 
-[sub_resource type="Animation" id="Animation_kso3d"]
-resource_name = "move_up_impact"
-length = 3.0
+[sub_resource type="Animation" id="Animation_rv1bx"]
+resource_name = "move_down"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -345,32 +480,20 @@ tracks/0/path = NodePath("Anim_Press:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667, 1.06667, 1.13333, 1.3, 1.4, 1.6, 2.5, 2.6, 3),
-"transitions": PackedFloat32Array(0.707106, 1, 0.435275, 0.435275, 1, 1, 2.2974, 1, 1, 2.54912),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(6.49801, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 4.56412, 0), Vector3(0, 0, 0)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 5.14078, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.06667, 1.1, 1.13333, 1.36667, 1.4, 1.43333, 1.6, 2.56667, 2.6, 2.63333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.466667, 0.494556, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"StartPressMoveSfx"
@@ -379,47 +502,23 @@ tracks/2/keys = {
 "method": &"StopPressMoveSfx"
 }, {
 "args": [],
-"method": &"PlayPressImpactSfx"
-}, {
-"args": [],
 "method": &"PlayDirtImpactPS"
 }, {
 "args": [],
-"method": &"StartPressMoveSfx"
-}, {
-"args": [],
-"method": &"StopPressMoveSfx"
-}, {
-"args": [],
 "method": &"PlayPressImpactSfx"
-}, {
-"args": [],
-"method": &"PlayDirtImpactPS"
-}, {
-"args": [],
-"method": &"StartPressMoveSfx"
-}, {
-"args": [],
-"method": &"StopPressMoveSfx"
-}, {
-"args": [],
-"method": &"PlayPressImpactSfx"
-}, {
-"args": [],
-"method": &"PlayDirtImpactPS"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Forge_Bottom/Anim_LavaBottom:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.6, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim_Press/Forge_Press/Anim_Lava:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.469555, 0), Vector3(0, 0.469555, 0), Vector3(0, -0.0304454, 0)]
+"values": [Vector3(0, 5.14078, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_38mxs"]
@@ -444,8 +543,8 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 2.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 2.9, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"PlaySteamSfx"
@@ -455,6 +554,9 @@ tracks/1/keys = {
 }, {
 "args": [],
 "method": &"StopPressMoveSfx"
+}, {
+"args": [],
+"method": &"ReleaseMoldItem"
 }]
 }
 tracks/2/type = "value"
@@ -481,18 +583,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ItemArea_Mold/CreatedItemMarker:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.03333, 2.86667),
+"transitions": PackedFloat32Array(1, 0.707106, 1),
+"update": 0,
+"values": [Vector3(0, 0.727751, 0), Vector3(0, 0.727751, 0), Vector3(0, 1.47775, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r1yye"]
 _data = {
 "RESET": SubResource("Animation_bgo0w"),
 "hammer": SubResource("Animation_kso3d"),
-"idle_up": SubResource("Animation_kytvn"),
 "lava_fill": SubResource("Animation_fwhci"),
 "move_down": SubResource("Animation_rv1bx"),
 "move_up": SubResource("Animation_38mxs")
 }
 
-[node name="Forge" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "SfxPressMove", "SfxLavaMove", "PressImpactMarker")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_uybvh"]
+size = Vector3(2, 1, 2)
+
+[node name="Forge" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "SfxPressMove", "SfxLavaMove", "PressImpactMarker", "ItemArea_Mold", "MoldMarkerStart", "MoldMarkerEnd", "CreatedItemMarker")]
 script = ExtResource("1_fqhgb")
 Lever = NodePath("Lever_Metal")
 AnimationPlayer = NodePath("AnimationPlayer")
@@ -502,6 +618,10 @@ SfxPressImpact = ExtResource("2_4vbjf")
 SfxSteam = ExtResource("3_hqx7k")
 PressImpactMarker = NodePath("Anim_Press/Forge_Press/SoundMarker")
 ps_dirt_impact = ExtResource("4_11xsb")
+ItemArea_Mold = NodePath("ItemArea_Mold")
+MoldMarkerStart = NodePath("ItemArea_Mold/MoldMarkerStart")
+MoldMarkerEnd = NodePath("ItemArea_Mold/MoldMarkerEnd")
+CreatedItemMarker = NodePath("ItemArea_Mold/CreatedItemMarker")
 
 [node name="Forge_Bottom" parent="." instance=ExtResource("1_u2agg")]
 
@@ -563,6 +683,36 @@ mesh = SubResource("BoxMesh_wewye")
 [node name="SoundMarker" type="Marker3D" parent="Anim_Press/Forge_Press"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12013, 0)
 
+[node name="LightLavaClose" type="OmniLight3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+light_color = Color(1, 0.7255, 0.39, 1)
+light_energy = 0.0
+omni_range = 3.0
+
+[node name="LightLavaFar 1" type="OmniLight3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5)
+light_color = Color(0.5, 0.308333, 0, 1)
+light_energy = 0.0
+omni_range = 7.0
+
+[node name="LightLavaFar 2" type="OmniLight3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 5)
+light_color = Color(0.5, 0.308333, 0, 1)
+light_energy = 0.0
+omni_range = 7.0
+
+[node name="LightLavaFar 3" type="OmniLight3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, 0)
+light_color = Color(0.5, 0.308333, 0, 1)
+light_energy = 0.0
+omni_range = 7.0
+
+[node name="LightLavaFar 4" type="OmniLight3D" parent="Anim_Press"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.5, 0)
+light_color = Color(0.5, 0.308333, 0, 1)
+light_energy = 0.0
+omni_range = 7.0
+
 [node name="Forge_Top" parent="." instance=ExtResource("3_es3k5")]
 
 [node name="Lever_Metal" parent="." instance=ExtResource("4_s24jo")]
@@ -573,5 +723,20 @@ libraries = {
 "": SubResource("AnimationLibrary_r1yye")
 }
 
-[node name="mold_key" parent="." instance=ExtResource("10_bi2ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)
+[node name="ItemArea_Mold" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("11_gkw6y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea_Mold"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_uybvh")
+
+[node name="MoldMarkerStart" type="Marker3D" parent="ItemArea_Mold"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24887, 0)
+
+[node name="MoldMarkerEnd" type="Marker3D" parent="ItemArea_Mold"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727751, 0)
+
+[node name="CreatedItemMarker" type="Marker3D" parent="ItemArea_Mold"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727751, 0)

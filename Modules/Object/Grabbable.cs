@@ -30,7 +30,7 @@ public partial class Grabbable : InteractableRigidBody3D
 
     private void PhysicsProcess_MoveWhenGrabbed()
     {
-        if (!IsGrabbed) return;
+        if (!IsGrabbed || !IsGrabbable) return;
 
         var direction = GlobalPosition.DirectionTo(TargetPosition);
         var distance = GlobalPosition.DistanceTo(TargetPosition);
@@ -40,7 +40,7 @@ public partial class Grabbable : InteractableRigidBody3D
 
     private void PhysicsProcess_RotateWhenGrabbed()
     {
-        if (!IsGrabbed) return;
+        if (!IsGrabbed || !IsGrabbable) return;
 
         GlobalRotation = TargetRotation;
         AngularVelocity = Vector3.Zero;

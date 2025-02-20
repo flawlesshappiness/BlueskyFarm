@@ -2,6 +2,18 @@ using Godot;
 
 public static class RigidBodyExtensions
 {
+    public static void Lock_All(this RigidBody3D rigidbody)
+    {
+        rigidbody.LockPosition_All();
+        rigidbody.LockRotation_All();
+    }
+
+    public static void Unlock_All(this RigidBody3D rigidbody)
+    {
+        rigidbody.UnlockPosition_All();
+        rigidbody.UnlockRotation_All();
+    }
+
     public static void LockPosition(this RigidBody3D rigidbody, bool x = false, bool y = false, bool z = false)
     {
         rigidbody.AxisLockLinearX = x;

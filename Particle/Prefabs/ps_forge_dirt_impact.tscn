@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dobrah5xtb86h"]
 
 [sub_resource type="Curve" id="Curve_wkrm7"]
-_data = [Vector2(0, 0), 0.0, 0.805861, 0, 0, Vector2(0.3, 0.2), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -0.147015, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.805861, 0, 0, Vector2(0.0526316, 0.197802), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -0.147015, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_srexf"]
@@ -38,6 +38,7 @@ scale_min = 3.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_vhmh7")
 scale_over_velocity_max = 40.1
+color = Color(0.5, 0.5, 0.5, 1)
 alpha_curve = SubResource("CurveTexture_srexf")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1u12r"]
@@ -59,8 +60,10 @@ proximity_fade_distance = 12.0
 material = SubResource("StandardMaterial3D_78dnx")
 
 [node name="ps_dirt_impact" type="GPUParticles3D"]
+emitting = false
 amount = 50
 lifetime = 5.0
+one_shot = true
 explosiveness = 0.9
 fixed_fps = 60
 visibility_aabb = AABB(-6, -6, -6, 12, 12, 12)

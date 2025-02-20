@@ -160,4 +160,20 @@ public partial class Item : Grabbable
             QueueFree();
         }
     }
+
+    public IEnumerator LerpToNode(float duration, Node3D target, Curve curve = null)
+    {
+        var start_pos = GlobalPosition;
+        var end_pos = target.GlobalPosition;
+        var start_rot = EulerMath.WrappedEulerAngles(GlobalRotationDegrees);
+        var end_rot = EulerMath.WrappedEulerAngles(target.GlobalRotationDegrees);
+        curve ??= Curves.Linear;
+
+        yield return LerpEnumerator.Lerp01(duration, f =>
+        {
+            var t = curve.Evaluate(f);
+            GlobalPosition = start_pos.Lerp(end_pos, t);
+            GlobalRotationDegrees = start_rot.Lerp(end_rot, t);
+        });
+    }
 }

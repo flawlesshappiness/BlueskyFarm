@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ForgeMoldInfo" load_steps=3 format=3 uid="uid://c7gh02dxf7him"]
+
+[ext_resource type="Script" path="res://Forge/ForgeMoldInfo.cs" id="1_6tjhy"]
+[ext_resource type="Resource" uid="uid://bbilvy881rvb4" path="res://Item/Resources/Plant_Carrot.tres" id="1_p6p7h"]
+
+[resource]
+script = ExtResource("1_6tjhy")
+ItemCustomId = "mold_key"
+ResultItem = ExtResource("1_p6p7h")

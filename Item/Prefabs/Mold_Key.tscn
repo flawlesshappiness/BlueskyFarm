@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://be04vrrp72nx7"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_bkme5"]
+[ext_resource type="PackedScene" uid="uid://dpml1oeho8msf" path="res://Assets/FlawLizArt/Forge/mold_key.fbx" id="2_vo234"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mb4bl"]
+size = Vector3(2, 0.5, 2)
+
+[node name="Mold_Key" instance=ExtResource("1_bkme5")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_mb4bl")
+
+[node name="mold_key" parent="Model" index="0" instance=ExtResource("2_vo234")]

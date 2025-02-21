@@ -87,7 +87,7 @@ public partial class FarmBed : Node3D
                 Text = "##BED_CANT_SLEEP##",
                 Target = Touchable,
                 Offset = new Vector3(0, 0.2f, 0),
-                Duration = 5.0f,
+                Duration = 3.0f,
             });
         }
     }

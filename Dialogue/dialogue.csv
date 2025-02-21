@@ -10,6 +10,9 @@ keys;en
 ##TOOL_REQUIRED##;Tool required
 ##BED_CANT_SLEEP##;I can't sleep on this
 ##LADDER_MISSING_STEPS##;Some steps are missing
+##SOMETHING_MISSING##;Something is missing
+##NOT_ENOUGH_COAL##;Not enough coal
+##KILN_NOT_ACTIVATED##;The kiln is off
 ##BASEMENT##;Basement
 ##FOREST##;Pale Forest
 ##MINE##;Echo Mine

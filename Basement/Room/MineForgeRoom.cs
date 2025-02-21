@@ -6,6 +6,12 @@ public partial class MineForgeRoom : Node3D
     public BasementRoom Room;
 
     [Export]
+    public ForgeKiln Kiln;
+
+    [Export]
+    public ForgeMachine Forge;
+
+    [Export]
     public Node3D PickaxeMarker;
 
     [Export]
@@ -16,6 +22,14 @@ public partial class MineForgeRoom : Node3D
         base._Ready();
         RegisterDebugActions();
         CreatePickaxeItem();
+        InitializeKiln();
+    }
+
+    private void InitializeKiln()
+    {
+        Kiln.SetActivated(Data.Game.Flag_MineKilnActivated);
+        Forge.SetActivated(Data.Game.Flag_MineKilnActivated);
+        Kiln.OnActivated += KilnActivated;
     }
 
     private void RegisterDebugActions()
@@ -42,5 +56,11 @@ public partial class MineForgeRoom : Node3D
         var item = ItemController.Instance.CreateItem(PickaxeInfo);
         item.SetParent(PickaxeMarker);
         item.Transform = Transform3D.Identity;
+    }
+
+    private void KilnActivated()
+    {
+        Data.Game.Flag_MineKilnActivated = true;
+        Forge.SetActivated(true);
     }
 }

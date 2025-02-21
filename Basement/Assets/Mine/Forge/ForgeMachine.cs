@@ -41,6 +41,7 @@ public partial class ForgeMachine : Node3D
 
     private bool HasMold => _current_mold != null;
 
+    private bool _activated;
     private bool _touched;
     private bool _press_down;
     private Item _current_mold;
@@ -58,11 +59,30 @@ public partial class ForgeMachine : Node3D
         ItemArea_Mold.OnItemEntered += ItemEntered_Mold;
     }
 
+    public void SetActivated(bool activated)
+    {
+        _activated = activated;
+    }
+
     private void LeverStateChanged(int i)
     {
         if (!_touched) return;
-        if (i == 1 && !_press_down && HasMold) // Down
+        if (i == 1 && !_press_down) // Down
         {
+            if (!_activated)
+            {
+                ShowNotActivatedText();
+                Lever.Toggle();
+                return;
+            }
+
+            if (!HasMold)
+            {
+                ShowMoldMissingText();
+                Lever.Toggle();
+                return;
+            }
+
             _press_down = true;
             AnimateForge();
         }
@@ -201,5 +221,29 @@ public partial class ForgeMachine : Node3D
         _created_item.SetGrabbable(true);
 
         _created_item = null;
+    }
+
+    private void ShowMoldMissingText()
+    {
+        GameView.Instance.CreateText(new CreateTextSettings
+        {
+            Id = "forge_missing_mold_" + GetInstanceId(),
+            Text = "##SOMETHING_MISSING##",
+            Target = MoldMarkerStart,
+            Offset = new Vector3(0, 0, 0),
+            Duration = 3.0f,
+        });
+    }
+
+    private void ShowNotActivatedText()
+    {
+        GameView.Instance.CreateText(new CreateTextSettings
+        {
+            Id = "forge_not_activated_" + GetInstanceId(),
+            Text = "##KILN_NOT_ACTIVATED##",
+            Target = MoldMarkerStart,
+            Offset = new Vector3(0, 0, 0),
+            Duration = 3.0f,
+        });
     }
 }

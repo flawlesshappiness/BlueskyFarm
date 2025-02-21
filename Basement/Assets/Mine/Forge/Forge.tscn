@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bl6j88k43qkpp"]
+[gd_scene load_steps=42 format=3 uid="uid://bl6j88k43qkpp"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Mine/Forge/ForgeMachine.cs" id="1_fqhgb"]
 [ext_resource type="PackedScene" uid="uid://dfnotbmshj8j5" path="res://Basement/Assets/Mine/Forge_Bottom.tscn" id="1_u2agg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://b5lpsp5su3kc0" path="res://Particle/Resources/ps_forge_dirt_impact.tres" id="4_11xsb"]
 [ext_resource type="PackedScene" uid="uid://byhc1gxfdkmjm" path="res://Basement/Assets/Mine/Lever_Metal.tscn" id="4_s24jo"]
 [ext_resource type="AudioStream" uid="uid://b818474gu1yo1" path="res://Sound/Sounds/sfx_metal_scraping_loop_002.wav" id="5_wwwxw"]
+[ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="6_mojxj"]
+[ext_resource type="Material" uid="uid://bk0kdmxcn0lyj" path="res://Assets/Materials/Crystal_Red.tres" id="7_0etkg"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="11_gkw6y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed8q2"]
@@ -21,7 +23,7 @@ material = SubResource("StandardMaterial3D_ed8q2")
 size = Vector3(1.9, 1, 1.9)
 
 [sub_resource type="Curve" id="Curve_bdjko"]
-_data = [Vector2(0, 0), 0.0, 0.805861, 0, 0, Vector2(0.3, 0.2), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -0.147015, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 8.14286, 0, 0, Vector2(0.3, 1), -0.00853316, -0.00853316, 0, 0, Vector2(1, 0), -0.147015, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_1l8jr"]
@@ -65,7 +67,6 @@ load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bb3l"]
 transparency = 1
-shading_mode = 0
 specular_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("CompressedTexture2D_822l3")
@@ -653,6 +654,12 @@ visibility_aabb = AABB(-6, -6, -6, 12, 12, 12)
 process_material = SubResource("ParticleProcessMaterial_gvy3r")
 draw_pass_1 = SubResource("QuadMesh_dfd4l")
 
+[node name="rock_broken" parent="Forge_Bottom" instance=ExtResource("6_mojxj")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0.455599, 0)
+
+[node name="Rock_Broken" parent="Forge_Bottom/rock_broken" index="0"]
+surface_material_override/0 = ExtResource("7_0etkg")
+
 [node name="Anim_Press" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.56412, 0)
 
@@ -740,3 +747,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727751, 0)
 
 [node name="CreatedItemMarker" type="Marker3D" parent="ItemArea_Mold"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727751, 0)
+
+[editable path="Forge_Bottom/rock_broken"]

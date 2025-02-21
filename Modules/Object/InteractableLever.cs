@@ -91,7 +91,7 @@ public partial class InteractableLever : Node3D
         }
     }
 
-    private void Toggle()
+    public void Toggle()
     {
         _animating = true;
         _state = _state == State.Up ? State.Down : State.Up;
@@ -99,7 +99,7 @@ public partial class InteractableLever : Node3D
         AnimationPlayer.Play(animation);
     }
 
-    private void Pull()
+    public void Pull()
     {
         _animating = true;
         AnimationPlayer.Play(MoveBoth_AnimationName);

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ben2qbeyvpvpc" path="res://Basement/Assets/Mine/Wall_WoodPlank_001.tscn" id="6_1cpd1"]
 [ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="7_a3rtp"]
 [ext_resource type="PackedScene" uid="uid://bl6j88k43qkpp" path="res://Basement/Assets/Mine/Forge/Forge.tscn" id="11_3j2dn"]
-[ext_resource type="PackedScene" uid="uid://bvpws86oh1yy" path="res://Basement/Assets/Mine/Kiln.tscn" id="13_ftp28"]
+[ext_resource type="PackedScene" uid="uid://bvpws86oh1yy" path="res://Basement/Assets/Mine/Forge/ForgeKiln.tscn" id="13_ftp28"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_024da"]
 size = Vector3(20, 1, 20)
@@ -356,9 +356,11 @@ occluder = SubResource("BoxOccluder3D_5bq6l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05345, -12)
 occluder = SubResource("BoxOccluder3D_5bq6l")
 
-[node name="RoomScript" type="Node3D" parent="." index="12" node_paths=PackedStringArray("Room", "PickaxeMarker")]
+[node name="RoomScript" type="Node3D" parent="." index="12" node_paths=PackedStringArray("Room", "Kiln", "Forge", "PickaxeMarker")]
 script = ExtResource("4_hwhmy")
 Room = NodePath("..")
+Kiln = NodePath("../Interior/Machines/Kiln")
+Forge = NodePath("../Interior/Machines/Forge")
 PickaxeMarker = NodePath("PickaxeMarker")
 PickaxeInfo = ExtResource("5_6stet")
 

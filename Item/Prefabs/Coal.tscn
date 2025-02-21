@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cujl6lvr6o545"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_bid3i"]
+[ext_resource type="PackedScene" uid="uid://c72e4lxg6cy8c" path="res://Assets/FlawLizArt/Rocks/rocks.fbx" id="2_eit2r"]
+[ext_resource type="Material" uid="uid://b0c02ghtm7jdx" path="res://Assets/Materials/Coal.tres" id="3_o8aac"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_we5bo"]
+size = Vector3(0.53656, 0.486287, 0.476929)
+
+[node name="Coal" instance=ExtResource("1_bid3i")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0413513, 0.0294013, 0.0504273)
+shape = SubResource("BoxShape3D_we5bo")
+
+[node name="rocks" parent="Model" index="0" instance=ExtResource("2_eit2r")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Rock" parent="Model/rocks" index="0"]
+surface_material_override/0 = ExtResource("3_o8aac")
+
+[editable path="Model/rocks"]

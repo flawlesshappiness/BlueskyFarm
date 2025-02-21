@@ -23,7 +23,7 @@ public partial class SignDirectionBoard : Node3DScript
             Text = Tr(Text),
             Target = Touchable,
             Offset = new Vector3(0, 0.2f, 0),
-            Duration = 5.0f,
+            Duration = 3.0f,
         });
     }
 }

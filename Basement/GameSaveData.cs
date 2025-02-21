@@ -10,6 +10,7 @@ public partial class GameSaveData
     public bool Flag_ShedRepaired { get; set; } = false;
     public bool Flag_BedRepaired { get; set; } = false;
     public bool Flag_ForestTreeHouseRepaired { get; set; } = false;
+    public bool Flag_MineKilnActivated { get; set; } = false;
     public int State_BasementInventoryPuzzle { get; set; } = 0;
     public int State_FarmInventoryWeedsCut { get; set; } = 0;
 }

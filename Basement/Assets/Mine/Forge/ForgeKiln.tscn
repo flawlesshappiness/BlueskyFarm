@@ -1,0 +1,201 @@
+[gd_scene load_steps=17 format=3 uid="uid://bvpws86oh1yy"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Mine/Forge/ForgeKiln.cs" id="1_dw650"]
+[ext_resource type="PackedScene" uid="uid://d0swp4rrpds4o" path="res://Assets/FlawLizArt/Forge/kiln.fbx" id="1_piuk7"]
+[ext_resource type="Resource" uid="uid://b8ocxjxurx0p4" path="res://Sound/Resources/sfx_fill_coal.tres" id="2_m7ucv"]
+[ext_resource type="PackedScene" uid="uid://byhc1gxfdkmjm" path="res://Basement/Assets/Mine/Lever_Metal.tscn" id="3_ifobs"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="4_yegdd"]
+[ext_resource type="AudioStream" uid="uid://8q3fk4gcfqvp" path="res://Sound/Sounds/sfx_forge_machine_loop_001.wav" id="5_qdb8w"]
+[ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="7_5ywin"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xl5c"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm6ho"]
+size = Vector3(1.99756, 2.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qid36"]
+size = Vector3(1.58942, 1.35205, 1.01617)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ixl4"]
+size = Vector3(1, 12.75, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmlow"]
+size = Vector3(0.463867, 0.418213, 0.480469)
+
+[sub_resource type="Animation" id="Animation_dqpgl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("kiln/kiln:surface_material_override/1:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightFireFar:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g7i4y"]
+resource_name = "activate"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("kiln/kiln:surface_material_override/1:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.4, 0.133333, 0, 1), Color(1, 0.333333, 0, 1), Color(1, 0.583333, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightFireFar:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.4, 0.133333, 0, 1), Color(1, 0.333333, 0, 1), Color(1, 0.583333, 0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartMachineSfx"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sop0u"]
+resource_name = "activated"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("kiln/kiln:surface_material_override/1:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.583333, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightFireFar:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.583333, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r2dil"]
+_data = {
+"RESET": SubResource("Animation_dqpgl"),
+"activate": SubResource("Animation_g7i4y"),
+"activated": SubResource("Animation_sop0u")
+}
+
+[node name="ForgeKiln" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "CoalItemArea", "SfxMachine_1", "SfxMachine_2", "CoalFillMarker")]
+script = ExtResource("1_dw650")
+Lever = NodePath("Lever_Metal")
+AnimationPlayer = NodePath("AnimationPlayer")
+CoalItemArea = NodePath("ItemArea")
+SfxMachine_1 = NodePath("SfxMachineLoop1")
+SfxMachine_2 = NodePath("SfxMachineLoop2")
+CoalFillMarker = NodePath("CoalFillMarker")
+SfxCoalFill = ExtResource("2_m7ucv")
+
+[node name="kiln" parent="." instance=ExtResource("1_piuk7")]
+
+[node name="kiln" parent="kiln" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_3xl5c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="kiln"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="kiln/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012207, 1.125, 0)
+shape = SubResource("BoxShape3D_vm6ho")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="kiln/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67698, 0.676025, -0.0108948)
+shape = SubResource("BoxShape3D_qid36")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="kiln/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0377979, 8.625, 0)
+shape = SubResource("BoxShape3D_6ixl4")
+
+[node name="Lever_Metal" parent="." instance=ExtResource("3_ifobs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="ItemArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_yegdd")
+CustomId = "coal"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99865, 1.29504, 0)
+shape = SubResource("BoxShape3D_xmlow")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r2dil")
+}
+
+[node name="LightFireFar" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.02414, 2.89278)
+light_color = Color(0, 0, 0, 1)
+light_energy = 0.5
+
+[node name="SfxMachineLoop1" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800311, 0)
+stream = ExtResource("5_qdb8w")
+volume_db = -80.0
+autoplay = true
+bus = &"SFX"
+
+[node name="SfxMachineLoop2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.19254, 0)
+stream = ExtResource("7_5ywin")
+volume_db = -80.0
+autoplay = true
+bus = &"SFX"
+
+[node name="CoalFillMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0292, 0.493344, 0)
+
+[editable path="kiln"]

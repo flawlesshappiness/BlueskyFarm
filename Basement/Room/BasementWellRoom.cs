@@ -126,7 +126,7 @@ public partial class BasementWellRoom : Node3DScript
         GameView.Instance.CreateText(new CreateTextSettings
         {
             Id = "something_in_well_" + GetInstanceId(),
-            Duration = 5.0f,
+            Duration = 3.0f,
             Target = SomethingInWellTouchable,
             Offset = new Vector3(0, 0.2f, 0),
             Text = "##SOMETHING_DOWN_THERE##"

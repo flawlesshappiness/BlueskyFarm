@@ -138,8 +138,7 @@ public partial class Item : Grabbable
 
     public Coroutine AnimateDisappearAndQueueFree()
     {
-        this.LockPosition_All();
-        this.LockRotation_All();
+        Freeze = true;
         ClearCollisionLayerAndMask();
         IsBeingHandled = true;
         ItemController.Instance.UntrackItem(this);

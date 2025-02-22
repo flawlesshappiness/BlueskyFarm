@@ -45,8 +45,7 @@ public partial class CombinationPipe : Node3DScript
 
         DisableDetaching();
         CurrentMaterial.SetCollisionLayer(2, 3);
-        CurrentMaterial.UnlockPosition_All();
-        CurrentMaterial.UnlockRotation_All();
+        CurrentMaterial.Freeze = false;
 
         CurrentMaterial.LinearVelocity = Area.GlobalBasis * Vector3.Forward * 3;
 
@@ -92,8 +91,7 @@ public partial class CombinationPipe : Node3DScript
     private void SnapMaterial(CraftingMaterial mat)
     {
         mat.SetCollisionLayer(2, 3);
-        mat.LockPosition_All();
-        mat.LockRotation_All();
+        mat.Freeze = true;
         mat.GlobalPosition = Area.GlobalPosition;
 
         CurrentMaterial = mat;

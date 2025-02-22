@@ -431,8 +431,7 @@ public partial class Player : FirstPersonController
 
     private void FreezeCameraRagdoll()
     {
-        CameraRagdoll.LockPosition_All();
-        CameraRagdoll.LockRotation_All();
+        CameraRagdoll.Freeze = true;
         CameraRagdoll.SetParent(CameraTarget);
         CameraRagdoll.Position = Vector3.Zero;
         CameraRagdoll.Rotation = Vector3.Zero;
@@ -453,8 +452,7 @@ public partial class Player : FirstPersonController
     public Coroutine RagdollCamera(Vector3 velocity)
     {
         CameraRagdoll.Enable();
-        CameraRagdoll.UnlockPosition_All();
-        CameraRagdoll.UnlockRotation_All();
+        CameraRagdoll.Freeze = false;
         CameraRagdoll.SetParent(Scene.Current);
         CameraRagdoll.GlobalRotation = CameraTarget.GlobalRotation;
         ScreenEffects.View.SetCameraTarget(CameraRagdoll);

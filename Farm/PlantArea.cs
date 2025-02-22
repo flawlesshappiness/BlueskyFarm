@@ -191,8 +191,7 @@ public partial class PlantArea : Node3DScript
     {
         item.GlobalPosition = SeedPosition.GlobalPosition;
         item.GlobalRotation = SeedPosition.GlobalRotation;
-        item.LockPosition_All();
-        item.LockRotation_All();
+        item.Freeze = true;
         item.ClearCollisionLayerAndMask();
     }
 

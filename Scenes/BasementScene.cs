@@ -57,7 +57,7 @@ public partial class BasementScene : GameScene
                     MaxRooms = 10,
                     MaxCorridorDepth = 3,
                     SeedType = ItemType.Crop_Stone,
-                    SeedCount = 99
+                    SeedCount = 7
                 }
             }
         };
@@ -196,7 +196,7 @@ public partial class BasementScene : GameScene
             {
                 var item = SeedController.Instance.CreateSeed(area.SeedType);
                 item.Disable();
-                item.LockPosition_All();
+                item.Freeze = true;
 
                 container.Item = item;
             }
@@ -244,7 +244,7 @@ public partial class BasementScene : GameScene
 
             var item = BlueprintController.Instance.CreateBlueprintRoll(blueprint.Id);
             item.Disable();
-            item.LockPosition_All();
+            item.Freeze = true;
             container.Item = item;
         }
     }

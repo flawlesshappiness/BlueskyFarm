@@ -110,6 +110,12 @@ public static class BasementGridGenerator
 
         var valid_room = valid_rooms.ToList().Random();
 
+        if (valid_room == null)
+        {
+            Debug.LogError($"Unable to add room in {settings.AreaName}: No valid neighbour");
+            return null;
+        }
+
         var coord = grid.GetEmptyNeighbourCoordinates(valid_room.Coordinates).ToList().Random();
 
         var new_room = new BasementRoomElement

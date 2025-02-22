@@ -39,16 +39,14 @@ public partial class ForestTreeHouseRoom : Node3D
         foreach (var node in PlankSpawns)
         {
             var item = ItemController.Instance.CreateItem(PlankInfo);
-            item.LockPosition_All();
-            item.LockRotation_All();
+            item.Freeze = true;
             item.SetParent(node);
             item.Position = Vector3.Zero;
             item.RotationDegrees = Vector3.Zero;
 
             item.OnGrabbed += () =>
             {
-                item.UnlockPosition_All();
-                item.UnlockRotation_All();
+                item.Freeze = false;
             };
         }
     }

@@ -54,8 +54,7 @@ public partial class PuzzleCubeWallHole : Node3DScript
             AreaHole.Disable();
             cube.SetGrabbable(false);
             cube.SetCollisionEnabled(false);
-            cube.LockPosition_All();
-            cube.LockRotation_All();
+            cube.Freeze = true;
 
             var end_rotation = EulerMath.WrappedEulerAngles(alignment.Rotation + GlobalRotationDegrees);
             var start_rotation = EulerMath.ClosestEulerAngles(EulerMath.WrappedEulerAngles(cube.GlobalRotationDegrees), end_rotation);
@@ -128,8 +127,7 @@ public partial class PuzzleCubeWallHole : Node3DScript
             cube.IsBeingHandled = false;
             cube.SetGrabbable(true);
             cube.SetCollisionEnabled(true);
-            cube.UnlockPosition_All();
-            cube.UnlockRotation_All();
+            cube.Freeze = false;
 
             yield return new WaitForSeconds(1);
 

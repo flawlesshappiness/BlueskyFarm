@@ -149,23 +149,28 @@ public partial class DebugView : View
     {
         foreach (var action in Debug.RegisteredActions)
         {
-            var category = GetOrCreateCategory(action.Category);
+            var category = GetOrCreateCategory(action.Id, action.Category);
             category.CreateButton(action.Text, action.Action);
         }
     }
 
-    private DebugCategoryControl GetOrCreateCategory(string name)
+    private DebugCategoryControl GetOrCreateCategory(string id, string text)
     {
-        if (!_categories.ContainsKey(name))
+        if (string.IsNullOrEmpty(id))
+        {
+            id = text;
+        }
+
+        if (!_categories.ContainsKey(id))
         {
             var category = CategoryTemplate.Duplicate() as DebugCategoryControl;
             category.SetParent(CategoryTemplate.GetParent());
             category.Show();
-            category.CategoryLabel.Text = name;
-            _categories.Add(name, category);
+            category.CategoryLabel.Text = text;
+            _categories.Add(id, category);
         }
 
-        return _categories[name];
+        return _categories[id];
     }
 
     private void OrderActionButton(Button button, DebugAction debug_action)

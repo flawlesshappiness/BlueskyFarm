@@ -140,7 +140,7 @@ public partial class ForgeMachine : Node3D
         _current_mold = item;
 
         item.SetGrabbable(false);
-        item.Lock_All();
+        item.Freeze = true;
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -204,7 +204,7 @@ public partial class ForgeMachine : Node3D
 
         var item = ItemController.Instance.CreateItem(_current_info.ResultItem);
         item.SetGrabbable(false);
-        item.Lock_All();
+        item.Freeze = true;
         item.SetParent(CreatedItemMarker);
         item.Position = Vector3.Zero;
         item.Rotation = Vector3.Zero;
@@ -217,7 +217,7 @@ public partial class ForgeMachine : Node3D
         if (_created_item == null) return;
 
         _created_item.SetParent(Scene.Current);
-        _created_item.Unlock_All();
+        _created_item.Freeze = false;
         _created_item.SetGrabbable(true);
 
         _created_item = null;

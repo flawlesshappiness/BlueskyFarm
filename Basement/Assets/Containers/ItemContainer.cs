@@ -8,8 +8,7 @@ public partial class ItemContainer : Node3DScript
     {
         if (!IsInstanceValid(Item)) return;
 
-        Item.UnlockPosition_All();
-        Item.UnlockRotation_All();
+        Item.Freeze = false;
         Item.SetEnabled(true);
         Item.GlobalPosition = position;
         Item.LinearVelocity = velocity;

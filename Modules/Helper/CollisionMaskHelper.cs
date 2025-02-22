@@ -24,7 +24,8 @@ public static class CollisionMaskHelper
 
 public enum CollisionMaskType
 {
-    Player = 1,
+    World = 1,
     Item = 2,
-    Interact = 3
+    Interact = 3,
+    Player = 5,
 }

@@ -73,6 +73,8 @@ script = ExtResource("1_t0oha")
 [node name="slime" parent="." instance=ExtResource("1_rudwy")]
 
 [node name="SlowArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("2_p6l4g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SlowArea"]

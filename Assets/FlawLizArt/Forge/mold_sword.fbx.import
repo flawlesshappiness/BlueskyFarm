@@ -33,7 +33,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Metal": {
+"Crystal.001": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Crystal_Red.tres"
 }

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpml1oeho8msf"
-path="res://.godot/imported/mold_key.fbx-2a930282d107261d8c139a5f66f3d98e.scn"
+uid="uid://c50ccrt5ke6fv"
+path="res://.godot/imported/crop_crystal_carrot.fbx-a11f405e4a7f3c3f065581126a6c35dc.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Forge/mold_key.fbx"
-dest_files=["res://.godot/imported/mold_key.fbx-2a930282d107261d8c139a5f66f3d98e.scn"]
+source_file="res://Assets/FlawLizArt/Crops/crop_crystal_carrot.fbx"
+dest_files=["res://.godot/imported/crop_crystal_carrot.fbx-a11f405e4a7f3c3f065581126a6c35dc.scn"]
 
 [params]
 

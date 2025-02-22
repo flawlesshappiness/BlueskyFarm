@@ -246,4 +246,9 @@ public partial class ForgeMachine : Node3D
             Duration = 3.0f,
         });
     }
+
+    private void StartImpactScreenShake()
+    {
+        ScreenEffects.AnimateCameraShake($"{nameof(ForgeMachine)}_{GetInstanceId()}", 0.25f, 0, 0, 1);
+    }
 }

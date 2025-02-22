@@ -130,8 +130,13 @@ public partial class ScreenEffectsView : View
         set => FogMaterial.SetShaderParameter("fog_direction", value);
     }
 
+    public float Camera_Shake_Strength { get; set; }
     public Vector3 Camera_Offset { get; set; }
     public float Camera_Offset_Forward { get; set; }
+
+    private Vector3 _camera_shake_offset;
+    private float _camera_shake_next;
+    private RandomNumberGenerator _rng = new();
 
     public override void _Ready()
     {
@@ -144,15 +149,31 @@ public partial class ScreenEffectsView : View
     {
         base._Process(delta);
         Process_MatchCamera();
+        Process_ShakeCamera();
     }
 
     private void Process_MatchCamera()
     {
-        if (IsInstanceValid(_camera_target))
+        if (!IsInstanceValid(_camera_target)) return;
+
+        Camera.GlobalTransform = _camera_target.GlobalTransform;
+        Camera.GlobalPosition += _camera_target.GlobalBasis * Camera_Offset;
+        Camera.GlobalPosition += _camera_target.GlobalBasis * Vector3.Forward * Camera_Offset_Forward;
+    }
+
+    private void Process_ShakeCamera()
+    {
+        Camera.GlobalPosition += _camera_shake_offset;
+
+        if (GameTime.Time > _camera_shake_next)
         {
-            Camera.GlobalTransform = _camera_target.GlobalTransform;
-            Camera.GlobalPosition += _camera_target.GlobalBasis * Camera_Offset;
-            Camera.GlobalPosition += _camera_target.GlobalBasis * Vector3.Forward * Camera_Offset_Forward;
+            var freq = 0.01f;
+            _camera_shake_next = GameTime.Time + freq;
+
+            var x = _rng.RandfRange(-Camera_Shake_Strength, Camera_Shake_Strength);
+            var y = _rng.RandfRange(-Camera_Shake_Strength, Camera_Shake_Strength);
+            var z = _rng.RandfRange(-Camera_Shake_Strength, Camera_Shake_Strength);
+            _camera_shake_offset = new Vector3(x, y, z);
         }
     }
 

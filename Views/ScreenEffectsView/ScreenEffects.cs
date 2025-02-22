@@ -17,6 +17,7 @@ public partial class ScreenEffects : Node3DScript
     private MultiFloatMin _squeeze_x_strength = new();
     private MultiFloatMin _squeeze_y_strength = new();
     private MultiFloatMin _fog_alpha = new();
+    private MultiFloatMin _camera_shake_strength = new();
     private MultiFloatMax _heartbeat_frequency = new(1);
     private float _camera_fov = 75f;
     private float _camera_fov_default = 75f;
@@ -53,6 +54,7 @@ public partial class ScreenEffects : Node3DScript
         _camera_fov = _camera_fov_default;
         _camera_offset = Vector3.Zero;
         _camera_offset_forward.Clear();
+        _camera_shake_strength.Clear();
 
         // Reset view
         View.Clear();
@@ -72,6 +74,7 @@ public partial class ScreenEffects : Node3DScript
         View.Camera.Fov = Mathf.Lerp(View.Camera.Fov, _camera_fov, 40f * (float)delta);
         View.Camera_Offset = View.Camera_Offset.Lerp(_camera_offset, 40f * (float)delta);
         View.Camera_Offset_Forward = Mathf.Lerp(View.Camera_Offset_Forward, _camera_offset_forward.Value, 40f * (float)delta);
+        View.Camera_Shake_Strength = _camera_shake_strength.Value;
     }
 
     private void RegisterDebugActions()
@@ -137,6 +140,13 @@ public partial class ScreenEffects : Node3DScript
                 AnimateFov($"{nameof(ScreenEffects)}{_test++}", 120f, 2, 0, 2);
                 v.Close();
             }
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Test camera shake",
+            Action = v => { AnimateCameraShake($"{nameof(ScreenEffects)}{_test++}", 1, 1, 1, 1); v.Close(); }
         });
 
         Debug.RegisterAction(new DebugAction
@@ -368,6 +378,19 @@ public partial class ScreenEffects : Node3DScript
 
     public static void RemoveCameraOffsetForward(string id) =>
         Instance._camera_offset_forward.Remove(id);
+
+    // CAMERA SHAKE //
+    public static Coroutine AnimateCameraShake(string id, float value, float duration_in, float duration_on, float duration_out) =>
+        Instance._AnimateMinValueInOut(Instance._camera_shake_strength, $"{nameof(AnimateCameraShake)}_{id}", value, duration_in, duration_on, duration_out);
+
+    /// <summary>
+    /// Value range: 0 - 1
+    /// </summary>
+    public static Coroutine AnimateCameraShakeIn(string id, float value, float duration) =>
+        Instance._AnimateMinValueIn(Instance._gaussian_amount, $"{nameof(AnimateCameraShake)}_{id}", value, duration);
+
+    public static Coroutine AnimateCameraShakeOut(string id, float duration) =>
+        Instance._AnimateMinValueOut(Instance._gaussian_amount, $"{nameof(AnimateCameraShake)}_{id}", 0, duration);
 
     // HEARTBEAT //
     public static Coroutine AnimateHeartbeatFrequency(string id, float frequency, float duration_in, float duration_on, float duration_out)

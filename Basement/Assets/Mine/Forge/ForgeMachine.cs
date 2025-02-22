@@ -71,14 +71,14 @@ public partial class ForgeMachine : Node3D
         {
             if (!_activated)
             {
-                ShowNotActivatedText();
+                //ShowNotActivatedText();
                 Lever.Toggle();
                 return;
             }
 
             if (!HasMold)
             {
-                ShowMoldMissingText();
+                //ShowMoldMissingText();
                 Lever.Toggle();
                 return;
             }

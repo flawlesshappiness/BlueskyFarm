@@ -57,7 +57,7 @@ public partial class ForgeKiln : Node3D
         {
             if (_count_coal < 3)
             {
-                ShowCoalMissingText();
+                //ShowCoalMissingText();
                 Lever.Toggle();
             }
             else

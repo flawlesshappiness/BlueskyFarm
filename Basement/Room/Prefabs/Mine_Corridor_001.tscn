@@ -217,38 +217,22 @@ transform = Transform3D(0.761903, 0, 0.990961, 0, 1.25, 0, -0.990961, 0, 0.76190
 [node name="Rock25" parent="Interior/Rocks" index="31" instance=ExtResource("8_ouhrq")]
 transform = Transform3D(0.568562, 0, -0.82264, 0, 1, 0, 0.82264, 0, 0.568562, 0.0250537, 1.76801, 6.19746)
 
-[node name="Group (Lanterns)" type="Node3D" parent="Interior" index="2"]
-script = ExtResource("4_twxnd")
+[node name="Lanterns" type="Node3D" parent="Interior" index="2"]
 
-[node name="Interior 1" type="Node3D" parent="Interior/Group (Lanterns)" index="0"]
-script = ExtResource("5_u3625")
+[node name="Lantern" parent="Interior/Lanterns" index="0" instance=ExtResource("6_v34jg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1761, 3.69994, -0.669716)
 
-[node name="Lantern" parent="Interior/Group (Lanterns)/Interior 1" index="0" instance=ExtResource("6_v34jg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1761, 3.69994, -0.0930698)
-
-[node name="Interior 2" type="Node3D" parent="Interior/Group (Lanterns)" index="1"]
-script = ExtResource("5_u3625")
-
-[node name="Lantern" parent="Interior/Group (Lanterns)/Interior 2" index="0" instance=ExtResource("6_v34jg")]
+[node name="Lantern2" parent="Interior/Lanterns" index="1" instance=ExtResource("6_v34jg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32448, 3.6888, 4.56244)
 
-[node name="Interior 3" type="Node3D" parent="Interior/Group (Lanterns)" index="2"]
-script = ExtResource("5_u3625")
+[node name="Lantern3" parent="Interior/Lanterns" index="2" instance=ExtResource("6_v34jg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27843, 3.63041, 0.232894)
 
-[node name="Lantern" parent="Interior/Group (Lanterns)/Interior 3" index="0" instance=ExtResource("6_v34jg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27843, 3.63041, -0.184982)
-
-[node name="Interior 4" type="Node3D" parent="Interior/Group (Lanterns)" index="3"]
-script = ExtResource("5_u3625")
-
-[node name="Lantern" parent="Interior/Group (Lanterns)/Interior 4" index="0" instance=ExtResource("6_v34jg")]
+[node name="Lantern4" parent="Interior/Lanterns" index="3" instance=ExtResource("6_v34jg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1425, 3.48511, -0.184982)
 
-[node name="Interior 5" type="Node3D" parent="Interior/Group (Lanterns)" index="4"]
-script = ExtResource("5_u3625")
-
-[node name="Lantern" parent="Interior/Group (Lanterns)/Interior 5" index="0" instance=ExtResource("6_v34jg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32117, 3.50947, -2.65142)
+[node name="Lantern5" parent="Interior/Lanterns" index="4" instance=ExtResource("6_v34jg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54434, 3.50947, -2.65142)
 
 [node name="Group (Rocks)" type="Node3D" parent="Interior" index="3"]
 script = ExtResource("4_twxnd")

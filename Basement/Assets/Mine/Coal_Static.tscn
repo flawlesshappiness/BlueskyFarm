@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl882kwnc30wm"]
+
+[ext_resource type="PackedScene" uid="uid://c72e4lxg6cy8c" path="res://Assets/FlawLizArt/Rocks/rocks.fbx" id="1_anm8j"]
+[ext_resource type="Material" uid="uid://b0c02ghtm7jdx" path="res://Assets/Materials/Coal.tres" id="2_3ma04"]
+
+[node name="Coal_Static" type="Node3D"]
+
+[node name="rocks" parent="." instance=ExtResource("1_anm8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0968972, -0.0596048, -0.0362447)
+
+[node name="Rock" parent="rocks" index="0"]
+surface_material_override/0 = ExtResource("2_3ma04")
+
+[editable path="rocks"]

@@ -79,6 +79,12 @@ public static class Node3DExtensions
         }
     }
 
+    public static void ClearPositionAndRotation(this Node3D node)
+    {
+        node.Position = Vector3.Zero;
+        node.Rotation = Vector3.Zero;
+    }
+
     #region RAYCAST
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 direction, float length, uint collision_mask, out RaycastResult3D result) => node.TryRaycast(start, start + direction.Normalized() * length, collision_mask, out result);
     public static bool TryRaycast(this Node3D node, Vector3 start, Vector3 end, uint collision_mask, out RaycastResult3D result)

@@ -10,6 +10,13 @@ public static class ListExtensions
         return list.Count > 0 ? list.Get(rng.RandiRange(0, list.Count - 1)) : default(T);
     }
 
+    public static T PopRandom<T>(this List<T> list, RandomNumberGenerator rng = null)
+    {
+        var v = list.Random(rng);
+        list.Remove(v);
+        return v;
+    }
+
     public static T GetClamped<T>(this List<T> list, int index)
     {
         return list[Mathf.Clamp(index, 0, list.Count - 1)];

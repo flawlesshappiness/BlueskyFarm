@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://8dijjt618qwt"]
+
+[ext_resource type="PackedScene" uid="uid://ni73ca6mhvyy" path="res://Basement/Room/Prefabs/Mine_Room_Coal.tscn" id="1_x01mp"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_plm01"]
+
+[resource]
+script = ExtResource("2_plm01")
+Area = "Mine"
+ConnectedArea = ""
+AmbienceArea = "Mine"
+Scene = ExtResource("1_x01mp")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "0000000
+0000000
+0000000
+0001000
+0000000
+0000000
+0000000"
+ValidGroundHeights = null
+Disabled = false

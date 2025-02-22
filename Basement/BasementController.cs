@@ -69,6 +69,8 @@ public partial class BasementController : SingletonController
             AreaName = AreaNames.Mine,
             RoomInfo = BasementRoomController.Instance.Collection.GetResource("Mine_Forge")
         });
+
+        SetRandomElementInfo(AreaNames.Mine, "Mine_Room_Coal");
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)
@@ -181,7 +183,13 @@ public partial class BasementController : SingletonController
         var element = GetRandomElementWithoutInfo(area_name);
         if (element == null) return;
 
-        element.Info = BasementRoomController.Instance.Collection.GetResource(info_name);
+        var info = BasementRoomController.Instance.Collection.GetResource(info_name);
+        element.Info = info;
+
+        if (info == null)
+        {
+            Debug.LogError($"BasementRoomInfo with name {info_name} was null");
+        }
     }
 
     public void EnterBasement()

@@ -22,19 +22,10 @@ public partial class ItemInfo : Resource
     public int Uses;
 
     [Export]
-    public ItemType SeedResultType;
-
-    [Export]
-    public int GrowTimeInSeconds;
-
-    [Export]
     public bool CanPickUp;
 
     [Export]
     public bool PerishesOnFarm;
-
-    [Export]
-    public bool Untrack;
 
     [Export]
     public float InventoryItemCameraDistance = 0.25f;

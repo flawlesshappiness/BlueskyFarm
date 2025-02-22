@@ -5,9 +5,14 @@ public partial class SeedController : ResourceController<SeedCollection, SeedInf
     public static SeedController Instance => Singleton.Get<SeedController>();
     public override string Directory => "Seed";
 
+    public SeedInfo GetInfo(ItemType type)
+    {
+        return Collection.Resources.FirstOrDefault(x => x.ItemType == type);
+    }
+
     public Item CreateSeed(ItemType type)
     {
-        var seed_info = Collection.Resources.FirstOrDefault(x => x.ItemType == type);
+        var seed_info = GetInfo(type);
         if (seed_info == null) return null;
 
         var result = ItemController.Instance.Collection.Resources

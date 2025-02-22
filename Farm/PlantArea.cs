@@ -102,12 +102,15 @@ public partial class PlantArea : Node3DScript
         var plant_info = GD.Load<ItemInfo>(item.Data.Seed.Info);
         if (plant_info == null) return;
 
+        var seed_info = SeedController.Instance.GetInfo(plant_info.Type);
+        if (seed_info == null) return;
+
         var data = new PlantAreaData
         {
             Id = Id,
             SeedInfoPath = item.Info.ResourcePath,
             PlantInfoPath = item.Data.Seed.Info,
-            TimeLeft = item.Data.Seed.OverrideGrowTime ?? plant_info.GrowTimeInSeconds,
+            TimeLeft = item.Data.Seed.OverrideGrowTime ?? seed_info.GrowTimeInSeconds,
         };
 
         SetData(data);

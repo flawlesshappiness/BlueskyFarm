@@ -7,3 +7,4 @@
 script = ExtResource("2_stw0e")
 ItemType = 4
 ItemInfo = ExtResource("1_kd4dv")
+GrowTimeInSeconds = 2

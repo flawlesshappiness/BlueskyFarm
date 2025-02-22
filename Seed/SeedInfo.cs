@@ -8,4 +8,7 @@ public partial class SeedInfo : Resource
 
     [Export]
     public ItemInfo ItemInfo;
+
+    [Export]
+    public int GrowTimeInSeconds;
 }

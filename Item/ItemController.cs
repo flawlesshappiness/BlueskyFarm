@@ -57,7 +57,14 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
         foreach (var data in datas)
         {
-            CreateItemFromData(data);
+            try
+            {
+                CreateItemFromData(data);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
         }
 
         Debug.Indent--;
@@ -105,7 +112,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
         item.Info = info;
         item.Data = CreateItemData(info);
 
-        var track = !info.Untrack && (settings?.Tracked ?? true);
+        var track = settings?.Tracked ?? true;
         if (track)
         {
             ActiveItems.Add(item);

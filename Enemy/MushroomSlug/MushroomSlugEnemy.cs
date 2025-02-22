@@ -14,6 +14,9 @@ public partial class MushroomSlugEnemy : NavEnemy
     [Export]
     public PlayerArea PlayerArea;
 
+    [Export]
+    public AudioStreamPlayer3D SfxSpores;
+
     protected override string EnemyName => "MushroomSlug";
     protected override string DefaultState => StateWander;
     private string FxId => $"{nameof(MushroomSlugEnemy)}_{GetInstanceId()}";
@@ -29,8 +32,8 @@ public partial class MushroomSlugEnemy : NavEnemy
     {
         base.InitializeEnemy();
         PlayerArea.Disable();
-        PlayerArea.OnPlayerEntered += PlayerEntered;
-        PlayerArea.OnPlayerExited += PlayerExited;
+        //PlayerArea.OnPlayerEntered += PlayerEntered;
+        //PlayerArea.OnPlayerExited += PlayerExited;
 
         InitializeAnimations();
     }
@@ -50,6 +53,8 @@ public partial class MushroomSlugEnemy : NavEnemy
             GlobalPosition = spawn.GlobalPosition;
 
             PlayerArea.Enable();
+
+            SfxSpores.Play();
 
             SetState(StateTravel);
         }

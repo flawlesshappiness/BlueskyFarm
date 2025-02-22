@@ -11,16 +11,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_x316y"]
 size = Vector3(6, 6, 6)
 
-[node name="MushroomSlug" type="Node3D" node_paths=PackedStringArray("AnimationStateMachine", "AnimationPlayer", "PlayerArea")]
+[node name="MushroomSlug" type="Node3D" node_paths=PackedStringArray("AnimationStateMachine", "AnimationPlayer", "PlayerArea", "SfxSpores")]
 script = ExtResource("1_0gc5v")
 AnimationStateMachine = NodePath("AnimationStateMachine")
 AnimationPlayer = NodePath("mushroom_slug/AnimationPlayer")
 PlayerArea = NodePath("PlayerArea")
+SfxSpores = NodePath("SfxSpores")
 MoveSpeed = 0.1
 TurnSpeed = 0.2
 
 [node name="mushroom_slug" parent="." instance=ExtResource("2_u8r1u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, 0, 0)
 
 [node name="Armature" parent="mushroom_slug" index="0"]
 transform = Transform3D(-100, 1.50996e-05, 6.60024e-13, 0, -4.37114e-06, 100, 1.50996e-05, 100, 4.37114e-06, 0, 0, 0)
@@ -62,14 +63,15 @@ script = ExtResource("3_72rul")
 [node name="SfxSpores" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_dpvg4")
 volume_db = -10.0
-autoplay = true
 bus = &"SFX"
 
 [node name="ps_slug_spores_up" parent="." instance=ExtResource("5_ntph1")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.11454e-08, 0.48375, 0)
+visible = false
 
 [node name="ps_slug_spores" parent="." instance=ExtResource("6_ffbft")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.5, 0)
+visible = false
 
 [node name="PlayerArea" type="Area3D" parent="."]
 collision_layer = 0

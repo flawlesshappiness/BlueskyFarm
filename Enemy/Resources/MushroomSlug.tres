@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_vscfn")
 Scene = ExtResource("1_olwuj")
+Count = 2
 Enabled = true
 IsDangerous = false
 Areas = Array[int]([1])

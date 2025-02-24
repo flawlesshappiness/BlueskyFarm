@@ -58,6 +58,8 @@ public partial class RockCrabEnemy : NavEnemy
         AnimationStateMachine.Connect(anim_slamming, anim_idle);
         AnimationStateMachine.Connect(anim_eating, anim_idle);
 
+        AnimationStateMachine.Connect(anim_slamming, anim_to_hide, _param_hiding.WhenTrue());
+        AnimationStateMachine.Connect(anim_eating, anim_to_hide, _param_hiding.WhenTrue());
         AnimationStateMachine.Connect(anim_idle, anim_to_hide, _param_hiding.WhenTrue());
         AnimationStateMachine.Connect(anim_to_hide, anim_from_hide, _param_hiding.WhenFalse());
         AnimationStateMachine.Connect(anim_from_hide, anim_idle);
@@ -120,6 +122,9 @@ public partial class RockCrabEnemy : NavEnemy
 
     private IEnumerator CrState_Idle()
     {
+        _param_eating.Untrigger();
+        _param_slamming.Untrigger();
+
         var rng = new RandomNumberGenerator();
         var repeats = rng.RandiRange(1, 3);
 

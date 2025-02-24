@@ -84,6 +84,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Rocks_CaveIn" parent="West/Closed" index="0" instance=ExtResource("2_gu0md")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, 0, 0)
 
+[node name="EnemySpawn" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87956, 0, 3.19534)
+
 [node name="room_001" parent="." index="11" instance=ExtResource("2_qx5fu")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room_001" index="1"]
@@ -474,7 +477,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 [node name="Models" type="Node3D" parent="Interior/Coal" index="0"]
 
 [node name="Coal_Static" parent="Interior/Coal/Models" index="0" instance=ExtResource("8_5p3on")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.07776, 1.35804, 2.12998)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.07776, 1.35804, 2.06591)
 
 [node name="Coal_Static2" parent="Interior/Coal/Models" index="1" instance=ExtResource("8_5p3on")]
 transform = Transform3D(0.88112, 0, -2.86769, 0, 3, 0, 2.86769, 0, 0.88112, 2.56254, 1.35804, -2.63354)

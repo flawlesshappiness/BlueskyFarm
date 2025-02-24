@@ -19,4 +19,4 @@ RoomLayout = "0000000
 0000000
 0000000"
 ValidGroundHeights = null
-Disabled = false
+Disabled = true

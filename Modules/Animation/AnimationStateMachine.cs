@@ -33,6 +33,11 @@ public partial class AnimationStateMachine : BaseStateMachine
         return state;
     }
 
+    public void Connect(AnimationState start, AnimationState end, params Condition[] conditions)
+    {
+        Connect(start.Node, end.Node, conditions);
+    }
+
     protected virtual void AnimationFinished(StringName animName)
     {
         TryProcessCurrentState(true);

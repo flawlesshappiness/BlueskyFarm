@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://2keqpjo4av2e"]
+
+[ext_resource type="AudioStream" uid="uid://5e3jbyymkvno" path="res://Sound/Sounds/sfx_rock_man_idle_001.wav" id="1_crrhj"]
+[ext_resource type="AudioStream" uid="uid://xn18005g0orx" path="res://Sound/Sounds/sfx_rock_man_idle_002.wav" id="2_s826r"]
+[ext_resource type="AudioStream" uid="uid://c14iim7eek2rm" path="res://Sound/Sounds/sfx_rock_man_idle_003.wav" id="3_mup0n"]
+[ext_resource type="AudioStream" uid="uid://3lwysbebefcb" path="res://Sound/Sounds/sfx_rock_man_idle_004.wav" id="4_lolkc"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_q0pux"]
+
+[resource]
+script = ExtResource("4_q0pux")
+AudioStreams = Array[AudioStream]([ExtResource("1_crrhj"), ExtResource("2_s826r"), ExtResource("3_mup0n"), ExtResource("4_lolkc")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

@@ -80,6 +80,8 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     {
         var enemy = CreateEnemy(info);
         enemy.IsDebug = true;
+        enemy.InitializeEnemy();
+        enemy.Spawn();
     }
 
     private void RegisterDebugActions()

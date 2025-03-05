@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://7hsgo3choi7l"]
+
+[ext_resource type="AudioStream" uid="uid://cd8mb171sksky" path="res://Sound/Sounds/sfx_rock_man_step_near_001.wav" id="1_mcqd6"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_2doc8"]
+
+[resource]
+script = ExtResource("2_2doc8")
+AudioStreams = Array[AudioStream]([ExtResource("1_mcqd6")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 2
+Attenuation = 0

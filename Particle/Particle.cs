@@ -36,7 +36,11 @@ public static class Particle
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(delay);
-            particle.QueueFree();
+
+            if (GodotObject.IsInstanceValid(particle) && !particle.IsQueuedForDeletion())
+            {
+                particle.QueueFree();
+            }
         }
     }
 }

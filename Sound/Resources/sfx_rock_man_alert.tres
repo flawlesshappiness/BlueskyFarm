@@ -12,5 +12,5 @@ Volume = 0.0
 Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
-Distance = 0
+Distance = 2
 Attenuation = 0

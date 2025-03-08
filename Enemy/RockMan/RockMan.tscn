@@ -1,19 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5niktonq4skr"]
+[gd_scene load_steps=10 format=3 uid="uid://c5niktonq4skr"]
 
 [ext_resource type="Script" path="res://Enemy/RockMan/RockManEnemy.cs" id="1_7jc4q"]
 [ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ocs64"]
 [ext_resource type="Resource" uid="uid://7hsgo3choi7l" path="res://Sound/Resources/sfx_rock_man_step_near.tres" id="2_q401k"]
 [ext_resource type="PackedScene" uid="uid://cnaauc2go6mmj" path="res://Assets/FlawLizArt/RockMan/rock_man.fbx" id="3_coey7"]
 [ext_resource type="Resource" uid="uid://cs0w4me70elgq" path="res://Sound/Resources/sfx_rock_man_step_far.tres" id="3_od48x"]
+[ext_resource type="Resource" uid="uid://ck7l5msaaqona" path="res://Sound/Resources/sfx_rock_man_idle.tres" id="4_vm022"]
+[ext_resource type="Resource" uid="uid://2keqpjo4av2e" path="res://Sound/Resources/sfx_rock_man_amb.tres" id="5_rln5t"]
+[ext_resource type="Resource" uid="uid://co5t8oywqksvp" path="res://Sound/Resources/sfx_rock_man_alert.tres" id="6_1o1ec"]
+[ext_resource type="Resource" uid="uid://xypmnujr0np2" path="res://Sound/Resources/sfx_rock_man_scream.tres" id="7_0y16o"]
 
-[node name="RockMan" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "AnimationStateMachine", "Skeleton")]
+[node name="RockMan" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "AnimationStateMachine", "Skeleton", "FaceMarker", "ScreamStartMarker", "ScreamEndMarker", "CameraTarget")]
 script = ExtResource("1_7jc4q")
 AnimationPlayer = NodePath("rock_man/AnimationPlayer")
 AnimationStateMachine = NodePath("AnimationStateMachine")
 Skeleton = NodePath("rock_man/Armature/Skeleton3D")
 SfxStepNear = ExtResource("2_q401k")
 SfxStepFar = ExtResource("3_od48x")
-MoveSpeed = 1.0
+SfxIdle = ExtResource("4_vm022")
+SfxAmb = ExtResource("5_rln5t")
+SfxAlert = ExtResource("6_1o1ec")
+SfxScream = ExtResource("7_0y16o")
+FaceMarker = NodePath("FaceMarker")
+ScreamStartMarker = NodePath("ScreamStartMarker")
+ScreamEndMarker = NodePath("ScreamEndMarker")
+CameraTarget = NodePath("CameraTarget")
+MoveSpeed = 0.8
 TurnSpeed = 1.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -27,32 +39,78 @@ script = ExtResource("1_ocs64")
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="rock_man/Armature" index="0"]
-bones/1/position = Vector3(0, -0.0020661, 0.0107124)
-bones/1/rotation = Quaternion(0, 0, -0.0239308, 0.999714)
-bones/2/rotation = Quaternion(-0.126279, -0.00386196, -0.000177105, 0.991987)
-bones/5/rotation = Quaternion(-0.24213, -0.46771, -0.30285, 0.794294)
-bones/6/rotation = Quaternion(-0.450932, 0.0306761, 0.0410612, 0.891086)
-bones/7/rotation = Quaternion(0.0749802, 0.619242, -0.163889, 0.764237)
-bones/10/rotation = Quaternion(0.134899, -0.0958742, 0.489465, 0.856174)
-bones/11/rotation = Quaternion(-0.470035, 0.0520825, 0.375056, 0.7973)
-bones/12/rotation = Quaternion(-0.00612189, 0.85309, 0.521623, 0.0104189)
-bones/15/rotation = Quaternion(0.210862, 0.346329, 0.212293, 0.889115)
-bones/16/rotation = Quaternion(-0.894626, -0.0151152, -0.0814634, 0.439068)
-bones/17/rotation = Quaternion(0.442849, -0.561583, 0.28962, 0.636105)
-bones/20/rotation = Quaternion(0.135934, 0.433263, -0.166922, 0.875181)
-bones/21/rotation = Quaternion(-0.619078, -0.0397959, -0.493982, 0.609212)
-bones/22/rotation = Quaternion(0.0652864, 0.594061, 0.800435, 0.0461878)
-bones/26/position = Vector3(0.0108099, -0.0211763, 0.00394242)
+bones/1/rotation = Quaternion(-3.0407e-19, -0.0514807, 6.91689e-09, 0.998674)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(0, 0.0150201, -0.00112758)
+bones/2/rotation = Quaternion(-0.04562, 0.0899142, 0.00412292, 0.994896)
+bones/2/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.00199146, 0.0098141, -0.00216581)
+bones/4/rotation = Quaternion(0.0267235, -0.0448422, 0.723883, 0.687945)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-1.17042e-09, 0.00500255, 2.95059e-12)
+bones/5/rotation = Quaternion(-0.144991, -0.469507, -0.273185, 0.826989)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(8.41394e-10, 0.00764323, -7.28167e-11)
+bones/6/rotation = Quaternion(-0.561036, 0.028426, 0.0510872, 0.825724)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(1.08378e-09, 0.00985244, 2.21099e-10)
+bones/7/rotation = Quaternion(-0.0486424, 0.393916, 0.248855, 0.883479)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-0.00193602, -0.00645854, -0.00365027)
+bones/9/rotation = Quaternion(0.0732472, -0.00398101, 0.701061, 0.709318)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(-5.8108e-10, 0.00489817, 2.25237e-12)
+bones/10/rotation = Quaternion(0.251388, -0.223377, 0.419692, 0.843069)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(4.75422e-10, 0.00857788, -9.53523e-11)
+bones/11/rotation = Quaternion(-0.564839, 0.0450587, 0.450703, 0.689778)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(2.15612e-11, 0.00873124, -3.09084e-11)
+bones/12/rotation = Quaternion(-0.0109888, 0.739603, 0.672738, 0.0170163)
+bones/12/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(0.00199146, 0.0098141, -0.00216581)
+bones/14/rotation = Quaternion(0.0267235, 0.0448422, -0.723883, 0.687945)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(1.17042e-09, 0.00500255, 2.95059e-12)
+bones/15/rotation = Quaternion(-0.294851, 0.473586, 0.187435, 0.808484)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(-8.41394e-10, 0.00764323, -7.28167e-11)
+bones/16/rotation = Quaternion(-0.536652, -0.0289824, -0.0488668, 0.841888)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(-1.08378e-09, 0.00985244, 2.21099e-10)
+bones/17/rotation = Quaternion(-0.135491, -0.381772, -0.225074, 0.886134)
+bones/17/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(0.00193602, -0.00645854, -0.00365027)
+bones/19/rotation = Quaternion(0.0732472, 0.00398101, -0.701061, 0.709318)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(5.8108e-10, 0.00489817, 2.25237e-12)
+bones/20/rotation = Quaternion(0.115884, 0.20611, -0.505347, 0.829888)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(-4.75422e-10, 0.00857788, -9.53523e-11)
+bones/21/rotation = Quaternion(-0.532735, -0.0477005, -0.425086, 0.730219)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/position = Vector3(-2.15612e-11, 0.00873124, -3.09084e-11)
+bones/22/rotation = Quaternion(0.0109888, 0.739603, 0.672738, -0.0170163)
+bones/22/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(1.09598e-07, 0.0254251, 0.0106088)
+bones/24/rotation = Quaternion(-2.10734e-08, -0.707107, 2.10734e-08, 0.707107)
 bones/26/rotation = Quaternion(-0.486958, 0.512711, 0.512711, -0.486958)
-bones/28/position = Vector3(0.0111815, 0.020366, 0.000535778)
-bones/30/position = Vector3(-0.0114187, -0.0114155, 0.00399233)
-bones/32/position = Vector3(-0.0143555, 0.0106876, 0.000535778)
 bones/34/rotation = Quaternion(-0.00276811, 0.707101, 0.707101, -0.00276811)
-bones/38/position = Vector3(0.00889237, 0.0208483, 0.00715222)
 bones/38/rotation = Quaternion(-0.00276811, 0.707101, 0.707101, -0.00276811)
-bones/40/position = Vector3(-0.0118554, 0.0208483, 0.00715222)
 
 [node name="AnimationPlayer" parent="rock_man" index="1"]
 playback_default_blend_time = 0.25
+
+[node name="FaceMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 0.942483, 1.1514)
+
+[node name="ScreamStartMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.01906, 3.32028)
+
+[node name="ScreamEndMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.01906, 2.27168)
+
+[node name="CameraTarget" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.01906, 3.32028)
 
 [editable path="rock_man"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://tf4qub5evl6k"]
+[gd_scene load_steps=34 format=3 uid="uid://tf4qub5evl6k"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_wposl"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_8xuuv"]
@@ -17,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://big86pssr4dgy" path="res://Basement/Assets/Mine/Stalagmite.tscn" id="15_12tck"]
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="15_w875a"]
 [ext_resource type="PackedScene" uid="uid://c8rn6dc7j04ak" path="res://Basement/Assets/Mine/Rock.tscn" id="16_redba"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdo0g"]
+size = Vector3(28, 1, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5q82"]
 size = Vector3(20, 1, 20)
@@ -86,137 +89,121 @@ Type = 1
 
 [node name="Floor" type="CollisionShape3D" parent="room_001/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_i5q82")
+shape = SubResource("BoxShape3D_wdo0g")
 
 [node name="Ceiling" type="CollisionShape3D" parent="room_001/StaticBody3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
 shape = SubResource("BoxShape3D_i5q82")
 
-[node name="Floor2" type="CollisionShape3D" parent="room_001/StaticBody3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, 0)
-shape = SubResource("BoxShape3D_yblmi")
-
-[node name="Ceiling2" type="CollisionShape3D" parent="room_001/StaticBody3D" index="3"]
+[node name="Ceiling2" type="CollisionShape3D" parent="room_001/StaticBody3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, 0)
 shape = SubResource("BoxShape3D_yblmi")
 
-[node name="Ceiling3" type="CollisionShape3D" parent="room_001/StaticBody3D" index="4"]
+[node name="Ceiling3" type="CollisionShape3D" parent="room_001/StaticBody3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 0)
 shape = SubResource("BoxShape3D_yblmi")
 
-[node name="Ceiling4" type="CollisionShape3D" parent="room_001/StaticBody3D" index="5"]
+[node name="Ceiling4" type="CollisionShape3D" parent="room_001/StaticBody3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -12)
 shape = SubResource("BoxShape3D_yblmi")
 
-[node name="Ceiling5" type="CollisionShape3D" parent="room_001/StaticBody3D" index="6"]
+[node name="Ceiling5" type="CollisionShape3D" parent="room_001/StaticBody3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 12)
 shape = SubResource("BoxShape3D_yblmi")
 
-[node name="Floor4" type="CollisionShape3D" parent="room_001/StaticBody3D" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.5, 0)
-shape = SubResource("BoxShape3D_yblmi")
-
-[node name="Floor3" type="CollisionShape3D" parent="room_001/StaticBody3D" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -12)
-shape = SubResource("BoxShape3D_yblmi")
-
-[node name="Floor5" type="CollisionShape3D" parent="room_001/StaticBody3D" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 12)
-shape = SubResource("BoxShape3D_yblmi")
-
-[node name="Wall" type="CollisionShape3D" parent="room_001/StaticBody3D" index="10"]
+[node name="Wall" type="CollisionShape3D" parent="room_001/StaticBody3D" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 12)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall2" type="CollisionShape3D" parent="room_001/StaticBody3D" index="11"]
+[node name="Wall2" type="CollisionShape3D" parent="room_001/StaticBody3D" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 12)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall3" type="CollisionShape3D" parent="room_001/StaticBody3D" index="12"]
+[node name="Wall3" type="CollisionShape3D" parent="room_001/StaticBody3D" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -12)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall4" type="CollisionShape3D" parent="room_001/StaticBody3D" index="13"]
+[node name="Wall4" type="CollisionShape3D" parent="room_001/StaticBody3D" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -12)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall5" type="CollisionShape3D" parent="room_001/StaticBody3D" index="14"]
+[node name="Wall5" type="CollisionShape3D" parent="room_001/StaticBody3D" index="10"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, 2, -2)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall6" type="CollisionShape3D" parent="room_001/StaticBody3D" index="15"]
+[node name="Wall6" type="CollisionShape3D" parent="room_001/StaticBody3D" index="11"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, 2, 1.75)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall7" type="CollisionShape3D" parent="room_001/StaticBody3D" index="16"]
+[node name="Wall7" type="CollisionShape3D" parent="room_001/StaticBody3D" index="12"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 2, 1.75)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall8" type="CollisionShape3D" parent="room_001/StaticBody3D" index="17"]
+[node name="Wall8" type="CollisionShape3D" parent="room_001/StaticBody3D" index="13"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 2, -2)
 shape = SubResource("BoxShape3D_tnnpo")
 
-[node name="Wall9" type="CollisionShape3D" parent="room_001/StaticBody3D" index="18"]
+[node name="Wall9" type="CollisionShape3D" parent="room_001/StaticBody3D" index="14"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.5, 2, -9.5)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall10" type="CollisionShape3D" parent="room_001/StaticBody3D" index="19"]
+[node name="Wall10" type="CollisionShape3D" parent="room_001/StaticBody3D" index="15"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 2, -9.5)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall21" type="CollisionShape3D" parent="room_001/StaticBody3D" index="20"]
+[node name="Wall21" type="CollisionShape3D" parent="room_001/StaticBody3D" index="16"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8, -9.5)
 shape = SubResource("BoxShape3D_ju7qn")
 
-[node name="Wall22" type="CollisionShape3D" parent="room_001/StaticBody3D" index="21"]
+[node name="Wall22" type="CollisionShape3D" parent="room_001/StaticBody3D" index="17"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8, 9.5)
 shape = SubResource("BoxShape3D_ju7qn")
 
-[node name="Wall23" type="CollisionShape3D" parent="room_001/StaticBody3D" index="22"]
+[node name="Wall23" type="CollisionShape3D" parent="room_001/StaticBody3D" index="18"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.5, 8, 0)
 shape = SubResource("BoxShape3D_ju7qn")
 
-[node name="Wall24" type="CollisionShape3D" parent="room_001/StaticBody3D" index="23"]
+[node name="Wall24" type="CollisionShape3D" parent="room_001/StaticBody3D" index="19"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.5, 8, 0)
 shape = SubResource("BoxShape3D_ju7qn")
 
-[node name="Wall11" type="CollisionShape3D" parent="room_001/StaticBody3D" index="24"]
+[node name="Wall11" type="CollisionShape3D" parent="room_001/StaticBody3D" index="20"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 2, 9.5)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall12" type="CollisionShape3D" parent="room_001/StaticBody3D" index="25"]
+[node name="Wall12" type="CollisionShape3D" parent="room_001/StaticBody3D" index="21"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.5, 2, 9.5)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall13" type="CollisionShape3D" parent="room_001/StaticBody3D" index="26"]
+[node name="Wall13" type="CollisionShape3D" parent="room_001/StaticBody3D" index="22"]
 transform = Transform3D(-1, 1.13133e-08, 0, 1.13133e-08, 1, -1.48943e-09, 0, -1.48943e-09, -1, 9.5, 2, 5.25)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall14" type="CollisionShape3D" parent="room_001/StaticBody3D" index="27"]
+[node name="Wall14" type="CollisionShape3D" parent="room_001/StaticBody3D" index="23"]
 transform = Transform3D(-1, 1.13133e-08, 0, 1.13133e-08, 1, -1.48943e-09, 0, -1.48943e-09, -1, 9.5, 2, -5.5)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall15" type="CollisionShape3D" parent="room_001/StaticBody3D" index="28"]
+[node name="Wall15" type="CollisionShape3D" parent="room_001/StaticBody3D" index="24"]
 transform = Transform3D(-1, 1.13133e-08, 0, 1.13133e-08, 1, -1.48943e-09, 0, -1.48943e-09, -1, -9.5, 2, -5.5)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall16" type="CollisionShape3D" parent="room_001/StaticBody3D" index="29"]
+[node name="Wall16" type="CollisionShape3D" parent="room_001/StaticBody3D" index="25"]
 transform = Transform3D(-1, 1.13133e-08, 0, 1.13133e-08, 1, -1.48943e-09, 0, -1.48943e-09, -1, -9.5, 2, 5.25)
 shape = SubResource("BoxShape3D_n8oty")
 
-[node name="Wall17" type="CollisionShape3D" parent="room_001/StaticBody3D" index="30"]
+[node name="Wall17" type="CollisionShape3D" parent="room_001/StaticBody3D" index="26"]
 transform = Transform3D(-0.707107, 6.94655e-09, -0.707107, 1.13133e-08, 1, -1.48943e-09, 0.707107, -9.05293e-09, -0.707107, -8.5, 5.25, 8.75)
 shape = SubResource("BoxShape3D_4ve27")
 
-[node name="Wall18" type="CollisionShape3D" parent="room_001/StaticBody3D" index="31"]
+[node name="Wall18" type="CollisionShape3D" parent="room_001/StaticBody3D" index="27"]
 transform = Transform3D(-0.707107, 6.94655e-09, -0.707107, 1.13133e-08, 1, -1.48943e-09, 0.707107, -9.05293e-09, -0.707107, 9, 5.25, -7.5)
 shape = SubResource("BoxShape3D_4ve27")
 
-[node name="Wall19" type="CollisionShape3D" parent="room_001/StaticBody3D" index="32"]
+[node name="Wall19" type="CollisionShape3D" parent="room_001/StaticBody3D" index="28"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 5.25, -8.5)
 shape = SubResource("BoxShape3D_4ve27")
 
-[node name="Wall20" type="CollisionShape3D" parent="room_001/StaticBody3D" index="33"]
+[node name="Wall20" type="CollisionShape3D" parent="room_001/StaticBody3D" index="29"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.5, 5.25, 8.25)
 shape = SubResource("BoxShape3D_4ve27")
 

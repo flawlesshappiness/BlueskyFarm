@@ -139,7 +139,6 @@ locale/translations=PackedStringArray("res://Dialogue/dialogue.en.translation")
 [physics]
 
 common/physics_ticks_per_second=180
-3d/physics_engine="JoltPhysics3D"
 
 [rendering]
 

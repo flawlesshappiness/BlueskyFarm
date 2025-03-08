@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=97 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_g724s"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bfbakxow5wdyt" path="res://Farm/Bed/Bed.tscn" id="34_dbjn3"]
 [ext_resource type="PackedScene" uid="uid://d1ns6lhxycaki" path="res://Weeds/Thorns/Weed_Thorns.tscn" id="36_ufagv"]
 [ext_resource type="AudioStream" uid="uid://byc6auvovq4x1" path="res://Sound/Music/bgm_farm_002.ogg" id="40_mug2t"]
+[ext_resource type="PackedScene" uid="uid://dtlqc4fijqlaq" path="res://Basement/Assets/Containers/Prefabs/RockContainer.tscn" id="45_b2hjf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(31, 4, 31)
@@ -830,6 +831,9 @@ stream = ExtResource("40_mug2t")
 volume_db = 10.0
 autoplay = true
 bus = &"BGM"
+
+[node name="RockContainer" parent="." instance=ExtResource("45_b2hjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69668, -9.53674e-07, -7.7293)
 
 [editable path="World/NavigationRegion3D/Basement/Trapdoor"]
 [editable path="World/NavigationRegion3D/Shed/House/Repaired/Lantern"]

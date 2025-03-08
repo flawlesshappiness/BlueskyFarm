@@ -380,6 +380,9 @@ public partial class ScreenEffects : Node3DScript
         Instance._camera_offset_forward.Remove(id);
 
     // CAMERA SHAKE //
+    /// <summary>
+    /// Value range: 0 - 1
+    /// </summary>
     public static Coroutine AnimateCameraShake(string id, float value, float duration_in, float duration_on, float duration_out) =>
         Instance._AnimateMinValueInOut(Instance._camera_shake_strength, $"{nameof(AnimateCameraShake)}_{id}", value, duration_in, duration_on, duration_out);
 

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c8rn6dc7j04ak" path="res://Basement/Assets/Mine/Rock.tscn" id="8_ouhrq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnuqf"]
-size = Vector3(28, 1, 4)
+size = Vector3(28, 1, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7uf3q"]
 size = Vector3(17, 4, 1)
@@ -366,23 +366,15 @@ shape = SubResource("CapsuleShape3D_dak8g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 2, -2.5)
 shape = SubResource("CapsuleShape3D_dak8g")
 
-[node name="Floor2" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -0.5, -7.75)
-shape = SubResource("BoxShape3D_myc6a")
-
-[node name="Floor3" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="23"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06957, -0.5, 7.75)
-shape = SubResource("BoxShape3D_myc6a")
-
-[node name="Ceiling3" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="24"]
+[node name="Ceiling3" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07, 4.25, 7.75)
 shape = SubResource("BoxShape3D_myc6a")
 
-[node name="Ceiling" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="25"]
+[node name="Ceiling" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
 shape = SubResource("BoxShape3D_mnuqf")
 
-[node name="Ceiling2" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="26"]
+[node name="Ceiling2" type="CollisionShape3D" parent="corridor_002/StaticBody3D" index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4.25, -7.75)
 shape = SubResource("BoxShape3D_myc6a")
 

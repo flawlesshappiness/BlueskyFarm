@@ -16,9 +16,12 @@ public partial class NavEnemy : Enemy
     public float TurnSpeed = 10;
 
     protected float CurrentSpeed { get; set; }
+    protected bool IsMoving => !Agent.IsNavigationFinished();
 
     protected const string StateDebugIdle = "DebugIdle";
     protected const string StateDebugFollow = "DebugFollow";
+
+    private bool _facing_player;
 
     protected override void RegisterDebugActions()
     {
@@ -51,6 +54,12 @@ public partial class NavEnemy : Enemy
     {
         base._PhysicsProcess(delta);
         Process_MoveTowardsTarget();
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_FacePlayer();
     }
 
     protected override void RegisterStates()
@@ -195,5 +204,12 @@ public partial class NavEnemy : Enemy
         var x = rng.RandfRange(min, max);
         var z = rng.RandfRange(min, max);
         return room.GlobalPosition + new Vector3(x, 0, z) * room_size;
+    }
+
+    protected void StartFacingPlayer() => _facing_player = true;
+    protected void StopFacingPlayer() => _facing_player = false;
+    private void Process_FacePlayer()
+    {
+        TurnTowardsDirection(DirectionToPlayer);
     }
 }

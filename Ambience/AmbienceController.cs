@@ -127,11 +127,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
 
             while (true)
             {
-                var x = rng.RandfRange(-1, 1);
-                var z = rng.RandfRange(-1, 1);
-                var distance = rng.RandfRange(12, 20);
-                var offset = new Vector3(x, 0, z).Normalized() * distance;
-                var position = Player.Instance.GlobalPosition + offset;
+                var position = GetAmbientSoundPosition();
                 var asp = SoundController.Instance.Play(noise, position);
                 var delay = rng.RandfRange(15, 30) * mul_debug;
                 var length = asp.Stream.GetLength();
@@ -148,6 +144,17 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         }
 
         _cr_noises.Clear();
+    }
+
+    public Vector3 GetAmbientSoundPosition()
+    {
+        var rng = new RandomNumberGenerator();
+        var x = rng.RandfRange(-1, 1);
+        var z = rng.RandfRange(-1, 1);
+        var distance = rng.RandfRange(12, 20);
+        var offset = new Vector3(x, 0, z).Normalized() * distance;
+        var position = Player.Instance.GlobalPosition + offset;
+        return position;
     }
 
     // Effects

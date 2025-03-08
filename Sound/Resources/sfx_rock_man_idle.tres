@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://ck7l5msaaqona"]
 
-[ext_resource type="AudioStream" uid="uid://boe0xu82ki23h" path="res://Sound/Sounds/sfx_rock_man_amb_001.wav" id="1_bfp6s"]
-[ext_resource type="AudioStream" uid="uid://ufk4in8os1ru" path="res://Sound/Sounds/sfx_rock_man_amb_002.wav" id="2_4mpkq"]
-[ext_resource type="AudioStream" uid="uid://bk1c7wh6rcpns" path="res://Sound/Sounds/sfx_rock_man_amb_003.wav" id="3_nhf8u"]
-[ext_resource type="AudioStream" uid="uid://dge0kyhlhsogc" path="res://Sound/Sounds/sfx_rock_man_amb_004.wav" id="4_2a024"]
+[ext_resource type="AudioStream" uid="uid://5e3jbyymkvno" path="res://Sound/Sounds/sfx_rock_man_idle_001.wav" id="1_fmy55"]
+[ext_resource type="AudioStream" uid="uid://xn18005g0orx" path="res://Sound/Sounds/sfx_rock_man_idle_002.wav" id="2_44dge"]
+[ext_resource type="AudioStream" uid="uid://c14iim7eek2rm" path="res://Sound/Sounds/sfx_rock_man_idle_003.wav" id="3_53q6b"]
+[ext_resource type="AudioStream" uid="uid://3lwysbebefcb" path="res://Sound/Sounds/sfx_rock_man_idle_004.wav" id="4_gn681"]
 [ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="5_enxgo"]
 
 [resource]
 script = ExtResource("5_enxgo")
-AudioStreams = Array[AudioStream]([ExtResource("1_bfp6s"), ExtResource("2_4mpkq"), ExtResource("3_nhf8u"), ExtResource("4_2a024")])
+AudioStreams = Array[AudioStream]([ExtResource("1_fmy55"), ExtResource("2_44dge"), ExtResource("3_53q6b"), ExtResource("4_gn681")])
 Volume = 0.0
 Looping = false
 PitchRange = Vector2(0.95, 1)

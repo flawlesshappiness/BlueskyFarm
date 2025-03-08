@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class RockContainer : ItemContainer
 {
@@ -26,6 +27,8 @@ public partial class RockContainer : ItemContainer
     [Export]
     public SoundInfo sfx_touch;
 
+    public event Action onBreak;
+
     private bool _broken;
 
     public override void _Ready()
@@ -49,6 +52,8 @@ public partial class RockContainer : ItemContainer
         SpawnItem(ItemMarker.GlobalPosition, Vector3.Up * 2f);
         ModelUnbroken.Disable();
         ModelBroken.Enable();
+
+        onBreak?.Invoke();
     }
 
     private void Touched()

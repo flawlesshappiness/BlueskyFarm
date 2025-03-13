@@ -1,0 +1,259 @@
+[gd_scene load_steps=16 format=3 uid="uid://0xkdrmxdxprt"]
+
+[ext_resource type="Script" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_kuanw"]
+[ext_resource type="Resource" uid="uid://quw01a7d06r3" path="res://Sound/Resources/sfx_locked.tres" id="2_juadu"]
+[ext_resource type="Resource" uid="uid://b34xwg53wg55u" path="res://Sound/Resources/sfx_unlock.tres" id="3_1woko"]
+[ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="4_1qwsy"]
+[ext_resource type="PackedScene" uid="uid://jxf6xtxqjtr7" path="res://Assets/KayLousberg/Dungeon 1.1/door_tall_L.fbx" id="4_grxec"]
+[ext_resource type="PackedScene" uid="uid://b3x776luv6weu" path="res://Assets/KayLousberg/Dungeon 1.1/door_tall_R.fbx" id="5_qjivu"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="7_kpmcq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvj4p"]
+size = Vector3(1, 6.5, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0dos3"]
+size = Vector3(1, 6.5, 0.25)
+
+[sub_resource type="Animation" id="Animation_qpbon"]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.63728, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.309, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.659754, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.309, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxCreak:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sox8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxCreak:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0hld0"]
+resource_name = "close"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.594604, 1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.594604, 1),
+"update": 0,
+"values": [Vector3(0, -1.309, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxCreak:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_a7gmf"]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2to5w"]
+resource_name = "opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.309, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hura2"]
+_data = {
+"RESET": SubResource("Animation_sox8v"),
+"close": SubResource("Animation_0hld0"),
+"closed": SubResource("Animation_a7gmf"),
+"open": SubResource("Animation_qpbon"),
+"opened": SubResource("Animation_2to5w")
+}
+
+[node name="BasementDoor" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Touchables", "SoundMarker")]
+script = ExtResource("1_kuanw")
+AnimationPlayer = NodePath("AnimationPlayer")
+Touchables = [NodePath("DoorLeft/StaticBody3D"), NodePath("DoorRight/StaticBody3D2")]
+SoundMarker = NodePath("SoundMarker")
+SfxLocked = ExtResource("2_juadu")
+SfxUnlock = ExtResource("3_1woko")
+
+[node name="DoorLeft" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="door_tall_L" parent="DoorLeft" instance=ExtResource("4_grxec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorLeft" node_paths=PackedStringArray("HoverIconPosition")]
+collision_layer = 7
+collision_mask = 0
+script = ExtResource("7_kpmcq")
+HoverIconPosition = NodePath("Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLeft/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.25, 0)
+shape = SubResource("BoxShape3D_uvj4p")
+
+[node name="Marker3D" type="Marker3D" parent="DoorLeft/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.520235, 1.08232, 0)
+
+[node name="DoorRight" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="door_tall_R" parent="DoorRight" instance=ExtResource("5_qjivu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="DoorRight" node_paths=PackedStringArray("HoverIconPosition")]
+collision_layer = 7
+collision_mask = 0
+script = ExtResource("7_kpmcq")
+HoverIconPosition = NodePath("Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorRight/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.25, 0)
+shape = SubResource("BoxShape3D_0dos3")
+
+[node name="Marker3D" type="Marker3D" parent="DoorRight/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.521069, 1.08232, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hura2")
+}
+playback_default_blend_time = 0.15
+
+[node name="SoundMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06143, 0)
+
+[node name="SfxCreak" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13195, 0)
+stream = ExtResource("4_1qwsy")
+volume_db = 10.0
+pitch_scale = 0.5
+bus = &"SFX"

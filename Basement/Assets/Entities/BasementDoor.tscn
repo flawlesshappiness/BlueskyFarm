@@ -1,16 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4y6dw6sr015q"]
+[gd_scene load_steps=15 format=3 uid="uid://c4y6dw6sr015q"]
 
 [ext_resource type="Script" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_40cx2"]
 [ext_resource type="PackedScene" uid="uid://cvm2gm8rbbnwa" path="res://Assets/KayLousberg/Dungeon 1.1/door.fbx" id="1_ctwho"]
 [ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="2_7ojik"]
+[ext_resource type="Resource" uid="uid://quw01a7d06r3" path="res://Sound/Resources/sfx_locked.tres" id="2_w4wlj"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="3_3pxfy"]
 [ext_resource type="AudioStream" uid="uid://dmjatd05k5t12" path="res://Sound/Sounds/sfx_door_clicks_001.wav" id="3_47u1y"]
+[ext_resource type="Resource" uid="uid://b34xwg53wg55u" path="res://Sound/Resources/sfx_unlock.tres" id="3_sx08p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n0nwd"]
 size = Vector3(2, 2.75, 0.25)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3nku0"]
-size = Vector3(1.75, 2.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_q1x5q"]
 length = 0.001
@@ -169,8 +168,13 @@ _data = {
 "opened": SubResource("Animation_h4khl")
 }
 
-[node name="BasementDoor" type="Node3D"]
+[node name="BasementDoor" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Touchables", "SoundMarker")]
 script = ExtResource("1_40cx2")
+AnimationPlayer = NodePath("AnimationPlayer")
+Touchables = [NodePath("Anim/Model/StaticBody3D")]
+SoundMarker = NodePath("Anim/Model/SoundMarker")
+SfxLocked = ExtResource("2_w4wlj")
+SfxUnlock = ExtResource("3_sx08p")
 
 [node name="Anim" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -188,23 +192,21 @@ stream = ExtResource("3_47u1y")
 
 [node name="door" parent="Anim/Model" instance=ExtResource("1_ctwho")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Model"]
-collision_layer = 3
+[node name="StaticBody3D" type="StaticBody3D" parent="Anim/Model" node_paths=PackedStringArray("HoverIconPosition")]
+collision_layer = 7
 collision_mask = 0
+script = ExtResource("3_3pxfy")
+HoverIconPosition = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Model/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, 0)
 shape = SubResource("BoxShape3D_n0nwd")
 
-[node name="Touchable" type="StaticBody3D" parent="Anim/Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("3_3pxfy")
+[node name="Marker3D" type="Marker3D" parent="Anim/Model/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37078, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Anim/Model/Touchable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-shape = SubResource("BoxShape3D_3nku0")
+[node name="SoundMarker" type="Marker3D" parent="Anim/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47683, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

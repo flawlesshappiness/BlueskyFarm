@@ -11,6 +11,7 @@ public partial class InteractableStaticBody3D : StaticBody3D, IInteractable
     [Export]
     public Node3D HoverIconPosition;
 
+    public bool Enabled { get; set; } = true;
     public PhysicsBody3D Body => this;
 
     public override void _Ready()

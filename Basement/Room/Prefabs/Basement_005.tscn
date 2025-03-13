@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://7fahd0dekub6"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_8w33s"]
-[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Walls/Wall.tscn" id="2_k3ad5"]
+[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Basement/Wall.tscn" id="2_k3ad5"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="3_7vrey"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="3_wdfqq"]
-[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Walls/Pillar.tscn" id="5_1dtlf"]
+[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Basement/Pillar.tscn" id="5_1dtlf"]
 [ext_resource type="Script" path="res://Water/WaterArea.cs" id="6_v6xil"]
 [ext_resource type="Script" path="res://PlayerTools/WateringCan/WateringCanRefillArea.cs" id="6_x7tkd"]
 [ext_resource type="Material" uid="uid://1lw3sdf8q7gl" path="res://Assets/Materials/Water_Basement.tres" id="7_urc76"]

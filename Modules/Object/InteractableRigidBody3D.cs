@@ -8,6 +8,7 @@ public partial class InteractableRigidBody3D : RigidBody3D, IInteractable
     [Export]
     public Texture2D HoverIcon;
 
+    public bool Enabled { get; set; } = true;
     public PhysicsBody3D Body => this;
 
     public override void _Ready()

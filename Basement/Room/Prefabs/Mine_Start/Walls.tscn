@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2lf41gnu0iuv"]
 
-[ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Walls/Wall_Middle.tscn" id="1_5rhb6"]
-[ext_resource type="PackedScene" uid="uid://daitgm7crgs2a" path="res://Basement/Assets/Walls/Pillar_Middle.tscn" id="2_yat8a"]
-[ext_resource type="PackedScene" uid="uid://cnvakylgf02am" path="res://Basement/Assets/Walls/Wall_Bottom_Mossy.tscn" id="3_cfkca"]
-[ext_resource type="PackedScene" uid="uid://dlumv6x7n4rmv" path="res://Basement/Assets/Walls/Wall_Middle_Mossy.tscn" id="4_ys0we"]
-[ext_resource type="PackedScene" uid="uid://77nbye6a1w6j" path="res://Basement/Assets/Walls/Wall_Middle_Simple.tscn" id="5_uay8n"]
-[ext_resource type="PackedScene" uid="uid://516hq76k3tt" path="res://Basement/Assets/Walls/Pillar_Bottom_Mossy.tscn" id="6_quhqd"]
+[ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="1_5rhb6"]
+[ext_resource type="PackedScene" uid="uid://daitgm7crgs2a" path="res://Basement/Assets/Basement/Pillar_Middle.tscn" id="2_yat8a"]
+[ext_resource type="PackedScene" uid="uid://cnvakylgf02am" path="res://Basement/Assets/Forest/Wall_Bottom_Mossy.tscn" id="3_cfkca"]
+[ext_resource type="PackedScene" uid="uid://dlumv6x7n4rmv" path="res://Basement/Assets/Forest/Wall_Middle_Mossy.tscn" id="4_ys0we"]
+[ext_resource type="PackedScene" uid="uid://77nbye6a1w6j" path="res://Basement/Assets/Basement/Wall_Middle_Simple.tscn" id="5_uay8n"]
+[ext_resource type="PackedScene" uid="uid://516hq76k3tt" path="res://Basement/Assets/Forest/Pillar_Bottom_Mossy.tscn" id="6_quhqd"]
 
 [node name="Walls" type="Node3D"]
 

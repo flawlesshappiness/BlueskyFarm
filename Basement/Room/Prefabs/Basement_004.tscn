@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://cuvpda7b6svie"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_sipjv"]
-[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Walls/Pillar.tscn" id="2_myptf"]
-[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Walls/Wall.tscn" id="2_n2fvb"]
+[ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Basement/Pillar.tscn" id="2_myptf"]
+[ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Basement/Wall.tscn" id="2_n2fvb"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Floor/Floor_Dirt.tscn" id="2_ri8gr"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="4_cjnrd"]
 [ext_resource type="PackedScene" uid="uid://dp3xft717kmct" path="res://Basement/Assets/Pipes/Pipe_Curve_05x05.tscn" id="4_u7ctk"]

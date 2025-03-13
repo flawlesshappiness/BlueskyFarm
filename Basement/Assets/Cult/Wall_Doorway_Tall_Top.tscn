@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cofb786wuobj2"]
+
+[ext_resource type="PackedScene" uid="uid://bf5l3xtcbh1j2" path="res://Assets/KayLousberg/Dungeon 1.1/wall_doorway_tall_top.fbx" id="1_qsvwo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olsi5"]
+size = Vector3(1, 6.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jo17e"]
+size = Vector3(4, 1.5, 0.5)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_4yc7f"]
+size = Vector3(1, 8, 0.25)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ytrc4"]
+size = Vector3(2, 1.5, 0.25)
+
+[node name="Wall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.25, 0.25)
+shape = SubResource("BoxShape3D_olsi5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.25, 0.25)
+shape = SubResource("BoxShape3D_olsi5")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.25, 0.25)
+shape = SubResource("BoxShape3D_jo17e")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, 0.125)
+occluder = SubResource("BoxOccluder3D_4yc7f")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, 0.125)
+occluder = SubResource("BoxOccluder3D_4yc7f")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.25, 0.125)
+occluder = SubResource("BoxOccluder3D_ytrc4")
+
+[node name="wall_doorway_tall_top" parent="." instance=ExtResource("1_qsvwo")]

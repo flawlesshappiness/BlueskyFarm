@@ -15,8 +15,24 @@ public partial class FirstPersonInteract : RayCast3D
     public override void _Process(double delta)
     {
         base._Process(delta);
+        ProcessCurrentInteractable();
         ProcessInteractRaycast();
     }
+
+    private void ProcessCurrentInteractable()
+    {
+        if (CurrentInteractable == null) return;
+
+        if (!IsInstanceValid(CurrentInteractable.Body))
+        {
+            CurrentInteractable = null;
+        }
+        else if (!CurrentInteractable.Enabled)
+        {
+            CurrentInteractable = null;
+        }
+    }
+
 
     private void ProcessInteractRaycast()
     {
@@ -80,6 +96,7 @@ public partial class FirstPersonInteract : RayCast3D
     {
         if (interactable == null) return;
         if (CurrentInteractable == interactable) return;
+        if (!interactable.Enabled) return;
         CurrentInteractable = interactable;
     }
 }

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://daax81x3a24qb"]
+
+[ext_resource type="PackedScene" uid="uid://cjlivox1xkinr" path="res://Assets/KayLousberg/Dungeon 1.1/wall.fbx" id="1_13bcq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olsi5"]
+size = Vector3(4, 4, 0.5)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_817m1"]
+size = Vector3(4, 4, 0.25)
+
+[node name="Wall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.25)
+shape = SubResource("BoxShape3D_olsi5")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.125)
+occluder = SubResource("BoxOccluder3D_817m1")
+
+[node name="wall" parent="." instance=ExtResource("1_13bcq")]

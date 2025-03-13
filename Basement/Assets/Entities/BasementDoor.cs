@@ -1,38 +1,48 @@
 using Godot;
+using Godot.Collections;
 
 public partial class BasementDoor : Node3DScript
 {
-    [NodeType]
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [NodeType]
-    public Touchable Touchable;
+    [Export]
+    public Array<Touchable> Touchables;
 
     [Export]
-    public string LockedSFX = "sfx_locked";
+    public Marker3D SoundMarker;
 
     [Export]
-    public string UnlockSFX = "sfx_unlock";
+    public SoundInfo SfxLocked;
+
+    [Export]
+    public SoundInfo SfxUnlock;
 
     public bool Locked { get; set; }
 
     private bool _open;
+    private bool _animating;
 
     public override void _Ready()
     {
         base._Ready();
         AnimationPlayer.AnimationFinished += AnimationFinished;
-        Touchable.OnTouched += Touched;
+        Touchables.ForEach(x => x.OnTouched += Touched);
         SetOpen(false);
     }
 
     private void AnimationFinished(StringName name)
     {
-        Touchable.Enable();
+        _animating = false;
+        Touchables.ForEach(x => x.Enabled = true);
     }
 
     private void Touched()
     {
+        if (_animating) return;
+        _animating = true;
+        Touchables.ForEach(x => x.Enabled = false);
+
         if (_open)
         {
             Close();
@@ -65,25 +75,23 @@ public partial class BasementDoor : Node3DScript
     public void Open()
     {
         AnimationPlayer.Play("open");
-        Touchable.Disable();
         _open = true;
     }
 
     public void Close()
     {
         AnimationPlayer.Play("close");
-        Touchable.Disable();
         _open = false;
     }
 
     public void PlayLockedFX()
     {
-        SoundController.Instance.Play(LockedSFX, Touchable.GlobalPosition);
+        SoundController.Instance.Play(SfxLocked, SoundMarker.GlobalPosition);
         GameView.Instance.CreateText(new CreateTextSettings
         {
             Id = "locked_" + GetInstanceId(),
             Text = "##LOCKED##",
-            Target = Touchable,
+            Target = SoundMarker,
             Offset = new Vector3(0, 0.2f, 0),
             Duration = 3.0f,
             Shake_Duration = 0.4f,
@@ -96,6 +104,6 @@ public partial class BasementDoor : Node3DScript
     public void Unlock()
     {
         Locked = false;
-        SoundController.Instance.Play(UnlockSFX, GlobalPosition);
+        SoundController.Instance.Play(SfxUnlock, GlobalPosition);
     }
 }

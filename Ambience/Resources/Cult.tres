@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmbienceInfo" load_steps=3 format=3 uid="uid://do4h0jq3pw503"]
+
+[ext_resource type="Resource" uid="uid://bjdg1elpanrmm" path="res://Sound/Resources/amb_basement_background.tres" id="1_0uhyb"]
+[ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="5_33jct"]
+
+[resource]
+script = ExtResource("5_33jct")
+Area = 4
+BackgroundSound = ExtResource("1_0uhyb")
+Noises = null
+ReverbAmount = 0.6

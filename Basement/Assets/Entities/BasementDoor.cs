@@ -39,7 +39,9 @@ public partial class BasementDoor : Node3DScript
 
     private void Touched()
     {
+        Debug.Log("Touched");
         if (_animating) return;
+        Debug.Log("animating");
         _animating = true;
         Touchables.ForEach(x => x.Enabled = false);
 

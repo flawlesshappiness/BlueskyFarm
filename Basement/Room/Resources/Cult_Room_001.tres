@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://cioa1nvba2w4h"]
+
+[ext_resource type="PackedScene" uid="uid://74i2aotj3rw6" path="res://Basement/Room/Prefabs/Cult_Room_001.tscn" id="1_nnxyc"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_nhncu"]
+
+[resource]
+script = ExtResource("2_nhncu")
+Area = "Cult"
+ConnectedArea = ""
+AmbienceArea = "Cult"
+Scene = ExtResource("1_nnxyc")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "0000000
+0000000
+0000000
+0001000
+0000000
+0000000
+0000000"
+ValidGroundHeights = null
+Disabled = false

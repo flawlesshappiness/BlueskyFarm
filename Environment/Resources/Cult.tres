@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnvironmentInfo" load_steps=3 format=3 uid="uid://tofod0pgbae7"]
+
+[ext_resource type="Environment" uid="uid://cg1h57p8lg62g" path="res://Environment/Environments/Cult.tres" id="1_nw1sk"]
+[ext_resource type="Script" path="res://Environment/EnvironmentInfo.cs" id="2_hqs5a"]
+
+[resource]
+script = ExtResource("2_hqs5a")
+Area = 4
+Environment = ExtResource("1_nw1sk")
+DirectionalLightColor = Color(0, 0, 0, 0)

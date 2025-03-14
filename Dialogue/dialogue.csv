@@ -14,9 +14,9 @@ keys;en
 ##NOT_ENOUGH_COAL##;Not enough coal
 ##KILN_NOT_ACTIVATED##;The kiln is off
 ##BASEMENT##;Basement
-##FOREST##;Pale Forest
-##MINE##;Echo Mine
-##CULT#;Cathedral
+##FOREST##;Forest
+##MINE##;Mine
+##CULT##;Cathedral
 ##NOTE_WORKSHOP_001##;For your information:\nAll tools moved to new workshop.
 ##NOTE_WORKSHOP_002##;Only blueprints and interior in this room.
 ##NOTE_WORKSHOP_003##;Key is safely stored in the deep.

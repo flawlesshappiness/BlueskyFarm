@@ -58,6 +58,15 @@ public partial class BasementScene : GameScene
                     MaxCorridorDepth = 3,
                     SeedType = ItemType.Crop_Stone,
                     SeedCount = 7
+                },
+                new BasementSettingsArea
+                {
+                    AreaName = AreaNames.Cult,
+                    ConnectedAreaName = AreaNames.Forest,
+                    MaxRooms = 10,
+                    MaxCorridorDepth = 3,
+                    SeedType = ItemType.Crop_Stone,
+                    SeedCount = 7
                 }
             }
         };
@@ -136,7 +145,7 @@ public partial class BasementScene : GameScene
         {
             view.SetContent_Search();
 
-            var types = new List<AreaNameType> { AreaNameType.Basement, AreaNameType.Forest, AreaNameType.Mine };
+            var types = new List<AreaNameType> { AreaNameType.Basement, AreaNameType.Forest, AreaNameType.Mine, AreaNameType.Cult };
             foreach (var type in types)
             {
                 view.ContentSearch.AddItem(type.ToString(), () => TeleportTo(view, type));
@@ -150,7 +159,7 @@ public partial class BasementScene : GameScene
             view.Close();
 
             var room = BasementController.Instance.CurrentBasement.Grid.Elements.FirstOrDefault(x => x.AreaName == area.ToString());
-            Player.Instance.GlobalPosition = room.Room.GlobalPosition;
+            Player.Instance.GlobalPosition = room.Room.EnemyMarker.GlobalPosition;
 
             var amb_area = area;
             var env_area = area;

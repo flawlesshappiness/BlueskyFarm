@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cghyfbjw6nj4h"]
+
+[ext_resource type="PackedScene" uid="uid://dteco74u4ahkt" path="res://Assets/FlawLizArt/Interior/candle_tall.fbx" id="1_yihti"]
+[ext_resource type="PackedScene" uid="uid://dohutveyg7f8x" path="res://Assets/FlawLizArt/Interior/candle_short.fbx" id="2_pd6jw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cgj2j"]
+size = Vector3(0.480469, 0.574341, 0.313294)
+
+[node name="Candles_001" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000488319, 0.28717, 0.0155335)
+shape = SubResource("BoxShape3D_cgj2j")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80261, 0)
+light_color = Color(1, 0.75, 0, 1)
+omni_range = 3.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94066, 0)
+light_color = Color(0.46, 0.191667, 0, 1)
+omni_range = 10.0
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="candle_tall" parent="Models" instance=ExtResource("1_yihti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00234318, 0, 0.0702953)
+
+[node name="candle_tall2" parent="Models" instance=ExtResource("1_yihti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0998448, -5.96046e-08, -0.0626658)
+
+[node name="candle_tall3" parent="Models" instance=ExtResource("1_yihti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0566966, -5.96046e-08, -0.0755325)
+
+[node name="candle_short" parent="Models" instance=ExtResource("2_pd6jw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152469, 0, 0.0887264)
+
+[node name="candle_short2" parent="Models" instance=ExtResource("2_pd6jw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148826, 0, 0.0710032)

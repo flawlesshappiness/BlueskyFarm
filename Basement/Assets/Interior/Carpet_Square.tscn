@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyfvqjcbk5ect"]
+
+[ext_resource type="PackedScene" uid="uid://b2v3g4utv1gn1" path="res://Assets/FlawLizArt/Interior/carpet_square.fbx" id="1_4tcvi"]
+
+[node name="Carpet_Square" type="Node3D"]
+
+[node name="carpet_square" parent="." instance=ExtResource("1_4tcvi")]

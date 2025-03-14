@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ckwhvmq8mmser"]
+
+[resource]
+albedo_color = Color(0.145098, 1, 1, 1)
+emission_enabled = true
+emission = Color(0.811765, 0.952941, 1, 1)

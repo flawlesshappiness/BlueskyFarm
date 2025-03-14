@@ -1,6 +1,5 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dka32frqdmutd"]
 
 [resource]
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.77, 0.7084, 0.154, 1)
+shading_mode = 0
+albedo_color = Color(1, 0.883333, 0, 1)

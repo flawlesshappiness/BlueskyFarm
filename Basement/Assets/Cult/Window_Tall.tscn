@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmbtowri522f2"]
+
+[ext_resource type="PackedScene" uid="uid://c4whpvmvah4ai" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_tall.fbx" id="1_av11w"]
+[ext_resource type="PackedScene" uid="uid://dmw22mb6u4ysj" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_tall_deco_001.fbx" id="2_h46u3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfmpn"]
+size = Vector3(4, 8, 0.5)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_817m1"]
+size = Vector3(4, 8, 0.25)
+
+[node name="Window_Tall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.25)
+shape = SubResource("BoxShape3D_yfmpn")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.125)
+occluder = SubResource("BoxOccluder3D_817m1")
+
+[node name="wall_window_tall" parent="." instance=ExtResource("1_av11w")]
+
+[node name="wall_window_tall_deco_001" parent="." instance=ExtResource("2_h46u3")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 1.01822e-14, -8.74228e-08, -6.18172e-08, 0.707107, 0.707107, 6.18172e-08, 0.707107, -0.707107, 0, 5, 1)
+light_color = Color(0.85, 0.8875, 1, 1)
+light_energy = 3.0
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+shadow_opacity = 0.75
+spot_range = 15.0
+spot_angle = 25.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0.75)
+light_color = Color(0.85, 0.8875, 1, 1)
+light_volumetric_fog_energy = 8.0
+omni_range = 3.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 6)
+light_color = Color(0.75, 0.8125, 1, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 0.0
+omni_range = 16.0

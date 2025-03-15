@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmbtowri522f2"]
+[gd_scene load_steps=15 format=3 uid="uid://dmbtowri522f2"]
 
 [ext_resource type="PackedScene" uid="uid://c4whpvmvah4ai" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_tall.fbx" id="1_av11w"]
 [ext_resource type="PackedScene" uid="uid://dmw22mb6u4ysj" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_tall_deco_001.fbx" id="2_h46u3"]
@@ -8,6 +8,63 @@ size = Vector3(4, 8, 0.5)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_817m1"]
 size = Vector3(4, 8, 0.25)
+
+[sub_resource type="Curve" id="Curve_shvlx"]
+_data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.248485, 1), -0.543956, -0.543956, 0, 0, Vector2(1, 0), -1.25196, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_m757t"]
+curve = SubResource("Curve_shvlx")
+
+[sub_resource type="Curve" id="Curve_gdq7r"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c87w4"]
+curve = SubResource("Curve_gdq7r")
+
+[sub_resource type="Curve" id="Curve_2341x"]
+max_value = 3.0
+_data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_inmpb"]
+curve = SubResource("Curve_2341x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5gknn"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(3, 2, 3)
+angle_min = -25.0
+angle_max = 25.0
+angle_curve = SubResource("CurveTexture_c87w4")
+gravity = Vector3(0, -0.01, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_inmpb")
+scale_over_velocity_max = 40.1
+color = Color(1, 1, 1, 0.196078)
+alpha_curve = SubResource("CurveTexture_m757t")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pvio3"]
+load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7okb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.870588, 0.968627, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_pvio3")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_3ws3h"]
+material = SubResource("StandardMaterial3D_g7okb")
 
 [node name="Window_Tall" type="Node3D"]
 
@@ -30,7 +87,7 @@ occluder = SubResource("BoxOccluder3D_817m1")
 transform = Transform3D(-1, 1.01822e-14, -8.74228e-08, -6.18172e-08, 0.707107, 0.707107, 6.18172e-08, 0.707107, -0.707107, 0, 5, 1)
 light_color = Color(0.85, 0.8875, 1, 1)
 light_energy = 3.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 12.0
 shadow_enabled = true
 shadow_opacity = 0.75
 spot_range = 15.0
@@ -48,3 +105,12 @@ light_color = Color(0.75, 0.8125, 1, 1)
 light_energy = 0.5
 light_volumetric_fog_energy = 0.0
 omni_range = 16.0
+
+[node name="ps_dust_falling" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 3.79899, 3.37153)
+amount = 3
+lifetime = 20.0
+fixed_fps = 60
+visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
+process_material = SubResource("ParticleProcessMaterial_5gknn")
+draw_pass_1 = SubResource("QuadMesh_3ws3h")

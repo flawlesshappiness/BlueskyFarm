@@ -7,5 +7,5 @@
 script = ExtResource("5_33jct")
 Area = 4
 BackgroundSound = ExtResource("1_0uhyb")
-Noises = null
+Noises = Array[Object]([])
 ReverbAmount = 0.6

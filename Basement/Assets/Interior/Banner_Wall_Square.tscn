@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cayfr8uauxro3"]
+
+[ext_resource type="PackedScene" uid="uid://d2r1d3724xl5a" path="res://Assets/FlawLizArt/Interior/banner_wall_square.fbx" id="1_bw1ty"]
+
+[node name="Banner_Wall_Square" type="Node3D"]
+
+[node name="banner_wall_square" parent="." instance=ExtResource("1_bw1ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.02524, 0)

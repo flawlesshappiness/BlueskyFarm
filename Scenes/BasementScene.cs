@@ -63,7 +63,7 @@ public partial class BasementScene : GameScene
                 {
                     AreaName = AreaNames.Cult,
                     ConnectedAreaName = AreaNames.Forest,
-                    MaxRooms = 10,
+                    MaxRooms = 5,
                     MaxCorridorDepth = 3,
                     SeedType = ItemType.Crop_Stone,
                     SeedCount = 7

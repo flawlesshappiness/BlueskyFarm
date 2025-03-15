@@ -71,6 +71,12 @@ public partial class BasementController : SingletonController
         });
 
         SetRandomElementInfo(AreaNames.Mine, "Mine_Room_Coal");
+
+        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+        {
+            AreaName = AreaNames.Cult,
+            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Cult_Tree")
+        });
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

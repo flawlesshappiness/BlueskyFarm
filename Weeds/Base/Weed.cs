@@ -28,6 +28,7 @@ public partial class Weed : Node3DScript
         {
             SoundController.Instance.Play("sfx_weed_cut", Touchable.GlobalPosition);
 
+            /*
             GameView.Instance.CreateText(new CreateTextSettings
             {
                 Id = "tool_required_" + GetInstanceId(),
@@ -40,6 +41,7 @@ public partial class Weed : Node3DScript
                 Shake_Strength = 10f,
                 Shake_Dampening = 0.9f,
             });
+            */
             return;
         }
 

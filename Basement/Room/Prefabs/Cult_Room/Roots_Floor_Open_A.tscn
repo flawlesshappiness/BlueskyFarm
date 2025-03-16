@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqvhgbiwtrb3e"]
+
+[ext_resource type="PackedScene" uid="uid://bacqs4eso5flc" path="res://Assets/FlawLizArt/Roots/root_floor_003.fbx" id="1_3c0dj"]
+[ext_resource type="Script" path="res://Basement/Room/Prefabs/Cult_Room/Cult_Room_Roots.cs" id="1_uaunh"]
+[ext_resource type="PackedScene" uid="uid://cqhm20ootb6tb" path="res://Assets/FlawLizArt/Roots/root_floor_001.fbx" id="2_03u8t"]
+[ext_resource type="PackedScene" uid="uid://7cn5mueo0bsv" path="res://Assets/FlawLizArt/Roots/root_floor_002.fbx" id="3_1xwia"]
+[ext_resource type="PackedScene" uid="uid://bos5sl4uihxju" path="res://Assets/FlawLizArt/Roots/root_floor_005.fbx" id="4_f2ood"]
+[ext_resource type="PackedScene" uid="uid://chkxf6lek2dwq" path="res://Assets/FlawLizArt/Roots/root_floor_006.fbx" id="5_dnvof"]
+[ext_resource type="PackedScene" uid="uid://0b27xcjlbdcn" path="res://Assets/FlawLizArt/Roots/root_floor_004.fbx" id="6_74wj2"]
+
+[node name="Roots_Floor_Open_A" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 8, -10)
+script = ExtResource("1_uaunh")
+
+[node name="root_floor_003" parent="." instance=ExtResource("1_3c0dj")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.412405, 0, 0.10634)
+
+[node name="root_floor_001" parent="." instance=ExtResource("2_03u8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28663, 0, 0)
+
+[node name="root_floor_002" parent="." instance=ExtResource("3_1xwia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0685, 0, 0)
+
+[node name="root_floor_005" parent="." instance=ExtResource("4_f2ood")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15575, 0, 0)
+
+[node name="root_floor_007" parent="." instance=ExtResource("4_f2ood")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 2.92433, 0, 0)
+
+[node name="root_floor_006" parent="." instance=ExtResource("5_dnvof")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -1.55589, 0, 0)
+
+[node name="root_floor_004" parent="." instance=ExtResource("1_3c0dj")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 1.21847, 0, 0)
+
+[node name="root_floor_008" parent="." instance=ExtResource("6_74wj2")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -3.41171, 0, 0)

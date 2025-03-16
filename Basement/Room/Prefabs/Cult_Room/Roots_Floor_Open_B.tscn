@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmx1kbwicb62a"]
+
+[ext_resource type="Script" path="res://Basement/Room/Prefabs/Cult_Room/Cult_Room_Roots.cs" id="1_xxt6e"]
+[ext_resource type="PackedScene" uid="uid://bacqs4eso5flc" path="res://Assets/FlawLizArt/Roots/root_floor_003.fbx" id="2_4evqe"]
+[ext_resource type="PackedScene" uid="uid://cqhm20ootb6tb" path="res://Assets/FlawLizArt/Roots/root_floor_001.fbx" id="3_7njqn"]
+[ext_resource type="PackedScene" uid="uid://7cn5mueo0bsv" path="res://Assets/FlawLizArt/Roots/root_floor_002.fbx" id="4_wupfl"]
+[ext_resource type="PackedScene" uid="uid://bos5sl4uihxju" path="res://Assets/FlawLizArt/Roots/root_floor_005.fbx" id="5_rw3ee"]
+[ext_resource type="PackedScene" uid="uid://chkxf6lek2dwq" path="res://Assets/FlawLizArt/Roots/root_floor_006.fbx" id="6_pojtx"]
+
+[node name="Roots_Floor_Open_B" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 8, -10)
+script = ExtResource("1_xxt6e")
+
+[node name="root_floor_003" parent="." instance=ExtResource("2_4evqe")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.5184, 0, 0)
+
+[node name="root_floor_001" parent="." instance=ExtResource("3_7njqn")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.56816, 0, 0)
+
+[node name="root_floor_007" parent="." instance=ExtResource("3_7njqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65757, 0, 0)
+
+[node name="root_floor_002" parent="." instance=ExtResource("4_wupfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112474, 0, 0)
+
+[node name="root_floor_004" parent="." instance=ExtResource("4_wupfl")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.862302, 0, 0)
+
+[node name="root_floor_005" parent="." instance=ExtResource("5_rw3ee")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 1.19972, 0, 0)
+
+[node name="root_floor_006" parent="." instance=ExtResource("6_pojtx")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.73039, 0, 0)

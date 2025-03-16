@@ -31,38 +31,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 [node name="Floor_Basement_019" parent="Floor" index="8" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
-[node name="Floor_Basement_020" parent="Floor" index="9" instance=ExtResource("2_klueo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-
-[node name="Floor_Basement_021" parent="Floor" index="10" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_021" parent="Floor" index="9" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
 
-[node name="Floor_Basement_022" parent="Floor" index="11" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_022" parent="Floor" index="10" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
 
-[node name="Floor_Basement_023" parent="Floor" index="12" instance=ExtResource("2_klueo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-
-[node name="Floor_Basement_024" parent="Floor" index="13" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_024" parent="Floor" index="11" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
 
-[node name="Floor_Basement_025" parent="Floor" index="14" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_025" parent="Floor" index="12" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
 
-[node name="Floor_Basement_026" parent="Floor" index="15" instance=ExtResource("2_klueo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-
-[node name="Floor_Basement_027" parent="Floor" index="16" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_027" parent="Floor" index="13" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
 
-[node name="Floor_Basement_028" parent="Floor" index="17" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_028" parent="Floor" index="14" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
 
-[node name="Floor_Basement_029" parent="Floor" index="18" instance=ExtResource("2_klueo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="Floor_Basement_030" parent="Floor" index="19" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_030" parent="Floor" index="15" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
 
-[node name="Floor_Basement_031" parent="Floor" index="20" instance=ExtResource("2_klueo")]
+[node name="Floor_Basement_031" parent="Floor" index="16" instance=ExtResource("2_klueo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)

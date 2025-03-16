@@ -90,6 +90,9 @@ light_energy = 3.0
 light_volumetric_fog_energy = 12.0
 shadow_enabled = true
 shadow_opacity = 0.75
+distance_fade_enabled = true
+distance_fade_begin = 28.0
+distance_fade_shadow = 28.0
 spot_range = 15.0
 spot_angle = 25.0
 

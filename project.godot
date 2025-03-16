@@ -23,6 +23,10 @@ GameTime="*res://Modules/Time/GameTime.cs"
 DebugDraw="*res://addons/debug_drawing/DebugDraw.cs"
 ScreenEffects="*res://Views/ScreenEffectsView/ScreenEffects.cs"
 
+[debug]
+
+settings/profiler/max_timestamp_query_elements=1024
+
 [display]
 
 window/size/resizable=false

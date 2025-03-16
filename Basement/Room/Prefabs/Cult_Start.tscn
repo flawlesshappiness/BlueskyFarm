@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk6lfsf4gg5wd"]
+[gd_scene load_steps=12 format=3 uid="uid://dk6lfsf4gg5wd"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_vyq0j"]
 [ext_resource type="PackedScene" uid="uid://dm88hvhp24qr" path="res://Basement/Assets/Cult/Wall_Bottom.tscn" id="2_2dlfo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dmbtowri522f2" path="res://Basement/Assets/Cult/Window_Tall.tscn" id="4_bv8bg"]
 [ext_resource type="PackedScene" uid="uid://c0k71kw87ho23" path="res://Basement/Room/Prefabs/Cult_Start/Open_Cult.tscn" id="4_q1xot"]
 [ext_resource type="PackedScene" uid="uid://bgsgwnudmp4p8" path="res://Basement/Room/Prefabs/Cult_Start/Open_Forest.tscn" id="5_wr01l"]
+[ext_resource type="PackedScene" uid="uid://ba2snvibxvy4j" path="res://Basement/Assets/Entities/TallDoor_Static_Open.tscn" id="6_xll4t"]
 [ext_resource type="PackedScene" uid="uid://jkmxif6k2kdo" path="res://Basement/Assets/Cult/Pillar.tscn" id="7_q7ktf"]
 [ext_resource type="PackedScene" uid="uid://cqstht73h48u2" path="res://Basement/Assets/Cult/Ceiling.tscn" id="8_6gi8w"]
 [ext_resource type="PackedScene" uid="uid://dyfvqjcbk5ect" path="res://Basement/Assets/Interior/Carpet_Square.tscn" id="10_sv7uc"]
@@ -59,6 +60,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
 
 [node name="Cult" parent="North/Open" index="0" instance=ExtResource("4_q1xot")]
+
+[node name="TallDoor_Static_Open" parent="North/Open/Cult" index="13" instance=ExtResource("6_xll4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
 
 [node name="Forest" parent="North/Open" index="1" instance=ExtResource("5_wr01l")]
 
@@ -115,6 +119,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
 
 [node name="Cult" parent="East/Open" index="0" instance=ExtResource("4_q1xot")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 8, 0)
+
+[node name="TallDoor_Static_Open" parent="East/Open/Cult" index="13" instance=ExtResource("6_xll4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
 
 [node name="Forest" parent="East/Open" index="1" instance=ExtResource("5_wr01l")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 8, 0)

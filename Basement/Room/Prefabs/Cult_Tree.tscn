@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jkmxif6k2kdo" path="res://Basement/Assets/Cult/Pillar.tscn" id="5_j0lmv"]
 [ext_resource type="PackedScene" uid="uid://dturfokprk4iq" path="res://Basement/Assets/Interior/Banner_Wall_Arrow.tscn" id="8_l6erw"]
 [ext_resource type="PackedScene" uid="uid://cqstht73h48u2" path="res://Basement/Assets/Cult/Ceiling.tscn" id="9_057yd"]
-[ext_resource type="Environment" uid="uid://cg1h57p8lg62g" path="res://Environment/Environments/Cult.tres" id="12_ux5o2"]
+[ext_resource type="PackedScene" uid="uid://ba2snvibxvy4j" path="res://Basement/Assets/Entities/TallDoor_Static_Open.tscn" id="9_pv1fq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -25,6 +25,9 @@ size = Vector2(12, 12)
 size = Vector3(12, 28, 12)
 
 [node name="Cult_Tree" instance=ExtResource("1_gacrs")]
+
+[node name="Closed" parent="North" index="0"]
+visible = false
 
 [node name="Wall_Bottom" parent="North/Closed" index="0" instance=ExtResource("3_rj1mr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
@@ -40,9 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -10)
 
 [node name="Window_Tall2" parent="North/Closed" index="3" instance=ExtResource("4_uqha5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -10)
-
-[node name="Open" parent="North" index="1"]
-visible = false
 
 [node name="Wall_Bottom2" parent="North/Open" index="0" instance=ExtResource("3_rj1mr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 8, -12)
@@ -86,6 +86,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -12)
 [node name="Floor_Dirt5" parent="North/Open" index="13" instance=ExtResource("2_lqowf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -12)
 
+[node name="TallDoor_Static_Open" parent="North/Open" index="14" instance=ExtResource("9_pv1fq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -14)
+
+[node name="Closed" parent="East" index="0"]
+visible = false
+
 [node name="Window_Tall" parent="East/Closed" index="0" instance=ExtResource("4_uqha5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 8, -4)
 
@@ -100,9 +106,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 12
 
 [node name="Banner_Wall_Arrow" parent="East/Closed/Wall_Top" index="3" instance=ExtResource("8_l6erw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.2)
-
-[node name="Open" parent="East" index="1"]
-visible = false
 
 [node name="Wall_Bottom8" parent="East/Open" index="0" instance=ExtResource("3_rj1mr")]
 transform = Transform3D(3.55271e-15, 0, -1, 0, 1, 0, 1, 0, 3.55271e-15, 14, 8, -4)
@@ -145,6 +148,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 4)
 
 [node name="Floor_Dirt14" parent="East/Open" index="13" instance=ExtResource("2_lqowf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 0)
+
+[node name="TallDoor_Static_Open" parent="East/Open" index="14" instance=ExtResource("9_pv1fq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 8, 0)
 
 [node name="Window_Tall" parent="South/Closed" index="0" instance=ExtResource("4_uqha5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 8, 10)
@@ -767,6 +773,3 @@ transform = Transform3D(2.49304, 0, -1.66876, 0, 3, 0, 1.66876, 0, 2.49304, -2.0
 
 [node name="DeadTree_2" parent="Hole" index="3" instance=ExtResource("4_sobse")]
 transform = Transform3D(-1.25226, 0, -1.55944, 0, 2, 0, 1.55944, 0, -1.25226, 0.213, -3.887, -0.621)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="12"]
-environment = ExtResource("12_ux5o2")

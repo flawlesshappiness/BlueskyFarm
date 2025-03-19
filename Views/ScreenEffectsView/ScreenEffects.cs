@@ -390,10 +390,10 @@ public partial class ScreenEffects : Node3DScript
     /// Value range: 0 - 1
     /// </summary>
     public static Coroutine AnimateCameraShakeIn(string id, float value, float duration) =>
-        Instance._AnimateMinValueIn(Instance._gaussian_amount, $"{nameof(AnimateCameraShake)}_{id}", value, duration);
+        Instance._AnimateMinValueIn(Instance._camera_shake_strength, $"{nameof(AnimateCameraShake)}_{id}", value, duration);
 
     public static Coroutine AnimateCameraShakeOut(string id, float duration) =>
-        Instance._AnimateMinValueOut(Instance._gaussian_amount, $"{nameof(AnimateCameraShake)}_{id}", 0, duration);
+        Instance._AnimateMinValueOut(Instance._camera_shake_strength, $"{nameof(AnimateCameraShake)}_{id}", 0, duration);
 
     // HEARTBEAT //
     public static Coroutine AnimateHeartbeatFrequency(string id, float frequency, float duration_in, float duration_on, float duration_out)

@@ -179,7 +179,7 @@ public partial class RockManEnemy : NavEnemy
         if (IsState("Search") || IsState("Flee"))
         {
             var too_close = DistanceToPlayer < 8;
-            var has_los = CanSeePlayer();
+            var has_los = HasPlayerLOS();
 
             if (too_close && has_los)
             {
@@ -284,7 +284,7 @@ public partial class RockManEnemy : NavEnemy
         while (IsMoving)
         {
             var too_far = DistanceToPlayer > 12f;
-            var cant_see = !CanSeePlayer();
+            var cant_see = !HasPlayerLOS();
 
             if (too_far || cant_see)
             {

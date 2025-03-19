@@ -6,10 +6,16 @@ using System.Linq;
 public partial class CultistEnemy : NavEnemy
 {
     [Export]
-    public float RunSpeed;
+    public float HuntSpeed;
 
     [Export]
     public Node3D Model;
+
+    [Export]
+    public Node3D CameraTarget;
+
+    [Export]
+    public Marker3D CameraMarker_Attack;
 
     [Export]
     public SoundInfo SfxWalk;
@@ -28,14 +34,23 @@ public partial class CultistEnemy : NavEnemy
 
     private BoolParameter _param_moving;
     private BoolParameter _param_running;
+    private BoolParameter _param_attacking;
     private AnimationState _anim_startled;
 
     private BasementRoomElement _current_element;
 
     private const string StateWait = "Wait";
     private const string StatePatrol = "Patrol";
-    private const string StateFlee = "Flee";
-    private const string StateRespawn = "Respawn";
+    private const string StateHunt = "Hunt";
+    private const string StateAttack = "Attack";
+
+    private float PlayerMaxDist => Player.Instance.IsRunning ? 10f : 5f;
+    private bool PlayerTooClose => DistanceToPlayer < PlayerMaxDist;
+    private float PlayerLOSDist => 12f;
+    private float PlayerLOSAngle => 15f;
+    private bool PlayerInsideViewAngle => AngleToPlayer < PlayerLOSAngle;
+    private bool PlayerInsideViewDist => DistanceToPlayer < PlayerLOSDist;
+    private bool CanSeePlayer => HasPlayerLOS() && PlayerInsideViewDist && PlayerInsideViewAngle;
 
     public override void InitializeEnemy()
     {
@@ -52,9 +67,11 @@ public partial class CultistEnemy : NavEnemy
         var anim_walk = AnimationStateMachine.CreateAnimation("Armature|Walk_Cult", true);
         var anim_run = AnimationStateMachine.CreateAnimation("Armature|Run_Cult", true);
         _anim_startled = AnimationStateMachine.CreateAnimation("Armature|Startled_Cult", false);
+        var anim_attack = AnimationStateMachine.CreateAnimation("Armature|Attack_Cult", true);
 
         _param_moving = new BoolParameter("moving", false);
         _param_running = new BoolParameter("running", false);
+        _param_attacking = new BoolParameter("attacking", false);
 
         AnimationStateMachine.Connect(anim_walk.Node, anim_idle.Node, _param_moving.WhenFalse());
         AnimationStateMachine.Connect(anim_run.Node, anim_idle.Node, _param_moving.WhenFalse());
@@ -66,16 +83,20 @@ public partial class CultistEnemy : NavEnemy
         AnimationStateMachine.Connect(anim_idle.Node, anim_run.Node, _param_moving.WhenTrue(), _param_running.WhenTrue());
         AnimationStateMachine.Connect(anim_walk.Node, anim_run.Node, _param_moving.WhenTrue(), _param_running.WhenTrue());
 
+        AnimationStateMachine.Connect(anim_idle.Node, anim_attack.Node, _param_attacking.WhenTrue());
+        AnimationStateMachine.Connect(anim_walk.Node, anim_attack.Node, _param_attacking.WhenTrue());
+        AnimationStateMachine.Connect(anim_run.Node, anim_attack.Node, _param_attacking.WhenTrue());
+
         AnimationStateMachine.Start(anim_idle.Node);
     }
 
     protected override void RegisterStates()
     {
         base.RegisterStates();
-        RegisterState(StatePatrol, StateCr_Patrol);
-        RegisterState(StateWait, StateCr_Wait);
-        RegisterState(StateFlee, StateCr_Flee);
-        RegisterState(StateRespawn, StateCr_Respawn);
+        RegisterState(StatePatrol, PatrolState);
+        RegisterState(StateWait, WaitState);
+        RegisterState(StateHunt, HuntState);
+        RegisterState(StateAttack, AttackState);
     }
 
     public override void Spawn(bool debug)
@@ -99,26 +120,45 @@ public partial class CultistEnemy : NavEnemy
     public override void _Process(double delta)
     {
         base._Process(delta);
-        ProcessAnimations();
-        ProcessFlee();
+        Process_Animations();
+        Process_Attack();
+        Process_LOS();
+        Process_Speed();
     }
 
-    private void ProcessAnimations()
+    private void Process_Animations()
     {
         _param_moving.Set(!Agent.IsNavigationFinished());
     }
 
-    private void ProcessFlee()
+    private void Process_Attack()
     {
-        if (!Spawned) return;
-
-        if (IsState(StatePatrol) && DistanceToPlayer < BasementRoom.ROOM_SIZE * 0.3f)
+        if (IsState(StateHunt))
         {
-            SetState(StateFlee);
+            if (DistanceToPlayer < 3)
+            {
+                SetState(StateAttack);
+            }
         }
     }
 
-    private IEnumerator StateCr_Wait()
+    private void Process_LOS()
+    {
+        if (IsState(StatePatrol) || IsState(StateWait))
+        {
+            if (PlayerTooClose || CanSeePlayer)
+            {
+                SetState(StateHunt);
+            }
+        }
+    }
+
+    private void Process_Speed()
+    {
+        CurrentSpeed = IsState(StateHunt) ? HuntSpeed : MoveSpeed;
+    }
+
+    private IEnumerator WaitState()
     {
         _param_running.Set(false);
 
@@ -133,13 +173,13 @@ public partial class CultistEnemy : NavEnemy
         SetState(StatePatrol);
     }
 
-    private IEnumerator StateCr_Patrol()
+    private IEnumerator PatrolState()
     {
         _param_running.Set(false);
         CurrentSpeed = MoveSpeed;
 
         _current_element = GetClosestRoomElements(x => x != _current_element).FirstOrDefault();
-        Agent.TargetPosition = GetRandomPositionInRoom(_current_element.Room);
+        Agent.TargetPosition = _current_element.Room.EnemyMarker.GlobalPosition;
         Model.Show();
 
         while (true)
@@ -153,6 +193,83 @@ public partial class CultistEnemy : NavEnemy
         }
     }
 
+    private IEnumerator HuntState()
+    {
+        StopNavigation();
+        StartFacingPlayer();
+        //SfxAlert.Play(GlobalPosition);
+
+        yield return new WaitForSeconds(2f);
+
+        StopFacingPlayer();
+
+        Agent.TargetPosition = PlayerPosition;
+        while (IsMoving)
+        {
+            if (!CanSeePlayer)
+            {
+                // Move to last seen location
+            }
+            else
+            {
+                Agent.TargetPosition = PlayerPosition;
+            }
+
+            yield return null;
+        }
+
+        SetState(StateWait);
+    }
+
+    private IEnumerator AttackState()
+    {
+        StopNavigation();
+        StartFacingPlayer();
+
+        Player.MovementLock.AddLock(EnemyId);
+        Player.LookLock.AddLock(EnemyId);
+        Player.RagdollCamera(DirectionToPlayer.Normalized() * 1f);
+
+        ScreenEffects.AnimateGaussianBlurIn(EnemyId, 20, 2.0f);
+        ScreenEffects.SetHeartbeatFrequency(EnemyId, 0.5f);
+
+        yield return new WaitForSeconds(2.0f);
+
+        var start_pos = Player.CameraRagdoll.GlobalPosition;
+        var end_pos = CameraMarker_Attack.GlobalPosition;
+        var end_rot = CameraMarker_Attack.GlobalRotationDegrees.WrappedEulerAngles();
+        var start_rot = Player.CameraRagdoll.GlobalRotationDegrees.ClosestEulerAngle(end_rot);
+        var curve = Curves.EaseOutQuad;
+
+        Player.CameraRagdoll.Freeze = true;
+        CameraTarget.GlobalPosition = start_pos;
+        CameraTarget.GlobalRotationDegrees = start_rot;
+        _param_attacking.Set(true);
+
+        ScreenEffects.AnimateGaussianBlurOut(EnemyId, 0.5f);
+        ScreenEffects.AnimateRadialBlurIn(EnemyId, 0.02f, 1.0f);
+        ScreenEffects.AnimateCameraShakeIn(EnemyId, 0.05f, 1.0f);
+
+        ScreenEffects.View.SetCameraTarget(CameraTarget);
+        yield return LerpEnumerator.Lerp01(1.0f, f =>
+        {
+            var t = curve.Evaluate(f);
+            CameraTarget.GlobalPosition = start_pos.Lerp(end_pos, t);
+            CameraTarget.GlobalRotationDegrees = start_rot.Lerp(end_rot, t);
+        });
+
+        yield return new WaitForSeconds(2.0f);
+
+        GameScene.Current.KillPlayer();
+
+        ScreenEffects.AnimateRadialBlurOut(EnemyId, 0);
+        ScreenEffects.AnimateCameraShakeOut(EnemyId, 0);
+        ScreenEffects.RemoveHeartbeatFrequency(EnemyId);
+
+        Player.MovementLock.RemoveLock(EnemyId);
+        Player.LookLock.RemoveLock(EnemyId);
+    }
+
     private IEnumerator StateCr_Flee()
     {
         Agent.TargetPosition = GlobalPosition;
@@ -163,7 +280,6 @@ public partial class CultistEnemy : NavEnemy
         yield return new WaitForSeconds(0.5f);
 
         _param_running.Set(true);
-        CurrentSpeed = RunSpeed;
 
         // Run towards player
         var timeout = GameTime.Time + 3f;
@@ -183,7 +299,7 @@ public partial class CultistEnemy : NavEnemy
         {
             if (Agent.IsNavigationFinished())
             {
-                SetState(StateRespawn);
+                //SetState(StateRespawn);
             }
 
             yield return null;

@@ -189,7 +189,7 @@ public partial class RootMimicEnemy : NavEnemy
                 break;
             }
 
-            if (DistanceToPlayer < DIST_THREAT && CanSeePlayer())
+            if (DistanceToPlayer < DIST_THREAT && HasPlayerLOS())
             {
                 if (_rng.RandfRange(0, 1) < CHANCE_THREAT || _debug_force_attack)
                 {

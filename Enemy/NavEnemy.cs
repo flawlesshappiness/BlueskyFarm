@@ -17,6 +17,8 @@ public partial class NavEnemy : Enemy
 
     protected float CurrentSpeed { get; set; }
     protected bool IsMoving => !Agent.IsNavigationFinished();
+    protected float SignedAngleToPlayer => Mathf.RadToDeg(GlobalBasis.Z.SignedAngleTo(DirectionToPlayer, Vector3.Up));
+    protected float AngleToPlayer => Mathf.RadToDeg(GlobalBasis.Z.AngleTo(DirectionToPlayer));
 
     protected const string StateDebugIdle = "DebugIdle";
     protected const string StateDebugFollow = "DebugFollow";
@@ -210,6 +212,9 @@ public partial class NavEnemy : Enemy
     protected void StopFacingPlayer() => _facing_player = false;
     private void Process_FacePlayer()
     {
-        TurnTowardsDirection(DirectionToPlayer);
+        if (_facing_player)
+        {
+            TurnTowardsDirection(DirectionToPlayer);
+        }
     }
 }

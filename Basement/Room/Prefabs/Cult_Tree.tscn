@@ -68,7 +68,7 @@ scale_min = 4.0
 scale_max = 6.0
 scale_curve = SubResource("CurveTexture_rdbiw")
 scale_over_velocity_max = 40.1
-color = Color(0.9, 0.333, 0.333, 0.521569)
+color = Color(0.8, 0.296, 0.296, 0.521569)
 alpha_curve = SubResource("CurveTexture_3fk3a")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ys1jx"]
@@ -817,6 +817,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 16, -12)
 [node name="Ceiling14" parent="Ceiling" index="48" instance=ExtResource("9_057yd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 16, -12)
 
+[node name="EnemySpawn" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
+
 [node name="AmbienceArea" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
@@ -963,7 +966,7 @@ transform = Transform3D(-1.25226, 0, -1.55944, 0, 2, 0, 1.55944, 0, -1.25226, 0.
 
 [node name="ps_blood_dust" type="GPUParticles3D" parent="Hole" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-amount = 20
+amount = 10
 lifetime = 6.0
 fixed_fps = 60
 visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)

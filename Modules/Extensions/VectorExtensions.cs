@@ -29,6 +29,16 @@ public static class VectorExtensions
         var rng = new RandomNumberGenerator();
         return new Vector3(rng.Randf(), rng.Randf(), rng.Randf()).Normalized();
     }
+
+    public static Vector3 WrappedEulerAngles(this Vector3 eulerAngles)
+    {
+        return EulerMath.WrappedEulerAngles(eulerAngles);
+    }
+
+    public static Vector3 ClosestEulerAngle(this Vector3 from, Vector3 to)
+    {
+        return EulerMath.ClosestEulerAngles(from.WrappedEulerAngles(), to.WrappedEulerAngles());
+    }
     #endregion
 
     #region VECTOR2

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://l3ku74dceqne"]
+[gd_scene load_steps=8 format=3 uid="uid://l3ku74dceqne"]
 
 [ext_resource type="Script" path="res://Enemy/Cultist/CultistEnemy.cs" id="1_m3wvw"]
 [ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ohgjn"]
 [ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/frog.fbx" id="2_ech83"]
 [ext_resource type="Resource" uid="uid://qvtj7uveimse" path="res://Sound/Resources/sfx_step_dirt_walk.tres" id="2_wexpc"]
 [ext_resource type="Resource" uid="uid://moyyiqotn55l" path="res://Sound/Resources/sfx_step_dirt_run.tres" id="3_hb8s3"]
+[ext_resource type="Resource" uid="uid://chrmbx788o0j4" path="res://Sound/Resources/sfx_cultist_alert.tres" id="4_lhtvf"]
+[ext_resource type="Resource" uid="uid://cx6dypjuuaons" path="res://Sound/Resources/sfx_player_death.tres" id="5_8rsuv"]
 
 [node name="Cultist" type="Node3D" node_paths=PackedStringArray("Model", "CameraTarget", "CameraMarker_Attack", "AnimationStateMachine", "AnimationPlayer")]
 script = ExtResource("1_m3wvw")
@@ -16,11 +18,14 @@ SfxWalk = ExtResource("2_wexpc")
 SfxRun = ExtResource("3_hb8s3")
 AnimationStateMachine = NodePath("AnimationStateMachine")
 AnimationPlayer = NodePath("frog/AnimationPlayer")
+SfxAlert = ExtResource("4_lhtvf")
+SfxPlayerDeath = ExtResource("5_8rsuv")
 MoveSpeed = 0.5
 TurnSpeed = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5
+path_postprocessing = 1
 
 [node name="AnimationStateMachine" type="Node" parent="."]
 script = ExtResource("1_ohgjn")
@@ -160,6 +165,9 @@ bones/65/position = Vector3(-0.00951414, -0.000242921, 0.00700823)
 [node name="lantern" parent="frog/Armature/Skeleton3D" index="6"]
 cast_shadow = 0
 
+[node name="AnimationPlayer" parent="frog" index="1"]
+playback_default_blend_time = 0.15
+
 [node name="OmniLight3D" type="OmniLight3D" parent="frog"]
 transform = Transform3D(1, 0, 0, 0, -2.38419e-07, 1, 0, -1, -2.38419e-07, -0.617296, 0.350722, 1.21096)
 light_color = Color(1, 0.616667, 0, 1)
@@ -170,7 +178,6 @@ distance_fade_shadow = 28.0
 omni_range = 10.0
 
 [node name="CameraTarget" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CameraMarker_Attack" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.802526, 0.596617, 0, -0.596617, 0.802526, 0, 3.03086, 1.68837)

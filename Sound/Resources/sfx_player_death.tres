@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cx6dypjuuaons"]
+
+[ext_resource type="AudioStream" uid="uid://bgfa8vgevqnf3" path="res://Sound/Sounds/sfx_player_death_001.wav" id="1_ys1ui"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_lt5l2"]
+
+[resource]
+script = ExtResource("4_lt5l2")
+AudioStreams = Array[AudioStream]([ExtResource("1_ys1ui")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(1, 1)
+Bus = 0
+Distance = 2
+Attenuation = 1

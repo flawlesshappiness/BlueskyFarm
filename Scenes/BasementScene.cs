@@ -169,7 +169,6 @@ public partial class BasementScene : GameScene
                 env_area = AreaNameType.Basement;
             }
 
-            AmbienceController.Instance.StartAmbience(amb_area);
             EnvironmentController.Instance.SetEnvironment(env_area);
         }
     }

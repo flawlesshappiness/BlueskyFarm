@@ -29,6 +29,12 @@ public partial class CultistEnemy : NavEnemy
     [Export]
     public AnimationPlayer AnimationPlayer;
 
+    [Export]
+    public SoundInfo SfxAlert;
+
+    [Export]
+    public SoundInfo SfxPlayerDeath;
+
     protected override string EnemyName => "Cultist";
     protected override string DefaultState => StatePatrol;
 
@@ -162,6 +168,9 @@ public partial class CultistEnemy : NavEnemy
     {
         _param_running.Set(false);
 
+        ScreenEffects.AnimateRadialBlurOut(EnemyId, 2f);
+        ScreenEffects.RemoveHeartbeatFrequency(EnemyId);
+
         Agent.TargetPosition = GlobalPosition;
 
         var time = GameTime.Time + 3f;
@@ -197,9 +206,16 @@ public partial class CultistEnemy : NavEnemy
     {
         StopNavigation();
         StartFacingPlayer();
-        //SfxAlert.Play(GlobalPosition);
+        SfxAlert.Play(GlobalPosition);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+
+        SoundController.Instance.Play("sfx_horror_boom");
+        SoundController.Instance.Play("sfx_horror_chord");
+        ScreenEffects.SetHeartbeatFrequency(EnemyId, 0.75f);
+        ScreenEffects.AnimateRadialBlurIn(EnemyId, 0.005f, 2f);
+
+        yield return new WaitForSeconds(1f);
 
         StopFacingPlayer();
 
@@ -228,17 +244,11 @@ public partial class CultistEnemy : NavEnemy
 
         Player.MovementLock.AddLock(EnemyId);
         Player.LookLock.AddLock(EnemyId);
-        Player.RagdollCamera(DirectionToPlayer.Normalized() * 1f);
 
-        ScreenEffects.AnimateGaussianBlurIn(EnemyId, 20, 2.0f);
-        ScreenEffects.SetHeartbeatFrequency(EnemyId, 0.5f);
-
-        yield return new WaitForSeconds(2.0f);
-
-        var start_pos = Player.CameraRagdoll.GlobalPosition;
+        var start_pos = ScreenEffects.View.Camera.GlobalPosition;
         var end_pos = CameraMarker_Attack.GlobalPosition;
         var end_rot = CameraMarker_Attack.GlobalRotationDegrees.WrappedEulerAngles();
-        var start_rot = Player.CameraRagdoll.GlobalRotationDegrees.ClosestEulerAngle(end_rot);
+        var start_rot = ScreenEffects.View.Camera.GlobalRotationDegrees.ClosestEulerAngle(end_rot);
         var curve = Curves.EaseOutQuad;
 
         Player.CameraRagdoll.Freeze = true;
@@ -246,9 +256,11 @@ public partial class CultistEnemy : NavEnemy
         CameraTarget.GlobalRotationDegrees = start_rot;
         _param_attacking.Set(true);
 
-        ScreenEffects.AnimateGaussianBlurOut(EnemyId, 0.5f);
-        ScreenEffects.AnimateRadialBlurIn(EnemyId, 0.02f, 1.0f);
+        ScreenEffects.SetHeartbeatFrequency(EnemyId, 0.5f);
+        ScreenEffects.AnimateRadialBlurIn(EnemyId, 0.02f, 2.0f);
         ScreenEffects.AnimateCameraShakeIn(EnemyId, 0.05f, 1.0f);
+
+        SfxPlayerDeath.Play();
 
         ScreenEffects.View.SetCameraTarget(CameraTarget);
         yield return LerpEnumerator.Lerp01(1.0f, f =>

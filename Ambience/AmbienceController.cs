@@ -122,7 +122,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         IEnumerator Cr(SoundInfo noise)
         {
             var rng = new RandomNumberGenerator();
-            var mul_debug = 1f;
+            var mul_debug = 1.0f;
             yield return new WaitForSeconds(rng.RandfRange(15, 30) * mul_debug);
 
             while (true)

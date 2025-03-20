@@ -822,6 +822,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
 
 [node name="AmbienceArea" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+Area = 4
 
 [node name="Hole" type="Node3D" parent="." index="11"]
 
@@ -972,3 +973,10 @@ fixed_fps = 60
 visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
 process_material = SubResource("ParticleProcessMaterial_r2c2m")
 draw_pass_1 = SubResource("QuadMesh_kggik")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Hole" index="4"]
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.25
+distance_fade_enabled = true
+distance_fade_begin = 28.0
+omni_range = 12.8487

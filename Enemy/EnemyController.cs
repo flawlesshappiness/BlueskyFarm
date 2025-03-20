@@ -16,6 +16,7 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
 
         BasementController.Instance.OnAreaEntered += AreaEntered;
         BasementController.Instance.OnBasementEntered += BasementEntered;
+        BasementController.Instance.OnBasementExited += BasementExited;
     }
 
     private EnemyInfo GetRandomEnemyInfo()
@@ -130,5 +131,10 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
     private void BasementEntered()
     {
         AreaEntered(AreaNames.Basement);
+    }
+
+    private void BasementExited()
+    {
+        _enemies.Clear();
     }
 }

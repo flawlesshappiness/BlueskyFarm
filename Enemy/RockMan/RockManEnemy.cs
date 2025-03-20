@@ -309,43 +309,13 @@ public partial class RockManEnemy : NavEnemy
         Player.MovementLock.AddLock(EnemyId);
         Player.LookLock.AddLock(EnemyId);
 
-        Player.StartLookingAt(FaceMarker, 0.2f);
-
-        yield return new WaitForSeconds(0.25f);
-
-        _param_attack.Trigger();
-
-        yield return new WaitForSeconds(0.25f);
-
-        Player.RagdollCamera(DirectionToPlayer.Normalized() * 2f);
-        StopFacingPlayer();
-
-        ScreenEffects.AnimateGaussianBlur(EnemyId, 20, 0.25f, 0.5f, 0);
-
-        yield return new WaitForSeconds(0.5f);
-
-        // Blackout
-        var view = View.Get<GameView>();
-        view.SetBlackOverlayAlpha(1);
-
-        var bus = AudioBus.Get(SoundBus.Master.ToString());
-        bus.SetMuted(true);
-
-        _param_scream.Set(true);
-
-        CameraTarget.GlobalPosition = ScreamStartMarker.GlobalPosition;
-        ScreenEffects.View.SetCameraTarget(CameraTarget);
-
-        yield return new WaitForSeconds(1f);
-
-        // Scream
-        bus.SetMuted(false);
-        view.SetBlackOverlayAlpha(0);
-
         var asp_scream = SfxScream.Play();
 
         ScreenEffects.SetRadialBlur(EnemyId, 0.02f);
         ScreenEffects.AnimateCameraShake(EnemyId, 0.05f, 0, 2.1f, 0);
+
+        CameraTarget.GlobalPosition = ScreamStartMarker.GlobalPosition;
+        ScreenEffects.View.SetCameraTarget(CameraTarget);
 
         yield return LerpEnumerator.Lerp01(2f, f =>
         {

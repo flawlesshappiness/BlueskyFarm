@@ -77,6 +77,8 @@ public partial class BasementController : SingletonController
             AreaName = AreaNames.Cult,
             RoomInfo = BasementRoomController.Instance.Collection.GetResource("Cult_Tree")
         });
+
+        SetRandomElementInfo(AreaNames.Cult, "Cult_Bedrooms");
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

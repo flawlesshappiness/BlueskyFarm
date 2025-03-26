@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6k0bc5g3t61r"]
+
+[ext_resource type="PackedScene" uid="uid://ui5yac004mj4" path="res://Assets/FlawLizArt/Interior/dreamcatcher_001.fbx" id="1_lhvhk"]
+[ext_resource type="Script" path="res://Basement/Assets/Interior/Dreamcatcher.cs" id="1_nxl3l"]
+[ext_resource type="PackedScene" uid="uid://b5fe6flw70j5x" path="res://Assets/FlawLizArt/Interior/dreamcatcher_002.fbx" id="2_8mx55"]
+[ext_resource type="PackedScene" uid="uid://dfut8nw53jn80" path="res://Assets/FlawLizArt/Interior/dreamcatcher_003.fbx" id="3_omwrk"]
+[ext_resource type="PackedScene" uid="uid://ogl0efm8jad" path="res://Assets/FlawLizArt/Interior/dreamcatcher_004.fbx" id="4_yxcc3"]
+
+[sub_resource type="Animation" id="Animation_woj7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mcer8"]
+resource_name = "idle_001"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(0.659754, 1.86607, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.610865, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvowl"]
+_data = {
+"RESET": SubResource("Animation_woj7s"),
+"idle_001": SubResource("Animation_mcer8")
+}
+
+[node name="Dreamcatcher" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+script = ExtResource("1_nxl3l")
+AnimationPlayer = NodePath("AnimationPlayer")
+MinAnimationSpeed = 0.7
+InitialAnimation = "idle_001"
+
+[node name="Anim" type="Node3D" parent="."]
+
+[node name="dreamcatcher_001" parent="Anim" instance=ExtResource("1_lhvhk")]
+
+[node name="dreamcatcher_002" parent="Anim" instance=ExtResource("2_8mx55")]
+
+[node name="dreamcatcher_003" parent="Anim" instance=ExtResource("3_omwrk")]
+
+[node name="dreamcatcher_004" parent="Anim" instance=ExtResource("4_yxcc3")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rvowl")
+}
+playback_default_blend_time = 0.25

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cclneddk2sitv"]
+[gd_scene load_steps=49 format=3 uid="uid://cclneddk2sitv"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_2h10b"]
 [ext_resource type="PackedScene" uid="uid://d3qi3iiygfr1b" path="res://Basement/Assets/Floor/Floor_Stone.tscn" id="2_5jje1"]
@@ -22,12 +22,43 @@
 [ext_resource type="PackedScene" uid="uid://cl6accmjb08lp" path="res://Basement/Assets/Interior/Bed.tscn" id="19_dri8c"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="20_lmgpn"]
 [ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="21_rudfk"]
+[ext_resource type="PackedScene" uid="uid://cbdl32u4linne" path="res://Assets/FlawLizArt/Paper/paper.fbx" id="22_0yf2k"]
 [ext_resource type="PackedScene" uid="uid://dyfvqjcbk5ect" path="res://Basement/Assets/Interior/Carpet_Square.tscn" id="22_pi5ew"]
 [ext_resource type="PackedScene" uid="uid://cghyfbjw6nj4h" path="res://Basement/Assets/Interior/Candles_001.tscn" id="23_tuj5u"]
+[ext_resource type="PackedScene" uid="uid://bn3dw22pge74l" path="res://Basement/Assets/Interior/BookcaseWide_Filled.tscn" id="23_uxgye"]
 [ext_resource type="PackedScene" uid="uid://c1sduhv13onlr" path="res://Basement/Assets/Interior/Candles_002.tscn" id="24_scvic"]
+[ext_resource type="PackedScene" uid="uid://chpetu20nmoi8" path="res://Assets/FlawLizArt/Interior/pencil.fbx" id="24_tw8vp"]
 [ext_resource type="PackedScene" uid="uid://bkj1reb1okraq" path="res://Basement/Assets/Interior/Candles_003.tscn" id="25_h2iih"]
+[ext_resource type="PackedScene" uid="uid://x5247basfxsy" path="res://Assets/FlawLizArt/Interior/cloth_wall_001.fbx" id="26_4vftu"]
 [ext_resource type="Script" path="res://Basement/Room/CultBedroomsRoom.cs" id="27_mmbsk"]
+[ext_resource type="PackedScene" uid="uid://b6k0bc5g3t61r" path="res://Basement/Assets/Interior/Dreamcatcher.tscn" id="27_yiw00"]
 [ext_resource type="Resource" uid="uid://biibu5h68elc1" path="res://Blueprint/Resources/Mold_Sword.tres" id="28_clpqx"]
+[ext_resource type="PackedScene" uid="uid://b6jw8n6h38lbx" path="res://Assets/FlawLizArt/Interior/tombstone.fbx" id="28_r8344"]
+[ext_resource type="PackedScene" uid="uid://dyl3r81vr88pm" path="res://Assets/FlawLizArt/Interior/shovel_head.fbx" id="32_tksm7"]
+[ext_resource type="PackedScene" uid="uid://y2xb1nj3q0u0" path="res://Assets/FlawLizArt/Interior/shovel_handle.fbx" id="33_lywf7"]
+[ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="34_03ihy"]
+[ext_resource type="Material" uid="uid://bk0kdmxcn0lyj" path="res://Assets/Materials/Crystal_Red.tres" id="35_h754b"]
+[ext_resource type="PackedScene" uid="uid://c8rn6dc7j04ak" path="res://Basement/Assets/Mine/Rock.tscn" id="36_t7rnd"]
+[ext_resource type="PackedScene" uid="uid://b201helpo6yq0" path="res://Assets/FlawLizArt/Pickaxe/pickaxe_head.fbx" id="37_76q1g"]
+[ext_resource type="PackedScene" uid="uid://mstifbtn5wu3" path="res://Assets/FlawLizArt/Pickaxe/pickaxe_handle.fbx" id="38_ahnua"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q0egx"]
+size = Vector3(1.28113, 4, 4.78235)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h21xs"]
+size = Vector3(1.39465, 4, 4.77087)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6fp7"]
+size = Vector3(1, 4, 11.8658)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbnr0"]
+size = Vector3(4.74487, 4, 1.60449)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4suu7"]
+size = Vector3(1.40234, 4, 1.31104)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24f07"]
+size = Vector3(1.40234, 4, 2.16211)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3j241"]
 size = Vector3(3, 3, 1)
@@ -776,7 +807,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="Bed" parent="Room_Architecture (Frank)" index="0" instance=ExtResource("19_dri8c")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.92126, 0, -12.5721)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.1983, 0, -7.49945)
 
 [node name="Table" parent="Room_Architecture (Frank)" index="1" instance=ExtResource("20_lmgpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.98835, 0, -11.873)
@@ -786,6 +817,69 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.98835, 0, -12.9019)
 
 [node name="Chair" parent="Room_Architecture (Frank)" index="3" instance=ExtResource("21_rudfk")]
 transform = Transform3D(0.993383, 0, -0.11485, 0, 1, 0, 0.11485, 0, 0.993383, -8.01071, -9.53674e-07, -11.2754)
+
+[node name="paper" parent="Room_Architecture (Frank)" index="4" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, -8.0102, 0.712405, -12.175)
+
+[node name="paper6" parent="Room_Architecture (Frank)" index="5" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(-0.0718365, -6.86319e-08, 1.49828, -1.49828, -6.23518e-08, -0.0718365, 6.55671e-08, -1.5, -6.55671e-08, -7.53135, 2.21624, -6.34593)
+
+[node name="paper8" parent="Room_Architecture (Frank)" index="6" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(6.87072e-08, -1.5, -1.31059e-07, -1.49828, -6.23518e-08, -0.0718365, 0.0718365, 1.34199e-07, -1.49828, -2.4291, 2.21624, -10.2253)
+
+[node name="paper9" parent="Room_Architecture (Frank)" index="7" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(0.047891, 7.75913e-08, -0.998853, -0.998853, -4.36612e-08, -0.047891, -4.73271e-08, 1, 7.54113e-08, -3.84856, 2.80753, -13.6437)
+
+[node name="paper10" parent="Room_Architecture (Frank)" index="8" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(-0.215928, 6.3413e-08, -0.976409, -0.976409, -6.2494e-08, 0.215928, -4.73271e-08, 1, 7.54113e-08, -5.56788, 2.14295, -13.6437)
+
+[node name="paper11" parent="Room_Architecture (Frank)" index="9" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(0.0821995, 7.90463e-08, -0.996616, -0.996616, -4.09681e-08, -0.0821995, -4.73271e-08, 1, 7.54113e-08, -11.5012, 2.20036, -13.6437)
+
+[node name="paper7" parent="Room_Architecture (Frank)" index="10" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(0.152207, -4.79861e-08, 1.2407, -1.2407, -5.42327e-08, 0.152207, 4.79861e-08, -1.25, -5.42327e-08, -11.2721, 2.17574, -6.34593)
+
+[node name="paper2" parent="Room_Architecture (Frank)" index="11" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(0.750463, 0, 0.496796, 0, 0.9, 0, -0.496796, 0, 0.750463, -3.72914, 0.0254354, -12.0117)
+
+[node name="paper3" parent="Room_Architecture (Frank)" index="12" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(0.012189, 0, 0.899917, 0, 0.9, 0, -0.899917, 0, 0.012189, -5.31748, 0.0287848, -12.0594)
+
+[node name="paper4" parent="Room_Architecture (Frank)" index="13" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(-0.775283, 0, -0.457096, 0, 0.9, 0, 0.457096, 0, -0.775283, -6.37018, 0.0287848, -7.74439)
+
+[node name="paper5" parent="Room_Architecture (Frank)" index="14" instance=ExtResource("22_0yf2k")]
+transform = Transform3D(-0.474687, 0, 0.764638, 0, 0.9, 0, -0.764638, 0, -0.474687, -12.0441, 0.0287848, -8.60368)
+
+[node name="BookcaseWide_Filled" parent="Room_Architecture (Frank)" index="15" instance=ExtResource("23_uxgye")]
+transform = Transform3D(0, 0, 1.25, 0, 1.25, 0, -1.25, 0, 0, -13.1297, 0, -11.5)
+
+[node name="BookcaseWide_Filled2" parent="Room_Architecture (Frank)" index="16" instance=ExtResource("23_uxgye")]
+transform = Transform3D(1.09278e-07, 0, -1.25, 0, 1.25, 0, 1.25, 0, 1.09278e-07, -13.1297, 0, -8.64853)
+
+[node name="pencil" parent="Room_Architecture (Frank)" index="17" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(0.850646, 0.525739, 2.29808e-08, 0, -4.37114e-08, 1, 0.525739, -0.850646, -3.71829e-08, -7.43477, 0.748859, -11.9748)
+
+[node name="pencil2" parent="Room_Architecture (Frank)" index="18" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(0.98504, 0.172324, 7.53254e-09, 0, -4.37114e-08, 1, 0.172324, -0.98504, -4.30575e-08, -7.54311, 0.748859, -12.099)
+
+[node name="pencil3" parent="Room_Architecture (Frank)" index="19" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(0.888096, -0.459657, -2.00923e-08, 0, -4.37114e-08, 1, -0.459657, -0.888096, -3.88199e-08, -8.68123, 0.748859, -12.2933)
+
+[node name="pencil4" parent="Room_Architecture (Frank)" index="20" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(-0.730138, -0.683299, -2.9868e-08, 0, -4.37114e-08, 1, -0.683299, 0.730138, 3.19154e-08, -10.1722, 0.0396309, -7.84133)
+
+[node name="pencil5" parent="Room_Architecture (Frank)" index="21" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(0.762126, -0.647429, -2.83e-08, 0, -4.37114e-08, 1, -0.647429, -0.762126, -3.33136e-08, -9.69874, 0.0396309, -12.0169)
+
+[node name="pencil6" parent="Room_Architecture (Frank)" index="22" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(-0.682738, -0.730663, -3.19383e-08, 0, -4.37114e-08, 1, -0.730663, 0.682738, 2.98434e-08, -12.1312, 0.0396309, -12.3281)
+
+[node name="pencil7" parent="Room_Architecture (Frank)" index="23" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(-0.682738, -0.730663, -3.19383e-08, 0, -4.37114e-08, 1, -0.730663, 0.682738, 2.98434e-08, -6.89544, 0.0396309, -11.8875)
+
+[node name="pencil8" parent="Room_Architecture (Frank)" index="24" instance=ExtResource("24_tw8vp")]
+transform = Transform3D(0.911439, -0.411435, -1.79844e-08, 0, -4.37114e-08, 1, -0.411435, -0.911439, -3.98403e-08, -5.13645, 0.0396309, -12.5544)
 
 [node name="Room_Spiritual (Frida)" type="Node3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
@@ -811,14 +905,361 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9874, 0, -11.5504)
 [node name="Candles_004" parent="Room_Spiritual (Frida)" index="6" instance=ExtResource("25_h2iih")]
 transform = Transform3D(-0.0446133, 0, -0.999004, 0, 1, 0, 0.999004, 0, -0.0446133, 13.1559, 0, -5.23696)
 
+[node name="Dreamcatchers" type="Node3D" parent="Room_Spiritual (Frida)" index="7"]
+
+[node name="Dreamcatcher" parent="Room_Spiritual (Frida)/Dreamcatchers" index="0" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.3622, 2.57607, -5.64004)
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher2" parent="Room_Spiritual (Frida)/Dreamcatchers" index="1" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.1388, 2.57607, -4.58317)
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher3" parent="Room_Spiritual (Frida)/Dreamcatchers" index="2" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.1125, 2.57607, -6.67139)
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher4" parent="Room_Spiritual (Frida)/Dreamcatchers" index="3" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.11528, 2.57607, -8.72472)
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher5" parent="Room_Spiritual (Frida)/Dreamcatchers" index="4" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.7269, 2.57607, -10.6262)
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher6" parent="Room_Spiritual (Frida)/Dreamcatchers" index="5" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.6608, 2.91094, -7.81813)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher7" parent="Room_Spiritual (Frida)/Dreamcatchers" index="6" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.38766, 2.91094, -9.74616)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher8" parent="Room_Spiritual (Frida)/Dreamcatchers" index="7" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.5459, 2.91094, -5.73868)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher9" parent="Room_Spiritual (Frida)/Dreamcatchers" index="8" instance=ExtResource("27_yiw00")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.14553, 2.91094, -6.82507)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9/Anim" index="1"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher10" parent="Room_Spiritual (Frida)/Dreamcatchers" index="9" instance=ExtResource("27_yiw00")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.84636, 3.12973, -4.0635)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher11" parent="Room_Spiritual (Frida)/Dreamcatchers" index="10" instance=ExtResource("27_yiw00")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11.6905, 3.12973, -4.17848)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher12" parent="Room_Spiritual (Frida)/Dreamcatchers" index="11" instance=ExtResource("27_yiw00")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12.1151, 3.12973, -7.95514)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher13" parent="Room_Spiritual (Frida)/Dreamcatchers" index="12" instance=ExtResource("27_yiw00")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.51536, 3.12973, -10.8994)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13/Anim" index="3"]
+visible = false
+
+[node name="Dreamcatcher14" parent="Room_Spiritual (Frida)/Dreamcatchers" index="13" instance=ExtResource("27_yiw00")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10.4988, 3.12973, -11.3838)
+
+[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14/Anim" index="0"]
+visible = false
+
+[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14/Anim" index="2"]
+visible = false
+
+[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14/Anim" index="3"]
+visible = false
+
+[node name="Cloth" type="Node3D" parent="Room_Spiritual (Frida)" index="8"]
+
+[node name="cloth_wall_004" parent="Room_Spiritual (Frida)/Cloth" index="0" instance=ExtResource("26_4vftu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13.6822)
+
+[node name="cloth_wall_005" parent="Room_Spiritual (Frida)/Cloth" index="1" instance=ExtResource("26_4vftu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -13.6822)
+
+[node name="cloth_wall_006" parent="Room_Spiritual (Frida)/Cloth" index="2" instance=ExtResource("26_4vftu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.6636, 0, -12)
+
+[node name="cloth_wall_007" parent="Room_Spiritual (Frida)/Cloth" index="3" instance=ExtResource("26_4vftu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.6636, 0, -8)
+
+[node name="cloth_wall_008" parent="Room_Spiritual (Frida)/Cloth" index="4" instance=ExtResource("26_4vftu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.6636, 0, -4)
+
+[node name="cloth_wall_009" parent="Room_Spiritual (Frida)/Cloth" index="5" instance=ExtResource("26_4vftu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12, 0, -2.29925)
+
+[node name="cloth_wall_010" parent="Room_Spiritual (Frida)/Cloth" index="6" instance=ExtResource("26_4vftu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -2.29925)
+
+[node name="Tombstones" type="Node3D" parent="Room_Spiritual (Frida)" index="9"]
+
+[node name="tombstone" parent="Room_Spiritual (Frida)/Tombstones" index="0" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.851562, -0.524253, 0, 0.524253, 0.851562, 12.5513, 0, -3.02047)
+
+[node name="tombstone5" parent="Room_Spiritual (Frida)/Tombstones" index="1" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.71428e-08, 0.527223, 0.849727, 2.30456e-08, 0.849727, -0.527223, -1, 0, -4.37114e-08, 13.0082, 0, -3.9382)
+
+[node name="tombstone8" parent="Room_Spiritual (Frida)/Tombstones" index="2" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.71428e-08, 0.527223, 0.849727, 2.30456e-08, 0.849727, -0.527223, -1, 0, -4.37114e-08, 13.0082, 0, -6.95796)
+
+[node name="tombstone10" parent="Room_Spiritual (Frida)/Tombstones" index="3" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.71428e-08, 0.527223, 0.849727, 2.30456e-08, 0.849727, -0.527223, -1, 0, -4.37114e-08, 13.0082, 0, -10.3339)
+
+[node name="tombstone12" parent="Room_Spiritual (Frida)/Tombstones" index="4" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.14846e-08, 0.693678, 0.720285, 3.03217e-08, 0.720285, -0.693678, -1, 0, -4.37114e-08, 12.4474, 0, -10.132)
+
+[node name="tombstone11" parent="Room_Spiritual (Frida)/Tombstones" index="5" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.71428e-08, 0.527223, 0.849727, 2.30456e-08, 0.849727, -0.527223, -1, 0, -4.37114e-08, 13.0082, 0, -12.4397)
+
+[node name="tombstone20" parent="Room_Spiritual (Frida)/Tombstones" index="6" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.966259, 0.257571, 0, -0.257571, 0.966259, 11.7826, 0, -13.2235)
+
+[node name="tombstone21" parent="Room_Spiritual (Frida)/Tombstones" index="7" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.966259, 0.257571, 0, -0.257571, 0.966259, 11.999, 0, -12.9816)
+
+[node name="tombstone22" parent="Room_Spiritual (Frida)/Tombstones" index="8" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.91174, 0.410767, 0, -0.410767, 0.91174, 11.8352, 0, -12.5514)
+
+[node name="tombstone23" parent="Room_Spiritual (Frida)/Tombstones" index="9" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.749083, 0.662476, 0, -0.662476, 0.749083, 11.999, 0, -11.9091)
+
+[node name="tombstone13" parent="Room_Spiritual (Frida)/Tombstones" index="10" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.7799e-08, -0.50222, 0.86474, -2.19527e-08, 0.86474, 0.50222, -1, 0, -4.37114e-08, 6.90866, 0, -12.8542)
+
+[node name="tombstone14" parent="Room_Spiritual (Frida)/Tombstones" index="11" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.7799e-08, -0.50222, 0.86474, -2.19527e-08, 0.86474, 0.50222, -1, 0, -4.37114e-08, 6.90866, 0, -11.6827)
+
+[node name="tombstone16" parent="Room_Spiritual (Frida)/Tombstones" index="12" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.7799e-08, -0.50222, 0.86474, -2.19527e-08, 0.86474, 0.50222, -1, 0, -4.37114e-08, 6.90866, 0, -9.82127)
+
+[node name="tombstone18" parent="Room_Spiritual (Frida)/Tombstones" index="13" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.7799e-08, -0.50222, 0.86474, -2.19527e-08, 0.86474, 0.50222, -1, 0, -4.37114e-08, 6.90866, 0, -4.85058)
+
+[node name="tombstone24" parent="Room_Spiritual (Frida)/Tombstones" index="14" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.7799e-08, -0.50222, 0.86474, -2.19527e-08, 0.86474, 0.50222, -1, 0, -4.37114e-08, 6.90866, 0, -3.36094)
+
+[node name="tombstone19" parent="Room_Spiritual (Frida)/Tombstones" index="15" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.31868e-08, -0.650827, 0.759226, -2.84486e-08, 0.759226, 0.650827, -1, 1.53609e-15, -4.37114e-08, 7.42347, 0, -4.51443)
+
+[node name="tombstone25" parent="Room_Spiritual (Frida)/Tombstones" index="16" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.31868e-08, -0.650827, 0.759226, -2.84486e-08, 0.759226, 0.650827, -1, 1.53609e-15, -4.37114e-08, 7.42347, 0, -3.1936)
+
+[node name="tombstone17" parent="Room_Spiritual (Frida)/Tombstones" index="17" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.41413e-08, -0.624452, 0.781063, -2.72957e-08, 0.781063, 0.624452, -1, 1.53609e-15, -4.37114e-08, 7.09457, 0, -5.99134)
+
+[node name="tombstone15" parent="Room_Spiritual (Frida)/Tombstones" index="18" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.68469e-08, -0.537976, 0.84296, -2.35157e-08, 0.84296, 0.537976, -1, 1.53609e-15, -4.37114e-08, 7.22009, 0, -12.3023)
+
+[node name="tombstone9" parent="Room_Spiritual (Frida)/Tombstones" index="19" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.06877e-08, 0.712124, 0.702054, 3.11279e-08, 0.702054, -0.712124, -1, 0, -4.37114e-08, 12.7612, 0, -8.11158)
+
+[node name="tombstone6" parent="Room_Spiritual (Frida)/Tombstones" index="20" instance=ExtResource("28_r8344")]
+transform = Transform3D(-3.38271e-08, 0.63334, 0.773873, 2.76842e-08, 0.773873, -0.63334, -1, 0, -4.37114e-08, 12.5245, 0, -4.11469)
+
+[node name="tombstone7" parent="Room_Spiritual (Frida)/Tombstones" index="21" instance=ExtResource("28_r8344")]
+transform = Transform3D(-2.93652e-08, 0.740734, 0.671798, 3.23785e-08, 0.671798, -0.740734, -1, -1.37468e-15, -4.37114e-08, 12.0078, 0, -3.92189)
+
+[node name="tombstone2" parent="Room_Spiritual (Frida)/Tombstones" index="22" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.851562, -0.524253, 0, 0.524253, 0.851562, 11.4243, 0, -3.02047)
+
+[node name="tombstone3" parent="Room_Spiritual (Frida)/Tombstones" index="23" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.851562, -0.524253, 0, 0.524253, 0.851562, 9.58165, 0, -3.02047)
+
+[node name="tombstone4" parent="Room_Spiritual (Frida)/Tombstones" index="24" instance=ExtResource("28_r8344")]
+transform = Transform3D(1, 0, 0, 0, 0.788698, -0.614781, 0, 0.614781, 0.788698, 9.81988, 0, -3.43784)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Spiritual (Frida)/Tombstones" index="25"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Spiritual (Frida)/Tombstones/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78449, 2, -11.6491)
+shape = SubResource("BoxShape3D_q0egx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Spiritual (Frida)/Tombstones/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84126, 2, -4.19071)
+shape = SubResource("BoxShape3D_h21xs")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Room_Spiritual (Frida)/Tombstones/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.224, 2, -7.90734)
+shape = SubResource("BoxShape3D_y6fp7")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Room_Spiritual (Frida)/Tombstones/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3217, 2, -2.85535)
+shape = SubResource("BoxShape3D_lbnr0")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Room_Spiritual (Frida)/Tombstones/StaticBody3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4951, 2, -4.11159)
+shape = SubResource("BoxShape3D_4suu7")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Room_Spiritual (Frida)/Tombstones/StaticBody3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9632, 2, -12.8416)
+shape = SubResource("BoxShape3D_24f07")
+
+[node name="shovel_head" parent="Room_Spiritual (Frida)" index="10" instance=ExtResource("32_tksm7")]
+transform = Transform3D(-0.0600749, 0.494047, -0.867357, -0.104698, 0.861015, 0.497686, 0.992688, 0.120709, 5.27634e-09, 13.2893, 0.0017786, -6.18533)
+
+[node name="shovel_handle" parent="Room_Spiritual (Frida)" index="11" instance=ExtResource("33_lywf7")]
+transform = Transform3D(0.959668, 0.281136, 0, -0.281136, 0.959668, 0, 0, 0, 1, 13.2571, 0, -5.84491)
+
 [node name="Room_Mining (Fritz)" type="Node3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="Bed" parent="Room_Mining (Fritz)" index="0" instance=ExtResource("19_dri8c")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.0248, 0, 12.6541)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.5248, 0, 8.1541)
 
 [node name="MoldBlueprintMarker" type="Marker3D" parent="Room_Mining (Fritz)" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7842, 0.966512, 8.22056)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.48, 0.972529, 8.22056)
+
+[node name="rock_broken" parent="Room_Mining (Fritz)" index="2" instance=ExtResource("34_03ihy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3227, 0, 5.3119)
+
+[node name="Rock_Broken" parent="Room_Mining (Fritz)/rock_broken" index="0"]
+surface_material_override/0 = ExtResource("35_h754b")
+
+[node name="rock_broken2" parent="Room_Mining (Fritz)" index="3" instance=ExtResource("34_03ihy")]
+transform = Transform3D(0.521799, 0, 0.853069, 0, 1, 0, -0.853069, 0, 0.521799, -11.7888, 0, 8.74457)
+
+[node name="Rock_Broken" parent="Room_Mining (Fritz)/rock_broken2" index="0"]
+surface_material_override/0 = ExtResource("35_h754b")
+
+[node name="rock_broken3" parent="Room_Mining (Fritz)" index="4" instance=ExtResource("34_03ihy")]
+transform = Transform3D(-0.431818, 0, 0.901961, 0, 1, 0, -0.901961, 0, -0.431818, -8.85827, 0, 12.2173)
+
+[node name="Rock_Broken" parent="Room_Mining (Fritz)/rock_broken3" index="0"]
+surface_material_override/0 = ExtResource("35_h754b")
+
+[node name="Rock" parent="Room_Mining (Fritz)" index="5" instance=ExtResource("36_t7rnd")]
+transform = Transform3D(0.826835, 0, 0.562444, 0, 1, 0, -0.562444, 0, 0.826835, -12.8134, 0, 4.55466)
+
+[node name="Rock2" parent="Room_Mining (Fritz)" index="6" instance=ExtResource("36_t7rnd")]
+transform = Transform3D(0.826835, 0, 0.562444, 0, 1, 0, -0.562444, 0, 0.826835, -7.06945, 0, 12.78)
+
+[node name="Rock3" parent="Room_Mining (Fritz)" index="7" instance=ExtResource("36_t7rnd")]
+transform = Transform3D(1.21473, 0, 0.294839, 0, 1.25, 0, -0.294839, 0, 1.21473, -12.9297, 0, 10.697)
+
+[node name="rock_broken4" parent="Room_Mining (Fritz)" index="8" instance=ExtResource("34_03ihy")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12.2282, 0, 11.8686)
+
+[node name="rock_broken5" parent="Room_Mining (Fritz)" index="9" instance=ExtResource("34_03ihy")]
+transform = Transform3D(2.20262, 0, -3.33893, 0, 4, 0, 3.33893, 0, 2.20262, -11.3902, 0, 3.42236)
+
+[node name="pickaxe_head" parent="Room_Mining (Fritz)" index="10" instance=ExtResource("37_76q1g")]
+transform = Transform3D(-0.343774, 0.939052, -4.10473e-08, 0, -4.37114e-08, -1, -0.939052, -0.343774, 1.50269e-08, -7.02661, 0.107741, 3.52034)
+
+[node name="pickaxe_head2" parent="Room_Mining (Fritz)" index="11" instance=ExtResource("37_76q1g")]
+transform = Transform3D(-0.810553, 0.585665, -2.56002e-08, -1.22133e-15, -4.37114e-08, -1, -0.585665, -0.810553, 3.54304e-08, -11.3604, 0.107741, 10.7057)
+
+[node name="pickaxe_handle" parent="Room_Mining (Fritz)" index="12" instance=ExtResource("38_ahnua")]
+transform = Transform3D(0.168335, 0.98573, -4.30876e-08, -2.83479e-15, -4.37114e-08, -1, -0.98573, 0.168335, -7.35814e-09, -9.73585, 0.107741, 2.84354)
+
+[node name="pickaxe_handle2" parent="Room_Mining (Fritz)" index="13" instance=ExtResource("38_ahnua")]
+transform = Transform3D(0.520607, 0.853796, -3.73206e-08, -2.83479e-15, -4.37114e-08, -1, -0.853796, 0.520607, -2.27565e-08, -13.2522, 0.107741, 5.69582)
 
 [node name="Room_Empty (Fren)" type="Node3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
@@ -843,9 +1284,27 @@ transform = Transform3D(0.999782, 0.0208901, 0, -0.0208901, 0.999782, 0, 0, 0, 1
 transform = Transform3D(0.999792, -0.0204189, 0, 0.0204189, 0.999792, 0, 0, 0, 1, 4, 2.53273, 5.56629)
 
 [node name="Bed" parent="Room_Empty (Fren)" index="5" instance=ExtResource("19_dri8c")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 7.90663, 0, 12.4427)
+transform = Transform3D(0.369698, 0, -0.929152, 0, 1, 0, 0.929152, 0, 0.369698, 10.9323, 0, 10.9967)
 
 [node name="RoomScript" type="Node3D" parent="." index="17" node_paths=PackedStringArray("MoldBlueprintMarker")]
 script = ExtResource("27_mmbsk")
 MoldBlueprintMarker = NodePath("../Room_Mining (Fritz)/MoldBlueprintMarker")
 MoldBlueprint = ExtResource("28_clpqx")
+
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13"]
+[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14"]
+[editable path="Room_Mining (Fritz)/rock_broken"]
+[editable path="Room_Mining (Fritz)/rock_broken2"]
+[editable path="Room_Mining (Fritz)/rock_broken3"]

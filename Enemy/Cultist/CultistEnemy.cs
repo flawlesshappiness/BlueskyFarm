@@ -51,7 +51,7 @@ public partial class CultistEnemy : NavEnemy
     private const string StateAttack = "Attack";
 
     private float PlayerMaxDist => Player.Instance.IsRunning ? 10f : 5f;
-    private bool PlayerTooClose => DistanceToPlayer < PlayerMaxDist;
+    private bool PlayerTooClose => DistanceToPlayer < PlayerMaxDist && HasPlayerLOS();
     private float PlayerLOSDist => 12f;
     private float PlayerLOSAngle => 15f;
     private bool PlayerInsideViewAngle => AngleToPlayer < PlayerLOSAngle;

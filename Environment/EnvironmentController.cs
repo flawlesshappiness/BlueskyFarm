@@ -8,8 +8,12 @@ public partial class EnvironmentController : ResourceController<EnvironmentColle
     public void SetEnvironment(AreaNameType area)
     {
         var info = GetInfo(area);
-        var scene = Scene.Current as GameScene;
+        SetEnvironment(info);
+    }
 
+    public void SetEnvironment(EnvironmentInfo info)
+    {
+        var scene = Scene.Current as GameScene;
         scene.WorldEnvironment.Environment = info.Environment;
         scene.DirectionalLight.LightColor = info.DirectionalLightColor;
     }

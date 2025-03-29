@@ -17,6 +17,8 @@ public partial class MineForgeRoom : Node3D
     [Export]
     public ItemInfo PickaxeInfo;
 
+    private string DebugId => GetInstanceId().ToString();
+
     public override void _Ready()
     {
         base._Ready();
@@ -32,14 +34,21 @@ public partial class MineForgeRoom : Node3D
         Kiln.OnActivated += KilnActivated;
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(DebugId);
+    }
+
     private void RegisterDebugActions()
     {
-        var category = "BASEMENT";
+        var category = "BASEMENT - FORGE";
 
         Debug.RegisterAction(new DebugAction
         {
+            Id = DebugId,
             Category = category,
-            Text = "Teleport to forge",
+            Text = "Teleport to",
             Action = _ => TeleportToForge()
         });
 

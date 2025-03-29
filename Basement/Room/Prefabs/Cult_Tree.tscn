@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=49 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -20,6 +20,13 @@
 [ext_resource type="PackedScene" uid="uid://15ablj0o0gi0" path="res://Assets/FlawLizArt/Roots/root_hole_002.fbx" id="17_lnowb"]
 [ext_resource type="PackedScene" uid="uid://bb0httnxtxpvj" path="res://Assets/FlawLizArt/Roots/root_hole_003.fbx" id="18_qs8l4"]
 [ext_resource type="PackedScene" uid="uid://dl3u4xamdiefc" path="res://Assets/FlawLizArt/Roots/root_hole_004.fbx" id="19_dapw8"]
+[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="21_k3te6"]
+[ext_resource type="PackedScene" uid="uid://dw7fq6rs1qc2t" path="res://Basement/Assets/Floor/Floor_Roots.tscn" id="21_vfqeo"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="23_dksqk"]
+[ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="24_xtf6x"]
+[ext_resource type="Script" path="res://Basement/Room/CultTreeRoom.cs" id="25_08e0o"]
+[ext_resource type="Resource" uid="uid://tofod0pgbae7" path="res://Environment/Resources/Cult.tres" id="26_k3g66"]
+[ext_resource type="Resource" uid="uid://bab4qgxdu8cut" path="res://Environment/Resources/Core.tres" id="27_3jd3j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -28,9 +35,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_rwjcf"]
 material = SubResource("StandardMaterial3D_ogpc6")
 size = Vector2(12, 12)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ih02d"]
-size = Vector3(12, 28, 12)
 
 [sub_resource type="Curve" id="Curve_777a2"]
 _data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.248485, 1), -0.543956, -0.543956, 0, 0, Vector2(1, 0), -1.25196, 0.0, 0, 0]
@@ -89,6 +93,50 @@ proximity_fade_distance = 12.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_kggik"]
 material = SubResource("StandardMaterial3D_g7okb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwelh"]
+size = Vector3(12, 4, 12)
+
+[sub_resource type="Curve" id="Curve_k8oy3"]
+_data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.248485, 1), -0.543956, -0.543956, 0, 0, Vector2(1, 0), -1.25196, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wv8s1"]
+curve = SubResource("Curve_k8oy3")
+
+[sub_resource type="Curve" id="Curve_0a4o1"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6i4yd"]
+curve = SubResource("Curve_0a4o1")
+
+[sub_resource type="Curve" id="Curve_5y5dh"]
+_data = [Vector2(0, 0.8), 0.0, 0.2, 0, 1, Vector2(1, 1), 0.2, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jxo6g"]
+curve = SubResource("Curve_5y5dh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ga33q"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(6, 2, 6)
+angle_min = -4.99999
+angle_max = 5.00001
+angle_curve = SubResource("CurveTexture_6i4yd")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_jxo6g")
+scale_over_velocity_max = 40.1
+color = Color(0.68, 0.1632, 0.1632, 0.831373)
+alpha_curve = SubResource("CurveTexture_wv8s1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_221st"]
+size = Vector3(4, 1, 4)
 
 [node name="Cult_Tree" instance=ExtResource("1_gacrs")]
 
@@ -818,7 +866,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 16, -12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 16, -12)
 
 [node name="EnemySpawn" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -8)
 
 [node name="AmbienceArea" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
@@ -826,13 +874,7 @@ Area = 4
 
 [node name="Hole" type="Node3D" parent="." index="11"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Hole" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-shape = SubResource("BoxShape3D_ih02d")
-
-[node name="Roots" type="Node3D" parent="Hole" index="1"]
+[node name="Roots" type="Node3D" parent="Hole" index="0"]
 
 [node name="Side 1" type="Node3D" parent="Hole/Roots" index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 8.74228e-08, -4.37114e-08, 1, 3.82137e-15, 1, 4.37114e-08, 0, -8, -5.756)
@@ -954,7 +996,7 @@ transform = Transform3D(1.5, 0, -8.47033e-22, 8.47033e-22, -6.55671e-08, -1.5, 2
 [node name="root_hole_004" parent="Hole/Roots/Side 4" index="8" instance=ExtResource("19_dapw8")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 1.67037e-22, 1, -4.37114e-08, 2.36475, -4.76837e-07, 16)
 
-[node name="Tree" type="Node3D" parent="Hole" index="2"]
+[node name="Tree" type="Node3D" parent="Hole" index="1"]
 
 [node name="DeadTree_1" parent="Hole/Tree" index="0" instance=ExtResource("4_sobse")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.07021, -19.8895, -1.84497)
@@ -965,7 +1007,7 @@ transform = Transform3D(2.49304, 0, -1.66876, 0, 3, 0, 1.66876, 0, 2.49304, -2.0
 [node name="DeadTree_2" parent="Hole/Tree" index="2" instance=ExtResource("4_sobse")]
 transform = Transform3D(-1.25226, 0, -1.55944, 0, 2, 0, 1.55944, 0, -1.25226, 0.213, -3.63502, -0.621)
 
-[node name="ps_blood_dust" type="GPUParticles3D" parent="Hole" index="3"]
+[node name="ps_blood_dust" type="GPUParticles3D" parent="Hole" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 amount = 10
 lifetime = 6.0
@@ -974,9 +1016,296 @@ visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
 process_material = SubResource("ParticleProcessMaterial_r2c2m")
 draw_pass_1 = SubResource("QuadMesh_kggik")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Hole" index="4"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Hole" index="3"]
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.25
 distance_fade_enabled = true
 distance_fade_begin = 28.0
 omni_range = 12.8487
+
+[node name="StartHole" type="Marker3D" parent="Hole" index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 8, 0)
+
+[node name="PlayerArea" type="Area3D" parent="Hole" index="5"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("21_k3te6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole/PlayerArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_xwelh")
+
+[node name="Core" type="Node3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="Walls" type="Node3D" parent="Core" index="0"]
+
+[node name="Floor_Dirt" parent="Core/Walls" index="0" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="Floor_Dirt38" parent="Core/Walls" index="1" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Floor_Dirt3" parent="Core/Walls" index="2" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10, -2)
+
+[node name="Floor_Dirt6" parent="Core/Walls" index="3" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 10, -4)
+
+[node name="Floor_Dirt12" parent="Core/Walls" index="4" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 10, 2)
+
+[node name="Floor_Dirt7" parent="Core/Walls" index="5" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 2, 4)
+
+[node name="Floor_Dirt52" parent="Core/Walls" index="6" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 10, 4)
+
+[node name="Floor_Dirt8" parent="Core/Walls" index="7" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, 0, 4, 4)
+
+[node name="Floor_Dirt28" parent="Core/Walls" index="8" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, 4, 4, 8)
+
+[node name="Floor_Dirt29" parent="Core/Walls" index="9" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, 4, 4, 12)
+
+[node name="Floor_Dirt32" parent="Core/Walls" index="10" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, -4, 4, 8)
+
+[node name="Floor_Dirt33" parent="Core/Walls" index="11" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, -4, 4, 12)
+
+[node name="Floor_Dirt30" parent="Core/Walls" index="12" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, 0, 4, 8)
+
+[node name="Floor_Dirt31" parent="Core/Walls" index="13" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, 0, 4, 12)
+
+[node name="Floor_Dirt4" parent="Core/Walls" index="14" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 10, -4)
+
+[node name="Floor_Dirt9" parent="Core/Walls" index="15" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, -2)
+
+[node name="Floor_Dirt10" parent="Core/Walls" index="16" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 2, -4)
+
+[node name="Floor_Dirt56" parent="Core/Walls" index="17" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 10, 0)
+
+[node name="Floor_Dirt66" parent="Core/Walls" index="18" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, 2, 11.5, 0)
+
+[node name="Floor_Dirt67" parent="Core/Walls" index="19" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.91069e-15, 8.74228e-08, 1, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 1.91069e-15, -2, 11.5, 0)
+
+[node name="Floor_Dirt57" parent="Core/Walls" index="20" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 2, 0)
+
+[node name="Floor_Dirt11" parent="Core/Walls" index="21" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 2, -4)
+
+[node name="Floor_Dirt54" parent="Core/Walls" index="22" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 10, 0)
+
+[node name="Floor_Dirt55" parent="Core/Walls" index="23" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 2, 0)
+
+[node name="Floor_Dirt5" parent="Core/Walls" index="24" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 2, 4)
+
+[node name="Floor_Dirt53" parent="Core/Walls" index="25" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 10, 4)
+
+[node name="Floor_Dirt58" parent="Core/Walls" index="26" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6, -2)
+
+[node name="Floor_Dirt59" parent="Core/Walls" index="27" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 6, -4)
+
+[node name="Floor_Dirt60" parent="Core/Walls" index="28" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 6, 2)
+
+[node name="Floor_Dirt61" parent="Core/Walls" index="29" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 6, 4)
+
+[node name="Floor_Dirt62" parent="Core/Walls" index="30" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 6, -4)
+
+[node name="Floor_Dirt63" parent="Core/Walls" index="31" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 2, 6, 0)
+
+[node name="Floor_Dirt64" parent="Core/Walls" index="32" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 6, 0)
+
+[node name="Floor_Dirt65" parent="Core/Walls" index="33" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2, 6, 4)
+
+[node name="Floor_Dirt19" parent="Core/Walls" index="34" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4, 2, 6)
+
+[node name="Floor_Dirt72" parent="Core/Walls" index="35" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4, 6, 6)
+
+[node name="Floor_Dirt20" parent="Core/Walls" index="36" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4, 2, 6)
+
+[node name="Floor_Dirt21" parent="Core/Walls" index="37" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 6, 6, 5.2712)
+
+[node name="Floor_Dirt22" parent="Core/Walls" index="38" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 6, 6, 9.2712)
+
+[node name="Floor_Dirt76" parent="Core/Walls" index="39" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 6, 6, 13.2712)
+
+[node name="Floor_Dirt77" parent="Core/Walls" index="40" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 6, 2, 5.2712)
+
+[node name="Floor_Dirt78" parent="Core/Walls" index="41" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 6, 2, 9.2712)
+
+[node name="Floor_Dirt79" parent="Core/Walls" index="42" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 6, 2, 13.2712)
+
+[node name="Floor_Dirt23" parent="Core/Walls" index="43" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 4, 6, 14)
+
+[node name="Floor_Dirt24" parent="Core/Walls" index="44" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 6, 14)
+
+[node name="Floor_Dirt25" parent="Core/Walls" index="45" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -4, 6, 14)
+
+[node name="Floor_Dirt73" parent="Core/Walls" index="46" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 4, 2, 14)
+
+[node name="Floor_Dirt74" parent="Core/Walls" index="47" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 2, 14)
+
+[node name="Floor_Dirt75" parent="Core/Walls" index="48" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -4, 2, 14)
+
+[node name="Floor_Dirt26" parent="Core/Walls" index="49" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -6, 6, 14.5)
+
+[node name="Floor_Dirt27" parent="Core/Walls" index="50" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -6, 6, 10.5)
+
+[node name="Floor_Dirt68" parent="Core/Walls" index="51" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -6, 6, 6.5)
+
+[node name="Floor_Dirt69" parent="Core/Walls" index="52" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -6, 2, 14.5)
+
+[node name="Floor_Dirt70" parent="Core/Walls" index="53" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -6, 2, 10.5)
+
+[node name="Floor_Dirt71" parent="Core/Walls" index="54" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -6, 2, 6.5)
+
+[node name="Floor_Dirt34" parent="Core/Walls" index="55" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -4.8206, 2, 7.60117)
+
+[node name="Floor_Dirt35" parent="Core/Walls" index="56" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 1.77636e-15, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -4.45324, 2, 12.9566)
+
+[node name="Floor_Dirt36" parent="Core/Walls" index="57" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, 1.77636e-15, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, 4.62863, 2, 12.7664)
+
+[node name="Floor_Dirt37" parent="Core/Walls" index="58" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 4.2885e-15, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 4.62863, 2, 6.8568)
+
+[node name="Floor_Dirt2" parent="Core/Walls" index="59" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="Floor_Dirt39" parent="Core/Walls" index="60" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+
+[node name="Floor_Dirt48" parent="Core/Walls" index="61" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Floor_Dirt49" parent="Core/Walls" index="62" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="Floor_Dirt46" parent="Core/Walls" index="63" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="Floor_Dirt50" parent="Core/Walls" index="64" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Floor_Dirt51" parent="Core/Walls" index="65" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Floor_Dirt47" parent="Core/Walls" index="66" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="Floor_Dirt13" parent="Core/Walls" index="67" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 16)
+
+[node name="Floor_Dirt15" parent="Core/Walls" index="68" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 16)
+
+[node name="Floor_Dirt14" parent="Core/Walls" index="69" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 16)
+
+[node name="Floor_Dirt16" parent="Core/Walls" index="70" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="Floor_Dirt17" parent="Core/Walls" index="71" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="Floor_Dirt18" parent="Core/Walls" index="72" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 8)
+
+[node name="Floor_Dirt40" parent="Core/Walls" index="73" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 16)
+
+[node name="Floor_Dirt42" parent="Core/Walls" index="74" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
+
+[node name="Floor_Dirt43" parent="Core/Walls" index="75" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="Floor_Dirt44" parent="Core/Walls" index="76" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+
+[node name="Floor_Dirt45" parent="Core/Walls" index="77" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 12)
+
+[node name="Floor_Dirt41" parent="Core/Walls" index="78" instance=ExtResource("21_vfqeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="ps_blood_dust2" type="GPUParticles3D" parent="Core" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83687, 10.1445)
+amount = 30
+lifetime = 10.0
+preprocess = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
+process_material = SubResource("ParticleProcessMaterial_ga33q")
+draw_pass_1 = SubResource("QuadMesh_kggik")
+
+[node name="StartCore" type="Marker3D" parent="Core" index="2"]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0, 0)
+
+[node name="TouchableOutOfCore" type="StaticBody3D" parent="Core" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88969, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("23_dksqk")
+HoverIcon = ExtResource("24_xtf6x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Core/TouchableOutOfCore" index="0"]
+shape = SubResource("BoxShape3D_221st")
+
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore")]
+script = ExtResource("25_08e0o")
+Room = NodePath("..")
+PlayerAreaEnterHole = NodePath("../Hole/PlayerArea")
+TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
+StartHole = NodePath("../Hole/StartHole")
+StartCore = NodePath("../Core/StartCore")
+EnvironmentCult = ExtResource("26_k3g66")
+EnvironmentCore = ExtResource("27_3jd3j")

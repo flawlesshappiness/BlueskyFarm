@@ -15,5 +15,6 @@ public enum AreaNameType
     Forest,
     Mine,
     Cult,
-    House
+    House,
+    None,
 }

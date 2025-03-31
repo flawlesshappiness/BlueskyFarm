@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6vua766jxhes"]
+
+[ext_resource type="PackedScene" uid="uid://pty4q5m76x8e" path="res://Assets/FlawLizArt/Roots/root_core_001.fbx" id="1_60qnf"]
+[ext_resource type="Script" path="res://Basement/Assets/Entities/RootCore.cs" id="1_hutdn"]
+[ext_resource type="Script" path="res://Item/ItemArea.cs" id="2_ax4p2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kekfh"]
+size = Vector3(0.480469, 4, 0.512695)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uf2b4"]
+radius = 0.651727
+
+[node name="RootCore" type="Node3D" node_paths=PackedStringArray("ItemArea")]
+script = ExtResource("1_hutdn")
+ItemArea = NodePath("ItemArea")
+
+[node name="root_core_001" parent="." instance=ExtResource("1_60qnf")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_kekfh")
+
+[node name="ItemArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_mask = 2
+script = ExtResource("2_ax4p2")
+CustomId = "sword"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea"]
+shape = SubResource("SphereShape3D_uf2b4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96324, 0)
+light_color = Color(1, 0, 0, 1)
+distance_fade_enabled = true
+distance_fade_begin = 28.0
+omni_range = 10.0

@@ -19,10 +19,7 @@ public partial class CultTreeRoom : Node3D
     public Marker3D StartCore;
 
     [Export]
-    public EnvironmentInfo EnvironmentCult;
-
-    [Export]
-    public EnvironmentInfo EnvironmentCore;
+    public RootCore RootCore;
 
     private string DebugId => GetInstanceId().ToString();
 
@@ -31,6 +28,7 @@ public partial class CultTreeRoom : Node3D
         base._Ready();
         PlayerAreaEnterHole.OnPlayerEntered += PlayerEntered_EnterHole;
         TouchableExitCore.OnTouched += OnTouched_ExitCore;
+        RootCore.OnSwordEntered += SwordEntered;
 
         RegisterDebugActions();
     }
@@ -71,7 +69,8 @@ public partial class CultTreeRoom : Node3D
 
             Player.Instance.GlobalPosition = StartCore.GlobalPosition;
             Player.Instance.SetLookRotation(StartCore);
-            EnvironmentController.Instance.SetEnvironment(EnvironmentCore);
+            EnvironmentController.Instance.SetEnvironment(AreaNameType.Core);
+            AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Core);
             SetPlayerLockEnabled(false);
 
             yield return view.TransitionEndCr(nameof(SceneDoor));
@@ -90,7 +89,8 @@ public partial class CultTreeRoom : Node3D
 
             Player.Instance.GlobalPosition = StartHole.GlobalPosition;
             Player.Instance.SetLookRotation(StartHole);
-            EnvironmentController.Instance.SetEnvironment(EnvironmentCult);
+            EnvironmentController.Instance.SetEnvironment(AreaNameType.Cult);
+            AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Cult);
             SetPlayerLockEnabled(false);
 
             yield return view.TransitionEndCr(nameof(SceneDoor));
@@ -104,5 +104,10 @@ public partial class CultTreeRoom : Node3D
         Player.Instance.MovementLock.SetLock(id, enabled);
         Player.Instance.LookLock.SetLock(id, enabled);
         Player.Instance.InteractLock.SetLock(id, enabled);
+    }
+
+    private void SwordEntered()
+    {
+        Debug.Log("BAD END");
     }
 }

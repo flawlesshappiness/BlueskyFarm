@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=48 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -24,9 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://dw7fq6rs1qc2t" path="res://Basement/Assets/Floor/Floor_Roots.tscn" id="21_vfqeo"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="23_dksqk"]
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="24_xtf6x"]
+[ext_resource type="PackedScene" uid="uid://c6vua766jxhes" path="res://Basement/Assets/Entities/RootCore.tscn" id="25_2s1e1"]
 [ext_resource type="Script" path="res://Basement/Room/CultTreeRoom.cs" id="25_08e0o"]
-[ext_resource type="Resource" uid="uid://tofod0pgbae7" path="res://Environment/Resources/Cult.tres" id="26_k3g66"]
-[ext_resource type="Resource" uid="uid://bab4qgxdu8cut" path="res://Environment/Resources/Core.tres" id="27_3jd3j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -1300,12 +1299,80 @@ HoverIcon = ExtResource("24_xtf6x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Core/TouchableOutOfCore" index="0"]
 shape = SubResource("BoxShape3D_221st")
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore")]
+[node name="RootCore" parent="Core" index="4" instance=ExtResource("25_2s1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 12.3241)
+
+[node name="Roots_Ceiling" type="Node3D" parent="Core" index="5"]
+
+[node name="root_floor_001" parent="Core/Roots_Ceiling" index="0" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6, 9.71)
+
+[node name="root_floor_002" parent="Core/Roots_Ceiling" index="1" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.09703, 6, 8.23374)
+
+[node name="root_floor_003" parent="Core/Roots_Ceiling" index="2" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.43616, 6, 9.64244)
+
+[node name="root_floor_004" parent="Core/Roots_Ceiling" index="3" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.7384, 6, 11.2986)
+
+[node name="root_floor_005" parent="Core/Roots_Ceiling" index="4" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.19086, 6, 11.7846)
+
+[node name="root_floor_006" parent="Core/Roots_Ceiling" index="5" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.76508, 6, 10.3471)
+
+[node name="root_floor_007" parent="Core/Roots_Ceiling" index="6" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.71795, 6, 10.7312)
+
+[node name="root_floor_008" parent="Core/Roots_Ceiling" index="7" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.40643, 6, 8.65435)
+
+[node name="root_floor_009" parent="Core/Roots_Ceiling" index="8" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.806767, 6, 7.41162)
+
+[node name="root_floor_010" parent="Core/Roots_Ceiling" index="9" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.45099, 6, 6.20323)
+
+[node name="root_floor_011" parent="Core/Roots_Ceiling" index="10" instance=ExtResource("13_or7gq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.593284, 6, 4.25478)
+
+[node name="root_floor_012" parent="Core/Roots_Ceiling" index="11" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -0.25135, 6.5, 5.11818)
+
+[node name="root_floor_013" parent="Core/Roots_Ceiling" index="12" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -0.958523, 6.5, 8.0073)
+
+[node name="root_floor_014" parent="Core/Roots_Ceiling" index="13" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -0.839815, 6.5, 10.792)
+
+[node name="root_floor_015" parent="Core/Roots_Ceiling" index="14" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -3.51093, 6.5, 9.83914)
+
+[node name="root_floor_016" parent="Core/Roots_Ceiling" index="15" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -2.02943, 6.5, 11.719)
+
+[node name="root_floor_017" parent="Core/Roots_Ceiling" index="16" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, 2.77935, 6.5, 11.9707)
+
+[node name="root_floor_018" parent="Core/Roots_Ceiling" index="17" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, 1.94294, 6.5, 9.77269)
+
+[node name="root_floor_019" parent="Core/Roots_Ceiling" index="18" instance=ExtResource("13_or7gq")]
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, 4.24327, 6.5, 7.94217)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Core" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.78807, 0)
+light_color = Color(0, 0.366667, 0.55, 1)
+distance_fade_enabled = true
+distance_fade_begin = 28.0
+omni_range = 8.156
+
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore")]
 script = ExtResource("25_08e0o")
 Room = NodePath("..")
 PlayerAreaEnterHole = NodePath("../Hole/PlayerArea")
 TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
 StartHole = NodePath("../Hole/StartHole")
 StartCore = NodePath("../Core/StartCore")
-EnvironmentCult = ExtResource("26_k3g66")
-EnvironmentCore = ExtResource("27_3jd3j")
+RootCore = NodePath("../Core/RootCore")

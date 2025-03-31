@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Green": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Grass_Short.tres"
+"use_external/path": "res://Assets/Materials/Plant_Dark.tres"
 }
 }
 }

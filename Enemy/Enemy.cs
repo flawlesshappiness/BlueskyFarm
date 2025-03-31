@@ -99,12 +99,12 @@ public partial class Enemy : Node3DScript
 
     public bool HasPlayerLOS()
     {
-        if (this.TryRaycast(GlobalPosition.Add(y: 0.25f), PlayerPosition.Add(y: 0.5f), CollisionMaskHelper.Create(CollisionMaskType.Player), out var result))
-        {
-            return true;
-        }
+        var origin = GlobalPosition.Add(y: 0.25f);
+        var end = PlayerPosition.Add(y: 0.5f);
+        var raycast_player = this.TryRaycast(origin, end, CollisionMaskHelper.Create(CollisionMaskType.Player), out var result_player);
+        var raycast_world = this.TryRaycast(origin, PlayerPosition.Add(y: 0.5f), CollisionMaskHelper.Create(CollisionMaskType.World), out var result_world);
 
-        return false;
+        return raycast_player && !raycast_world;
     }
 
     public void Spawn() => Spawn(IsDebug);

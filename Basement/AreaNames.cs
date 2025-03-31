@@ -6,6 +6,7 @@ public static class AreaNames
     public const string Mine = "Mine";
     public const string Cult = "Cult";
     public const string House = "House";
+    public const string Core = "Core";
 }
 
 public enum AreaNameType
@@ -16,5 +17,5 @@ public enum AreaNameType
     Mine,
     Cult,
     House,
-    None,
+    Core,
 }

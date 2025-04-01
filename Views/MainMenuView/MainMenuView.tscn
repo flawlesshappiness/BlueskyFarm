@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="3_cvcfb"]
 
 [node name="MainMenuView" type="Control" node_paths=PackedStringArray("PlayButton", "OptionsButton", "QuitButton", "MainControl", "Overlay")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

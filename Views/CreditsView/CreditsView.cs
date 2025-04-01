@@ -9,6 +9,11 @@ public partial class CreditsView : View
     [Export]
     public AnimationPlayer AnimationPlayer;
 
+    [Export]
+    public Control CreditsControl;
+
+    private float _mul_speed = 1.0f;
+
     public override void _Ready()
     {
         base._Ready();
@@ -38,25 +43,51 @@ public partial class CreditsView : View
         base._Process(delta);
 
         var holding = PlayerInput.Jump.Held || PlayerInput.Interact.Held;
-        var speed = holding ? 3.0f : 1.0f;
-        AnimationPlayer.SpeedScale = speed;
+        _mul_speed = holding ? 3.0f : 1.0f;
+        AnimationPlayer.SpeedScale = _mul_speed;
     }
 
-    public void AnimateCredits()
+    public void AnimateAll()
     {
         HideViews();
         SetLocksEnabled(true);
         AmbienceController.Instance.StopAmbience();
 
-        Coroutine.Start(Cr);
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+
         IEnumerator Cr()
         {
-            yield return AnimationPlayer.PlayAndWaitForAnimation("credits");
+            yield return AnimateCredits();
             yield return AnimationPlayer.PlayAndWaitForAnimation("ending");
             MainMenuView.Instance.AnimateTransitionToMainMenu();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsUnscaled(1f);
             SetLocksEnabled(false);
             Hide();
+        }
+    }
+
+    private Coroutine AnimateCredits()
+    {
+        return Coroutine.Start(Cr);
+        IEnumerator Cr()
+        {
+            var height = CreditsControl.Size.Y;
+            var window_height = Scene.Root.Size.Y;
+            var full_height = height + window_height;
+            var start = Vector2.Zero;
+            var end = start + Vector2.Up * full_height;
+            var duration = 0.01f * full_height;
+
+            var time = 0f;
+            var time_end = duration;
+            while (time < time_end)
+            {
+                var f = time / duration;
+                CreditsControl.Position = start.Lerp(end, f);
+                time += GameTime.DeltaTime * _mul_speed;
+                yield return null;
+            }
         }
     }
 

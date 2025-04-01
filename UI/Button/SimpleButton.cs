@@ -18,11 +18,13 @@ public partial class SimpleButton : Button
 
     protected virtual void OnPressed()
     {
-        SoundController.Instance.Play(PressedSound);
+        var asp = SoundController.Instance.Play(PressedSound);
+        asp.ProcessMode = ProcessModeEnum.Always;
     }
 
     protected virtual void OnHover()
     {
-        SoundController.Instance.Play(HoverSound);
+        var asp = SoundController.Instance.Play(HoverSound);
+        asp.ProcessMode = ProcessModeEnum.Always;
     }
 }

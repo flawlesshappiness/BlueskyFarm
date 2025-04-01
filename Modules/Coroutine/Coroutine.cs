@@ -79,7 +79,7 @@ public class Coroutine : CustomYieldInstruction
         return this;
     }
 
-    public Coroutine SetRunWhilePaused(bool run_while_paused)
+    public Coroutine SetRunWhilePaused(bool run_while_paused = true)
     {
         RunWhilePaused = run_while_paused;
         return this;

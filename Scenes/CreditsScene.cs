@@ -5,6 +5,6 @@ public partial class CreditsScene : Scene
         base._Ready();
 
         CreditsView.Instance.Show();
-        CreditsView.Instance.AnimateCredits();
+        CreditsView.Instance.AnimateAll();
     }
 }

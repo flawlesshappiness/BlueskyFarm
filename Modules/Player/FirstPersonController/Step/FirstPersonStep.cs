@@ -76,7 +76,7 @@ public partial class FirstPersonStep : Node3D
     private void StepHeadBob()
     {
         Coroutine.Stop(cr_head_bob);
-        cr_head_bob = Coroutine.Start(Cr);
+        cr_head_bob = this.StartCoroutine(Cr);
 
         IEnumerator Cr()
         {
@@ -101,7 +101,7 @@ public partial class FirstPersonStep : Node3D
     private void ResetHeadBob()
     {
         Coroutine.Stop(cr_head_bob);
-        cr_head_bob = Coroutine.Start(Cr);
+        cr_head_bob = this.StartCoroutine(Cr);
 
         IEnumerator Cr()
         {

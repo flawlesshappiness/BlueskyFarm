@@ -32,6 +32,12 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         FadeEffects();
     }
 
+    public void StopAmbience()
+    {
+        StopBackgroundAmbience();
+        StopAmbientNoise();
+    }
+
     private AmbienceInfo GetInfo(string area)
     {
         return Collection.Resources.FirstOrDefault(x => x.Area.ToString() == area);
@@ -77,10 +83,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
     // Background ambience
     public void StartBackgroundAmbience()
     {
-        if (_current_background_asp != null)
-        {
-            FadeOutThenDestroy(_current_background_asp);
-        }
+        StopBackgroundAmbience();
 
         if (CurrentInfo == null)
         {
@@ -94,6 +97,15 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
             });
 
             _current_background_asp.FadeIn(FADE_TIME, CurrentInfo.BackgroundSound.Volume);
+        }
+    }
+
+    public void StopBackgroundAmbience()
+    {
+        if (_current_background_asp != null)
+        {
+            FadeOutThenDestroy(_current_background_asp);
+            _current_background_asp = null;
         }
     }
 

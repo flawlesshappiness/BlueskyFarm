@@ -210,6 +210,21 @@ public partial class InventoryController : SingletonController
         }
     }
 
+    public void ResetInventory()
+    {
+        LoadData();
+
+        for (int i = 0; i < MAX_INVENTORY_SIZE; i++)
+        {
+            OnItemRemoved?.Invoke(i);
+
+            if (GetItem(i) != null)
+            {
+                OnItemAdded?.Invoke(i);
+            }
+        }
+    }
+
     public bool HasItem(ItemData item)
     {
         return CurrentInventoryItems.Any(x => x != null && x.Id == item.Id);

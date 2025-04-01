@@ -144,6 +144,9 @@ public partial class MainMenuView : View
             Scene.PauseLock.RemoveLock(nameof(MainMenuView));
             MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
 
+            yield return null;
+            Cursor.Hide();
+
             yield return LerpEnumerator.Lerp01_Unscaled(1f, f =>
             {
                 var a = Mathf.Lerp(1f, 0f, f);

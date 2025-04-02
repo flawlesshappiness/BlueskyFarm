@@ -1,0 +1,48 @@
+NOTE_WORKSHOP_001
+Note hanging at the workshop door in the basement
+
+NOTE_ROOTMIMIC_001
+Note hanging in the basement
+
+NOTE_FOREST_BED_001
+Note in the forest treehouse
+
+NOTE_BUSINESS_NAMES_001
+Note in the forest first shack
+
+FROG_INTRO_001
+When touching the frog for the first time
+
+FROG_INTRO_REPEAT_001
+When touching the frog during the first task
+
+FROG_FIND_SEEDS_001
+When completing the first task
+Starts the second task
+
+FROG_FIND_SEEDS_REPEAT_001
+When touching the frog during the second task
+
+FROG_DESTROY_TREE_001
+When completing the second task
+
+FROG_DESTROY_TREE_REPEAT_001
+When touching the frog during the third task
+
+FROG_FOREST_WEEDS_001
+When touching the frog after touching the weeds in the basement
+
+FROG_STONE_001
+When touching the frog after touching a stone
+Disabled if a stone is mined with a pickaxe
+
+FROG_FORGE_001
+When touching the frog after touching the forge
+Disabled when forge is fueled
+
+FROG_CORE_001
+When touching the frog after entering the core room (top)
+Disabled when entering the core room (bottom)
+
+FROG_FIRST_DEATH_001
+When touching the frog after dying for the first time

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=49 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -136,6 +136,9 @@ alpha_curve = SubResource("CurveTexture_wv8s1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_221st"]
 size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_havax"]
+size = Vector3(20, 4, 20)
 
 [node name="Cult_Tree" instance=ExtResource("1_gacrs")]
 
@@ -1376,3 +1379,12 @@ TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
 StartHole = NodePath("../Hole/StartHole")
 StartCore = NodePath("../Core/StartCore")
 RootCore = NodePath("../Core/RootCore")
+
+[node name="PlayerArea_EnterRoom" type="Area3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("21_k3te6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea_EnterRoom" index="0"]
+shape = SubResource("BoxShape3D_havax")

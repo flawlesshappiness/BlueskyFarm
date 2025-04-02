@@ -134,36 +134,58 @@ public partial class FrogCharacter : Character
 
     private void Touched()
     {
-        if (HasFlag(DialogueFlags.FirstDeath, 1))
+        if (DialogueFlags.IsFlag(DialogueFlags.FrogCore, 1))
         {
+            // After entering the upper core room
+            // Tells the player to jump into the hole
+            StartDialogue("##FROG_CORE_001##");
+        }
+        if (DialogueFlags.IsFlag(DialogueFlags.FrogForge, 1))
+        {
+            // After touching the forge
+            // Tells the player to fuel the furnace
+            StartDialogue("##FROG_FORGE_001##");
+        }
+        else if (DialogueFlags.IsFlag(DialogueFlags.FrogStone, 1))
+        {
+            // After touching the rocks in the mines
+            // Tells the player to look for a pickaxe
+            StartDialogue("##FROG_STONE_001##");
+        }
+        else if (DialogueFlags.IsFlag(DialogueFlags.FrogForestWeeds, 1))
+        {
+            // After touching the weeds in the basement
+            // Tells player to look for workshop
+            StartDialogue("##FROG_FOREST_WEEDS_001##");
+        }
+        else if (DialogueFlags.IsFlag(DialogueFlags.FrogFirstDeath, 1))
+        {
+            // After player dies first time
+            // Tells player not to get too close to enemies
             StartDialogue("##FROG_FIRST_DEATH_001##");
         }
-        else if (HasFlag(DialogueFlags.FrogIntro, 1))
+        else if (DialogueFlags.IsFlag(DialogueFlags.FrogIntro, 1))
         {
+            // After given the first task
+            // Repeats: Player must grow a crop
             StartDialogue("##FROG_INTRO_REPEAT_001##");
         }
-        else if (HasFlag(DialogueFlags.FrogIntro, 2))
+        else if (DialogueFlags.IsFlag(DialogueFlags.FrogIntro, 2))
         {
+            // After given the second task
+            // Repeats: Player must go to basement to collect more seeds
             StartDialogue("##FROG_FIND_SEEDS_REPEAT_001##");
         }
-        else if (HasFlag(DialogueFlags.FrogWeedcutter, 1))
+        else if (DialogueFlags.IsFlag(DialogueFlags.FrogIntro, 3))
         {
-            StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_001##");
-        }
-        else if (HasFlag(DialogueFlags.FrogWeedcutter, 2))
-        {
-            StartDialogue("##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##");
-        }
-        else if (HasFlag(DialogueFlags.FrogWeedcutter, 3) && Player.HasAccessToBlueprint("weedcutter"))
-        {
-            StartDialogue("##FROG_WEEDCUTTER_CREATE_001##");
-        }
-        else if (HasFlag(DialogueFlags.FrogWeedcutter, 4))
-        {
-            StartDialogue("##FROG_FOREST_ENTER_REPEAT_001##");
+            // After given the third task
+            // Repeats: Player must forge the sword, then destroy the tree
+            StartDialogue("##FROG_DESTROY_TREE_REPEAT_001##");
         }
         else
         {
+            // The first thing said to the player
+            // Gives the first task of growing a crop
             StartDialogue("##FROG_INTRO_001##");
         }
     }
@@ -182,11 +204,6 @@ public partial class FrogCharacter : Character
             case "tutorial_002":
                 ThrowBasementKeyToPlayer();
                 BlueprintCrafting.SetBlueprint("tutorial_002");
-                break;
-
-            case "workshop_key":
-                Data.Game.Flag_WorkshopKeyAvailable = true;
-                Data.Game.State_BasementInventoryPuzzle = 1;
                 break;
         }
 

@@ -21,12 +21,16 @@ public partial class CultTreeRoom : Node3D
     [Export]
     public RootCore RootCore;
 
+    [Export]
+    public PlayerArea PlayerAreaEnterRoom;
+
     private string DebugId => GetInstanceId().ToString();
 
     public override void _Ready()
     {
         base._Ready();
         PlayerAreaEnterHole.OnPlayerEntered += PlayerEntered_EnterHole;
+        PlayerAreaEnterRoom.OnPlayerEntered += PlayerEntered_EnterRoom;
         TouchableExitCore.OnTouched += OnTouched_ExitCore;
         RootCore.OnSwordEntered += SwordEntered;
 
@@ -60,6 +64,7 @@ public partial class CultTreeRoom : Node3D
     private void PlayerEntered_EnterHole(Player player)
     {
         SetPlayerLockEnabled(true);
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogCore, 3);
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -109,5 +114,10 @@ public partial class CultTreeRoom : Node3D
     private void SwordEntered()
     {
         Debug.Log("BAD END");
+    }
+
+    private void PlayerEntered_EnterRoom(Player player)
+    {
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogCore, 1);
     }
 }

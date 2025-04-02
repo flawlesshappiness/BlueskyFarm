@@ -6,6 +6,5 @@ public class DialogueNode
     public string next { get; set; }
     public string animation { get; set; }
     public IEnumerable<string> triggers { get; set; }
-    public IEnumerable<DialogueFlagBool> flags_b { get; set; }
-    public IEnumerable<DialogueFlagInt> flags_i { get; set; }
+    public IEnumerable<DialogueFlag> flags { get; set; }
 }

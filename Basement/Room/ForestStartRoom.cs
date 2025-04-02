@@ -9,6 +9,8 @@ public partial class ForestStartRoom : Node3DScript
     {
         base._Ready();
 
+        WeedBlockade.Touchable.OnTouched += Touched_WeedBlockade;
+
         if (Data.Game.Flag_ForestBlockadeRemoved)
         {
             RemoveWeeds();
@@ -33,5 +35,10 @@ public partial class ForestStartRoom : Node3DScript
     {
         Data.Game.Flag_ForestBlockadeRemoved = true;
         Data.Game.Save();
+    }
+
+    private void Touched_WeedBlockade()
+    {
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogForestWeeds, 1);
     }
 }

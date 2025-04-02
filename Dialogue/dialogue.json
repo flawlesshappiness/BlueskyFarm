@@ -1,9 +1,5 @@
 [
 	{
-		"id": "##NOTE_MANTRA_001##"
-	},
-	
-	{
 		"id": "##NOTE_WORKSHOP_001##",
 		"next": "##NOTE_WORKSHOP_002##"
 	},
@@ -17,7 +13,14 @@
 	
 	{
 		"id": "##NOTE_ROOTMIMIC_001##",
-		"next": "##NOTE_MANTRA_001##"
+		"next": "##NOTE_ROOTMIMIC_002##"
+	},
+	{
+		"id": "##NOTE_ROOTMIMIC_002##",
+		"next": "##NOTE_ROOTMIMIC_003##"
+	},
+	{
+		"id": "##NOTE_ROOTMIMIC_003##"
 	},
 	
 	{
@@ -71,7 +74,7 @@
 	},
 	{
 		"id": "##FROG_INTRO_004##",
-		"flags_i": [
+		"flags": [
 			{
 				"id": "frog_intro",
 				"value": 1
@@ -96,15 +99,7 @@
 	},
 	{
 		"id": "##FROG_FIND_SEEDS_002##",
-		"next": "##FROG_FIND_SEEDS_003##"
-	},
-	{
-		"id": "##FROG_FIND_SEEDS_003##",
-		"next": "##FROG_FIND_SEEDS_004##"
-	},
-	{
-		"id": "##FROG_FIND_SEEDS_004##",
-		"flags_i": [
+		"flags": [
 			{
 				"id": "frog_intro",
 				"value": 2
@@ -120,108 +115,105 @@
 		"next": "##FROG_FIND_SEEDS_REPEAT_002##"
 	},
 	{
-		"id": "##FROG_FIND_SEEDS_REPEAT_002##",
-		"next": "##FROG_FIND_SEEDS_REPEAT_003##"
-	},
-	{
-		"id": "##FROG_FIND_SEEDS_REPEAT_003##"
+		"id": "##FROG_FIND_SEEDS_REPEAT_002##"
 	},
 	
 	{
-		"id": "##FROG_FARM_MESS_001##",
-		"next": "##FROG_FARM_MESS_002##"
+		"id": "##FROG_DESTROY_TREE_001##",
+		"next": "##FROG_DESTROY_TREE_002##"
 	},
 	{
-		"id": "##FROG_FARM_MESS_002##",
-		"next": "##FROG_FARM_MESS_003##"
+		"id": "##FROG_DESTROY_TREE_002##",
+		"next": "##FROG_DESTROY_TREE_003##"
 	},
 	{
-		"id": "##FROG_FARM_MESS_003##",
-		"flags_i": [
+		"id": "##FROG_DESTROY_TREE_003##",
+		"next": "##FROG_DESTROY_TREE_004##"
+	},
+	{
+		"id": "##FROG_DESTROY_TREE_004##",
+		"flags": [
 			{
 				"id": "frog_intro",
 				"value": 3
-			},
-			{
-				"id": "frog_weedcutter",
-				"value": 1
 			}
 		]
 	},
 	
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_001##",
-		"next": "##FROG_BLUEPRINT_WEEDCUTTER_002##"
+		"id": "##FROG_DESTROY_TREE_REPEAT_001##",
+		"next": "##FROG_DESTROY_TREE_REPEAT_002##"
 	},
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_002##",
-		"next": "##FROG_BLUEPRINT_WEEDCUTTER_003##"
+		"id": "##FROG_DESTROY_TREE_REPEAT_002##",
+		"next": "##FROG_DESTROY_TREE_REPEAT_003##"
 	},
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_003##",
-		"next": "##FROG_BLUEPRINT_WEEDCUTTER_004##"
+		"id": "##FROG_DESTROY_TREE_REPEAT_003##"
+	},
+	
+	{
+		"id": "##FROG_FOREST_WEEDS_001##",
+		"next": "##FROG_FOREST_WEEDS_002##"
 	},
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_004##",
-		"next": "##FROG_BLUEPRINT_WEEDCUTTER_005##"
+		"id": "##FROG_FOREST_WEEDS_002##",
+		"next": "##FROG_FOREST_WEEDS_003##"
 	},
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_005##",
-		"flags_i": [
+		"id": "##FROG_FOREST_WEEDS_003##",
+		"flags": [
 			{
-				"id": "frog_weedcutter",
+				"id": "frog_forest_weeds",
 				"value": 2
 			}
-		],
-		"triggers": [
-			"workshop_key"
 		]
 	},
 	
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##",
-		"next": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##"
+		"id": "##FROG_STONE_001##",
+		"next": "##FROG_STONE_002##"
 	},
 	{
-		"id": "##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##"
-	},
-	
-	{
-		"id": "##FROG_WEEDCUTTER_CREATE_001##"
-	},
-	
-	{
-		"id": "##FROG_FOREST_ENTER_001##",
-		"next": "##FROG_FOREST_ENTER_002##"
+		"id": "##FROG_STONE_002##",
+		"next": "##FROG_STONE_003##"
 	},
 	{
-		"id": "##FROG_FOREST_ENTER_002##",
-		"next": "##FROG_FOREST_ENTER_003##"
-	},
-	{
-		"id": "##FROG_FOREST_ENTER_003##",
-		"flags_i": [
+		"id": "##FROG_STONE_003##",
+		"flags": [
 			{
-				"id": "frog_weedcutter",
-				"value": 4
+				"id": "frog_stone",
+				"value": 2
 			}
 		]
 	},
 	
 	{
-		"id": "##FROG_FOREST_ENTER_REPEAT_001##",
-		"next": "##FROG_FOREST_ENTER_REPEAT_002##"
+		"id": "##FROG_FORGE_001##",
+		"next": "##FROG_FORGE_002##"
 	},
 	{
-		"id": "##FROG_FOREST_ENTER_REPEAT_002##"
+		"id": "##FROG_FORGE_002##",
+		"flags": [
+			{
+				"id": "frog_forge",
+				"value": 2
+			}
+		]
 	},
 	
 	{
-		"id": "##FROG_SEEDS_AUTO_GROW_001##",
-		"next": "##FROG_SEEDS_AUTO_GROW_002##"
+		"id": "##FROG_CORE_001##",
+		"next": "##FROG_CORE_002##"
 	},
 	{
-		"id": "##FROG_SEEDS_AUTO_GROW_002##"
+		"id": "##FROG_CORE_002##",
+		"flags": [
+			{
+				"id": "frog_core",
+				"value": 2
+			}
+		]
 	},
 	
 	{
@@ -230,7 +222,7 @@
 	},
 	{
 		"id": "##FROG_FIRST_DEATH_002##",
-		"flags_i": [
+		"flags": [
 			{
 				"id": "first_death",
 				"value": 2

@@ -86,10 +86,7 @@ public partial class GameScene : Scene
     {
         string id_lock = "death";
 
-        if (DialogueController.Instance.GetIntFlag(DialogueFlags.FirstDeath) == 0)
-        {
-            DialogueController.Instance.SetFlag(DialogueFlags.FirstDeath, 1);
-        }
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogFirstDeath, 1);
 
         Coroutine.Start(Cr);
         IEnumerator Cr()

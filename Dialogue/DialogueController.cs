@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 
 public partial class DialogueController : SingletonController
@@ -162,69 +161,12 @@ public partial class DialogueController : SingletonController
     private void UpdateFlags(DialogueNode node)
     {
         if (node == null) return;
+        if (node.flags == null) return;
 
-        UpdateFlags_Bool(node.flags_b);
-        UpdateFlags_Int(node.flags_i);
-    }
-
-    private void UpdateFlags_Bool(IEnumerable<DialogueFlagBool> flags)
-    {
-        if (flags == null) return;
-
-        foreach (var flag in flags)
+        foreach (var flag in node.flags)
         {
-            SetFlag(flag.id, flag.value);
+            DialogueFlags.SetFlag(flag.id, flag.value);
         }
-    }
-
-    private void UpdateFlags_Int(IEnumerable<DialogueFlagInt> flags)
-    {
-        if (flags == null) return;
-
-        foreach (var flag in flags)
-        {
-            SetFlag(flag.id, flag.value);
-        }
-    }
-
-    public void SetFlag(string id, bool value)
-    {
-        Debug.TraceMethod($"{id}: {value}");
-
-        var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == id);
-        if (data == null)
-        {
-            data = new DialogueFlagBool { id = id };
-            Data.Game.DialogFlags_Bool.Add(data);
-        }
-
-        data.value = value;
-    }
-
-    public void SetFlag(string id, int value)
-    {
-        Debug.TraceMethod($"{id}: {value}");
-
-        var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == id);
-        if (data == null)
-        {
-            data = new DialogueFlagInt { id = id };
-            Data.Game.DialogFlags_Int.Add(data);
-        }
-
-        data.value = value;
-    }
-
-    public int GetIntFlag(string id)
-    {
-        var data = Data.Game.DialogFlags_Int.FirstOrDefault(x => x.id == id);
-        return data?.value ?? 0;
-    }
-
-    public bool GetBoolFlag(string id)
-    {
-        var data = Data.Game.DialogFlags_Bool.FirstOrDefault(x => x.id == id);
-        return data?.value ?? false;
     }
 
     private void UpdateTriggers(DialogueNode node)

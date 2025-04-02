@@ -25,6 +25,9 @@ public partial class MineForgeRoom : Node3D
         RegisterDebugActions();
         CreatePickaxeItem();
         InitializeKiln();
+
+        Forge.Lever.Touchable.OnTouched += Touched_Forge;
+        Kiln.Lever.Touchable.OnTouched += Touched_Forge;
     }
 
     private void InitializeKiln()
@@ -70,6 +73,12 @@ public partial class MineForgeRoom : Node3D
     private void KilnActivated()
     {
         Data.Game.Flag_MineKilnActivated = true;
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogForge, 3);
         Forge.SetActivated(true);
+    }
+
+    private void Touched_Forge()
+    {
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogForge, 1);
     }
 }

@@ -87,6 +87,8 @@ public partial class BasementDoor : Node3DScript
     public void PlayLockedFX()
     {
         SoundController.Instance.Play(SfxLocked, SoundMarker.GlobalPosition);
+
+        /*
         GameView.Instance.CreateText(new CreateTextSettings
         {
             Id = "locked_" + GetInstanceId(),
@@ -99,6 +101,7 @@ public partial class BasementDoor : Node3DScript
             Shake_Strength = 10f,
             Shake_Dampening = 0.9f,
         });
+        */
     }
 
     public void Unlock()

@@ -30,8 +30,6 @@ public partial class BasementWorkshopRoom : Node3DScript
     {
         item.IsBeingHandled = true;
         Data.Game.Flag_WorkshopDoorUnlocked = true;
-        Data.Game.Flag_WorkshopKeyAvailable = false;
-        DialogueController.Instance.SetFlag(DialogueFlags.FrogWeedcutter, 3);
 
         Coroutine.Start(Cr);
         IEnumerator Cr()

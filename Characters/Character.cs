@@ -135,16 +135,6 @@ public partial class Character : Node3DScript
 
     }
 
-    protected bool HasFlag(string id)
-    {
-        return DialogueController.Instance.GetBoolFlag(id);
-    }
-
-    protected bool HasFlag(string id, int i)
-    {
-        return DialogueController.Instance.GetIntFlag(id) == i;
-    }
-
     protected void TurnTowardsPlayer()
     {
         var direction_to_player = GlobalPosition.DirectionTo(Player.Instance.GlobalPosition);

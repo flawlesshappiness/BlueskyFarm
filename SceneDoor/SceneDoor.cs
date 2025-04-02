@@ -72,6 +72,7 @@ public partial class SceneDoor : Node3DScript
             SoundController.Instance.Play(LockedSound, GlobalPosition);
         }
 
+        /*
         GameView.Instance.CreateText(new CreateTextSettings
         {
             Id = "locked_" + GetInstanceId(),
@@ -84,6 +85,7 @@ public partial class SceneDoor : Node3DScript
             Shake_Strength = 10f,
             Shake_Dampening = 0.9f,
         });
+        */
     }
 
     private void ChangeScene()

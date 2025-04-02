@@ -1,66 +1,56 @@
 keys;en
-##LOCKED##;It's locked
 ##CANCEL##;Cancel
 ##ACCEPT##;Accept
 ##OK##;OK
 ##USE##;USE
 ##BLUEPRINT##;Blueprint
-##MISSING_HANDLE##;Missing handle
-##SOMETHING_DOWN_THERE##;There's something down there
-##TOOL_REQUIRED##;Tool required
-##BED_CANT_SLEEP##;I can't sleep on this
 ##LADDER_MISSING_STEPS##;Some steps are missing
 ##SOMETHING_MISSING##;Something is missing
 ##NOT_ENOUGH_COAL##;Not enough coal
-##KILN_NOT_ACTIVATED##;The kiln is off
 ##BASEMENT##;Basement
 ##FOREST##;Forest
 ##MINE##;Mine
 ##CULT##;Cathedral
-##NOTE_WORKSHOP_001##;For your information:\nAll tools moved to new workshop.
-##NOTE_WORKSHOP_002##;Only blueprints and interior in this room.
-##NOTE_WORKSHOP_003##;Key is safely stored in the deep.
-##NOTE_ROOTMIMIC_001##;Please respect the space of every growing being. Nature will protect itself.
-##NOTE_BASEMENT_OVERGROWN_001##;Do not cut what is not in your way. Do not kill what need not die.
-##NOTE_MANTRA_001##;Grow into the better you.
+##NOTE_WORKSHOP_001##;Since everyone is gone, we're locking up and leaving this place.
+##NOTE_WORKSHOP_002##;There's only blueprints and interior in this room. Frida has the key.
+##NOTE_WORKSHOP_003##;Signed: Frank
+##NOTE_ROOTMIMIC_001##;I don't care if you're getting seeds or storing produce.\STAY AWAY from the critters.
+##NOTE_ROOTMIMIC_002##;They WILL grab you if you get too close.
+##NOTE_ROOTMIMIC_003##;Signed: Frank
 ##NOTE_FOREST_BED_001##;Fren's treehouse.
 ##NOTE_FOREST_BED_002##;The wood in this area is unique. Sturdy and pale.\nI will bring some to the new place.
 ##NOTE_FOREST_BED_003##;I used it for the bed. I can make a blueprint, so do not take it.
 ##NOTE_FOREST_BED_004##;It was really hard to get up here.
-##NOTE_BUSINESS_NAMES_001##;It's a list of names. All stricken through, except for the last one.
+##NOTE_BUSINESS_NAMES_001##;A list of names. All stricken through, except for the last one.
 ##NOTE_BUSINESS_NAMES_002##;Grow-Good Veggies\nGrow-Good Farm
 ##NOTE_BUSINESS_NAMES_003##;Big Growth Farm\nVeggies from the rift
 ##NOTE_BUSINESS_NAMES_004##;Riftwood Farm
-##FROG_INTRO_001##;Welcome to the farm!\nYou can call me Fren.
-##FROG_INTRO_002##;I've been assigned as your supervisor, and will be the one to give you your introductory tasks.
-##FROG_INTRO_003##;I understand that everything here is new for you, so let's start with something simple.
+##FROG_INTRO_001##;Hello!\nAre you new?
+##FROG_INTRO_002##;I thought we stopped getting new people.\nI can be your supervisor, I guess.
+##FROG_INTRO_003##;Everything here is probably all new for you, so let's start with something simple.
 ##FROG_INTRO_004##;Take this seed, plant it, and come back to me with the crop.
 ##FROG_INTRO_REPEAT_001##;I gave you a seed. Plant it, and wait for it to grow.
 ##FROG_INTRO_REPEAT_002##;Bring me the crop once it has fully grown.
 ##FROG_FIND_SEEDS_001##;Excellent!\nLooks like you will be good at this in no time.
-##FROG_FIND_SEEDS_002##;We used to store seeds down in the basement.
-##FROG_FIND_SEEDS_003##;Here is the key.\nLet's see you grow a few more crops.
-##FROG_FIND_SEEDS_004##;Oh also, I shouldn't have to say this but, uh...\nLet the wild life be, alright?
+##FROG_FIND_SEEDS_002##;We used to store seeds down in the basement.\nHere is the key.
 ##FROG_FIND_SEEDS_REPEAT_001##;We used to store seeds down in the basement.
-##FROG_FIND_SEEDS_REPEAT_002##;Go collect some, and grow a few more crops.
-##FROG_FIND_SEEDS_REPEAT_003##;Don't get lost down there.
-##FROG_FARM_MESS_001##;Great work!
-##FROG_FARM_MESS_002##;This farm is in a bit of disarray.\nTake those planks and make another plant box for yourself.
-##FROG_FARM_MESS_003##;Then we will talk about your next task.
-##FROG_BLUEPRINT_WEEDCUTTER_001##;Listen, to tell you the truth...
-##FROG_BLUEPRINT_WEEDCUTTER_002##;This whole company thing...\nIt's kind of on pause right now.
-##FROG_BLUEPRINT_WEEDCUTTER_003##;Someone was a little lax during the hiring process.\nEnded up letting in some nasty people. Real nasty...
-##FROG_BLUEPRINT_WEEDCUTTER_004##;I think there's a way we can deal with this issue, but I'm going to need your help.\nFrom the basement there is a way into the forest, but it might be heavily overgrown.
-##FROG_BLUEPRINT_WEEDCUTTER_005##;We'll need a tool to cut our way through. Try and look for something, like a workshop, down there.
-##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_001##;You'll need a tool to cut your way into the forest.
-##FROG_BLUEPRINT_WEEDCUTTER_REPEAT_002##;Look for a workshop down there. Maybe they left some things behind.
-##FROG_WEEDCUTTER_CREATE_001##;Good work out there. Let's get that weedcutter crafted, so that you can proceed to the forest.
-##FROG_FOREST_ENTER_001##;Excellent!\nWith this you can cut your way through the overgrowth.
-##FROG_FOREST_ENTER_002##;There's a mine entrance in the forest, where you will be able to find most of the material we are going to need.
-##FROG_FOREST_ENTER_003##;Those nasty people have also settled in a building near the forest. Try to avoid a confrontation.
-##FROG_FOREST_ENTER_REPEAT_001##;There's a mine entrace in the forest. We are going to need the materials from there.
-##FROG_FOREST_ENTER_REPEAT_002##;If you get lost, try to look for signs. They will point you in the right direction.
-##FROG_SEEDS_AUTO_GROW_001##;Seeds will grow, even while you're down there collecting more.\nSo you don't have to hang around here waiting.
-##FROG_SEEDS_AUTO_GROW_002##;Not that I don't enjoy your company...
+##FROG_FIND_SEEDS_REPEAT_002##;The crops will grow while you're down there so go collect more seeds.
+##FROG_DESTROY_TREE_001##;Good job!\nLooks like you are ready.
+##FROG_DESTROY_TREE_002##;Now you must destroy the holy tree, at the old burial grounds. Everyone who used to work here were killed by its worshippers.
+##FROG_DESTROY_TREE_003##;Only a special weapon will do. A sword of forged from a crystal mold.
+##FROG_DESTROY_TREE_004##;Good luck!
+##FROG_DESTROY_TREE_REPEAT_001##;The holy tree grows inside a building in the forest past the basement.
+##FROG_DESTROY_TREE_REPEAT_002##;Only a special sword forged from a crystal mold can cut into the core of the holy tree.
+##FROG_DESTROY_TREE_REPEAT_003##;You must forge the sword, then slay the tree.
+##FROG_FOREST_WEEDS_001##;Have you run into any obstructions?
+##FROG_FOREST_WEEDS_002##;I'm sure you've noticed that plants, among other things, grow quite large.
+##FROG_FOREST_WEEDS_003##;If you can't remove them by hand, try looking for a tool in the old workshop, down there.
+##FROG_STONE_001##;You found the mine? That's great! We need those crystals in order to craft the sword mold.
+##FROG_STONE_002##;Unfortunately, rocks don't pop open and spit out their innards if you ask them nicely.
+##FROG_STONE_003##;There must be a pickaxe left behind down there, after they all left.
+##FROG_FORGE_001##;I never liked the forge in the mines. Someone else was assigned to those, not me.
+##FROG_FORGE_002##;I remember they were carrying coal for the furnace, try that.
+##FROG_CORE_001##;So you've seen the holy tree. Did you reach the core?
+##FROG_CORE_002##;Just jump in the hole, we do it all the time. It's easy to climb out again.
 ##FROG_FIRST_DEATH_001##;Woah, you're looking worse for wear.\nYou alright?
-##FROG_FIRST_DEATH_002##;Listen, most things down there don't want nothing to do with you. Try to keep distance and you should be good.
+##FROG_FIRST_DEATH_002##;Listen, most things down there don't want nothing to do with you. Try to keep your distance.

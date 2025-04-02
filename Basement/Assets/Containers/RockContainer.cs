@@ -49,6 +49,8 @@ public partial class RockContainer : ItemContainer
 
         SoundController.Instance.Play(sfx_break, Touchable.GlobalPosition);
 
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogStone, 3);
+
         SpawnItem(ItemMarker.GlobalPosition, Vector3.Up * 2f);
         ModelUnbroken.Disable();
         ModelBroken.Enable();
@@ -60,6 +62,9 @@ public partial class RockContainer : ItemContainer
     {
         SoundController.Instance.Play(sfx_touch, Touchable.GlobalPosition);
 
+        DialogueFlags.SetFlagMin(DialogueFlags.FrogStone, 1);
+
+        /*
         GameView.Instance.CreateText(new CreateTextSettings
         {
             Id = "tool_required_" + GetInstanceId(),
@@ -72,5 +77,6 @@ public partial class RockContainer : ItemContainer
             Shake_Strength = 10f,
             Shake_Dampening = 0.9f,
         });
+        */
     }
 }

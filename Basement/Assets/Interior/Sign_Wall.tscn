@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxibx1y7df4q4"]
+
+[ext_resource type="PackedScene" uid="uid://d0y3wlbqjeh0o" path="res://Assets/FlawLizArt/Interior/sign_wall_001.fbx" id="1_4nb7h"]
+[ext_resource type="Script" path="res://Note/DialoguePaper.cs" id="1_4o6rw"]
+[ext_resource type="Texture2D" uid="uid://d4nx1nnj52i0l" path="res://Assets/FlawLizArt/Textures/writing_003.png" id="2_6tjs8"]
+[ext_resource type="Resource" uid="uid://d2ecbuc64hxcl" path="res://Characters/Paper/PaperDialogueCharacter.tres" id="2_uwjry"]
+[ext_resource type="Texture2D" uid="uid://bwve18s7dgl1u" path="res://Assets/FlawLizArt/Textures/writing_001.png" id="3_h5irs"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="6_kmbju"]
+[ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="7_dg30f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3lrp"]
+size = Vector3(2.39673, 1.36719, 0.227051)
+
+[node name="Sign_Wall" type="Node3D" node_paths=PackedStringArray("Touchable")]
+script = ExtResource("1_4o6rw")
+Touchable = NodePath("Touchable")
+DialogueCharacterInfo = ExtResource("2_uwjry")
+
+[node name="sign_wall_001" parent="." instance=ExtResource("1_4nb7h")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -0.256675, 0.103512, 0.0523864)
+flip_h = true
+modulate = Color(0, 0, 0, 0.666667)
+texture = ExtResource("2_6tjs8")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0.345355, -0.137243, 0.0523864)
+flip_h = true
+modulate = Color(0, 0, 0, 0.666667)
+texture = ExtResource("3_h5irs")
+
+[node name="Touchable" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_kmbju")
+HoverIcon = ExtResource("7_dg30f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.113525)
+shape = SubResource("BoxShape3D_v3lrp")

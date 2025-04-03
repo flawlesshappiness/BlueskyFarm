@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bt2potjyleh8k"]
+[gd_scene load_steps=42 format=3 uid="uid://bt2potjyleh8k"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_ucf5g"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_t8eg1"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="24_qvql8"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="24_t7rdf"]
 [ext_resource type="Resource" uid="uid://dfqkt7oi06jcd" path="res://Item/Resources/TreeHouseLadderPlank.tres" id="26_puuvn"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="28_ew57b"]
 [ext_resource type="PackedScene" uid="uid://dh65tfqa1nwh7" path="res://Particle/Prefabs/ps_mist.tscn" id="32_2lqwo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
@@ -873,10 +874,10 @@ omni_range = 73.99
 [node name="Touchable" type="StaticBody3D" parent="Treehouse/Tree" index="5"]
 transform = Transform3D(0.943968, 0, 0.330037, 0, 1, 0, -0.330037, 0, 0.943968, 0.753747, 1.5, 1.60775)
 script = ExtResource("24_qvql8")
-HoverIcon = ExtResource("21_lroa2")
+HoverIcon = ExtResource("28_ew57b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Treehouse/Tree/Touchable" index="0"]
-transform = Transform3D(1.00001, 0, 1.41561e-07, 0, 1, 0, -1.41561e-07, 0, 1.00001, 0, 0, 0)
+transform = Transform3D(1, 0, 1.4156e-07, 0, 1, 0, -1.4156e-07, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_5exb0")
 
 [node name="bed_frame" parent="Treehouse" index="7" instance=ExtResource("22_dwmbh")]

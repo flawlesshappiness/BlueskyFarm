@@ -20,12 +20,12 @@ public partial class ForestFounderHutRoom : Node3DScript
 
     private void InitializeBlockingWeeds()
     {
-        BlockingWeeds.SetCut(Data.Game.Flag_FounderHutWeedsCut);
+        BlockingWeeds.SetCut(GameFlagIds.ForestHutWeedsCut.IsTrue());
         BlockingWeeds.OnWeedCut += OnCut;
 
         void OnCut()
         {
-            Data.Game.Flag_FounderHutWeedsCut = true;
+            GameFlagIds.ForestHutWeedsCut.SetTrue();
         }
     }
 

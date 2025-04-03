@@ -18,7 +18,7 @@ public partial class FarmBed : Node3D
     [Export]
     public Texture2D HoverIconRepaired;
 
-    public bool Repaired => Data.Game.Flag_BedRepaired;
+    public bool Repaired => GameFlagIds.FarmBedRepaired.IsTrue();
     private string DebugCategory => "FARM - BED";
 
     public override void _Ready()
@@ -31,8 +31,8 @@ public partial class FarmBed : Node3D
 
         Touchable.HoverIcon = Repaired ? HoverIconRepaired : HoverIconDestroyed;
 
-        UnlockGroup.SetUnlocked(Data.Game.Flag_BedRepaired);
-        UnlockArea.SetEnabled(!Data.Game.Flag_BedRepaired);
+        UnlockGroup.SetUnlocked(Repaired);
+        UnlockArea.SetEnabled(!Repaired);
     }
 
     public override void _ExitTree()
@@ -50,7 +50,7 @@ public partial class FarmBed : Node3D
             Id = DebugCategory,
             Category = DebugCategory,
             Text = "Set unlocked",
-            Action = v => { Data.Game.Flag_BedRepaired = true; UnlockGroup.SetUnlocked(); }
+            Action = v => { GameFlagIds.FarmBedRepaired.SetTrue(); UnlockGroup.SetUnlocked(); }
         });
 
         Debug.RegisterAction(new DebugAction
@@ -58,7 +58,7 @@ public partial class FarmBed : Node3D
             Id = DebugCategory,
             Category = DebugCategory,
             Text = "Clear data",
-            Action = v => { Data.Game.Flag_BedRepaired = false; UnlockArea.Enable(); }
+            Action = v => { GameFlagIds.FarmBedRepaired.SetFalse(); UnlockArea.Enable(); }
         });
     }
 
@@ -67,7 +67,7 @@ public partial class FarmBed : Node3D
         if (Repaired) return;
 
         UnlockArea.Disable();
-        Data.Game.Flag_BedRepaired = true;
+        GameFlagIds.FarmBedRepaired.SetTrue();
 
         Touchable.HoverIcon = HoverIconRepaired;
 

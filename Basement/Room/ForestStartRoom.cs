@@ -11,7 +11,7 @@ public partial class ForestStartRoom : Node3DScript
 
         WeedBlockade.Touchable.OnTouched += Touched_WeedBlockade;
 
-        if (Data.Game.Flag_ForestBlockadeRemoved)
+        if (GameFlagIds.ForestBlockadeRemoved.IsTrue())
         {
             RemoveWeeds();
         }
@@ -33,7 +33,7 @@ public partial class ForestStartRoom : Node3DScript
 
     private void OnWeedCut()
     {
-        Data.Game.Flag_ForestBlockadeRemoved = true;
+        GameFlagIds.ForestBlockadeRemoved.SetTrue();
         Data.Game.Save();
     }
 

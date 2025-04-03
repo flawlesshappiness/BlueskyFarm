@@ -221,7 +221,7 @@ public partial class FrogBlueprintCrafting : Node3DScript
     {
         if (id == "inventory_001")
         {
-            Data.Game.State_BasementInventoryPuzzle = 2;
+            //Data.Game.State_BasementInventoryPuzzle = 2;
         }
     }
 

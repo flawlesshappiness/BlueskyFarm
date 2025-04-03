@@ -34,7 +34,7 @@ public partial class ForestTreeHouseRoom : Node3D
 
     private void CreatePlanks()
     {
-        if (Data.Game.Flag_ForestTreeHouseRepaired) return;
+        if (GameFlagIds.ForestTreeHouseRepaired.IsTrue()) return;
 
         foreach (var node in PlankSpawns)
         {
@@ -55,7 +55,7 @@ public partial class ForestTreeHouseRoom : Node3D
     {
         var bp_id = "bed_repair";
         if (Player.HasAccessToBlueprint(bp_id)) return;
-        if (Data.Game.Flag_BedRepaired) return;
+        if (GameFlagIds.FarmBedRepaired.IsTrue()) return;
 
         var item = BlueprintController.Instance.CreateBlueprintRoll(bp_id);
         item.SetParent(BlueprintItemSpawn);
@@ -64,12 +64,12 @@ public partial class ForestTreeHouseRoom : Node3D
 
     private void InitializePlankPositions()
     {
-        LadderArea.SetEnabled(Data.Game.Flag_ForestTreeHouseRepaired);
-        MissingStepsTouchable.SetEnabled(!Data.Game.Flag_ForestTreeHouseRepaired);
+        LadderArea.SetEnabled(GameFlagIds.ForestTreeHouseRepaired.IsTrue());
+        MissingStepsTouchable.SetEnabled(GameFlagIds.ForestTreeHouseRepaired.IsFalse());
 
         foreach (var position in PlankPositions)
         {
-            position.SetRepaired(Data.Game.Flag_ForestTreeHouseRepaired);
+            position.SetRepaired(GameFlagIds.ForestTreeHouseRepaired.IsTrue());
             position.OnRepaired += PlankRepaired;
         }
     }
@@ -78,7 +78,7 @@ public partial class ForestTreeHouseRoom : Node3D
     {
         if (PlankPositions.All(x => x.Repaired))
         {
-            Data.Game.Flag_ForestTreeHouseRepaired = true;
+            GameFlagIds.ForestTreeHouseRepaired.SetTrue();
             MissingStepsTouchable.Disable();
             LadderArea.Enable();
         }
@@ -87,14 +87,5 @@ public partial class ForestTreeHouseRoom : Node3D
     private void MissingSteps_Touched()
     {
         SoundController.Instance.Play("sfx_throw_light");
-
-        GameView.Instance.CreateText(new CreateTextSettings
-        {
-            Id = "missing_steps_" + GetInstanceId(),
-            Text = "##LADDER_MISSING_STEPS##",
-            Target = MissingStepsTouchable,
-            Offset = new Vector3(0, 0.2f, 0),
-            Duration = 3.0f,
-        });
     }
 }

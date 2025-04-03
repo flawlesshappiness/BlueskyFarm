@@ -32,8 +32,8 @@ public partial class MineForgeRoom : Node3D
 
     private void InitializeKiln()
     {
-        Kiln.SetActivated(Data.Game.Flag_MineKilnActivated);
-        Forge.SetActivated(Data.Game.Flag_MineKilnActivated);
+        Kiln.SetActivated(GameFlagIds.MineKilnActivated.IsTrue());
+        Forge.SetActivated(GameFlagIds.MineKilnActivated.IsTrue());
         Kiln.OnActivated += KilnActivated;
     }
 
@@ -72,7 +72,7 @@ public partial class MineForgeRoom : Node3D
 
     private void KilnActivated()
     {
-        Data.Game.Flag_MineKilnActivated = true;
+        GameFlagIds.MineKilnActivated.SetTrue();
         DialogueFlags.SetFlagMin(DialogueFlags.FrogForge, 3);
         Forge.SetActivated(true);
     }

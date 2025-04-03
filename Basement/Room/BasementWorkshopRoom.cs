@@ -17,7 +17,7 @@ public partial class BasementWorkshopRoom : Node3DScript
         base._Ready();
         WorkshopDoorItemArea.OnItemEntered += WorkshopDoorItemArea_ItemEntered;
 
-        SetWorkshopDoorLocked(!Data.Game.Flag_WorkshopDoorUnlocked);
+        SetWorkshopDoorLocked(GameFlagIds.BasementWorkshopDoorUnlocked.IsFalse());
     }
 
     protected override void Initialize()
@@ -29,7 +29,7 @@ public partial class BasementWorkshopRoom : Node3DScript
     private void WorkshopDoorItemArea_ItemEntered(Item item)
     {
         item.IsBeingHandled = true;
-        Data.Game.Flag_WorkshopDoorUnlocked = true;
+        GameFlagIds.BasementWorkshopDoorUnlocked.SetTrue();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()

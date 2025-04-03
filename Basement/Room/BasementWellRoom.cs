@@ -49,10 +49,10 @@ public partial class BasementWellRoom : Node3DScript
 
     private void InitializeHandle()
     {
-        MissingHandleTouchable.SetEnabled(!Data.Game.Flag_WorkshopWellRepaired);
-        SomethingInWellTouchable.SetEnabled(!Data.Game.Flag_WorkshopWellRepaired);
+        MissingHandleTouchable.SetEnabled(GameFlagIds.BasementWellRepaired.IsFalse());
+        SomethingInWellTouchable.SetEnabled(GameFlagIds.BasementWellRepaired.IsFalse());
 
-        if (Data.Game.Flag_WorkshopWellRepaired) return;
+        if (GameFlagIds.BasementWellRepaired.IsTrue()) return;
 
         Well.Handle.Disable();
         Well.HandleTouchable.Disable();
@@ -106,7 +106,7 @@ public partial class BasementWellRoom : Node3DScript
 
     private void HandleArea_ItemEntered(Item item)
     {
-        Data.Game.Flag_WorkshopWellRepaired = true;
+        GameFlagIds.BasementWellRepaired.SetTrue();
 
         item.IsBeingHandled = true;
         item.QueueFree();

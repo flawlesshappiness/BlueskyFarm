@@ -16,6 +16,9 @@ public partial class FarmScene : GameScene
     [Export]
     public Node3D Shed_InventoryItemPosition;
 
+    [Export]
+    public ItemInfo InventoryUpgradeItem;
+
     public List<PlantArea> PlantAreas = new();
 
     public override void _Ready()
@@ -36,7 +39,7 @@ public partial class FarmScene : GameScene
         InitializeAmbience();
         InitializeEnvironment();
 
-        Data.Game.Flag_FarmFirstTimeLoad = false;
+        GameFlagIds.FirstTimeLoad.Set(1);
         Data.Game.Save();
     }
 
@@ -52,24 +55,24 @@ public partial class FarmScene : GameScene
     private void InitializeTrapdoor()
     {
         BasementUnlockArea.OnItemEntered += BasementUnlockArea_ItemEntered;
-        Trapdoor.SetLocked(Data.Game.Flag_BasementLocked);
+        Trapdoor.SetLocked(GameFlagIds.FarmBasementUnlocked.IsFalse());
     }
 
     private void InitializeInventoryWeeds()
     {
         Shed_Thorns.OnWeedCut += () =>
         {
-            Data.Game.State_FarmInventoryWeedsCut = 1;
+            GameFlagIds.FarmWeedsCut.SetTrue();
         };
 
-        Shed_Thorns.SetCut(Data.Game.State_FarmInventoryWeedsCut != 0);
+        Shed_Thorns.SetCut(GameFlagIds.FarmWeedsCut.IsTrue());
     }
 
     private void InitializeShedInventoryItem()
     {
-        if (!Data.Game.Flag_FarmFirstTimeLoad) return;
+        if (GameFlagIds.FirstTimeLoad.Is(1)) return;
 
-        var item = ItemController.Instance.CreateItem("InventoryUpgrade");
+        var item = ItemController.Instance.CreateItem(InventoryUpgradeItem);
         item.GlobalPosition = Shed_InventoryItemPosition.GlobalPosition;
     }
 
@@ -116,7 +119,7 @@ public partial class FarmScene : GameScene
             SoundController.Instance.Play("sfx_basement_unlock", Trapdoor.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             Trapdoor.SetLocked(false);
-            Data.Game.Flag_BasementLocked = false;
+            GameFlagIds.FarmBasementUnlocked.SetTrue();
         }
     }
 }

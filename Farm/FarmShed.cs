@@ -22,14 +22,7 @@ public partial class FarmShed : Node3D
 
     private void Load()
     {
-        if (Data.Game.Flag_ShedRepaired)
-        {
-            UnlockGroup.SetUnlocked();
-        }
-        else
-        {
-            UnlockGroup.SetNotUnlocked();
-        }
+        UnlockGroup.SetUnlocked(GameFlagIds.FarmShedRepaired.IsTrue());
     }
 
     public override void _ExitTree()
@@ -47,14 +40,14 @@ public partial class FarmShed : Node3D
             Id = DebugCategory,
             Category = DebugCategory,
             Text = "Clear data",
-            Action = v => Data.Game.Flag_ShedRepaired = false
+            Action = v => GameFlagIds.FarmShedRepaired.SetFalse()
         });
     }
 
     private void ItemEntered(Item item)
     {
         UnlockItemArea.Disable();
-        Data.Game.Flag_ShedRepaired = true;
+        GameFlagIds.FarmShedRepaired.SetTrue();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()

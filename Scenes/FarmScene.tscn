@@ -1,7 +1,8 @@
-[gd_scene load_steps=96 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=97 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_g724s"]
+[ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
 [ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
@@ -296,6 +297,7 @@ Trapdoor = NodePath("World/NavigationRegion3D/Basement/Trapdoor")
 BasementUnlockArea = NodePath("World/NavigationRegion3D/Basement/BasementUnlockArea")
 Shed_Thorns = NodePath("World/NavigationRegion3D/Shed/Behind/Shed_Thorns")
 Shed_InventoryItemPosition = NodePath("World/NavigationRegion3D/Shed/Behind/Shed_InventoryItemPosition")
+InventoryUpgradeItem = ExtResource("2_rf1ug")
 WorldEnvironment = NodePath("WorldEnvironment")
 DirectionalLight = NodePath("Sun")
 

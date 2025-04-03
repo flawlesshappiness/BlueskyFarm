@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +10,8 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
     public string CurrentArea { get; private set; }
     public AmbienceInfo CurrentInfo { get; private set; }
 
-    private float _time_bgm_area_enter;
     private AudioStreamPlayer _current_background_asp;
+    private AudioStreamPlayer _current_area_enter_asp;
     private List<Coroutine> _cr_noises = new();
 
     private const float FADE_TIME = 1f;
@@ -34,6 +33,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
 
     public void StopAmbience()
     {
+        StopAreaEnterMusic();
         StopBackgroundAmbience();
         StopAmbientNoise();
     }
@@ -45,21 +45,34 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
 
     private void PlayAreaEnterMusic()
     {
-        if (GameTime.Time < _time_bgm_area_enter) return;
+        if (CurrentInfo == null) return;
 
-        var sfx = $"sfx_enter_{CurrentArea}".ToLower();
-        var info = SoundController.Instance.Collection.GetResource(sfx);
-        if (info == null) return;
+        var sfx = CurrentInfo.AreaEnterBGM;
+        if (sfx == null) return;
 
         this.StartCoroutine(Cr, "area_enter");
         IEnumerator Cr()
         {
-            yield return new WaitForSeconds(5f);
+            if (IsInstanceValid(_current_area_enter_asp))
+            {
+                yield return _current_area_enter_asp.FadeOut(2f);
+                _current_area_enter_asp.QueueFree();
+                _current_area_enter_asp = null;
+            }
+            else
+            {
+                yield return new WaitForSeconds(2f);
+            }
 
-            var asp = SoundController.Instance.Play(info);
-            var stream = asp.Stream;
+            _current_area_enter_asp = SoundController.Instance.Play(sfx);
+        }
+    }
 
-            _time_bgm_area_enter = GameTime.Time + Convert.ToSingle(stream.GetLength());
+    public void StopAreaEnterMusic()
+    {
+        if (IsInstanceValid(_current_area_enter_asp))
+        {
+            _current_area_enter_asp.FadeOut(2f);
         }
     }
 

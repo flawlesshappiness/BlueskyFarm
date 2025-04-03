@@ -102,6 +102,9 @@ public partial class BasementScene : GameScene
         // Screen effects
         ScreenEffects.StopHeartbeat();
 
+        // BGM
+        AmbienceController.Instance.StopAreaEnterMusic();
+
         // Exit
         BasementController.Instance.ExitBasement();
     }

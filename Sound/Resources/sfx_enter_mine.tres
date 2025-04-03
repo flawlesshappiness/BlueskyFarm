@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://qmpp817xo85s"]
 
-[ext_resource type="AudioStream" uid="uid://dgdwkbpyfgcvq" path="res://Sound/Sounds/sfx_area_enter_003.wav" id="1_0vycs"]
+[ext_resource type="AudioStream" uid="uid://bybqygis3ehdm" path="res://Sound/Sounds/sfx_area_enter_002.wav" id="1_6ev7d"]
 [ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_82jgb"]
 
 [resource]
 script = ExtResource("2_82jgb")
-AudioStreams = Array[AudioStream]([ExtResource("1_0vycs")])
+AudioStreams = Array[AudioStream]([ExtResource("1_6ev7d")])
 Volume = 10.0
 Looping = false
 PitchRange = Vector2(1, 1)

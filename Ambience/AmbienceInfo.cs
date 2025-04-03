@@ -11,6 +11,9 @@ public partial class AmbienceInfo : Resource
     public SoundInfo BackgroundSound;
 
     [Export]
+    public SoundInfo AreaEnterBGM;
+
+    [Export]
     public Array<SoundInfo> Noises;
 
     [Export(PropertyHint.Range, "0,1")]

@@ -1371,7 +1371,7 @@ distance_fade_enabled = true
 distance_fade_begin = 28.0
 omni_range = 8.156
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore")]
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "PlayerAreaEnterRoom")]
 script = ExtResource("25_08e0o")
 Room = NodePath("..")
 PlayerAreaEnterHole = NodePath("../Hole/PlayerArea")
@@ -1379,6 +1379,7 @@ TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
 StartHole = NodePath("../Hole/StartHole")
 StartCore = NodePath("../Core/StartCore")
 RootCore = NodePath("../Core/RootCore")
+PlayerAreaEnterRoom = NodePath("../PlayerArea_EnterRoom")
 
 [node name="PlayerArea_EnterRoom" type="Area3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)

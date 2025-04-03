@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://castmw65ijigk"]
+[gd_scene load_steps=10 format=3 uid="uid://castmw65ijigk"]
 
 [ext_resource type="PackedScene" uid="uid://cirjx7mfugoni" path="res://Assets/KayLousberg/Dungeon/trapdoor.gltf.glb" id="1_j7jdy"]
 [ext_resource type="Script" path="res://SceneDoor/SceneDoor.cs" id="1_rguyj"]
@@ -7,22 +7,25 @@
 [ext_resource type="Resource" uid="uid://c3vhom1xrg5f" path="res://Sound/Resources/sfx_basement_locked.tres" id="4_tgsc5"]
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="4_wdmqa"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_0uunc"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="5_jee1l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_506dw"]
 size = Vector3(1.88965, 0.185303, 1.89063)
 
-[node name="Trapdoor" type="Node3D"]
+[node name="Trapdoor" type="Node3D" node_paths=PackedStringArray("Touchable")]
 script = ExtResource("1_rguyj")
 OpenSound = ExtResource("2_uvlti")
 CloseSound = ExtResource("3_tn0nd")
 LockedSound = ExtResource("4_tgsc5")
+Touchable = NodePath("Touchable")
+HoverIconLocked = ExtResource("5_jee1l")
+HoverIconUnlocked = ExtResource("4_wdmqa")
 
 [node name="Touchable" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189104, 0)
 collision_layer = 7
 collision_mask = 0
 script = ExtResource("5_0uunc")
-OverrideCollisionMode = true
 HoverIcon = ExtResource("4_wdmqa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]

@@ -52,7 +52,7 @@ public partial class FarmScene : GameScene
     private void InitializeTrapdoor()
     {
         BasementUnlockArea.OnItemEntered += BasementUnlockArea_ItemEntered;
-        Trapdoor.Locked = Data.Game.Flag_BasementLocked;
+        Trapdoor.SetLocked(Data.Game.Flag_BasementLocked);
     }
 
     private void InitializeInventoryWeeds()
@@ -115,7 +115,7 @@ public partial class FarmScene : GameScene
         {
             SoundController.Instance.Play("sfx_basement_unlock", Trapdoor.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
-            Trapdoor.Locked = false;
+            Trapdoor.SetLocked(false);
             Data.Game.Flag_BasementLocked = false;
         }
     }

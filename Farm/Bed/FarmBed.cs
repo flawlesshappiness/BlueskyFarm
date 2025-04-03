@@ -12,6 +12,12 @@ public partial class FarmBed : Node3D
     [Export]
     public ItemArea UnlockArea;
 
+    [Export]
+    public Texture2D HoverIconDestroyed;
+
+    [Export]
+    public Texture2D HoverIconRepaired;
+
     public bool Repaired => Data.Game.Flag_BedRepaired;
     private string DebugCategory => "FARM - BED";
 
@@ -22,6 +28,8 @@ public partial class FarmBed : Node3D
 
         Touchable.OnTouched += Touched;
         UnlockArea.OnItemEntered += UnlockArea_ItemEntered;
+
+        Touchable.HoverIcon = Repaired ? HoverIconRepaired : HoverIconDestroyed;
 
         UnlockGroup.SetUnlocked(Data.Game.Flag_BedRepaired);
         UnlockArea.SetEnabled(!Data.Game.Flag_BedRepaired);
@@ -60,6 +68,8 @@ public partial class FarmBed : Node3D
 
         UnlockArea.Disable();
         Data.Game.Flag_BedRepaired = true;
+
+        Touchable.HoverIcon = HoverIconRepaired;
 
         Coroutine.Start(Cr);
         IEnumerator Cr()

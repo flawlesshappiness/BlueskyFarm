@@ -10,9 +10,6 @@ public partial class SceneDoor : Node3DScript
     public string StartNode;
 
     [Export]
-    public bool Locked;
-
-    [Export]
     public SoundInfo OpenSound;
 
     [Export]
@@ -24,13 +21,28 @@ public partial class SceneDoor : Node3DScript
     [Export]
     public bool PerishableWarning;
 
-    [NodeName]
+    [Export]
     public Touchable Touchable;
+
+    [Export]
+    public Texture2D HoverIconLocked;
+
+    [Export]
+    public Texture2D HoverIconUnlocked;
+
+    private bool _locked;
 
     public override void _Ready()
     {
         base._Ready();
         Touchable.OnTouched += Touched;
+    }
+
+    public void SetLocked(bool locked)
+    {
+        _locked = locked;
+
+        Touchable.HoverIcon = locked ? HoverIconLocked : HoverIconUnlocked;
     }
 
     private void Touched()
@@ -53,7 +65,7 @@ public partial class SceneDoor : Node3DScript
             return;
         }
 
-        if (Locked)
+        if (_locked)
         {
             PlayLockedSFX();
         }

@@ -108,7 +108,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 856.0
+offset_bottom = 1220.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
@@ -121,6 +121,13 @@ text = "[center]
 
 A game by
 [font_size=40]BRTL Games[/font_size]
+
+
+
+
+[font_size=30]Idea, Production, Music and Sound Design[/font_size]
+
+Bertil Kasper 'FlawLizArt' Kaae
 
 
 

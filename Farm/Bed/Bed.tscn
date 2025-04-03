@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfbakxow5wdyt"]
+[gd_scene load_steps=13 format=3 uid="uid://bfbakxow5wdyt"]
 
 [ext_resource type="PackedScene" uid="uid://cqt8nkrp1kjem" path="res://Assets/FlawLizArt/Bed/bed_frame.fbx" id="1_a5ig3"]
 [ext_resource type="Script" path="res://Farm/Bed/FarmBed.cs" id="1_jr514"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://cqb7celmadjfl" path="res://Sound/Resources/sfx_throw_light.tres" id="3_0douv"]
 [ext_resource type="Resource" uid="uid://dlrb10k5kkdnl" path="res://Particle/Resources/ps_smoke_puff_small.tres" id="4_hrh66"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_tjmp0"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="8_84ghb"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="8_y4bhl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqgqg"]
@@ -23,6 +24,7 @@ script = ExtResource("1_jr514")
 Touchable = NodePath("Touchable")
 UnlockGroup = NodePath("UnlockGroup")
 UnlockArea = NodePath("UnlockArea")
+HoverIconDestroyed = ExtResource("8_84ghb")
 
 [node name="UnlockGroup" type="Node3D" parent="." node_paths=PackedStringArray("NotUnlocked", "Unlocked")]
 script = ExtResource("2_3flrn")
@@ -54,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.450179, 0)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_tjmp0")
+HoverIcon = ExtResource("8_84ghb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Touchable"]
 shape = SubResource("BoxShape3D_5mp28")

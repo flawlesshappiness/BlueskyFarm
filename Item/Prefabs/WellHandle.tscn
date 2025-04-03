@@ -1,15 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc1hbs5fiqmpl"]
+[gd_scene load_steps=4 format=3 uid="uid://bc1hbs5fiqmpl"]
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_qcwgi"]
 [ext_resource type="PackedScene" uid="uid://cu48ee0sfxvpe" path="res://Assets/FlawLizArt/Well/well_handle.fbx" id="2_83uns"]
-[ext_resource type="Material" uid="uid://cnucgaj8y5ihc" path="res://Assets/Materials/ItemHighlight.tres" id="3_4i0d0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qihmv"]
 size = Vector3(0.629883, 0.1, 0.362305)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5428"]
-next_pass = ExtResource("3_4i0d0")
-albedo_color = Color(0.360784, 0.290196, 0.270588, 1)
 
 [node name="WellHandle" instance=ExtResource("1_qcwgi")]
 
@@ -17,9 +12,4 @@ albedo_color = Color(0.360784, 0.290196, 0.270588, 1)
 shape = SubResource("BoxShape3D_qihmv")
 
 [node name="well_handle" parent="Model" index="0" instance=ExtResource("2_83uns")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.168537, -0.00340478, -0.131084)
-
-[node name="Handle" parent="Model/well_handle" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_h5428")
-
-[editable path="Model/well_handle"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.169651, 0, -0.133687)

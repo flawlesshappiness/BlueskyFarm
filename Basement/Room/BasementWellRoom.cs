@@ -1,16 +1,17 @@
 using Godot;
 using System.Collections;
+using System.Linq;
 
 public partial class BasementWellRoom : Node3DScript
 {
+    [Export]
+    public BasementRoom Room;
+
     [NodeType]
     public BasementWell Well;
 
     [NodeName]
     public Node3D KeyOnRope;
-
-    [NodeName]
-    public Node3D HandleItemPosition;
 
     [NodeName]
     public Touchable KeyOnRopeTouchable;
@@ -19,10 +20,10 @@ public partial class BasementWellRoom : Node3DScript
     public Touchable MissingHandleTouchable;
 
     [NodeName]
-    public Touchable SomethingInWellTouchable;
-
-    [NodeName]
     public ItemArea HandleArea;
+
+    [Export]
+    public ItemInfo WellHandle;
 
     private bool _key_collected;
 
@@ -36,7 +37,6 @@ public partial class BasementWellRoom : Node3DScript
         Well.OnLower += OnWellAnimate;
 
         KeyOnRopeTouchable.OnTouched += KeyOnRope_Touched;
-        SomethingInWellTouchable.OnTouched += SomethingInWell_Touched;
 
         HandleArea.OnItemEntered += HandleArea_ItemEntered;
     }
@@ -50,20 +50,17 @@ public partial class BasementWellRoom : Node3DScript
     private void InitializeHandle()
     {
         MissingHandleTouchable.SetEnabled(GameFlagIds.BasementWellRepaired.IsFalse());
-        SomethingInWellTouchable.SetEnabled(GameFlagIds.BasementWellRepaired.IsFalse());
 
         if (GameFlagIds.BasementWellRepaired.IsTrue()) return;
 
-        Well.Handle.Disable();
-        Well.HandleTouchable.Disable();
+        Well.SetHandleEnabled(false);
 
-        var item_handle = ItemController.Instance.CreateItem("WellHandle", new CreateItemSettings
-        {
-            Parent = HandleItemPosition
-        });
+        var containers = Room.GetContainers();
+        var container = containers
+            .Where(x => !x.HasItem)
+            .ToList().Random();
 
-        item_handle.Position = Vector3.Zero;
-        item_handle.Rotation = Vector3.Zero;
+        container.SetItem(WellHandle);
     }
 
     private void OnWellAnimate()
@@ -113,23 +110,9 @@ public partial class BasementWellRoom : Node3DScript
 
         SoundController.Instance.Play("sfx_attach_wood", Well.Handle.GlobalPosition);
 
-        Well.Handle.Enable();
-        Well.HandleTouchable.Enable();
+        Well.SetHandleEnabled(true);
 
         HandleArea.Disable();
         MissingHandleTouchable.Disable();
-        SomethingInWellTouchable.Disable();
-    }
-
-    private void SomethingInWell_Touched()
-    {
-        GameView.Instance.CreateText(new CreateTextSettings
-        {
-            Id = "something_in_well_" + GetInstanceId(),
-            Duration = 3.0f,
-            Target = SomethingInWellTouchable,
-            Offset = new Vector3(0, 0.2f, 0),
-            Text = "##SOMETHING_DOWN_THERE##"
-        });
     }
 }

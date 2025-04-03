@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class BasementRoom : Node3DScript
@@ -107,5 +108,11 @@ public partial class BasementRoom : Node3DScript
 
     private void PlayerExited(Player player)
     {
+    }
+
+    public IEnumerable<ItemContainer> GetContainers()
+    {
+        return this.GetNodesInChildren<ItemContainer>()
+            .Where(x => x.IsVisibleInTree());
     }
 }

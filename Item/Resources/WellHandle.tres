@@ -6,14 +6,12 @@
 [resource]
 script = ExtResource("1_qpuf4")
 Scene = ExtResource("1_1casp")
-ItemName = "Handle"
+ItemName = ""
 CustomId = "well_handle"
 Type = 0
+CanUse = false
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = true
 PerishesOnFarm = true
-Untrack = false
 InventoryItemCameraDistance = 0.6
 InventoryItemRotationOffset = 0.0

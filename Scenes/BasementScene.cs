@@ -200,16 +200,13 @@ public partial class BasementScene : GameScene
 
             var containers = basement_rooms
                 .SelectMany(x => x.Room.GetNodesInChildren<ItemContainer>())
-                .Where(x => x.IsVisibleInTree() && x.Item == null)
+                .Where(x => x.IsVisibleInTree() && !x.HasItem)
                 .TakeRandom(area.SeedCount);
 
             foreach (var container in containers)
             {
                 var item = SeedController.Instance.CreateSeed(area.SeedType);
-                item.Disable();
-                item.Freeze = true;
-
-                container.Item = item;
+                container.SetItem(item);
             }
         }
     }
@@ -228,7 +225,7 @@ public partial class BasementScene : GameScene
 
             var container = basement_rooms
                 .SelectMany(x => x.Room.GetNodesInChildren<ItemContainer>())
-                .Where(x => x.IsVisibleInTree() && x.Item == null)
+                .Where(x => x.IsVisibleInTree() && !x.HasItem)
                 .ToList()
                 .Random();
 
@@ -254,9 +251,7 @@ public partial class BasementScene : GameScene
             selected_bps.Add(blueprint);
 
             var item = BlueprintController.Instance.CreateBlueprintRoll(blueprint.Id);
-            item.Disable();
-            item.Freeze = true;
-            container.Item = item;
+            container.SetItem(item);
         }
     }
 

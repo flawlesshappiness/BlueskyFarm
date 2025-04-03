@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Brown": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Key_Brown.tres"
+"use_external/path": "res://Assets/Materials/Bronze.tres"
 }
 }
 }

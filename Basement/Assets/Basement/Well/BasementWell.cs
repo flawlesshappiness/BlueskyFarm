@@ -89,4 +89,10 @@ public partial class BasementWell : Node3DScript
         node.Position = Vector3.Zero;
         node.Rotation = Vector3.Zero;
     }
+
+    public void SetHandleEnabled(bool enabled)
+    {
+        Handle.SetEnabled(enabled);
+        HandleTouchable.SetEnabled(enabled);
+    }
 }

@@ -26,6 +26,9 @@ public partial class BlueprintInfo : Resource
     public int BoneCount;
 
     [Export]
+    public int StoneCount;
+
+    [Export]
     public bool CanCancel;
 
     [Export]

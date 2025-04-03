@@ -13,5 +13,6 @@ OverrideResultName = ""
 ResultDialogueNode = ""
 VegetableCount = 2
 BoneCount = 5
+StoneCount = 0
 CanCancel = true
 Areas = null

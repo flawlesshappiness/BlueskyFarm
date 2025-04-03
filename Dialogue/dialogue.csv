@@ -11,6 +11,10 @@ keys;en
 ##FOREST##;Forest
 ##MINE##;Mine
 ##CULT##;Cathedral
+##ROOM_FRANK##;Frank's room
+##ROOM_FRIDA##;Frida's room
+##ROOM_FREN##;Fren's room
+##ROOM_FRITZ##;Fritz' room
 ##NOTE_WORKSHOP_001##;Since everyone is gone, we're locking up and leaving this place.
 ##NOTE_WORKSHOP_002##;There's only blueprints and interior in this room. Frida has the key.
 ##NOTE_WORKSHOP_003##;Signed: Frank

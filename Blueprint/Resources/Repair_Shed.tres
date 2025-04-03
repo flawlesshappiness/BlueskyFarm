@@ -13,5 +13,6 @@ OverrideResultName = ""
 ResultDialogueNode = ""
 VegetableCount = 10
 BoneCount = 0
+StoneCount = 0
 CanCancel = true
 Areas = Array[int]([2])

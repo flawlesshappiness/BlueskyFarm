@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbffc4txaji8b"]
+[gd_scene load_steps=5 format=3 uid="uid://dbffc4txaji8b"]
 
 [ext_resource type="Script" path="res://Blueprint/BlueprintDisplayCounter.cs" id="1_nnk5s"]
 [ext_resource type="Texture2D" uid="uid://upqdiafpad5r" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_vegetable.png" id="2_i7tgm"]
 [ext_resource type="Texture2D" uid="uid://b8nnejfwvylgb" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_bone.png" id="3_fmuet"]
+[ext_resource type="Texture2D" uid="uid://dimqonltg4v1g" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_stone.png" id="4_3xus3"]
 
 [node name="BlueprintDisplayItemCounter" type="Node3D"]
 script = ExtResource("1_nnk5s")
 VegetableIcon = ExtResource("2_i7tgm")
 BoneIcon = ExtResource("3_fmuet")
+StoneIcon = ExtResource("4_3xus3")
 
 [node name="Scale" type="Node3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

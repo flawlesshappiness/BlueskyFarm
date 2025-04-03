@@ -139,6 +139,11 @@ public partial class FrogBlueprintCrafting : Node3DScript
             Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Crop_Bone, Max = bp_info.BoneCount });
         }
 
+        if (bp_info.StoneCount > 0)
+        {
+            Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Crop_Stone, Max = bp_info.StoneCount });
+        }
+
         Display.UpdateFromData(Data.Game.BlueprintCraftingData);
 
         this.StartCoroutine(Cr, "animate");

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://btp1aaeioslg2"]
+[gd_scene load_steps=35 format=3 uid="uid://btp1aaeioslg2"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_4wkfx"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Floor/Floor_Dirt.tscn" id="2_bsgfs"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b0nvr88bjty6" path="res://Basement/Assets/Containers/Prefabs/Barrel.tscn" id="24_kfjar"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="25_cg3e8"]
 [ext_resource type="PackedScene" uid="uid://dv5bvqe43lho4" path="res://Basement/Assets/Containers/Prefabs/Crate.tscn" id="26_0o3po"]
+[ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="28_itp36"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idsqn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -705,3 +706,7 @@ transform = Transform3D(-0.175487, 0, -0.984482, 0, 1, 0, 0.984482, 0, -0.175487
 
 [node name="Crate10" parent="Interior/Group 1/Interior 2" index="11" instance=ExtResource("26_0o3po")]
 transform = Transform3D(-0.0381608, 0, -0.999271, 0, 1, 0, 0.999271, 0, -0.0381608, 5.16422, -4, 7.01429)
+
+[node name="Note" parent="." index="14" instance=ExtResource("28_itp36")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.92314, -2.03639, 9.73436)
+DialogueNode = "##NOTE_WORKSHOP_KEY_001##"

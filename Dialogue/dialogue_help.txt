@@ -10,6 +10,9 @@ Note in the forest treehouse
 NOTE_BUSINESS_NAMES_001
 Note in the forest first shack
 
+NOTE_WORKSHOP_KEY_001
+Note in basement about where the workshop key is hidden
+
 FROG_INTRO_001
 When touching the frog for the first time
 

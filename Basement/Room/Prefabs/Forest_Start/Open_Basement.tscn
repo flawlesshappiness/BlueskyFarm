@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsx1gugkdsxgv"]
+[gd_scene load_steps=7 format=3 uid="uid://dsx1gugkdsxgv"]
 
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Floor/Floor_Dirt.tscn" id="1_l16aq"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="2_yedpp"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b7qspa1jwodd1" path="res://Basement/Assets/Basement/Wall_Top.tscn" id="4_sq4fc"]
 [ext_resource type="PackedScene" uid="uid://xyck60hnohde" path="res://Weeds/Thorns/Weed_Thorns_Single.tscn" id="5_js48h"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Basement/Wall.tscn" id="6_1b68b"]
-[ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="7_5gywj"]
 
 [node name="Basement" type="Node3D"]
 
@@ -57,7 +56,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0,
 
 [node name="Wall12" parent="." instance=ExtResource("6_1b68b")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -12)
-
-[node name="Note" parent="." instance=ExtResource("7_5gywj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.73594, 1.95784, -11.9222)
-DialogueNode = "##NOTE_BASEMENT_OVERGROWN_001##"

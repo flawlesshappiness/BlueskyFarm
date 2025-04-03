@@ -56,8 +56,15 @@
 	},
 	
 	{
-		"id": "##NOTE_BASEMENT_OVERGROWN_001##",
-		"next": "##NOTE_MANTRA_001##"
+		"id": "##NOTE_WORKSHOP_KEY_001##",
+		"next": "##NOTE_WORKSHOP_KEY_002##"
+	},
+	{
+		"id": "##NOTE_WORKSHOP_KEY_002##",
+		"next": "##NOTE_WORKSHOP_KEY_003##"
+	},
+	{
+		"id": "##NOTE_WORKSHOP_KEY_003##"
 	},
 	
 	{

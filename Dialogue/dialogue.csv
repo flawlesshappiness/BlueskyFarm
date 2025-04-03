@@ -16,7 +16,7 @@ keys;en
 ##ROOM_FREN##;Fren's room
 ##ROOM_FRITZ##;Fritz' room
 ##NOTE_WORKSHOP_001##;Since everyone is gone, we're locking up and leaving this place.
-##NOTE_WORKSHOP_002##;There's only blueprints and interior in this room. Frida has the key.
+##NOTE_WORKSHOP_002##;There's only blueprints and interior in this room. Fren has the key.
 ##NOTE_WORKSHOP_003##;Signed: Frank
 ##NOTE_ROOTMIMIC_001##;I don't care if you're getting seeds or storing produce.\STAY AWAY from the critters.
 ##NOTE_ROOTMIMIC_002##;They WILL grab you if you get too close.
@@ -29,7 +29,10 @@ keys;en
 ##NOTE_BUSINESS_NAMES_002##;Grow-Good Veggies\nGrow-Good Farm
 ##NOTE_BUSINESS_NAMES_003##;Big Growth Farm\nVeggies from the rift
 ##NOTE_BUSINESS_NAMES_004##;Riftwood Farm
-##FROG_INTRO_001##;Hello!\nAre you new?
+##NOTE_WORKSHOP_KEY_001##;Hi Frank. I'm taking the job of holding the workshop key very seriously.
+##NOTE_WORKSHOP_KEY_002##;That's why I've hidden it. Really. Well.
+##NOTE_WORKSHOP_KEY_003##;Signed: Fren
+##FROG_INTRO_001##;Hello, I'm Fren!\nAre you new?
 ##FROG_INTRO_002##;I thought we stopped getting new people.\nI can be your supervisor, I guess.
 ##FROG_INTRO_003##;Everything here is probably all new for you, so let's start with something simple.
 ##FROG_INTRO_004##;Take this seed, plant it, and come back to me with the crop.

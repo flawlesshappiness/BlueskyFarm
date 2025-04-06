@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueCharacterInfo" load_steps=4 format=3 uid="uid://cxphiw00m07lc"]
+
+[ext_resource type="Resource" uid="uid://cysd40cfjwpdv" path="res://Sound/Resources/sfx_dialogue_generic.tres" id="1_2ba66"]
+[ext_resource type="Resource" uid="uid://cpgsuyn3ji4kp" path="res://Sound/Resources/sfx_voice_frog_generic.tres" id="2_pdnet"]
+[ext_resource type="Script" path="res://Dialogue/DialogueCharacterInfo.cs" id="3_g4el0"]
+
+[resource]
+script = ExtResource("3_g4el0")
+TextSound = ExtResource("1_2ba66")
+VoiceDefault = ExtResource("2_pdnet")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=54 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -26,6 +26,11 @@
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="24_xtf6x"]
 [ext_resource type="PackedScene" uid="uid://c6vua766jxhes" path="res://Basement/Assets/Entities/RootCore.tscn" id="25_2s1e1"]
 [ext_resource type="Script" path="res://Basement/Room/CultTreeRoom.cs" id="25_08e0o"]
+[ext_resource type="PackedScene" uid="uid://cq0uyang6xqda" path="res://Characters/FrogCutscene/FrogCutscene.tscn" id="27_4q6kh"]
+[ext_resource type="Script" path="res://Basement/Room/Prefabs/Cult_Tree/Cutscene_EndingA.cs" id="27_ms6nv"]
+[ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://DialogueCharacter/Fren.tres" id="28_7atuu"]
+[ext_resource type="Resource" uid="uid://cxphiw00m07lc" path="res://DialogueCharacter/Frida.tres" id="28_ak20c"]
+[ext_resource type="Resource" uid="uid://cq7dwt2w6d6ii" path="res://DialogueCharacter/Frank.tres" id="29_8j1fk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -1303,7 +1308,7 @@ HoverIcon = ExtResource("24_xtf6x")
 shape = SubResource("BoxShape3D_221st")
 
 [node name="RootCore" parent="Core" index="4" instance=ExtResource("25_2s1e1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 12.3241)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.5, 12.3241)
 
 [node name="Roots_Ceiling" type="Node3D" parent="Core" index="5"]
 
@@ -1371,7 +1376,7 @@ distance_fade_enabled = true
 distance_fade_begin = 28.0
 omni_range = 8.156
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "PlayerAreaEnterRoom")]
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "Cutscene", "PlayerAreaEnterRoom")]
 script = ExtResource("25_08e0o")
 Room = NodePath("..")
 PlayerAreaEnterHole = NodePath("../Hole/PlayerArea")
@@ -1379,6 +1384,7 @@ TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
 StartHole = NodePath("../Hole/StartHole")
 StartCore = NodePath("../Core/StartCore")
 RootCore = NodePath("../Core/RootCore")
+Cutscene = NodePath("../EndingCutscene")
 PlayerAreaEnterRoom = NodePath("../PlayerArea_EnterRoom")
 
 [node name="PlayerArea_EnterRoom" type="Area3D" parent="." index="14"]
@@ -1389,3 +1395,55 @@ script = ExtResource("21_k3te6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea_EnterRoom" index="0"]
 shape = SubResource("BoxShape3D_havax")
+
+[node name="EndingCutscene" type="Node3D" parent="." index="15" node_paths=PackedStringArray("Core", "PlayerPositionMarker", "FrenLookMarker", "CultistsLookMarker", "CoreLookMarker", "Fren", "Frida", "Frank", "Fritz")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+script = ExtResource("27_ms6nv")
+Core = NodePath("../Core/RootCore")
+PlayerPositionMarker = NodePath("PlayerPositionMarker")
+FrenLookMarker = NodePath("FrenLookMarker")
+CultistsLookMarker = NodePath("CultistsLookMarker")
+CoreLookMarker = NodePath("CoreLookMarker")
+CharacterFrida = ExtResource("28_ak20c")
+CharacterFrank = ExtResource("29_8j1fk")
+CharacterFren = ExtResource("28_7atuu")
+Fren = NodePath("FrogFren")
+Frida = NodePath("FrogFrida")
+Frank = NodePath("FrogFrank")
+Fritz = NodePath("FrogFritz")
+
+[node name="PlayerPositionMarker" type="Marker3D" parent="EndingCutscene" index="0"]
+transform = Transform3D(-0.999897, 0, -0.0143287, 0, 1, 0, 0.0143287, 0, -0.999897, 0, 0, 10.5)
+
+[node name="FrenLookMarker" type="Marker3D" parent="EndingCutscene" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92083, 1.57999, 11.6763)
+
+[node name="CultistsLookMarker" type="Marker3D" parent="EndingCutscene" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0855954, 1.57999, 7.75447)
+
+[node name="CoreLookMarker" type="Marker3D" parent="EndingCutscene" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00725168, 1.53955, 12.8013)
+
+[node name="FrogFrida" parent="EndingCutscene" index="4" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(0.914381, 0, -0.404854, 0, 1, 0, 0.404854, 0, 0.914381, 1.4094, 0, 7.46234)
+
+[node name="FrogFritz" parent="EndingCutscene" index="5" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(0.999983, 0, -0.00575953, 0, 1, 0, 0.00575953, 0, 0.999983, 0.122641, 0, 5.51025)
+
+[node name="FrogFrank" parent="EndingCutscene" index="6" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(0.912991, 0, 0.40798, 0, 1, 0, -0.40798, 0, 0.912991, -1.22212, 0, 7.0969)
+
+[node name="FrogFren" parent="EndingCutscene" index="7" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(-0.461903, 0, -0.88693, 0, 1, 0, 0.88693, 0, -0.461903, 2.35572, 0, 11.8593)
+
+[node name="Garb_Body" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="Garb_Arms" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="4"]
+visible = false
+
+[node name="Garb_Belt" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="5"]
+visible = false
+
+[editable path="EndingCutscene/FrogFren"]
+[editable path="EndingCutscene/FrogFren/frog"]

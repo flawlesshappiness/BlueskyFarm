@@ -22,6 +22,9 @@ public partial class CultTreeRoom : Node3D
     public RootCore RootCore;
 
     [Export]
+    public Cutscene_EndingA Cutscene;
+
+    [Export]
     public PlayerArea PlayerAreaEnterRoom;
 
     private string DebugId => GetInstanceId().ToString();
@@ -113,7 +116,7 @@ public partial class CultTreeRoom : Node3D
 
     private void SwordEntered()
     {
-        Debug.Log("BAD END");
+        Cutscene.StartEnding();
     }
 
     private void PlayerEntered_EnterRoom(Player player)

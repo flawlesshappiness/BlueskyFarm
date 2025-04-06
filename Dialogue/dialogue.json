@@ -224,6 +224,47 @@
 	},
 	
 	{
+		"id": "##ENDING_BAD_A_001##",
+		"next": "##ENDING_BAD_A_002##",
+		"character": "Frank",
+		"triggers": [
+			"enable_cultists"
+		]
+	},
+	{
+		"id": "##ENDING_BAD_A_002##",
+		"next": "##ENDING_BAD_A_003##",
+		"character": "Frida",
+		"triggers": [
+			"look_at_cultists"
+		]
+	},
+	{
+		"id": "##ENDING_BAD_A_003##",
+		"next": "##ENDING_BAD_A_004##",
+		"character": "Fren",
+		"triggers": [
+			"look_at_fren",
+			"enable_fren"
+		]
+	},
+	{
+		"id": "##ENDING_BAD_A_004##",
+		"next": "##ENDING_BAD_A_005##",
+		"character": "Frank",
+		"triggers": [
+			"look_at_cultists"
+		]
+	},
+	{
+		"id": "##ENDING_BAD_A_005##",
+		"character": "Fren",
+		"triggers": [
+			"look_at_fren"
+		]
+	},
+	
+	{
 		"id": "##FROG_FIRST_DEATH_001##",
 		"next": "##FROG_FIRST_DEATH_002##"
 	},

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d0y3wlbqjeh0o" path="res://Assets/FlawLizArt/Interior/sign_wall_001.fbx" id="1_4nb7h"]
 [ext_resource type="Script" path="res://Note/DialoguePaper.cs" id="1_4o6rw"]
 [ext_resource type="Texture2D" uid="uid://d4nx1nnj52i0l" path="res://Assets/FlawLizArt/Textures/writing_003.png" id="2_6tjs8"]
-[ext_resource type="Resource" uid="uid://d2ecbuc64hxcl" path="res://Characters/Paper/PaperDialogueCharacter.tres" id="2_uwjry"]
+[ext_resource type="Resource" uid="uid://d2ecbuc64hxcl" path="res://DialogueCharacter/PaperNote.tres" id="2_uwjry"]
 [ext_resource type="Texture2D" uid="uid://bwve18s7dgl1u" path="res://Assets/FlawLizArt/Textures/writing_001.png" id="3_h5irs"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="6_kmbju"]
 [ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="7_dg30f"]

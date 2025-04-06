@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cpoduyeleoxek" path="res://Characters/CharacterBase.tscn" id="1_jlthq"]
 [ext_resource type="Script" path="res://Characters/Frog/FrogCharacter.cs" id="2_e73ro"]
-[ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://Characters/Frog/FrogDialogueCharacter.tres" id="3_q6ye7"]
+[ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://DialogueCharacter/Fren.tres" id="3_q6ye7"]
 [ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/frog.fbx" id="4_byu2y"]
 [ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_xkswj"]
 [ext_resource type="Texture2D" uid="uid://b0benq6rk0e8n" path="res://Assets/KenneyNL/Cursors/message_dots_round.png" id="5_kdtbk"]

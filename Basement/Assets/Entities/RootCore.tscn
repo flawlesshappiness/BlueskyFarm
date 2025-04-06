@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6vua766jxhes"]
+[gd_scene load_steps=10 format=3 uid="uid://c6vua766jxhes"]
 
 [ext_resource type="PackedScene" uid="uid://pty4q5m76x8e" path="res://Assets/FlawLizArt/Roots/root_core_001.fbx" id="1_60qnf"]
 [ext_resource type="Script" path="res://Basement/Assets/Entities/RootCore.cs" id="1_hutdn"]
 [ext_resource type="Script" path="res://Item/ItemArea.cs" id="2_ax4p2"]
+[ext_resource type="PackedScene" uid="uid://d2rc3m4i3x64k" path="res://Assets/Quaternius/RPG/dagger_bone.fbx" id="4_tqa16"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kekfh"]
 size = Vector3(0.480469, 4, 0.512695)
@@ -10,9 +11,71 @@ size = Vector3(0.480469, 4, 0.512695)
 [sub_resource type="SphereShape3D" id="SphereShape3D_uf2b4"]
 radius = 0.651727
 
-[node name="RootCore" type="Node3D" node_paths=PackedStringArray("ItemArea")]
+[sub_resource type="Animation" id="Animation_k5uen"]
+resource_name = "sword_insert"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/Anim_Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [Vector3(0.111506, 2.33922, -1.48204), Vector3(0.111506, 2.13434, -0.682157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Anim_Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5.45601e-08, -1.5708, -1.86677), Vector3(-5.45601e-08, -1.5708, -1.86677)]
+}
+
+[sub_resource type="Animation" id="Animation_6jq5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/Anim_Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Anim_Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qawhp"]
+_data = {
+"RESET": SubResource("Animation_6jq5v"),
+"sword_insert": SubResource("Animation_k5uen")
+}
+
+[node name="RootCore" type="Node3D" node_paths=PackedStringArray("ItemArea", "AnimationPlayer_Sword")]
 script = ExtResource("1_hutdn")
 ItemArea = NodePath("ItemArea")
+AnimationPlayer_Sword = NodePath("AnimationPlayer_Sword")
 
 [node name="root_core_001" parent="." instance=ExtResource("1_60qnf")]
 
@@ -37,3 +100,15 @@ light_color = Color(1, 0, 0, 1)
 distance_fade_enabled = true
 distance_fade_begin = 28.0
 omni_range = 10.0
+
+[node name="AnimationPlayer_Sword" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qawhp")
+}
+
+[node name="Animation" type="Node3D" parent="."]
+
+[node name="Anim_Sword" type="Node3D" parent="Animation"]
+
+[node name="dagger_bone" parent="Animation/Anim_Sword" instance=ExtResource("4_tqa16")]
+transform = Transform3D(1, 0, 1.77636e-15, 0, 1, 0, -1.24345e-14, 0, 1, 0, 0, 0)

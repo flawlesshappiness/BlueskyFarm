@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq0uyang6xqda"]
+
+[ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/frog.fbx" id="1_kvbbm"]
+
+[node name="FrogCutscene" type="Node3D"]
+
+[node name="frog" parent="." instance=ExtResource("1_kvbbm")]

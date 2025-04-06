@@ -14,6 +14,7 @@ public partial class DialogueController : SingletonController
     public event Action OnDialogueStart;
     public event Action OnDialogueEnd;
     public event Action OnDialogueCancel;
+    public event Action<string, DialogueCharacter> OnCharacterChanged;
     public event Action<string> OnDialogueTrigger;
 
     private DialogueNodeCollection _collection;
@@ -100,6 +101,8 @@ public partial class DialogueController : SingletonController
         var is_first = CurrentNode == null;
         CurrentNode = node;
         UpdateFlags(node);
+        UpdateCharacter(node);
+        UpdateTriggers(CurrentNode);
 
         if (is_first)
         {
@@ -112,8 +115,6 @@ public partial class DialogueController : SingletonController
     public void NextNode()
     {
         if (CurrentNode == null) return;
-
-        UpdateTriggers(CurrentNode);
 
         if (string.IsNullOrEmpty(CurrentNode.next))
         {
@@ -179,6 +180,22 @@ public partial class DialogueController : SingletonController
 
             OnDialogueTrigger?.Invoke(trigger);
         }
+    }
+
+    private void UpdateCharacter(DialogueNode node)
+    {
+        if (string.IsNullOrEmpty(node.character)) return;
+
+        var info = DialogueCharacterController.Instance.Collection.GetResource(node.character);
+        if (info == null) return;
+
+        var character = new DialogueCharacter
+        {
+            Info = info
+        };
+
+        SetCharacter(character);
+        OnCharacterChanged?.Invoke(node.character, character);
     }
 
     public void SetCharacter(DialogueCharacter character)

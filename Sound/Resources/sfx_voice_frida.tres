@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=8 format=3 uid="uid://nyjnkjfl0830"]
+
+[ext_resource type="AudioStream" uid="uid://drvasuayahxlc" path="res://Sound/Sounds/sfx_voice_frida_001.wav" id="1_5fyt3"]
+[ext_resource type="AudioStream" uid="uid://djsi1deyr8tqc" path="res://Sound/Sounds/sfx_voice_frida_002.wav" id="2_src5j"]
+[ext_resource type="AudioStream" uid="uid://bna3b5kfs46nl" path="res://Sound/Sounds/sfx_voice_frida_003.wav" id="3_ptrnn"]
+[ext_resource type="AudioStream" uid="uid://bwyj2kn008p6j" path="res://Sound/Sounds/sfx_voice_frida_004.wav" id="4_l8rmu"]
+[ext_resource type="AudioStream" uid="uid://ctaphqa5sl5u6" path="res://Sound/Sounds/sfx_voice_frida_005.wav" id="5_5m65s"]
+[ext_resource type="AudioStream" uid="uid://d2qixmxa54hal" path="res://Sound/Sounds/sfx_voice_frida_006.wav" id="6_5kr13"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="8_jfekn"]
+
+[resource]
+script = ExtResource("8_jfekn")
+AudioStreams = Array[AudioStream]([ExtResource("1_5fyt3"), ExtResource("2_src5j"), ExtResource("3_ptrnn"), ExtResource("4_l8rmu"), ExtResource("5_5m65s"), ExtResource("6_5kr13")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 0

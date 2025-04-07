@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=9 format=3 uid="uid://d3tt7ae3gbtkj"]
+
+[ext_resource type="AudioStream" uid="uid://detkjm3ot0xh1" path="res://Sound/Sounds/sfx_voice_frank_001.wav" id="1_c2sko"]
+[ext_resource type="AudioStream" uid="uid://b5nxdvso5a6bc" path="res://Sound/Sounds/sfx_voice_frank_002.wav" id="2_wff7s"]
+[ext_resource type="AudioStream" uid="uid://2hwrqk51f1c5" path="res://Sound/Sounds/sfx_voice_frank_003.wav" id="3_to0rp"]
+[ext_resource type="AudioStream" uid="uid://bpfwap2b0mmxe" path="res://Sound/Sounds/sfx_voice_frank_004.wav" id="4_lk2bv"]
+[ext_resource type="AudioStream" uid="uid://babn760q6mrlq" path="res://Sound/Sounds/sfx_voice_frank_005.wav" id="5_6h4ym"]
+[ext_resource type="AudioStream" uid="uid://cmqm0fmth1cla" path="res://Sound/Sounds/sfx_voice_frank_006.wav" id="6_q8ld6"]
+[ext_resource type="AudioStream" uid="uid://ddanqqpm8s8q6" path="res://Sound/Sounds/sfx_voice_frank_007.wav" id="7_4hoed"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="14_1sn01"]
+
+[resource]
+script = ExtResource("14_1sn01")
+AudioStreams = Array[AudioStream]([ExtResource("1_c2sko"), ExtResource("2_wff7s"), ExtResource("3_to0rp"), ExtResource("4_lk2bv"), ExtResource("5_6h4ym"), ExtResource("6_q8ld6"), ExtResource("7_4hoed")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 0

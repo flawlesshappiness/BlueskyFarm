@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Dialogue/DialogueCharacterInfo.cs" id="1_n48be"]
 [ext_resource type="Resource" uid="uid://cysd40cfjwpdv" path="res://Sound/Resources/sfx_dialogue_generic.tres" id="1_whttv"]
-[ext_resource type="Resource" uid="uid://cpgsuyn3ji4kp" path="res://Sound/Resources/sfx_voice_frog_generic.tres" id="2_eps7q"]
+[ext_resource type="Resource" uid="uid://cpgsuyn3ji4kp" path="res://Sound/Resources/sfx_voice_fren.tres" id="2_eps7q"]
 
 [resource]
 script = ExtResource("1_n48be")

@@ -149,10 +149,11 @@ public partial class Item : Grabbable
             var duration = 0.25f;
             var curve = Curves.EaseInBack;
             var start = Data.Scale;
+            var end = 0.0001f;
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 var t = curve.Evaluate(f);
-                var scale = Mathf.Lerp(start, 0f, t);
+                var scale = Mathf.Lerp(start, end, t);
                 Scale = Vector3.One * scale;
             });
 

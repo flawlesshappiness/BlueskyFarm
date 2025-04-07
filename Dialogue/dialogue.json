@@ -86,9 +86,6 @@
 				"id": "frog_intro",
 				"value": 1
 			}
-		],
-		"triggers": [
-			"tutorial_001"
 		]
 	},
 	
@@ -111,9 +108,6 @@
 				"id": "frog_intro",
 				"value": 2
 			}
-		],
-		"triggers": [
-			"tutorial_002"
 		]
 	},
 	

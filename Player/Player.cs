@@ -285,7 +285,7 @@ public partial class Player : FirstPersonController
         return true;
     }
 
-    private void OnDialogueStart()
+    private void OnDialogueStart(DialogueNode node)
     {
         var name = nameof(DialogueController);
         InventoryController.Instance.InventoryLock.AddLock(name);
@@ -294,7 +294,7 @@ public partial class Player : FirstPersonController
         Cursor.Hide();
     }
 
-    private void OnDialogueEnd()
+    private void OnDialogueEnd(DialogueNode node)
     {
         Coroutine.Start(Cr);
         IEnumerator Cr()

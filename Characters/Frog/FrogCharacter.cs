@@ -190,24 +190,20 @@ public partial class FrogCharacter : Character
         }
     }
 
-    protected override void OnDialogueTrigger(string trigger)
+    protected override void OnDialogueEnd(string node)
     {
-        base.OnDialogueTrigger(trigger);
+        base.OnDialogueEnd(node);
 
-        switch (trigger)
+        if (node.Contains("FROG_INTRO_0"))
         {
-            case "tutorial_001":
-                ThrowSeedToPlayer();
-                BlueprintCrafting.SetBlueprint("tutorial_001");
-                break;
-
-            case "tutorial_002":
-                ThrowBasementKeyToPlayer();
-                BlueprintCrafting.SetBlueprint("tutorial_002");
-                break;
+            ThrowSeedToPlayer();
+            BlueprintCrafting.SetBlueprint("tutorial_001");
         }
-
-        Data.Game.Save();
+        else if (node.Contains("FROG_FIND_SEEDS_0"))
+        {
+            ThrowBasementKeyToPlayer();
+            BlueprintCrafting.SetBlueprint("tutorial_002");
+        }
     }
 
     private void ThrowSeedToPlayer()

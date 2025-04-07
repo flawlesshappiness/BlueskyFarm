@@ -11,8 +11,8 @@ public partial class DialogueController : SingletonController
     public DialogueCharacter CurrentCharacter { get; private set; }
 
     public event Action<DialogueNode> OnDialogue;
-    public event Action OnDialogueStart;
-    public event Action OnDialogueEnd;
+    public event Action<DialogueNode> OnDialogueStart;
+    public event Action<DialogueNode> OnDialogueEnd;
     public event Action OnDialogueCancel;
     public event Action<string, DialogueCharacter> OnCharacterChanged;
     public event Action<string> OnDialogueTrigger;
@@ -106,7 +106,7 @@ public partial class DialogueController : SingletonController
 
         if (is_first)
         {
-            OnDialogueStart?.Invoke();
+            OnDialogueStart?.Invoke(CurrentNode);
         }
 
         OnDialogue?.Invoke(CurrentNode);
@@ -140,8 +140,8 @@ public partial class DialogueController : SingletonController
 
         Debug.TraceMethod();
 
+        OnDialogueEnd?.Invoke(CurrentNode);
         StopDialogue();
-        OnDialogueEnd?.Invoke();
     }
 
     public void CancelDialogue()

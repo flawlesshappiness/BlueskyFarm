@@ -61,12 +61,12 @@ public partial class DialogueControl : ControlScript
         AnimateText();
     }
 
-    private void OnDialogueStart()
+    private void OnDialogueStart(DialogueNode node)
     {
         AnimateBackgroundShow();
     }
 
-    private void OnDialogueEnd()
+    private void OnDialogueEnd(DialogueNode node)
     {
         AnimateBackgroundHide();
         SetText("");

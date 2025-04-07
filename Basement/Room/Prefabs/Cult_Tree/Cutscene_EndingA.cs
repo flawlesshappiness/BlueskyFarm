@@ -128,7 +128,7 @@ public partial class Cutscene_EndingA : Node3D
         }
     }
 
-    private void DialogueEnd()
+    private void DialogueEnd(DialogueNode node)
     {
         if (!_active_dialogue) return;
 

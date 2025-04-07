@@ -89,10 +89,11 @@ public partial class Character : Node3DScript
         }
     }
 
-    private void _OnDialogueEnd()
+    private void _OnDialogueEnd(DialogueNode node)
     {
         if (ActiveDialogue)
         {
+            OnDialogueEnd(node.id);
             ActiveDialogue = false;
         }
     }
@@ -116,6 +117,11 @@ public partial class Character : Node3DScript
     protected virtual void OnDialogue(DialogueNode node)
     {
         OnDialogueAnimation(node.animation);
+    }
+
+    protected virtual void OnDialogueEnd(string node)
+    {
+
     }
 
     protected virtual void OnDialogueAnimation(string animation)

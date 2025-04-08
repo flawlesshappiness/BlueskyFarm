@@ -45,6 +45,9 @@ public partial class Cutscene_EndingA : Node3D
     [Export]
     public SoundInfo BgmCutsceneTense;
 
+    [Export]
+    public SoundInfo BgmCutsceneDeath;
+
     private bool _active_dialogue;
     private AudioStreamPlayer asp_bgm;
 
@@ -224,15 +227,19 @@ public partial class Cutscene_EndingA : Node3D
         {
             Fren.AnimationPlayer.Play("Armature|Sword_Stab");
             yield return new WaitForSeconds(0.4f);
+            var bus = AudioBus.Get(SoundBus.SFX.ToString());
+            bus.SetMuted(true);
             asp_bgm.Stop();
+            BgmCutsceneDeath.Play();
             AnimateRedFlash(0.25f);
             Player.Instance.StartLookingAt(LookUpMarker, 0.05f);
-            ScreenEffects.AnimateGaussianBlurIn(nameof(Cutscene_EndingA), 40, 2.0f);
-            yield return new WaitForSeconds(1f);
-            yield return AnimateFadeOut(2f);
+            ScreenEffects.AnimateCameraShake(nameof(Cutscene_EndingA), 0.25f, 0f, 0.25f, 0f);
+            ScreenEffects.AnimateGaussianBlurIn(nameof(Cutscene_EndingA), 40, 3.0f);
+            yield return AnimateFadeOut(8f);
             Scene.Goto<CreditsScene>();
             GameView.Instance.SetBlackOverlayAlpha(0);
             ScreenEffects.AnimateGaussianBlurOut(nameof(Cutscene_EndingA), 0f);
+            bus.SetMuted(false);
         }
     }
 

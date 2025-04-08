@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=56 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://cxphiw00m07lc" path="res://DialogueCharacter/Frida.tres" id="28_ak20c"]
 [ext_resource type="Resource" uid="uid://cq7dwt2w6d6ii" path="res://DialogueCharacter/Frank.tres" id="29_8j1fk"]
 [ext_resource type="Resource" uid="uid://clp0lw7jpn0wy" path="res://Sound/Resources/bgm_cutscene_tense.tres" id="31_arhwr"]
+[ext_resource type="Resource" uid="uid://rgasce75hpvv" path="res://Sound/Resources/bgm_cutscene_death.tres" id="32_1ylrq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -1414,6 +1415,7 @@ Frida = NodePath("FrogFrida")
 Frank = NodePath("FrogFrank")
 Fritz = NodePath("FrogFritz")
 BgmCutsceneTense = ExtResource("31_arhwr")
+BgmCutsceneDeath = ExtResource("32_1ylrq")
 
 [node name="PlayerPositionMarker" type="Marker3D" parent="EndingCutscene" index="0"]
 transform = Transform3D(-0.999897, 0, -0.0143287, 0, 1, 0, 0.0143287, 0, -0.999897, 0, 0, 10.5)

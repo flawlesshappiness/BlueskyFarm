@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://rgasce75hpvv"]
+
+[ext_resource type="AudioStream" uid="uid://rocn4pc20iwx" path="res://Sound/Music/bgm_cutscene_002.wav" id="1_k7kqg"]
+[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_4ijt6"]
+
+[resource]
+script = ExtResource("2_4ijt6")
+AudioStreams = Array[AudioStream]([ExtResource("1_k7kqg")])
+Volume = 5.0
+Looping = true
+PitchRange = Vector2(1, 1)
+Bus = 3
+Distance = 0
+Attenuation = 0

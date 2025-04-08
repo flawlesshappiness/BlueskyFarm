@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=55 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -31,6 +31,7 @@
 [ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://DialogueCharacter/Fren.tres" id="28_7atuu"]
 [ext_resource type="Resource" uid="uid://cxphiw00m07lc" path="res://DialogueCharacter/Frida.tres" id="28_ak20c"]
 [ext_resource type="Resource" uid="uid://cq7dwt2w6d6ii" path="res://DialogueCharacter/Frank.tres" id="29_8j1fk"]
+[ext_resource type="Resource" uid="uid://clp0lw7jpn0wy" path="res://Sound/Resources/bgm_cutscene_tense.tres" id="31_arhwr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -1349,7 +1350,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5932
 transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -0.25135, 6.5, 5.11818)
 
 [node name="root_floor_013" parent="Core/Roots_Ceiling" index="12" instance=ExtResource("13_or7gq")]
-transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -0.958523, 6.5, 8.0073)
+transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -1.75443, 6.5, 7.91373)
 
 [node name="root_floor_014" parent="Core/Roots_Ceiling" index="13" instance=ExtResource("13_or7gq")]
 transform = Transform3D(-0.145947, -1.24145, 5.42655e-08, 0, -5.46392e-08, -1.25, 1.24145, -0.145947, 6.37954e-09, -0.839815, 6.5, 10.792)
@@ -1396,7 +1397,7 @@ script = ExtResource("21_k3te6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea_EnterRoom" index="0"]
 shape = SubResource("BoxShape3D_havax")
 
-[node name="EndingCutscene" type="Node3D" parent="." index="15" node_paths=PackedStringArray("Core", "PlayerPositionMarker", "FrenLookMarker", "CultistsLookMarker", "CoreLookMarker", "Fren", "Frida", "Frank", "Fritz")]
+[node name="EndingCutscene" type="Node3D" parent="." index="15" node_paths=PackedStringArray("Core", "PlayerPositionMarker", "FrenLookMarker", "CultistsLookMarker", "CoreLookMarker", "LookUpMarker", "Fren", "Frida", "Frank", "Fritz")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
 script = ExtResource("27_ms6nv")
 Core = NodePath("../Core/RootCore")
@@ -1404,6 +1405,7 @@ PlayerPositionMarker = NodePath("PlayerPositionMarker")
 FrenLookMarker = NodePath("FrenLookMarker")
 CultistsLookMarker = NodePath("CultistsLookMarker")
 CoreLookMarker = NodePath("CoreLookMarker")
+LookUpMarker = NodePath("LookUpMarker")
 CharacterFrida = ExtResource("28_ak20c")
 CharacterFrank = ExtResource("29_8j1fk")
 CharacterFren = ExtResource("28_7atuu")
@@ -1411,6 +1413,7 @@ Fren = NodePath("FrogFren")
 Frida = NodePath("FrogFrida")
 Frank = NodePath("FrogFrank")
 Fritz = NodePath("FrogFritz")
+BgmCutsceneTense = ExtResource("31_arhwr")
 
 [node name="PlayerPositionMarker" type="Marker3D" parent="EndingCutscene" index="0"]
 transform = Transform3D(-0.999897, 0, -0.0143287, 0, 1, 0, 0.0143287, 0, -0.999897, 0, 0, 10.5)
@@ -1424,17 +1427,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0855954, 1.57999, 7.75447)
 [node name="CoreLookMarker" type="Marker3D" parent="EndingCutscene" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00725168, 1.53955, 12.8013)
 
-[node name="FrogFrida" parent="EndingCutscene" index="4" instance=ExtResource("27_4q6kh")]
-transform = Transform3D(0.914381, 0, -0.404854, 0, 1, 0, 0.404854, 0, 0.914381, 1.4094, 0, 7.46234)
+[node name="LookUpMarker" type="Marker3D" parent="EndingCutscene" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275861, 3.06824, 10.7548)
 
-[node name="FrogFritz" parent="EndingCutscene" index="5" instance=ExtResource("27_4q6kh")]
+[node name="FrogFrida" parent="EndingCutscene" index="5" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(0.914381, 0, -0.404854, 0, 1, 0, 0.404854, 0, 0.914381, 1.4094, 0, 7.46234)
+StartAnimation = "Armature|Idle_Cult"
+
+[node name="FrogFritz" parent="EndingCutscene" index="6" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(0.999983, 0, -0.00575953, 0, 1, 0, 0.00575953, 0, 0.999983, 0.122641, 0, 5.51025)
 
-[node name="FrogFrank" parent="EndingCutscene" index="6" instance=ExtResource("27_4q6kh")]
+[node name="FrogFrank" parent="EndingCutscene" index="7" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(0.912991, 0, 0.40798, 0, 1, 0, -0.40798, 0, 0.912991, -1.22212, 0, 7.0969)
 
-[node name="FrogFren" parent="EndingCutscene" index="7" instance=ExtResource("27_4q6kh")]
+[node name="FrogFren" parent="EndingCutscene" index="8" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(-0.461903, 0, -0.88693, 0, 1, 0, 0.88693, 0, -0.461903, 2.35572, 0, 11.8593)
+
+[node name="Skeleton3D" parent="EndingCutscene/FrogFren/frog/Armature" index="0"]
+bones/1/position = Vector3(8.41591e-06, 0.00839508, 0.0022433)
+bones/3/rotation = Quaternion(0.260243, 4.40859e-07, 3.66643e-08, 0.965543)
+bones/5/rotation = Quaternion(0.441586, 1.00385e-06, -1.66133e-07, 0.897219)
+bones/6/rotation = Quaternion(0.212753, -0.000264062, -0.000110198, 0.977106)
+bones/7/rotation = Quaternion(0.4848, 0.849225, 0.06169, -0.199952)
+bones/11/rotation = Quaternion(-0.00313612, 0.0544906, -0.40839, 0.911174)
+bones/12/rotation = Quaternion(0.721051, 0.47644, 0.36913, -0.341809)
+bones/13/rotation = Quaternion(0.00907953, 0.499479, -0.200836, 0.842676)
+bones/15/rotation = Quaternion(-0.0283751, -0.00482289, -0.167482, 0.985455)
+bones/16/rotation = Quaternion(-0.106642, -0.000922409, 0.00859773, 0.99426)
+bones/19/rotation = Quaternion(-0.112773, 0.000768064, 0.0145153, 0.993514)
+bones/20/rotation = Quaternion(0.0205605, -0.000987733, -0.00125054, 0.999787)
+bones/23/rotation = Quaternion(0.0422546, 0.0256416, 0.232305, 0.971386)
+bones/24/rotation = Quaternion(-0.0766131, -0.001527, -0.0198675, 0.996862)
+bones/27/rotation = Quaternion(-0.0116289, 0.00251733, 0.212192, 0.977156)
+bones/29/rotation = Quaternion(-0.00313564, -0.0544901, 0.40839, 0.911174)
+bones/30/rotation = Quaternion(-0.427629, 0.626091, 0.604866, -0.243475)
+bones/31/rotation = Quaternion(-0.204165, -0.142809, 0.00591034, 0.968446)
+bones/33/rotation = Quaternion(-0.458324, -0.0354355, 0.21425, 0.861847)
+bones/34/rotation = Quaternion(-0.49363, -0.136772, 0.0871848, 0.854413)
+bones/37/rotation = Quaternion(-0.644703, 0.0419525, 0.0304606, 0.762673)
+bones/38/rotation = Quaternion(-0.388971, -0.0209378, 0.136609, 0.910824)
+bones/41/rotation = Quaternion(-0.453211, 0.19002, -0.244978, 0.83575)
+bones/42/rotation = Quaternion(-0.385223, 0.0230602, 0.0620045, 0.920449)
+bones/47/rotation = Quaternion(0.991946, 0.00570779, 0.0170103, 0.125382)
+bones/48/rotation = Quaternion(0.100085, 0.00021777, 0.000932813, 0.994978)
+bones/49/rotation = Quaternion(0.00256614, -0.72015, 0.693784, -0.00641671)
+bones/51/rotation = Quaternion(0.987005, -0.00225288, -0.0159716, -0.159876)
+bones/52/rotation = Quaternion(0.00323397, 0.00139206, -4.1339e-05, 0.999994)
+bones/53/rotation = Quaternion(0.000204903, -0.620003, 0.784586, 0.00452542)
+bones/55/position = Vector3(0.0120387, 0.0181788, -0.0099381)
+bones/57/position = Vector3(-0.0150553, 0.0119222, -0.0099381)
+bones/59/position = Vector3(0.00349282, 0.00041052, 0.001312)
+bones/63/position = Vector3(0.00921994, 0.00159529, 0.00615727)
+bones/65/position = Vector3(-0.00353301, -0.0142991, 0.00754896)
 
 [node name="Garb_Body" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="3"]
 visible = false
@@ -1444,6 +1488,12 @@ visible = false
 
 [node name="Garb_Belt" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="5"]
 visible = false
+
+[node name="lantern" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="6"]
+visible = false
+
+[node name="Dagger" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="7"]
+visible = true
 
 [editable path="EndingCutscene/FrogFren"]
 [editable path="EndingCutscene/FrogFren/frog"]

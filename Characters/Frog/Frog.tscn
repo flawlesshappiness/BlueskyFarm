@@ -119,7 +119,6 @@ bones/40/rotation = Quaternion(0.0273878, 0.0134984, 0.26625, 0.96342)
 bones/40/scale = Vector3(1, 1, 1)
 bones/41/position = Vector3(7.34005e-10, 0.00289612, -2.0209e-09)
 bones/41/rotation = Quaternion(0.0422543, -0.0256403, -0.232304, 0.971387)
-bones/41/scale = Vector3(1, 1, 1)
 bones/42/position = Vector3(4.07314e-10, 0.000954032, -3.68496e-09)
 bones/42/rotation = Quaternion(-0.0766119, 0.00152574, 0.0198671, 0.996862)
 bones/42/scale = Vector3(1, 1, 1)
@@ -159,6 +158,12 @@ visible = false
 visible = false
 
 [node name="Garb_Belt" parent="frog/Armature/Skeleton3D" index="5"]
+visible = false
+
+[node name="lantern" parent="frog/Armature/Skeleton3D" index="6"]
+visible = false
+
+[node name="Dagger" parent="frog/Armature/Skeleton3D" index="7"]
 visible = false
 
 [node name="AnimationPlayer" parent="frog" index="1"]

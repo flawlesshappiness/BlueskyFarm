@@ -19,6 +19,9 @@ public partial class Cutscene_EndingA : Node3D
     public Marker3D CoreLookMarker;
 
     [Export]
+    public Marker3D LookUpMarker;
+
+    [Export]
     public DialogueCharacterInfo CharacterFrida;
 
     [Export]
@@ -28,18 +31,22 @@ public partial class Cutscene_EndingA : Node3D
     public DialogueCharacterInfo CharacterFren;
 
     [Export]
-    public Node3D Fren;
+    public FrogCutscene Fren;
 
     [Export]
-    public Node3D Frida;
+    public FrogCutscene Frida;
 
     [Export]
-    public Node3D Frank;
+    public FrogCutscene Frank;
 
     [Export]
-    public Node3D Fritz;
+    public FrogCutscene Fritz;
+
+    [Export]
+    public SoundInfo BgmCutsceneTense;
 
     private bool _active_dialogue;
+    private AudioStreamPlayer asp_bgm;
 
     public override void _Ready()
     {
@@ -57,6 +64,8 @@ public partial class Cutscene_EndingA : Node3D
     public void StartEnding()
     {
         SetPlayerLocked(true);
+        Cursor.Hide();
+        asp_bgm = BgmCutsceneTense.Play();
 
         this.StartCoroutine(Cr, "Cutscene");
         IEnumerator Cr()
@@ -132,7 +141,7 @@ public partial class Cutscene_EndingA : Node3D
     {
         if (!_active_dialogue) return;
 
-        Scene.Goto<CreditsScene>();
+        AnimateStabToCredits();
     }
 
     private void CharacterChanged(string name, DialogueCharacter character)
@@ -205,8 +214,57 @@ public partial class Cutscene_EndingA : Node3D
                 var t = curve.Evaluate(f);
                 Player.Instance.GlobalPosition = start.Lerp(end, t);
             });
+        }
+    }
 
-            Debug.Log("Finished");
+    private Coroutine AnimateStabToCredits()
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateStabToCredits));
+        IEnumerator Cr()
+        {
+            Fren.AnimationPlayer.Play("Armature|Sword_Stab");
+            yield return new WaitForSeconds(0.4f);
+            asp_bgm.Stop();
+            AnimateRedFlash(0.25f);
+            Player.Instance.StartLookingAt(LookUpMarker, 0.05f);
+            ScreenEffects.AnimateGaussianBlurIn(nameof(Cutscene_EndingA), 40, 2.0f);
+            yield return new WaitForSeconds(1f);
+            yield return AnimateFadeOut(2f);
+            Scene.Goto<CreditsScene>();
+            GameView.Instance.SetBlackOverlayAlpha(0);
+            ScreenEffects.AnimateGaussianBlurOut(nameof(Cutscene_EndingA), 0f);
+        }
+    }
+
+    private Coroutine AnimateRedFlash(float duration)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateRedFlash));
+        IEnumerator Cr()
+        {
+            var overlay = GameView.Instance.CreateOverlay(Colors.Red.SetA(0.5f));
+            var start = overlay.Color;
+            var end = start.SetA(0);
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                overlay.Color = start.Lerp(end, f);
+            });
+
+            overlay.QueueFree();
+        }
+    }
+
+    private Coroutine AnimateFadeOut(float duration)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateRedFlash));
+        IEnumerator Cr()
+        {
+            var start = 0f;
+            var end = 1f;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var a = Mathf.Lerp(start, end, f);
+                GameView.Instance.SetBlackOverlayAlpha(a);
+            });
         }
     }
 }

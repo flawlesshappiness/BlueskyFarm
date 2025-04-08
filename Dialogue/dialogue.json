@@ -259,6 +259,18 @@
 	},
 	
 	{
+		"id": "##ENDING_BAD_B_001##",
+		"next": "##ENDING_BAD_B_002##"
+	},
+	{
+		"id": "##ENDING_BAD_B_002##",
+		"next": "##ENDING_BAD_B_003##"
+	},
+	{
+		"id": "##ENDING_BAD_B_003##"
+	},
+	
+	{
 		"id": "##FROG_FIRST_DEATH_001##",
 		"next": "##FROG_FIRST_DEATH_002##"
 	},

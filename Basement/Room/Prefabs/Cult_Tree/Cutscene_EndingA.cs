@@ -144,7 +144,14 @@ public partial class Cutscene_EndingA : Node3D
     {
         if (!_active_dialogue) return;
 
-        AnimateStabToCredits();
+        if (node.id.Contains("ENDING_BAD_A"))
+        {
+            AnimateStabToCredits();
+        }
+        else if (node.id.Contains("ENDING_BAD_B"))
+        {
+            StartCredits();
+        }
     }
 
     private void CharacterChanged(string name, DialogueCharacter character)
@@ -231,15 +238,14 @@ public partial class Cutscene_EndingA : Node3D
             bus.SetMuted(true);
             asp_bgm.Stop();
             BgmCutsceneDeath.Play();
-            AnimateRedFlash(0.25f);
             Player.Instance.StartLookingAt(LookUpMarker, 0.05f);
             ScreenEffects.AnimateCameraShake(nameof(Cutscene_EndingA), 0.25f, 0f, 0.25f, 0f);
+            yield return AnimateRedFlash(0.25f);
             ScreenEffects.AnimateGaussianBlurIn(nameof(Cutscene_EndingA), 40, 3.0f);
-            yield return AnimateFadeOut(8f);
-            Scene.Goto<CreditsScene>();
-            GameView.Instance.SetBlackOverlayAlpha(0);
-            ScreenEffects.AnimateGaussianBlurOut(nameof(Cutscene_EndingA), 0f);
-            bus.SetMuted(false);
+            AnimateFadeOut(8f);
+            yield return new WaitForSeconds(4f);
+
+            StartDialogue("##ENDING_BAD_B_001##");
         }
     }
 
@@ -273,5 +279,15 @@ public partial class Cutscene_EndingA : Node3D
                 GameView.Instance.SetBlackOverlayAlpha(a);
             });
         }
+    }
+
+    private void StartCredits()
+    {
+        Scene.Goto<CreditsScene>();
+        GameView.Instance.SetBlackOverlayAlpha(0);
+        ScreenEffects.AnimateGaussianBlurOut(nameof(Cutscene_EndingA), 0f);
+
+        var bus = AudioBus.Get(SoundBus.SFX.ToString());
+        bus.SetMuted(false);
     }
 }

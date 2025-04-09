@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cmkp1et30yeb"]
+[gd_scene load_steps=47 format=3 uid="uid://cmkp1et30yeb"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_my4l8"]
 [ext_resource type="PackedScene" uid="uid://ememwci25cp3" path="res://Basement/Assets/Basement/Wall_Bottom.tscn" id="2_2usi8"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bbyxq8yxtbhi6" path="res://Particle/Prefabs/ps_dirt_puff.tscn" id="17_gonn6"]
 [ext_resource type="Script" path="res://Basement/Room/Prefabs/BasementLadderPuzzleRoom.cs" id="17_i0hfd"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="18_03h50"]
+[ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="18_5ahpr"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="18_lxvky"]
 [ext_resource type="Material" uid="uid://cpsww1jp56wmb" path="res://Assets/Materials/Rope.tres" id="18_xt14v"]
 [ext_resource type="Script" path="res://Basement/Room/Prefabs/Basement_LadderPuzzle/CuttableRope.cs" id="19_p3mx5"]
@@ -93,6 +94,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anim/SfxCreak:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ei5dj"]
 resource_name = "move_down"
@@ -131,6 +144,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anim/SfxCreak:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_lbwb6"]
@@ -591,8 +616,14 @@ shape = SubResource("BoxShape3D_a2h2g")
 [node name="SfxDirt" type="AudioStreamPlayer3D" parent="Ladder/Anim" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45058e-09, -4.12101, 0)
 stream = ExtResource("16_c77en")
+bus = &"SFX"
 
-[node name="ps_dirt_puff" parent="Ladder/Anim" index="7" instance=ExtResource("17_gonn6")]
+[node name="SfxCreak" type="AudioStreamPlayer3D" parent="Ladder/Anim" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45058e-09, -4.12101, 0)
+stream = ExtResource("18_5ahpr")
+bus = &"SFX"
+
+[node name="ps_dirt_puff" parent="Ladder/Anim" index="8" instance=ExtResource("17_gonn6")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.74956e-07, -3.89367, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ladder" index="1"]

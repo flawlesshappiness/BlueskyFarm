@@ -12,6 +12,7 @@ public partial class Item : Grabbable
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
 
     public event Action OnUpdateData;
+    public event Action OnPickUp;
 
     private bool _initialized;
 
@@ -113,6 +114,8 @@ public partial class Item : Grabbable
     public virtual void PickUp()
     {
         InventoryController.Instance.PickUpItem(this);
+
+        OnPickUp?.Invoke();
     }
 
     public void SetScale(float scale)

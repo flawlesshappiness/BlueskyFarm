@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections;
 
-public partial class Weed : Node3DScript
+public partial class Weed : Node3DScript, ICuttable
 {
     [Export]
     public bool ToolRequired;

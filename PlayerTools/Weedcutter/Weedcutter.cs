@@ -16,8 +16,8 @@ public partial class Weedcutter : Item
     public override void _Ready()
     {
         base._Ready();
-        Area.BodyEntered += body => CallDeferred(nameof(BodyEntered), body);
-        Area.BodyExited += body => CallDeferred(nameof(BodyExited), body);
+        Area.BodyEntered += body => CallDeferred(nameof(OnBodyEntered), body);
+        Area.BodyExited += body => CallDeferred(nameof(OnBodyExited), body);
     }
 
     public override void Use()
@@ -48,19 +48,19 @@ public partial class Weedcutter : Item
         {
             if (body is Node node && node != null)
             {
-                var weed = node.GetNodeInParents<Weed>();
-                if (weed == null) continue;
+                var cuttable = node.GetNodeInParents<ICuttable>();
+                if (cuttable == null) continue;
 
-                Cut(weed);
+                Cut(cuttable);
             }
         }
 
         Clear();
     }
 
-    private void Cut(Weed weed)
+    private void Cut(ICuttable cuttable)
     {
-        weed.Cut();
+        cuttable.Cut();
     }
 
     public void Clear()
@@ -68,12 +68,12 @@ public partial class Weedcutter : Item
         _bodies.Clear();
     }
 
-    private void BodyEntered(GodotObject g)
+    private void OnBodyEntered(GodotObject g)
     {
         _bodies.Add(g);
     }
 
-    private void BodyExited(GodotObject g)
+    private void OnBodyExited(GodotObject g)
     {
         _bodies.Remove(g);
     }

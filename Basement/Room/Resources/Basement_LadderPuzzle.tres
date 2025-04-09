@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://dabjubjm84jnq"]
+
+[ext_resource type="PackedScene" uid="uid://cmkp1et30yeb" path="res://Basement/Room/Prefabs/Basement_LadderPuzzle.tscn" id="1_sjb13"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_4otko"]
+
+[resource]
+script = ExtResource("2_4otko")
+Area = "Basement"
+ConnectedArea = ""
+AmbienceArea = "Basement"
+Scene = ExtResource("1_sjb13")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "000N000
+0111110
+0111110
+W11111E
+0111110
+0111110
+000S000"
+ValidGroundHeights = Array[float]([])
+Disabled = true

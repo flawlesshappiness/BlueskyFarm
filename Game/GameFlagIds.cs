@@ -7,6 +7,8 @@ public static class GameFlagIds
     public static GameFlagId FarmWeedsCut = new GameFlagId("farm_weeds_cut");
     public static GameFlagId BasementWorkshopDoorUnlocked = new GameFlagId("basement_workshop_door_unlocked");
     public static GameFlagId BasementWellRepaired = new GameFlagId("basement_well_repaired");
+    public static GameFlagId BasementLadderRepaired = new GameFlagId("basement_ladder_repaired");
+    public static GameFlagId BasementLadderInventoryItemPicked = new GameFlagId("basement_ladder_inventory_item_picked");
     public static GameFlagId ForestBlockadeRemoved = new GameFlagId("forest_blockade_removed");
     public static GameFlagId ForestHutWeedsCut = new GameFlagId("forest_hut_weeds_cut");
     public static GameFlagId ForestTreeHouseRepaired = new GameFlagId("forest_tree_house_repaired");

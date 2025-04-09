@@ -30,7 +30,9 @@ public partial class BasementController : SingletonController
         basement.Grid = grid;
 
         // Set priority rooms
-        SetRandomElementInfo(AreaNames.Basement, "Basement_Workshop");
+        SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_Workshop");
+
+        SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_LadderPuzzle");
 
         /*
         if (Data.Game.State_BasementInventoryPuzzle == 1 && !Player.HasAccessToBlueprint("inventory_001"))
@@ -188,10 +190,22 @@ public partial class BasementController : SingletonController
             .ToList().Random();
     }
 
-    private void SetRandomElementInfo(string area_name, string info_name)
+    private void SetOrAddElementInfo(Grid<BasementRoomElement> grid, string area_name, string info_name)
+    {
+        if (!SetRandomElementInfo(area_name, info_name))
+        {
+            BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+            {
+                AreaName = area_name,
+                RoomInfo = BasementRoomController.Instance.Collection.GetResource(info_name)
+            });
+        }
+    }
+
+    private bool SetRandomElementInfo(string area_name, string info_name)
     {
         var element = GetRandomElementWithoutInfo(area_name);
-        if (element == null) return;
+        if (element == null) return false;
 
         var info = BasementRoomController.Instance.Collection.GetResource(info_name);
         element.Info = info;
@@ -200,6 +214,8 @@ public partial class BasementController : SingletonController
         {
             Debug.LogError($"BasementRoomInfo with name {info_name} was null");
         }
+
+        return true;
     }
 
     public void EnterBasement()

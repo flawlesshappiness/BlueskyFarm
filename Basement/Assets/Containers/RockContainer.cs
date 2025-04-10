@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class RockContainer : ItemContainer
+public partial class RockContainer : ItemContainer, ICrushable
 {
     [Export]
     public Node3D ItemMarker;
@@ -39,7 +39,7 @@ public partial class RockContainer : ItemContainer
         ModelBroken.Disable();
     }
 
-    public void Break()
+    public void Crush()
     {
         if (_broken) return;
         _broken = true;

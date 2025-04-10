@@ -35,7 +35,7 @@ public partial class PickaxeTool : Node3D
 
     public bool HasContainer()
     {
-        return _bodies.Any(x => GetContainer(x) != null);
+        return _bodies.Any(x => GetCrushable(x) != null);
     }
 
     private void BreakContainers()
@@ -48,23 +48,23 @@ public partial class PickaxeTool : Node3D
 
     private void BreakContainer(GodotObject go)
     {
-        var container = GetContainer(go);
-        if (!IsInstanceValid(container)) return;
+        var crushable = GetCrushable(go);
+        if (crushable == null) return;
 
-        container.Break();
+        crushable.Crush();
     }
 
-    private RockContainer GetContainer(GodotObject go)
+    private ICrushable GetCrushable(GodotObject go)
     {
         if (!IsInstanceValid(go)) return null;
 
         var node = go as Node3D;
         if (!IsInstanceValid(node)) return null;
 
-        var container = node.GetNodeInParents<RockContainer>();
-        if (!IsInstanceValid(container)) return null;
+        var crushable = node.GetNodeInParents<ICrushable>();
+        if (crushable == null) return null;
 
-        return container;
+        return crushable;
     }
 
     private void BodyEntered(GodotObject go)

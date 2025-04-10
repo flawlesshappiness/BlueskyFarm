@@ -6,10 +6,10 @@ public partial class ForestFounderHutRoom : Node3DScript
     public Weed_Thorns BlockingWeeds;
 
     [Export]
-    public Node3D BlueprintInventoryNode;
+    public Marker3D InventoryItemMarker;
 
     [Export]
-    public BlueprintInfo BlueprintInventory;
+    public ItemInfo InventoryItem;
 
     public override void _Ready()
     {
@@ -31,13 +31,15 @@ public partial class ForestFounderHutRoom : Node3DScript
 
     private void InitializeBlueprintInventory()
     {
-        var bp_id = BlueprintInventory.Id;
+        if (GameFlagIds.ForestHutInventoryItemPicked.IsTrue()) return;
 
-        if (Player.HasAccessToBlueprint(bp_id)) return;
-        if (Player.HasCraftedBlueprint(bp_id)) return;
-
-        var item = BlueprintController.Instance.CreateBlueprintRoll(bp_id);
-        item.SetParent(BlueprintInventoryNode);
+        var item = ItemController.Instance.CreateItem(InventoryItem);
+        item.SetParent(InventoryItemMarker);
         item.Position = Vector3.Zero;
+
+        item.OnPickUp += () =>
+        {
+            GameFlagIds.ForestHutInventoryItemPicked.SetTrue();
+        };
     }
 }

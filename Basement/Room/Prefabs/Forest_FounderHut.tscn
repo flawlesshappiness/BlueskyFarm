@@ -29,11 +29,11 @@
 [ext_resource type="PackedScene" uid="uid://hspuq2nk8krr" path="res://Assets/FlawLizArt/Clothing/pants.fbx" id="25_m4u65"]
 [ext_resource type="Script" path="res://Basement/Room/Prefabs/Forest_FounderHut/ForestFounderHutRoom.cs" id="25_skuty"]
 [ext_resource type="PackedScene" uid="uid://ww0xrm0fvn3" path="res://Assets/FlawLizArt/Clothing/shirt.fbx" id="26_is6qu"]
-[ext_resource type="Resource" uid="uid://br3jugnyab4b0" path="res://Blueprint/Resources/Inventory_Forest.tres" id="27_s14vm"]
 [ext_resource type="PackedScene" uid="uid://d3nnwu0t7pbar" path="res://Assets/FlawLizArt/Clothing/shoe_L.fbx" id="27_wgkks"]
 [ext_resource type="PackedScene" uid="uid://c0ogj6hbjhe70" path="res://Assets/FlawLizArt/Clothing/shoe_R.fbx" id="28_p5tgc"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="29_m1ocy"]
 [ext_resource type="PackedScene" uid="uid://dlt8jrnsotu0u" path="res://Basement/Assets/Interior/Barrel_002.tscn" id="30_2hnyn"]
+[ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="34_xpdtn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -953,14 +953,14 @@ transform = Transform3D(0.894295, 0, -0.447478, 0, 1, 0, 0.447478, 0, 0.894295, 
 
 [node name="Items" type="Node3D" parent="Hut" index="3"]
 
-[node name="BlueprintInventory" type="Marker3D" parent="Hut/Items" index="0"]
+[node name="InventoryItemMarker" type="Marker3D" parent="Hut/Items" index="0"]
 transform = Transform3D(0.182802, 0, 0.98315, 0, 1, 0, -0.98315, 0, 0.182802, 0, 0.922945, -3.01334)
 
-[node name="RoomScript" type="Node3D" parent="." index="14" node_paths=PackedStringArray("BlockingWeeds", "BlueprintInventoryNode")]
+[node name="RoomScript" type="Node3D" parent="." index="14" node_paths=PackedStringArray("BlockingWeeds", "InventoryItemMarker")]
 script = ExtResource("25_skuty")
 BlockingWeeds = NodePath("../Hut/Weeds/Weed_Thorns")
-BlueprintInventoryNode = NodePath("../Hut/Items/BlueprintInventory")
-BlueprintInventory = ExtResource("27_s14vm")
+InventoryItemMarker = NodePath("../Hut/Items/InventoryItemMarker")
+InventoryItem = ExtResource("34_xpdtn")
 
 [node name="AmbienceArea" parent="." index="15"]
 Area = 2

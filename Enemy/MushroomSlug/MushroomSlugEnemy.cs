@@ -54,7 +54,7 @@ public partial class MushroomSlugEnemy : NavEnemy
 
             PlayerArea.Enable();
 
-            SfxSpores.Play();
+            //SfxSpores.Play();
 
             SetState(StateTravel);
         }

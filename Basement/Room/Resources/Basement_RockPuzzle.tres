@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://cn155bhtqeune"]
+
+[ext_resource type="PackedScene" uid="uid://ddw1644oxigl2" path="res://Basement/Room/Prefabs/Basement_RockPuzzle.tscn" id="1_srugq"]
+[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_b17yv"]
+
+[resource]
+script = ExtResource("2_b17yv")
+Area = "Basement"
+ConnectedArea = ""
+AmbienceArea = "Basement"
+Scene = ExtResource("1_srugq")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = false
+RoomLayout = "000N000
+0111110
+0111110
+W11111E
+0111110
+0111110
+000S000"
+ValidGroundHeights = Array[float]([])
+Disabled = true

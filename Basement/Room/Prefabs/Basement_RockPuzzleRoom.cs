@@ -11,11 +11,15 @@ public partial class Basement_RockPuzzleRoom : Node3D
     [Export]
     public CrushableRock CrushableRock;
 
+    [Export]
+    public BasementDoor BlockedDoor;
+
     public override void _Ready()
     {
         base._Ready();
         InitializeInventoryItem();
         InitializeCrushableRock();
+        InitializeBlockedDoor();
     }
 
     private void InitializeInventoryItem()
@@ -43,5 +47,10 @@ public partial class Basement_RockPuzzleRoom : Node3D
             CrushableRock.SetEnabled(false);
             GameFlagIds.BasementRockCrushed.SetTrue();
         };
+    }
+
+    private void InitializeBlockedDoor()
+    {
+        BlockedDoor.Locked = true;
     }
 }

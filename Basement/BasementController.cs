@@ -33,13 +33,7 @@ public partial class BasementController : SingletonController
         SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_Workshop");
 
         SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_LadderPuzzle");
-
-        /*
-        if (Data.Game.State_BasementInventoryPuzzle == 1 && !Player.HasAccessToBlueprint("inventory_001"))
-        {
-            SetRandomElementInfo(AreaNames.Basement, "Basement_InventoryPuzzle");
-        }
-        */
+        SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_RockPuzzle");
 
         // Add special rooms
         if (!Player.HasAccessToItem("Key_Workshop"))

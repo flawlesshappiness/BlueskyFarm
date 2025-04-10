@@ -15,7 +15,7 @@ size = Vector3(1.00452, 0.839294, 0.875)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.76726, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_vjmfp"]
+[sub_resource type="CurveTexture" id="CurveTexture_kqlv8"]
 curve = SubResource("Curve_1i6n1")
 
 [sub_resource type="Curve" id="Curve_qkjun"]
@@ -23,7 +23,7 @@ max_value = 5.0
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_h2kvt"]
+[sub_resource type="CurveTexture" id="CurveTexture_786ew"]
 curve = SubResource("Curve_qkjun")
 
 [sub_resource type="Curve" id="Curve_7cltt"]
@@ -31,36 +31,36 @@ max_value = 3.0
 _data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_pqhh6"]
+[sub_resource type="CurveTexture" id="CurveTexture_3ncd2"]
 curve = SubResource("Curve_7cltt")
 
 [sub_resource type="Curve" id="Curve_ydin4"]
 _data = [Vector2(0, 1), 0.0, -3.16484, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_u6f0h"]
+[sub_resource type="CurveTexture" id="CurveTexture_8n7b3"]
 curve = SubResource("Curve_ydin4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqtc3"]
 lifetime_randomness = 0.3
 angle_min = -4.99999
 angle_max = 5.00001
-angle_curve = SubResource("CurveTexture_h2kvt")
+angle_curve = SubResource("CurveTexture_786ew")
 spread = 180.0
 initial_velocity_min = 0.3
 initial_velocity_max = 0.3
-velocity_limit_curve = SubResource("CurveTexture_u6f0h")
+velocity_limit_curve = SubResource("CurveTexture_8n7b3")
 gravity = Vector3(0, -0.01, 0)
 scale_min = 0.7
 scale_max = 0.7
-scale_curve = SubResource("CurveTexture_pqhh6")
+scale_curve = SubResource("CurveTexture_3ncd2")
 scale_over_velocity_max = 40.1
-alpha_curve = SubResource("CurveTexture_vjmfp")
+alpha_curve = SubResource("CurveTexture_kqlv8")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0vpp3"]
 load_path = "res://.godot/imported/smoke_07.png-e9811ff357a8eeccce8df0fce0468e41.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0j25"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa68o"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("CompressedTexture2D_0vpp3")
@@ -72,20 +72,20 @@ particles_anim_loop = false
 proximity_fade_distance = 12.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_gofkd"]
-material = SubResource("StandardMaterial3D_l0j25")
+material = SubResource("StandardMaterial3D_sa68o")
 
 [sub_resource type="Curve" id="Curve_ew8ih"]
 _data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_uav4u"]
+[sub_resource type="CurveTexture" id="CurveTexture_gnphh"]
 curve = SubResource("Curve_ew8ih")
 
 [sub_resource type="Curve" id="Curve_8gime"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_penyv"]
+[sub_resource type="CurveTexture" id="CurveTexture_xdayh"]
 curve = SubResource("Curve_8gime")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uun78"]
@@ -93,16 +93,16 @@ emission_shape = 1
 emission_sphere_radius = 0.5
 angle_min = -90.0
 angle_max = 90.0
-angle_curve = SubResource("CurveTexture_uav4u")
+angle_curve = SubResource("CurveTexture_gnphh")
 direction = Vector3(0, 1, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 2.0
 gravity = Vector3(0, -4, 0)
 scale_min = 0.1
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_penyv")
+scale_curve = SubResource("CurveTexture_xdayh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxbpf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqatp"]
 albedo_color = Color(0.3204, 0.34812, 0.36, 1)
 billboard_mode = 3
 billboard_keep_scale = true
@@ -111,7 +111,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PrismMesh" id="PrismMesh_q6avx"]
-material = SubResource("StandardMaterial3D_hxbpf")
+material = SubResource("StandardMaterial3D_uqatp")
 
 [node name="RockContainer" type="Node3D" node_paths=PackedStringArray("ItemMarker", "ModelUnbroken", "ModelBroken", "Touchable", "ps_dust_break", "ps_bits_break")]
 script = ExtResource("1_h7utd")

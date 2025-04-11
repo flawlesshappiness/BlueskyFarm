@@ -283,9 +283,13 @@ public partial class Cutscene_EndingA : Node3D
 
     private void StartCredits()
     {
+        SetPlayerLocked(false);
+
         Scene.Goto<CreditsScene>();
         GameView.Instance.SetBlackOverlayAlpha(0);
         ScreenEffects.AnimateGaussianBlurOut(nameof(Cutscene_EndingA), 0f);
+
+        InventoryController.Instance.ResetInventory();
 
         var bus = AudioBus.Get(SoundBus.SFX.ToString());
         bus.SetMuted(false);

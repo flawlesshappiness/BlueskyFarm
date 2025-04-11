@@ -87,6 +87,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5,
 [node name="EnemySpawn" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87956, 0, 3.19534)
 
+[node name="AmbienceArea" parent="." index="10"]
+Area = 3
+
 [node name="room_001" parent="." index="11" instance=ExtResource("2_qx5fu")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room_001" index="1"]

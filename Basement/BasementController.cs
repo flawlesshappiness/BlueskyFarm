@@ -31,19 +31,9 @@ public partial class BasementController : SingletonController
 
         // Set priority rooms
         SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_Workshop");
-
         SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_LadderPuzzle");
         SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_RockPuzzle");
-
-        // Add special rooms
-        if (!Player.HasAccessToItem("Key_Workshop"))
-        {
-            BasementGridGenerator.AddRoom(grid, new AddRoomSettings
-            {
-                AreaName = AreaNames.Basement,
-                RoomInfo = BasementRoomController.Instance.Collection.GetResource("Basement_Well")
-            });
-        }
+        SetOrAddElementInfo(grid, AreaNames.Basement, "Basement_Well");
 
         // Forest
         SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_FounderHut");
@@ -53,21 +43,13 @@ public partial class BasementController : SingletonController
         SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_BigGrave");
 
         // Mine
-        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
-        {
-            AreaName = AreaNames.Mine,
-            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Mine_Forge")
-        });
+        SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Forge");
+        SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Coal");
+        SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Beds");
 
-        SetRandomElementInfo(AreaNames.Mine, "Mine_Room_Coal");
-
-        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
-        {
-            AreaName = AreaNames.Cult,
-            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Cult_Tree")
-        });
-
-        SetRandomElementInfo(AreaNames.Cult, "Cult_Bedrooms");
+        // Cult
+        SetOrAddElementInfo(grid, AreaNames.Cult, "Cult_Tree");
+        SetOrAddElementInfo(grid, AreaNames.Cult, "Cult_Bedrooms");
     }
 
     private void UpdateRoomConnection(Basement basement, BasementRoomElement element)

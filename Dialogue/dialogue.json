@@ -68,6 +68,42 @@
 	},
 	
 	{
+		"id": "##NOTE_MINER_001##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_002##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_003##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_004##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_005##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_006##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_007##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_008##"
+	},
+	
+	{
+		"id": "##NOTE_MINER_009##"
+	},
+	
+	{
 		"id": "##FROG_INTRO_001##",
 		"next": "##FROG_INTRO_002##"
 	},

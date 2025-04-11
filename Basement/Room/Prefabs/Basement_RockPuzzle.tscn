@@ -777,7 +777,7 @@ transform = Transform3D(-2.94481, 0, -2.70704, 0, 4, 0, 2.70704, 0, -2.94481, -4
 [node name="BreakableRocks" type="Node3D" parent="Tunnel" index="2"]
 
 [node name="CrushableRock" type="StaticBody3D" parent="Tunnel/BreakableRocks" index="0" node_paths=PackedStringArray("Particles")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986667, -8)
 collision_layer = 5
 collision_mask = 0
 script = ExtResource("8_r1us3")
@@ -787,11 +787,11 @@ Particles = [NodePath("../ps_dust_break"), NodePath("../ps_bits_break")]
 HoverIcon = ExtResource("10_5fl03")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tunnel/BreakableRocks/CrushableRock" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.843054, 0)
 shape = SubResource("BoxShape3D_poras")
 
 [node name="rocks" parent="Tunnel/BreakableRocks/CrushableRock" index="1" instance=ExtResource("7_5qjil")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00366485, 0.640367, -0.0856104)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00366485, -0.266579, -0.0856104)
 
 [node name="ps_dust_break" type="GPUParticles3D" parent="Tunnel/BreakableRocks" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113904, 0.948407, -8.24458)

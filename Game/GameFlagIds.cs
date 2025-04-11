@@ -15,6 +15,8 @@ public static class GameFlagIds
     public static GameFlagId ForestHutWeedsCut = new GameFlagId("forest_hut_weeds_cut");
     public static GameFlagId ForestTreeHouseRepaired = new GameFlagId("forest_tree_house_repaired");
     public static GameFlagId ForestHutInventoryItemPicked = new GameFlagId("forest_hut_inventory_item_picked");
+    public static GameFlagId ForestTombstoneCrushed = new GameFlagId("forest_tombstone_crushed");
+    public static GameFlagId ForestTombstoneInventoryItemPicked = new GameFlagId("forest_tombstone_inventory_item_picked");
     public static GameFlagId MineKilnActivated = new GameFlagId("mine_kiln_activated");
 }
 

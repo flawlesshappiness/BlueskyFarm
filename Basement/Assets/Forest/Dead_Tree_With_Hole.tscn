@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://devyu0yxamw5g"]
+
+[ext_resource type="PackedScene" uid="uid://bfpgqytjg6u1x" path="res://Assets/Quaternius/Nature/dead_tree_with_hole.fbx" id="1_e28x7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f02wr"]
+size = Vector3(0.154053, 0.5, 0.525)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8psq6"]
+size = Vector3(0.736572, 0.5, 0.131152)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n08ge"]
+size = Vector3(0.736572, 3.38782, 0.586182)
+
+[node name="Dead_Tree_With_Hole" type="Node3D"]
+
+[node name="dead_tree_with_hole" parent="." instance=ExtResource("1_e28x7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.309989, 0.25, 0)
+shape = SubResource("BoxShape3D_f02wr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299157, 0.25, 0)
+shape = SubResource("BoxShape3D_f02wr")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00565326, 0.25, -0.244657)
+shape = SubResource("BoxShape3D_8psq6")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00565326, 2.16398, -0.0164725)
+shape = SubResource("BoxShape3D_n08ge")

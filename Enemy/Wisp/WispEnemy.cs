@@ -93,7 +93,7 @@ public partial class WispEnemy : NavEnemy
 
     IEnumerator StateCr_Move()
     {
-        _current_room = GetConnnectedNeighbours(_current_room).ToList().Random();
+        _current_room = GetConnnectedNeighbours(_current_room).ToList().Random() ?? _current_room;
         var position = GetGravePositionInRoom(_current_room);
         Agent.TargetPosition = position;
 

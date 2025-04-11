@@ -40,8 +40,6 @@ public partial class BasementDoor : Node3DScript
     private void Touched()
     {
         if (_animating) return;
-        _animating = true;
-        Touchables.ForEach(x => x.Enabled = false);
 
         if (_open)
         {
@@ -75,12 +73,16 @@ public partial class BasementDoor : Node3DScript
     public void Open()
     {
         AnimationPlayer.Play("open");
+        Touchables.ForEach(x => x.Enabled = false);
+        _animating = true;
         _open = true;
     }
 
     public void Close()
     {
         AnimationPlayer.Play("close");
+        Touchables.ForEach(x => x.Enabled = false);
+        _animating = true;
         _open = false;
     }
 

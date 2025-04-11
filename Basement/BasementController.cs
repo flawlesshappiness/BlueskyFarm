@@ -45,23 +45,14 @@ public partial class BasementController : SingletonController
             });
         }
 
-        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
-        {
-            AreaName = AreaNames.Forest,
-            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Forest_TreeHouse")
-        });
+        // Forest
+        SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_FounderHut");
+        SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_TreeHouse");
+        SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_TombstonePuzzle");
+        SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_BigGrave");
+        SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_BigGrave");
 
-        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
-        {
-            AreaName = AreaNames.Forest,
-            RoomInfo = BasementRoomController.Instance.Collection.GetResource("Forest_FounderHut")
-        });
-
-        for (int i = 0; i < 2; i++)
-        {
-            SetRandomElementInfo(AreaNames.Forest, "Forest_BigGrave");
-        }
-
+        // Mine
         BasementGridGenerator.AddRoom(grid, new AddRoomSettings
         {
             AreaName = AreaNames.Mine,

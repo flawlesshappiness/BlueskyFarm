@@ -120,6 +120,18 @@
 	},
 	
 	{
+		"id": "##NOTE_FOUNDER_HUT_001##",
+		"next": "##NOTE_FOUNDER_HUT_002##"
+	},
+	{
+		"id": "##NOTE_FOUNDER_HUT_002##",
+		"next": "##NOTE_FOUNDER_HUT_003##"
+	},
+	{
+		"id": "##NOTE_FOUNDER_HUT_003##"
+	},
+	
+	{
 		"id": "##FROG_INTRO_001##",
 		"next": "##FROG_INTRO_002##"
 	},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bytl1yyerusgb"]
+[gd_scene load_steps=23 format=3 uid="uid://bytl1yyerusgb"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_y3vxy"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_wj1gq"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="15_ald81"]
 [ext_resource type="PackedScene" uid="uid://cltqf11rd76k0" path="res://Basement/Assets/Forest/GraveBig.tscn" id="16_fgs2r"]
 [ext_resource type="PackedScene" uid="uid://dh65tfqa1nwh7" path="res://Particle/Prefabs/ps_mist.tscn" id="17_m1oko"]
+[ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="19_xf11r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -724,7 +725,7 @@ transform = Transform3D(0.999771, 0, -0.0213961, 0, 1, 0, 0.0213961, 0, 0.999771
 transform = Transform3D(0.810277, 0.586047, 0, -0.586047, 0.810277, 0, 0, 0, 1, 1.71934, 2.00968, 0)
 
 [node name="CommonTree_53" parent="Trees" index="18" instance=ExtResource("14_eknvt")]
-transform = Transform3D(-0.657435, -0.475501, -0.584533, -0.586047, 0.810277, -2.02904e-10, 0.473634, 0.342564, -0.81137, -1.34379, 5.07128, 2.14225)
+transform = Transform3D(-0.657435, -0.475501, -0.584533, -0.586047, 0.810277, -2.02904e-10, 0.473634, 0.342564, -0.81137, -1.34379, 4.87897, 1.6297)
 
 [node name="CommonTree_55" parent="Trees" index="19" instance=ExtResource("14_eknvt")]
 transform = Transform3D(-0.674866, -0.488108, 0.55345, -0.586047, 0.810277, -3.50789e-08, -0.448448, -0.324348, -0.832883, -0.453677, 8.07233, 0.778312)
@@ -754,3 +755,7 @@ Area = 2
 
 [node name="CollisionShape3D" parent="AmbienceArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="Note" parent="." index="15" instance=ExtResource("19_xf11r")]
+transform = Transform3D(-0.780411, -0.101233, 0.617017, -0.00474701, 0.987737, 0.156052, -0.625249, 0.118856, -0.771322, 1.02654, 10.8971, -1.37714)
+DialogueNode = "##NOTE_DEAD_FARMERS_001##"

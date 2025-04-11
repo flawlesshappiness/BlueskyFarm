@@ -132,6 +132,38 @@
 	},
 	
 	{
+		"id": "##NOTE_RITUAL_MEANING_001##",
+		"next": "##NOTE_RITUAL_MEANING_002##"
+	},
+	{
+		"id": "##NOTE_RITUAL_MEANING_002##",
+		"next": "##NOTE_RITUAL_MEANING_003##"
+	},
+	{
+		"id": "##NOTE_RITUAL_MEANING_003##"
+	},
+	
+	{
+		"id": "##NOTE_FAILED_RITUAL_001##",
+		"next": "##NOTE_FAILED_RITUAL_002##"
+	},
+	{
+		"id": "##NOTE_FAILED_RITUAL_002##",
+		"next": "##NOTE_FAILED_RITUAL_003##"
+	},
+	{
+		"id": "##NOTE_FAILED_RITUAL_003##"
+	},
+	
+	{
+		"id": "##DRAWING_ARCHITECTURE_001##"
+	},
+	
+	{
+		"id": "##DRAWING_ARCHITECTURE_002##"
+	},
+	
+	{
 		"id": "##FROG_INTRO_001##",
 		"next": "##FROG_INTRO_002##"
 	},

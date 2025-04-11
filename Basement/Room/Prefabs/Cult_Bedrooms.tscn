@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cclneddk2sitv"]
+[gd_scene load_steps=58 format=3 uid="uid://cclneddk2sitv"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_2h10b"]
 [ext_resource type="PackedScene" uid="uid://d3qi3iiygfr1b" path="res://Basement/Assets/Floor/Floor_Stone.tscn" id="2_5jje1"]
@@ -31,17 +31,29 @@
 [ext_resource type="PackedScene" uid="uid://cxibx1y7df4q4" path="res://Basement/Assets/Interior/Sign_Wall.tscn" id="25_744bn"]
 [ext_resource type="PackedScene" uid="uid://bkj1reb1okraq" path="res://Basement/Assets/Interior/Candles_003.tscn" id="25_h2iih"]
 [ext_resource type="PackedScene" uid="uid://x5247basfxsy" path="res://Assets/FlawLizArt/Interior/cloth_wall_001.fbx" id="26_4vftu"]
+[ext_resource type="Script" path="res://Note/DialoguePaper.cs" id="26_ghvdj"]
 [ext_resource type="Script" path="res://Basement/Room/CultBedroomsRoom.cs" id="27_mmbsk"]
+[ext_resource type="Resource" uid="uid://d2ecbuc64hxcl" path="res://DialogueCharacter/PaperNote.tres" id="27_o0mpp"]
+[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="27_o7x0n"]
 [ext_resource type="PackedScene" uid="uid://b6k0bc5g3t61r" path="res://Basement/Assets/Interior/Dreamcatcher.tscn" id="27_yiw00"]
 [ext_resource type="Resource" uid="uid://biibu5h68elc1" path="res://Blueprint/Resources/Mold_Sword.tres" id="28_clpqx"]
+[ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="28_ktmll"]
 [ext_resource type="PackedScene" uid="uid://b6jw8n6h38lbx" path="res://Assets/FlawLizArt/Interior/tombstone.fbx" id="28_r8344"]
 [ext_resource type="PackedScene" uid="uid://dyl3r81vr88pm" path="res://Assets/FlawLizArt/Interior/shovel_head.fbx" id="32_tksm7"]
 [ext_resource type="PackedScene" uid="uid://y2xb1nj3q0u0" path="res://Assets/FlawLizArt/Interior/shovel_handle.fbx" id="33_lywf7"]
 [ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="34_03ihy"]
 [ext_resource type="Material" uid="uid://bk0kdmxcn0lyj" path="res://Assets/Materials/Crystal_Red.tres" id="35_h754b"]
+[ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="35_yh3ik"]
 [ext_resource type="PackedScene" uid="uid://c8rn6dc7j04ak" path="res://Basement/Assets/Mine/Rock.tscn" id="36_t7rnd"]
 [ext_resource type="PackedScene" uid="uid://b201helpo6yq0" path="res://Assets/FlawLizArt/Pickaxe/pickaxe_head.fbx" id="37_76q1g"]
 [ext_resource type="PackedScene" uid="uid://mstifbtn5wu3" path="res://Assets/FlawLizArt/Pickaxe/pickaxe_handle.fbx" id="38_ahnua"]
+[ext_resource type="PackedScene" uid="uid://h08lktpioj5d" path="res://Note/Prefabs/Note.tscn" id="41_8wbld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2npr"]
+size = Vector3(2.42871, 1.57007, 0.352539)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nv073"]
+size = Vector3(1.61523, 0.25, 1.09985)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q0egx"]
 size = Vector3(1.28113, 4, 4.78235)
@@ -886,6 +898,102 @@ transform = Transform3D(0.911439, -0.411435, -1.79844e-08, 0, -4.37114e-08, 1, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.35522, -5.70068)
 DialogueNode = "##ROOM_FRANK##"
 
+[node name="Drawing_001" type="Node3D" parent="Room_Architecture (Frank)" index="26" node_paths=PackedStringArray("Touchable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4717, 2.19426, -13.4815)
+script = ExtResource("26_ghvdj")
+DialogueNode = "##DRAWING_ARCHITECTURE_001##"
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("27_o0mpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Architecture (Frank)/Drawing_001" index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("27_o7x0n")
+HoverIcon = ExtResource("28_ktmll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Architecture (Frank)/Drawing_001/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_b2npr")
+
+[node name="Drawing_006" type="Node3D" parent="Room_Architecture (Frank)" index="27" node_paths=PackedStringArray("Touchable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.05912, 0.713981, -12.2242)
+script = ExtResource("26_ghvdj")
+DialogueNode = "##DRAWING_ARCHITECTURE_002##"
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("27_o0mpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Architecture (Frank)/Drawing_006" index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("27_o7x0n")
+HoverIcon = ExtResource("28_ktmll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Architecture (Frank)/Drawing_006/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_nv073")
+
+[node name="Drawing_002" type="Node3D" parent="Room_Architecture (Frank)" index="28" node_paths=PackedStringArray("Touchable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94304, 2.39437, -13.4815)
+script = ExtResource("26_ghvdj")
+DialogueNode = "##DRAWING_ARCHITECTURE_001##"
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("27_o0mpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Architecture (Frank)/Drawing_002" index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("27_o7x0n")
+HoverIcon = ExtResource("28_ktmll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Architecture (Frank)/Drawing_002/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_b2npr")
+
+[node name="Drawing_003" type="Node3D" parent="Room_Architecture (Frank)" index="29" node_paths=PackedStringArray("Touchable")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.58245, 2.28248, -10.2547)
+script = ExtResource("26_ghvdj")
+DialogueNode = "##DRAWING_ARCHITECTURE_001##"
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("27_o0mpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Architecture (Frank)/Drawing_003" index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("27_o7x0n")
+HoverIcon = ExtResource("28_ktmll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Architecture (Frank)/Drawing_003/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_b2npr")
+
+[node name="Drawing_004" type="Node3D" parent="Room_Architecture (Frank)" index="30" node_paths=PackedStringArray("Touchable")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7.81705, 2.28248, -6.54405)
+script = ExtResource("26_ghvdj")
+DialogueNode = "##DRAWING_ARCHITECTURE_001##"
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("27_o0mpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Architecture (Frank)/Drawing_004" index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("27_o7x0n")
+HoverIcon = ExtResource("28_ktmll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Architecture (Frank)/Drawing_004/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_b2npr")
+
+[node name="Drawing_005" type="Node3D" parent="Room_Architecture (Frank)" index="31" node_paths=PackedStringArray("Touchable")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.184, 2.13471, -6.54405)
+script = ExtResource("26_ghvdj")
+DialogueNode = "##DRAWING_ARCHITECTURE_001##"
+Touchable = NodePath("StaticBody3D")
+DialogueCharacterInfo = ExtResource("27_o0mpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room_Architecture (Frank)/Drawing_005" index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("27_o7x0n")
+HoverIcon = ExtResource("28_ktmll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Architecture (Frank)/Drawing_005/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_b2npr")
+
 [node name="Room_Spiritual (Frida)" type="Node3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
@@ -1216,6 +1324,10 @@ transform = Transform3D(0.959668, 0.281136, 0, -0.281136, 0.959668, 0, 0, 0, 1, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.69501, 3.33496, -8)
 DialogueNode = "##ROOM_FRIDA##"
 
+[node name="Note" parent="Room_Spiritual (Frida)" index="13" instance=ExtResource("35_yh3ik")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 6.25291, 1.88461, -9.66182)
+DialogueNode = "##NOTE_RITUAL_MEANING_001##"
+
 [node name="Room_Mining (Fritz)" type="Node3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
@@ -1259,20 +1371,24 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12.2282, 0, 11.8686)
 transform = Transform3D(2.20262, 0, -3.33893, 0, 4, 0, 3.33893, 0, 2.20262, -11.3902, 0, 3.42236)
 
 [node name="pickaxe_head" parent="Room_Mining (Fritz)" index="10" instance=ExtResource("37_76q1g")]
-transform = Transform3D(-0.343774, 0.939052, -4.10473e-08, 0, -4.37114e-08, -1, -0.939052, -0.343774, 1.50269e-08, -7.02661, 0.107741, 3.52034)
+transform = Transform3D(-0.206264, 0.563431, -2.46284e-08, 0, -2.62268e-08, -0.6, -0.563431, -0.206264, 9.01611e-09, -7.02661, 0.107741, 3.52034)
 
 [node name="pickaxe_head2" parent="Room_Mining (Fritz)" index="11" instance=ExtResource("37_76q1g")]
-transform = Transform3D(-0.810553, 0.585665, -2.56002e-08, -1.22133e-15, -4.37114e-08, -1, -0.585665, -0.810553, 3.54304e-08, -11.3604, 0.107741, 10.7057)
+transform = Transform3D(-0.486332, 0.351399, -1.53601e-08, 0, -2.62268e-08, -0.6, -0.351399, -0.486332, 2.12582e-08, -11.3604, 0.107741, 10.7057)
 
 [node name="pickaxe_handle" parent="Room_Mining (Fritz)" index="12" instance=ExtResource("38_ahnua")]
-transform = Transform3D(0.168335, 0.98573, -4.30876e-08, -2.83479e-15, -4.37114e-08, -1, -0.98573, 0.168335, -7.35814e-09, -9.73585, 0.107741, 2.84354)
+transform = Transform3D(0.101001, 0.591438, -2.58526e-08, 0, -2.62268e-08, -0.6, -0.591438, 0.101001, -4.41489e-09, -9.73585, 0.107741, 2.84354)
 
 [node name="pickaxe_handle2" parent="Room_Mining (Fritz)" index="13" instance=ExtResource("38_ahnua")]
-transform = Transform3D(0.520607, 0.853796, -3.73206e-08, -2.83479e-15, -4.37114e-08, -1, -0.853796, 0.520607, -2.27565e-08, -13.2522, 0.107741, 5.69582)
+transform = Transform3D(0.312364, 0.512278, -2.23924e-08, 0, -2.62268e-08, -0.6, -0.512278, 0.312364, -1.36539e-08, -13.2522, 0.107741, 5.69582)
 
 [node name="Sign_Wall" parent="Room_Mining (Fritz)" index="14" instance=ExtResource("25_744bn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.69184, 3.30681, 8)
 DialogueNode = "##ROOM_FRITZ##"
+
+[node name="Note" parent="Room_Mining (Fritz)" index="15" instance=ExtResource("41_8wbld")]
+transform = Transform3D(0.463049, -0.886333, -3.87428e-08, 0, -4.37114e-08, 1, -0.886333, -0.463049, -2.02405e-08, -10.5515, 0.0100002, 6.52944)
+DialogueNode = "##NOTE_FAILED_RITUAL_001##"
 
 [node name="Room_Empty (Fren)" type="Node3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

@@ -12,7 +12,7 @@ public partial class Item : Grabbable
     public bool IsBeingHandled { get; set; } // If the item is currently being handled by a script, other scripts will ignore this item
 
     public event Action OnUpdateData;
-    public event Action OnPickUp;
+    public Action OnPickUp;
 
     private bool _initialized;
 

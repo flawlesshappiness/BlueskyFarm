@@ -186,6 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800311, 0)
 stream = ExtResource("5_qdb8w")
 volume_db = -80.0
 autoplay = true
+max_distance = 16.0
 bus = &"SFX"
 
 [node name="SfxMachineLoop2" type="AudioStreamPlayer3D" parent="."]

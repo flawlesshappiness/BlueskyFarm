@@ -15,7 +15,7 @@ public partial class ForestFounderHutRoom : Node3DScript
     {
         base._Ready();
         InitializeBlockingWeeds();
-        InitializeBlueprintInventory();
+        InitializeItem();
     }
 
     private void InitializeBlockingWeeds()
@@ -29,7 +29,7 @@ public partial class ForestFounderHutRoom : Node3DScript
         }
     }
 
-    private void InitializeBlueprintInventory()
+    private void InitializeItem()
     {
         if (GameFlagIds.ForestHutInventoryItemPicked.IsTrue()) return;
 

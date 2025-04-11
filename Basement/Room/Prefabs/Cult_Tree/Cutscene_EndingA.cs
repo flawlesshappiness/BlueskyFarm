@@ -88,10 +88,10 @@ public partial class Cutscene_EndingA : Node3D
     {
         var id = nameof(Cutscene_EndingA);
 
-        Player.Instance.MovementLock.SetLock(id, true);
-        Player.Instance.LookLock.SetLock(id, true);
-        Player.Instance.InteractLock.SetLock(id, true);
-        PauseView.Instance.ToggleLock.SetLock(id, true);
+        Player.Instance.MovementLock.SetLock(id, locked);
+        Player.Instance.LookLock.SetLock(id, locked);
+        Player.Instance.InteractLock.SetLock(id, locked);
+        PauseView.Instance.ToggleLock.SetLock(id, locked);
     }
 
     private void StartDialogue(string node)

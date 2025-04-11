@@ -11,6 +11,8 @@ public partial class InventoryUpgradeItem : Item
         IsBeingHandled = true;
         SetGrabbable(false);
 
+        OnPickUp?.Invoke();
+
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {

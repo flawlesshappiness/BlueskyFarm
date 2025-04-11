@@ -15,6 +15,7 @@ public partial class EggClusterEnemy : NavEnemy
     private List<Node3D> _clusters = new();
 
     private BasementRoomElement _current_room;
+    private bool _clusters_spawned;
 
     public override void InitializeEnemy()
     {
@@ -66,10 +67,8 @@ public partial class EggClusterEnemy : NavEnemy
     {
         foreach (var cluster in _clusters)
         {
-            cluster.QueueFree();
+            cluster.Disable();
         }
-
-        _clusters.Clear();
     }
 
     private void CreateClusters()
@@ -79,22 +78,38 @@ public partial class EggClusterEnemy : NavEnemy
         {
             yield return new WaitForSeconds(0.1f);
 
-            var count = 60;
-            for (int i = 0; i < count; i++)
+            if (!_clusters_spawned)
             {
-                CreateCluster();
+                _clusters_spawned = true;
+                var count = 60;
+                for (int i = 0; i < count; i++)
+                {
+                    CreateCluster();
+                }
+            }
+
+            UpdateClusterPositions();
+        }
+    }
+
+    private void UpdateClusterPositions()
+    {
+        foreach (var cluster in _clusters)
+        {
+            var position = GetValidEggPosition();
+            cluster.GlobalPosition = position;
+
+            if (position == Vector3.Zero)
+            {
+                cluster.Disable();
             }
         }
     }
 
     private Node3D CreateCluster()
     {
-        var position = GetValidEggPosition();
-        if (position == Vector3.Zero) return null;
-
         var cluster = _cluster_templates.Random().Duplicate() as Node3D;
         cluster.SetParent(this);
-        cluster.GlobalPosition = position;
 
         _clusters.Add(cluster);
 

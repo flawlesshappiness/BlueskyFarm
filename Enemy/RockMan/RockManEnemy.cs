@@ -150,6 +150,12 @@ public partial class RockManEnemy : NavEnemy
         }
     }
 
+    public override void Despawn()
+    {
+        base.Despawn();
+        _amb_enabled = false;
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -361,7 +367,7 @@ public partial class RockManEnemy : NavEnemy
     private Coroutine StartAmbience()
     {
         _amb_enabled = false;
-        return Coroutine.Start(Cr);
+        return this.StartCoroutine(Cr, "ambience");
         IEnumerator Cr()
         {
             while (true)

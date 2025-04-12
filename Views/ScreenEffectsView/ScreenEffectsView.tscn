@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://b1m3wg25xw3p2"]
 
-[ext_resource type="Script" path="res://Views/ScreenEffectsView/ScreenEffectsView.cs" id="1_g7exa"]
-[ext_resource type="Shader" path="res://Shaders/GaussianBlur.gdshader" id="3_ar8rf"]
-[ext_resource type="Shader" path="res://Shaders/Stretch.gdshader" id="3_eq7ha"]
-[ext_resource type="Shader" path="res://Shaders/DistortFilterPerlinNoise_Custom.gdshader" id="3_gse0n"]
-[ext_resource type="Shader" path="res://Shaders/Input.gdshader" id="3_raj45"]
-[ext_resource type="Shader" path="res://Shaders/RadialBlur.gdshader" id="3_vbq4h"]
-[ext_resource type="Shader" path="res://Shaders/AnimatedFog.gdshader" id="7_03fp1"]
+[ext_resource type="Script" uid="uid://cdoego7h1inds" path="res://Views/ScreenEffectsView/ScreenEffectsView.cs" id="1_g7exa"]
+[ext_resource type="Shader" uid="uid://1fenyl1jyfht" path="res://Shaders/GaussianBlur.gdshader" id="3_ar8rf"]
+[ext_resource type="Shader" uid="uid://cqpwb70h6wxu7" path="res://Shaders/Stretch.gdshader" id="3_eq7ha"]
+[ext_resource type="Shader" uid="uid://csqmxc3oxdj4s" path="res://Shaders/DistortFilterPerlinNoise_Custom.gdshader" id="3_gse0n"]
+[ext_resource type="Shader" uid="uid://dp3yhy6cmux8d" path="res://Shaders/Input.gdshader" id="3_raj45"]
+[ext_resource type="Shader" uid="uid://b6ifaowac8n3t" path="res://Shaders/RadialBlur.gdshader" id="3_vbq4h"]
+[ext_resource type="Shader" uid="uid://dh0bf5teycq1u" path="res://Shaders/AnimatedFog.gdshader" id="7_03fp1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u1555"]
 shader = ExtResource("3_raj45")
@@ -19,9 +19,9 @@ viewport_path = NodePath("SubViewportContainer/Main")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fxetc"]
 resource_local_to_scene = true
 shader = ExtResource("3_eq7ha")
+shader_parameter/input_texture = SubResource("ViewportTexture_emwei")
 shader_parameter/squeeze_x = 0.0
 shader_parameter/squeeze_y = 0.0
-shader_parameter/input_texture = SubResource("ViewportTexture_emwei")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qsb15"]
 viewport_path = NodePath("SubViewportContainer/RenderPass_Squeeze")
@@ -29,10 +29,10 @@ viewport_path = NodePath("SubViewportContainer/RenderPass_Squeeze")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vbft6"]
 resource_local_to_scene = true
 shader = ExtResource("3_gse0n")
+shader_parameter/input_texture = SubResource("ViewportTexture_qsb15")
 shader_parameter/strength = 0.03
 shader_parameter/speed = 0.3
 shader_parameter/displacement = Vector2(0.2, 0.1)
-shader_parameter/input_texture = SubResource("ViewportTexture_qsb15")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_uuy6n"]
 viewport_path = NodePath("SubViewportContainer/RenderPass_Distort")

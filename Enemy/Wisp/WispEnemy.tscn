@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://w0y75ud1yq32"]
 
 [ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="1_34maf"]
-[ext_resource type="Script" path="res://Enemy/Wisp/WispEnemy.cs" id="1_jxsbr"]
+[ext_resource type="Script" uid="uid://b4u3727p80uy1" path="res://Enemy/Wisp/WispEnemy.cs" id="1_jxsbr"]
 
 [sub_resource type="Curve" id="Curve_oa6np"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), -2.83716, -2.83716, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

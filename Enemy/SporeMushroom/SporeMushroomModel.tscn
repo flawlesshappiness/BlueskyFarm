@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7g2h74s5v78m"]
 
-[ext_resource type="Script" path="res://Enemy/SporeMushroom/SporeMushroomModel.cs" id="1_1iqhm"]
+[ext_resource type="Script" uid="uid://bqdp8gjic83l0" path="res://Enemy/SporeMushroom/SporeMushroomModel.cs" id="1_1iqhm"]
 [ext_resource type="PackedScene" uid="uid://c1k1rlakk2w8e" path="res://Assets/Quaternius/Nature/Mushroom_3.obj" id="2_fpmmb"]
 
 [sub_resource type="Animation" id="Animation_q7s8m"]
@@ -50,9 +50,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_geh7n"]
 _data = {
-"RESET": SubResource("Animation_q7s8m"),
-"appear": SubResource("Animation_fgq7u"),
-"idle": SubResource("Animation_2yyaw")
+&"RESET": SubResource("Animation_q7s8m"),
+&"appear": SubResource("Animation_fgq7u"),
+&"idle": SubResource("Animation_2yyaw")
 }
 
 [node name="SporeMushroomModel" type="Node3D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw4si22c2s332"]
 
-[ext_resource type="Script" path="res://Enemy/EggClusters/EggClusterEnemy.cs" id="1_ybr4b"]
+[ext_resource type="Script" uid="uid://bmt50hwr02m0w" path="res://Enemy/EggClusters/EggClusterEnemy.cs" id="1_ybr4b"]
 [ext_resource type="PackedScene" uid="uid://bvm5wrggg0doj" path="res://Enemy/EggClusters/egg_cluster_001.tscn" id="2_c7gyq"]
 [ext_resource type="PackedScene" uid="uid://cq3swuycvr8vk" path="res://Enemy/EggClusters/egg_cluster_002.tscn" id="3_h2wno"]
 [ext_resource type="PackedScene" uid="uid://baufg0ge04ovg" path="res://Enemy/EggClusters/egg_cluster_003.tscn" id="4_wvdp7"]

@@ -1,9 +1,8 @@
 [gd_resource type="Resource" script_class="ShopItemInfo" load_steps=2 format=3 uid="uid://dygt4qdhpa7s3"]
 
-[ext_resource type="Script" path="res://Shop/ShopItemInfo.cs" id="1_m77ef"]
+[ext_resource type="Script" uid="uid://8lqcq4jj1voi" path="res://Shop/ShopItemInfo.cs" id="1_m77ef"]
 
 [resource]
 script = ExtResource("1_m77ef")
 ItemInfoPath = "res://Item/Resources/Debt.tres"
 Combination = Array[int]([0, 0, 0, 0])
-Price = 100

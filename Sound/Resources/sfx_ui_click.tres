@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://216xnyaqdp3o"]
 
 [ext_resource type="AudioStream" uid="uid://uh3r80m3q205" path="res://Modules/Debug/Sounds/debug_click.wav" id="1_tn5n4"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_mk2gd"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_mk2gd"]
 
 [resource]
 script = ExtResource("2_mk2gd")

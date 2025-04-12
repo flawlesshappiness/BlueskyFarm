@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://bapy6p6adea8g"]
 
 [ext_resource type="PackedScene" uid="uid://dbyxjo7fgl6o3" path="res://Basement/Room/Prefabs/Forest_TombstonePuzzle.tscn" id="1_ctjpj"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_m4sf3"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="2_m4sf3"]
 
 [resource]
 script = ExtResource("2_m4sf3")

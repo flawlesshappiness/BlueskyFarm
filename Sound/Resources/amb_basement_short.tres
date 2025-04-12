@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=6 format=3 uid="uid://vlh4one0arug"]
 
 [ext_resource type="AudioStream" uid="uid://d2qrsb6ktjsk7" path="res://Sound/Sounds/sfx_amb_rootmimic_breath.wav" id="1_gkkaq"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_eg7oq"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_eg7oq"]
 [ext_resource type="AudioStream" uid="uid://boppkbv2ndbkp" path="res://Sound/Sounds/sfx_amb_rootmimic_breath2.wav" id="2_ww1yd"]
 [ext_resource type="AudioStream" uid="uid://dms7snrusk1i" path="res://Sound/Sounds/sfx_amb_rootmimic_rumble.wav" id="3_1d06k"]
 [ext_resource type="AudioStream" uid="uid://bd1thgqkuh2vn" path="res://Sound/Sounds/sfx_amb_rootmimic_scream.wav" id="4_60i2d"]

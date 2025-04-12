@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5m538famp4ae"]
 
-[ext_resource type="Script" path="res://UI/WorldObject/WorldObject.cs" id="1_80v2f"]
+[ext_resource type="Script" uid="uid://dvmwmwwhgrfkv" path="res://UI/WorldObject/WorldObject.cs" id="1_80v2f"]
 
 [node name="WorldObject" type="Control"]
 layout_mode = 3

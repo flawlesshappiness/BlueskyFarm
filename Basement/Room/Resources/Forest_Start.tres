@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://cy6m1ame4icv2"]
 
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_3joqr"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="1_3joqr"]
 [ext_resource type="PackedScene" uid="uid://bxurbi61g4pb3" path="res://Basement/Room/Prefabs/Forest_Start.tscn" id="1_8ylyx"]
 
 [resource]
@@ -18,5 +18,5 @@ WW111EE
 WW111EE
 00SSS00
 00SSS00"
-HasUnevenGround = false
+ValidGroundHeights = null
 Disabled = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpoduyeleoxek"]
 
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_nbwcp"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_nbwcp"]
 
 [node name="CharacterBase" type="Node3D"]
 

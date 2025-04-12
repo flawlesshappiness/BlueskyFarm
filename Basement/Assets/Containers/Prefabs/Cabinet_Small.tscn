@@ -156,10 +156,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_51tfp"]
 _data = {
-"RESET": SubResource("Animation_hekon"),
-"idle_closed": SubResource("Animation_y2emj"),
-"idle_open": SubResource("Animation_jmkfe"),
-"move_open": SubResource("Animation_yk3cv")
+&"RESET": SubResource("Animation_hekon"),
+&"idle_closed": SubResource("Animation_y2emj"),
+&"idle_open": SubResource("Animation_jmkfe"),
+&"move_open": SubResource("Animation_yk3cv")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q7vgr"]
@@ -173,7 +173,7 @@ point_count = 3
 curve = SubResource("Curve_0lbvj")
 
 [sub_resource type="Curve" id="Curve_05g2m"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 

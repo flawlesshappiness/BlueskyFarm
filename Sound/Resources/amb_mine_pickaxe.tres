@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://bandltk4ombi1" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_001.wav" id="1_wkjfx"]
 [ext_resource type="AudioStream" uid="uid://qyfeakds0j7s" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_002.wav" id="2_yrx68"]
 [ext_resource type="AudioStream" uid="uid://sa1vxvobn0p2" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_003.wav" id="3_55x6o"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_hgr8c"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="3_hgr8c"]
 [ext_resource type="AudioStream" uid="uid://dnx6cjyi7pask" path="res://Sound/Sounds/sfx_amb_mine_pickaxe_004.wav" id="4_i5b6f"]
 
 [resource]

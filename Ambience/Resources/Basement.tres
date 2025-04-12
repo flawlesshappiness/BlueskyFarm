@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://ghtiq6x2yrku" path="res://Sound/Resources/sfx_enter_basement.tres" id="1_t7k4x"]
 [ext_resource type="Resource" uid="uid://fcetjxgeuxd8" path="res://Sound/Resources/amb_basement_enemy.tres" id="2_pporr"]
 [ext_resource type="Resource" uid="uid://dlq3c7uvdq8hk" path="res://Sound/Resources/amb_basement_long.tres" id="3_6g3e7"]
-[ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="3_8lbtw"]
+[ext_resource type="Script" uid="uid://b6hue33g58omg" path="res://Ambience/AmbienceInfo.cs" id="3_8lbtw"]
 [ext_resource type="Resource" uid="uid://vlh4one0arug" path="res://Sound/Resources/amb_basement_short.tres" id="4_g1yhm"]
 
 [resource]

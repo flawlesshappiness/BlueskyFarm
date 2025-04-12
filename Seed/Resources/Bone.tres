@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SeedInfo" load_steps=3 format=3 uid="uid://bmoendhm6iunr"]
 
 [ext_resource type="Resource" uid="uid://cpmhxieedc62m" path="res://Item/Resources/Seed_Bone.tres" id="1_fe6t6"]
-[ext_resource type="Script" path="res://Seed/SeedInfo.cs" id="2_53104"]
+[ext_resource type="Script" uid="uid://bpctdgxxtabdl" path="res://Seed/SeedInfo.cs" id="2_53104"]
 
 [resource]
 script = ExtResource("2_53104")

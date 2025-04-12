@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://r0epic6witk5"]
 
 [ext_resource type="AudioStream" uid="uid://jmko4fn0jdyi" path="res://Sound/Sounds/sfx_unlock.wav" id="1_tswnv"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_odwlc"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_odwlc"]
 
 [resource]
 script = ExtResource("2_odwlc")
 AudioStreams = Array[AudioStream]([ExtResource("1_tswnv")])
 Volume = 0.0
+Looping = false
 PitchRange = Vector2(0.8, 0.85)
 Bus = 1
 Distance = 0

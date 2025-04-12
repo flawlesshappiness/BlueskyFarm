@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://b21dya8gbt5mt"]
 
 [ext_resource type="PackedScene" uid="uid://b1dshl1fu40ee" path="res://Basement/Room/Prefabs/Forest_FounderHut.tscn" id="1_cn8vn"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_5jevj"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="2_5jevj"]
 
 [resource]
 script = ExtResource("2_5jevj")

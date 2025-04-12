@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfvlfq0ddxeen"]
 
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Cult_Room/Cult_Room_Roots.cs" id="1_l85eh"]
+[ext_resource type="Script" uid="uid://dnat82b6b6xpt" path="res://Basement/Room/Prefabs/Cult_Room/Cult_Room_Roots.cs" id="1_l85eh"]
 [ext_resource type="PackedScene" uid="uid://cqhm20ootb6tb" path="res://Assets/FlawLizArt/Roots/root_floor_001.fbx" id="2_xjydo"]
 [ext_resource type="PackedScene" uid="uid://7cn5mueo0bsv" path="res://Assets/FlawLizArt/Roots/root_floor_002.fbx" id="3_slvpr"]
 [ext_resource type="PackedScene" uid="uid://bacqs4eso5flc" path="res://Assets/FlawLizArt/Roots/root_floor_003.fbx" id="4_8vh7w"]

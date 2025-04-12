@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://mtnktdkxs4uj"]
 
 [ext_resource type="PackedScene" uid="uid://se23c32y7wpy" path="res://Item/Prefabs/WateringCan.tscn" id="1_22o5u"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_kqwuk"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="1_kqwuk"]
 
 [resource]
 script = ExtResource("1_kqwuk")
@@ -11,10 +11,7 @@ CustomId = ""
 Type = 0
 CanUse = true
 Uses = 10
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = true
 PerishesOnFarm = false
-Untrack = false
 InventoryItemCameraDistance = 0.75
 InventoryItemRotationOffset = 0.0

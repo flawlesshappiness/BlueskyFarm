@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://w1gaqqx2eca8"]
 
-[ext_resource type="Script" path="res://Views/PauseView/PauseView.cs" id="1_wckvo"]
+[ext_resource type="Script" uid="uid://d188wb1v17aa2" path="res://Views/PauseView/PauseView.cs" id="1_wckvo"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_41t0w"]
 [ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="3_w4sp4"]
 

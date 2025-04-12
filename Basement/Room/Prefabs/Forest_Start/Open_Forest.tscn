@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cwoyc0u2ayb4h"]
 
-[ext_resource type="Script" path="res://Environment/EnvironmentFadeArea.cs" id="1_d5uef"]
+[ext_resource type="Script" uid="uid://pwcp76p7pp1m" path="res://Environment/EnvironmentFadeArea.cs" id="1_d5uef"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_8mmqp"]
 [ext_resource type="PackedScene" uid="uid://daitgm7crgs2a" path="res://Basement/Assets/Basement/Pillar_Middle.tscn" id="3_drdd3"]
 [ext_resource type="PackedScene" uid="uid://dlumv6x7n4rmv" path="res://Basement/Assets/Forest/Wall_Middle_Mossy.tscn" id="4_rwtk5"]

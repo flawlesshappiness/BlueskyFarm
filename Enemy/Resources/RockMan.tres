@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://xpe4bcu1pweb"]
 
 [ext_resource type="PackedScene" uid="uid://c5niktonq4skr" path="res://Enemy/RockMan/RockMan.tscn" id="1_h7tp7"]
-[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="2_8ap6q"]
+[ext_resource type="Script" uid="uid://b07bel0kcy85l" path="res://Enemy/EnemyInfo.cs" id="2_8ap6q"]
 
 [resource]
 script = ExtResource("2_8ap6q")

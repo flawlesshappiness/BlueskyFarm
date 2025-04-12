@@ -2,15 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://cce86y6lbhnua" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_inventory.png" id="1_2sggx"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_2op1n"]
-[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_kjdwr"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_kjdwr"]
 
 [resource]
 script = ExtResource("3_kjdwr")
 Id = "inventory_001"
 ResultIcon = ExtResource("1_2sggx")
 ResultItemInfo = ExtResource("2_2op1n")
+OverrideResultName = ""
 ResultDialogueNode = ""
 VegetableCount = 5
 BoneCount = 0
+StoneCount = 0
 CanCancel = true
 Areas = null

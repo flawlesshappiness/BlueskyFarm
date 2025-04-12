@@ -1,9 +1,8 @@
 [gd_resource type="Resource" script_class="ParticleInfo" load_steps=3 format=3 uid="uid://b1j2qjl463ihd"]
 
 [ext_resource type="PackedScene" uid="uid://bh77p3eguv13m" path="res://Particle/Prefabs/ps_water_splash.tscn" id="1_fxoqk"]
-[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="1_xj5b8"]
+[ext_resource type="Script" uid="uid://c6twtvja2tc3t" path="res://Particle/ParticleInfo.cs" id="1_xj5b8"]
 
 [resource]
 script = ExtResource("1_xj5b8")
-Path = "res://Particle/Prefabs/ps_water_splash.tscn"
 Scene = ExtResource("1_fxoqk")

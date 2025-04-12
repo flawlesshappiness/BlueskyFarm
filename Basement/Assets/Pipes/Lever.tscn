@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bwayhmvpb0lrs"]
 
-[ext_resource type="Script" path="res://Modules/Object/InteractableLever.cs" id="1_a0vd4"]
+[ext_resource type="Script" uid="uid://dxa2tbwmg80vr" path="res://Modules/Object/InteractableLever.cs" id="1_a0vd4"]
 [ext_resource type="PackedScene" uid="uid://dppb1756yswgc" path="res://Assets/FlawLizArt/Pipes/Lever.fbx" id="1_gsghu"]
 
 [sub_resource type="Animation" id="Animation_eba6a"]
@@ -225,12 +225,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4mn2u"]
 _data = {
-"RESET": SubResource("Animation_eba6a"),
-"idle_down": SubResource("Animation_5p5ov"),
-"idle_up": SubResource("Animation_sqysp"),
-"move_both": SubResource("Animation_optcl"),
-"move_down": SubResource("Animation_kbgyg"),
-"move_up": SubResource("Animation_22twy")
+&"RESET": SubResource("Animation_eba6a"),
+&"idle_down": SubResource("Animation_5p5ov"),
+&"idle_up": SubResource("Animation_sqysp"),
+&"move_both": SubResource("Animation_optcl"),
+&"move_down": SubResource("Animation_kbgyg"),
+&"move_up": SubResource("Animation_22twy")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0hq4"]

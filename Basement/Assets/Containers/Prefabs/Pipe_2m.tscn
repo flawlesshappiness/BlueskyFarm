@@ -160,10 +160,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hylfk"]
 _data = {
-"RESET": SubResource("Animation_tmakq"),
-"idle_closed": SubResource("Animation_v7emy"),
-"idle_open": SubResource("Animation_8y7xt"),
-"move_open": SubResource("Animation_wosmk")
+&"RESET": SubResource("Animation_tmakq"),
+&"idle_closed": SubResource("Animation_v7emy"),
+&"idle_open": SubResource("Animation_8y7xt"),
+&"move_open": SubResource("Animation_wosmk")
 }
 
 [sub_resource type="Curve" id="Curve_vtbid"]
@@ -174,7 +174,7 @@ point_count = 3
 curve = SubResource("Curve_vtbid")
 
 [sub_resource type="Curve" id="Curve_7ho5j"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 

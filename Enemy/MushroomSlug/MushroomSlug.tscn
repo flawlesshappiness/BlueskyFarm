@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://c51q3liaxrtvl"]
 
-[ext_resource type="Script" path="res://Enemy/MushroomSlug/MushroomSlugEnemy.cs" id="1_0gc5v"]
+[ext_resource type="Script" uid="uid://4vlpm6iky0v0" path="res://Enemy/MushroomSlug/MushroomSlugEnemy.cs" id="1_0gc5v"]
 [ext_resource type="PackedScene" uid="uid://dot3772f7nr4s" path="res://Assets/FlawLizArt/MushroomSlug/mushroom_slug.fbx" id="2_u8r1u"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_72rul"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_72rul"]
 [ext_resource type="AudioStream" uid="uid://c8ib2sn4kgmej" path="res://Sound/Sounds/sfx_slug_spore.wav" id="4_dpvg4"]
 [ext_resource type="PackedScene" uid="uid://coto7cum8fqjm" path="res://Particle/Prefabs/ps_slug_spores_up.tscn" id="5_ntph1"]
 [ext_resource type="PackedScene" uid="uid://clm85cmba8iv0" path="res://Particle/Prefabs/ps_slug_spores_idle.tscn" id="6_ffbft"]
-[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="7_1fbyp"]
+[ext_resource type="Script" uid="uid://b3x2i76j8nok0" path="res://Player/PlayerArea.cs" id="7_1fbyp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x316y"]
 size = Vector3(6, 6, 6)

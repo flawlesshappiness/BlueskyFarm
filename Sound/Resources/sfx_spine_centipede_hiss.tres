@@ -2,12 +2,13 @@
 
 [ext_resource type="AudioStream" uid="uid://ci2vwdgl0usmc" path="res://Sound/Sounds/sfx_spine_centipede_hiss_001.wav" id="1_d328x"]
 [ext_resource type="AudioStream" uid="uid://bxfqksw2qd4l3" path="res://Sound/Sounds/sfx_spine_centipede_hiss_002.wav" id="2_0kyhb"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_og850"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_og850"]
 
 [resource]
 script = ExtResource("2_og850")
 AudioStreams = Array[AudioStream]([ExtResource("1_d328x"), ExtResource("2_0kyhb")])
 Volume = -10.0
+Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0

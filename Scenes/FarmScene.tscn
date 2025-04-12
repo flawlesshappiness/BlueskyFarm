@@ -1,14 +1,14 @@
 [gd_scene load_steps=97 format=3 uid="uid://cdgomd3h4hi00"]
 
-[ext_resource type="Script" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
+[ext_resource type="Script" uid="uid://cwqycbkuumrom" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="2_g724s"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="4_c8ppf"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Interior/Trapdoor.tscn" id="8_je3mm"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
-[ext_resource type="Script" path="res://Item/ItemArea.cs" id="8_vbfot"]
+[ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="8_vbfot"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="9_t030q"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Basement/Wall.tscn" id="10_70r2i"]
 [ext_resource type="Material" uid="uid://cviywgr8k8lo1" path="res://Assets/Materials/Darkness.tres" id="10_nsfwf"]
@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cr7x5dbwhu7er" path="res://Farm/PlantBox/PlantBoxUnlock.tscn" id="14_dcain"]
 [ext_resource type="PackedScene" uid="uid://r7qs7l18m2i0" path="res://Characters/Frog/Frog.tscn" id="15_gw4ke"]
 [ext_resource type="PackedScene" uid="uid://b8jps2ejol1gg" path="res://Assets/Quaternius/Nature/Grass_Short.obj" id="17_nm5pa"]
-[ext_resource type="Script" path="res://Farm/FarmShed.cs" id="18_t1h8v"]
-[ext_resource type="Script" path="res://Farm/UnlockableGroup.cs" id="19_07ii3"]
+[ext_resource type="Script" uid="uid://wer4k8t3amg5" path="res://Farm/FarmShed.cs" id="18_t1h8v"]
+[ext_resource type="Script" uid="uid://gurm4x8r3xdv" path="res://Farm/UnlockableGroup.cs" id="19_07ii3"]
 [ext_resource type="PackedScene" uid="uid://dqfefqemw241x" path="res://Farm/WoodenStand/WoodenStand.tscn" id="20_jrme7"]
 [ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farm/WoodenStand/WoodenStand_Corner.tscn" id="21_gp4pu"]
 [ext_resource type="Resource" uid="uid://cqb7celmadjfl" path="res://Sound/Resources/sfx_throw_light.tres" id="21_u58xy"]
@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="25_jyqg2"]
 [ext_resource type="PackedScene" uid="uid://cqnhsdvqlpjs2" path="res://Farm/Shed/Doorway.tscn" id="26_23jav"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="27_3ofo1"]
-[ext_resource type="Script" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="28_enwrr"]
+[ext_resource type="Script" uid="uid://dfig8w1kd36i8" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="28_enwrr"]
 [ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="29_gcm1x"]
 [ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="29_h6ntv"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="30_721ta"]
@@ -86,7 +86,7 @@ point_count = 4
 curve = SubResource("Curve_qma48")
 
 [sub_resource type="Curve" id="Curve_rw0g7"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -94,7 +94,7 @@ point_count = 2
 curve = SubResource("Curve_rw0g7")
 
 [sub_resource type="Curve" id="Curve_xhacx"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
 point_count = 2
 
@@ -133,7 +133,7 @@ point_count = 4
 curve = SubResource("Curve_0j38a")
 
 [sub_resource type="Curve" id="Curve_y3wu1"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
 point_count = 2
 
@@ -173,7 +173,7 @@ point_count = 4
 curve = SubResource("Curve_gwd85")
 
 [sub_resource type="Curve" id="Curve_xyo0u"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 1, Vector2(1, 5), 0.0, 0.0, 1, 0]
 point_count = 2
 
@@ -181,7 +181,7 @@ point_count = 2
 curve = SubResource("Curve_xyo0u")
 
 [sub_resource type="Curve" id="Curve_encxc"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
 point_count = 2
 
@@ -220,7 +220,7 @@ point_count = 4
 curve = SubResource("Curve_mfdn2")
 
 [sub_resource type="Curve" id="Curve_jwvqb"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 1, Vector2(1, 5), 0.0, 0.0, 1, 0]
 point_count = 2
 
@@ -228,7 +228,7 @@ point_count = 2
 curve = SubResource("Curve_jwvqb")
 
 [sub_resource type="Curve" id="Curve_x1txu"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
 point_count = 2
 
@@ -257,7 +257,7 @@ point_count = 4
 curve = SubResource("Curve_ifuq4")
 
 [sub_resource type="Curve" id="Curve_ayacb"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.527472), 0.0, 4.94506, 0, 0, Vector2(1, 3), 0.674675, 0.0, 0, 0]
 point_count = 2
 

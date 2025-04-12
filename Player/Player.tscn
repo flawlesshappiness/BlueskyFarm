@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdkodwuco1fd1"]
 
 [ext_resource type="PackedScene" uid="uid://doq3o5nc1388a" path="res://Modules/Player/FirstPersonController/FirstPersonPlayer.tscn" id="1_pwey1"]
-[ext_resource type="Script" path="res://Player/ItemHold/FirstPersonItemHold.cs" id="2_26tw8"]
-[ext_resource type="Script" path="res://Player/PlayerStepSound.cs" id="2_k52kp"]
-[ext_resource type="Script" path="res://Player/Player.cs" id="2_w0i0x"]
-[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Step/FirstPersonStep.cs" id="3_dtt6e"]
-[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Interact/FirstPersonInteract.cs" id="4_t751g"]
-[ext_resource type="Script" path="res://Modules/Player/FirstPersonController/Grab/FirstPersonGrab.cs" id="5_67u2u"]
+[ext_resource type="Script" uid="uid://da3dx1ry2f64h" path="res://Player/ItemHold/FirstPersonItemHold.cs" id="2_26tw8"]
+[ext_resource type="Script" uid="uid://631ol87k4a52" path="res://Player/PlayerStepSound.cs" id="2_k52kp"]
+[ext_resource type="Script" uid="uid://dmq5s6o8nbnke" path="res://Player/Player.cs" id="2_w0i0x"]
+[ext_resource type="Script" uid="uid://cngessxereq0r" path="res://Modules/Player/FirstPersonController/Step/FirstPersonStep.cs" id="3_dtt6e"]
+[ext_resource type="Script" uid="uid://f7lkxfef4unv" path="res://Modules/Player/FirstPersonController/Interact/FirstPersonInteract.cs" id="4_t751g"]
+[ext_resource type="Script" uid="uid://dvw2oa7ep8yi2" path="res://Modules/Player/FirstPersonController/Grab/FirstPersonGrab.cs" id="5_67u2u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vchsy"]
 bounce = 0.3

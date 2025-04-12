@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BasementPuzzleInfoCollection" load_steps=2 format=3 uid="uid://dahufb5qe20ar"]
 
-[ext_resource type="Script" path="res://Basement/Puzzle/BasementPuzzleInfoCollection.cs" id="1_qw807"]
+[ext_resource type="Script" uid="uid://dwe8rnqg12li8" path="res://Basement/Puzzle/BasementPuzzleInfoCollection.cs" id="1_qw807"]
 
 [resource]
 script = ExtResource("1_qw807")

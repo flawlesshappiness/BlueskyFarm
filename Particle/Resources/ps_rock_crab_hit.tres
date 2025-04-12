@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ParticleInfo" load_steps=3 format=3 uid="uid://ctg2wuj2amq41"]
 
 [ext_resource type="PackedScene" uid="uid://djbufno1rtwnl" path="res://Particle/Prefabs/ps_rock_crab_hit.tscn" id="1_8q3xn"]
-[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="2_7v8wa"]
+[ext_resource type="Script" uid="uid://c6twtvja2tc3t" path="res://Particle/ParticleInfo.cs" id="2_7v8wa"]
 
 [resource]
 script = ExtResource("2_7v8wa")

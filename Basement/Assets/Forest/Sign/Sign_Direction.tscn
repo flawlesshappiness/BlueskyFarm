@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqns6n77f2jdv"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Forest/Sign/SignDirection.cs" id="1_dbpk6"]
+[ext_resource type="Script" uid="uid://7vrmjjilbgec" path="res://Basement/Assets/Forest/Sign/SignDirection.cs" id="1_dbpk6"]
 [ext_resource type="PackedScene" uid="uid://b1l6fwx240yvu" path="res://Assets/FlawLizArt/Sign/direction_post.fbx" id="2_fs8ru"]
-[ext_resource type="Script" path="res://Basement/Assets/Forest/Sign/SignDirectionBoard.cs" id="3_qb3jx"]
+[ext_resource type="Script" uid="uid://brk446at877sq" path="res://Basement/Assets/Forest/Sign/SignDirectionBoard.cs" id="3_qb3jx"]
 [ext_resource type="PackedScene" uid="uid://clb1jf7tpqf1p" path="res://Assets/FlawLizArt/Sign/direction_board.fbx" id="4_a471f"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_j5s28"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="5_j5s28"]
 [ext_resource type="Texture2D" uid="uid://b3xggixhv3rhm" path="res://Assets/KenneyNL/Cursors/zoom.png" id="6_vaqc1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0bfqj"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://diovirg6qs1mb"]
 
 [ext_resource type="PackedScene" uid="uid://dn4u2phiwht52" path="res://Assets/FlawLizArt/EggClusters/slime.fbx" id="1_rudwy"]
-[ext_resource type="Script" path="res://Enemy/EggClusters/EggCluster.cs" id="1_t0oha"]
-[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_p6l4g"]
+[ext_resource type="Script" uid="uid://dauswelv0xsxd" path="res://Enemy/EggClusters/EggCluster.cs" id="1_t0oha"]
+[ext_resource type="Script" uid="uid://b3x2i76j8nok0" path="res://Player/PlayerArea.cs" id="2_p6l4g"]
 [ext_resource type="PackedScene" uid="uid://clm85cmba8iv0" path="res://Particle/Prefabs/ps_slug_spores_idle.tscn" id="4_m8pex"]
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="5_vi0dv"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="5_vi0dv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jamus"]
 size = Vector3(1.5, 1, 1.5)
@@ -17,7 +17,7 @@ point_count = 3
 curve = SubResource("Curve_5vyu4")
 
 [sub_resource type="Curve" id="Curve_kk045"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 

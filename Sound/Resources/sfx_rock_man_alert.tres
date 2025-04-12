@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://co5t8oywqksvp"]
 
 [ext_resource type="AudioStream" uid="uid://qdqp1axbhibu" path="res://Sound/Sounds/sfx_rock_man_alert_001.wav" id="1_1msat"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_2n0s7"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_2n0s7"]
 [ext_resource type="AudioStream" uid="uid://bh5x2e1rf11n8" path="res://Sound/Sounds/sfx_rock_man_alert_002.wav" id="2_2s1c8"]
 [ext_resource type="AudioStream" uid="uid://x0lriuiagcg8" path="res://Sound/Sounds/sfx_rock_man_alert_003.wav" id="3_8i10b"]
 

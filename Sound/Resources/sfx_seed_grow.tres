@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://duy3gps6nrx64" path="res://Sound/Sounds/sfx_marimba_note_c.wav" id="1_ps3lu"]
 [ext_resource type="AudioStream" uid="uid://cxidy8gvk8oo6" path="res://Sound/Sounds/sfx_marimba_note_d.wav" id="2_gqx8l"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_twbtv"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_twbtv"]
 [ext_resource type="AudioStream" uid="uid://b3gewywpmiom8" path="res://Sound/Sounds/sfx_marimba_note_f.wav" id="3_ylxyg"]
 [ext_resource type="AudioStream" uid="uid://b5l8ujcrdrpet" path="res://Sound/Sounds/sfx_marimba_note_g.wav" id="4_fs7vc"]
 [ext_resource type="AudioStream" uid="uid://cctdabhiiqt1y" path="res://Sound/Sounds/sfx_marimba_note_a.wav" id="5_x35oc"]

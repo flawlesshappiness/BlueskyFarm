@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqstht73h48u2"]
 
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_mjhsj"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="1_mjhsj"]
 [ext_resource type="PackedScene" uid="uid://cp5xe3rx0u2qh" path="res://Assets/KayLousberg/Dungeon 1.1/wall_middle.fbx" id="3_1i8kv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1l5t0"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://belf3v8m8wkjj"]
 
 [ext_resource type="AudioStream" uid="uid://dv6pd8tmgtno5" path="res://Sound/Sounds/sfx_wisp_tingle.wav" id="1_ccuk6"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_kmrcs"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_kmrcs"]
 
 [resource]
 script = ExtResource("2_kmrcs")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://djdock1w0cdmt"]
 
 [ext_resource type="PackedScene" uid="uid://bncbgk5a1pw65" path="res://Item/Prefabs/Dagger.tscn" id="1_0jd8o"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_od6g0"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_od6g0"]
 
 [resource]
 script = ExtResource("2_od6g0")

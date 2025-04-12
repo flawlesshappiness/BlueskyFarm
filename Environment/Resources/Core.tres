@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnvironmentInfo" load_steps=3 format=3 uid="uid://bab4qgxdu8cut"]
 
 [ext_resource type="Environment" uid="uid://bb2rj5qacwwry" path="res://Environment/Environments/Core.tres" id="1_t1rgi"]
-[ext_resource type="Script" path="res://Environment/EnvironmentInfo.cs" id="2_x84t2"]
+[ext_resource type="Script" uid="uid://cngtx5w8ak64q" path="res://Environment/EnvironmentInfo.cs" id="2_x84t2"]
 
 [resource]
 script = ExtResource("2_x84t2")

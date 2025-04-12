@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://b7b4u4ebrovjg" path="res://Sound/Sounds/sfx_stone_impact_001.wav" id="1_lf42x"]
 [ext_resource type="AudioStream" uid="uid://cbtbkt6arl8s0" path="res://Sound/Sounds/sfx_stone_impact_002.wav" id="2_4aivq"]
 [ext_resource type="AudioStream" uid="uid://kf01qp4st80c" path="res://Sound/Sounds/sfx_stone_impact_003.wav" id="3_63rqr"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_65fr7"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="4_65fr7"]
 
 [resource]
 script = ExtResource("4_65fr7")

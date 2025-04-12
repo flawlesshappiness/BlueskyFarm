@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://8dijjt618qwt"]
 
 [ext_resource type="PackedScene" uid="uid://ni73ca6mhvyy" path="res://Basement/Room/Prefabs/Mine_Room_Coal.tscn" id="1_x01mp"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_plm01"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="2_plm01"]
 
 [resource]
 script = ExtResource("2_plm01")

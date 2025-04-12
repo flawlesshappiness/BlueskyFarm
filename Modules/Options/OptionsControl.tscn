@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk5e5unescpcn"]
 
-[ext_resource type="Script" path="res://Modules/Options/OptionsKeys.cs" id="1_m2unh"]
-[ext_resource type="Script" path="res://Modules/Options/OptionsControl.cs" id="1_xgqu1"]
-[ext_resource type="Script" path="res://Modules/Options/OptionsKeyRebindControl.cs" id="2_b02h4"]
+[ext_resource type="Script" uid="uid://hsvattyts0r2" path="res://Modules/Options/OptionsKeys.cs" id="1_m2unh"]
+[ext_resource type="Script" uid="uid://cxg3ricx0s381" path="res://Modules/Options/OptionsControl.cs" id="1_xgqu1"]
+[ext_resource type="Script" uid="uid://28cth4osr2u7" path="res://Modules/Options/OptionsKeyRebindControl.cs" id="2_b02h4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hi6fc"]
 font_size = 20

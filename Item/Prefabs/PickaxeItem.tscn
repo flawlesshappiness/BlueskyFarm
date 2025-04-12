@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_bnl01"]
 [ext_resource type="PackedScene" uid="uid://dvk8drjbapcvo" path="res://PlayerTools/Pickaxe/PickaxeTool.tscn" id="2_c5x1c"]
-[ext_resource type="Script" path="res://PlayerTools/Pickaxe/PickaxeItem.cs" id="2_huv4j"]
+[ext_resource type="Script" uid="uid://d26rotttogji8" path="res://PlayerTools/Pickaxe/PickaxeItem.cs" id="2_huv4j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ixya"]
 size = Vector3(0.946289, 1.01584, 0.179688)

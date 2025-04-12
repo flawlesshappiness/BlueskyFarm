@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://bjjoaklo3mv2r"]
 
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_i7fei"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="1_i7fei"]
 [ext_resource type="PackedScene" uid="uid://dfj42rpqcj4ng" path="res://Basement/Room/Prefabs/Basement_InventoryPuzzle.tscn" id="1_rlhti"]
 
 [resource]
@@ -18,5 +18,5 @@ W11111E
 0111110
 0001110
 000S000"
-HasUnevenGround = true
+ValidGroundHeights = null
 Disabled = true

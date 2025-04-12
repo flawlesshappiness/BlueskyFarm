@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://8whgrmaeb8sa"]
 
-[ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWallHole.cs" id="1_0eu2s"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_1olt8"]
-[ext_resource type="Script" path="res://Item/ItemArea.cs" id="2_a30s5"]
+[ext_resource type="Script" uid="uid://sarbds03ibov" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWallHole.cs" id="1_0eu2s"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="2_1olt8"]
+[ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="2_a30s5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyb32"]
 size = Vector3(0.25, 0.25, 0.0997334)

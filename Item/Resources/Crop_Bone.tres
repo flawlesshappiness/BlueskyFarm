@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://b5qkqrrtkfm20"]
 
 [ext_resource type="PackedScene" uid="uid://bte56r3pgaf65" path="res://Item/Prefabs/Farming/Crop_Bone_Carrot.tscn" id="1_clo30"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_lu3ir"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_lu3ir"]
 
 [resource]
 script = ExtResource("2_lu3ir")
@@ -11,10 +11,7 @@ CustomId = ""
 Type = 2
 CanUse = false
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 60
 CanPickUp = true
 PerishesOnFarm = false
-Untrack = false
 InventoryItemCameraDistance = 0.25
 InventoryItemRotationOffset = 0.0

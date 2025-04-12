@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bxijqp5l8vbw3"]
 
 [ext_resource type="PackedScene" uid="uid://ca32qxsspfjkl" path="res://Item/Prefabs/RepairPile.tscn" id="1_edfca"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_5s43l"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_5s43l"]
 
 [resource]
 script = ExtResource("2_5s43l")
@@ -11,10 +11,7 @@ CustomId = "bed_unlock"
 Type = 0
 CanUse = false
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = false
 PerishesOnFarm = false
-Untrack = false
 InventoryItemCameraDistance = 0.75
 InventoryItemRotationOffset = 45.0

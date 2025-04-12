@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://ncp3e6wu07f1" path="res://Sound/Sounds/sfx_spine_centipede_wheeze_short_001.wav" id="1_rautm"]
 [ext_resource type="AudioStream" uid="uid://pt6mfk40kihj" path="res://Sound/Sounds/sfx_spine_centipede_wheeze_short_002.wav" id="2_nrx23"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_0bgkl"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="3_0bgkl"]
 [ext_resource type="AudioStream" uid="uid://gjskhjp5hvxn" path="res://Sound/Sounds/sfx_spine_centipede_wheeze_short_003.wav" id="3_20q6h"]
 
 [resource]

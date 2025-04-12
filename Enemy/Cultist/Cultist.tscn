@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://l3ku74dceqne"]
 
-[ext_resource type="Script" path="res://Enemy/Cultist/CultistEnemy.cs" id="1_m3wvw"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ohgjn"]
+[ext_resource type="Script" uid="uid://4w25j5ryxfsf" path="res://Enemy/Cultist/CultistEnemy.cs" id="1_m3wvw"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ohgjn"]
 [ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/frog.fbx" id="2_ech83"]
 [ext_resource type="Resource" uid="uid://qvtj7uveimse" path="res://Sound/Resources/sfx_step_dirt_walk.tres" id="2_wexpc"]
 [ext_resource type="Resource" uid="uid://moyyiqotn55l" path="res://Sound/Resources/sfx_step_dirt_run.tres" id="3_hb8s3"]

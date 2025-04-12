@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bdco18oe37rhc"]
 
-[ext_resource type="Script" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
-[ext_resource type="Script" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
+[ext_resource type="Script" uid="uid://cfwmculyjrf5d" path="res://Views/GameView/GameView.cs" id="1_3ml3m"]
+[ext_resource type="Script" uid="uid://cq5u67erm22wq" path="res://Minimap/Minimap.cs" id="3_lv1ii"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="3_vtgjj"]
-[ext_resource type="Script" path="res://Views/GameView/DialogueControl.cs" id="5_cmyes"]
+[ext_resource type="Script" uid="uid://bgb7otdsyxtqw" path="res://Views/GameView/DialogueControl.cs" id="5_cmyes"]
 [ext_resource type="Texture2D" uid="uid://mbhvgvfouhgx" path="res://Assets/FlawLizArt/UI/ui_gradient.png" id="5_fvv0q"]
 [ext_resource type="PackedScene" uid="uid://caxidipwbdxhk" path="res://UI/InventoryBar/InventoryBar.tscn" id="6_iodv3"]
 

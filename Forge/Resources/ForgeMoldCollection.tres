@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ForgeMoldCollection" load_steps=2 format=3 uid="uid://c5hpxbhy6mtvi"]
 
-[ext_resource type="Script" path="res://Forge/ForgeMoldCollection.cs" id="1_o70le"]
+[ext_resource type="Script" uid="uid://ciptwav86be3" path="res://Forge/ForgeMoldCollection.cs" id="1_o70le"]
 
 [resource]
 script = ExtResource("1_o70le")

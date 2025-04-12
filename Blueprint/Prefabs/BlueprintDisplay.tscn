@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3g6ahucpex6p"]
 
-[ext_resource type="Script" path="res://Blueprint/BlueprintDisplay.cs" id="1_iyhtc"]
+[ext_resource type="Script" uid="uid://iwjadhtkphlt" path="res://Blueprint/BlueprintDisplay.cs" id="1_iyhtc"]
 [ext_resource type="PackedScene" uid="uid://b7uxb0tuhjy1u" path="res://Assets/FlawLizArt/Blueprint/blueprint_flat.fbx" id="2_uh4ts"]
 [ext_resource type="Texture2D" uid="uid://d4j8lf54ary6x" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_background.png" id="3_gw6or"]
 [ext_resource type="Texture2D" uid="uid://dmka3k0gwy5hl" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_unknown.png" id="4_d22yt"]
 [ext_resource type="PackedScene" uid="uid://dbffc4txaji8b" path="res://Blueprint/Prefabs/BlueprintDisplayItemCounter.tscn" id="4_q5oyf"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_crf25"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="5_crf25"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mhlo"]
 size = Vector3(1, 0.0915527, 1)

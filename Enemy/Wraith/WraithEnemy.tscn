@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://bwnpxwaecsnms"]
 
-[ext_resource type="Script" path="res://Enemy/Wraith/WraithEnemy.cs" id="1_024qk"]
+[ext_resource type="Script" uid="uid://dvmo6a7if7inh" path="res://Enemy/Wraith/WraithEnemy.cs" id="1_024qk"]
 [ext_resource type="Resource" uid="uid://3jthhnssob4o" path="res://Sound/Resources/sfx_wraith_spawn.tres" id="2_4817f"]
 [ext_resource type="Resource" uid="uid://3bny6bat6j6f" path="res://Sound/Resources/sfx_wraith_loop.tres" id="3_o1kgk"]
 

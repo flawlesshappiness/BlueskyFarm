@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://7hsgo3choi7l"]
 
 [ext_resource type="AudioStream" uid="uid://cd8mb171sksky" path="res://Sound/Sounds/sfx_rock_man_step_near_001.wav" id="1_mcqd6"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_2doc8"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_2doc8"]
 
 [resource]
 script = ExtResource("2_2doc8")

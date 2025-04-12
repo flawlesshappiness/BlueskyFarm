@@ -284,8 +284,8 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gai23"]
 _data = {
-"RESET": SubResource("Animation_1d6f2"),
-"cut": SubResource("Animation_dcpdw")
+&"RESET": SubResource("Animation_1d6f2"),
+&"cut": SubResource("Animation_dcpdw")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f7644"]
@@ -299,7 +299,7 @@ point_count = 2
 curve = SubResource("Curve_1vuns")
 
 [sub_resource type="Curve" id="Curve_lyept"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -314,7 +314,7 @@ point_count = 1
 curve = SubResource("Curve_5cqpg")
 
 [sub_resource type="Curve" id="Curve_4cwhy"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, -0.381724, 0, 0, Vector2(1, 0), -5.93407, 0.0, 0, 0]
 point_count = 2
 

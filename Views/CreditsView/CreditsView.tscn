@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://br3qhbm34kt55"]
 
-[ext_resource type="Script" path="res://Views/CreditsView/CreditsView.cs" id="1_ngxlj"]
+[ext_resource type="Script" uid="uid://c4yewkwwl2ypq" path="res://Views/CreditsView/CreditsView.cs" id="1_ngxlj"]
 
 [sub_resource type="Animation" id="Animation_ri4du"]
 length = 0.001
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ftcnv"]
 _data = {
-"RESET": SubResource("Animation_ri4du"),
-"ending": SubResource("Animation_sssye")
+&"RESET": SubResource("Animation_ri4du"),
+&"ending": SubResource("Animation_sssye")
 }
 
 [node name="CreditsView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "CreditsControl")]

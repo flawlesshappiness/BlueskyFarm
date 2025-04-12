@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://cgpn7oalpd74c"]
 
 [ext_resource type="AudioStream" uid="uid://b7b4u4ebrovjg" path="res://Sound/Sounds/sfx_stone_impact_001.wav" id="1_omwvs"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_f063u"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_f063u"]
 [ext_resource type="AudioStream" uid="uid://cbtbkt6arl8s0" path="res://Sound/Sounds/sfx_stone_impact_002.wav" id="2_mo0o0"]
 [ext_resource type="AudioStream" uid="uid://kf01qp4st80c" path="res://Sound/Sounds/sfx_stone_impact_003.wav" id="3_t2frj"]
 

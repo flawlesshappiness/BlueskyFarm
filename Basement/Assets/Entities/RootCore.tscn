@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6vua766jxhes"]
 
 [ext_resource type="PackedScene" uid="uid://pty4q5m76x8e" path="res://Assets/FlawLizArt/Roots/root_core_001.fbx" id="1_60qnf"]
-[ext_resource type="Script" path="res://Basement/Assets/Entities/RootCore.cs" id="1_hutdn"]
-[ext_resource type="Script" path="res://Item/ItemArea.cs" id="2_ax4p2"]
+[ext_resource type="Script" uid="uid://b6aestm3vsrov" path="res://Basement/Assets/Entities/RootCore.cs" id="1_hutdn"]
+[ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="2_ax4p2"]
 [ext_resource type="PackedScene" uid="uid://d2rc3m4i3x64k" path="res://Assets/Quaternius/RPG/dagger_bone.fbx" id="4_tqa16"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kekfh"]
@@ -68,8 +68,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qawhp"]
 _data = {
-"RESET": SubResource("Animation_6jq5v"),
-"sword_insert": SubResource("Animation_k5uen")
+&"RESET": SubResource("Animation_6jq5v"),
+&"sword_insert": SubResource("Animation_k5uen")
 }
 
 [node name="RootCore" type="Node3D" node_paths=PackedStringArray("ItemArea", "AnimationPlayer_Sword")]

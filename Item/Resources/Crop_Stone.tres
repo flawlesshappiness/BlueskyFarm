@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://ccyj6pumapoxs"]
 
 [ext_resource type="PackedScene" uid="uid://qvcolucpth70" path="res://Item/Prefabs/Farming/Crop_Crystal_Carrot.tscn" id="1_l4olp"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_edmd5"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_edmd5"]
 
 [resource]
 script = ExtResource("2_edmd5")

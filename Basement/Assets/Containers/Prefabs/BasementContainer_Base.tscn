@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5lrrhnxtqhkn"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_3vjei"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_0onj0"]
+[ext_resource type="Script" uid="uid://mt50yn6oad1n" path="res://Basement/Assets/Containers/BasementContainer.cs" id="1_3vjei"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="2_0onj0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxl0d"]
 

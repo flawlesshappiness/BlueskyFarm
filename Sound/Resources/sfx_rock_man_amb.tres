@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://ufk4in8os1ru" path="res://Sound/Sounds/sfx_rock_man_amb_002.wav" id="2_y1xrf"]
 [ext_resource type="AudioStream" uid="uid://bk1c7wh6rcpns" path="res://Sound/Sounds/sfx_rock_man_amb_003.wav" id="3_ciklv"]
 [ext_resource type="AudioStream" uid="uid://dge0kyhlhsogc" path="res://Sound/Sounds/sfx_rock_man_amb_004.wav" id="4_f38fj"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_q0pux"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="4_q0pux"]
 
 [resource]
 script = ExtResource("4_q0pux")

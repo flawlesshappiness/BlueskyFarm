@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://bvpws86oh1yy"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Mine/Forge/ForgeKiln.cs" id="1_dw650"]
+[ext_resource type="Script" uid="uid://crlppya8c25vs" path="res://Basement/Assets/Mine/Forge/ForgeKiln.cs" id="1_dw650"]
 [ext_resource type="PackedScene" uid="uid://d0swp4rrpds4o" path="res://Assets/FlawLizArt/Forge/kiln.fbx" id="1_piuk7"]
 [ext_resource type="Resource" uid="uid://b8ocxjxurx0p4" path="res://Sound/Resources/sfx_fill_coal.tres" id="2_m7ucv"]
 [ext_resource type="PackedScene" uid="uid://byhc1gxfdkmjm" path="res://Basement/Assets/Mine/Lever_Metal.tscn" id="3_ifobs"]
-[ext_resource type="Script" path="res://Item/ItemArea.cs" id="4_yegdd"]
+[ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="4_yegdd"]
 [ext_resource type="AudioStream" uid="uid://8q3fk4gcfqvp" path="res://Sound/Sounds/sfx_forge_machine_loop_001.wav" id="5_qdb8w"]
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="7_5ywin"]
 
@@ -122,9 +122,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r2dil"]
 _data = {
-"RESET": SubResource("Animation_dqpgl"),
-"activate": SubResource("Animation_g7i4y"),
-"activated": SubResource("Animation_sop0u")
+&"RESET": SubResource("Animation_dqpgl"),
+&"activate": SubResource("Animation_g7i4y"),
+&"activated": SubResource("Animation_sop0u")
 }
 
 [node name="ForgeKiln" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "CoalItemArea", "SfxMachine_1", "SfxMachine_2", "CoalFillMarker")]

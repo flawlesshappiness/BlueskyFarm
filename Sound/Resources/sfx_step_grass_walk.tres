@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=22 format=3 uid="uid://dr8xig2w3pi72"]
 
 [ext_resource type="AudioStream" uid="uid://dmcgkpdlsk28o" path="res://Sound/Sounds/sfx_step_grass_001.wav" id="1_yhcf0"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_s2c1v"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_s2c1v"]
 [ext_resource type="AudioStream" uid="uid://jjihhv47jss7" path="res://Sound/Sounds/sfx_step_grass_002.wav" id="2_uq16v"]
 [ext_resource type="AudioStream" uid="uid://bquhbg8sv6fln" path="res://Sound/Sounds/sfx_step_grass_003.wav" id="3_8oadw"]
 [ext_resource type="AudioStream" uid="uid://bqjqiq5je5mfy" path="res://Sound/Sounds/sfx_step_grass_004.wav" id="4_ebio2"]
@@ -26,6 +26,7 @@
 script = ExtResource("2_s2c1v")
 AudioStreams = Array[AudioStream]([ExtResource("1_yhcf0"), ExtResource("2_uq16v"), ExtResource("3_8oadw"), ExtResource("4_ebio2"), ExtResource("5_48suo"), ExtResource("6_pbygn"), ExtResource("7_m3grq"), ExtResource("8_lhgiw"), ExtResource("9_pf6oy"), ExtResource("10_yat25"), ExtResource("11_basf3"), ExtResource("12_gp4uj"), ExtResource("13_inj6p"), ExtResource("14_08pj6"), ExtResource("15_lwfuv"), ExtResource("16_wof8v"), ExtResource("17_74nxp"), ExtResource("18_28wge"), ExtResource("19_s1d63"), ExtResource("20_k8w6l")])
 Volume = -30.0
+Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0

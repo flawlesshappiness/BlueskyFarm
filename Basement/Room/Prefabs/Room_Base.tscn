@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://sg081u4ctj3u"]
 
-[ext_resource type="Script" path="res://Basement/Room/BasementRoom.cs" id="1_sat65"]
-[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="2_iecj3"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomSection.cs" id="2_wg3tq"]
-[ext_resource type="Script" path="res://Ambience/AmbienceArea.cs" id="4_a23vm"]
+[ext_resource type="Script" uid="uid://dbxjt8he7qsvn" path="res://Basement/Room/BasementRoom.cs" id="1_sat65"]
+[ext_resource type="Script" uid="uid://b3x2i76j8nok0" path="res://Player/PlayerArea.cs" id="2_iecj3"]
+[ext_resource type="Script" uid="uid://cxxsyh3lgmk77" path="res://Basement/Room/BasementRoomSection.cs" id="2_wg3tq"]
+[ext_resource type="Script" uid="uid://bvmq6isgve53t" path="res://Ambience/AmbienceArea.cs" id="4_a23vm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_osv8p"]
 size = Vector3(27, 32, 27)

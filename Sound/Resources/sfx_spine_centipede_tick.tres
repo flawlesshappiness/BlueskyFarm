@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://dxnqn281lcrdr"]
 
 [ext_resource type="AudioStream" uid="uid://d3bh5gl5pvmd1" path="res://Sound/Sounds/sfx_spine_centipede_tick_001.wav" id="1_poto2"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="3_yvqfk"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="3_yvqfk"]
 
 [resource]
 script = ExtResource("3_yvqfk")

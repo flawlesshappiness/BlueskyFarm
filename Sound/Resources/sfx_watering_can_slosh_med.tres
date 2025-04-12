@@ -3,12 +3,13 @@
 [ext_resource type="AudioStream" uid="uid://b03qi2uigxj8r" path="res://Sound/Sounds/sfx_watering_can_slosh_med_001.wav" id="1_nfijv"]
 [ext_resource type="AudioStream" uid="uid://c6h37wb0o6j3l" path="res://Sound/Sounds/sfx_watering_can_slosh_med_002.wav" id="2_jljva"]
 [ext_resource type="AudioStream" uid="uid://b2b2eofgy747p" path="res://Sound/Sounds/sfx_watering_can_slosh_med_003.wav" id="3_674ih"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_rjm25"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="4_rjm25"]
 
 [resource]
 script = ExtResource("4_rjm25")
 AudioStreams = Array[AudioStream]([ExtResource("1_nfijv"), ExtResource("2_jljva"), ExtResource("3_674ih")])
 Volume = 0.0
+Looping = false
 PitchRange = Vector2(1, 1)
 Bus = 1
 Distance = 0

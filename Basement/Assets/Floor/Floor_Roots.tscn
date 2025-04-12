@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dw7fq6rs1qc2t"]
 
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_w0cxk"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="1_w0cxk"]
 [ext_resource type="Material" uid="uid://bn46esnk76kim" path="res://Assets/Materials/Bone.tres" id="3_8twfd"]
 [ext_resource type="PackedScene" uid="uid://qgtvs8ump4us" path="res://Assets/FlawLizArt/Roots/root_floor_square_001.fbx" id="3_kjuwc"]
 

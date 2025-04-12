@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5niktonq4skr"]
 
-[ext_resource type="Script" path="res://Enemy/RockMan/RockManEnemy.cs" id="1_7jc4q"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ocs64"]
+[ext_resource type="Script" uid="uid://4cffh2lwl43d" path="res://Enemy/RockMan/RockManEnemy.cs" id="1_7jc4q"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="1_ocs64"]
 [ext_resource type="Resource" uid="uid://7hsgo3choi7l" path="res://Sound/Resources/sfx_rock_man_step_near.tres" id="2_q401k"]
 [ext_resource type="PackedScene" uid="uid://cnaauc2go6mmj" path="res://Assets/FlawLizArt/RockMan/rock_man.fbx" id="3_coey7"]
 [ext_resource type="Resource" uid="uid://cs0w4me70elgq" path="res://Sound/Resources/sfx_rock_man_step_far.tres" id="3_od48x"]

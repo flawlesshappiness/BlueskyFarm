@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://666q3l3hd5k2" path="res://Sound/Sounds/sfx_writing_001.wav" id="1_xj42d"]
 [ext_resource type="AudioStream" uid="uid://b5ut33v8xxb74" path="res://Sound/Sounds/sfx_writing_002.wav" id="2_ci57s"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_ymnjs"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_ymnjs"]
 [ext_resource type="AudioStream" uid="uid://b4p4i62elmca8" path="res://Sound/Sounds/sfx_writing_003.wav" id="3_2xi2v"]
 
 [resource]

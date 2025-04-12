@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b36inkdpt1acx" path="res://Sound/Sounds/sfx_marimba_chord_fa.wav" id="4_qvsvo"]
 [ext_resource type="AudioStream" uid="uid://cpfahoigf7h6k" path="res://Sound/Sounds/sfx_marimba_chord_gb.wav" id="5_mxr81"]
 [ext_resource type="AudioStream" uid="uid://bss5iqok3ouql" path="res://Sound/Sounds/sfx_marimba_chord_ac.wav" id="6_faggq"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="7_k050c"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="7_k050c"]
 
 [resource]
 script = ExtResource("7_k050c")

@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://xl8dmr0fjtfk"]
 
 [ext_resource type="AudioStream" uid="uid://cx7jiijw313t4" path="res://Sound/Sounds/sfx_stone_drag_short.wav" id="1_pubcj"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_mhvj3"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_mhvj3"]
 
 [resource]
 script = ExtResource("2_mhvj3")
 AudioStreams = Array[AudioStream]([ExtResource("1_pubcj")])
 Volume = -10.0
+Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SolidMaterialCollection" load_steps=3 format=3 uid="uid://1qtb1afrm7hb"]
 
 [ext_resource type="Resource" uid="uid://ccqxms4abpaxf" path="res://SolidMaterial/Resources/Dirt.tres" id="1_8aw5b"]
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterialCollection.cs" id="1_macar"]
+[ext_resource type="Script" uid="uid://brhaejm104jvu" path="res://SolidMaterial/SolidMaterialCollection.cs" id="1_macar"]
 
 [resource]
 script = ExtResource("1_macar")

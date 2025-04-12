@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxfgevkl7ilyk"]
 
-[ext_resource type="Script" path="res://Enemy/RootMimic/RootMimicEnemy.cs" id="1_t6yvr"]
+[ext_resource type="Script" uid="uid://dh7hq2x5b7f7b" path="res://Enemy/RootMimic/RootMimicEnemy.cs" id="1_t6yvr"]
 [ext_resource type="Resource" uid="uid://bcjo374mloqa1" path="res://Sound/Resources/sfx_root_mimic_threat.tres" id="2_s07g6"]
 [ext_resource type="Resource" uid="uid://cgrr54nr5vhsn" path="res://Sound/Resources/sfx_root_mimic_growl.tres" id="3_qqxnu"]
 [ext_resource type="PackedScene" uid="uid://db0ljdf5snve7" path="res://Assets/FlawLizArt/RootMimic/root_mimic.fbx" id="5_d8p8m"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="6_865gx"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="6_865gx"]
 
 [node name="RootMimic" type="Node3D" node_paths=PackedStringArray("AnimationStateMachine", "AnimationPlayer")]
 script = ExtResource("1_t6yvr")

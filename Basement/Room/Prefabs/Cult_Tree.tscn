@@ -20,14 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://15ablj0o0gi0" path="res://Assets/FlawLizArt/Roots/root_hole_002.fbx" id="17_lnowb"]
 [ext_resource type="PackedScene" uid="uid://bb0httnxtxpvj" path="res://Assets/FlawLizArt/Roots/root_hole_003.fbx" id="18_qs8l4"]
 [ext_resource type="PackedScene" uid="uid://dl3u4xamdiefc" path="res://Assets/FlawLizArt/Roots/root_hole_004.fbx" id="19_dapw8"]
-[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="21_k3te6"]
+[ext_resource type="Script" uid="uid://b3x2i76j8nok0" path="res://Player/PlayerArea.cs" id="21_k3te6"]
 [ext_resource type="PackedScene" uid="uid://dw7fq6rs1qc2t" path="res://Basement/Assets/Floor/Floor_Roots.tscn" id="21_vfqeo"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="23_dksqk"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="23_dksqk"]
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="24_xtf6x"]
 [ext_resource type="PackedScene" uid="uid://c6vua766jxhes" path="res://Basement/Assets/Entities/RootCore.tscn" id="25_2s1e1"]
-[ext_resource type="Script" path="res://Basement/Room/CultTreeRoom.cs" id="25_08e0o"]
+[ext_resource type="Script" uid="uid://bfowjvplbca7s" path="res://Basement/Room/CultTreeRoom.cs" id="25_08e0o"]
 [ext_resource type="PackedScene" uid="uid://cq0uyang6xqda" path="res://Characters/FrogCutscene/FrogCutscene.tscn" id="27_4q6kh"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Cult_Tree/Cutscene_EndingA.cs" id="27_ms6nv"]
+[ext_resource type="Script" uid="uid://8ahsuf6sef8r" path="res://Basement/Room/Prefabs/Cult_Tree/Cutscene_EndingA.cs" id="27_ms6nv"]
 [ext_resource type="Resource" uid="uid://daqgs1cpi1mu3" path="res://DialogueCharacter/Fren.tres" id="28_7atuu"]
 [ext_resource type="Resource" uid="uid://cxphiw00m07lc" path="res://DialogueCharacter/Frida.tres" id="28_ak20c"]
 [ext_resource type="Resource" uid="uid://cq7dwt2w6d6ii" path="res://DialogueCharacter/Frank.tres" id="29_8j1fk"]
@@ -50,7 +50,7 @@ point_count = 3
 curve = SubResource("Curve_777a2")
 
 [sub_resource type="Curve" id="Curve_jjw3c"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -58,7 +58,7 @@ point_count = 2
 curve = SubResource("Curve_jjw3c")
 
 [sub_resource type="Curve" id="Curve_drgys"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
 point_count = 2
 
@@ -111,7 +111,7 @@ point_count = 3
 curve = SubResource("Curve_k8oy3")
 
 [sub_resource type="Curve" id="Curve_0a4o1"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 

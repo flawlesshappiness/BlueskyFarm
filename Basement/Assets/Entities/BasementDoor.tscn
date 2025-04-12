@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://c4y6dw6sr015q"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_40cx2"]
+[ext_resource type="Script" uid="uid://bbfykewcl7q4u" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_40cx2"]
 [ext_resource type="PackedScene" uid="uid://cvm2gm8rbbnwa" path="res://Assets/KayLousberg/Dungeon 1.1/door.fbx" id="1_ctwho"]
 [ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="2_7ojik"]
 [ext_resource type="Resource" uid="uid://quw01a7d06r3" path="res://Sound/Resources/sfx_locked.tres" id="2_w4wlj"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="3_3pxfy"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="3_3pxfy"]
 [ext_resource type="AudioStream" uid="uid://dmjatd05k5t12" path="res://Sound/Sounds/sfx_door_clicks_001.wav" id="3_47u1y"]
 [ext_resource type="Resource" uid="uid://b34xwg53wg55u" path="res://Sound/Resources/sfx_unlock.tres" id="3_sx08p"]
 
@@ -161,11 +161,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vibcd"]
 _data = {
-"RESET": SubResource("Animation_q1x5q"),
-"close": SubResource("Animation_xvd0h"),
-"closed": SubResource("Animation_grjwa"),
-"open": SubResource("Animation_5p27j"),
-"opened": SubResource("Animation_h4khl")
+&"RESET": SubResource("Animation_q1x5q"),
+&"close": SubResource("Animation_xvd0h"),
+&"closed": SubResource("Animation_grjwa"),
+&"open": SubResource("Animation_5p27j"),
+&"opened": SubResource("Animation_h4khl")
 }
 
 [node name="BasementDoor" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Touchables", "SoundMarker")]

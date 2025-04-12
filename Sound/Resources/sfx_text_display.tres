@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://b71f5uagbra4c"]
 
 [ext_resource type="AudioStream" uid="uid://cmopsc0yg3qrq" path="res://Sound/Sounds/sfx_text_display.ogg" id="1_cmxg0"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_q2y4w"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_q2y4w"]
 
 [resource]
 script = ExtResource("2_q2y4w")

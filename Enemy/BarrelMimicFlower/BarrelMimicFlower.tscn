@@ -1,9 +1,9 @@
 [gd_scene load_steps=38 format=3 uid="uid://b2r5gd5rrhgdb"]
 
 [ext_resource type="PackedScene" uid="uid://cjy8ky64co7g6" path="res://Assets/FlawLizArt/BarrelMimicFlower/barrel_mimic_flower.fbx" id="1_fscpd"]
-[ext_resource type="Script" path="res://Enemy/BarrelMimicFlower/BarrelMimicFlowerEnemy.cs" id="2_rsxom"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_shp25"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_d3q0a"]
+[ext_resource type="Script" uid="uid://dsskgkera2hc6" path="res://Enemy/BarrelMimicFlower/BarrelMimicFlowerEnemy.cs" id="2_rsxom"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_shp25"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="4_d3q0a"]
 [ext_resource type="AudioStream" uid="uid://d31soh3em4gln" path="res://Sound/Sounds/sfx_open_container_003.wav" id="6_1fjyo"]
 [ext_resource type="Texture2D" uid="uid://2skmi72bqjse" path="res://Assets/KenneyNL/Particles/scorch_01.png" id="7_3at0n"]
 [ext_resource type="AudioStream" uid="uid://dqicem3j6k0jh" path="res://Sound/Sounds/sfx_barrelmimicflower_charge.wav" id="7_seeuf"]
@@ -22,7 +22,7 @@ point_count = 3
 curve = SubResource("Curve_wn0w5")
 
 [sub_resource type="Curve" id="Curve_p4bw0"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -70,7 +70,7 @@ point_count = 3
 curve = SubResource("Curve_ipvtp")
 
 [sub_resource type="Curve" id="Curve_fnwxf"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -118,7 +118,7 @@ point_count = 2
 curve = SubResource("Curve_x35qg")
 
 [sub_resource type="Curve" id="Curve_pxuk7"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 

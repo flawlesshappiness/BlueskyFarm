@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sbbt21vdxwb0"]
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_4tdy4"]
-[ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCube.cs" id="2_ouqws"]
+[ext_resource type="Script" uid="uid://djm0nhq4v3vm" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCube.cs" id="2_ouqws"]
 [ext_resource type="PackedScene" uid="uid://cuqmcv1b1klcj" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeDisplay.tscn" id="3_vt7k3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1geys"]

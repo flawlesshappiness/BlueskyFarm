@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://cy1j5mrdl7xdh"]
 
-[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="1_4civf"]
+[ext_resource type="Script" uid="uid://b07bel0kcy85l" path="res://Enemy/EnemyInfo.cs" id="1_4civf"]
 [ext_resource type="PackedScene" uid="uid://b2fyvvqopxen5" path="res://Enemy/SpineCentipede/spine_centipede.tscn" id="1_mtkkr"]
 
 [resource]

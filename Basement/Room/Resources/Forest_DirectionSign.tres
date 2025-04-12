@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://di83xeoj55rgy"]
 
 [ext_resource type="PackedScene" uid="uid://dr77yshvfrf6h" path="res://Basement/Room/Prefabs/Forest_DirectionSign.tscn" id="1_ooto8"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_oak0v"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="2_oak0v"]
 
 [resource]
 script = ExtResource("2_oak0v")

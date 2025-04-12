@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctgqnifgnsm1d"]
 
-[ext_resource type="Script" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzle.cs" id="1_lsfrt"]
+[ext_resource type="Script" uid="uid://b0223cs5e0r2y" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzle.cs" id="1_lsfrt"]
 
 [node name="ChestPuzzle" type="Node3D"]
 script = ExtResource("1_lsfrt")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AmbienceInfo" load_steps=6 format=3 uid="uid://ivgvrj8j23go"]
 
 [ext_resource type="Resource" uid="uid://bun7c5x74kkug" path="res://Sound/Resources/amb_forest_background.tres" id="1_ayia1"]
-[ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="1_ujg58"]
+[ext_resource type="Script" uid="uid://b6hue33g58omg" path="res://Ambience/AmbienceInfo.cs" id="1_ujg58"]
 [ext_resource type="Resource" uid="uid://c4ueaw5j8tngm" path="res://Sound/Resources/sfx_enter_forest.tres" id="1_xx3hd"]
 [ext_resource type="Resource" uid="uid://dqh42cxm3xx7e" path="res://Sound/Resources/amb_forest_wind.tres" id="2_qy4wj"]
 [ext_resource type="Resource" uid="uid://2h15c00m4evy" path="res://Sound/Resources/amb_forest_twig.tres" id="3_qst8b"]

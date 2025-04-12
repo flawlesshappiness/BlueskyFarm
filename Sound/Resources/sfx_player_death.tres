@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cx6dypjuuaons"]
 
 [ext_resource type="AudioStream" uid="uid://bgfa8vgevqnf3" path="res://Sound/Sounds/sfx_player_death_001.wav" id="1_ys1ui"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_lt5l2"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="4_lt5l2"]
 
 [resource]
 script = ExtResource("4_lt5l2")

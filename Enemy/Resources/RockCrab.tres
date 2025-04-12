@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://bvi46pp03pef8"]
 
 [ext_resource type="PackedScene" uid="uid://cifamltn5ifi5" path="res://Enemy/RockCrab/RockCrab.tscn" id="1_l34i5"]
-[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="2_q2u2h"]
+[ext_resource type="Script" uid="uid://b07bel0kcy85l" path="res://Enemy/EnemyInfo.cs" id="2_q2u2h"]
 
 [resource]
 script = ExtResource("2_q2u2h")

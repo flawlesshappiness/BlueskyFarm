@@ -15,23 +15,23 @@
 [ext_resource type="PackedScene" uid="uid://dyajlmwxk46hs" path="res://Basement/Assets/Basement/Pillar.tscn" id="8_xq215"]
 [ext_resource type="PackedScene" uid="uid://c20o2rqgcgl4r" path="res://Assets/FlawLizArt/Ladder/ladder.fbx" id="9_5ek3i"]
 [ext_resource type="PackedScene" uid="uid://dkduh5d14led" path="res://Basement/Assets/Basement/Wall_Half.tscn" id="10_2wusw"]
-[ext_resource type="Script" path="res://Ladder/LadderArea.cs" id="10_mgvuu"]
+[ext_resource type="Script" uid="uid://belrv5kldbpv0" path="res://Ladder/LadderArea.cs" id="10_mgvuu"]
 [ext_resource type="Texture2D" uid="uid://bwjdekv4gfciw" path="res://Assets/KenneyNL/Cursors/resize_a_vertical.png" id="11_jw47u"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="13_0asy5"]
 [ext_resource type="PackedScene" uid="uid://tr711x5ducte" path="res://Assets/FlawLizArt/Interior/rope_roll.fbx" id="14_83glp"]
 [ext_resource type="AudioStream" uid="uid://cuos1qlrcm6gp" path="res://Sound/Sounds/sfx_seed_in_dirt.wav" id="16_c77en"]
 [ext_resource type="PackedScene" uid="uid://bbyxq8yxtbhi6" path="res://Particle/Prefabs/ps_dirt_puff.tscn" id="17_gonn6"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/BasementLadderPuzzleRoom.cs" id="17_i0hfd"]
+[ext_resource type="Script" uid="uid://cyy2wjhefj8a8" path="res://Basement/Room/Prefabs/BasementLadderPuzzleRoom.cs" id="17_i0hfd"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="18_03h50"]
 [ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="18_5ahpr"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="18_lxvky"]
 [ext_resource type="Material" uid="uid://cpsww1jp56wmb" path="res://Assets/Materials/Rope.tres" id="18_xt14v"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Basement_LadderPuzzle/CuttableRope.cs" id="19_p3mx5"]
+[ext_resource type="Script" uid="uid://bc1nn24wnca0e" path="res://Basement/Room/Prefabs/Basement_LadderPuzzle/CuttableRope.cs" id="19_p3mx5"]
 [ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="20_xcqpa"]
 [ext_resource type="PackedScene" uid="uid://cpftv6batgsn" path="res://Assets/FlawLizArt/Interior/pulley.fbx" id="21_dj3tf"]
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="23_pyx5l"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="28_nrmws"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="29_a4en5"]
+[ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="28_nrmws"]
+[ext_resource type="Script" uid="uid://b05im8bdn181g" path="res://Basement/Interior/BasementInterior.cs" id="29_a4en5"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="30_jkdbj"]
 [ext_resource type="PackedScene" uid="uid://dlt8jrnsotu0u" path="res://Basement/Assets/Interior/Barrel_002.tscn" id="31_n3k5s"]
 [ext_resource type="PackedScene" uid="uid://bf7yikjlqpq50" path="res://Basement/Assets/Interior/Barrel_003.tscn" id="32_k82nf"]
@@ -176,10 +176,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xwgwp"]
 _data = {
-"RESET": SubResource("Animation_jdj4y"),
-"idle_down": SubResource("Animation_lbwb6"),
-"idle_up": SubResource("Animation_nwumx"),
-"move_down": SubResource("Animation_ei5dj")
+&"RESET": SubResource("Animation_jdj4y"),
+&"idle_down": SubResource("Animation_lbwb6"),
+&"idle_up": SubResource("Animation_nwumx"),
+&"move_down": SubResource("Animation_ei5dj")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5w8q"]

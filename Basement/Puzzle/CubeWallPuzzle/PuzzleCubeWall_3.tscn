@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bbvi1l6x4q4ya"]
 
-[ext_resource type="Script" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWall.cs" id="1_3swwc"]
+[ext_resource type="Script" uid="uid://cshtgnx1smb14" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWall.cs" id="1_3swwc"]
 [ext_resource type="PackedScene" uid="uid://chgkaf41d6svh" path="res://Assets/FlawLizArt/PuzzleCube/wall_cube_holes_3.fbx" id="1_gw1kq"]
 [ext_resource type="PackedScene" uid="uid://8whgrmaeb8sa" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeWallHole.tscn" id="3_3syme"]
 [ext_resource type="PackedScene" uid="uid://cuqmcv1b1klcj" path="res://Basement/Puzzle/CubeWallPuzzle/PuzzleCubeDisplay.tscn" id="4_6hi46"]

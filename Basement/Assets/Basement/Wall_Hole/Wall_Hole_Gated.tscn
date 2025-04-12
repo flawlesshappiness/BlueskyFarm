@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b1i2dw5kvkb8j"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Basement/Wall_Hole/BasementWallGatedHole.cs" id="1_x5vho"]
+[ext_resource type="Script" uid="uid://tuxchik5t2tq" path="res://Basement/Assets/Basement/Wall_Hole/BasementWallGatedHole.cs" id="1_x5vho"]
 [ext_resource type="PackedScene" uid="uid://csiqay11yl40y" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_gated_room.fbx" id="2_b7gn1"]
 [ext_resource type="PackedScene" uid="uid://6ynd6hni57pt" path="res://Assets/KayLousberg/Dungeon 1.1/wall_window_gated_room_bars.fbx" id="3_00ham"]
 

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://g0xibfmoc2cu"]
 
 [ext_resource type="PackedScene" uid="uid://do4a5egt7737j" path="res://Basement/Room/Prefabs/Basement_001.tscn" id="1_fcsru"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="1_qowr4"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="1_qowr4"]
 
 [resource]
 script = ExtResource("1_qowr4")
@@ -18,6 +18,5 @@ WW111EE
 0111100
 011S000
 000S000"
-HasUnevenGround = false
 ValidGroundHeights = Array[float]([0.0])
 Disabled = false

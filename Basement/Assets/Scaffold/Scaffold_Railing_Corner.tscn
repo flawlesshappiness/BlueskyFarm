@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://s6e5sjguxpnn"]
 
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="1_an4rb"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="1_an4rb"]
 [ext_resource type="PackedScene" uid="uid://rllwlavung1u" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low_cornerLeft.fbx" id="1_t7ux5"]
 [ext_resource type="PackedScene" uid="uid://cv64fcjsits31" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low.fbx" id="2_6lmti"]
 [ext_resource type="PackedScene" uid="uid://cu7vc7jer8b8d" path="res://Assets/KayLousberg/Dungeon/scaffold_small_low_railing.fbx" id="3_xml7w"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://mx52i2hjbrm2" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_bed.png" id="1_g4h5w"]
 [ext_resource type="Resource" uid="uid://bxijqp5l8vbw3" path="res://Item/Resources/Repair_Bed.tres" id="2_obj1h"]
-[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_qp7ug"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_qp7ug"]
 
 [resource]
 script = ExtResource("3_qp7ug")
@@ -13,5 +13,6 @@ OverrideResultName = ""
 ResultDialogueNode = ""
 VegetableCount = 2
 BoneCount = 5
+StoneCount = 0
 CanCancel = true
 Areas = null

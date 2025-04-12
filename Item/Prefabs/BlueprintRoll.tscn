@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cafny2o1xbe0w"]
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_xfrwy"]
-[ext_resource type="Script" path="res://Blueprint/BlueprintItem.cs" id="2_atp3k"]
+[ext_resource type="Script" uid="uid://6h4qby2wvhu0" path="res://Blueprint/BlueprintItem.cs" id="2_atp3k"]
 [ext_resource type="PackedScene" uid="uid://dqkdgxttd1l3s" path="res://Assets/FlawLizArt/Blueprint/blueprint_roll.fbx" id="2_vpyyp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ucp8"]

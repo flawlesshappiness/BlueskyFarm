@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bvh7qaa0hjvcf"]
 
 [ext_resource type="PackedScene" uid="uid://cujl6lvr6o545" path="res://Item/Prefabs/Coal.tscn" id="1_vkbuo"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_687q1"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_687q1"]
 
 [resource]
 script = ExtResource("2_687q1")
@@ -11,10 +11,7 @@ CustomId = "coal"
 Type = 0
 CanUse = false
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = true
 PerishesOnFarm = true
-Untrack = false
 InventoryItemCameraDistance = 0.6
 InventoryItemRotationOffset = 0.0

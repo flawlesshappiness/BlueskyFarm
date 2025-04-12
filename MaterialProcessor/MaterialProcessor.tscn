@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dlkva26lti2lp"]
 
-[ext_resource type="Script" path="res://MaterialProcessor/MaterialProcessor.cs" id="1_7rjv5"]
+[ext_resource type="Script" uid="uid://lvvbn3u77p4m" path="res://MaterialProcessor/MaterialProcessor.cs" id="1_7rjv5"]
 [ext_resource type="PackedScene" uid="uid://dlbnnuo8olhu8" path="res://Assets/FlawLizArt/Pipes/Pipe_Curve_05x05_1m.fbx" id="2_psqxk"]
 [ext_resource type="PackedScene" uid="uid://5vvbqi3a5iq1" path="res://Assets/FlawLizArt/Pipes/Pipe_Claw.fbx" id="3_5xbt7"]
 [ext_resource type="PackedScene" uid="uid://ni11naw6plq7" path="res://Assets/FlawLizArt/Pipes/Pipe_1m.fbx" id="4_l1sd1"]

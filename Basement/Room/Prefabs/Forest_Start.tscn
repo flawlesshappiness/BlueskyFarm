@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cwsqw6boqqr1n" path="res://Basement/Assets/Scaffold/pillar_wood.tscn" id="16_ywly5"]
 [ext_resource type="PackedScene" uid="uid://dsx1gugkdsxgv" path="res://Basement/Room/Prefabs/Forest_Start/Open_Basement.tscn" id="17_ckvh2"]
 [ext_resource type="PackedScene" uid="uid://dffmy56n5prba" path="res://Basement/Assets/Basement/Pillar_Top.tscn" id="19_667b1"]
-[ext_resource type="Script" path="res://Basement/Room/ForestStartRoom.cs" id="20_0tugp"]
+[ext_resource type="Script" uid="uid://bffwpb72xc1e5" path="res://Basement/Room/ForestStartRoom.cs" id="20_0tugp"]
 [ext_resource type="PackedScene" uid="uid://dlumv6x7n4rmv" path="res://Basement/Assets/Forest/Wall_Middle_Mossy.tscn" id="20_1xaet"]
 [ext_resource type="PackedScene" uid="uid://0roctpujtyhs" path="res://Weeds/Thorns/Weed_Thorns_Square.tscn" id="21_on70k"]
 

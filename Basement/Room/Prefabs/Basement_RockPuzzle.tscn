@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://ushvc4v1oc0j" path="res://Basement/Assets/Basement/Wall_Doorway.tscn" id="5_dtm36"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="6_4fs25"]
 [ext_resource type="PackedScene" uid="uid://c72e4lxg6cy8c" path="res://Assets/FlawLizArt/Rocks/rocks.fbx" id="7_5qjil"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="8_r1us3"]
+[ext_resource type="Script" uid="uid://cr0ycwsjhbonr" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="8_r1us3"]
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="9_rdxji"]
 [ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="10_5fl03"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Basement_RockPuzzleRoom.cs" id="11_cgq13"]
+[ext_resource type="Script" uid="uid://bsfga8476vbp8" path="res://Basement/Room/Prefabs/Basement_RockPuzzleRoom.cs" id="11_cgq13"]
 [ext_resource type="Resource" uid="uid://bu58s1oc0iikj" path="res://Sound/Resources/sfx_pickaxe_hit.tres" id="11_nsnco"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="12_l0275"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="13_2ud42"]
+[ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="13_2ud42"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="13_decg0"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="14_1s5pc"]
+[ext_resource type="Script" uid="uid://b05im8bdn181g" path="res://Basement/Interior/BasementInterior.cs" id="14_1s5pc"]
 [ext_resource type="PackedScene" uid="uid://cghyfbjw6nj4h" path="res://Basement/Assets/Interior/Candles_001.tscn" id="14_ftsy3"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="15_ffk13"]
 [ext_resource type="PackedScene" uid="uid://b0nvr88bjty6" path="res://Basement/Assets/Containers/Prefabs/Barrel.tscn" id="16_ocx0v"]
@@ -41,7 +41,7 @@ point_count = 2
 curve = SubResource("Curve_4ps17")
 
 [sub_resource type="Curve" id="Curve_recad"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -49,7 +49,7 @@ point_count = 2
 curve = SubResource("Curve_recad")
 
 [sub_resource type="Curve" id="Curve_ll5tx"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
 point_count = 2
 

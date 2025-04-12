@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://bh3sgt2rekirg"]
 
 [ext_resource type="PackedScene" uid="uid://cclneddk2sitv" path="res://Basement/Room/Prefabs/Cult_Bedrooms.tscn" id="1_6oxfx"]
-[ext_resource type="Script" path="res://Basement/Room/BasementRoomInfo.cs" id="2_jwpif"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="2_jwpif"]
 
 [resource]
 script = ExtResource("2_jwpif")

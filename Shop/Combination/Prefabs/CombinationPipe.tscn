@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cx4n62cprybbg"]
 
-[ext_resource type="Script" path="res://Shop/Combination/CombinationPipe.cs" id="1_h74qk"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_seyyd"]
+[ext_resource type="Script" uid="uid://honki6a1njhm" path="res://Shop/Combination/CombinationPipe.cs" id="1_h74qk"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="2_seyyd"]
 [ext_resource type="PackedScene" uid="uid://5vvbqi3a5iq1" path="res://Assets/FlawLizArt/Pipes/Pipe_Claw.fbx" id="3_f8w4s"]
 [ext_resource type="PackedScene" uid="uid://dlbnnuo8olhu8" path="res://Assets/FlawLizArt/Pipes/Pipe_Curve_05x05_1m.fbx" id="4_bu37x"]
 

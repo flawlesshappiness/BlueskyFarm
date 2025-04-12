@@ -8,12 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://r737ld7h4v1a" path="res://Sound/Sounds/sfx_step_water_high_006.wav" id="6_kc887"]
 [ext_resource type="AudioStream" uid="uid://rotk8yvmtj8c" path="res://Sound/Sounds/sfx_step_water_high_007.wav" id="7_wtlq5"]
 [ext_resource type="AudioStream" uid="uid://cmjpj8yqiwsny" path="res://Sound/Sounds/sfx_step_water_high_008.wav" id="8_wb2gc"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="11_qwfh1"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="11_qwfh1"]
 
 [resource]
 script = ExtResource("11_qwfh1")
 AudioStreams = Array[AudioStream]([ExtResource("1_u3akc"), ExtResource("2_tbwpb"), ExtResource("3_n587j"), ExtResource("4_fkaxq"), ExtResource("5_8a12o"), ExtResource("6_kc887"), ExtResource("7_wtlq5"), ExtResource("8_wb2gc")])
 Volume = -12.0
+Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0

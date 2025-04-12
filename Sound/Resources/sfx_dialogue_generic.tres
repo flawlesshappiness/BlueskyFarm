@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cysd40cfjwpdv"]
 
 [ext_resource type="AudioStream" uid="uid://3j4kyqfvervx" path="res://Sound/Sounds/sfx_dialogue_generic.wav" id="1_hafex"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_pw7wm"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_pw7wm"]
 
 [resource]
 script = ExtResource("2_pw7wm")

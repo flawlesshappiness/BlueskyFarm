@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq0uyang6xqda"]
 
-[ext_resource type="Script" path="res://Characters/FrogCutscene/FrogCutscene.cs" id="1_d4w4v"]
+[ext_resource type="Script" uid="uid://tyasa84xponc" path="res://Characters/FrogCutscene/FrogCutscene.cs" id="1_d4w4v"]
 [ext_resource type="PackedScene" uid="uid://ct1km3fnayoe1" path="res://Assets/Quaternius/Monsters/Frog/frog.fbx" id="1_kvbbm"]
 
 [node name="FrogCutscene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]

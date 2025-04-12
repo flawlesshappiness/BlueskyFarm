@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmyptfwnoeids"]
 
-[ext_resource type="Script" path="res://Modules/Cursor/View/CursorView.cs" id="1_llbif"]
+[ext_resource type="Script" uid="uid://cwc07x5nxjvav" path="res://Modules/Cursor/View/CursorView.cs" id="1_llbif"]
 [ext_resource type="Texture2D" uid="uid://wcqr4s875aa5" path="res://Assets/KenneyNL/Cursors/hand_open.png" id="2_lfi1m"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="6_76q5m"]
 

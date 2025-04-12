@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6k0bc5g3t61r"]
 
 [ext_resource type="PackedScene" uid="uid://ui5yac004mj4" path="res://Assets/FlawLizArt/Interior/dreamcatcher_001.fbx" id="1_lhvhk"]
-[ext_resource type="Script" path="res://Basement/Assets/Interior/Dreamcatcher.cs" id="1_nxl3l"]
+[ext_resource type="Script" uid="uid://dbjievhu7d2k5" path="res://Basement/Assets/Interior/Dreamcatcher.cs" id="1_nxl3l"]
 [ext_resource type="PackedScene" uid="uid://b5fe6flw70j5x" path="res://Assets/FlawLizArt/Interior/dreamcatcher_002.fbx" id="2_8mx55"]
 [ext_resource type="PackedScene" uid="uid://dfut8nw53jn80" path="res://Assets/FlawLizArt/Interior/dreamcatcher_003.fbx" id="3_omwrk"]
 [ext_resource type="PackedScene" uid="uid://ogl0efm8jad" path="res://Assets/FlawLizArt/Interior/dreamcatcher_004.fbx" id="4_yxcc3"]
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rvowl"]
 _data = {
-"RESET": SubResource("Animation_woj7s"),
-"idle_001": SubResource("Animation_mcer8")
+&"RESET": SubResource("Animation_woj7s"),
+&"idle_001": SubResource("Animation_mcer8")
 }
 
 [node name="Dreamcatcher" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]

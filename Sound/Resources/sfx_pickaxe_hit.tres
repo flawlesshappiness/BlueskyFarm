@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://bu58s1oc0iikj"]
 
 [ext_resource type="AudioStream" uid="uid://bedmld6awqsde" path="res://Sound/Sounds/sfx_pickaxe_hit_001.wav" id="1_maq1s"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_0s7fp"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_0s7fp"]
 [ext_resource type="AudioStream" uid="uid://cn40oxyj0hpnh" path="res://Sound/Sounds/sfx_pickaxe_hit_002.wav" id="2_41cc8"]
 [ext_resource type="AudioStream" uid="uid://wvqn1pbw14k7" path="res://Sound/Sounds/sfx_pickaxe_hit_003.wav" id="3_kcndo"]
 

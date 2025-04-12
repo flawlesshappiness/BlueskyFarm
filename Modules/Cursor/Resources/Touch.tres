@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CursorInfo" load_steps=3 format=3 uid="uid://syamh0ffvltj"]
 
-[ext_resource type="Script" path="res://Modules/Cursor/CursorInfo.cs" id="1_6rk7s"]
+[ext_resource type="Script" uid="uid://bgoiv7i844vyp" path="res://Modules/Cursor/CursorInfo.cs" id="1_6rk7s"]
 [ext_resource type="Texture2D" uid="uid://b8aj30jfo743a" path="res://Assets/KenneyNL/Cursors/hand_point.png" id="1_n30fv"]
 
 [resource]

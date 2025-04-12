@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmka3k0gwy5hl" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_unknown.png" id="1_xk2ko"]
 [ext_resource type="Resource" uid="uid://cq3u2yhppiw38" path="res://Item/Resources/Mold_Sword.tres" id="2_4gghm"]
-[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_k87i0"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_k87i0"]
 
 [resource]
 script = ExtResource("3_k87i0")

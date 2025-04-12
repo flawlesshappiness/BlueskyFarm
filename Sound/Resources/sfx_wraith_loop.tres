@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://3bny6bat6j6f"]
 
 [ext_resource type="AudioStream" uid="uid://bp3vfy2p4rf2u" path="res://Sound/Sounds/sfx_wraith_breath_loop_001.wav" id="1_doveo"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_tumux"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="4_tumux"]
 
 [resource]
 script = ExtResource("4_tumux")

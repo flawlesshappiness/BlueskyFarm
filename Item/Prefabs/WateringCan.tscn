@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_3f5mt"]
 [ext_resource type="PackedScene" uid="uid://dgcfv68enmgn3" path="res://PlayerTools/WateringCan/WateringCan.tscn" id="2_30cir"]
-[ext_resource type="Script" path="res://PlayerTools/WateringCan/WateringCan.cs" id="2_q36dt"]
+[ext_resource type="Script" uid="uid://c36rielj4i3ga" path="res://PlayerTools/WateringCan/WateringCan.cs" id="2_q36dt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rlbdg"]
 size = Vector3(0.325, 0.315, 0.395)

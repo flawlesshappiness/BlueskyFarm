@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dkoujqg32vl11" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_plantbox.png" id="1_xhd1k"]
 [ext_resource type="Resource" uid="uid://cpp3cxsfm31s3" path="res://Item/Resources/Repair_PlantBox.tres" id="2_snw5n"]
-[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_aykrd"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_aykrd"]
 
 [resource]
 script = ExtResource("3_aykrd")

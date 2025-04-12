@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvxlenqmx8s03"]
 
-[ext_resource type="Script" path="res://Scenes/BasementScene.cs" id="1_jj0xq"]
+[ext_resource type="Script" uid="uid://b01n783d6jvas" path="res://Scenes/BasementScene.cs" id="1_jj0xq"]
 [ext_resource type="Environment" uid="uid://ct56cjpfpmewn" path="res://Environment/Environments/Basement.tres" id="2_tu2bx"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="4_iyvpb"]
 

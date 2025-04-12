@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bdc0mbynw0efc" path="res://Sound/Resources/sfx_step_slime_run.tres" id="1_ivj1w"]
 [ext_resource type="Resource" uid="uid://dpgqplxq32ufk" path="res://Sound/Resources/sfx_step_slime_walk.tres" id="1_p6iwl"]
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterialInfo.cs" id="3_6irm2"]
+[ext_resource type="Script" uid="uid://bi0wrabk15php" path="res://SolidMaterial/SolidMaterialInfo.cs" id="3_6irm2"]
 
 [resource]
 script = ExtResource("3_6irm2")

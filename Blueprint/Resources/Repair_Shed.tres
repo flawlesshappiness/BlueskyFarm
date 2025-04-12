@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dy44h433tnfbt" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_shed.png" id="1_1vyt8"]
 [ext_resource type="Resource" uid="uid://bwlcqsgs6xyj7" path="res://Item/Resources/Repair_Shed.tres" id="2_2brj5"]
-[ext_resource type="Script" path="res://Blueprint/BlueprintInfo.cs" id="3_7d84u"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_7d84u"]
 
 [resource]
 script = ExtResource("3_7d84u")

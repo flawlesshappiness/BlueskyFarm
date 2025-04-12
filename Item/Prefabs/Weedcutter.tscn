@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_mtd67"]
 [ext_resource type="PackedScene" uid="uid://b8pe6se1ypjqj" path="res://PlayerTools/Weedcutter/Weedcutter.tscn" id="2_1y8tw"]
-[ext_resource type="Script" path="res://PlayerTools/Weedcutter/Weedcutter.cs" id="2_gusbh"]
+[ext_resource type="Script" uid="uid://c10655452c78m" path="res://PlayerTools/Weedcutter/Weedcutter.cs" id="2_gusbh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_68jwh"]
 size = Vector3(0.388916, 0.09375, 0.973022)

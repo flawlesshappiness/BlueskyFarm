@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://bmqumbn681odb"]
 
 [ext_resource type="AudioStream" uid="uid://dsxt0jnlspkio" path="res://Sound/Ambience/amb_farm_001.ogg" id="1_1t6ro"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_oo3v5"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_oo3v5"]
 
 [resource]
 script = ExtResource("2_oo3v5")

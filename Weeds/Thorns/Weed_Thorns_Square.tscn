@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://0roctpujtyhs"]
 
 [ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://Weeds/Base/Weed_Base.tscn" id="1_wfopx"]
-[ext_resource type="Script" path="res://Weeds/Thorns/Weed_Thorns.cs" id="2_r1fxi"]
+[ext_resource type="Script" uid="uid://d0ibvaejtqymw" path="res://Weeds/Thorns/Weed_Thorns.cs" id="2_r1fxi"]
 [ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="3_gd65t"]
 [ext_resource type="PackedScene" uid="uid://dapis468m67uv" path="res://Weeds/Thorns/ThornedStalk.tscn" id="3_rk0qa"]
 

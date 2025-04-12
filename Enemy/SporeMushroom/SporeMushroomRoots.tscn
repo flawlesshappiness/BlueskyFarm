@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bbohvdmbbl2nq"]
 
-[ext_resource type="Script" path="res://Enemy/SporeMushroom/SporeMushroomRoots.cs" id="1_h2h8r"]
+[ext_resource type="Script" uid="uid://o0v3dy03lyvs" path="res://Enemy/SporeMushroom/SporeMushroomRoots.cs" id="1_h2h8r"]
 [ext_resource type="PackedScene" uid="uid://bo8lrqqc6uw4p" path="res://Assets/FlawLizArt/Roots/roots_mushroom.glb" id="1_vrog5"]
 [ext_resource type="AudioStream" uid="uid://ckcr0818cvwio" path="res://Sound/Sounds/sfx_mushroom_roots.wav" id="3_jbiep"]
-[ext_resource type="Script" path="res://Sound/Sound3D.cs" id="3_wmvxb"]
+[ext_resource type="Script" uid="uid://bwk8o7pf73ps3" path="res://Sound/Sound3D.cs" id="3_wmvxb"]
 
 [sub_resource type="Animation" id="Animation_0nh2q"]
 length = 0.001
@@ -53,9 +53,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oprgi"]
 _data = {
-"RESET": SubResource("Animation_0nh2q"),
-"appear": SubResource("Animation_72fv6"),
-"idle": SubResource("Animation_47814")
+&"RESET": SubResource("Animation_0nh2q"),
+&"appear": SubResource("Animation_72fv6"),
+&"idle": SubResource("Animation_47814")
 }
 
 [node name="SporeMushroomRoots" type="Node3D"]

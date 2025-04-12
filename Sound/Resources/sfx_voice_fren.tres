@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bje7yx18to7re" path="res://Sound/Sounds/sfx_voice_fren_011.wav" id="11_ugfci"]
 [ext_resource type="AudioStream" uid="uid://c34ai34b6l54y" path="res://Sound/Sounds/sfx_voice_fren_012.wav" id="12_7ojtw"]
 [ext_resource type="AudioStream" uid="uid://vkwx2dgmce5x" path="res://Sound/Sounds/sfx_voice_fren_013.wav" id="13_sbm4p"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="14_8k054"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="14_8k054"]
 
 [resource]
 script = ExtResource("14_8k054")

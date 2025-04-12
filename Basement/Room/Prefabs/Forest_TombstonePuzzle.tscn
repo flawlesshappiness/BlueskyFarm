@@ -14,11 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://vffrsoavok86" path="res://Basement/Assets/Forest/CommonTree_002.tscn" id="12_5fcbc"]
 [ext_resource type="PackedScene" uid="uid://bcmvcsxa8rycn" path="res://Basement/Assets/Forest/CommonTree_003.tscn" id="13_jue6j"]
 [ext_resource type="PackedScene" uid="uid://devyu0yxamw5g" path="res://Basement/Assets/Forest/Dead_Tree_With_Hole.tscn" id="15_cv7da"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Forest_TombstonePuzzle/ForestTombstonePuzzleRoom.cs" id="15_m3yki"]
+[ext_resource type="Script" uid="uid://lejpv3jwuywm" path="res://Basement/Room/Prefabs/Forest_TombstonePuzzle/ForestTombstonePuzzleRoom.cs" id="15_m3yki"]
 [ext_resource type="PackedScene" uid="uid://ckgxoywxbij28" path="res://Basement/Assets/Containers/Prefabs/Grave.tscn" id="16_2mipg"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="16_qegsy"]
 [ext_resource type="PackedScene" uid="uid://dh65tfqa1nwh7" path="res://Particle/Prefabs/ps_mist.tscn" id="17_bn6nq"]
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="17_xy0gq"]
+[ext_resource type="Script" uid="uid://cr0ycwsjhbonr" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="17_xy0gq"]
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="18_3pidp"]
 [ext_resource type="PackedScene" uid="uid://b6jw8n6h38lbx" path="res://Assets/FlawLizArt/Interior/tombstone.fbx" id="18_bux6e"]
 [ext_resource type="Resource" uid="uid://bu58s1oc0iikj" path="res://Sound/Resources/sfx_pickaxe_hit.tres" id="19_jkqc4"]
@@ -48,7 +48,7 @@ point_count = 2
 curve = SubResource("Curve_chq0e")
 
 [sub_resource type="Curve" id="Curve_p0cmm"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -56,7 +56,7 @@ point_count = 2
 curve = SubResource("Curve_p0cmm")
 
 [sub_resource type="Curve" id="Curve_meiv7"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
 point_count = 2
 

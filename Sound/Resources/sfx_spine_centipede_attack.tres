@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://ci2vwdgl0usmc" path="res://Sound/Sounds/sfx_spine_centipede_hiss_001.wav" id="1_efbix"]
 [ext_resource type="AudioStream" uid="uid://bxfqksw2qd4l3" path="res://Sound/Sounds/sfx_spine_centipede_hiss_002.wav" id="2_c3ckx"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="4_lft38"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="4_lft38"]
 
 [resource]
 script = ExtResource("4_lft38")

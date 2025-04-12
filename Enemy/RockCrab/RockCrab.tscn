@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cifamltn5ifi5"]
 
-[ext_resource type="Script" path="res://Enemy/RockCrab/RockCrabEnemy.cs" id="1_508v3"]
+[ext_resource type="Script" uid="uid://kwl38tyh1ne7" path="res://Enemy/RockCrab/RockCrabEnemy.cs" id="1_508v3"]
 [ext_resource type="PackedScene" uid="uid://ee1efktlcvb" path="res://Assets/FlawLizArt/RockCrab/rock_crab.fbx" id="1_dnctj"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_j2ej8"]
-[ext_resource type="Script" path="res://Sound/Sound3D.cs" id="4_171qo"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_j2ej8"]
+[ext_resource type="Script" uid="uid://bwk8o7pf73ps3" path="res://Sound/Sound3D.cs" id="4_171qo"]
 [ext_resource type="Resource" uid="uid://b7bxfloa7scwg" path="res://Sound/Resources/sfx_rock_crab_hit.tres" id="5_ekmeh"]
 [ext_resource type="Resource" uid="uid://qp6anb2vqqmo" path="res://Sound/Resources/sfx_rock_crab_step.tres" id="6_gral0"]
 

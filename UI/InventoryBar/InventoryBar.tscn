@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://caxidipwbdxhk"]
 
-[ext_resource type="Script" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
-[ext_resource type="Script" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
+[ext_resource type="Script" uid="uid://tbsjjiwu47x8" path="res://UI/InventoryBar/InventoryBarElement.cs" id="1_03bnl"]
+[ext_resource type="Script" uid="uid://c6d4cldyc676w" path="res://UI/InventoryBar/InventoryBar.cs" id="1_3r2to"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_emgjy"]
 [ext_resource type="Texture2D" uid="uid://d2uq3pghrhk02" path="res://Assets/KenneyNL/UI-Fantasy/panel-015.png" id="4_vjvt2"]
 [ext_resource type="Texture2D" uid="uid://bw83j21xd6ue" path="res://Assets/KenneyNL/UI-Fantasy/panel-border-015.png" id="5_302b5"]

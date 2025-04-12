@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_jxcx3"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_otn2u"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="4_twxnd"]
+[ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="4_twxnd"]
 [ext_resource type="PackedScene" uid="uid://cv70ka7lv3hst" path="res://Assets/FlawLizArt/MinesRooms/corridor_002.fbx" id="5_axmua"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="5_u3625"]
+[ext_resource type="Script" uid="uid://b05im8bdn181g" path="res://Basement/Interior/BasementInterior.cs" id="5_u3625"]
 [ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="6_nr8fe"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="6_v34jg"]
 [ext_resource type="PackedScene" uid="uid://dtlqc4fijqlaq" path="res://Basement/Assets/Containers/Prefabs/RockContainer.tscn" id="7_ujmdp"]

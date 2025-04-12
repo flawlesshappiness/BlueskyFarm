@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bko7nouhmvnrg"]
 
-[ext_resource type="Script" path="res://Modules/Object/InteractableLever.cs" id="1_1nmdm"]
+[ext_resource type="Script" uid="uid://dxa2tbwmg80vr" path="res://Modules/Object/InteractableLever.cs" id="1_1nmdm"]
 [ext_resource type="PackedScene" uid="uid://b7ab1s2v5w6cj" path="res://Assets/FlawLizArt/Pipes/Valve.fbx" id="2_s5bku"]
 
 [sub_resource type="Animation" id="Animation_au65l"]
@@ -187,11 +187,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qriey"]
 _data = {
-"RESET": SubResource("Animation_au65l"),
-"idle_left": SubResource("Animation_mja10"),
-"idle_right": SubResource("Animation_mqwrf"),
-"move_left": SubResource("Animation_fg3c2"),
-"move_right": SubResource("Animation_dlayj")
+&"RESET": SubResource("Animation_au65l"),
+&"idle_left": SubResource("Animation_mja10"),
+&"idle_right": SubResource("Animation_mqwrf"),
+&"move_left": SubResource("Animation_fg3c2"),
+&"move_right": SubResource("Animation_dlayj")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_neu6h"]

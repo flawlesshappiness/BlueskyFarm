@@ -15,12 +15,13 @@
 [ext_resource type="AudioStream" uid="uid://d0of37ca3wg87" path="res://Sound/Sounds/sfx_step_dirt_013.wav" id="13_xi460"]
 [ext_resource type="AudioStream" uid="uid://bx2apvevf30jb" path="res://Sound/Sounds/sfx_step_dirt_014.wav" id="14_o50gq"]
 [ext_resource type="AudioStream" uid="uid://cc46u58q68cxq" path="res://Sound/Sounds/sfx_step_dirt_015.wav" id="15_ges2a"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="16_0fiia"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="16_0fiia"]
 
 [resource]
 script = ExtResource("16_0fiia")
 AudioStreams = Array[AudioStream]([ExtResource("1_hgcjo"), ExtResource("2_dvp6g"), ExtResource("3_8csle"), ExtResource("4_j8vf8"), ExtResource("5_p3tsx"), ExtResource("6_lluln"), ExtResource("7_48udq"), ExtResource("8_sk54l"), ExtResource("9_hu0m5"), ExtResource("10_e7oh1"), ExtResource("11_i7u4y"), ExtResource("12_kpccr"), ExtResource("13_xi460"), ExtResource("14_o50gq"), ExtResource("15_ges2a")])
 Volume = -20.0
+Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = 1
 Distance = 0

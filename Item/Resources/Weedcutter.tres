@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://yf41wk6nfikp"]
 
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="1_11wnj"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="1_11wnj"]
 [ext_resource type="PackedScene" uid="uid://bhk3xyrglorp7" path="res://Item/Prefabs/Weedcutter.tscn" id="1_lyoek"]
 
 [resource]
@@ -11,10 +11,7 @@ CustomId = "weedcutter"
 Type = 0
 CanUse = true
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = true
 PerishesOnFarm = false
-Untrack = false
 InventoryItemCameraDistance = 0.75
 InventoryItemRotationOffset = 80.0

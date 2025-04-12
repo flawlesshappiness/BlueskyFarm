@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdbglsjsx2bfe"]
 
-[ext_resource type="Script" path="res://Enemy/SporeMushroom/SporeMushroomEnemy.cs" id="1_x6gtj"]
+[ext_resource type="Script" uid="uid://cxj1rxryrdp61" path="res://Enemy/SporeMushroom/SporeMushroomEnemy.cs" id="1_x6gtj"]
 
 [node name="SporeMushroom" type="Node3D"]
 script = ExtResource("1_x6gtj")

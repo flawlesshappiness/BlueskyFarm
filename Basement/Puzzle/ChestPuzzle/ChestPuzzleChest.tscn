@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0yqnsy43lglw"]
 
-[ext_resource type="Script" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleChest.cs" id="1_32npn"]
+[ext_resource type="Script" uid="uid://chv1jm58xl305" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleChest.cs" id="1_32npn"]
 [ext_resource type="PackedScene" uid="uid://bodxnfcn1wkgc" path="res://Assets/Quaternius/RPG/Chest_Closed.obj" id="1_ulhik"]
 [ext_resource type="PackedScene" uid="uid://drfxno32kggbh" path="res://Assets/Quaternius/RPG/Chest_Open.obj" id="2_a4gnh"]
 

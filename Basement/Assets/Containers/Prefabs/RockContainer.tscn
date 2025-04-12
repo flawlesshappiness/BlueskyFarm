@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://dtlqc4fijqlaq"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Containers/RockContainer.cs" id="1_h7utd"]
+[ext_resource type="Script" uid="uid://cnvydd7b5y2yq" path="res://Basement/Assets/Containers/RockContainer.cs" id="1_h7utd"]
 [ext_resource type="Resource" uid="uid://bu58s1oc0iikj" path="res://Sound/Resources/sfx_pickaxe_hit.tres" id="2_7foab"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_plcbo"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="2_plcbo"]
 [ext_resource type="PackedScene" uid="uid://dow4r0sirqpsf" path="res://Assets/FlawLizArt/Rocks/rock_breakable.fbx" id="3_7ewy8"]
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="3_dtfq3"]
 [ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="4_5fy32"]
@@ -19,7 +19,7 @@ point_count = 2
 curve = SubResource("Curve_1i6n1")
 
 [sub_resource type="Curve" id="Curve_qkjun"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -27,7 +27,7 @@ point_count = 2
 curve = SubResource("Curve_qkjun")
 
 [sub_resource type="Curve" id="Curve_7cltt"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 2.24176), 0.0, 0.758242, 0, 1, Vector2(1, 3), 0.758242, 0.0, 1, 0]
 point_count = 2
 

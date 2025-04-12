@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmns0vbr7ck4f"]
 
-[ext_resource type="Script" path="res://Shop/Combination/CombinationShop.cs" id="1_roxpu"]
+[ext_resource type="Script" uid="uid://b63ok6tqndvbo" path="res://Shop/Combination/CombinationShop.cs" id="1_roxpu"]
 [ext_resource type="PackedScene" uid="uid://cx4n62cprybbg" path="res://Shop/Combination/Prefabs/CombinationPipe.tscn" id="2_xgkd6"]
 [ext_resource type="PackedScene" uid="uid://bwayhmvpb0lrs" path="res://Basement/Assets/Pipes/Lever.tscn" id="3_hp6cg"]
 [ext_resource type="PackedScene" uid="uid://b0c5jgcou2xwa" path="res://Assets/FlawLizArt/Pipes/LeverBox.fbx" id="4_fasv2"]

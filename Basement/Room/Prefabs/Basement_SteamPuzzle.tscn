@@ -22,12 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://drla07ki6n810" path="res://Basement/Assets/Pipes/Pipe_Plus_2m.tscn" id="16_wd071"]
 [ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="18_dwdiv"]
 [ext_resource type="AudioStream" uid="uid://0bpa32qucm6x" path="res://Sound/Sounds/sfx_steam.wav" id="19_0vr7j"]
-[ext_resource type="Script" path="res://Basement/Puzzle/SteamPuzzle/SteamPuzzleMultiple.cs" id="19_g13yn"]
+[ext_resource type="Script" uid="uid://dyv4woposbmvu" path="res://Basement/Puzzle/SteamPuzzle/SteamPuzzleMultiple.cs" id="19_g13yn"]
 [ext_resource type="PackedScene" uid="uid://bko7nouhmvnrg" path="res://Basement/Assets/Pipes/Valve.tscn" id="22_gqwbu"]
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="23_ouvnh"]
-[ext_resource type="Script" path="res://Basement/ItemSpawn/ItemSpawn_MaterialProcessorOil.cs" id="24_oglcy"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInteriorGroup.cs" id="27_l2is8"]
-[ext_resource type="Script" path="res://Basement/Interior/BasementInterior.cs" id="28_pyl73"]
+[ext_resource type="Script" uid="uid://gcr7o0wtissb" path="res://Basement/ItemSpawn/ItemSpawn_MaterialProcessorOil.cs" id="24_oglcy"]
+[ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="27_l2is8"]
+[ext_resource type="Script" uid="uid://b05im8bdn181g" path="res://Basement/Interior/BasementInterior.cs" id="28_pyl73"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="29_yrcew"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="30_3dpsv"]
 [ext_resource type="PackedScene" uid="uid://lmtc72pu0dqc" path="res://Basement/Assets/Interior/Barrel_Big_Horizontal.tscn" id="31_bvvpf"]
@@ -41,7 +41,7 @@ point_count = 3
 curve = SubResource("Curve_x2e5w")
 
 [sub_resource type="Curve" id="Curve_dkim0"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 
@@ -99,7 +99,7 @@ point_count = 3
 curve = SubResource("Curve_7wtqk")
 
 [sub_resource type="Curve" id="Curve_1timr"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
 point_count = 2
 

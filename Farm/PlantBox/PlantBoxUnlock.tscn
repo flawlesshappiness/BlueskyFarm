@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr7x5dbwhu7er"]
 
-[ext_resource type="Script" path="res://Farm/PlantBoxUnlock.cs" id="1_vbjow"]
+[ext_resource type="Script" uid="uid://ceb0oouxb13aw" path="res://Farm/PlantBoxUnlock.cs" id="1_vbjow"]
 [ext_resource type="PackedScene" uid="uid://bvbctpjxk6w4r" path="res://Farm/PlantBox/PlantBox.tscn" id="2_sud6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drhhn"]

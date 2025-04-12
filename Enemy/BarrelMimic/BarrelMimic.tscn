@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bewr8vamgvxx3"]
 
 [ext_resource type="PackedScene" uid="uid://dtkpj4iiv4cdt" path="res://Assets/FlawLizArt/BarrelMimic/barrel_mimic.fbx" id="1_klue4"]
-[ext_resource type="Script" path="res://Enemy/BarrelMimic/BarrelMimicEnemy.cs" id="2_jkftu"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vgevf"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_rtp2d"]
+[ext_resource type="Script" uid="uid://cujxfr0v6g3t2" path="res://Enemy/BarrelMimic/BarrelMimicEnemy.cs" id="2_jkftu"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vgevf"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="4_rtp2d"]
 [ext_resource type="AudioStream" uid="uid://baxjb86uhg6fm" path="res://Sound/Sounds/sfx_barrelmimic_open.wav" id="5_ltcm4"]
 [ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="5_ujew6"]
 [ext_resource type="AudioStream" uid="uid://yn8uauv37uiy" path="res://Sound/Sounds/sfx_barrelmimic_scare.wav" id="7_sj3xk"]

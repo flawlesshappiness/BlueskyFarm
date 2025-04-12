@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://cgrr54nr5vhsn"]
 
 [ext_resource type="AudioStream" uid="uid://daykqqxc32vr6" path="res://Sound/Sounds/sfx_root_mimic_growl.wav" id="1_tjdq2"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_4r3hb"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_4r3hb"]
 
 [resource]
 script = ExtResource("2_4r3hb")

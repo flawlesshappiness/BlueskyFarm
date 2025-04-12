@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cpmhxieedc62m"]
 
 [ext_resource type="PackedScene" uid="uid://dxwls2jxrdb4m" path="res://Item/Prefabs/Farming/Seed_Bone.tscn" id="1_c8r3y"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_fde0c"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_fde0c"]
 
 [resource]
 script = ExtResource("2_fde0c")
@@ -11,10 +11,7 @@ CustomId = ""
 Type = 3
 CanUse = false
 Uses = 0
-SeedResultType = 2
-GrowTimeInSeconds = 0
 CanPickUp = true
 PerishesOnFarm = false
-Untrack = false
 InventoryItemCameraDistance = 0.25
 InventoryItemRotationOffset = 0.0

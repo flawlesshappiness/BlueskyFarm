@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=5 format=3 uid="uid://chrmbx788o0j4"]
 
 [ext_resource type="AudioStream" uid="uid://diyh1q6qnkxyj" path="res://Sound/Sounds/sfx_cultist_alert_001.wav" id="1_rux0e"]
-[ext_resource type="Script" path="res://Sound/SoundInfo.cs" id="2_fggra"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_fggra"]
 [ext_resource type="AudioStream" uid="uid://drywocshwhexu" path="res://Sound/Sounds/sfx_cultist_alert_002.wav" id="2_lykwy"]
 [ext_resource type="AudioStream" uid="uid://b5la5axy3jsxy" path="res://Sound/Sounds/sfx_cultist_alert_003.wav" id="3_umiu7"]
 

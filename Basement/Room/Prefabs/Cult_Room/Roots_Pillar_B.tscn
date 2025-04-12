@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kmv8dc2bqcdp"]
 
-[ext_resource type="Script" path="res://Basement/Room/Prefabs/Cult_Room/Cult_Room_Roots.cs" id="1_oe1t1"]
+[ext_resource type="Script" uid="uid://dnat82b6b6xpt" path="res://Basement/Room/Prefabs/Cult_Room/Cult_Room_Roots.cs" id="1_oe1t1"]
 [ext_resource type="PackedScene" uid="uid://bil43gapgbo2o" path="res://Assets/FlawLizArt/Roots/root_pillar_001.fbx" id="8_kd2wn"]
 
 [node name="Roots_Pillar_A" type="Node3D"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://empe3yo0pgul"]
 
-[ext_resource type="Script" path="res://Note/DialoguePaper.cs" id="1_03cgd"]
+[ext_resource type="Script" uid="uid://dhwggybwiau82" path="res://Note/DialoguePaper.cs" id="1_03cgd"]
 [ext_resource type="PackedScene" uid="uid://cd3ttsk415aeh" path="res://Assets/FlawLizArt/Paper/paper_with_nail.fbx" id="1_8klyx"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="2_55g6p"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="2_55g6p"]
 [ext_resource type="Resource" uid="uid://d2ecbuc64hxcl" path="res://DialogueCharacter/PaperNote.tres" id="2_86vl0"]
 [ext_resource type="Texture2D" uid="uid://dh1v1bnq4jmqq" path="res://Assets/KenneyNL/Cursors/look_c.png" id="3_73g04"]
 [ext_resource type="Texture2D" uid="uid://d4nx1nnj52i0l" path="res://Assets/FlawLizArt/Textures/writing_003.png" id="6_1d4jb"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvk8drjbapcvo"]
 
 [ext_resource type="PackedScene" uid="uid://cwk4q5q3abc6l" path="res://Assets/FlawLizArt/Pickaxe/pickaxe.fbx" id="1_binh3"]
-[ext_resource type="Script" path="res://PlayerTools/Pickaxe/PickaxeTool.cs" id="1_iqpul"]
+[ext_resource type="Script" uid="uid://yjrg2pwqkxdy" path="res://PlayerTools/Pickaxe/PickaxeTool.cs" id="1_iqpul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7lpa"]
 size = Vector3(1, 2, 1.5)
@@ -131,10 +131,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qby61"]
 _data = {
-"RESET": SubResource("Animation_554rn"),
-"idle": SubResource("Animation_kgq4f"),
-"swing_hit": SubResource("Animation_pq3hl"),
-"swing_miss": SubResource("Animation_af3nt")
+&"RESET": SubResource("Animation_554rn"),
+&"idle": SubResource("Animation_kgq4f"),
+&"swing_hit": SubResource("Animation_pq3hl"),
+&"swing_miss": SubResource("Animation_af3nt")
 }
 
 [node name="PickaxeTool" type="Node3D" node_paths=PackedStringArray("AreaContainer", "AnimationPlayer")]

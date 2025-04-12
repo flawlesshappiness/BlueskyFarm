@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://0xkdrmxdxprt"]
 
-[ext_resource type="Script" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_kuanw"]
+[ext_resource type="Script" uid="uid://bbfykewcl7q4u" path="res://Basement/Assets/Entities/BasementDoor.cs" id="1_kuanw"]
 [ext_resource type="Resource" uid="uid://quw01a7d06r3" path="res://Sound/Resources/sfx_locked.tres" id="2_juadu"]
 [ext_resource type="Resource" uid="uid://b34xwg53wg55u" path="res://Sound/Resources/sfx_unlock.tres" id="3_1woko"]
 [ext_resource type="AudioStream" uid="uid://bjkrrckkta0nm" path="res://Sound/Sounds/sfx_wood_creak.wav" id="4_1qwsy"]
 [ext_resource type="PackedScene" uid="uid://jxf6xtxqjtr7" path="res://Assets/KayLousberg/Dungeon 1.1/door_tall_L.fbx" id="4_grxec"]
 [ext_resource type="PackedScene" uid="uid://b3x776luv6weu" path="res://Assets/KayLousberg/Dungeon 1.1/door_tall_R.fbx" id="5_qjivu"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="7_kpmcq"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="7_kpmcq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvj4p"]
 size = Vector3(1, 6.5, 0.25)
@@ -189,11 +189,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hura2"]
 _data = {
-"RESET": SubResource("Animation_sox8v"),
-"close": SubResource("Animation_0hld0"),
-"closed": SubResource("Animation_a7gmf"),
-"open": SubResource("Animation_qpbon"),
-"opened": SubResource("Animation_2to5w")
+&"RESET": SubResource("Animation_sox8v"),
+&"close": SubResource("Animation_0hld0"),
+&"closed": SubResource("Animation_a7gmf"),
+&"open": SubResource("Animation_qpbon"),
+&"opened": SubResource("Animation_2to5w")
 }
 
 [node name="BasementDoor" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Touchables", "SoundMarker")]

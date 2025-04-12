@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cxfii3j7jtj01"]
 
 [ext_resource type="PackedScene" uid="uid://rsr5wel7l12k" path="res://Item/Prefabs/PickaxeItem.tscn" id="1_papl2"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_63nnm"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_63nnm"]
 
 [resource]
 script = ExtResource("2_63nnm")
@@ -11,10 +11,7 @@ CustomId = "pickaxe"
 Type = 0
 CanUse = true
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = true
 PerishesOnFarm = false
-Untrack = false
 InventoryItemCameraDistance = 1.0
 InventoryItemRotationOffset = 0.0

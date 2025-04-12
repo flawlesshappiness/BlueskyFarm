@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bvbctpjxk6w4r"]
 
-[ext_resource type="Script" path="res://Farm/PlantArea.cs" id="1_qlu5f"]
-[ext_resource type="Script" path="res://Farm/PlantAreaTouchable.cs" id="2_1nlv7"]
+[ext_resource type="Script" uid="uid://b7o5wnioaa8sb" path="res://Farm/PlantArea.cs" id="1_qlu5f"]
+[ext_resource type="Script" uid="uid://df3wpcd3or74i" path="res://Farm/PlantAreaTouchable.cs" id="2_1nlv7"]
 [ext_resource type="PackedScene" uid="uid://bbyxq8yxtbhi6" path="res://Particle/Prefabs/ps_dirt_puff.tscn" id="2_5qri5"]
 [ext_resource type="PackedScene" uid="uid://ctaphuje6j8mg" path="res://Assets/FlawLizArt/PlantBox/plant_box.fbx" id="3_05um6"]
-[ext_resource type="Script" path="res://PlayerTools/WateringCan/Waterable.cs" id="4_b6w7s"]
-[ext_resource type="Script" path="res://Item/ItemArea.cs" id="4_chh7w"]
+[ext_resource type="Script" uid="uid://drkdsqhuk3l13" path="res://PlayerTools/WateringCan/Waterable.cs" id="4_b6w7s"]
+[ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="4_chh7w"]
 [ext_resource type="Texture2D" uid="uid://deku6vb433a0g" path="res://Assets/KenneyNL/Particles/dirt_02.png" id="5_2gtwe"]
 [ext_resource type="PackedScene" uid="uid://bprmpu8melxmg" path="res://Weeds/Plant/Weed_Plant.tscn" id="6_f0ip7"]
 

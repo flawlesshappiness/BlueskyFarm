@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://b2fyvvqopxen5"]
 
-[ext_resource type="Script" path="res://Enemy/SpineCentipede/SpineCentipedeEnemy.cs" id="1_eaxmr"]
+[ext_resource type="Script" uid="uid://fihihlj78ep7" path="res://Enemy/SpineCentipede/SpineCentipedeEnemy.cs" id="1_eaxmr"]
 [ext_resource type="PackedScene" uid="uid://baelcq0i7suwh" path="res://Assets/FlawLizArt/SpineCentipede/spine_centipede.fbx" id="1_ihhei"]
 [ext_resource type="Resource" uid="uid://d38mvxk222ncp" path="res://Sound/Resources/sfx_spine_centipede_wheeze_short.tres" id="2_tns7j"]
-[ext_resource type="Script" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_8xfex"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_8xfex"]
 [ext_resource type="Resource" uid="uid://yhf55fy5i0ma" path="res://Sound/Resources/sfx_spine_centipede_wheeze_long.tres" id="3_r3w5v"]
 [ext_resource type="AudioStream" uid="uid://daqn5bfgwieyu" path="res://Sound/Sounds/sfx_spine_centipede_moving.wav" id="4_ln6r8"]
 [ext_resource type="Resource" uid="uid://dxnqn281lcrdr" path="res://Sound/Resources/sfx_spine_centipede_tick.tres" id="4_mnyih"]
 [ext_resource type="Resource" uid="uid://dah2ovm2e2bs4" path="res://Sound/Resources/sfx_spine_centipede_attack.tres" id="5_t6ovc"]
-[ext_resource type="Script" path="res://Player/PlayerArea.cs" id="8_pgec4"]
+[ext_resource type="Script" uid="uid://b3x2i76j8nok0" path="res://Player/PlayerArea.cs" id="8_pgec4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_735ul"]
 size = Vector3(2, 1, 6.75)

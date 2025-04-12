@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AmbienceInfo" load_steps=3 format=3 uid="uid://k0jl1shbv8d6"]
 
 [ext_resource type="Resource" uid="uid://brbb5ibtcw3q6" path="res://Sound/Resources/amb_core_background.tres" id="1_guunr"]
-[ext_resource type="Script" path="res://Ambience/AmbienceInfo.cs" id="3_1m6hq"]
+[ext_resource type="Script" uid="uid://b6hue33g58omg" path="res://Ambience/AmbienceInfo.cs" id="3_1m6hq"]
 
 [resource]
 script = ExtResource("3_1m6hq")

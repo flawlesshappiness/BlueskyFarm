@@ -1,9 +1,8 @@
 [gd_resource type="Resource" script_class="ParticleInfo" load_steps=3 format=3 uid="uid://dhky2h8i8alf7"]
 
 [ext_resource type="PackedScene" uid="uid://bbyxq8yxtbhi6" path="res://Particle/Prefabs/ps_dirt_puff.tscn" id="1_2rx83"]
-[ext_resource type="Script" path="res://Particle/ParticleInfo.cs" id="1_i5kdm"]
+[ext_resource type="Script" uid="uid://c6twtvja2tc3t" path="res://Particle/ParticleInfo.cs" id="1_i5kdm"]
 
 [resource]
 script = ExtResource("1_i5kdm")
-Path = "res://Particle/Prefabs/ps_dirt_puff.tscn"
 Scene = ExtResource("1_2rx83")

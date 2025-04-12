@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c23svudsrxj61"]
 
-[ext_resource type="Script" path="res://Views/DemoView/DemoView.cs" id="1_llf7q"]
+[ext_resource type="Script" uid="uid://c4pdycqm5asqv" path="res://Views/DemoView/DemoView.cs" id="1_llf7q"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="2_sq0o3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hbv2t"]

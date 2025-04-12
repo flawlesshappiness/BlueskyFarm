@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kjyflebf1dgq"]
 
-[ext_resource type="Script" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleBoard.cs" id="1_woad5"]
+[ext_resource type="Script" uid="uid://fmgfo5b1o53m" path="res://Basement/Puzzle/ChestPuzzle/ChestPuzzleBoard.cs" id="1_woad5"]
 [ext_resource type="PackedScene" uid="uid://daseqv6417ye7" path="res://Assets/FlawLizArt/hook_board.glb" id="1_x2inr"]
 
 [node name="ChestPuzzleBoard" type="Node3D"]

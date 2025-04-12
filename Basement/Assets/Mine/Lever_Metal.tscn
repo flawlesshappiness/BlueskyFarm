@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://byhc1gxfdkmjm"]
 
 [ext_resource type="PackedScene" uid="uid://lof141bho64m" path="res://Assets/FlawLizArt/Forge/lever_box.fbx" id="1_3sjwg"]
-[ext_resource type="Script" path="res://Modules/Object/InteractableLever.cs" id="1_arcpt"]
+[ext_resource type="Script" uid="uid://dxa2tbwmg80vr" path="res://Modules/Object/InteractableLever.cs" id="1_arcpt"]
 [ext_resource type="PackedScene" uid="uid://c4eovvpdrtg7q" path="res://Assets/FlawLizArt/Forge/lever.fbx" id="2_w2481"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="4_3okxw"]
-[ext_resource type="Script" path="res://Sound/Sound3D.cs" id="5_ewadn"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="4_3okxw"]
+[ext_resource type="Script" uid="uid://bwk8o7pf73ps3" path="res://Sound/Sound3D.cs" id="5_ewadn"]
 [ext_resource type="Resource" uid="uid://dovh52dplmbgr" path="res://Sound/Resources/sfx_lever_toggle.tres" id="6_boch0"]
 [ext_resource type="AudioStream" uid="uid://cyhdktt7cpiop" path="res://Sound/Sounds/sfx_metal_scraping_loop_001.wav" id="7_2vk2p"]
 [ext_resource type="AudioStream" uid="uid://bifin4xtjxkpj" path="res://Sound/Sounds/sfx_metal_click_001.wav" id="8_5sjl8"]
@@ -137,11 +137,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxfnw"]
 _data = {
-"RESET": SubResource("Animation_w61px"),
-"idle_down": SubResource("Animation_pqeeg"),
-"idle_up": SubResource("Animation_4wdxo"),
-"move_down": SubResource("Animation_fjwdl"),
-"move_up": SubResource("Animation_th30f")
+&"RESET": SubResource("Animation_w61px"),
+&"idle_down": SubResource("Animation_pqeeg"),
+&"idle_up": SubResource("Animation_4wdxo"),
+&"move_down": SubResource("Animation_fjwdl"),
+&"move_up": SubResource("Animation_th30f")
 }
 
 [node name="Lever_Metal" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Touchable", "sfx_metal_scraping", "sfx_metal_click")]

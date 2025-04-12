@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dfqkt7oi06jcd"]
 
 [ext_resource type="PackedScene" uid="uid://ms1fdce56vur" path="res://Item/Prefabs/TreeHouseLadderPlank.tscn" id="1_su8hl"]
-[ext_resource type="Script" path="res://Item/ItemInfo.cs" id="2_7x3ff"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_7x3ff"]
 
 [resource]
 script = ExtResource("2_7x3ff")
@@ -11,10 +11,7 @@ CustomId = "tree_house_ladder_plank"
 Type = 0
 CanUse = false
 Uses = 0
-SeedResultType = 0
-GrowTimeInSeconds = 0
 CanPickUp = false
 PerishesOnFarm = true
-Untrack = false
 InventoryItemCameraDistance = 0.25
 InventoryItemRotationOffset = 0.0

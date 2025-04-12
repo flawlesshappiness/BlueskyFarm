@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://bie3b4vtvkbq8"]
 
 [ext_resource type="PackedScene" uid="uid://bwnpxwaecsnms" path="res://Enemy/Wraith/WraithEnemy.tscn" id="1_y1ch2"]
-[ext_resource type="Script" path="res://Enemy/EnemyInfo.cs" id="2_qkcd1"]
+[ext_resource type="Script" uid="uid://b07bel0kcy85l" path="res://Enemy/EnemyInfo.cs" id="2_qkcd1"]
 
 [resource]
 script = ExtResource("2_qkcd1")

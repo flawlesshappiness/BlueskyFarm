@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bprmpu8melxmg"]
 
 [ext_resource type="PackedScene" uid="uid://d34kbvu0t4aco" path="res://Weeds/Base/Weed_Base.tscn" id="1_ky5r2"]
-[ext_resource type="Script" path="res://Weeds/Plant/PlantWeed.cs" id="2_wftv7"]
+[ext_resource type="Script" uid="uid://ctheqhh75gbfn" path="res://Weeds/Plant/PlantWeed.cs" id="2_wftv7"]
 [ext_resource type="PackedScene" uid="uid://ypg4pgvvs6p4" path="res://Assets/Quaternius/Nature/Plant_1.fbx" id="3_bcgg2"]
 [ext_resource type="PackedScene" uid="uid://tj5ithche6o7" path="res://Assets/Quaternius/Nature/Plant_3.fbx" id="4_2r83q"]
 [ext_resource type="PackedScene" uid="uid://c6yu5xr3w0is6" path="res://Assets/Quaternius/Nature/Plant_4.fbx" id="5_ao41h"]

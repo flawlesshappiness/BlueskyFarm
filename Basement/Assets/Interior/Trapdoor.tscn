@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://castmw65ijigk"]
 
 [ext_resource type="PackedScene" uid="uid://cirjx7mfugoni" path="res://Assets/KayLousberg/Dungeon/trapdoor.gltf.glb" id="1_j7jdy"]
-[ext_resource type="Script" path="res://SceneDoor/SceneDoor.cs" id="1_rguyj"]
+[ext_resource type="Script" uid="uid://bhu6yjd5pu0u0" path="res://SceneDoor/SceneDoor.cs" id="1_rguyj"]
 [ext_resource type="Resource" uid="uid://bgyy18oiyq6r7" path="res://Sound/Resources/sfx_basement_open.tres" id="2_uvlti"]
 [ext_resource type="Resource" uid="uid://2f2v4v0ugqce" path="res://Sound/Resources/sfx_basement_close.tres" id="3_tn0nd"]
 [ext_resource type="Resource" uid="uid://c3vhom1xrg5f" path="res://Sound/Resources/sfx_basement_locked.tres" id="4_tgsc5"]
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="4_wdmqa"]
-[ext_resource type="Script" path="res://Modules/Object/Touchable.cs" id="5_0uunc"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="5_0uunc"]
 [ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="5_jee1l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_506dw"]

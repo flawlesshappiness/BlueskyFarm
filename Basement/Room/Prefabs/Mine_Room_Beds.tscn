@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_s1xbn"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_3j7of"]
 [ext_resource type="PackedScene" uid="uid://chvbpx06hrx5q" path="res://Assets/FlawLizArt/MinesRooms/room_001.fbx" id="3_61uc8"]
-[ext_resource type="Script" path="res://SolidMaterial/SolidMaterial.cs" id="4_dtuow"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="4_dtuow"]
 [ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="5_di8jq"]
 [ext_resource type="PackedScene" uid="uid://ben2qbeyvpvpc" path="res://Basement/Assets/Mine/Wall_WoodPlank_001.tscn" id="6_av4ru"]
 [ext_resource type="PackedScene" uid="uid://cl6accmjb08lp" path="res://Basement/Assets/Interior/Bed.tscn" id="6_cnt4q"]

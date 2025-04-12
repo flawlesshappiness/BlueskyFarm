@@ -22,10 +22,12 @@ MouseVisibility="*res://Modules/Input/MouseVisibility.cs"
 GameTime="*res://Modules/Time/GameTime.cs"
 DebugDraw="*res://addons/debug_drawing/DebugDraw.cs"
 ScreenEffects="*res://Views/ScreenEffectsView/ScreenEffects.cs"
+SteamTest="*res://Steam/SteamTest.cs"
 
 [debug]
 
 settings/profiler/max_timestamp_query_elements=1024
+file_logging/enable_file_logging=true
 
 [display]
 
@@ -147,3 +149,8 @@ common/physics_ticks_per_second=180
 [rendering]
 
 occlusion_culling/use_occlusion_culling=true
+
+[steam]
+
+initialization/app_id=480
+initialization/initialize_on_startup=true

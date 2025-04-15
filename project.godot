@@ -22,7 +22,7 @@ MouseVisibility="*res://Modules/Input/MouseVisibility.cs"
 GameTime="*res://Modules/Time/GameTime.cs"
 DebugDraw="*res://addons/debug_drawing/DebugDraw.cs"
 ScreenEffects="*res://Views/ScreenEffectsView/ScreenEffects.cs"
-SteamTest="*res://Steam/SteamTest.cs"
+SteamTest="res://Steam/SteamTest.cs"
 
 [debug]
 
@@ -152,5 +152,5 @@ occlusion_culling/use_occlusion_culling=true
 
 [steam]
 
-initialization/app_id=480
+initialization/app_id=3665830
 initialization/initialize_on_startup=true

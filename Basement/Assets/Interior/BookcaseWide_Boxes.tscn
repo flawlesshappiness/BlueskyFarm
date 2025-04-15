@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwn65vli8d8em"]
+
+[ext_resource type="PackedScene" uid="uid://wikpye4u4if0" path="res://Assets/KayLousberg/Dungeon/bookcaseWide.gltf.glb" id="1_pogfq"]
+[ext_resource type="PackedScene" uid="uid://sm3uihmiqy0x" path="res://Assets/KayLousberg/Dungeon/crateDark.gltf.glb" id="2_pjsaq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvpqg"]
+size = Vector3(1.99023, 1.99991, 0.549072)
+
+[node name="BookcaseWide_Boxes" type="Node3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="bookcaseWide_gltf" parent="." instance=ExtResource("1_pogfq")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00358, 0)
+shape = SubResource("BoxShape3D_xvpqg")
+
+[node name="crateDark_gltf" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.414937, 0, -0.0650146, 0, 0.42, 0, 0.0650146, 0, 0.414937, -0.340966, 0.449416, 0)
+
+[node name="crateDark_gltf2" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.419032, 0, 0.0285006, 0, 0.42, 0, -0.0285006, 0, 0.419032, 0.412504, 0.449416, 0)
+
+[node name="crateDark_gltf3" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0.491134, 0.994001, 0)
+
+[node name="crateDark_gltf4" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.416513, 0, 0.0540069, 0, 0.42, 0, -0.0540069, 0, 0.416513, -0.00589101, 0.994001, 0)
+
+[node name="crateDark_gltf5" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -0.516493, 0.994001, 0)
+
+[node name="crateDark_gltf6" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -0.443688, 1.58809, 0)
+
+[node name="crateDark_gltf7" parent="." instance=ExtResource("2_pjsaq")]
+transform = Transform3D(0.41425, 0, -0.0692622, 0, 0.42, 0, 0.0692622, 0, 0.41425, 0.11837, 1.58809, 0)

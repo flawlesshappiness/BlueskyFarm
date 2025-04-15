@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b16pbkeiomqfh"]
+
+[ext_resource type="PackedScene" uid="uid://crlc4evpheow8" path="res://Assets/KayLousberg/Dungeon/bookcase.fbx" id="1_xjato"]
+[ext_resource type="PackedScene" uid="uid://sm3uihmiqy0x" path="res://Assets/KayLousberg/Dungeon/crateDark.gltf.glb" id="2_brnbp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xjn4"]
+size = Vector3(1.02734, 2.01114, 0.549072)
+
+[node name="BookcaseShort_Boxes" type="Node3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989157, 0)
+shape = SubResource("BoxShape3D_6xjn4")
+
+[node name="bookcase" parent="." instance=ExtResource("1_xjato")]
+
+[node name="crateDark_gltf" parent="." instance=ExtResource("2_brnbp")]
+transform = Transform3D(0.330202, 0, -0.143411, 0, 0.36, 0, 0.143411, 0, 0.330202, 0, 0.42534, 0)
+
+[node name="crateDark_gltf2" parent="." instance=ExtResource("2_brnbp")]
+transform = Transform3D(0.359656, 0, 0.0157406, 0, 0.36, 0, -0.0157406, 0, 0.359656, -0.0586678, 0.97535, 0)
+
+[node name="crateDark_gltf3" parent="." instance=ExtResource("2_brnbp")]
+transform = Transform3D(0.359223, 0, -0.0236392, 0, 0.36, 0, 0.0236392, 0, 0.359223, 0.051334, 1.56936, 0)

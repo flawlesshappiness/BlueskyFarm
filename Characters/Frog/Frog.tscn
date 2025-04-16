@@ -181,6 +181,9 @@ HoverIconPosition = NodePath("../HoverIconPosition")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0551758, -0.311859)
 shape = SubResource("BoxShape3D_l5str")
 
+[node name="DialogueSoundOrigin" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63436, 0)
+
 [node name="HoverIconPosition" type="Node3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10668, 0.453341)
 

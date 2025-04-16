@@ -26,3 +26,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.541,
 
 [node name="thorned_weeds_up3" parent="World" instance=ExtResource("4_j7hen")]
 transform = Transform3D(-0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, -0.309017, 2.951, 0, -3.751)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 3.72397, 0)

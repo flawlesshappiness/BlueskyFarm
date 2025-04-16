@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:screenshots\\screenshotscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\modules\\extensions\\node3dextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:modules\\extensions\\node3dextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\enemy\\rockcrab\\rockcrabenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:enemy\\rockcrab\\rockcrabenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,6 +47,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Node3DExtensions.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Modules\\Extensions\\Node3DExtensions.cs",
+              "RelativeDocumentMoniker": "Modules\\Extensions\\Node3DExtensions.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Modules\\Extensions\\Node3DExtensions.cs",
+              "RelativeToolTip": "Modules\\Extensions\\Node3DExtensions.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAEBUwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T17:21:29.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RockCrabEnemy.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Enemy\\RockCrab\\RockCrabEnemy.cs",
               "RelativeDocumentMoniker": "Enemy\\RockCrab\\RockCrabEnemy.cs",
@@ -50,12 +67,11 @@
               "RelativeToolTip": "Enemy\\RockCrab\\RockCrabEnemy.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAawBMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T11:25:00.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T11:25:00.905Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Cult_Room_Roots.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Cult_Room\\Cult_Room_Roots.cs",
               "RelativeDocumentMoniker": "Basement\\Room\\Prefabs\\Cult_Room\\Cult_Room_Roots.cs",
@@ -63,25 +79,24 @@
               "RelativeToolTip": "Basement\\Room\\Prefabs\\Cult_Room\\Cult_Room_Roots.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAQwBgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T10:22:25.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:22:25.763Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ScreenshotScene.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Screenshots\\ScreenshotScene.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Screenshots\\ScreenshotScene.cs",
               "RelativeDocumentMoniker": "Screenshots\\ScreenshotScene.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Screenshots\\ScreenshotScene.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Screenshots\\ScreenshotScene.cs",
               "RelativeToolTip": "Screenshots\\ScreenshotScene.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T09:18:01.489Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ScreenshotController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Screenshots\\ScreenshotController.cs",
               "RelativeDocumentMoniker": "Screenshots\\ScreenshotController.cs",
@@ -89,12 +104,11 @@
               "RelativeToolTip": "Screenshots\\ScreenshotController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T00:55:11.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T00:55:11.618Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
@@ -102,12 +116,11 @@
               "RelativeToolTip": "Basement\\BasementController.cs",
               "ViewState": "AgIAABcAAAAAAAAAAADwvx4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:15:12.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T07:15:12.702Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",
@@ -115,8 +128,7 @@
               "RelativeToolTip": "Scenes\\BasementScene.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwCsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:15:12.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T07:15:12.703Z"
             }
           ]
         }

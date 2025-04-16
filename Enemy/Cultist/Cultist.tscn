@@ -127,7 +127,6 @@ bones/40/rotation = Quaternion(0.0273878, 0.0134984, 0.26625, 0.96342)
 bones/40/scale = Vector3(1, 1, 1)
 bones/41/position = Vector3(7.34005e-10, 0.00289612, -2.0209e-09)
 bones/41/rotation = Quaternion(0.0422543, -0.0256403, -0.232304, 0.971387)
-bones/41/scale = Vector3(1, 1, 1)
 bones/42/position = Vector3(4.07314e-10, 0.000954032, -3.68496e-09)
 bones/42/rotation = Quaternion(-0.0766119, 0.00152574, 0.0198671, 0.996862)
 bones/42/scale = Vector3(1, 1, 1)
@@ -171,6 +170,7 @@ playback_default_blend_time = 0.15
 [node name="OmniLight3D" type="OmniLight3D" parent="frog"]
 transform = Transform3D(1, 0, 0, 0, -2.38419e-07, 1, 0, -1, -2.38419e-07, -0.617296, 0.350722, 1.21096)
 light_color = Color(1, 0.616667, 0, 1)
+light_energy = 6.0
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 28.0

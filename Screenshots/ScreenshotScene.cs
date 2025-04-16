@@ -20,8 +20,6 @@ public partial class ScreenshotScene : Scene
         AmbienceController.Instance.StopAmbience();
         HideViews();
 
-        Environment.Environment = Environment.Environment.Duplicate() as Environment;
-
         ScreenEffects.View.SetCameraTarget(Camera);
     }
 
@@ -34,14 +32,6 @@ public partial class ScreenshotScene : Scene
             if (key.Keycode == Key.Space)
             {
                 TakeScreenshots();
-            }
-            else if (key.Keycode == Key.Up)
-            {
-                AdjustBrightness(0.1f);
-            }
-            else if (key.Keycode == Key.Down)
-            {
-                AdjustBrightness(-0.1f);
             }
         }
     }
@@ -59,23 +49,28 @@ public partial class ScreenshotScene : Scene
 
     private void TakeScreenshots()
     {
-        this.StartCoroutine(Cr, nameof(SaveImage));
+        this.StartCoroutine(Cr, nameof(SaveImage))
+            .SetRunWhilePaused();
+
         IEnumerator Cr()
         {
             var current_size = Root.Size;
+
+            PauseLock.AddLock(nameof(ScreenshotScene));
 
             yield return SaveImageByResolution(new Vector2I(1920, 1080));
             yield return SaveImageByResolution(new Vector2I(1280, 720));
 
             // Reset resolution
             Root.Size = current_size;
+            PauseLock.RemoveLock(nameof(ScreenshotScene));
         }
     }
 
     private IEnumerator SaveImageByResolution(Vector2I resolution)
     {
         Root.Size = resolution;
-        yield return null;
+        yield return new WaitForSecondsUnscaled(0.5f);
         SaveImage($"{ImageFilePathNoExt}_{resolution.X}x{resolution.Y}.png");
         yield return null;
     }

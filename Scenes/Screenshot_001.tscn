@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="5_5jaay"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Floor/Floor_Dirt.tscn" id="6_yhp4l"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="7_ssq4f"]
-[ext_resource type="PackedScene" uid="uid://db0ljdf5snve7" path="res://Assets/FlawLizArt/RootMimic/root_mimic.fbx" id="8_fu6wa"]
-[ext_resource type="Script" uid="uid://fdtlyk3dmpn" path="res://Screenshots/ScreenshotAnimationPlayer.cs" id="9_aufpn"]
 [ext_resource type="PackedScene" uid="uid://bwn65vli8d8em" path="res://Basement/Assets/Interior/BookcaseWide_Boxes.tscn" id="10_1fvoc"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="11_evpcc"]
+[ext_resource type="PackedScene" uid="uid://cqtrktvdlfk0e" path="res://Basement/Assets/Interior/Roots_006.tscn" id="12_0lwhd"]
 [ext_resource type="PackedScene" uid="uid://dlt8jrnsotu0u" path="res://Basement/Assets/Interior/Barrel_002.tscn" id="12_dyofj"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="13_0lwhd"]
+[ext_resource type="PackedScene" uid="uid://cxudfwv0x6f1" path="res://Basement/Assets/Interior/Roots_001.tscn" id="13_8mwgg"]
 
 [node name="Screenshot_001" type="Node3D" node_paths=PackedStringArray("Camera", "Environment")]
 script = ExtResource("1_fk3t8")
@@ -189,45 +189,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
 [node name="Lantern" parent="World/Interior" instance=ExtResource("7_ssq4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
 
-[node name="root_mimic" parent="World/Interior" instance=ExtResource("8_fu6wa")]
-transform = Transform3D(-1.9993, 0, -0.0526679, 0, 2, 0, 0.0526679, 0, -1.9993, -0.110906, 0, -2.69875)
-
-[node name="Skeleton3D" parent="World/Interior/root_mimic/Armature" index="0"]
-bones/0/position = Vector3(2.79192e-19, -0.00559947, 0.00125737)
-bones/1/rotation = Quaternion(-7.61205e-06, -4.99307e-18, 1.22233e-20, 1)
-bones/2/rotation = Quaternion(2.43059e-05, 8.58391e-21, -1.84235e-20, 1)
-bones/3/rotation = Quaternion(1.03711e-06, 1.30504e-20, -4.87145e-22, 1)
-bones/4/rotation = Quaternion(-0.000617565, 4.08768e-21, 7.87039e-21, 1)
-bones/5/rotation = Quaternion(0.00286253, 2.54926e-21, 5.06339e-21, 0.999996)
-bones/6/rotation = Quaternion(-0.0035482, -1.39835e-21, -5.64912e-21, 0.999994)
-bones/8/rotation = Quaternion(0.0232392, 0.182192, 0.709853, 0.679982)
-bones/9/rotation = Quaternion(-0.305706, -0.199747, -0.0091897, 0.930892)
-bones/12/rotation = Quaternion(0.0232392, -0.182192, -0.709853, 0.679982)
-bones/13/rotation = Quaternion(-0.305706, 0.199747, 0.00918974, 0.930892)
-bones/16/rotation = Quaternion(0.0850258, 0.122241, 0.705125, 0.693272)
-bones/17/rotation = Quaternion(-0.305711, -0.0350648, -0.00918995, 0.951434)
-bones/20/rotation = Quaternion(0.0850258, -0.122241, -0.705125, 0.693272)
-bones/21/rotation = Quaternion(-0.305711, 0.0350648, 0.00918994, 0.951434)
-bones/24/rotation = Quaternion(0.146161, 0.0613559, 0.695029, 0.701289)
-bones/25/rotation = Quaternion(-0.305714, 0.130682, -0.00919157, 0.943068)
-bones/28/rotation = Quaternion(0.146161, -0.0613559, -0.69503, 0.701289)
-bones/29/rotation = Quaternion(-0.305714, -0.130682, 0.00919157, 0.943068)
-bones/32/rotation = Quaternion(0.99232, -7.35596e-19, -2.20467e-16, -0.123694)
-bones/33/rotation = Quaternion(-0.0908445, -2.47462e-20, 1.91245e-17, 0.995865)
-bones/34/rotation = Quaternion(-0.239164, -3.13811e-20, 5.30445e-17, 0.970979)
-bones/36/position = Vector3(2.79192e-19, 0.00990383, 0.00125737)
-bones/38/position = Vector3(-0.0102658, -0.00361872, 0)
-bones/40/position = Vector3(-0.0102658, 0.00363263, 0)
-bones/42/position = Vector3(-0.0102658, -5.59352e-06, 0)
-bones/44/position = Vector3(0.0102658, -0.00361872, 0)
-bones/46/position = Vector3(0.0102658, 0.00363263, 0)
-bones/48/position = Vector3(0.0102658, -5.59352e-06, 0)
-bones/50/position = Vector3(2.55287e-19, -0.0133211, 0.00114971)
-
-[node name="AnimationPlayer" parent="World/Interior/root_mimic" index="1"]
-script = ExtResource("9_aufpn")
-Animation = "Armature|waiting"
-
 [node name="BookcaseWide_Boxes" parent="World/Interior" instance=ExtResource("10_1fvoc")]
 transform = Transform3D(-5.46392e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-08, -5.07588, 0, 4.99646)
 
@@ -255,4 +216,8 @@ transform = Transform3D(0.974882, 0, 0.222723, 0, 1, 0, -0.222723, 0, 0.974882, 
 [node name="Crate3" parent="World/Interior" instance=ExtResource("13_0lwhd")]
 transform = Transform3D(-0.505175, 0, -0.863017, 0, 1, 0, 0.863017, 0, -0.505175, -2.61889, 1, 1.155)
 
-[editable path="World/Interior/root_mimic"]
+[node name="Roots_006" parent="World/Interior" instance=ExtResource("12_0lwhd")]
+transform = Transform3D(1.04142, 0, 1.70747, 0, 2, 0, -1.70747, 0, 1.04142, -1.26306, -2.38419e-07, -0.616476)
+
+[node name="Roots_001" parent="World/Interior" instance=ExtResource("13_8mwgg")]
+transform = Transform3D(0.966904, 0, -0.255142, 0, 1, 0, 0.255142, 0, 0.966904, -4.07759, -2.38419e-07, 2.31858)

@@ -134,6 +134,7 @@ public partial class CultistEnemy : NavEnemy
 
     private void Process_Animations()
     {
+        if (!Spawned) return;
         _param_moving.Set(!Agent.IsNavigationFinished());
     }
 

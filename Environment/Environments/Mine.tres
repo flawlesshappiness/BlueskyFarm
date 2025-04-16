@@ -2,7 +2,7 @@
 
 [resource]
 ambient_light_source = 2
-ambient_light_color = Color(0.17, 0.14195, 0.1326, 1)
+ambient_light_color = Color(0.25, 0.20875, 0.195, 1)
 ssao_enabled = true
 ssao_radius = 0.5
 fog_enabled = true

@@ -3,6 +3,12 @@ using System.Linq;
 
 public partial class Cult_Room_Roots : Node3DScript
 {
+    [Export]
+    public bool OverrideVisibility;
+
+    [Export(PropertyHint.Range, "0,1")]
+    public float OverrideAmount;
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -25,6 +31,11 @@ public partial class Cult_Room_Roots : Node3DScript
 
     private float GetRootTValue()
     {
+        if (OverrideVisibility)
+        {
+            return OverrideAmount;
+        }
+
         var min = BasementRoom.ROOM_SIZE;
         var max = BasementRoom.ROOM_SIZE * 5;
         var dist = GetDistanceToTreeRoom();

@@ -27,9 +27,9 @@ public partial class RockCrabEnemy : NavEnemy
     private BasementRoomElement _current_room;
     private string _current_animation;
 
-    public override void _Ready()
+    public override void InitializeEnemy()
     {
-        base._Ready();
+        base.InitializeEnemy();
         AnimationPlayer.AnimationStarted += AnimationStarted;
         InitializeAnimations();
     }
@@ -83,6 +83,8 @@ public partial class RockCrabEnemy : NavEnemy
 
     private void Process_Parameters()
     {
+        if (!Spawned) return;
+
         _param_moving.Set(IsMoving);
 
         if (PlayerIsClose && !IsState("hide"))

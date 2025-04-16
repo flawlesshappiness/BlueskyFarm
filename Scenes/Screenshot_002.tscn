@@ -1,0 +1,355 @@
+[gd_scene load_steps=13 format=3 uid="uid://b74efmn7jwpeu"]
+
+[ext_resource type="Script" uid="uid://dvv6evi7i6urc" path="res://Screenshots/ScreenshotScene.cs" id="1_a054q"]
+[ext_resource type="Environment" uid="uid://bdig4pskkvpvj" path="res://Environment/Environments/Forest.tres" id="2_a054q"]
+[ext_resource type="PackedScene" uid="uid://cgh03u7371vnc" path="res://Basement/Assets/Floor/Floor_Moss.tscn" id="3_6p13n"]
+[ext_resource type="Material" uid="uid://bsv2xlwkj3ooq" path="res://Assets/Materials/Moss_Dark.tres" id="4_5xick"]
+[ext_resource type="PackedScene" uid="uid://vf332xuy8kvx" path="res://Basement/Assets/Forest/CommonTree_001.tscn" id="4_6mvlx"]
+[ext_resource type="PackedScene" uid="uid://ckgxoywxbij28" path="res://Basement/Assets/Containers/Prefabs/Grave.tscn" id="5_gm784"]
+[ext_resource type="PackedScene" uid="uid://vffrsoavok86" path="res://Basement/Assets/Forest/CommonTree_002.tscn" id="6_kpfmw"]
+[ext_resource type="PackedScene" uid="uid://b6jw8n6h38lbx" path="res://Assets/FlawLizArt/Interior/tombstone.fbx" id="6_neker"]
+[ext_resource type="PackedScene" uid="uid://bcmvcsxa8rycn" path="res://Basement/Assets/Forest/CommonTree_003.tscn" id="7_mypgu"]
+[ext_resource type="PackedScene" uid="uid://w0y75ud1yq32" path="res://Enemy/Wisp/WispEnemy.tscn" id="9_mypgu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5xick"]
+size = Vector2(300, 300)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6mvlx"]
+material = ExtResource("4_5xick")
+size = Vector2(300, 300)
+
+[node name="Screenshot_001" type="Node3D" node_paths=PackedStringArray("Camera", "Environment")]
+script = ExtResource("1_a054q")
+Camera = NodePath("Camera3D")
+Environment = NodePath("WorldEnvironment")
+ImageFilePath = "res://Screenshots/Images/Screenshot_002.png"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.946317, -0.0963174, 0.308556, 0, 0.954574, 0.297975, -0.32324, -0.281979, 0.903329, 4.42071, 1.99269, 5.28168)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.446791, 0.894638, 0, -0.894638, 0.446791, 0, 8.39061, 5.8352)
+light_color = Color(0.3692, 0.52, 0.50492, 1)
+light_energy = 2.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 8.39061, 5.8352)
+light_color = Color(0.0858, 0.33, 0.30558, 1)
+light_energy = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_a054q")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="World"]
+
+[node name="Ceiling" type="Node3D" parent="World"]
+
+[node name="Floor" type="Node3D" parent="World"]
+
+[node name="Floor_Moss28" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
+
+[node name="Floor_Moss29" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="Floor_Moss30" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4.00503)
+
+[node name="Floor_Moss31" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4.00503)
+
+[node name="Floor_Moss32" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4.00503)
+
+[node name="Floor_Moss33" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -4.00503)
+
+[node name="Floor_Moss34" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4.00503)
+
+[node name="Floor_Moss35" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="Floor_Moss36" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Floor_Moss37" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="Floor_Moss38" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="Floor_Moss39" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8.00503)
+
+[node name="Floor_Moss40" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8.00503)
+
+[node name="Floor_Moss41" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8.00503)
+
+[node name="Floor_Moss42" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8.00503)
+
+[node name="Floor_Moss43" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -8.00503)
+
+[node name="Floor_Moss44" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="Floor_Moss45" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Floor_Moss46" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+
+[node name="Floor_Moss47" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12)
+
+[node name="Floor_Moss48" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12.005)
+
+[node name="Floor_Moss49" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12.005)
+
+[node name="Floor_Moss50" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12.005)
+
+[node name="Floor_Moss51" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -12.005)
+
+[node name="Floor_Moss52" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -12.005)
+
+[node name="Floor_Moss53" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="Floor_Moss54" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="Floor_Moss55" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="Floor_Moss56" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="Floor_Moss57" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7.99497)
+
+[node name="Floor_Moss58" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 7.99497)
+
+[node name="Floor_Moss59" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 7.99497)
+
+[node name="Floor_Moss60" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 7.99497)
+
+[node name="Floor_Moss61" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 7.99497)
+
+[node name="Floor_Moss62" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="Floor_Moss63" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Floor_Moss64" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="Floor_Moss65" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="Floor_Moss66" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3.99497)
+
+[node name="Floor_Moss67" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 3.99497)
+
+[node name="Floor_Moss68" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 3.99497)
+
+[node name="Floor_Moss69" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 3.99497)
+
+[node name="Floor_Moss70" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 3.99497)
+
+[node name="Floor_Moss71" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="Floor_Moss72" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Floor_Moss73" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Floor_Moss74" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Floor_Moss75" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.00502968)
+
+[node name="Floor_Moss76" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -0.00502968)
+
+[node name="Floor_Moss77" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -0.00502968)
+
+[node name="Floor_Moss78" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -0.00502968)
+
+[node name="Floor_Moss79" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -0.00502968)
+
+[node name="Floor_Moss80" parent="World/Floor" instance=ExtResource("3_6p13n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Floor_Moss81" parent="World/Floor" instance=ExtResource("3_6p13n")]
+
+[node name="Interior" type="Node3D" parent="World"]
+
+[node name="Grave" parent="World/Interior" instance=ExtResource("5_gm784")]
+transform = Transform3D(0.55051, 0, 0.834829, 0, 1, 0, -0.834829, 0, 0.55051, 2.73506, 2.38419e-07, 2.89985)
+
+[node name="tombstone" parent="World/Interior" instance=ExtResource("6_neker")]
+transform = Transform3D(0.559497, 0, 0.828833, 0, 1, 0, -0.828833, 0, 0.559497, 2.16916, 0, 2.58933)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World/Interior/tombstone"]
+transform = Transform3D(0.951637, 0, 0.307224, -0.179961, 0.810482, 0.557435, -0.248999, -0.585764, 0.771284, 1.01467, 2.49922, 3.39938)
+light_color = Color(0.67, 0.912, 1, 1)
+shadow_enabled = true
+spot_range = 26.97
+
+[node name="Trees" type="Node3D" parent="World/Interior"]
+
+[node name="CommonTree" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.60428, -4.76837e-07, -6.18491)
+
+[node name="CommonTree25" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.774, -4.76837e-07, -10.8314)
+
+[node name="CommonTree19" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 3.91335, -4.76837e-07, -8.32995)
+
+[node name="CommonTree31" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 5.5669, -4.76837e-07, 1.04015)
+
+[node name="CommonTree24" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.404, -4.76837e-07, -6.81779)
+
+[node name="CommonTree20" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -1.95268, -4.76837e-07, -10.2999)
+
+[node name="CommonTree21" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 10.5674, -4.76837e-07, -19.5805)
+
+[node name="CommonTree22" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -11.1895, -4.76837e-07, -20.456)
+
+[node name="CommonTree23" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -2.19635, -4.76837e-07, 1.93754)
+
+[node name="CommonTree2" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.721556, 0, -1.8653, 0, 2, 0, 1.8653, 0, 0.721556, -3.02414, -4.76837e-07, -8.87197)
+
+[node name="CommonTree6" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(-0.0407332, 0, -1.99959, 0, 2, 0, 1.99959, 0, -0.0407332, 1.06852, -4.76837e-07, 1.98631)
+
+[node name="CommonTree3" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(-0.73758, 0, -1.85903, 0, 2, 0, 1.85903, 0, -0.73758, -12.6007, -4.76837e-07, 0.0589952)
+
+[node name="CommonTree4" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(-1.93943, 0, 0.488483, 0, 2, 0, -0.488483, 0, -1.93943, -16.0278, -4.76837e-07, -6.7581)
+
+[node name="CommonTree5" parent="World/Interior/Trees" instance=ExtResource("4_6mvlx")]
+transform = Transform3D(0.661391, 0, 1.88748, 0, 2, 0, -1.88748, 0, 0.661391, 4.96158, -4.76837e-07, -21.0236)
+
+[node name="CommonTree7" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(-0.000733024, 0, -1.5, 0, 1.5, 0, 1.5, 0, -0.000733024, 2.43048, -4.76837e-07, -2.98313)
+
+[node name="CommonTree8" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(-1.46901, 0, 0.303309, 0, 1.5, 0, -0.303309, 0, -1.46901, 9.8678, -4.76837e-07, -11.5012)
+
+[node name="CommonTree9" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(-1.95869, 0, 0.404412, 0, 2, 0, -0.404412, 0, -1.95869, 12.6281, -4.76837e-07, -36.5624)
+
+[node name="CommonTree10" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(-0.196034, 0, 1.99037, 0, 2, 0, -1.99037, 0, -0.196034, -0.96433, -4.76837e-07, -27.7165)
+
+[node name="CommonTree11" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(-0.196034, 0, 1.99037, 0, 2, 0, -1.99037, 0, -0.196034, -8.47306, -4.76837e-07, -13.1452)
+
+[node name="CommonTree12" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(1.90986, 0, 0.59365, 0, 2, 0, -0.59365, 0, 1.90986, -30.5855, -4.76837e-07, -17.68)
+
+[node name="CommonTree26" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(1.90986, 0, 0.59365, 0, 2, 0, -0.59365, 0, 1.90986, 24.9863, -4.76837e-07, -27.0365)
+
+[node name="CommonTree27" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(0.964547, 0, -1.75204, 0, 2, 0, 1.75204, 0, 0.964547, 15.2677, -4.76837e-07, -28.1588)
+
+[node name="CommonTree28" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(1.965, 0, -0.3725, 0, 2, 0, 0.3725, 0, 1.965, 19.8987, -4.76837e-07, -19.7474)
+
+[node name="CommonTree29" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(1.965, 0, -0.3725, 0, 2, 0, 0.3725, 0, 1.965, 32.4337, -4.76837e-07, -21.4424)
+
+[node name="CommonTree30" parent="World/Interior/Trees" instance=ExtResource("6_kpfmw")]
+transform = Transform3D(1.965, 0, -0.3725, 0, 2, 0, 0.3725, 0, 1.965, 25.9125, -4.76837e-07, -37.2256)
+
+[node name="CommonTree13" parent="World/Interior/Trees" instance=ExtResource("7_mypgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.37685, 0, -7.27793)
+
+[node name="CommonTree14" parent="World/Interior/Trees" instance=ExtResource("7_mypgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.03246, 0, -21.6299)
+
+[node name="CommonTree15" parent="World/Interior/Trees" instance=ExtResource("7_mypgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13.3117, 0, -32.8327)
+
+[node name="CommonTree16" parent="World/Interior/Trees" instance=ExtResource("7_mypgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.24679, 0, -41.5059)
+
+[node name="CommonTree17" parent="World/Interior/Trees" instance=ExtResource("7_mypgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.6045, 0, -52.1408)
+
+[node name="CommonTree18" parent="World/Interior/Trees" instance=ExtResource("7_mypgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18.5931, 0, -46.7717)
+
+[node name="Box" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Box"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 150, 0, 0)
+mesh = SubResource("PlaneMesh_5xick")
+skeleton = NodePath("../../Walls")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Box"]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, -150, 0, 0)
+mesh = SubResource("PlaneMesh_5xick")
+skeleton = NodePath("../../Walls")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/Box"]
+transform = Transform3D(-5.73206e-15, -1.31134e-07, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, 1.31134e-07, 0, 0, 150)
+mesh = SubResource("PlaneMesh_5xick")
+skeleton = NodePath("../../Walls")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Box"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, -150)
+mesh = SubResource("PlaneMesh_5xick")
+skeleton = NodePath("../../Walls")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+mesh = SubResource("PlaneMesh_6mvlx")
+skeleton = NodePath("../../Floor")
+
+[node name="WispEnemy" parent="." instance=ExtResource("9_mypgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329766, 0, -0.635092)
+
+[node name="WispEnemy2" parent="." instance=ExtResource("9_mypgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38807, 0, -3.6955)
+
+[node name="WispEnemy3" parent="." instance=ExtResource("9_mypgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3447, 0, -11.0477)

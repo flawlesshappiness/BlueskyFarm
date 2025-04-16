@@ -1,0 +1,191 @@
+[gd_scene load_steps=11 format=3 uid="uid://bh2bhgl4blkyo"]
+
+[ext_resource type="Script" uid="uid://dvv6evi7i6urc" path="res://Screenshots/ScreenshotScene.cs" id="1_tr5jg"]
+[ext_resource type="Environment" uid="uid://c5qadgdigshyb" path="res://Environment/Environments/Mine.tres" id="2_23d3g"]
+[ext_resource type="PackedScene" uid="uid://cv70ka7lv3hst" path="res://Assets/FlawLizArt/MinesRooms/corridor_002.fbx" id="2_ka7vy"]
+[ext_resource type="PackedScene" uid="uid://c5t8hksye6x30" path="res://Basement/Assets/Scaffold/gate_wood.tscn" id="3_y13cc"]
+[ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="4_23d3g"]
+[ext_resource type="PackedScene" uid="uid://cifamltn5ifi5" path="res://Enemy/RockCrab/RockCrab.tscn" id="6_54vgf"]
+[ext_resource type="PackedScene" uid="uid://c8rn6dc7j04ak" path="res://Basement/Assets/Mine/Rock.tscn" id="8_mlna0"]
+[ext_resource type="Script" uid="uid://fdtlyk3dmpn" path="res://Screenshots/ScreenshotAnimationPlayer.cs" id="18_xpu7c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54vgf"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5hjxc"]
+material = SubResource("StandardMaterial3D_54vgf")
+size = Vector2(8, 8)
+
+[node name="Screenshot_004" type="Node3D" node_paths=PackedStringArray("Camera", "Environment")]
+script = ExtResource("1_tr5jg")
+Camera = NodePath("Camera3D")
+Environment = NodePath("WorldEnvironment")
+ImageFilePath = "res://Screenshots/Images/Screenshot_004.png"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.595832, 0, 0.803109, 0, 1, 0, -0.803109, 0, -0.595832, 6.59988, 1.63123, -0.677261)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.25, 0)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_23d3g")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="World"]
+
+[node name="corridor_002" parent="World/Walls" instance=ExtResource("2_ka7vy")]
+
+[node name="corridor_003" parent="World/Walls" instance=ExtResource("2_ka7vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="corridor_004" parent="World/Walls" instance=ExtResource("2_ka7vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41, 2, 0)
+mesh = SubResource("QuadMesh_5hjxc")
+
+[node name="Ceiling" type="Node3D" parent="World"]
+
+[node name="Floor" type="Node3D" parent="World"]
+
+[node name="Interior" type="Node3D" parent="World"]
+
+[node name="Gate_Wood" parent="World/Interior" instance=ExtResource("3_y13cc")]
+transform = Transform3D(-0.207058, 0, -0.978329, 0, 1, 0, 0.978329, 0, -0.207058, -0.244839, 0, -0.0696913)
+
+[node name="Lantern" parent="World/Interior/Gate_Wood" instance=ExtResource("4_23d3g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.54238, 0)
+
+[node name="RockCrab" parent="World" instance=ExtResource("6_54vgf")]
+transform = Transform3D(-0.992576, 0, -0.121627, 0, 1, 0, 0.121627, 0, -0.992576, 4.43716, -2.38419e-07, 1.78775)
+
+[node name="Skeleton3D" parent="World/RockCrab/rock_crab/Armature" index="0"]
+bones/1/position = Vector3(-3.0028e-10, -0.001, -0.00198809)
+bones/1/rotation = Quaternion(1.8854e-05, -1.19209e-07, 2.1854e-12, 1)
+bones/3/rotation = Quaternion(-0.30011, -0.654283, -0.229085, 0.655262)
+bones/4/rotation = Quaternion(-0.312857, 0.609403, 0.13027, 0.716783)
+bones/5/rotation = Quaternion(-0.313112, -0.172776, -0.105451, 0.927895)
+bones/8/rotation = Quaternion(-0.30011, 0.654283, 0.229086, 0.655262)
+bones/9/rotation = Quaternion(-0.312857, -0.609403, -0.13027, 0.716784)
+bones/10/rotation = Quaternion(-0.313112, 0.172776, 0.105451, 0.927895)
+bones/13/rotation = Quaternion(0.147063, 0.943979, 0.282629, 0.0860083)
+bones/14/rotation = Quaternion(-0.064624, 0.847896, 0.521971, 0.0666484)
+bones/17/rotation = Quaternion(-0.0745409, 0.937229, 0.337257, -0.0479877)
+bones/18/rotation = Quaternion(-0.0803106, 0.858174, 0.503314, 0.0613401)
+bones/21/rotation = Quaternion(-0.0102044, 0.929304, 0.369127, -0.00593651)
+bones/22/rotation = Quaternion(-0.130398, 0.828849, 0.531447, 0.11649)
+bones/25/rotation = Quaternion(-0.147063, 0.943979, 0.282629, -0.0860084)
+bones/26/rotation = Quaternion(0.0646242, 0.847896, 0.521972, -0.0666485)
+bones/29/rotation = Quaternion(0.0745408, 0.937229, 0.337257, 0.0479877)
+bones/30/rotation = Quaternion(0.0803107, 0.858174, 0.503315, -0.0613402)
+bones/33/rotation = Quaternion(0.0102042, 0.929304, 0.369127, 0.00593658)
+bones/34/rotation = Quaternion(0.130397, 0.828849, 0.531447, -0.11649)
+
+[node name="AnimationPlayer" parent="World/RockCrab/rock_crab" index="1"]
+script = ExtResource("18_xpu7c")
+Animation = "Armature|idle"
+
+[node name="Rocks" type="Node3D" parent="World"]
+
+[node name="Rock" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.544864, 0, 1.125, 0, 1.25, 0, -1.125, 0, 0.544864, -6.13622, 0, 1.26875)
+
+[node name="Rock2" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.00846, 0, 0.738592, 0, 1.25, 0, -0.738592, 0, -1.00846, -6.86676, 0.580472, 1.99933)
+
+[node name="Rock3" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.202392, 0, 1.23351, 0, 1.25, 0, -1.23351, 0, 0.202392, -4.87197, 1.52906, 2.07268)
+
+[node name="Rock4" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(1.51561, 0, -1.30496, 0, 2, 0, 1.30496, 0, 1.51561, -7.68177, 2.25093, 1.87872)
+
+[node name="Rock6" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.78528, 0, -0.901537, 0, 2, 0, 0.901537, 0, -1.78528, -8.66654, 2.8033, -1.374)
+
+[node name="Rock7" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.33896, 0, -0.676153, 0, 1.5, 0, 0.676153, 0, -1.33896, -7.97985, 0.215543, -1.92388)
+
+[node name="Rock8" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-0.322435, 0, 1.46494, 0, 1.5, 0, -1.46494, 0, -0.322435, -9.30498, 1.44363, -1.98994)
+
+[node name="Rock9" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.12536, 0, -0.991751, 0, 1.5, 0, 0.991751, 0, -1.12536, -7.84014, 1.49726, -1.99116)
+
+[node name="Rock5" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.51251, 0, -1.30856, 0, 2, 0, 1.30856, 0, -1.51251, -2.02051, 0.108114, 2.18603)
+
+[node name="Rock10" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.99994, 0, 0.015743, 0, 2, 0, -0.015743, 0, -1.99994, -1.54034, 1.44145, -1.99816)
+
+[node name="Rock29" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.33728, 0, -1.48718, 0, 2, 0, 1.48718, 0, -1.33728, 0.0106778, 1.44145, -6.0125)
+
+[node name="Rock30" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(1.45214, 0, -1.37524, 0, 2, 0, 1.37524, 0, 1.45214, -0.7793, 0.282822, -5.33527)
+
+[node name="Rock31" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(1.45214, 0, -1.37524, 0, 2, 0, 1.37524, 0, 1.45214, -6.38442, 0.00548255, -4.28884)
+
+[node name="Rock32" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(1.82635, 0, -0.815131, 0, 2, 0, 0.815131, 0, 1.82635, -2.61401, 1.44005, -9.71058)
+
+[node name="Rock11" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-0.399898, 0, 1.95961, 0, 2, 0, -1.95961, 0, -0.399898, 2.02534, 1.05884, -2.33018)
+
+[node name="Rock12" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(1.98171, 0, 0.269874, 0, 2, 0, -0.269874, 0, 1.98171, 4.08299, 1.05884, -2.49855)
+
+[node name="Rock13" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.648231, 0, -1.89204, 0, 2, 0, 1.89204, 0, 0.648231, 2.96475, -0.304346, -1.6942)
+
+[node name="Rock14" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(1.53355, 0, -1.28384, 0, 2, 0, 1.28384, 0, 1.53355, 8.49873, 3.00764, -0.759801)
+
+[node name="Rock15" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.62868, 0, -1.16078, 0, 2, 0, 1.16078, 0, -1.62868, 2.90497, 3.00764, 1.20288)
+
+[node name="Rock16" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-0.0419549, 0, -1.99956, 0, 2, 0, 1.99956, 0, -0.0419549, 1.23159, 3.41678, 0.815094)
+
+[node name="Rock17" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-0.0419549, 0, -1.99956, 0, 2, 0, 1.99956, 0, -0.0419549, -2.04258, 3.1303, -0.568904)
+
+[node name="Rock18" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.622, 0, 1.17009, 0, 2, 0, -1.17009, 0, -1.622, -4.84266, 3.1303, 0.912951)
+
+[node name="Rock19" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.705154, 0, 1.87157, 0, 2, 0, -1.87157, 0, 0.705154, -4.6906, 3.1303, -5.33596)
+
+[node name="Rock20" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.705154, 0, 1.87157, 0, 2, 0, -1.87157, 0, 0.705154, 2.18801, 3.1303, 5.11798)
+
+[node name="Rock21" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.872944, 0, -1.79944, 0, 2, 0, 1.79944, 0, 0.872944, 1.88538, 3.1303, 8.44808)
+
+[node name="Rock22" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.22763, 0, -1.5789, 0, 2, 0, 1.5789, 0, -1.22763, 0.715445, -0.544427, 6.09891)
+
+[node name="Rock26" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.22763, 0, -1.5789, 0, 2, 0, 1.5789, 0, -1.22763, 4.81806, 0.996466, 7.64334)
+
+[node name="Rock27" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.22763, 0, -1.5789, 0, 2, 0, 1.5789, 0, -1.22763, 7.29362, 0.996466, 2.42056)
+
+[node name="Rock28" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.63028, 0, 1.15853, 0, 2, 0, -1.15853, 0, -1.63028, 9.03314, -0.0816739, 2.15048)
+
+[node name="Rock23" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(-1.06363, 0, 0.656654, 0, 1.25, 0, -0.656654, 0, -1.06363, -0.628196, -0.110651, 7.91666)
+
+[node name="Rock24" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.761903, 0, 0.990961, 0, 1.25, 0, -0.990961, 0, 0.761903, -0.69077, 0.630666, 7.17371)
+
+[node name="Rock25" parent="World/Rocks" instance=ExtResource("8_mlna0")]
+transform = Transform3D(0.568562, 0, -0.82264, 0, 1, 0, 0.82264, 0, 0.568562, 0.0250537, 1.76801, 6.19746)
+
+[editable path="World/RockCrab"]
+[editable path="World/RockCrab/rock_crab"]

@@ -47,6 +47,21 @@ public partial class GameView : View
         _overlay_black.Color = new_color;
     }
 
+    public Coroutine AnimateBlackOverlay(bool visible, float duration)
+    {
+        return StartCoroutine(Cr, nameof(AnimateBlackOverlay));
+        IEnumerator Cr()
+        {
+            var start = _overlay_black.Color.A;
+            var end = visible ? 1f : 0f;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var a = Mathf.Lerp(start, end, f);
+                SetBlackOverlayAlpha(a);
+            });
+        }
+    }
+
     public void ShowAllDynamicUI()
     {
         InventoryBar.AnimateShow();

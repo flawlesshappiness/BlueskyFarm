@@ -742,4 +742,6 @@ transform = Transform3D(1, 0, 0, 0, -5.46392e-08, 1, 0, -1.25, -4.37114e-08, 12,
 [node name="Pipe_1m6" parent="Pipes" index="19" instance=ExtResource("20_j6cbe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.5, 3, -1)
 
+[node name="BasementStart" type="Marker3D" parent="." index="14"]
+
 [editable path="Interior/Trapdoor"]

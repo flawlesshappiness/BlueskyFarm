@@ -318,6 +318,15 @@ public partial class ScreenEffects : Node3DScript
     /// <summary>
     /// Value range: 0 - 0.05f
     /// </summary>
+    public static void SetDistort(string id, float strength) =>
+        Instance._distort_strength.Set(id, strength);
+
+    public static void RemoveDistort(string id) =>
+        Instance._distort_strength.Remove(id);
+
+    /// <summary>
+    /// Value range: 0 - 0.05f
+    /// </summary>
     public static Coroutine AnimateDistortIn(string id, float value, float duration) =>
         Instance._AnimateMinValueIn(Instance._distort_strength, $"{nameof(AnimateDistort)}_{id}", value, duration);
 

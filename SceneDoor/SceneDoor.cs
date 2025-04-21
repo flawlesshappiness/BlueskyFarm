@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 
 public partial class SceneDoor : Node3DScript
@@ -29,6 +30,8 @@ public partial class SceneDoor : Node3DScript
 
     [Export]
     public Texture2D HoverIconUnlocked;
+
+    public event Action OnSceneChange;
 
     private bool _locked;
 
@@ -102,6 +105,8 @@ public partial class SceneDoor : Node3DScript
 
     private void ChangeScene()
     {
+        OnSceneChange?.Invoke();
+
         // Save
         Data.Game.Save();
 

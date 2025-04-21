@@ -51,6 +51,7 @@ public partial class Player : FirstPersonController
 
     private static bool _debug_actions_registered;
 
+    private bool _initialized;
     private SolidMaterial _ground;
     private WaterArea _current_water_area;
     private float _time_next_water_ripple;
@@ -70,10 +71,14 @@ public partial class Player : FirstPersonController
         DialogueController.Instance.OnDialogueEnd += OnDialogueEnd;
 
         RegisterDebugActions();
-        LoadData();
 
         FreezeCameraRagdoll();
         ScreenEffects.View.SetCameraTarget(CameraTarget);
+    }
+
+    protected virtual void Initialize()
+    {
+        LoadData();
     }
 
     private void RegisterDebugActions()
@@ -137,7 +142,16 @@ public partial class Player : FirstPersonController
 
     public void LoadData()
     {
-        GlobalPosition = new Vector3(Data.Game.PlayerPositionX, Data.Game.PlayerPositionY, Data.Game.PlayerPositionZ);
+        var start_node = string.IsNullOrEmpty(Data.Game.PlayerPositionNode) ? null : Scene.Current.GetNodeInChildren<Marker3D>(Data.Game.PlayerPositionNode);
+        if (IsInstanceValid(start_node))
+        {
+            GlobalPosition = start_node.GlobalPosition;
+        }
+        else
+        {
+            GlobalPosition = new Vector3(Data.Game.PlayerPositionX, Data.Game.PlayerPositionY, Data.Game.PlayerPositionZ);
+        }
+
         NeckVertical.Rotation = new Vector3(Data.Game.PlayerNeckVerticalRotation, 0, 0);
         NeckHorizontal.Rotation = new Vector3(0, Data.Game.PlayerNeckHorizontalRotation, 0);
     }
@@ -154,6 +168,12 @@ public partial class Player : FirstPersonController
         Process_Move();
         Process_Cursor();
         Process_Interact();
+
+        if (!_initialized)
+        {
+            Initialize();
+            _initialized = true;
+        }
     }
 
     public override void _PhysicsProcess(double delta)

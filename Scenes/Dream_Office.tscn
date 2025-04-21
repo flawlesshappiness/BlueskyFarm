@@ -1,0 +1,198 @@
+[gd_scene load_steps=10 format=3 uid="uid://crrbhckrdb5mw"]
+
+[ext_resource type="Script" uid="uid://bkag4hregru5" path="res://Scenes/Dream_Office.cs" id="1_c7rjc"]
+[ext_resource type="PackedScene" uid="uid://e3ydi8flae32" path="res://Basement/Assets/Office/wall_window.tscn" id="2_hswyd"]
+[ext_resource type="PackedScene" uid="uid://dmuybqec6rfco" path="res://Basement/Assets/Office/wall.tscn" id="3_ee0kg"]
+[ext_resource type="PackedScene" uid="uid://ige8bwiwvohi" path="res://Assets/FlawLizArt/Interior/Office/table.fbx" id="4_225jr"]
+[ext_resource type="AudioStream" uid="uid://bq8h0jdb55rpu" path="res://Sound/Ambience/amb_office_001.wav" id="4_ee0kg"]
+[ext_resource type="PackedScene" uid="uid://b6u88ffmqbx2d" path="res://Assets/FlawLizArt/Interior/Office/monitor.fbx" id="5_q3smd"]
+[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="7_78ga5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7rjc"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_61i54"]
+size = Vector3(28, 100, 28)
+
+[node name="Dream_Office" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_c7rjc")
+Camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.921016, 0.389526, 0, -0.389526, 0.921016, -1.70303, 2.76676, 1.29733)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.495262, -0.269941, -0.825741, 0.868744, 0.153891, 0.470746, -9.72451e-09, -0.950499, 0.310726, 0, 10.6896, 0)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62635, 3.27568, 2.48054)
+omni_range = 12.4443
+
+[node name="Walls" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_c7rjc")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+mesh = SubResource("BoxMesh_c7rjc")
+skeleton = NodePath("../..")
+
+[node name="wall_window" parent="World/Walls" instance=ExtResource("2_hswyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="wall_window3" parent="World/Walls" instance=ExtResource("2_hswyd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -2)
+
+[node name="wall_window4" parent="World/Walls" instance=ExtResource("2_hswyd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 2)
+
+[node name="wall_window2" parent="World/Walls" instance=ExtResource("2_hswyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="Wall" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+
+[node name="Wall3" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -6)
+
+[node name="Wall4" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 6)
+
+[node name="Wall2" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
+
+[node name="Wall5" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -6)
+
+[node name="Wall6" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -2)
+
+[node name="Wall7" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 2)
+
+[node name="Wall8" parent="World/Walls" instance=ExtResource("3_ee0kg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 6)
+
+[node name="Interior" type="Node3D" parent="World"]
+
+[node name="table" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="table2" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76097, 0, 0)
+
+[node name="table3" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45173, 0, 0)
+
+[node name="table4" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1.83254)
+
+[node name="table5" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76097, 0, -1.83254)
+
+[node name="table6" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45173, 0, -1.83254)
+
+[node name="table7" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6.57763)
+
+[node name="table8" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76097, 0, -6.57763)
+
+[node name="table9" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45173, 0, -6.57763)
+
+[node name="table10" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4.71025)
+
+[node name="table11" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76097, 0, 4.71025)
+
+[node name="table12" parent="World/Interior" instance=ExtResource("4_225jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45173, 0, 4.71025)
+
+[node name="monitor" parent="World/Interior" instance=ExtResource("5_q3smd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43284, 1.29194, -0.482958)
+
+[node name="monitor2" parent="World/Interior" instance=ExtResource("5_q3smd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70274, 1.29194, -0.482958)
+
+[node name="monitor3" parent="World/Interior" instance=ExtResource("5_q3smd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02976, 1.29194, -0.482958)
+
+[node name="monitor4" parent="World/Interior" instance=ExtResource("5_q3smd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.16092, 1.29194, -1.36684)
+
+[node name="monitor5" parent="World/Interior" instance=ExtResource("5_q3smd")]
+transform = Transform3D(-0.995832, 0, 0.0912061, 0, 1, 0, -0.0912061, 0, -0.995832, -1.83037, 1.29194, -1.36684)
+
+[node name="monitor6" parent="World/Interior" instance=ExtResource("5_q3smd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.3227, 1.29194, -1.36684)
+
+[node name="Buildings" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9189, 0, -47.8281)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170994, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4086, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4641, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8086, 0, -47.8281)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.373, 0, -47.8281)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.625, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.863, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6454, 0, -47.8281)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.305, 0, -47.8281)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.557, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202.794, 0, -91.3556)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="World/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.577, 0, -47.8281)
+mesh = SubResource("BoxMesh_61i54")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ee0kg")
+autoplay = true
+bus = &"SFX"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_78ga5")

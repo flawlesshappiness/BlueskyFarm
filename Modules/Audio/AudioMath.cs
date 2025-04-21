@@ -14,4 +14,14 @@ public static class AudioMath
     {
         return Mathf.Pow(10, value / 20f);
     }
+
+    public static float LerpPercentageToDecibel(float start_perc, float end_perc, float t)
+    {
+        return PercentageToDecibel(Mathf.Lerp(start_perc, end_perc, t));
+    }
+
+    public static float LerpDecibelToPercentage(float start_db, float end_db, float t)
+    {
+        return DecibelToPercentage(Mathf.Lerp(start_db, end_db, t));
+    }
 }

@@ -450,7 +450,7 @@ SceneName = "BasementScene"
 [node name="Touchable" parent="World/NavigationRegion3D/Basement/Trapdoor" index="0"]
 HoverText = "Basement"
 
-[node name="StartBasement" type="Node3D" parent="World/NavigationRegion3D/Basement"]
+[node name="StartBasement" type="Marker3D" parent="World/NavigationRegion3D/Basement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
 
 [node name="BasementUnlockArea" type="Area3D" parent="World/NavigationRegion3D/Basement"]
@@ -610,6 +610,9 @@ CustomId = "shed_unlock"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Shed/ItemArea"]
 shape = SubResource("BoxShape3D_ekyso")
+
+[node name="StartBed" type="Marker3D" parent="World/NavigationRegion3D/Shed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44674, 0, -6.74072)
 
 [node name="Grass" type="Node3D" parent="World"]
 

@@ -56,6 +56,11 @@ public partial class FarmScene : GameScene
     {
         BasementUnlockArea.OnItemEntered += BasementUnlockArea_ItemEntered;
         Trapdoor.SetLocked(GameFlagIds.FarmBasementUnlocked.IsFalse());
+
+        Trapdoor.OnSceneChange += () =>
+        {
+            Data.Game.PlayerPositionNode = "BasementStart";
+        };
     }
 
     private void InitializeInventoryWeeds()

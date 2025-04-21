@@ -184,7 +184,7 @@ public partial class InventoryController : SingletonController
 
     private void Input_PickUpPressed()
     {
-        var item = Player.Instance.Interact?.CurrentInteractable as Item;
+        var item = Player.Instance?.Interact?.CurrentInteractable as Item;
         if (!IsInstanceValid(item)) return;
 
         item.PickUp();

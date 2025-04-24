@@ -19,7 +19,7 @@ script = ExtResource("1_c7rjc")
 Camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.921016, 0.389526, 0, -0.389526, 0.921016, -1.70303, 2.76676, 1.29733)
+transform = Transform3D(1, 0, 0, 0, 0.921016, 0.389526, 0, -0.389526, 0.921016, -1.88754, 2.76676, 1.29733)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -29,7 +29,9 @@ shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62635, 3.27568, 2.48054)
-omni_range = 12.4443
+light_color = Color(1, 0.995, 0.7, 1)
+light_energy = 2.0
+omni_range = 122.064
 
 [node name="Walls" type="Node3D" parent="World"]
 

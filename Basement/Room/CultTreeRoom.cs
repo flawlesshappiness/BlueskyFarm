@@ -73,7 +73,10 @@ public partial class CultTreeRoom : Node3D
         IEnumerator Cr()
         {
             var view = View.Get<GameView>();
-            yield return view.TransitionStartCr(nameof(SceneDoor));
+            yield return view.TransitionStartCr(new TransitionSettings
+            {
+                Duration = 1f
+            });
 
             Player.Instance.GlobalPosition = StartCore.GlobalPosition;
             Player.Instance.SetLookRotation(StartCore);
@@ -81,7 +84,10 @@ public partial class CultTreeRoom : Node3D
             AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Core);
             SetPlayerLockEnabled(false);
 
-            yield return view.TransitionEndCr(nameof(SceneDoor));
+            yield return view.TransitionEndCr(new TransitionSettings
+            {
+                Duration = 1f
+            });
         }
     }
 
@@ -93,7 +99,10 @@ public partial class CultTreeRoom : Node3D
         IEnumerator Cr()
         {
             var view = View.Get<GameView>();
-            yield return view.TransitionStartCr(nameof(SceneDoor));
+            yield return view.TransitionStartCr(new TransitionSettings
+            {
+                Duration = 1f
+            });
 
             Player.Instance.GlobalPosition = StartHole.GlobalPosition;
             Player.Instance.SetLookRotation(StartHole);
@@ -101,7 +110,10 @@ public partial class CultTreeRoom : Node3D
             AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Cult);
             SetPlayerLockEnabled(false);
 
-            yield return view.TransitionEndCr(nameof(SceneDoor));
+            yield return view.TransitionEndCr(new TransitionSettings
+            {
+                Duration = 1f
+            });
         }
     }
 

@@ -39,6 +39,8 @@ public partial class Dream_Office : DreamScene
             _ready_for_input = false;
             HideText();
 
+            SoundController.Instance.Play("sfx_keyboard_tap");
+
             if (HasMoreKeys())
             {
                 _idx_key++;

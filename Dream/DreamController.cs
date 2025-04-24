@@ -48,10 +48,10 @@ public partial class DreamController : SingletonController
         _transitioning = true;
 
         SetTransitionLocks(true);
-        MainMenuView.Instance.Hide();
-        GameView.Instance.Show();
         GameView.Instance.SetBlackOverlayAlpha(1);
         var bus = AudioBus.Get(SoundBus.Transition.ToString());
+
+        AmbienceController.Instance.StopAmbience();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -62,23 +62,20 @@ public partial class DreamController : SingletonController
                 bus.SetVolume(vol);
             });
 
-            AmbienceController.Instance.StopAmbience();
-
             var scene = Scene.Goto(scenename);
             var dream_scene = scene as DreamScene;
 
             yield return new WaitForSeconds(0.5f);
 
-            yield return LerpEnumerator.Lerp01(1f, f =>
-            {
-                var vol = AudioMath.LerpPercentageToDecibel(0f, 1f, f);
-                bus.SetVolume(vol);
-            });
-
-            GameView.Instance.AnimateBlackOverlay(false, 4f);
-            ScreenEffects.AnimateGaussianBlur(FxId, 40, 0, 1f, 4f);
             ScreenEffects.SetGaussianBlur(FxId, 20);
             ScreenEffects.SetDistort(FxId, 0.05f);
+
+            yield return GameView.Instance.TransitionEndCr(new TransitionSettings
+            {
+                Duration = 4f,
+                GaussianBlur = 40f,
+                GaussianBlurStartDuration = 1f,
+            });
 
             SetTransitionLocks(false);
 
@@ -96,14 +93,11 @@ public partial class DreamController : SingletonController
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            ScreenEffects.AnimateGaussianBlur(FxId, 40, 4f, 1f, 0f);
-            yield return new WaitForSeconds(1f);
-            GameView.Instance.AnimateBlackOverlay(true, 4f);
-
-            yield return LerpEnumerator.Lerp01(4f, f =>
+            yield return GameView.Instance.TransitionStartCr(new TransitionSettings
             {
-                var vol = AudioMath.LerpPercentageToDecibel(1f, 0f, f);
-                bus.SetVolume(vol);
+                Duration = 4f,
+                GaussianBlur = 40f,
+                GaussianBlurStartDuration = 1f,
             });
 
             ScreenEffects.RemoveGaussianBlur(FxId);
@@ -114,13 +108,11 @@ public partial class DreamController : SingletonController
 
             yield return null;
 
-            GameView.Instance.AnimateBlackOverlay(false, 2f);
-            ScreenEffects.AnimateGaussianBlur(FxId, 20, 0f, 1f, 4f);
-
-            yield return LerpEnumerator.Lerp01(4f, f =>
+            yield return GameView.Instance.TransitionEndCr(new TransitionSettings
             {
-                var vol = AudioMath.LerpPercentageToDecibel(0f, 1f, f);
-                bus.SetVolume(vol);
+                Duration = 4f,
+                GaussianBlur = 20f,
+                GaussianBlurStartDuration = 1f,
             });
 
             _transitioning = false;

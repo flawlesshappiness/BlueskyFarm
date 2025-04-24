@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:dream\\dreamscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\dream_office.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:scenes\\dream_office.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\views\\gameview\\gameview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:views\\gameview\\gameview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\basementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,8 +30,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameView.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Views\\GameView\\GameView.cs",
+              "RelativeDocumentMoniker": "Views\\GameView\\GameView.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Views\\GameView\\GameView.cs",
+              "RelativeToolTip": "Views\\GameView\\GameView.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAjwLUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T20:26:19.16Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
@@ -44,22 +57,9 @@
               "RelativeDocumentMoniker": "Dream\\DreamController.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Dream\\DreamController.cs",
               "RelativeToolTip": "Dream\\DreamController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAD4v0UAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-18T19:37:36.336Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Dream_Office.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\Dream_Office.cs",
-              "RelativeDocumentMoniker": "Scenes\\Dream_Office.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\Dream_Office.cs",
-              "RelativeToolTip": "Scenes\\Dream_Office.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T19:03:50.458Z",
               "EditorCaption": ""
             },
             {
@@ -70,7 +70,7 @@
               "RelativeDocumentMoniker": "Dream\\DreamScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Dream\\DreamScene.cs",
               "RelativeToolTip": "Dream\\DreamScene.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAowCsAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAgwCsAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-18T10:40:41.381Z",
               "EditorCaption": ""

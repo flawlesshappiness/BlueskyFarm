@@ -19,6 +19,7 @@ public partial class GameView : View
     public InventoryBar InventoryBar;
 
     public override string Directory => $"{Paths.ViewDirectory}/{nameof(GameView)}";
+    private string FxId => nameof(GameView);
 
     private ColorRect _overlay_black;
     private Dictionary<string, Label> _create_text_labels = new();
@@ -141,49 +142,64 @@ public partial class GameView : View
         return label;
     }
 
-    public IEnumerator TransitionStartCr(string id)
+    public IEnumerator TransitionStartCr(TransitionSettings settings)
     {
         var bus = AudioBus.Get(SoundBus.Transition.ToString());
 
-        Player.Instance.MovementLock.AddLock(id);
-        Player.Instance.LookLock.AddLock(id);
-        Player.Instance.InteractLock.AddLock(id);
-        PauseView.Instance.ToggleLock.AddLock(id);
+        SetTransitionLocks(true);
         Cursor.Hide();
         HideAllDynamicUI();
 
-        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        if (settings.GaussianBlur > 0)
+        {
+            ScreenEffects.AnimateGaussianBlur(FxId, settings.GaussianBlur, settings.GaussianBlurStartDuration + settings.Duration, 0, 0);
+        }
+
+        yield return new WaitForSeconds(settings.GaussianBlurStartDuration);
+
+        yield return LerpEnumerator.Lerp01(settings.Duration, f =>
         {
             SetBlackOverlayAlpha(Mathf.Lerp(0, 1, f));
-        });
 
-        yield return LerpEnumerator.Lerp01(0.5f, f =>
-        {
-            var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(1f, 0f, f));
-            bus.SetVolume(volume);
+            if (settings.FadeAudio)
+            {
+                var volume = AudioMath.LerpPercentageToDecibel(1f, 0f, f);
+                bus.SetVolume(volume);
+            }
         });
     }
 
-    public IEnumerator TransitionEndCr(string id)
+    public IEnumerator TransitionEndCr(TransitionSettings settings)
     {
         var bus = AudioBus.Get(SoundBus.Transition.ToString());
 
-        Player.Instance.MovementLock.RemoveLock(id);
-        Player.Instance.LookLock.RemoveLock(id);
+        SetTransitionLocks(false);
 
-        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        if (settings.GaussianBlur > 0)
         {
-            var volume = AudioMath.PercentageToDecibel(Mathf.Lerp(0f, 1f, f));
-            bus.SetVolume(volume);
-        });
+            ScreenEffects.AnimateGaussianBlur(FxId, settings.GaussianBlur, 0, settings.GaussianBlurStartDuration, settings.Duration);
+        }
 
-        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        yield return LerpEnumerator.Lerp01(settings.Duration, f =>
         {
             SetBlackOverlayAlpha(Mathf.Lerp(1, 0, f));
-        });
 
-        Player.Instance.InteractLock.RemoveLock(id);
-        PauseView.Instance.ToggleLock.RemoveLock(id);
+            if (settings.FadeAudio)
+            {
+                var volume = AudioMath.LerpPercentageToDecibel(0f, 1f, f);
+                bus.SetVolume(volume);
+            }
+        });
+    }
+
+    private void SetTransitionLocks(bool locked)
+    {
+        var id = nameof(GameView);
+        Player.Instance?.MovementLock.SetLock(id, locked);
+        Player.Instance?.LookLock.SetLock(id, locked);
+        Player.Instance?.InteractLock.SetLock(id, locked);
+        InventoryController.Instance.InventoryLock.SetLock(id, locked);
+        PauseView.Instance.ToggleLock.SetLock(id, locked);
     }
 }
 
@@ -198,4 +214,13 @@ public class CreateTextSettings
     public float Shake_Frequency { get; set; }
     public float Shake_Duration { get; set; }
     public float Shake_Dampening { get; set; }
+}
+
+public class TransitionSettings
+{
+    public string Id { get; set; }
+    public float Duration { get; set; } = 1f;
+    public float GaussianBlur { get; set; }
+    public float GaussianBlurStartDuration { get; set; }
+    public bool FadeAudio { get; set; } = true;
 }

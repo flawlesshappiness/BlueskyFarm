@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://dod3xy7w2jkpx"]
+
+[ext_resource type="AudioStream" uid="uid://cc1m7ot51mp86" path="res://Sound/Sounds/sfx_keyboard_tap_001.wav" id="1_veb1u"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="2_lle0s"]
+
+[resource]
+script = ExtResource("2_lle0s")
+AudioStreams = Array[AudioStream]([ExtResource("1_veb1u")])
+Volume = -20.0
+Looping = false
+PitchRange = Vector2(0.95, 1)
+Bus = 1
+Distance = 0
+Attenuation = 0

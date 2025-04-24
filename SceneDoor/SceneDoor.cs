@@ -131,11 +131,17 @@ public partial class SceneDoor : Node3DScript
 
             SoundController.Instance.Play(OpenSound?.ResourcePath);
 
-            yield return view.TransitionStartCr(nameof(SceneDoor));
+            yield return view.TransitionStartCr(new TransitionSettings
+            {
+                Duration = 0.5f
+            });
 
             ChangeScene();
 
-            yield return view.TransitionEndCr(nameof(SceneDoor));
+            yield return view.TransitionEndCr(new TransitionSettings
+            {
+                Duration = 0.5f
+            });
 
             SoundController.Instance.Play(CloseSound?.ResourcePath);
         }

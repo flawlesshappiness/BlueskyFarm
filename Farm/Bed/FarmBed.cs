@@ -111,12 +111,22 @@ public partial class FarmBed : Node3D
         {
             var view = View.Get<GameView>();
 
-            yield return view.TransitionStartCr(nameof(FarmBed));
+            yield return view.TransitionStartCr(new TransitionSettings
+            {
+                Duration = 2f,
+                GaussianBlur = 20f,
+                GaussianBlurStartDuration = 1f
+            });
 
             GrowPlants();
             yield return new WaitForSeconds(2f);
 
-            yield return view.TransitionEndCr(nameof(FarmBed));
+            yield return view.TransitionEndCr(new TransitionSettings
+            {
+                Duration = 2f,
+                GaussianBlur = 20f,
+                GaussianBlurStartDuration = 1f
+            });
         }
     }
 

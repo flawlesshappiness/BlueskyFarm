@@ -110,6 +110,7 @@ public partial class GameScene : Scene
             Player.Instance.MovementLock.SetLock(id_lock, locked);
             Player.Instance.InteractLock.SetLock(id_lock, locked);
             PauseView.Instance.ToggleLock.SetLock(id_lock, locked);
+            InventoryController.Instance.InventoryLock.SetLock(id_lock, locked);
         }
     }
 }

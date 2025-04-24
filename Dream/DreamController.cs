@@ -116,5 +116,6 @@ public partial class DreamController : SingletonController
     private void SetTransitionLocks(bool locked)
     {
         PauseView.Instance.ToggleLock.SetLock(FxId, locked);
+        InventoryController.Instance.InventoryLock.SetLock(FxId, locked);
     }
 }

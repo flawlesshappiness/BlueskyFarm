@@ -19,7 +19,7 @@ script = ExtResource("1_c7rjc")
 Camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.921016, 0.389526, 0, -0.389526, 0.921016, -1.88754, 2.76676, 1.29733)
+transform = Transform3D(1, 0, 0, 0, 0.921016, 0.389526, 0, -0.389526, 0.921016, -1.80016, 2.76676, 1.29733)
 
 [node name="World" type="Node3D" parent="."]
 

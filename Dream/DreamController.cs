@@ -56,12 +56,6 @@ public partial class DreamController : SingletonController
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                var vol = AudioMath.LerpPercentageToDecibel(1f, 0f, f);
-                bus.SetVolume(vol);
-            });
-
             var scene = Scene.Goto(scenename);
             var dream_scene = scene as DreamScene;
 

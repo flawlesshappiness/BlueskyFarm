@@ -39,7 +39,10 @@ public partial class Dream_Office : DreamScene
             _ready_for_input = false;
             HideText();
 
-            SoundController.Instance.Play("sfx_keyboard_tap");
+            SoundController.Instance.Play("sfx_keyboard_tap", new SoundOverride
+            {
+                Bus = SoundBus.SFX
+            });
 
             if (HasMoreKeys())
             {

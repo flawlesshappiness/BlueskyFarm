@@ -85,7 +85,7 @@ public partial class FarmBed : Node3D
     {
         if (Repaired)
         {
-            Sleep();
+            StartSleep();
         }
         else
         {
@@ -104,7 +104,7 @@ public partial class FarmBed : Node3D
         }
     }
 
-    private void Sleep()
+    private void StartSleep()
     {
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -119,15 +119,29 @@ public partial class FarmBed : Node3D
             });
 
             GrowPlants();
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
-            yield return view.TransitionEndCr(new TransitionSettings
+            bool is_dream = true;
+            if (is_dream)
             {
-                Duration = 2f,
-                GaussianBlur = 20f,
-                GaussianBlurStartDuration = 1f
-            });
+                StartDream();
+            }
+            else
+            {
+                yield return new WaitForSeconds(1f);
+                yield return view.TransitionEndCr(new TransitionSettings
+                {
+                    Duration = 2f,
+                    GaussianBlur = 20f,
+                    GaussianBlurStartDuration = 1f
+                });
+            }
         }
+    }
+
+    private void StartDream()
+    {
+        DreamController.Instance.StartRandomDream();
     }
 
     private void GrowPlants()

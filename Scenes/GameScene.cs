@@ -94,25 +94,22 @@ public partial class GameScene : Scene
             var view = View.Get<GameView>();
             view.SetBlackOverlayAlpha(1);
 
-            Player.Instance.MovementLock.AddLock(id_lock);
-            Player.Instance.InteractLock.AddLock(id_lock);
-            PauseView.Instance.ToggleLock.AddLock(id_lock);
+            SetLocks(true);
 
-            var bus = AudioBus.Get(SoundBus.Master.ToString());
-            bus.SetMuted(true);
+            var bus = AudioBus.Get(SoundBus.Transition.ToString());
+            bus.SetVolume(AudioMath.PercentageToDecibel(0));
 
             yield return new WaitForSeconds(2f);
 
-            Goto(nameof(FarmScene));
+            SetLocks(false);
+            DreamController.Instance.StartRandomDream();
+        }
 
-            view.SetBlackOverlayAlpha(0);
-
-            bus.SetMuted(false);
-
-            Player.Instance.GlobalPosition = Vector3.Zero;
-            Player.Instance.MovementLock.RemoveLock(id_lock);
-            Player.Instance.InteractLock.RemoveLock(id_lock);
-            PauseView.Instance.ToggleLock.RemoveLock(id_lock);
+        void SetLocks(bool locked)
+        {
+            Player.Instance.MovementLock.SetLock(id_lock, locked);
+            Player.Instance.InteractLock.SetLock(id_lock, locked);
+            PauseView.Instance.ToggleLock.SetLock(id_lock, locked);
         }
     }
 }

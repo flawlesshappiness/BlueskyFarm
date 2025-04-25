@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dv5bvqe43lho4"]
+[gd_scene load_steps=23 format=3 uid="uid://dv5bvqe43lho4"]
 
 [ext_resource type="PackedScene" uid="uid://b5lrrhnxtqhkn" path="res://Basement/Assets/Containers/Prefabs/BasementContainer_Base.tscn" id="1_jmng1"]
 [ext_resource type="PackedScene" uid="uid://dasfrkqd3n4vj" path="res://Assets/KayLousberg/Dungeon/crateDarkLid.fbx" id="2_1dqcy"]
 [ext_resource type="PackedScene" uid="uid://40atbcrq0nka" path="res://Assets/KayLousberg/Dungeon/crateDark_NoLid.fbx" id="3_hvbmq"]
-[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="4_jwgmj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r2vwk"]
 size = Vector3(0.501709, 0.37207, 0.610352)
@@ -388,14 +387,23 @@ shape = SubResource("BoxShape3D_ae63e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
-"": SubResource("AnimationLibrary_nr8oc")
+&"": SubResource("AnimationLibrary_nr8oc")
 }
 
-[node name="ps_dust" parent="." index="5" instance=ExtResource("4_jwgmj")]
+[node name="ps_dust" type="GPUParticles3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0.967411, 0.402785)
+cast_shadow = 0
+visibility_range_begin = 2.0
+visibility_range_begin_margin = 1.0
+visibility_range_end = 28.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+emitting = false
 amount = 5
 lifetime = 5.0
+one_shot = true
 explosiveness = 1.0
+fixed_fps = 60
 visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_j33h3")
 draw_pass_1 = SubResource("QuadMesh_6cg76")

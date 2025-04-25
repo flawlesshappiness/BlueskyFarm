@@ -25,9 +25,9 @@ curve = SubResource("Curve_fviaw")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h0kaw"]
 lifetime_randomness = 0.2
-emission_shape_offset = Vector3(0, 3, 0)
+emission_shape_offset = Vector3(0, 0.5, 0)
 emission_shape = 3
-emission_box_extents = Vector3(5, 0, 5)
+emission_box_extents = Vector3(2, 0, 2)
 angle_min = -25.0
 angle_max = 25.0
 angle_curve = SubResource("CurveTexture_2mgfc")
@@ -36,7 +36,7 @@ scale_min = 2.0
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_oliqn")
 scale_over_velocity_max = 40.1
-color = Color(1, 1, 1, 0.490196)
+color = Color(1, 1, 1, 0.0980392)
 alpha_curve = SubResource("CurveTexture_sbi3x")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rcqcp"]
@@ -53,16 +53,20 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 proximity_fade_enabled = true
-proximity_fade_distance = 12.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_411gh"]
 material = SubResource("StandardMaterial3D_w8eqy")
 
 [node name="ps_dust_falling" type="GPUParticles3D"]
-emitting = false
+cast_shadow = 0
+visibility_range_begin = 2.0
+visibility_range_begin_margin = 1.0
+visibility_range_end = 28.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 amount = 3
 lifetime = 20.0
-one_shot = true
+preprocess = 10.0
 fixed_fps = 60
 visibility_aabb = AABB(-5.50248, -6.18498, -6.07994, 11.005, 12.37, 12.1599)
 process_material = SubResource("ParticleProcessMaterial_h0kaw")

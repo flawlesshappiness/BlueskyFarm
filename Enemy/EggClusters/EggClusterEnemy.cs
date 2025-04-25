@@ -103,6 +103,8 @@ public partial class EggClusterEnemy : NavEnemy
             {
                 cluster.Disable();
             }
+
+            Debug.Log(position);
         }
     }
 
@@ -127,10 +129,12 @@ public partial class EggClusterEnemy : NavEnemy
             safety--;
             var room_position = GetRandomPositionAroundMe();
             var map = GetWorld3D().NavigationMap;
-            position = NavigationServer3D.MapGetClosestPoint(map, room_position).Add(y: -Agent.PathHeightOffset);
+            position = NavigationServer3D.MapGetClosestPoint(map, room_position);
             valid = _current_room.Info.ValidGroundHeights.Any(y => position.Y == y);
 
             if (position == Vector3.Zero) break;
+
+            position -= Vector3.Up * Agent.PathHeightOffset;
         }
 
         return position;

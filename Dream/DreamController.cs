@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class DreamController : SingletonController
 {
     public static DreamController Instance => Singleton.Get<DreamController>();
-
     public override string Directory => "Dream";
+
+    private List<string> _scenes = new List<string> { "Dream_Office", "Dream_Falling" };
 
     private bool _transitioning;
     private string FxId => nameof(DreamController);
@@ -26,6 +28,13 @@ public partial class DreamController : SingletonController
             Action = StartDreamSearch
         });
 
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Start random dream",
+            Action = v => StartRandomDream()
+        });
+
         void StartDreamSearch(DebugView view)
         {
             view.HideContent();
@@ -33,13 +42,15 @@ public partial class DreamController : SingletonController
 
             view.ContentSearch.ClearItems();
             view.ContentSearch.AddItem("Office", () => { view.Close(); StartDream("Dream_Office"); });
+            view.ContentSearch.AddItem("Falling", () => { view.Close(); StartDream("Dream_Falling"); });
             view.ContentSearch.UpdateButtons();
         }
     }
 
     public void StartRandomDream()
     {
-        StartDream("Dream_Office");
+        var scene = _scenes.Random();
+        StartDream(scene);
     }
 
     private void StartDream(string scenename)
@@ -60,9 +71,14 @@ public partial class DreamController : SingletonController
             var dream_scene = scene as DreamScene;
 
             yield return new WaitForSeconds(0.5f);
+            yield return dream_scene.WaitForReady();
+
+            Cursor.Hide();
 
             ScreenEffects.SetGaussianBlur(FxId, 20);
             ScreenEffects.SetDistort(FxId, 0.05f);
+
+            dream_scene.StartScene();
 
             yield return GameView.Instance.TransitionEndCr(new TransitionSettings
             {
@@ -77,7 +93,7 @@ public partial class DreamController : SingletonController
         }
     }
 
-    public void EndDream()
+    public void EndDream(bool immediate = false)
     {
         if (_transitioning) return;
         _transitioning = true;
@@ -87,12 +103,20 @@ public partial class DreamController : SingletonController
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
-            yield return GameView.Instance.TransitionStartCr(new TransitionSettings
+            if (immediate)
             {
-                Duration = 4f,
-                GaussianBlur = 40f,
-                GaussianBlurStartDuration = 1f,
-            });
+                GameView.Instance.SetBlackOverlayAlpha(1);
+                yield return null;
+            }
+            else
+            {
+                yield return GameView.Instance.TransitionStartCr(new TransitionSettings
+                {
+                    Duration = 4f,
+                    GaussianBlur = 40f,
+                    GaussianBlurStartDuration = 1f,
+                });
+            }
 
             ScreenEffects.RemoveGaussianBlur(FxId);
             ScreenEffects.RemoveDistort(FxId);

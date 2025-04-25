@@ -95,7 +95,7 @@ light_energy = 6.0
 light_specular = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 28.0
+distance_fade_begin = 18.0
 distance_fade_shadow = 28.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
@@ -105,7 +105,7 @@ light_energy = 3.0
 light_specular = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 28.0
+distance_fade_begin = 18.0
 distance_fade_shadow = 28.0
 omni_range = 12.0
 

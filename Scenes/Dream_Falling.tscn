@@ -1,0 +1,223 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtpkwxje8mnqs"]
+
+[ext_resource type="Script" uid="uid://4rxdgavi5b8a" path="res://Scenes/Dream_Falling.cs" id="1_iucq7"]
+[ext_resource type="Material" uid="uid://43hg60jqsq36" path="res://Assets/Materials/Plant_Dark.tres" id="2_iucq7"]
+[ext_resource type="PackedScene" uid="uid://bmu3kc1qwst6a" path="res://Particle/Prefabs/ps_rift.tscn" id="3_07gr5"]
+[ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="3_iucq7"]
+[ext_resource type="AudioStream" uid="uid://dyt843ec62fqs" path="res://Sound/Sounds/sfx_wind_storm_loop_001.wav" id="5_f8v05"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_07gr5"]
+size = Vector3(1, 4, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iucq7"]
+size = Vector2(10000, 10000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlevm"]
+albedo_color = Color(0.384314, 0.658824, 0.419608, 1)
+
+[sub_resource type="Animation" id="Animation_07gr5"]
+resource_name = "falling_over_farms"
+length = 11.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(1.39626, 0, 0), Vector3(1.74533, 0, 0), Vector3(1.39626, 0, 0), Vector3(1.74533, 0, 0), Vector3(1.39626, 0, 0), Vector3(1.74533, 0, 0), Vector3(1.39626, 0, 0), Vector3(1.74533, 0, 0), Vector3(1.39626, 0, 0), Vector3(1.74533, 0, 0), Vector3(-1.65806, 0, 0), Vector3(-1.48353, 0, 0), Vector3(-1.65806, 0, 0), Vector3(-1.48353, 0, 0), Vector3(-1.65806, 0, 0), Vector3(-1.48353, 0, 0), Vector3(-1.65806, 0, 0), Vector3(-1.48353, 0, 0), Vector3(-1.65806, 0, 0), Vector3(-1.48353, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 11),
+"transitions": PackedFloat32Array(2.46229, 3.13834, 1),
+"update": 0,
+"values": [Vector3(0, 498, 0), Vector3(0, 300, 0), Vector3(0, 15, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7, 11),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"StartIncreasingShake"
+}, {
+"args": [],
+"method": &"CutToBlack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f8v05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 498, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8v05"]
+_data = {
+&"RESET": SubResource("Animation_f8v05"),
+&"falling_over_farms": SubResource("Animation_07gr5")
+}
+
+[node name="Dream_Falling" type="Node3D" node_paths=PackedStringArray("FarmGridTemplate", "AnimationPlayer", "Camera")]
+script = ExtResource("1_iucq7")
+FarmGridTemplate = NodePath("World/FarmGridTemplate")
+AnimationPlayer = NodePath("AnimationPlayer")
+Camera = NodePath("Camera3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.121298, 0.992616, 0, -0.992616, -0.121298, 0, 1.07536, 0)
+light_color = Color(0.721569, 0.631373, 1, 1)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="FarmGridTemplate" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 0)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, -10)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 0)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2, -10)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 20)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2, 10)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, 0)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 2, -10)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 20)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 10)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, 20)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 2, 10)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, -20)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 2, -30)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -20)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, -30)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -20)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="World/FarmGridTemplate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2, -30)
+mesh = SubResource("BoxMesh_07gr5")
+surface_material_override/0 = ExtResource("2_iucq7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+mesh = SubResource("PlaneMesh_iucq7")
+surface_material_override/0 = SubResource("StandardMaterial3D_jlevm")
+
+[node name="Rift" parent="World" instance=ExtResource("3_07gr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_iucq7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 498, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f8v05")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_f8v05")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"

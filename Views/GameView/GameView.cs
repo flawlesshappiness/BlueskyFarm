@@ -157,9 +157,10 @@ public partial class GameView : View
 
         yield return new WaitForSeconds(settings.GaussianBlurStartDuration);
 
+        var a_start = _overlay_black.Color.A;
         yield return LerpEnumerator.Lerp01(settings.Duration, f =>
         {
-            SetBlackOverlayAlpha(Mathf.Lerp(0, 1, f));
+            SetBlackOverlayAlpha(Mathf.Lerp(a_start, 1, f));
 
             if (settings.FadeAudio)
             {

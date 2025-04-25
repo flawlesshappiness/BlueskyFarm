@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 
 public partial class DreamScene : Scene
 {
@@ -19,6 +20,16 @@ public partial class DreamScene : Scene
         RegisterDebugActions();
     }
 
+    public virtual IEnumerator WaitForReady()
+    {
+        yield return null;
+    }
+
+    public virtual void StartScene()
+    {
+
+    }
+
     protected virtual void RegisterDebugActions()
     {
         Debug.RegisterAction(new DebugAction
@@ -36,11 +47,11 @@ public partial class DreamScene : Scene
         Debug.RemoveActions(DebugId);
     }
 
-    protected void CompleteDream()
+    protected void CompleteDream(bool immediate = false)
     {
         if (_dream_completed) return;
         _dream_completed = true;
 
-        DreamController.Instance.EndDream();
+        DreamController.Instance.EndDream(immediate);
     }
 }

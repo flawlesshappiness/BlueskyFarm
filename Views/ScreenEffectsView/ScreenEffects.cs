@@ -404,6 +404,15 @@ public partial class ScreenEffects : Node3DScript
     public static Coroutine AnimateCameraShakeOut(string id, float duration) =>
         Instance._AnimateMinValueOut(Instance._camera_shake_strength, $"{nameof(AnimateCameraShake)}_{id}", 0, duration);
 
+    /// <summary>
+    /// Value range: 0 - 1
+    /// </summary>
+    public static void SetCameraShake(string id, float value) =>
+        Instance._camera_shake_strength.Set(id, value);
+
+    public static void RemoveCameraShake(string id) =>
+        Instance._camera_shake_strength.Remove(id);
+
     // HEARTBEAT //
     public static Coroutine AnimateHeartbeatFrequency(string id, float frequency, float duration_in, float duration_on, float duration_out)
     {

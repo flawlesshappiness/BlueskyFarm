@@ -20,7 +20,7 @@ public partial class ProfilesView : View
     [Export]
     public DeleteProfilePopup DeleteProfilePopup;
 
-    private int _profile_to_delete;
+    private int _profile_to_delete = 3;
 
     public override void _Ready()
     {
@@ -59,6 +59,8 @@ public partial class ProfilesView : View
 
     private void ClickProfile(int profile)
     {
+        Data.Options.SelectedGameProfile = profile;
+        Data.Options.Save();
         ClickBack();
     }
 
@@ -71,8 +73,7 @@ public partial class ProfilesView : View
 
     private void ClickProfileDeleteConfirm()
     {
-        SaveDataController.Instance.ClearSaveData<GameSaveData>(_profile_to_delete);
+        GameProfileController.Instance.DeleteGameProfile(_profile_to_delete);
         LoadProfiles();
-        _profile_to_delete = -1;
     }
 }

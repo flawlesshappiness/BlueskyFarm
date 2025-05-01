@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public partial class OptionsData : SaveData
 {
-    public int GameSaveDataProfile { get; set; } = 1;
+    public int SelectedGameProfile { get; set; } = 1;
     public float VolumeMaster { get; set; } = 0.5f;
     public float VolumeSFX { get; set; } = 1.0f;
     public float VolumeBGM { get; set; } = 1.0f;

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 
 public partial class MainMenuView : View
@@ -29,6 +30,9 @@ public partial class MainMenuView : View
 
     [Export]
     public Label ProfileLabel;
+
+    public event Action OnGameStarted;
+    public event Action OnReturnToMainMenu;
 
     private OptionsView OptionsView => View.Get<OptionsView>();
 
@@ -61,34 +65,25 @@ public partial class MainMenuView : View
 
     private void InitializeNewGameButton()
     {
-        var profile_data_exists = SaveDataController.Instance.TryLoad<GameSaveData>(out var data, Data.Options.GameSaveDataProfile);
+        var profile_data_exists = !Data.Game.Deleted;
         NewGameButton.Visible = !profile_data_exists;
         ContinueButton.Visible = profile_data_exists;
     }
 
     private void InitializeProfileLabel()
     {
-        ProfileLabel.Text = $"Profile {Data.Options.GameSaveDataProfile}";
+        ProfileLabel.Text = $"Profile {Data.Options.SelectedGameProfile}";
     }
 
     private void ClickNewGame()
     {
-        Data.CreateGameSaveData(Data.Options.GameSaveDataProfile);
-        Data.Options.Save();
+        GameProfileController.Instance.CreateGameProfile(Data.Options.SelectedGameProfile);
         ClickContinue();
     }
 
     private void ClickContinue()
     {
-        if (SaveDataController.Instance.TryLoad<GameSaveData>(out var data, Data.Options.GameSaveDataProfile))
-        {
-            Data.SetSelectedGameSaveData(data);
-            AnimateTransitionToPlay();
-        }
-        else
-        {
-            Debug.LogError($"Failed to load data from profile {Data.Options.GameSaveDataProfile}");
-        }
+        AnimateTransitionToPlay();
     }
 
     private void ClickProfiles()
@@ -117,7 +112,7 @@ public partial class MainMenuView : View
 
     private void AnimateTransitionToPlay()
     {
-        Coroutine.Start(Cr)
+        this.StartCoroutine(Cr, "transition")
             .SetRunWhilePaused(true);
 
         IEnumerator Cr()
@@ -154,13 +149,16 @@ public partial class MainMenuView : View
             Overlay.Hide();
             Hide();
             SetLocks(false);
+
+            OnGameStarted?.Invoke();
+
             GameView.Instance.Show();
         }
     }
 
     public void AnimateTransitionToMainMenu()
     {
-        var cr = Coroutine.Start(Cr)
+        var cr = this.StartCoroutine(Cr, "transition")
             .SetRunWhilePaused(true);
 
         IEnumerator Cr()
@@ -188,6 +186,8 @@ public partial class MainMenuView : View
             Scene.Goto<MainMenuScene>();
             Scene.PauseLock.RemoveLock(nameof(MainMenuView));
             MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
+
+            OnReturnToMainMenu?.Invoke();
 
             yield return null;
             Cursor.Hide();

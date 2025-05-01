@@ -6,43 +6,28 @@ public partial class SaveDataController : Node
 {
     public static SaveDataController Instance => Singleton.GetOrCreate<SaveDataController>($"{Paths.Modules}/Data/{nameof(SaveDataController)}");
 
-    public void ClearSaveData<T>(int? profile = null)
-        where T : SaveData, new()
-    {
-        var data = new T();
-        data.Profile = profile;
-        data.Deleted = true;
-        Save(data);
-    }
-
-    public bool TryLoad<T>(out T data, int? profile = null)
+    public T GetOrCreate<T>(int? profile = null)
         where T : SaveData, new()
     {
         Debug.TraceMethod($"{typeof(T)} {profile}");
 
-        data = null;
-
         try
         {
             var path = GetSaveDataFilePath<T>(profile);
-            EnsureDataExists<T>(profile);
-            data = DeserializeFileFromPath<T>(path);
-            data = EnsureBetaFileIsNewestVersion<T>(data);
-
-            if (data.Deleted)
+            if (FileAccess.FileExists(path))
             {
-                data = null;
-                return false;
+                return DeserializeFileFromPath<T>(path);
             }
             else
             {
-                return true;
+                var data = Create<T>(profile);
+                return data;
             }
         }
         catch (Exception e)
         {
             Debug.LogError($"Failed to load data: {e.Message}");
-            return false;
+            return new T();
         }
     }
 
@@ -50,10 +35,11 @@ public partial class SaveDataController : Node
         where T : SaveData, new()
     {
         var path = GetSaveDataFilePath<T>(profile);
-        EnsureFileExists<T>(path);
+        EnsureFileExists(path);
 
         var data = new T();
         data.Profile = profile;
+        data.Deleted = true;
         Save(data);
 
         return data;
@@ -77,25 +63,12 @@ public partial class SaveDataController : Node
         Debug.Indent--;
     }
 
-    private void EnsureFileExists<T>(string path)
-        where T : SaveData, new()
+    private void EnsureFileExists(string path)
     {
         if (!FileAccess.FileExists(path))
         {
             using (FileAccess.Open(path, FileAccess.ModeFlags.Write)) { }
             Debug.Log($"Created file at path: {path}");
-        }
-    }
-
-    private void EnsureDataExists<T>(int? profile = null)
-        where T : SaveData, new()
-    {
-        var path = GetSaveDataFilePath<T>(profile);
-        if (!FileAccess.FileExists(path))
-        {
-            var data = Create<T>(profile);
-            data.Deleted = true;
-            Save(data);
         }
     }
 

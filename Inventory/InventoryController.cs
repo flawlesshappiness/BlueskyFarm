@@ -29,7 +29,7 @@ public partial class InventoryController : SingletonController
         base.Initialize();
         RegisterDebugActions();
 
-        Data.OnGameSaveDataSelected += LoadData;
+        MainMenuView.Instance.OnGameStarted += LoadData;
     }
 
     private void RegisterDebugActions()

@@ -33,13 +33,14 @@ public partial class ProfileControl : Control
 
     public void Load()
     {
-        if (SaveDataController.Instance.TryLoad<GameSaveData>(out var data, Profile))
+        var data = GameProfileController.Instance.GetGameProfile(Profile);
+        if (data.Deleted)
         {
-            SetData(data);
+            SetNoData();
         }
         else
         {
-            SetNoData();
+            SetData(data);
         }
     }
 
@@ -63,7 +64,6 @@ public partial class ProfileControl : Control
 
     private void ClickSelect()
     {
-        Data.Options.GameSaveDataProfile = Profile;
         OnProfileSelected?.Invoke(Profile);
     }
 }

@@ -16,8 +16,8 @@ public abstract class SaveData
     [JsonIgnore]
     public DateTime DateTimeUpdated => DateTime.TryParse(TimeUpdated, out var result) ? result : new DateTime();
 
-    [JsonIgnore]
-    public Action OnBeforeSave;
+    public event Action OnBeforeSave;
+    public event Action OnAfterSave;
 
     public void Update()
     {
@@ -30,5 +30,6 @@ public abstract class SaveData
     {
         OnBeforeSave?.Invoke();
         SaveDataController.Instance.Save(this);
+        OnAfterSave?.Invoke();
     }
 }

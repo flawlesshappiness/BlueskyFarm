@@ -48,7 +48,7 @@ public partial class ProfileControl : Control
     {
         DeleteButton.Show();
         LastPlayedLabel.Show();
-        LastPlayedLabel.Text = $"Last played: {data.DateTimeUpdated.ToString("dd:MM:yyyy HH:mm")}";
+        LastPlayedLabel.Text = $"Last played: {data.DateTimeUpdated.ToString("dd-MM-yyyy HH:mm")}";
     }
 
     private void SetNoData()

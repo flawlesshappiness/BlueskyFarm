@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\boot\\boot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:boot\\boot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\views\\mainmenuview\\mainmenuview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:views\\mainmenuview\\mainmenuview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\modules\\data\\savedatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:modules\\data\\savedatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\steam\\steamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:steam\\steamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\basementscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,45 +31,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Boot.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Boot\\Boot.cs",
-              "RelativeDocumentMoniker": "Boot\\Boot.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Boot\\Boot.cs",
-              "RelativeToolTip": "Boot\\Boot.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAswBsAAAAaAAAAAAAAAA==",
+              "Title": "SteamController.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Steam\\SteamController.cs",
+              "RelativeDocumentMoniker": "Steam\\SteamController.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Steam\\SteamController.cs",
+              "RelativeToolTip": "Steam\\SteamController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T10:17:24.899Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainMenuView.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Views\\MainMenuView\\MainMenuView.cs",
-              "RelativeDocumentMoniker": "Views\\MainMenuView\\MainMenuView.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Views\\MainMenuView\\MainMenuView.cs",
-              "RelativeToolTip": "Views\\MainMenuView\\MainMenuView.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAmwE0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T09:33:31.118Z",
+              "WhenOpened": "2025-05-01T11:00:04.99Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SaveDataController.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Modules\\Data\\SaveDataController.cs",
-              "RelativeDocumentMoniker": "Modules\\Data\\SaveDataController.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Modules\\Data\\SaveDataController.cs",
-              "RelativeToolTip": "Modules\\Data\\SaveDataController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T07:17:14.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
@@ -90,13 +56,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeToolTip": "Scenes\\BasementScene.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAYwE4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T07:15:12.703Z",
               "EditorCaption": ""

@@ -11,7 +11,19 @@ public partial class SteamController : SingletonController
     public override void _Ready()
     {
         base._Ready();
-        SteamRunning = Steam.IsSteamRunning();
+
+        try
+        {
+            if (Steam.IsSteamRunning())
+            {
+                var id = Steam.GetSteamID();
+                SteamRunning = id != 0;
+            }
+        }
+        catch (Exception e)
+        {
+        }
+
         Debug.Log($"Steam running: {SteamRunning}");
     }
 

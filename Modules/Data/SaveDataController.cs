@@ -6,49 +6,6 @@ public partial class SaveDataController : Node
 {
     public static SaveDataController Instance => Singleton.GetOrCreate<SaveDataController>($"{Paths.Modules}/Data/{nameof(SaveDataController)}");
 
-    public override void _Ready()
-    {
-        base._Ready();
-        RegisterDebugActions();
-    }
-
-    private void RegisterDebugActions()
-    {
-        var category = "SAVE DATA";
-
-        /*
-        Debug.RegisterAction(new DebugAction
-        {
-            Text = "Show GAME save data",
-            Category = category,
-            Action = ShowGameSaveData
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Text = "Show OPTIONS save data",
-            Category = category,
-            Action = ShowOptionsData
-        });
-
-        void ShowGameSaveData(DebugView view)
-        {
-            view.SetContent_List();
-            var data = Get<GameSaveData>();
-            var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
-            view.ContentList.AddText(json);
-        }
-
-        void ShowOptionsData(DebugView view)
-        {
-            view.SetContent_List();
-            var data = Get<OptionsData>();
-            var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
-            view.ContentList.AddText(json);
-        }
-        */
-    }
-
     public void ClearSaveData<T>(int? profile = null)
         where T : SaveData, new()
     {
@@ -68,6 +25,7 @@ public partial class SaveDataController : Node
         try
         {
             var path = GetSaveDataFilePath<T>(profile);
+            EnsureDataExists<T>(profile);
             data = DeserializeFileFromPath<T>(path);
             data = EnsureBetaFileIsNewestVersion<T>(data);
 
@@ -126,6 +84,18 @@ public partial class SaveDataController : Node
         {
             using (FileAccess.Open(path, FileAccess.ModeFlags.Write)) { }
             Debug.Log($"Created file at path: {path}");
+        }
+    }
+
+    private void EnsureDataExists<T>(int? profile = null)
+        where T : SaveData, new()
+    {
+        var path = GetSaveDataFilePath<T>(profile);
+        if (!FileAccess.FileExists(path))
+        {
+            var data = Create<T>(profile);
+            data.Deleted = true;
+            Save(data);
         }
     }
 

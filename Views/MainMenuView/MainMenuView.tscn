@@ -57,6 +57,7 @@ grow_vertical = 2
 
 [node name="MainButtons" type="VBoxContainer" parent="Main/MarginContainer/Control/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
@@ -112,5 +113,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 color = Color(0, 0, 0, 1)

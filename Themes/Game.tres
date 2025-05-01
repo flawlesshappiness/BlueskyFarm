@@ -1,17 +1,23 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bc2oqceig8sg8"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bc2oqceig8sg8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qmgg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61gpr"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0glee"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej5t8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48viq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3apdt"]
 
 [resource]
 Button/styles/disabled = SubResource("StyleBoxEmpty_6qmgg")
 Button/styles/focus = SubResource("StyleBoxEmpty_61gpr")
+Button/styles/hover = SubResource("StyleBoxEmpty_0glee")
 Button/styles/normal = SubResource("StyleBoxEmpty_ej5t8")
+Button/styles/pressed = SubResource("StyleBoxEmpty_48viq")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.392157)
 TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_3apdt")

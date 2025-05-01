@@ -119,7 +119,6 @@ public partial class MainMenuView : View
         {
             var bus = AudioBus.Get(SoundBus.Transition.ToString());
 
-            MainControl.SetMouseFilterRec(MouseFilterEnum.Ignore);
             MouseVisibility.Instance.Lock.RemoveLock(nameof(MainMenuView));
 
             Overlay.Color = Overlay.Color.SetA(0);
@@ -185,7 +184,6 @@ public partial class MainMenuView : View
             MainControl.Show();
             Scene.Goto<MainMenuScene>();
             Scene.PauseLock.RemoveLock(nameof(MainMenuView));
-            MainControl.SetMouseFilterRec(MouseFilterEnum.Stop);
 
             OnReturnToMainMenu?.Invoke();
 

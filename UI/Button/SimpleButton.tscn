@@ -1,16 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://fcw1pka5jd6q"]
+[gd_scene load_steps=6 format=3 uid="uid://fcw1pka5jd6q"]
 
+[ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="1_lyv7e"]
 [ext_resource type="Script" uid="uid://wcmbugnrex8q" path="res://UI/Button/SimpleButton.cs" id="1_tgv3f"]
 [ext_resource type="Resource" uid="uid://b506t8j55td27" path="res://Sound/Resources/sfx_ui_hover.tres" id="2_yr1f3"]
 [ext_resource type="Resource" uid="uid://216xnyaqdp3o" path="res://Sound/Resources/sfx_ui_click.tres" id="3_4th1n"]
+[ext_resource type="Texture2D" uid="uid://lgq5m755jci3" path="res://Assets/KenneyNL/UI-Fantasy/panel-border-006.png" id="4_4uvib"]
 
-[node name="SimpleButton" type="Button"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="SimpleButton" type="Button" node_paths=PackedStringArray("HoverGraphic")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -15.5
+offset_right = 31.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lyv7e")
 text = "Button"
 script = ExtResource("1_tgv3f")
 HoverSound = ExtResource("2_yr1f3")
 PressedSound = ExtResource("3_4th1n")
+HoverGraphic = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4uvib")
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13

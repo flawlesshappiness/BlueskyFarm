@@ -8,12 +8,18 @@ public partial class SimpleButton : Button
     [Export]
     public SoundInfo PressedSound;
 
+    [Export]
+    public Control HoverGraphic;
+
     public override void _Ready()
     {
         base._Ready();
 
         Pressed += OnPressed;
-        MouseEntered += OnHover;
+        MouseEntered += MouseEnter;
+        MouseExited += MouseExit;
+
+        HoverGraphic.Hide();
     }
 
     protected virtual void OnPressed()
@@ -22,9 +28,16 @@ public partial class SimpleButton : Button
         asp.ProcessMode = ProcessModeEnum.Always;
     }
 
-    protected virtual void OnHover()
+    protected virtual void MouseEnter()
     {
         var asp = SoundController.Instance.Play(HoverSound);
         asp.ProcessMode = ProcessModeEnum.Always;
+
+        HoverGraphic.Show();
+    }
+
+    protected virtual void MouseExit()
+    {
+        HoverGraphic.Hide();
     }
 }

@@ -23,7 +23,7 @@ public partial class DeleteProfilePopup : Control
 
     public void UpdateTitle(int profile)
     {
-        TitleLabel.Text = $"Delete Profile {profile}";
+        TitleLabel.Text = $"Delete Profile {profile}?";
     }
 
     private void ClickDelete()

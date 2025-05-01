@@ -14,13 +14,11 @@ public partial class InventoryBar : DynamicUI
         base._Ready();
         ElementTemplate.Hide();
         InitializeElements();
-
-        InventoryController.Instance.OnItemAdded += ItemAdded;
-        InventoryController.Instance.OnItemRemoved += ItemRemoved;
-        InventoryController.Instance.OnSelectedItemChanged += SelectedItemChanged;
-        InventoryController.Instance.OnInventorySizeChanged += InventorySizeChanged;
-
         SetHidden();
+
+        InventoryController.Instance.OnSelectedItemChanged += SelectedItemChanged;
+        InventoryController.Instance.OnInventoryChanged += InventoryChanged;
+        InventoryController.Instance.OnInventorySizeChanged += InventorySizeChanged;
     }
 
     private void InitializeElements()
@@ -33,15 +31,7 @@ public partial class InventoryBar : DynamicUI
             var selected_index = InventoryController.Instance.SelectedIndex;
             if (i == selected_index) e.Select();
             else e.Deselect();
-
-            var data = Data.Game.InventoryItems[i];
-            if (data == null) continue;
-            var info = GD.Load<ItemInfo>(data.Info);
-            if (info == null) continue;
-            e.WorldObject.LoadItem(info);
         }
-
-        UpdateElementVisibility();
     }
 
     private void UpdateElementVisibility()
@@ -59,23 +49,27 @@ public partial class InventoryBar : DynamicUI
         AnimateShow();
     }
 
-    private void ItemAdded(int i)
+    private void InventoryChanged()
     {
-        var info = GetInfo(i);
-        if (info == null) return;
+        Debug.LogMethod();
+        for (int i = 0; i < Data.Game.InventorySize; i++)
+        {
+            var e = GetElement(i);
+            var info = GetInfo(i);
 
-        var e = GetElement(i);
-        e.WorldObject.LoadItem(info);
+            if (info == null)
+            {
+                e.Clear();
+            }
+            else
+            {
+                e.LoadItem(info);
+            }
 
-        UpdateUseLabel(i);
-        AnimateShow();
-    }
+            UpdateUseLabel(i);
+        }
 
-    private void ItemRemoved(int i)
-    {
-        var e = GetElement(i);
-        e.Clear();
-        UpdateUseLabel(i);
+        UpdateElementVisibility();
         AnimateShow();
     }
 

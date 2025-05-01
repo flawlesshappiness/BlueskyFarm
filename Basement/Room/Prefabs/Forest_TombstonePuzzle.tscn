@@ -22,7 +22,7 @@
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="18_3pidp"]
 [ext_resource type="PackedScene" uid="uid://b6jw8n6h38lbx" path="res://Assets/FlawLizArt/Interior/tombstone.fbx" id="18_bux6e"]
 [ext_resource type="Resource" uid="uid://bu58s1oc0iikj" path="res://Sound/Resources/sfx_pickaxe_hit.tres" id="19_jkqc4"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="22_wf0u8"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="22_wf0u8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)

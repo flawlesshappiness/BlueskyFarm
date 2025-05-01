@@ -15,8 +15,7 @@ public partial class InventoryController : SingletonController
     public const int INIT_INVENTORY_SIZE = 2;
     public const int MAX_INVENTORY_SIZE = 10;
 
-    public event Action<int> OnItemAdded;
-    public event Action<int> OnItemRemoved;
+    public event Action OnInventoryChanged;
     public event Action<int> OnSelectedItemChanged;
     public event Action<int> OnSelectedItemUsed;
     public event Action OnInventorySizeChanged;
@@ -29,7 +28,8 @@ public partial class InventoryController : SingletonController
     {
         base.Initialize();
         RegisterDebugActions();
-        LoadData();
+
+        Data.OnGameSaveDataSelected += LoadData;
     }
 
     private void RegisterDebugActions()
@@ -105,6 +105,7 @@ public partial class InventoryController : SingletonController
     private void LoadData()
     {
         CurrentInventoryItems = Data.Game.InventoryItems.ToList().ToArray();
+        OnInventoryChanged?.Invoke();
     }
 
     public void UpdateData()
@@ -213,16 +214,7 @@ public partial class InventoryController : SingletonController
     public void ResetInventory()
     {
         LoadData();
-
-        for (int i = 0; i < MAX_INVENTORY_SIZE; i++)
-        {
-            OnItemRemoved?.Invoke(i);
-
-            if (GetItem(i) != null)
-            {
-                OnItemAdded?.Invoke(i);
-            }
-        }
+        OnInventoryChanged?.Invoke();
     }
 
     public bool HasItem(ItemData item)
@@ -266,7 +258,7 @@ public partial class InventoryController : SingletonController
         if (i == -1) return;
 
         CurrentInventoryItems[i] = data;
-        OnItemAdded?.Invoke(i);
+        OnInventoryChanged?.Invoke();
 
         Debug.Indent--;
     }
@@ -325,22 +317,18 @@ public partial class InventoryController : SingletonController
                 if (item == null) continue;
 
                 DropItem(item);
-                OnItemRemoved?.Invoke(i);
                 yield return new WaitForSeconds(0.05f);
             }
 
             _dropping_inventory = false;
+            OnInventoryChanged?.Invoke();
         }
     }
 
     private void DropItem(int i)
     {
-        var item = CurrentInventoryItems[i];
-        CurrentInventoryItems[i] = null;
-        if (item == null) return;
-
-        DropItem(item);
-        OnItemRemoved?.Invoke(i);
+        DropItem(CurrentInventoryItems[i]);
+        RemoveItem(i);
     }
 
     private void RemoveItem(int i)
@@ -349,7 +337,7 @@ public partial class InventoryController : SingletonController
         CurrentInventoryItems[i] = null;
         if (item == null) return;
 
-        OnItemRemoved?.Invoke(i);
+        OnInventoryChanged?.Invoke();
     }
 
     private void DropItem(ItemData data)
@@ -399,9 +387,10 @@ public partial class InventoryController : SingletonController
             if (info.PerishesOnFarm)
             {
                 CurrentInventoryItems[i] = null;
-                OnItemRemoved?.Invoke(i);
             }
         }
+
+        OnInventoryChanged?.Invoke();
     }
 
     public bool HasNonFarmItems()

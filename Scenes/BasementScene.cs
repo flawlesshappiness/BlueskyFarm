@@ -118,9 +118,8 @@ public partial class BasementScene : GameScene
     private void ApplyTimePassed()
     {
         var time_passed = GameTime.Time - time_scene_started;
-        var plant_areas = Data.Game.Scenes.SelectMany(x => x.PlantAreas);
 
-        foreach (var data in plant_areas)
+        foreach (var data in Data.Game.PlantAreas)
         {
             if (data.TimeLeft > 0)
             {

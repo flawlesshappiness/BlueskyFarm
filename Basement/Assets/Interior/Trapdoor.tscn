@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://c3vhom1xrg5f" path="res://Sound/Resources/sfx_basement_locked.tres" id="4_tgsc5"]
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="4_wdmqa"]
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="5_0uunc"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="5_jee1l"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="5_jee1l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_506dw"]
 size = Vector3(1.88965, 0.185303, 1.89063)

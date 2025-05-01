@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cajbomc7jycrl"]
+[gd_scene load_steps=5 format=3 uid="uid://cajbomc7jycrl"]
 
 [ext_resource type="Script" uid="uid://cqyga1lsip0j" path="res://Views/MainMenuView/MainMenuView.cs" id="1_85mjl"]
 [ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="1_vp35q"]
 [ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="3_cvcfb"]
+[ext_resource type="Texture2D" uid="uid://bkdbbljbw13id" path="res://Assets/FlawLizArt/Logo/logo.png" id="3_uvutn"]
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("PlayButton", "OptionsButton", "QuitButton", "MainControl", "Overlay")]
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "MainControl", "Overlay", "ProfileLabel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,11 +15,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vp35q")
 script = ExtResource("1_85mjl")
-PlayButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/PlayButton")
+NewGameButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/VBoxContainer/NewGameButton")
+ContinueButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/VBoxContainer/ContinueButton")
+ProfilesButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/Profiles")
 OptionsButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/OptionsButton")
 QuitButton = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/QuitButton")
 MainControl = NodePath("Main")
 Overlay = NodePath("Overlay")
+ProfileLabel = NodePath("Main/MarginContainer/Control/HBoxContainer/MainButtons/VBoxContainer/ProfileLabel")
 
 [node name="Main" type="Control" parent="."]
 layout_mode = 1
@@ -35,9 +39,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 
 [node name="Control" type="Control" parent="Main/MarginContainer"]
@@ -55,21 +59,40 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
+[node name="TextureRect" type="TextureRect" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Sprouting Depths"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_uvutn")
+expand_mode = 5
 
 [node name="Space" type="Control" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="PlayButton" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("3_cvcfb")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ProfileLabel" type="Label" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+text = "Profile 1"
+horizontal_alignment = 1
+
+[node name="NewGameButton" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons/VBoxContainer" instance=ExtResource("3_cvcfb")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Play"
+text = "New Game"
+
+[node name="ContinueButton" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons/VBoxContainer" instance=ExtResource("3_cvcfb")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[node name="Profiles" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("3_cvcfb")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Profiles"
 
 [node name="OptionsButton" parent="Main/MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("3_cvcfb")]
 layout_mode = 2

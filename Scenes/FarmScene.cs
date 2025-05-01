@@ -40,7 +40,6 @@ public partial class FarmScene : GameScene
         InitializeEnvironment();
 
         GameFlagIds.FirstTimeLoad.Set(1);
-        Data.Game.Save();
     }
 
     private void InitializeView()

@@ -25,7 +25,7 @@ public partial class Boot : Node
 
     private void Initialize()
     {
-        Debug.TraceMethod();
+        Debug.LogMethod();
         Debug.Indent++;
 
         InitializeTree();

@@ -58,6 +58,7 @@ public partial class ScreenshotScene : Scene
 
             PauseLock.AddLock(nameof(ScreenshotScene));
 
+            yield return SaveImageByResolution(new Vector2I(3840, 1240));
             yield return SaveImageByResolution(new Vector2I(1920, 1080));
             yield return SaveImageByResolution(new Vector2I(1280, 720));
 

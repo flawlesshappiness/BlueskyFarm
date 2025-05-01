@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpnby5b2rp5q5"]
+
+[ext_resource type="Script" uid="uid://cqx58j5wln1fj" path="res://Views/ProfilesView/ProfileControl.cs" id="1_s6ocx"]
+[ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="1_u8hgo"]
+[ext_resource type="Texture2D" uid="uid://r7x0sxuxcwgp" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="2_u8hgo"]
+[ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="3_s1he3"]
+
+[node name="ProfileControl" type="MarginContainer" node_paths=PackedStringArray("SelectButton", "DeleteButton", "ProfileNameLabel", "LastPlayedLabel")]
+custom_minimum_size = Vector2(400, 0)
+theme = ExtResource("1_u8hgo")
+script = ExtResource("1_s6ocx")
+SelectButton = NodePath("HBoxContainer/ProfileData/SelectButton")
+DeleteButton = NodePath("HBoxContainer/DeleteButton")
+ProfileNameLabel = NodePath("HBoxContainer/ProfileData/MarginContainer/VBoxContainer/ProfileNameLabel")
+LastPlayedLabel = NodePath("HBoxContainer/ProfileData/MarginContainer/VBoxContainer/LastPlayedLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ProfileData" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ProfileData"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProfileData/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ProfileNameLabel" type="Label" parent="HBoxContainer/ProfileData/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+text = "Profile 1"
+vertical_alignment = 1
+
+[node name="LastPlayedLabel" type="Label" parent="HBoxContainer/ProfileData/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+text = "Last played: 01-02-2000 23:59"
+
+[node name="SelectButton" parent="HBoxContainer/ProfileData" instance=ExtResource("3_s1he3")]
+layout_mode = 2
+text = ""
+
+[node name="DeleteButton" parent="HBoxContainer" instance=ExtResource("3_s1he3")]
+layout_mode = 2
+text = ""
+icon = ExtResource("2_u8hgo")
+icon_alignment = 1

@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="14_75tnw"]
 [ext_resource type="Script" uid="uid://b86ouogopndwr" path="res://Basement/Room/BasementWellRoom.cs" id="15_5a6tu"]
 [ext_resource type="Resource" uid="uid://c2o7tmidvoux2" path="res://Item/Resources/WellHandle.tres" id="15_pw2rx"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="18_4ou52"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="18_4ou52"]
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="18_pupgp"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="19_rtbro"]
 [ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="21_hcsgb"]

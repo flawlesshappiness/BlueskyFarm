@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://cqb7celmadjfl" path="res://Sound/Resources/sfx_throw_light.tres" id="3_0douv"]
 [ext_resource type="Resource" uid="uid://dlrb10k5kkdnl" path="res://Particle/Resources/ps_smoke_puff_small.tres" id="4_hrh66"]
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="4_tjmp0"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="8_84ghb"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="8_84ghb"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="8_y4bhl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqgqg"]

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dow4r0sirqpsf" path="res://Assets/FlawLizArt/Rocks/rock_breakable.fbx" id="3_7ewy8"]
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="3_dtfq3"]
 [ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="4_5fy32"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="6_2006k"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="6_2006k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqbcm"]
 size = Vector3(1.00452, 0.839294, 0.875)

@@ -31,7 +31,7 @@
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="24_qvql8"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="24_t7rdf"]
 [ext_resource type="Resource" uid="uid://dfqkt7oi06jcd" path="res://Item/Resources/TreeHouseLadderPlank.tres" id="26_puuvn"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="28_ew57b"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="28_ew57b"]
 [ext_resource type="PackedScene" uid="uid://dh65tfqa1nwh7" path="res://Particle/Prefabs/ps_mist.tscn" id="32_2lqwo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]

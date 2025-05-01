@@ -7,7 +7,13 @@ public partial class MainMenuView : View
     public static MainMenuView Instance => View.Get<MainMenuView>();
 
     [Export]
-    public Button PlayButton;
+    public Button NewGameButton;
+
+    [Export]
+    public Button ContinueButton;
+
+    [Export]
+    public Button ProfilesButton;
 
     [Export]
     public Button OptionsButton;
@@ -21,13 +27,18 @@ public partial class MainMenuView : View
     [Export]
     public ColorRect Overlay;
 
+    [Export]
+    public Label ProfileLabel;
+
     private OptionsView OptionsView => View.Get<OptionsView>();
 
     public override void _Ready()
     {
         base._Ready();
 
-        PlayButton.Pressed += ClickPlay;
+        NewGameButton.Pressed += ClickNewGame;
+        ContinueButton.Pressed += ClickContinue;
+        ProfilesButton.Pressed += ClickProfiles;
         OptionsButton.Pressed += ClickOptions;
         QuitButton.Pressed += ClickQuit;
     }
@@ -35,22 +46,55 @@ public partial class MainMenuView : View
     protected override void OnShow()
     {
         base.OnShow();
-        InventoryController.Instance.InventoryLock.AddLock(nameof(MainMenuView));
-        MouseVisibility.Instance.Lock.AddLock(nameof(MainMenuView));
-        PauseView.Instance.ToggleLock.AddLock(nameof(MainMenuView));
+        SetLocks(true);
+        InitializeNewGameButton();
+        InitializeProfileLabel();
     }
 
-    protected override void OnHide()
+    private void SetLocks(bool locked)
     {
-        base.OnHide();
-        InventoryController.Instance.InventoryLock.RemoveLock(nameof(MainMenuView));
-        MouseVisibility.Instance.Lock.RemoveLock(nameof(MainMenuView));
-        PauseView.Instance.ToggleLock.RemoveLock(nameof(MainMenuView));
+        var id = nameof(MainMenuView);
+        InventoryController.Instance.InventoryLock.SetLock(id, locked);
+        MouseVisibility.Instance.Lock.SetLock(id, locked);
+        PauseView.Instance.ToggleLock.SetLock(id, locked);
     }
 
-    private void ClickPlay()
+    private void InitializeNewGameButton()
     {
-        AnimateTransitionToPlay();
+        var profile_data_exists = SaveDataController.Instance.TryLoad<GameSaveData>(out var data, Data.Options.GameSaveDataProfile);
+        NewGameButton.Visible = !profile_data_exists;
+        ContinueButton.Visible = profile_data_exists;
+    }
+
+    private void InitializeProfileLabel()
+    {
+        ProfileLabel.Text = $"Profile {Data.Options.GameSaveDataProfile}";
+    }
+
+    private void ClickNewGame()
+    {
+        Data.CreateGameSaveData(Data.Options.GameSaveDataProfile);
+        Data.Options.Save();
+        ClickContinue();
+    }
+
+    private void ClickContinue()
+    {
+        if (SaveDataController.Instance.TryLoad<GameSaveData>(out var data, Data.Options.GameSaveDataProfile))
+        {
+            Data.SetSelectedGameSaveData(data);
+            AnimateTransitionToPlay();
+        }
+        else
+        {
+            Debug.LogError($"Failed to load data from profile {Data.Options.GameSaveDataProfile}");
+        }
+    }
+
+    private void ClickProfiles()
+    {
+        Hide();
+        ProfilesView.Instance.Show();
     }
 
     private void ClickOptions()
@@ -109,6 +153,7 @@ public partial class MainMenuView : View
 
             Overlay.Hide();
             Hide();
+            SetLocks(false);
             GameView.Instance.Show();
         }
     }

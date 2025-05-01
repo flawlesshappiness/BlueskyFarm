@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bc2oqceig8sg8"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bc2oqceig8sg8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qmgg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61gpr"]
 
@@ -7,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3apdt"]
 
 [resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_6qmgg")
 Button/styles/focus = SubResource("StyleBoxEmpty_61gpr")
 Button/styles/normal = SubResource("StyleBoxEmpty_ej5t8")
 Label/colors/font_color = Color(1, 1, 1, 1)

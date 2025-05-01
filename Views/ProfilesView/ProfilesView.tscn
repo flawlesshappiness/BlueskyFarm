@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq3qry8uy2qi8"]
+
+[ext_resource type="Script" uid="uid://cyp5t15547hx1" path="res://Views/ProfilesView/ProfilesView.cs" id="1_1k02j"]
+[ext_resource type="Theme" uid="uid://bc2oqceig8sg8" path="res://Themes/Game.tres" id="1_2q6kf"]
+[ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="2_tswrw"]
+[ext_resource type="PackedScene" uid="uid://dpnby5b2rp5q5" path="res://Views/ProfilesView/ProfileControl.tscn" id="3_j2i5a"]
+[ext_resource type="PackedScene" uid="uid://ce12k73m8e4ht" path="res://Views/ProfilesView/DeleteProfilePopup.tscn" id="5_c1ktl"]
+
+[node name="ProfilesView" type="Control" node_paths=PackedStringArray("BackButton", "Profile1", "Profile2", "Profile3", "DeleteProfilePopup")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2q6kf")
+script = ExtResource("1_1k02j")
+BackButton = NodePath("MarginContainer/Control/HBoxContainer/MainButtons/BackButton")
+Profile1 = NodePath("MarginContainer/Control/HBoxContainer/MainButtons/Profile1")
+Profile2 = NodePath("MarginContainer/Control/HBoxContainer/MainButtons/Profile2")
+Profile3 = NodePath("MarginContainer/Control/HBoxContainer/MainButtons/Profile3")
+DeleteProfilePopup = NodePath("DeleteProfilePopup")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainButtons" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Profiles"
+horizontal_alignment = 1
+
+[node name="Space" type="Control" parent="MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Profile1" parent="MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("3_j2i5a")]
+layout_mode = 2
+Profile = 1
+
+[node name="Profile2" parent="MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("3_j2i5a")]
+layout_mode = 2
+Profile = 2
+
+[node name="Profile3" parent="MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("3_j2i5a")]
+layout_mode = 2
+Profile = 3
+
+[node name="Space2" type="Control" parent="MarginContainer/Control/HBoxContainer/MainButtons"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/Control/HBoxContainer/MainButtons" instance=ExtResource("2_tswrw")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="DeleteProfilePopup" parent="." instance=ExtResource("5_c1ktl")]
+layout_mode = 1

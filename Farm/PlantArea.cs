@@ -127,13 +127,12 @@ public partial class PlantArea : Node3DScript
 
     private PlantAreaData GetOrCreateData()
     {
-        var scene_data = Scene.Current.SceneData;
-        var data = scene_data.PlantAreas.FirstOrDefault(x => x.Id == Id);
+        var data = Data.Game.PlantAreas.FirstOrDefault(x => x.Id == Id);
 
         if (data == null)
         {
             data = new PlantAreaData { Id = Id };
-            scene_data.PlantAreas.Add(data);
+            Data.Game.PlantAreas.Add(data);
         }
 
         return data;
@@ -141,18 +140,17 @@ public partial class PlantArea : Node3DScript
 
     private void RemoveSeedData(string id)
     {
-        var scene_data = Scene.Current.SceneData;
-        var other_data = scene_data.PlantAreas.FirstOrDefault(x => x.Id == id);
+        var other_data = Data.Game.PlantAreas.FirstOrDefault(x => x.Id == id);
         if (other_data != null)
         {
-            scene_data.PlantAreas.Remove(other_data);
+            Data.Game.PlantAreas.Remove(other_data);
         }
     }
 
     private void SetData(PlantAreaData data)
     {
         RemoveSeedData(data.Id);
-        Scene.Current.SceneData.PlantAreas.Add(data);
+        Data.Game.PlantAreas.Add(data);
     }
 
     private void PlantSeedFromData(PlantAreaData data)

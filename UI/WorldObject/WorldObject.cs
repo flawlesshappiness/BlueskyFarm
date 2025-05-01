@@ -37,30 +37,6 @@ public partial class WorldObject : ControlScript
         _current.Transform = Origin.Transform;
     }
 
-    public void LoadItem(ItemInfo info)
-    {
-        var item = ItemController.Instance.CreateItem(info, new CreateItemSettings
-        {
-            Parent = Origin,
-            Tracked = false,
-        });
-
-        item.ProcessMode = ProcessModeEnum.Disabled;
-        SetObject(item);
-        UpdateCameraFromItemInfo(info);
-        UpdateRotationOffsetFromItemInfo(info);
-    }
-
-    private void UpdateCameraFromItemInfo(ItemInfo info)
-    {
-        Camera.Position = new Vector3(0, 0, info.InventoryItemCameraDistance);
-    }
-
-    private void UpdateRotationOffsetFromItemInfo(ItemInfo info)
-    {
-        RotationOffset.RotationDegrees = new Vector3(info.InventoryItemRotationOffset, 0f, 0f);
-    }
-
     public void StartAnimateSpin()
     {
         StartCoroutine(Cr, "spin");
@@ -85,5 +61,15 @@ public partial class WorldObject : ControlScript
     {
         Spin.RotationDegrees = new Vector3(0, 0, 0);
         Coroutine.Stop("spin" + GetInstanceId());
+    }
+
+    public void SetCameraDistance(float distance)
+    {
+        Camera.Position = new Vector3(0, 0, distance);
+    }
+
+    public void SetRotationOffset(float offset)
+    {
+        RotationOffset.RotationDegrees = new Vector3(offset, 0f, 0f);
     }
 }

@@ -7,4 +7,6 @@ public partial class GameSaveData
         "PlantBox_001",
         "PlantBox_002"
     };
+
+    public List<PlantAreaData> PlantAreas { get; set; } = new();
 }

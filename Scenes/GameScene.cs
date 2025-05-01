@@ -1,5 +1,7 @@
 using Godot;
+using System;
 using System.Collections;
+using System.Linq;
 
 public partial class GameScene : Scene
 {
@@ -11,21 +13,37 @@ public partial class GameScene : Scene
     [Export]
     public DirectionalLight3D DirectionalLight;
 
-    private bool _player_is_dying;
+    public SceneData SceneData { get; set; }
 
+    private bool _player_is_dying;
     private static bool _registered_debug_actions;
+
+    public static event Action<GameScene> OnSceneLoaded;
 
     public override void _Ready()
     {
         base._Ready();
-        _player_is_dying = false;
-
         RegisterDebugActions();
 
-        WorldEnvironment.Environment.AdjustmentEnabled = true;
-        UpdateBrightness();
+        _player_is_dying = false;
 
+        UpdateBrightness();
+        WorldEnvironment.Environment.AdjustmentEnabled = true;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        LoadData();
+        Data.Game.OnBeforeSave += BeforeSave;
         OptionsController.Instance.OnBrightnessChanged += UpdateBrightness;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        Data.Game.OnBeforeSave -= BeforeSave;
+        OptionsController.Instance.OnBrightnessChanged -= UpdateBrightness;
     }
 
     private void UpdateBrightness()
@@ -35,22 +53,28 @@ public partial class GameScene : Scene
         WorldEnvironment.Environment.AdjustmentBrightness = Data.Options.Brightness;
     }
 
-    protected override void Initialize()
-    {
-        base.Initialize();
-        Data.Game.OnBeforeSave += BeforeSave;
-    }
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-
-        Data.Game.OnBeforeSave -= BeforeSave;
-    }
-
     protected virtual void BeforeSave()
     {
 
+    }
+
+    protected virtual void LoadData()
+    {
+        SceneData ??= GetOrCreateData();
+
+        OnSceneLoaded?.Invoke(this);
+    }
+
+    private SceneData GetOrCreateData()
+    {
+        var data = Data.Game.Scenes.FirstOrDefault(x => x.Name == Name);
+        if (data == null)
+        {
+            data = new SceneData { Name = Name };
+            Data.Game.Scenes.Add(data);
+        }
+
+        return data;
     }
 
     private void RegisterDebugActions()

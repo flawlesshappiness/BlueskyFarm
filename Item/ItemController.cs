@@ -15,7 +15,7 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     {
         base._Ready();
         RegisterDebugActions();
-        Scene.OnSceneLoaded += SceneLoaded;
+        GameScene.OnSceneLoaded += SceneLoaded;
     }
 
     /// <summary>
@@ -41,13 +41,13 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
     public void UpdateData()
     {
         ActiveItems.ForEach(item => item.UpdateData());
-        Scene.Current.SceneData.Items = ActiveItemDatas;
+        GameScene.Current.SceneData.Items = ActiveItemDatas;
     }
 
-    private void SceneLoaded()
+    private void SceneLoaded(GameScene scene)
     {
         ActiveItems.Clear();
-        LoadItems(Scene.Current.SceneData.Items);
+        LoadItems(scene.SceneData.Items);
     }
 
     public void LoadItems(List<ItemData> datas)

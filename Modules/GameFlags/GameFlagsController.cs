@@ -11,8 +11,19 @@ public partial class GameFlagsController : SingletonController
     protected override void Initialize()
     {
         base.Initialize();
-        Data.Game.OnBeforeSave += BeforeSave;
+        Data.OnGameSaveDataSelected += GameSaveDataSelected;
+        Data.OnGameSaveDataRemoved += GameSaveDataRemoved;
+    }
+
+    private void GameSaveDataSelected()
+    {
         LoadData();
+        Data.Game.OnBeforeSave += BeforeSave;
+    }
+
+    private void GameSaveDataRemoved()
+    {
+        Data.Game.OnBeforeSave -= BeforeSave;
     }
 
     private void LoadData()

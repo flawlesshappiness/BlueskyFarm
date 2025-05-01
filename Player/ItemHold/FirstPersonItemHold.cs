@@ -12,8 +12,7 @@ public partial class FirstPersonItemHold : Node3DScript
         base._Ready();
         InventoryController.Instance.OnSelectedItemUsed += SelectedItemUsed;
         InventoryController.Instance.OnSelectedItemChanged += SelectedItemChanged;
-        InventoryController.Instance.OnItemAdded += ItemAdded;
-        InventoryController.Instance.OnItemRemoved += ItemRemoved;
+        InventoryController.Instance.OnInventoryChanged += InventoryChanged;
     }
 
     public override void _ExitTree()
@@ -21,16 +20,10 @@ public partial class FirstPersonItemHold : Node3DScript
         base._ExitTree();
         InventoryController.Instance.OnSelectedItemUsed -= SelectedItemUsed;
         InventoryController.Instance.OnSelectedItemChanged -= SelectedItemChanged;
-        InventoryController.Instance.OnItemAdded -= ItemAdded;
-        InventoryController.Instance.OnItemRemoved -= ItemRemoved;
+        InventoryController.Instance.OnInventoryChanged -= InventoryChanged;
     }
 
-    private void ItemAdded(int i)
-    {
-        UpdateHeldItem();
-    }
-
-    private void ItemRemoved(int i)
+    private void InventoryChanged()
     {
         UpdateHeldItem();
     }

@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce12k73m8e4ht"]
+
+[ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="1_172nm"]
+[ext_resource type="Script" uid="uid://blc6vr6f33e2u" path="res://Views/ProfilesView/DeleteProfilePopup.cs" id="1_to2os"]
+
+[node name="DeleteProfilePopup" type="Control" node_paths=PackedStringArray("TitleLabel", "ButtonDelete", "ButtonCancel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_to2os")
+TitleLabel = NodePath("CenterContainer/PopupWindow/MarginContainer/VBoxContainer/TitleLabel")
+ButtonDelete = NodePath("CenterContainer/PopupWindow/MarginContainer/VBoxContainer/HBoxContainer/PopupDeleteButton")
+ButtonCancel = NodePath("CenterContainer/PopupWindow/MarginContainer/VBoxContainer/HBoxContainer/PopupCancelCancel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupWindow" type="Control" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/PopupWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PopupWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PopupWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PopupWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+text = "Delete Profile 1?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PopupWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PopupDeleteButton" parent="CenterContainer/PopupWindow/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_172nm")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.5, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Delete"
+
+[node name="PopupCancelCancel" parent="CenterContainer/PopupWindow/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_172nm")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Cancel"

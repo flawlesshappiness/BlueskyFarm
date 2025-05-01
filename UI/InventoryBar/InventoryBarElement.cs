@@ -17,6 +17,7 @@ public partial class InventoryBarElement : ControlScript
 
     public bool Selected { get; private set; }
 
+    private ItemInfo _current_item;
     private Coroutine _cr_warning;
 
     public override void _Ready()
@@ -27,6 +28,7 @@ public partial class InventoryBarElement : ControlScript
 
     public void Clear()
     {
+        _current_item = null;
         WorldObject.Clear();
         StopDisabledWarning();
     }
@@ -65,5 +67,32 @@ public partial class InventoryBarElement : ControlScript
     {
         Coroutine.Stop(_cr_warning);
         DisabledControl.Hide();
+    }
+
+    public void LoadItem(ItemInfo info)
+    {
+        if (_current_item == info) return;
+        _current_item = info;
+
+        var item = ItemController.Instance.CreateItem(info, new CreateItemSettings
+        {
+            Parent = WorldObject.Origin,
+            Tracked = false,
+        });
+
+        item.ProcessMode = ProcessModeEnum.Disabled;
+        WorldObject.SetObject(item);
+        UpdateCameraFromItemInfo(info);
+        UpdateRotationOffsetFromItemInfo(info);
+    }
+
+    private void UpdateCameraFromItemInfo(ItemInfo info)
+    {
+        WorldObject.SetCameraDistance(info.InventoryItemCameraDistance);
+    }
+
+    private void UpdateRotationOffsetFromItemInfo(ItemInfo info)
+    {
+        WorldObject.SetRotationOffset(info.InventoryItemRotationOffset);
     }
 }

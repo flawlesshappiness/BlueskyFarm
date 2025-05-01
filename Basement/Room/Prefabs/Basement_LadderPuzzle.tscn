@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="18_lxvky"]
 [ext_resource type="Material" uid="uid://cpsww1jp56wmb" path="res://Assets/Materials/Rope.tres" id="18_xt14v"]
 [ext_resource type="Script" uid="uid://bc1nn24wnca0e" path="res://Basement/Room/Prefabs/Basement_LadderPuzzle/CuttableRope.cs" id="19_p3mx5"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="20_xcqpa"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="20_xcqpa"]
 [ext_resource type="PackedScene" uid="uid://cpftv6batgsn" path="res://Assets/FlawLizArt/Interior/pulley.fbx" id="21_dj3tf"]
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="23_pyx5l"]
 [ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="28_nrmws"]

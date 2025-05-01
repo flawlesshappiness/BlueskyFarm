@@ -26,6 +26,7 @@ public partial class ScreenshotController : SingletonController
             view.SetContent_Search();
 
             view.ContentSearch.AddItem("Basement", () => { view.Close(); Scene.Goto("Screenshot_001"); });
+            view.ContentSearch.AddItem("Basement Corridor", () => { view.Close(); Scene.Goto("Screenshot_005"); });
             view.ContentSearch.AddItem("Forest", () => { view.Close(); Scene.Goto("Screenshot_002"); });
             view.ContentSearch.AddItem("Cult Hallway", () => { view.Close(); Scene.Goto("Screenshot_003"); });
             view.ContentSearch.AddItem("Mine Corridor", () => { view.Close(); Scene.Goto("Screenshot_004"); });

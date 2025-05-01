@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c72e4lxg6cy8c" path="res://Assets/FlawLizArt/Rocks/rocks.fbx" id="7_5qjil"]
 [ext_resource type="Script" uid="uid://cr0ycwsjhbonr" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="8_r1us3"]
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="9_rdxji"]
-[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large.png" id="10_5fl03"]
+[ext_resource type="Texture2D" uid="uid://dyfa8auj0pin3" path="res://Assets/KenneyNL/Cursors/cross_large_outline.png" id="10_5fl03"]
 [ext_resource type="Script" uid="uid://bsfga8476vbp8" path="res://Basement/Room/Prefabs/Basement_RockPuzzleRoom.cs" id="11_cgq13"]
 [ext_resource type="Resource" uid="uid://bu58s1oc0iikj" path="res://Sound/Resources/sfx_pickaxe_hit.tres" id="11_nsnco"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="12_l0275"]

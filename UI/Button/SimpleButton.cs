@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 
 public partial class SimpleButton : Button
 {
@@ -39,5 +40,22 @@ public partial class SimpleButton : Button
     protected virtual void MouseExit()
     {
         HoverGraphic.Hide();
+    }
+
+    private Coroutine AnimateHoverGraphic(bool show, float duration)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateHoverGraphic))
+            .SetRunWhilePaused(true);
+        IEnumerator Cr()
+        {
+            var start = HoverGraphic.Modulate.A;
+            var end = show ? 1f : 0f;
+            yield return LerpEnumerator.Lerp01_Unscaled(duration, f =>
+            {
+                var a = Mathf.Lerp(start, end, f);
+                var modulate = HoverGraphic.Modulate.SetA(a);
+                HoverGraphic.Modulate = modulate;
+            });
+        }
     }
 }

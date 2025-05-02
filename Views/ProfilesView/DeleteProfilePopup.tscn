@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce12k73m8e4ht"]
+[gd_scene load_steps=4 format=3 uid="uid://ce12k73m8e4ht"]
 
 [ext_resource type="PackedScene" uid="uid://fcw1pka5jd6q" path="res://UI/Button/SimpleButton.tscn" id="1_172nm"]
 [ext_resource type="Script" uid="uid://blc6vr6f33e2u" path="res://Views/ProfilesView/DeleteProfilePopup.cs" id="1_to2os"]
+[ext_resource type="Texture2D" uid="uid://duqwhe5x6xbvi" path="res://Assets/KenneyNL/UI-Fantasy/panel-border-003.png" id="2_0merk"]
 
 [node name="DeleteProfilePopup" type="Control" node_paths=PackedStringArray("TitleLabel", "ButtonDelete", "ButtonCancel")]
 layout_mode = 3
@@ -33,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PopupWindow" type="Control" parent="CenterContainer"]
-custom_minimum_size = Vector2(400, 200)
+custom_minimum_size = Vector2(450, 200)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer/PopupWindow"]
@@ -43,7 +44,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.0585, 0.169, 0.39, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/PopupWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0merk")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PopupWindow"]
 layout_mode = 1
@@ -52,9 +70,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PopupWindow/MarginContainer"]
@@ -69,6 +87,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PopupWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 25
 
 [node name="PopupDeleteButton" parent="CenterContainer/PopupWindow/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_172nm")]
 layout_mode = 2

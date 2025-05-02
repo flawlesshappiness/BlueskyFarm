@@ -134,6 +134,11 @@ public partial class MainMenuView : View
             });
 
             MainControl.Hide();
+
+            OnGameStarted?.Invoke();
+
+            yield return null;
+
             Scene.Goto<FarmScene>();
 
             yield return LerpEnumerator.Lerp01_Unscaled(1f, f =>
@@ -148,8 +153,6 @@ public partial class MainMenuView : View
             Overlay.Hide();
             Hide();
             SetLocks(false);
-
-            OnGameStarted?.Invoke();
 
             GameView.Instance.Show();
         }

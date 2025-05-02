@@ -60,6 +60,13 @@ public partial class BasementWellRoom : Node3DScript
             .Where(x => !x.HasItem)
             .ToList().Random();
 
+        if (container == null)
+        {
+            container = containers
+                .ToList()
+                .Random();
+        }
+
         container.SetItem(WellHandle);
     }
 

@@ -12,10 +12,16 @@ public partial class RootMimicEnemy : NavEnemy
     public AnimationPlayer AnimationPlayer;
 
     [Export]
+    public Marker3D CameraTarget;
+
+    [Export]
     public SoundInfo SfxThreat;
 
     [Export]
     public SoundInfo SfxGrowl;
+
+    [Export]
+    public SoundInfo SfxPlayerDeath;
 
     protected override string EnemyName => "RootMimic";
     protected override string DefaultState => StateWander;
@@ -65,7 +71,7 @@ public partial class RootMimicEnemy : NavEnemy
         _anim_waiting = AnimationStateMachine.CreateAnimation("Armature|waiting", false);
         _anim_walk = AnimationStateMachine.CreateAnimation("Armature|walk", true);
         _anim_threat = AnimationStateMachine.CreateAnimation("Armature|threat", true);
-        _anim_attack = AnimationStateMachine.CreateAnimation("Armature|attack", false);
+        _anim_attack = AnimationStateMachine.CreateAnimation("Armature|scream", false);
 
         _param_moving = AnimationStateMachine.CreateParameter("moving", false);
         _param_threat = AnimationStateMachine.CreateParameter("threat", false);
@@ -275,21 +281,33 @@ public partial class RootMimicEnemy : NavEnemy
 
     private IEnumerator StateCr_Attacking()
     {
-        var dir = -DirectionToPlayer.Normalized();
-        var start_position = GlobalPosition;
-        var attack_position = Player.Instance.GlobalPosition + dir * 3f;
+        StopNavigation();
+        StartFacingPlayer();
 
         Player.MovementLock.AddLock(EnemyId);
         Player.LookLock.AddLock(EnemyId);
-        Player.Instance.StartLookingAt(this, 0.1f);
 
-        yield return LerpEnumerator.Lerp01(0.25f, f =>
-        {
-            GlobalPosition = start_position.Lerp(attack_position, f);
-        });
-
-        SfxThreat.Play();
+        SfxGrowl.Play();
+        var asp_death = SfxPlayerDeath.Play();
         _param_attack.Trigger();
+
+        ScreenEffects.View.SetCameraTarget(CameraTarget);
+        ScreenEffects.SetHeartbeatFrequency(EnemyId, 0.5f);
+        ScreenEffects.AnimateRadialBlurIn(EnemyId, 0.02f, 2.0f);
+        ScreenEffects.AnimateCameraShakeIn(EnemyId, 0.05f, 1.0f);
+
+        yield return new WaitForSeconds(2f);
+
+        asp_death.Stop();
+
+        GameScene.Current.KillPlayer();
+
+        ScreenEffects.AnimateRadialBlurOut(EnemyId, 0);
+        ScreenEffects.AnimateCameraShakeOut(EnemyId, 0);
+        ScreenEffects.RemoveHeartbeatFrequency(EnemyId);
+
+        Player.MovementLock.RemoveLock(EnemyId);
+        Player.LookLock.RemoveLock(EnemyId);
     }
 
     public void KillPlayer()

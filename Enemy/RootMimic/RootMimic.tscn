@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxfgevkl7ilyk"]
+[gd_scene load_steps=7 format=3 uid="uid://cxfgevkl7ilyk"]
 
 [ext_resource type="Script" uid="uid://dh7hq2x5b7f7b" path="res://Enemy/RootMimic/RootMimicEnemy.cs" id="1_t6yvr"]
 [ext_resource type="Resource" uid="uid://bcjo374mloqa1" path="res://Sound/Resources/sfx_root_mimic_threat.tres" id="2_s07g6"]
 [ext_resource type="Resource" uid="uid://cgrr54nr5vhsn" path="res://Sound/Resources/sfx_root_mimic_growl.tres" id="3_qqxnu"]
+[ext_resource type="Resource" uid="uid://cx6dypjuuaons" path="res://Sound/Resources/sfx_player_death.tres" id="4_qq1gl"]
 [ext_resource type="PackedScene" uid="uid://db0ljdf5snve7" path="res://Assets/FlawLizArt/RootMimic/root_mimic.fbx" id="5_d8p8m"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="6_865gx"]
 
-[node name="RootMimic" type="Node3D" node_paths=PackedStringArray("AnimationStateMachine", "AnimationPlayer")]
+[node name="RootMimic" type="Node3D" node_paths=PackedStringArray("AnimationStateMachine", "AnimationPlayer", "CameraTarget")]
 script = ExtResource("1_t6yvr")
 AnimationStateMachine = NodePath("AnimationStateMachine")
 AnimationPlayer = NodePath("root_mimic/AnimationPlayer")
+CameraTarget = NodePath("CameraTarget")
 SfxThreat = ExtResource("2_s07g6")
 SfxGrowl = ExtResource("3_qqxnu")
+SfxPlayerDeath = ExtResource("4_qq1gl")
 MoveSpeed = 4.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -22,41 +25,43 @@ path_postprocessing = 1
 transform = Transform3D(-1.7, 0, -2.56693e-07, 0, 1.7, 0, 2.56693e-07, 0, -1.7, 0, 0, 0)
 
 [node name="Skeleton3D" parent="root_mimic/Armature" index="0"]
-bones/0/position = Vector3(2.79192e-19, -0.00559947, 0.00125737)
-bones/1/rotation = Quaternion(-7.61205e-06, -4.99307e-18, 1.22233e-20, 1)
-bones/2/rotation = Quaternion(2.43059e-05, 8.58391e-21, -1.84235e-20, 1)
-bones/3/rotation = Quaternion(1.03711e-06, 1.30504e-20, -4.87145e-22, 1)
-bones/4/rotation = Quaternion(-0.000617565, 4.08768e-21, 7.87039e-21, 1)
-bones/5/rotation = Quaternion(0.00286253, 2.54926e-21, 5.06339e-21, 0.999996)
-bones/6/rotation = Quaternion(-0.0035482, -1.39835e-21, -5.64912e-21, 0.999994)
-bones/8/rotation = Quaternion(0.0232392, 0.182192, 0.709853, 0.679982)
-bones/9/rotation = Quaternion(-0.305706, -0.199747, -0.0091897, 0.930892)
-bones/12/rotation = Quaternion(0.0232392, -0.182192, -0.709853, 0.679982)
-bones/13/rotation = Quaternion(-0.305706, 0.199747, 0.00918974, 0.930892)
-bones/16/rotation = Quaternion(0.0850258, 0.122241, 0.705125, 0.693272)
-bones/17/rotation = Quaternion(-0.305711, -0.0350648, -0.00918995, 0.951434)
-bones/20/rotation = Quaternion(0.0850258, -0.122241, -0.705125, 0.693272)
-bones/21/rotation = Quaternion(-0.305711, 0.0350648, 0.00918994, 0.951434)
-bones/24/rotation = Quaternion(0.146161, 0.0613559, 0.695029, 0.701289)
-bones/25/rotation = Quaternion(-0.305714, 0.130682, -0.00919157, 0.943068)
-bones/28/rotation = Quaternion(0.146161, -0.0613559, -0.69503, 0.701289)
-bones/29/rotation = Quaternion(-0.305714, -0.130682, 0.00919157, 0.943068)
-bones/32/rotation = Quaternion(0.99232, -7.35596e-19, -2.20467e-16, -0.123694)
-bones/33/rotation = Quaternion(-0.0908445, -2.47462e-20, 1.91245e-17, 0.995865)
-bones/34/rotation = Quaternion(-0.239164, -3.13811e-20, 5.30445e-17, 0.970979)
-bones/36/position = Vector3(2.79192e-19, 0.00990383, 0.00125737)
-bones/38/position = Vector3(-0.0102658, -0.00361872, 0)
-bones/40/position = Vector3(-0.0102658, 0.00363263, 0)
-bones/42/position = Vector3(-0.0102658, -5.59352e-06, 0)
-bones/44/position = Vector3(0.0102658, -0.00361872, 0)
-bones/46/position = Vector3(0.0102658, 0.00363263, 0)
-bones/48/position = Vector3(0.0102658, -5.59352e-06, 0)
-bones/50/position = Vector3(2.55287e-19, -0.0133211, 0.00114971)
+bones/1/rotation = Quaternion(-0.0875539, -1.70869e-16, 1.61016e-16, 0.99616)
+bones/2/rotation = Quaternion(0.253157, -2.17633e-17, -1.06188e-16, 0.967425)
+bones/3/rotation = Quaternion(0.248975, -4.53399e-17, -1.89508e-16, 0.96851)
+bones/4/rotation = Quaternion(-0.073357, -4.93293e-17, -2.16518e-16, 0.997306)
+bones/5/rotation = Quaternion(-0.192077, -3.08958e-17, -1.34652e-16, 0.98138)
+bones/6/rotation = Quaternion(-0.204471, -9.45713e-18, -8.19605e-17, 0.978873)
+bones/8/rotation = Quaternion(0.263824, 0.156242, 0.476905, 0.82374)
+bones/9/rotation = Quaternion(-0.527908, -0.264759, -0.352715, 0.725816)
+bones/12/rotation = Quaternion(0.206319, -0.167493, -0.453915, 0.850494)
+bones/13/rotation = Quaternion(-0.422105, 0.276126, 0.281779, 0.8162)
+bones/16/rotation = Quaternion(0.322732, 0.371648, 0.631736, 0.598859)
+bones/17/rotation = Quaternion(-0.743495, -0.0221567, -0.00242327, 0.66837)
+bones/20/rotation = Quaternion(0.347698, -0.379683, -0.622241, 0.589714)
+bones/21/rotation = Quaternion(-0.773253, 0.0235834, 0.0253279, 0.633153)
+bones/24/rotation = Quaternion(0.182791, 0.215395, 0.744314, 0.605135)
+bones/25/rotation = Quaternion(-0.554556, 0.149439, 0.150103, 0.804739)
+bones/28/rotation = Quaternion(0.274023, -0.290594, -0.661369, 0.634868)
+bones/29/rotation = Quaternion(-0.667304, -0.121457, -0.111267, 0.726342)
+bones/32/rotation = Quaternion(0.999996, -5.01997e-17, -2.30596e-16, -0.00287554)
+bones/33/rotation = Quaternion(-0.345664, 1.83639e-17, 1.20725e-16, 0.938358)
+bones/34/rotation = Quaternion(-0.465193, 6.39672e-18, 1.19754e-16, 0.885209)
+bones/36/position = Vector3(1.28022e-18, 0.00682966, 0.00559847)
+bones/38/position = Vector3(-0.00792609, -0.00791458, 0)
+bones/40/position = Vector3(-0.0036069, 0.00812605, 0.00835527)
+bones/42/position = Vector3(-0.00794422, 3.42824e-05, 0)
+bones/44/position = Vector3(0.00803537, -0.0062479, 0)
+bones/46/position = Vector3(0.00480909, 0.00812605, 0.0087651)
+bones/48/position = Vector3(0.00765278, 0.000389476, 0)
+bones/50/position = Vector3(2.55287e-19, -0.0108293, 0.00501858)
 
 [node name="AnimationPlayer" parent="root_mimic" index="1"]
 playback_default_blend_time = 0.25
 
 [node name="AnimationStateMachine" type="Node" parent="."]
 script = ExtResource("6_865gx")
+
+[node name="CameraTarget" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.539315, -0.842104, 0, 0.842104, 0.539315, 0, 0.375739, 1.28949)
 
 [editable path="root_mimic"]

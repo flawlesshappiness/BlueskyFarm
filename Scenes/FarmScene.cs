@@ -116,6 +116,7 @@ public partial class FarmScene : GameScene
     private void BasementUnlockArea_ItemEntered(Item item)
     {
         item.IsBeingHandled = true;
+        GameFlagIds.FarmBasementUnlocked.SetTrue();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
@@ -123,7 +124,6 @@ public partial class FarmScene : GameScene
             SoundController.Instance.Play("sfx_basement_unlock", Trapdoor.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             Trapdoor.SetLocked(false);
-            GameFlagIds.FarmBasementUnlocked.SetTrue();
         }
     }
 }

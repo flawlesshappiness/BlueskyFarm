@@ -107,7 +107,7 @@ public partial class DreamController : SingletonController
             if (immediate)
             {
                 GameView.Instance.SetBlackOverlayAlpha(1);
-                yield return new WaitForSeconds(2f);
+                yield return null;
             }
             else
             {

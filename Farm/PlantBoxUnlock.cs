@@ -3,10 +3,13 @@ using System.Collections;
 
 public partial class PlantBoxUnlock : Node3DScript
 {
-    [NodeType]
+    [Export]
     public PlantArea PlantArea;
 
-    [NodeName]
+    [Export]
+    public Node3D Broken;
+
+    [Export]
     public Area3D AreaUnlock;
 
     public const string ITEM_UNLOCK_ID = "plant_box_unlock";
@@ -17,6 +20,10 @@ public partial class PlantBoxUnlock : Node3DScript
 
         AreaUnlock.BodyEntered += go => CallDeferred(nameof(BodyEntered), go);
 
+        var rng = new RandomNumberGenerator();
+        var r = rng.RandfRange(0, 360);
+        Broken.GlobalRotationDegrees = new Vector3(0, r, 0);
+
         LoadData();
     }
 
@@ -24,6 +31,7 @@ public partial class PlantBoxUnlock : Node3DScript
     {
         var is_unlocked = Data.Game.UnlockedPlantBoxes.Contains(PlantArea.Id);
         PlantArea.SetEnabled(is_unlocked);
+        Broken.SetEnabled(!is_unlocked);
         AreaUnlock.SetEnabled(!is_unlocked);
     }
 
@@ -40,6 +48,7 @@ public partial class PlantBoxUnlock : Node3DScript
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             PlantArea.Enable();
+            Broken.Disable();
             Particle.PlayOneShot("ps_dirt_puff", PlantArea.GlobalPosition);
             SoundController.Instance.Play("sfx_plant_box_create", PlantArea.GlobalPosition);
             yield return PlantArea.AnimateAppear();

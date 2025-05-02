@@ -51,7 +51,6 @@ public partial class InventoryBar : DynamicUI
 
     private void InventoryChanged()
     {
-        Debug.LogMethod();
         for (int i = 0; i < Data.Game.InventorySize; i++)
         {
             var e = GetElement(i);

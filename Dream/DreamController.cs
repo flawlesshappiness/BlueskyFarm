@@ -6,7 +6,7 @@ public partial class DreamController : SingletonController
     public static DreamController Instance => Singleton.Get<DreamController>();
     public override string Directory => "Dream";
 
-    private List<string> _scenes = new List<string> { "Dream_Office", "Dream_Falling" };
+    private List<string> _scenes = new List<string> { nameof(Dream_Office), nameof(Dream_Falling), nameof(Dream_Hovel) };
 
     private bool _transitioning;
     private string FxId => nameof(DreamController);
@@ -41,8 +41,9 @@ public partial class DreamController : SingletonController
             view.SetContent_Search();
 
             view.ContentSearch.ClearItems();
-            view.ContentSearch.AddItem("Office", () => { view.Close(); StartDream("Dream_Office"); });
-            view.ContentSearch.AddItem("Falling", () => { view.Close(); StartDream("Dream_Falling"); });
+            view.ContentSearch.AddItem("Office", () => { view.Close(); StartDream(nameof(Dream_Office)); });
+            view.ContentSearch.AddItem("Falling", () => { view.Close(); StartDream(nameof(Dream_Falling)); });
+            view.ContentSearch.AddItem("Hovel", () => { view.Close(); StartDream(nameof(Dream_Hovel)); });
             view.ContentSearch.UpdateButtons();
         }
     }
@@ -106,7 +107,7 @@ public partial class DreamController : SingletonController
             if (immediate)
             {
                 GameView.Instance.SetBlackOverlayAlpha(1);
-                yield return null;
+                yield return new WaitForSeconds(2f);
             }
             else
             {

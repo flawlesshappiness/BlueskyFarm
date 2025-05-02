@@ -8,6 +8,7 @@ public partial class DreamScene : Scene
 
     protected string DebugCategory = "DREAM - SCENE";
     protected string DebugId => DebugCategory + GetInstanceId();
+    protected string FxId => GetType().Name;
 
     private bool _dream_completed;
 
@@ -15,7 +16,12 @@ public partial class DreamScene : Scene
     {
         base._Ready();
 
-        ScreenEffects.View.SetCameraTarget(Camera);
+        if (Camera != null)
+        {
+            ScreenEffects.View.SetCameraTarget(Camera);
+        }
+
+        SetLocks(true);
 
         RegisterDebugActions();
     }
@@ -45,6 +51,7 @@ public partial class DreamScene : Scene
     {
         base._ExitTree();
         Debug.RemoveActions(DebugId);
+        SetLocks(false);
     }
 
     protected void CompleteDream(bool immediate = false)
@@ -53,5 +60,10 @@ public partial class DreamScene : Scene
         _dream_completed = true;
 
         DreamController.Instance.EndDream(immediate);
+    }
+
+    private void SetLocks(bool locked)
+    {
+        InventoryController.Instance.InventoryLock.SetLock(FxId, locked);
     }
 }

@@ -70,10 +70,15 @@ public partial class BasementWellRoom : Node3DScript
 
     private void InitializeKey()
     {
-        if (GameFlagIds.BasementWorkshopDoorUnlocked.IsTrue()) return;
-
-        Well.AttachObjectToRope(KeyOnRope);
-        KeyOnRopeTouchable.OnTouched += KeyOnRope_Touched;
+        if (GameFlagIds.BasementWorkshopDoorUnlocked.IsTrue())
+        {
+            KeyOnRope.Disable();
+        }
+        else
+        {
+            Well.AttachObjectToRope(KeyOnRope);
+            KeyOnRopeTouchable.OnTouched += KeyOnRope_Touched;
+        }
     }
 
     private void OnWellAnimate()

@@ -31,12 +31,9 @@ public partial class BasementWellRoom : Node3DScript
     {
         base._Ready();
 
-        Well.AttachObjectToRope(KeyOnRope);
         Well.OnRaiseFinished += OnWellRaised;
         Well.OnRaise += OnWellAnimate;
         Well.OnLower += OnWellAnimate;
-
-        KeyOnRopeTouchable.OnTouched += KeyOnRope_Touched;
 
         HandleArea.OnItemEntered += HandleArea_ItemEntered;
     }
@@ -45,6 +42,7 @@ public partial class BasementWellRoom : Node3DScript
     {
         base.Initialize();
         InitializeHandle();
+        InitializeKey();
     }
 
     private void InitializeHandle()
@@ -68,6 +66,14 @@ public partial class BasementWellRoom : Node3DScript
         }
 
         container.SetItem(WellHandle);
+    }
+
+    private void InitializeKey()
+    {
+        if (GameFlagIds.BasementWorkshopDoorUnlocked.IsTrue()) return;
+
+        Well.AttachObjectToRope(KeyOnRope);
+        KeyOnRopeTouchable.OnTouched += KeyOnRope_Touched;
     }
 
     private void OnWellAnimate()

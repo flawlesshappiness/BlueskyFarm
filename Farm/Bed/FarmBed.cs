@@ -118,13 +118,13 @@ public partial class FarmBed : Node3D
                 GaussianBlurStartDuration = 1f
             });
 
-            GrowPlants();
             yield return new WaitForSeconds(1f);
 
             bool is_dream = true;
             if (is_dream)
             {
                 StartDream();
+                GrowPlants();
             }
             else
             {
@@ -146,11 +146,6 @@ public partial class FarmBed : Node3D
 
     private void GrowPlants()
     {
-        var scene = Scene.Current as FarmScene;
-
-        foreach (var plant_area in scene.PlantAreas)
-        {
-            plant_area.CompleteSeed();
-        }
+        Data.Game.PlantAreas.ForEach(area => area.TimeLeft = 0);
     }
 }

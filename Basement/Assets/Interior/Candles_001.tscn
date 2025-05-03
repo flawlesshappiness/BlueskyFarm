@@ -21,7 +21,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80261, 0)
 light_color = Color(1, 0.75, 0, 1)
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 28.0
+distance_fade_begin = 18.0
+distance_fade_shadow = 18.0
 omni_range = 3.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
@@ -29,7 +30,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94066, 0)
 light_color = Color(0.46, 0.191667, 0, 1)
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 28.0
+distance_fade_begin = 18.0
+distance_fade_shadow = 18.0
 omni_range = 10.0
 
 [node name="Models" type="Node3D" parent="."]

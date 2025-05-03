@@ -91,8 +91,8 @@ light_volumetric_fog_energy = 12.0
 shadow_enabled = true
 shadow_opacity = 0.75
 distance_fade_enabled = true
-distance_fade_begin = 28.0
-distance_fade_shadow = 28.0
+distance_fade_begin = 18.0
+distance_fade_shadow = 18.0
 spot_range = 15.0
 spot_angle = 25.0
 
@@ -101,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0.75)
 light_color = Color(0.85, 0.8875, 1, 1)
 light_volumetric_fog_energy = 8.0
 distance_fade_enabled = true
-distance_fade_begin = 28.0
+distance_fade_begin = 18.0
 omni_range = 3.5
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
@@ -110,7 +110,7 @@ light_color = Color(0.75, 0.8125, 1, 1)
 light_energy = 0.5
 light_volumetric_fog_energy = 0.0
 distance_fade_enabled = true
-distance_fade_begin = 28.0
+distance_fade_begin = 18.0
 omni_range = 16.0
 
 [node name="ps_dust_falling" type="GPUParticles3D" parent="."]

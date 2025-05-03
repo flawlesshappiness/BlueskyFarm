@@ -1,10 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://b8pe6se1ypjqj"]
+[gd_scene load_steps=8 format=3 uid="uid://b8pe6se1ypjqj"]
 
 [ext_resource type="PackedScene" uid="uid://x5y3v05umne6" path="res://Assets/FlawLizArt/Weedcutter/weedcutter.fbx" id="2_681r8"]
 [ext_resource type="AudioStream" uid="uid://bhjn1am5fdjeg" path="res://Sound/Sounds/sfx_weedcutter_open.wav" id="3_67kqc"]
 [ext_resource type="AudioStream" uid="uid://dp8tp12x4rnuk" path="res://Sound/Sounds/sfx_weedcutter_close.wav" id="4_1gr3m"]
-[ext_resource type="PackedScene" uid="uid://bef8do3vhaxvt" path="res://Particle/Prefabs/ps_dust_falling.tscn" id="5_yy756"]
-[ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="6_uvheh"]
 
 [sub_resource type="Animation" id="Animation_1d6f2"]
 length = 0.001
@@ -126,18 +124,6 @@ tracks/10/path = NodePath("sfx_close:playing")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("ps_dust_falling:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -269,18 +255,6 @@ tracks/10/keys = {
 "update": 1,
 "values": [false, true, false]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("ps_dust_falling:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.566667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gai23"]
 _data = {
@@ -290,67 +264,6 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f7644"]
 size = Vector3(2, 4, 2)
-
-[sub_resource type="Curve" id="Curve_1vuns"]
-_data = [Vector2(0, 1), 0.0, -0.339973, 0, 0, Vector2(1, 0), -1.52988, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_7ocfs"]
-curve = SubResource("Curve_1vuns")
-
-[sub_resource type="Curve" id="Curve_lyept"]
-_limits = [0.0, 5.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(1, 5), 5.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_i6kro"]
-curve = SubResource("Curve_lyept")
-
-[sub_resource type="Curve" id="Curve_5cqpg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_tqwpf"]
-curve = SubResource("Curve_5cqpg")
-
-[sub_resource type="Curve" id="Curve_4cwhy"]
-_limits = [0.0, 3.0, 0.0, 1.0]
-_data = [Vector2(0, 3), 0.0, -0.381724, 0, 0, Vector2(1, 0), -5.93407, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_tjyem"]
-curve = SubResource("Curve_4cwhy")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0khsl"]
-lifetime_randomness = 0.2
-angle_min = -4.99999
-angle_max = 5.00001
-angle_curve = SubResource("CurveTexture_i6kro")
-initial_velocity_min = 6.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, -0.02, 0)
-scale_min = 0.02
-scale_max = 0.03
-scale_curve = SubResource("CurveTexture_tjyem")
-scale_over_velocity_max = 40.1
-color = Color(1, 0.964, 0.82, 1)
-alpha_curve = SubResource("CurveTexture_7ocfs")
-emission_curve = SubResource("CurveTexture_tqwpf")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bugvj"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("6_uvheh")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-proximity_fade_distance = 12.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_2dfu1"]
-material = SubResource("StandardMaterial3D_bugvj")
 
 [node name="Weedcutter" type="Node3D"]
 
@@ -364,7 +277,7 @@ transform = Transform3D(-30.2555, 0, -4.54594e-05, 0, 30.2555, 0, 7.67032e-05, 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gai23")
+&"": SubResource("AnimationLibrary_gai23")
 }
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -382,13 +295,5 @@ bus = &"SFX"
 [node name="sfx_close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1gr3m")
 bus = &"SFX"
-
-[node name="ps_dust_falling" parent="." instance=ExtResource("5_yy756")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.44721)
-lifetime = 0.15
-explosiveness = 0.9
-visibility_aabb = AABB(-3.99998, -3.99998, -3.99999, 8, 8, 8)
-process_material = SubResource("ParticleProcessMaterial_0khsl")
-draw_pass_1 = SubResource("QuadMesh_2dfu1")
 
 [editable path="Model"]

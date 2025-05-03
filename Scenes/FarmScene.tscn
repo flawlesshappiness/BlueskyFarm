@@ -577,7 +577,7 @@ shape = SubResource("BoxShape3D_dti2c")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.2177, 1.63848, 0.780684)
 
 [node name="FirstPersonPlayer" parent="." instance=ExtResource("8_u2gl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97852, 0, -3.07958)
+LoadPosition = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("40_mug2t")

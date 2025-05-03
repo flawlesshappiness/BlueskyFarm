@@ -39,6 +39,9 @@ public partial class Player : FirstPersonController
     [NodeName]
     public RigidBody3D CameraRagdoll;
 
+    [Export]
+    public bool LoadPosition;
+
     public bool IsInWater { get; private set; }
     public bool IsRunning => PlayerInput.Run.Held;
     public Vector3 MidPosition => GlobalPosition.Add(y: Capsule.Height * 0.5f);
@@ -142,6 +145,8 @@ public partial class Player : FirstPersonController
 
     public void LoadData()
     {
+        if (!LoadPosition) return;
+
         var start_node = string.IsNullOrEmpty(Data.Game.PlayerPositionNode) ? null : Scene.Current.GetNodeInChildren<Marker3D>(Data.Game.PlayerPositionNode);
         if (IsInstanceValid(start_node))
         {

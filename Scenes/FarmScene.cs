@@ -102,6 +102,7 @@ public partial class FarmScene : GameScene
         Player.Instance.UpdateData();
         InventoryController.Instance.UpdateData();
         ItemController.Instance.UpdateData();
+        Debug.WriteLogsToPersistentData();
         UpdateData_PlantArea();
     }
 

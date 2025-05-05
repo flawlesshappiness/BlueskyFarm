@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\plantboxunlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\plantboxunlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\bed\\farmbed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\bed\\farmbed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\farmscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:scenes\\farmscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\basementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,40 +34,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlantBoxUnlock.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\PlantBoxUnlock.cs",
-              "RelativeDocumentMoniker": "Farm\\PlantBoxUnlock.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\PlantBoxUnlock.cs",
-              "RelativeToolTip": "Farm\\PlantBoxUnlock.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "FarmScene.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Scenes\\FarmScene.cs",
+              "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Scenes\\FarmScene.cs",
+              "RelativeToolTip": "Scenes\\FarmScene.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAIAzwGsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T07:18:35.302Z",
+              "WhenOpened": "2025-05-03T07:44:28.683Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "FarmBed.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Farm\\Bed\\FarmBed.cs",
+              "RelativeDocumentMoniker": "Farm\\Bed\\FarmBed.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Farm\\Bed\\FarmBed.cs",
+              "RelativeToolTip": "Farm\\Bed\\FarmBed.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAlwHwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T07:43:40.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeToolTip": "Basement\\BasementController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAADwvyIAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAADwvx8AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:15:12.702Z"
+              "WhenOpened": "2025-03-31T07:15:12.702Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeToolTip": "Scenes\\BasementScene.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:15:12.703Z"
+              "WhenOpened": "2025-03-31T07:15:12.703Z",
+              "EditorCaption": ""
             }
           ]
         }

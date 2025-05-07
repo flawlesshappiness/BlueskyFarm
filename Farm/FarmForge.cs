@@ -19,9 +19,15 @@ public partial class FarmForge : Node3D
 
     private void InitializeKiln()
     {
-        Kiln.SetActivated(GameFlagIds.MineKilnActivated.IsTrue());
-        Forge.SetActivated(GameFlagIds.MineKilnActivated.IsTrue());
+        var activated = GameFlagIds.MineKilnActivated.IsTrue();
+        Kiln.SetActivated(activated);
+        Forge.SetActivated(activated);
         Kiln.OnActivated += KilnActivated;
+
+        if (!activated)
+        {
+            Forge.AnimateDeactivated();
+        }
     }
 
     private void KilnActivated()
@@ -29,6 +35,7 @@ public partial class FarmForge : Node3D
         GameFlagIds.MineKilnActivated.SetTrue();
         DialogueFlags.SetFlagMin(DialogueFlags.FrogForge, 3);
         Forge.SetActivated(true);
+        Forge.AnimateActivate(2f);
     }
 
     private void Touched_Forge()

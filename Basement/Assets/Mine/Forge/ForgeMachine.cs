@@ -62,6 +62,7 @@ public partial class ForgeMachine : Node3D
     public void SetActivated(bool activated)
     {
         _activated = activated;
+        ItemArea_Mold.SetEnabled(activated);
     }
 
     private void LeverStateChanged(int i)
@@ -97,9 +98,24 @@ public partial class ForgeMachine : Node3D
         }
     }
 
+    public void AnimateDeactivated()
+    {
+        AnimationPlayer.Play("deactivated");
+    }
+
+    public Coroutine AnimateActivate(float delay)
+    {
+        return this.StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(delay);
+            yield return AnimationPlayer.PlayAndWaitForAnimation("activate");
+        }
+    }
+
     private Coroutine AnimateForge()
     {
-        return Coroutine.Start(Cr);
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(1f);
@@ -114,7 +130,7 @@ public partial class ForgeMachine : Node3D
 
     private Coroutine AnimateMoveUp()
     {
-        return Coroutine.Start(Cr);
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(0.5f);

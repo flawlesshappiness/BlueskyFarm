@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:scenes\\farmscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\interactteleport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\interactteleport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Git\\Godot\\BlueskyFarm\\Farm\\FarmForge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Farm\\FarmForge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\bed\\farmbed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\bed\\farmbed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\assets\\mine\\forge\\forgemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\assets\\mine\\forge\\forgemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\assets\\mine\\forge\\forgekiln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\assets\\mine\\forge\\forgekiln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\basementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,14 +43,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InteractTeleport.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\InteractTeleport.cs",
-              "RelativeDocumentMoniker": "Farm\\InteractTeleport.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\InteractTeleport.cs",
-              "RelativeToolTip": "Farm\\InteractTeleport.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Title": "FarmForge.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\FarmForge.cs",
+              "RelativeDocumentMoniker": "Farm\\FarmForge.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\FarmForge.cs",
+              "RelativeToolTip": "Farm\\FarmForge.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:12:47.46Z",
+              "WhenOpened": "2025-05-07T19:30:52.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ForgeKiln.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
+              "RelativeDocumentMoniker": "Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
+              "RelativeToolTip": "Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAADgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T19:23:54.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ForgeMachine.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "RelativeDocumentMoniker": "Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "RelativeToolTip": "Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T19:23:32.704Z",
               "EditorCaption": ""
             },
             {
@@ -57,46 +87,36 @@
               "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeToolTip": "Scenes\\FarmScene.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAA4wGMAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAQwGEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-03T07:44:28.683Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FarmBed.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\Bed\\FarmBed.cs",
-              "RelativeDocumentMoniker": "Farm\\Bed\\FarmBed.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\Bed\\FarmBed.cs",
-              "RelativeToolTip": "Farm\\Bed\\FarmBed.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAlwHwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T07:43:40.584Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeToolTip": "Basement\\BasementController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAADwvx8AAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAswC0AAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:15:12.702Z"
+              "WhenOpened": "2025-03-31T07:15:12.702Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeToolTip": "Scenes\\BasementScene.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwAcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:15:12.703Z"
+              "WhenOpened": "2025-03-31T07:15:12.703Z",
+              "EditorCaption": ""
             }
           ]
         }

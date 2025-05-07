@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cucdyc1ukirtr"]
+
+[ext_resource type="PackedScene" uid="uid://co80cdhr60gxq" path="res://Assets/FlawLizArt/Nature/floor_hole_001.fbx" id="1_08uba"]
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="2_yw73g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bkxq"]
+size = Vector3(4, 0.5, 4)
+
+[node name="Floor_Grass" type="Node3D"]
+
+[node name="floor_hole_001" parent="." instance=ExtResource("1_08uba")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("2_yw73g")
+Type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_0bkxq")

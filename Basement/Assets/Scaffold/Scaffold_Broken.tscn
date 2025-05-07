@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciig6e0ykkhhe"]
+
+[ext_resource type="Script" uid="uid://7hlna70fxuqr" path="res://SolidMaterial/SolidMaterial.cs" id="1_q30o8"]
+[ext_resource type="PackedScene" uid="uid://becsof065j3uh" path="res://Assets/KayLousberg/Dungeon/scaffold_low_broken.fbx" id="2_q30o8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q30o8"]
+size = Vector3(4, 0.199, 4)
+
+[node name="Scaffold_Broken" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_q30o8")
+Type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_q30o8")
+
+[node name="scaffold_low_broken" parent="." instance=ExtResource("2_q30o8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)

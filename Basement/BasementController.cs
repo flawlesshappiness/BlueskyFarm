@@ -43,7 +43,6 @@ public partial class BasementController : SingletonController
         SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_BigGrave");
 
         // Mine
-        SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Forge");
         SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Coal");
         SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Beds");
 

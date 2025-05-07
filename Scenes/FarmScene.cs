@@ -19,6 +19,12 @@ public partial class FarmScene : GameScene
     [Export]
     public ItemInfo InventoryUpgradeItem;
 
+    [Export]
+    public InteractTeleport TeleportToUnderground;
+
+    [Export]
+    public CrushableRock CrushableRockToUnderground;
+
     public List<PlantArea> PlantAreas = new();
 
     public override void _Ready()
@@ -38,6 +44,7 @@ public partial class FarmScene : GameScene
         InitializePlayerInventory();
         InitializeAmbience();
         InitializeEnvironment();
+        InitializeCrushableRock();
 
         GameFlagIds.FirstTimeLoad.Set(1);
     }
@@ -93,6 +100,22 @@ public partial class FarmScene : GameScene
     private void InitializeEnvironment()
     {
         EnvironmentController.Instance.SetEnvironment(AreaNameType.Farm);
+    }
+
+    private void InitializeCrushableRock()
+    {
+        var crushed = GameFlagIds.BasementRockCrushed.IsTrue();
+        CrushableRockToUnderground.SetEnabled(!crushed);
+        TeleportToUnderground.SetEnabled(crushed);
+
+        CrushableRockToUnderground.OnCrushed += () =>
+        {
+            GameFlagIds.BasementRockCrushed.SetTrue();
+            Data.Game.Save();
+
+            CrushableRockToUnderground.Disable();
+            TeleportToUnderground.Enable();
+        };
     }
 
     protected override void BeforeSave()

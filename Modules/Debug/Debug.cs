@@ -98,7 +98,7 @@ public static class Debug
 
     public static void WriteLogsToPersistentData()
     {
-        LogMethod();
+        TraceMethod();
 
         var path = $"user://log.txt";
         var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Write);

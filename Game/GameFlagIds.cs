@@ -6,6 +6,7 @@ public static class GameFlagIds
     public static GameFlagId FarmBedRepaired = new GameFlagId("farm_bed_repaired");
     public static GameFlagId FarmWeedsCut = new GameFlagId("farm_weeds_cut");
     public static GameFlagId FarmRocksCrushed = new GameFlagId("farm_rocks_crushed");
+    public static GameFlagId FarmIsUnderground = new GameFlagId("farm_is_underground");
     public static GameFlagId BasementWorkshopDoorUnlocked = new GameFlagId("basement_workshop_door_unlocked");
     public static GameFlagId BasementWellRepaired = new GameFlagId("basement_well_repaired");
     public static GameFlagId BasementLadderRepaired = new GameFlagId("basement_ladder_repaired");

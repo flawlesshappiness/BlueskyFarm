@@ -23,6 +23,9 @@ public partial class FarmScene : GameScene
     public InteractTeleport TeleportToUnderground;
 
     [Export]
+    public InteractTeleport TeleportToFarm;
+
+    [Export]
     public CrushableRock CrushableRockToUnderground;
 
     public List<PlantArea> PlantAreas = new();
@@ -45,6 +48,7 @@ public partial class FarmScene : GameScene
         InitializeAmbience();
         InitializeEnvironment();
         InitializeCrushableRock();
+        InitializeTeleports();
 
         GameFlagIds.FirstTimeLoad.Set(1);
     }
@@ -94,12 +98,16 @@ public partial class FarmScene : GameScene
 
     private void InitializeAmbience()
     {
-        AmbienceController.Instance.StartAmbienceImmediate(AreaNames.Farm);
+        var is_underground = GameFlagIds.FarmIsUnderground.IsTrue();
+        var type = is_underground ? AreaNames.Basement : AreaNames.Farm;
+        AmbienceController.Instance.StartAmbienceImmediate(type);
     }
 
     private void InitializeEnvironment()
     {
-        EnvironmentController.Instance.SetEnvironment(AreaNameType.Farm);
+        var is_underground = GameFlagIds.FarmIsUnderground.IsTrue();
+        var type = is_underground ? AreaNameType.Basement : AreaNameType.Farm;
+        EnvironmentController.Instance.SetEnvironment(type);
     }
 
     private void InitializeCrushableRock()
@@ -116,6 +124,12 @@ public partial class FarmScene : GameScene
             CrushableRockToUnderground.Disable();
             TeleportToUnderground.Enable();
         };
+    }
+
+    private void InitializeTeleports()
+    {
+        TeleportToFarm.OnTouched += Touched_TeleportToFarm;
+        TeleportToUnderground.OnTouched += Touched_TeleportToUnderground;
     }
 
     protected override void BeforeSave()
@@ -149,5 +163,15 @@ public partial class FarmScene : GameScene
             yield return item.AnimateDisappearAndQueueFree();
             Trapdoor.SetLocked(false);
         }
+    }
+
+    private void Touched_TeleportToUnderground()
+    {
+        GameFlagIds.FarmIsUnderground.SetTrue();
+    }
+
+    private void Touched_TeleportToFarm()
+    {
+        GameFlagIds.FarmIsUnderground.SetFalse();
     }
 }

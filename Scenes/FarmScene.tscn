@@ -225,7 +225,7 @@ size = Vector3(1, 1, 2.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
 size = Vector3(1, 1.51624, 1.22208)
 
-[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "TeleportToUnderground", "CrushableRockToUnderground", "WorldEnvironment", "DirectionalLight")]
+[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "TeleportToUnderground", "TeleportToFarm", "CrushableRockToUnderground", "WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_mng5r")
 Trapdoor = NodePath("World/NavigationRegion3D/Farm/Basement/Trapdoor")
 BasementUnlockArea = NodePath("World/NavigationRegion3D/Farm/Basement/BasementUnlockArea")
@@ -233,6 +233,7 @@ Shed_Thorns = NodePath("World/NavigationRegion3D/Farm/Shed/Behind/Shed_Thorns")
 Shed_InventoryItemPosition = NodePath("World/NavigationRegion3D/Farm/Shed/Behind/Shed_InventoryItemPosition")
 InventoryUpgradeItem = ExtResource("2_rf1ug")
 TeleportToUnderground = NodePath("World/NavigationRegion3D/Farm/BrokenGround/Teleport")
+TeleportToFarm = NodePath("World/NavigationRegion3D/Underground/Teleport")
 CrushableRockToUnderground = NodePath("World/NavigationRegion3D/Farm/BrokenGround/CrushableRock")
 WorldEnvironment = NodePath("WorldEnvironment")
 DirectionalLight = NodePath("Sun")
@@ -1543,6 +1544,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [node name="Rocks_CaveIn2" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 0, -3.24402)
+
+[node name="Rocks_CaveIn4" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -20.4841, 0, -8.24402)
 
 [node name="Rocks_CaveIn3" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -12, 0, -33.244)

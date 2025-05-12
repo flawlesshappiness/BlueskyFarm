@@ -45,6 +45,7 @@ public partial class BasementController : SingletonController
         // Mine
         SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Coal");
         SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Beds");
+        AddRoom(grid, AreaNames.Mine, "Mine_Room_Founder");
 
         // Cult
         SetOrAddElementInfo(grid, AreaNames.Cult, "Cult_Tree");
@@ -160,12 +161,17 @@ public partial class BasementController : SingletonController
     {
         if (!SetRandomElementInfo(area_name, info_name))
         {
-            BasementGridGenerator.AddRoom(grid, new AddRoomSettings
-            {
-                AreaName = area_name,
-                RoomInfo = BasementRoomController.Instance.Collection.GetResource(info_name)
-            });
+            AddRoom(grid, area_name, info_name);
         }
+    }
+
+    private void AddRoom(Grid<BasementRoomElement> grid, string area_name, string info_name)
+    {
+        BasementGridGenerator.AddRoom(grid, new AddRoomSettings
+        {
+            AreaName = area_name,
+            RoomInfo = BasementRoomController.Instance.Collection.GetResource(info_name)
+        });
     }
 
     private bool SetRandomElementInfo(string area_name, string info_name)

@@ -1,0 +1,49 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cngpjmwvwqjao"
+path="res://.godot/imported/mirror_broken.fbx-3cfde381898390a0fc967f90e1ceaad9.scn"
+
+[deps]
+
+source_file="res://Assets/FlawLizArt/Interior/mirror_broken.fbx"
+dest_files=["res://.godot/imported/mirror_broken.fbx-3cfde381898390a0fc967f90e1ceaad9.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Mirror": {
+"use_external/enabled": true,
+"use_external/path": "uid://dpp5p11nvb0dq"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/path": "uid://20l650k6hgj2"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

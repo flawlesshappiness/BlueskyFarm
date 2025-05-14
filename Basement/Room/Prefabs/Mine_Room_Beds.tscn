@@ -523,37 +523,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3611, 3.62588, -0.172016)
 [node name="Notes" type="Node3D" parent="." index="15"]
 
 [node name="Note_001" parent="Notes" index="0" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.502869, 0.864363, 3.77825e-08, 0, -4.37114e-08, 1, 0.864363, -0.502869, -2.19811e-08, -0.0706491, 0, -0.0732081)
-DialogueNode = "##NOTE_MINER_001##"
-
-[node name="Note_002" parent="Notes" index="1" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.914741, -0.40404, -1.76612e-08, 0, -4.37114e-08, 1, -0.40404, -0.914741, -3.99846e-08, 2.91843, 0, -2.45581)
-DialogueNode = "##NOTE_MINER_002##"
-
-[node name="Note_003" parent="Notes" index="2" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.914741, -0.40404, -1.76612e-08, 0, -4.37114e-08, 1, -0.40404, -0.914741, -3.99846e-08, 3.05592, 0, 4.3326)
-DialogueNode = "##NOTE_MINER_003##"
-
-[node name="Note_004" parent="Notes" index="3" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.685577, 0.728, 3.18219e-08, 1.43544e-15, -4.37114e-08, 1, 0.728, -0.685577, -2.99675e-08, -6.56815, 0, 4.41853)
-DialogueNode = "##NOTE_MINER_004##"
-
-[node name="Note_005" parent="Notes" index="4" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.839658, -0.543116, -2.37404e-08, 4.02182e-15, -4.37114e-08, 1, -0.543116, -0.839658, -3.67026e-08, -5.50263, 0, -5.29147)
-DialogueNode = "##NOTE_MINER_005##"
-
-[node name="Note_006" parent="Notes" index="5" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.533556, 0.845765, 3.69696e-08, 4.02182e-15, -4.37114e-08, 1, 0.845765, -0.533556, -2.33225e-08, -5.0558, 0, -1.08094)
-DialogueNode = "##NOTE_MINER_006##"
-
-[node name="Note_007" parent="Notes" index="6" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.984463, 0.17559, 7.67527e-09, 4.02182e-15, -4.37114e-08, 1, 0.17559, -0.984463, -4.30323e-08, 1.30296, 0, -5.41177)
-DialogueNode = "##NOTE_MINER_007##"
-
-[node name="Note_008" parent="Notes" index="7" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.984463, 0.17559, 7.67527e-09, 4.02182e-15, -4.37114e-08, 1, 0.17559, -0.984463, -4.30323e-08, 6.34613, 0, 4.10429)
-DialogueNode = "##NOTE_MINER_008##"
-
-[node name="Note_009" parent="Notes" index="8" instance=ExtResource("10_o2hy5")]
-transform = Transform3D(0.984463, 0.17559, 7.67527e-09, 4.02182e-15, -4.37114e-08, 1, 0.17559, -0.984463, -4.30323e-08, -2.88794, 0, 2.56317)
-DialogueNode = "##NOTE_MINER_009##"
+transform = Transform3D(0.502869, 0.864363, 3.77825e-08, 0, -4.37114e-08, 1, 0.864363, -0.502869, -2.19811e-08, 0.996864, 0, -0.70332)
+Text = "Karl just died.
+I mean, his lungs weren't doing well after that last cave-in, so I knew it was just a matter of time. It's been at least a week since the last delivery of rations. I honestly can't tell how long.
+I have to go look for others.
+I don't know where to go. The last exit path caved in a couple days ago.
+At least I still have light..."

@@ -898,7 +898,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6.5
 
 [node name="Note" parent="Treehouse" index="9" instance=ExtResource("24_t7rdf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.310626, 8, 2.90159)
-DialogueNode = "##NOTE_FOREST_BED_001##"
+Text = "Fren's treehouse.
+The wood in this area is unique. Sturdy and pale. I will bring some to the new place. I used it for the bed. I can make a blueprint, so do not take it.
+It was really hard to get up here."
 
 [node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("MissingStepsTouchable", "BlueprintItemSpawn", "LadderArea", "PlankSpawns", "PlankPositions")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

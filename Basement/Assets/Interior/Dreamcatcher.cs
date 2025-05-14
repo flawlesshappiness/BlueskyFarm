@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 public partial class Dreamcatcher : Node3D
 {
@@ -14,6 +15,9 @@ public partial class Dreamcatcher : Node3D
     [Export]
     public string InitialAnimation;
 
+    [Export]
+    public Array<Node3D> Variations;
+
     public override void _Ready()
     {
         base._Ready();
@@ -24,5 +28,13 @@ public partial class Dreamcatcher : Node3D
 
         var rot = rng.RandfRange(0, 360);
         GlobalRotationDegrees = Vector3.Up * rot;
+
+        RandomizeVariation();
+    }
+
+    private void RandomizeVariation()
+    {
+        Variations.ForEach(x => x.Hide());
+        Variations.PickRandom().Show();
     }
 }

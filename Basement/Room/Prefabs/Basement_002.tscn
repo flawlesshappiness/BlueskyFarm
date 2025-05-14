@@ -506,7 +506,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.994
 
 [node name="Note" parent="Notes" index="0" instance=ExtResource("27_re302")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00965, 1.34799, -2.93747)
-DialogueNode = "##NOTE_ROOTMIMIC_001##"
+Text = "I don't care if you're getting seeds or storing produce. STAY AWAY from the critters.
+They WILL grab you if you get too close.
+
+Frank"
 
 [node name="InteriorGroups" type="Node3D" parent="." index="14"]
 

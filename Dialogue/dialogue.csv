@@ -11,30 +11,6 @@ keys;en
 ##FOREST##;Forest
 ##MINE##;Mine
 ##CULT##;Cathedral
-##ROOM_FRANK##;Frank's room
-##ROOM_FRIDA##;Frida's room
-##ROOM_FREN##;Fren's room
-##ROOM_FRITZ##;Fritz' room
-##NOTE_WORKSHOP_001##;Since everyone is gone, we're locking up and leaving this place.
-##NOTE_WORKSHOP_002##;There's only blueprints and interior in this room. Fren has the key.
-##NOTE_WORKSHOP_003##;Signed: Frank
-##NOTE_ROOTMIMIC_001##;I don't care if you're getting seeds or storing produce.\nSTAY AWAY from the critters.
-##NOTE_ROOTMIMIC_002##;They WILL grab you if you get too close.
-##NOTE_ROOTMIMIC_003##;Signed: Frank
-##NOTE_FOREST_BED_001##;Fren's treehouse.
-##NOTE_FOREST_BED_002##;The wood in this area is unique. Sturdy and pale.\nI will bring some to the new place.
-##NOTE_FOREST_BED_003##;I used it for the bed. I can make a blueprint, so do not take it.
-##NOTE_FOREST_BED_004##;It was really hard to get up here.
-##NOTE_FOUNDER_HUT_001##;Things I need:\nPeople to grow crops.
-##NOTE_FOUNDER_HUT_002##;Farms to grow crops from.\nA storage area.
-##NOTE_FOUNDER_HUT_003##;Things I don't need:\nTo return to that godforsaken concrete building.
-##NOTE_BUSINESS_NAMES_001##;A list of names. All stricken through, except for the last one.
-##NOTE_BUSINESS_NAMES_002##;Grow-Good Veggies\nGrow-Good Farm
-##NOTE_BUSINESS_NAMES_003##;Big Growth Farm\nVeggies from the rift
-##NOTE_BUSINESS_NAMES_004##;Riftwood Farm
-##NOTE_WORKSHOP_KEY_001##;Hi Frank. I'm taking the job of holding the workshop key very seriously.
-##NOTE_WORKSHOP_KEY_002##;That's why I've hidden it. Really. Well.
-##NOTE_WORKSHOP_KEY_003##;Signed: Fren
 ##NOTE_MINER_001##;Everyone has gone!
 ##NOTE_MINER_002##;Am I left behind?
 ##NOTE_MINER_003##;Crabs are good friends
@@ -44,16 +20,6 @@ keys;en
 ##NOTE_MINER_007##;I hear the picks but they are not real
 ##NOTE_MINER_008##;FRIENDS ARE NOT FOOD
 ##NOTE_MINER_009##;crab Crab CRAB crab CRAB CrAb cRAb CRab crab CrAB crab CRAB
-##NOTE_DEAD_FARMERS_001##;There is no more space for withered souls here.
-##NOTE_DEAD_FARMERS_002##;Seek a mound elsewhere, or dig a hole yourself.
-##NOTE_DEAD_FARMERS_003##;All these lost souls must return to the soil.
-##NOTE_DEAD_FARMERS_004##;Signed: Frida
-##NOTE_RITUAL_MEANING_001##;We worship the tree, for it keeps us alive.
-##NOTE_RITUAL_MEANING_002##;We offer our blood, for its roots grants us strength.
-##NOTE_RITUAL_MEANING_003##;We give thanks, for this life we have been given.
-##NOTE_FAILED_RITUAL_001##;That idiot cut a frog, instead of his hand. Is it too hard to spill a little blood?
-##NOTE_FAILED_RITUAL_002##;Now look at us. Frank would have mangled that maggot if not for Frida and I calming him down.
-##NOTE_FAILED_RITUAL_003##;Well, he is gone now, and I have to come to terms with being green.
 ##DRAWING_ARCHITECTURE_001##;Architectural drawings of various storage rooms.
 ##DRAWING_ARCHITECTURE_002##;Architectural drawings of a pit surrounding a tree.
 ##FROG_INTRO_001##;Hello, I'm Fren!\nAre you new?

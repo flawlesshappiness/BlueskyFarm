@@ -2,8 +2,8 @@ using Godot;
 
 public partial class DialoguePaper : Node3D
 {
-    [Export]
-    public string DialogueNode;
+    [Export(PropertyHint.MultilineText)]
+    public string Text;
 
     [Export]
     public Touchable Touchable;
@@ -15,15 +15,17 @@ public partial class DialoguePaper : Node3D
     {
         base._Ready();
         Touchable.OnTouched += Touched;
+
+        if (string.IsNullOrEmpty(Text))
+        {
+            Touchable.Disable();
+        }
     }
 
     private void Touched()
     {
-        DialogueController.Instance.SetCharacter(new DialogueCharacter
-        {
-            Info = DialogueCharacterInfo,
-        });
-
-        DialogueController.Instance.SetNode(DialogueNode);
+        NoteView.Instance.SetText(Text);
+        NoteView.Instance.AnimateShow();
+        Cursor.Hide();
     }
 }

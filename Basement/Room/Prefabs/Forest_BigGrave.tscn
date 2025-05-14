@@ -758,4 +758,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
 [node name="Note" parent="." index="15" instance=ExtResource("19_xf11r")]
 transform = Transform3D(-0.780411, -0.101233, 0.617017, -0.00474701, 0.987737, 0.156052, -0.625249, 0.118856, -0.771322, 1.02654, 10.8971, -1.37714)
-DialogueNode = "##NOTE_DEAD_FARMERS_001##"
+Text = "There is no more space for withered souls here.
+Seek a mound elsewhere, or dig a hole yourself.
+All these lost souls must return to the soil.
+
+Frida"

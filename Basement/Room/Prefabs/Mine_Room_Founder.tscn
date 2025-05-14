@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://uaeepn4mym64"]
+[gd_scene load_steps=42 format=3 uid="uid://uaeepn4mym64"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_33gtj"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_c5cxb"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://4ufkuebkpoyd" path="res://Assets/FlawLizArt/Interior/mirror_shards.fbx" id="23_l53fe"]
 [ext_resource type="PackedScene" uid="uid://dyru53g5y47jo" path="res://Basement/Assets/Interior/mirror_broken.tscn" id="23_ucao3"]
 [ext_resource type="Script" uid="uid://wi8mv1w8enpy" path="res://Basement/Room/MineFounderRoom.cs" id="24_l53fe"]
+[ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="25_53q1m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o62yi"]
 size = Vector3(20, 1, 20)
@@ -650,6 +651,7 @@ DialogueTouchables = [NodePath("Touchable N"), NodePath("Touchable S"), NodePath
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47594, -6.05428)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("25_53q1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomScript/Touchable N" index="0"]
 shape = SubResource("BoxShape3D_ucao3")
@@ -658,6 +660,7 @@ shape = SubResource("BoxShape3D_ucao3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49825, 5.98041)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("25_53q1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomScript/Touchable S" index="0"]
 shape = SubResource("BoxShape3D_ucao3")
@@ -666,6 +669,7 @@ shape = SubResource("BoxShape3D_ucao3")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.06911, 1.49825, -0.0195913)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("25_53q1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomScript/Touchable E" index="0"]
 shape = SubResource("BoxShape3D_ucao3")
@@ -674,6 +678,7 @@ shape = SubResource("BoxShape3D_ucao3")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.03553, 1.49825, -0.0195913)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("25_53q1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomScript/Touchable W" index="0"]
 shape = SubResource("BoxShape3D_ucao3")

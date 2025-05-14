@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=101 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" uid="uid://cwqycbkuumrom" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
@@ -64,6 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://dffmy56n5prba" path="res://Basement/Assets/Basement/Pillar_Top.tscn" id="51_q1avm"]
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="52_w3210"]
 [ext_resource type="Script" uid="uid://by3yx6fou8law" path="res://Farm/FarmForge.cs" id="54_rs487"]
+[ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="57_56e6m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(30, 4, 31)
@@ -1685,6 +1686,14 @@ transform = Transform3D(0.00228608, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.002286
 
 [node name="Forge" parent="World/NavigationRegion3D/Underground/FarmForge" instance=ExtResource("50_1vgle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -24)
+
+[node name="Note" parent="World/NavigationRegion3D/Underground" instance=ExtResource("57_56e6m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.63359, 1.47938, -21.253)
+Text = "I'm shutting down her down.
+Through our time here, she's been serving us well, but now with so few of us left I think it's for the best.
+Regardless, if you need her back up and running make sure the kiln is properly fueled. She has a ravenous hunger, and must be fed regularly. Three pieces, at least!
+
+Fritz"
 
 [node name="Grass" type="Node3D" parent="World"]
 

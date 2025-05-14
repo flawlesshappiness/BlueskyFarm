@@ -1032,7 +1032,7 @@ shape = SubResource("BoxShape3D_3khyi")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, -6)
 
 [node name="Underground" type="Node3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 0)
 
 [node name="Floor" type="Node3D" parent="World/NavigationRegion3D/Underground"]
 

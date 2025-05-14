@@ -314,6 +314,7 @@ public partial class RockManEnemy : NavEnemy
 
         Player.MovementLock.AddLock(EnemyId);
         Player.LookLock.AddLock(EnemyId);
+        Player.Interrupt();
 
         var asp_scream = SfxScream.Play();
 

@@ -243,6 +243,7 @@ public partial class CultistEnemy : NavEnemy
         StopNavigation();
         StartFacingPlayer();
 
+        Player.Interrupt();
         Player.MovementLock.AddLock(EnemyId);
         Player.LookLock.AddLock(EnemyId);
 

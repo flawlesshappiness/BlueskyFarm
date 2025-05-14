@@ -215,6 +215,7 @@ public partial class WraithEnemy : NavEnemy
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            Player.Instance.Interrupt();
             Player.Instance.RagdollCamera(DirectionToPlayer.Normalized() * 2);
 
             yield return new WaitForSeconds(2.0f);

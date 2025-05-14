@@ -592,4 +592,9 @@ public partial class Player : FirstPersonController
         var t_ver = (180f - ver) / 180f;
         return t_hor * t_ver;
     }
+
+    public void Interrupt()
+    {
+        NoteView.Instance.Hide();
+    }
 }

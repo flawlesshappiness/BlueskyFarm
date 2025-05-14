@@ -99,8 +99,9 @@ public partial class GameScene : Scene
     public void KillPlayer()
     {
         if (_player_is_dying) return;
-
         _player_is_dying = true;
+
+        Player.Instance.Interrupt();
         InventoryController.Instance.ResetInventory();
         Data.Game.Save();
         OnPlayerDeath();

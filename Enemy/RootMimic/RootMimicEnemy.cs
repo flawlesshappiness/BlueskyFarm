@@ -284,6 +284,7 @@ public partial class RootMimicEnemy : NavEnemy
         StopNavigation();
         StartFacingPlayer();
 
+        Player.Interrupt();
         Player.MovementLock.AddLock(EnemyId);
         Player.LookLock.AddLock(EnemyId);
 

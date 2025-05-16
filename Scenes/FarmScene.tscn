@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=102 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" uid="uid://cwqycbkuumrom" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
@@ -97,6 +97,9 @@ size = Vector3(0.438, 4, 7.878)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ekyso"]
 size = Vector3(3.314, 4, 7.598)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56e6m"]
+size = Vector3(4.61377, 15.9093, 8.75586)
 
 [sub_resource type="Curve" id="Curve_a3vth"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.76726, 0.0, 0, 0]
@@ -848,6 +851,14 @@ shape = SubResource("BoxShape3D_ekyso")
 
 [node name="StartBed" type="Marker3D" parent="World/NavigationRegion3D/Farm/Shed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44674, 0, -6.74072)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Farm/Shed"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/Shed/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10403, 11.8243, -5.08211)
+shape = SubResource("BoxShape3D_56e6m")
 
 [node name="BrokenGround" type="Node3D" parent="World/NavigationRegion3D/Farm"]
 

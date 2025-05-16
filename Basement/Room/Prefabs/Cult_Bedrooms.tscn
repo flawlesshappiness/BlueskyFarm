@@ -923,170 +923,44 @@ transform = Transform3D(-0.0446133, 0, -0.999004, 0, 1, 0, 0.999004, 0, -0.04461
 [node name="Dreamcatcher" parent="Room_Spiritual (Frida)/Dreamcatchers" index="0" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.3622, 2.57607, -5.64004)
 
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher2" parent="Room_Spiritual (Frida)/Dreamcatchers" index="1" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.1388, 2.57607, -4.58317)
-
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2/Anim" index="3"]
-visible = false
 
 [node name="Dreamcatcher3" parent="Room_Spiritual (Frida)/Dreamcatchers" index="2" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.1125, 2.57607, -6.67139)
 
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher4" parent="Room_Spiritual (Frida)/Dreamcatchers" index="3" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.11528, 2.57607, -8.72472)
-
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4/Anim" index="3"]
-visible = false
 
 [node name="Dreamcatcher5" parent="Room_Spiritual (Frida)/Dreamcatchers" index="4" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.7269, 2.57607, -10.6262)
 
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher6" parent="Room_Spiritual (Frida)/Dreamcatchers" index="5" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.6608, 2.91094, -7.81813)
-
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6/Anim" index="3"]
-visible = false
 
 [node name="Dreamcatcher7" parent="Room_Spiritual (Frida)/Dreamcatchers" index="6" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.38766, 2.91094, -9.74616)
 
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher8" parent="Room_Spiritual (Frida)/Dreamcatchers" index="7" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.5459, 2.91094, -5.73868)
-
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8/Anim" index="3"]
-visible = false
 
 [node name="Dreamcatcher9" parent="Room_Spiritual (Frida)/Dreamcatchers" index="8" instance=ExtResource("27_yiw00")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.14553, 2.91094, -6.82507)
 
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_002" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9/Anim" index="1"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher10" parent="Room_Spiritual (Frida)/Dreamcatchers" index="9" instance=ExtResource("27_yiw00")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.84636, 3.12973, -4.0635)
-
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10/Anim" index="3"]
-visible = false
 
 [node name="Dreamcatcher11" parent="Room_Spiritual (Frida)/Dreamcatchers" index="10" instance=ExtResource("27_yiw00")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11.6905, 3.12973, -4.17848)
 
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher12" parent="Room_Spiritual (Frida)/Dreamcatchers" index="11" instance=ExtResource("27_yiw00")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12.1151, 3.12973, -7.95514)
-
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12/Anim" index="3"]
-visible = false
 
 [node name="Dreamcatcher13" parent="Room_Spiritual (Frida)/Dreamcatchers" index="12" instance=ExtResource("27_yiw00")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.51536, 3.12973, -10.8994)
 
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13/Anim" index="3"]
-visible = false
-
 [node name="Dreamcatcher14" parent="Room_Spiritual (Frida)/Dreamcatchers" index="13" instance=ExtResource("27_yiw00")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10.4988, 3.12973, -11.3838)
-
-[node name="dreamcatcher_001" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14/Anim" index="0"]
-visible = false
-
-[node name="dreamcatcher_003" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14/Anim" index="2"]
-visible = false
-
-[node name="dreamcatcher_004" parent="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14/Anim" index="3"]
-visible = false
 
 [node name="Cloth" type="Node3D" parent="Room_Spiritual (Frida)" index="8"]
 
@@ -1347,20 +1221,6 @@ script = ExtResource("27_mmbsk")
 MoldBlueprintMarker = NodePath("../Room_Mining (Fritz)/MoldBlueprintMarker")
 MoldBlueprint = ExtResource("28_clpqx")
 
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher2"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher3"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher4"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher5"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher6"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher7"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher8"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher9"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher10"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher11"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher12"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher13"]
-[editable path="Room_Spiritual (Frida)/Dreamcatchers/Dreamcatcher14"]
 [editable path="Room_Mining (Fritz)/rock_broken"]
 [editable path="Room_Mining (Fritz)/rock_broken2"]
 [editable path="Room_Mining (Fritz)/rock_broken3"]

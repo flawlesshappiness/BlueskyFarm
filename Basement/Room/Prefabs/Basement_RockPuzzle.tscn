@@ -1103,45 +1103,35 @@ transform = Transform3D(0.910648, 0, 0.413184, 0, 1, 0, -0.413184, 0, 0.910648, 
 
 [node name="Dreamcatchers" type="Node3D" parent="Interior/Static" index="2"]
 
-[node name="Dreamcatcher" parent="Interior/Static/Dreamcatchers" index="0" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher" parent="Interior/Static/Dreamcatchers" index="0" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.69939, 0)
-Variations = []
 
-[node name="Dreamcatcher2" parent="Interior/Static/Dreamcatchers" index="1" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher2" parent="Interior/Static/Dreamcatchers" index="1" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.7088, 2.69939, -1.27383)
-Variations = []
 
-[node name="Dreamcatcher3" parent="Interior/Static/Dreamcatchers" index="2" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher3" parent="Interior/Static/Dreamcatchers" index="2" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.40785, 2.3718, 1.52238)
-Variations = []
 
-[node name="Dreamcatcher4" parent="Interior/Static/Dreamcatchers" index="3" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher4" parent="Interior/Static/Dreamcatchers" index="3" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.10295, 2.69939, 2.29911)
-Variations = []
 
-[node name="Dreamcatcher5" parent="Interior/Static/Dreamcatchers" index="4" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher5" parent="Interior/Static/Dreamcatchers" index="4" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.83546, 2.69939, 1.11378)
-Variations = []
 
-[node name="Dreamcatcher6" parent="Interior/Static/Dreamcatchers" index="5" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher6" parent="Interior/Static/Dreamcatchers" index="5" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.04968, 2.3718, -0.404515)
-Variations = []
 
-[node name="Dreamcatcher7" parent="Interior/Static/Dreamcatchers" index="6" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher7" parent="Interior/Static/Dreamcatchers" index="6" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.60067, 2.3718, 0.35463)
-Variations = []
 
-[node name="Dreamcatcher8" parent="Interior/Static/Dreamcatchers" index="7" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher8" parent="Interior/Static/Dreamcatchers" index="7" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.39483, 2.69939, -1.56321)
-Variations = []
 
-[node name="Dreamcatcher9" parent="Interior/Static/Dreamcatchers" index="8" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher9" parent="Interior/Static/Dreamcatchers" index="8" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.237258, 2.69939, -2.20249)
-Variations = []
 
-[node name="Dreamcatcher10" parent="Interior/Static/Dreamcatchers" index="9" node_paths=PackedStringArray("Variations") instance=ExtResource("27_c5i7h")]
+[node name="Dreamcatcher10" parent="Interior/Static/Dreamcatchers" index="9" instance=ExtResource("27_c5i7h")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.441978, 2.3718, 1.39346)
-Variations = []
 
 [node name="Note" parent="Interior/Static" index="3" instance=ExtResource("28_d1w68")]
 transform = Transform3D(-0.312032, 0.736638, 3.21995e-08, 1.69407e-22, -3.49691e-08, 0.8, 0.736638, 0.312032, 1.36394e-08, 2.83209, 0.706831, 0.445901)

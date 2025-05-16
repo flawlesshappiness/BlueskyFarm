@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://biibu5h68elc1"]
 
-[ext_resource type="Texture2D" uid="uid://dmka3k0gwy5hl" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_unknown.png" id="1_xk2ko"]
+[ext_resource type="Texture2D" uid="uid://brmwrf6f2hvur" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_sword_mold.png" id="1_572qe"]
 [ext_resource type="Resource" uid="uid://cq3u2yhppiw38" path="res://Item/Resources/Mold_Sword.tres" id="2_4gghm"]
 [ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_k87i0"]
 
 [resource]
 script = ExtResource("3_k87i0")
 Id = "mold_sword"
-ResultIcon = ExtResource("1_xk2ko")
+ResultIcon = ExtResource("1_572qe")
 ResultItemInfo = ExtResource("2_4gghm")
 OverrideResultName = ""
 ResultDialogueNode = ""

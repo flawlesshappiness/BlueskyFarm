@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dc5jidtfh4pt5"]
+
+[ext_resource type="PackedScene" uid="uid://f6gbbdupqh4s" path="res://Item/Prefabs/Glowstick.tscn" id="1_r1n2g"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_77j0x"]
+
+[resource]
+script = ExtResource("2_77j0x")
+Scene = ExtResource("1_r1n2g")
+ItemName = ""
+CustomId = ""
+Type = 0
+CanUse = false
+Uses = 0
+CanPickUp = true
+PerishesOnFarm = false
+InventoryItemCameraDistance = 0.6
+InventoryItemRotationOffset = 0.0

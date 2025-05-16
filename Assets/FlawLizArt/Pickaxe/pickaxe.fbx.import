@@ -36,7 +36,7 @@ _subresources={
 "materials": {
 "Metal": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Metal.tres"
+"use_external/path": "uid://bn46esnk76kim"
 },
 "Wood": {
 "use_external/enabled": true,

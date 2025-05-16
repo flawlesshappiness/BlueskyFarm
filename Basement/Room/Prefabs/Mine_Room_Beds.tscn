@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cqja33nfou7xu"]
+[gd_scene load_steps=28 format=3 uid="uid://cqja33nfou7xu"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_s1xbn"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_3j7of"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="9_urtbm"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="10_jx65w"]
 [ext_resource type="PackedScene" uid="uid://h08lktpioj5d" path="res://Note/Prefabs/Note.tscn" id="10_o2hy5"]
+[ext_resource type="Script" uid="uid://dgmexwiqbdfy7" path="res://Basement/Room/MineBedsRoom.cs" id="11_lebbm"]
+[ext_resource type="Resource" uid="uid://cj6is13jfrim1" path="res://Blueprint/Resources/Tool_Pickaxe.tres" id="12_73awn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o62yi"]
 size = Vector3(20, 1, 20)
@@ -56,7 +58,7 @@ size = Vector3(4, 1, 6)
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_fdbye"]
 size = Vector3(4, 6, 1)
 
-[node name="Room_Base" instance=ExtResource("1_s1xbn")]
+[node name="Mine_Room_Beds" instance=ExtResource("1_s1xbn")]
 
 [node name="Rocks_CaveIn" parent="North/Closed" index="0" instance=ExtResource("2_3j7of")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
@@ -539,3 +541,11 @@ The crabs have been keeping me company for a while now.
 They're good friends. They don't judge. They're just company during a time of extreme solitude. The good thing about friends is they always want what's best for you. They can't help me find the way out, but they want me to keep going!
 I felt horrible at first, but I was so hungry. And I realized that it wasn't just what I wanted. They wanted it too. They want to help keep me alive so that I can get out of here.
 It's what friends are for."
+
+[node name="RoomScript" type="Node3D" parent="." index="16" node_paths=PackedStringArray("PickaxeBlueprintMarker")]
+script = ExtResource("11_lebbm")
+PickaxeBlueprintMarker = NodePath("PickaxeBlueprintMarker")
+PickaxeBlueprintInfo = ExtResource("12_73awn")
+
+[node name="PickaxeBlueprintMarker" type="Marker3D" parent="RoomScript" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16534, 1.19209e-07, -5.87231)

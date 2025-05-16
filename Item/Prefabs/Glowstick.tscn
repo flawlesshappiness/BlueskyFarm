@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://f6gbbdupqh4s"]
+
+[ext_resource type="Script" uid="uid://dvpbngr64qh0n" path="res://Item/Item.cs" id="1_im2s0"]
+[ext_resource type="PackedScene" uid="uid://c6b7h0qlcne00" path="res://Assets/FlawLizArt/GlowStick/glow_stick.glb" id="2_d37jh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d37jh"]
+size = Vector3(0.129883, 0.869751, 0.111328)
+
+[node name="Glowstick" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 3
+script = ExtResource("1_im2s0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10755, 0)
+shape = SubResource("BoxShape3D_d37jh")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="glow_stick2" parent="Model" instance=ExtResource("2_d37jh")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.00201949, -0.148109, 0)
+
+[node name="glow_stick" parent="Model/glow_stick2" index="0"]
+transform = Transform3D(1, 4.37114e-08, 0, -4.37114e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.2, 0.2, 1)
+light_energy = 4.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 28.0
+distance_fade_shadow = 10.0
+
+[editable path="Model/glow_stick2"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://cj6is13jfrim1"]
+
+[ext_resource type="Texture2D" uid="uid://chgyyotpy82kc" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_pickaxe.png" id="1_c2vxf"]
+[ext_resource type="Resource" uid="uid://cxfii3j7jtj01" path="res://Item/Resources/Tool_Pickaxe.tres" id="2_dsdbl"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_cjqit"]
+
+[resource]
+script = ExtResource("3_cjqit")
+Id = "pickaxe"
+ResultIcon = ExtResource("1_c2vxf")
+ResultItemInfo = ExtResource("2_dsdbl")
+OverrideResultName = ""
+ResultDialogueNode = ""
+VegetableCount = 5
+BoneCount = 3
+StoneCount = 0
+CanCancel = true
+Areas = null

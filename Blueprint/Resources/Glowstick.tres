@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://bgn35xhtufwh"]
+
+[ext_resource type="Texture2D" uid="uid://bhoprkfs4yebk" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_glowstick.png" id="1_uuto0"]
+[ext_resource type="Resource" uid="uid://dc5jidtfh4pt5" path="res://Item/Resources/Glowstick.tres" id="2_uuto0"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_v4y0i"]
+
+[resource]
+script = ExtResource("3_v4y0i")
+Id = "glowstick"
+ResultIcon = ExtResource("1_uuto0")
+ResultItemInfo = ExtResource("2_uuto0")
+OverrideResultName = "Glowstick"
+ResultDialogueNode = ""
+VegetableCount = 0
+BoneCount = 2
+StoneCount = 5
+CanCancel = true
+Areas = null

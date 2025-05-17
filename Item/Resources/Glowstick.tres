@@ -7,7 +7,7 @@
 script = ExtResource("2_77j0x")
 Scene = ExtResource("1_r1n2g")
 ItemName = ""
-CustomId = ""
+CustomId = "glowstick"
 Type = 0
 CanUse = false
 Uses = 0

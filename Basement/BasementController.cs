@@ -41,6 +41,7 @@ public partial class BasementController : SingletonController
         SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_TombstonePuzzle");
         SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_BigGrave");
         SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_BigGrave");
+        SetOrAddElementInfo(grid, AreaNames.Forest, "Forest_Eye");
 
         // Mine
         SetOrAddElementInfo(grid, AreaNames.Mine, "Mine_Room_Coal");

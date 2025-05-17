@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BasementRoomInfo" load_steps=3 format=3 uid="uid://e6h2w48mdlg0"]
+
+[ext_resource type="PackedScene" uid="uid://cp18kmc58sytt" path="res://Basement/Room/Prefabs/Forest_Eye.tscn" id="1_hpbn1"]
+[ext_resource type="Script" uid="uid://dcg8g2jrrarni" path="res://Basement/Room/BasementRoomInfo.cs" id="2_2c7nf"]
+
+[resource]
+script = ExtResource("2_2c7nf")
+Area = "Forest"
+ConnectedArea = ""
+AmbienceArea = "Forest"
+Scene = ExtResource("1_hpbn1")
+IsStartRoom = false
+IsConnectedToAllFromSameArea = true
+RoomLayout = "1111111
+1111111
+1111111
+1111111
+1111111
+1111111
+1111111"
+ValidGroundHeights = null
+Disabled = true

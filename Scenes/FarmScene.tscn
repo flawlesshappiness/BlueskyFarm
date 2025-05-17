@@ -209,7 +209,7 @@ material = SubResource("StandardMaterial3D_hxbpf")
 size = Vector3(2, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3khyi"]
-size = Vector3(1.5, 1, 1)
+size = Vector3(1.5, 0.541931, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_gf8bb"]
 size = Vector2(4, 4)
@@ -1037,7 +1037,7 @@ Area = 1
 HoverIcon = ExtResource("44_a3vth")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/BrokenGround/Teleport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.770966, 0)
 shape = SubResource("BoxShape3D_3khyi")
 
 [node name="Floor_Grass" parent="World/NavigationRegion3D/Farm/BrokenGround" instance=ExtResource("47_lsuud")]

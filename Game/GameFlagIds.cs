@@ -13,6 +13,7 @@ public static class GameFlagIds
     public static GameFlagId BasementLadderInventoryItemPicked = new GameFlagId("basement_ladder_inventory_item_picked");
     public static GameFlagId BasementRockCrushed = new GameFlagId("basement_rock_crushed");
     public static GameFlagId BasementRockInventoryItemPicked = new GameFlagId("basement_rock_inventory_item_picked");
+    public static GameFlagId BasementRockSecretInventoryItemPicked = new GameFlagId("basement_rock_secret_inventory_item_picked");
     public static GameFlagId ForestBlockadeRemoved = new GameFlagId("forest_blockade_removed");
     public static GameFlagId ForestHutWeedsCut = new GameFlagId("forest_hut_weeds_cut");
     public static GameFlagId ForestTreeHouseRepaired = new GameFlagId("forest_tree_house_repaired");

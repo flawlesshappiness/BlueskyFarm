@@ -6,6 +6,9 @@ public partial class Basement_RockPuzzleRoom : Node3D
     public Marker3D InventoryItemMarker;
 
     [Export]
+    public Marker3D SecretInventoryItemMarker;
+
+    [Export]
     public ItemInfo InventoryItem;
 
     [Export]
@@ -14,12 +17,20 @@ public partial class Basement_RockPuzzleRoom : Node3D
     [Export]
     public BasementDoor BlockedDoor;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_Secret;
+
+    [Export]
+    public LightTrigger LightTrigger;
+
     public override void _Ready()
     {
         base._Ready();
         InitializeInventoryItem();
         InitializeCrushableRock();
         InitializeBlockedDoor();
+        InitializeSecretInventoryItem();
+        InitializeLightTrigger();
     }
 
     private void InitializeInventoryItem()
@@ -34,6 +45,22 @@ public partial class Basement_RockPuzzleRoom : Node3D
         item.OnPickUp += () =>
         {
             GameFlagIds.BasementRockInventoryItemPicked.SetTrue();
+        };
+    }
+
+    private void InitializeSecretInventoryItem()
+    {
+        Debug.Log(GameFlagIds.BasementRockSecretInventoryItemPicked.IsTrue());
+        if (GameFlagIds.BasementRockSecretInventoryItemPicked.IsTrue()) return;
+
+        var item = ItemController.Instance.CreateItem(InventoryItem);
+        item.SetParent(SecretInventoryItemMarker);
+        item.Position = Vector3.Zero;
+        item.Rotation = Vector3.Zero;
+
+        item.OnPickUp += () =>
+        {
+            GameFlagIds.BasementRockSecretInventoryItemPicked.SetTrue();
         };
     }
 
@@ -52,5 +79,19 @@ public partial class Basement_RockPuzzleRoom : Node3D
     private void InitializeBlockedDoor()
     {
         BlockedDoor.Locked = true;
+    }
+
+    private void InitializeLightTrigger()
+    {
+        LightTrigger.OnToggle += LightTriggerToggle;
+    }
+
+    private void LightTriggerToggle(bool toggle)
+    {
+        if (toggle)
+        {
+            LightTrigger.IsToggleable = false;
+            AnimationPlayer_Secret.Play("open");
+        }
     }
 }

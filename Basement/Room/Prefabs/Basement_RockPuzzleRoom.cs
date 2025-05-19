@@ -50,7 +50,6 @@ public partial class Basement_RockPuzzleRoom : Node3D
 
     private void InitializeSecretInventoryItem()
     {
-        Debug.Log(GameFlagIds.BasementRockSecretInventoryItemPicked.IsTrue());
         if (GameFlagIds.BasementRockSecretInventoryItemPicked.IsTrue()) return;
 
         var item = ItemController.Instance.CreateItem(InventoryItem);

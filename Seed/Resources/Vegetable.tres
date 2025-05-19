@@ -7,4 +7,4 @@
 script = ExtResource("1_g6jty")
 ItemType = 1
 ItemInfo = ExtResource("1_lvoup")
-GrowTimeInSeconds = 30
+GrowTimeInSeconds = 60

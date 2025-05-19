@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=108 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" uid="uid://cwqycbkuumrom" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://daiksy4nsg2do" path="res://Basement/Assets/Floor/Floor_Grass.tscn" id="4_owo44"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
+[ext_resource type="PackedScene" uid="uid://cirjx7mfugoni" path="res://Assets/KayLousberg/Dungeon/trapdoor.gltf.glb" id="7_lcb44"]
 [ext_resource type="PackedScene" uid="uid://castmw65ijigk" path="res://Basement/Assets/Interior/Trapdoor.tscn" id="8_je3mm"]
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="8_vbfot"]
@@ -63,8 +64,18 @@
 [ext_resource type="PackedScene" uid="uid://bkhu5f3r0bngv" path="res://Basement/Assets/Basement/Pillar_Bottom.tscn" id="50_whspd"]
 [ext_resource type="PackedScene" uid="uid://dffmy56n5prba" path="res://Basement/Assets/Basement/Pillar_Top.tscn" id="51_q1avm"]
 [ext_resource type="PackedScene" uid="uid://bhvxbb44twxoi" path="res://Basement/Assets/Interior/Lantern_Wall.tscn" id="52_w3210"]
+[ext_resource type="PackedScene" uid="uid://ben2qbeyvpvpc" path="res://Basement/Assets/Mine/Wall_WoodPlank_001.tscn" id="53_go1ab"]
+[ext_resource type="PackedScene" uid="uid://dlt8jrnsotu0u" path="res://Basement/Assets/Interior/Barrel_002.tscn" id="54_go1ab"]
 [ext_resource type="Script" uid="uid://by3yx6fou8law" path="res://Farm/FarmForge.cs" id="54_rs487"]
+[ext_resource type="PackedScene" uid="uid://bwn65vli8d8em" path="res://Basement/Assets/Interior/BookcaseWide_Boxes.tscn" id="55_ri7pm"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="57_56e6m"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
+vertices = PackedVector3Array(-11.6, 4.5, -11.6, 11.65, 4.5, -11.85, -11.85, 4.5, -11.85, -11.85, 4.5, 11.9, -4.35, 4.5, 11.9, -11.6, 4.5, 11.4, 12.15, 4.5, 11.65, 11.9, 4.5, -11.6, 11.9, 4.5, 11.4, 0.4, 4.5, 11.65, -9.35, 0.5, -10.1, -6.6, 0.5, -10.1, -6.6, 0.5, -10.85, -10.6, 0.5, -10.85, -10.6, 0.5, -2.1, -10.1, 0.5, -2.1, -10.1, 0.5, -9.35, 8.65, 0.5, -8.35, 8.9, 0.5, -5.85, 10.9, 0.5, -5.85, 10.9, 0.5, -10.85, -3.1, 0.5, -6.35, -3.1, 0.5, -3.6, 4.4, 0.5, -3.6, 4.4, 0.5, -8.35, -4.6, 0.5, -10.85, -4.1, 0.5, -6.6, -9.1, 4.5, -1.35, -8.6, 4.5, -0.85, -5.35, 4.5, -0.85, -4.85, 4.5, -1.85, -5.1, 4.5, -8.85, -8.6, 4.5, -9.1, -9.35, 4.5, -7.6, -6.35, 0.5, -2.85, -6.1, 0.5, -1.85, -5.6, 0.5, -2.85, -5.6, 0.5, -3.1, -5.85, 0.5, -3.6, -6.85, 0.5, -3.6, -6.85, 0.5, -6.85, -5.85, 0.5, -6.85, -5.85, 0.75, -8.1, -8.35, 0.75, -8.1, -7.6, 1, -7.475, 4.65, 0.5, 8.9, 5.65, 0.75, 8.9, 9.9, 0.5, 8.9, 9.9, 0.5, 10.65, 10.9, 0.5, 10.65, -7.6, 0.5, -5.6, -8.35, 0.5, -2.85, -7.6, 0.5, -4.6, 8.65, 0.5, -3.6, 8.9, 0.75, 8.9, -4.1, 0.5, 9.9, 0.65, 0.5, 9.9, -4.35, 0.5, -0.35, 0.9, 0.5, 10.65, 4.65, 0.5, 10.65, 5.65, 1.25, 10.65, 8.9, 1.25, 10.65, -4.35, 0.5, -2.85, 5.15, 0, -7.35, 7.9, 0, -6.85, 7.9, 0, -7.35, -6.35, 1.5, -5.35, -5.85, 1.25, -4.6, -5.85, 1.25, -5.85, 5.15, 0, -5.1, 5.15, 0, -4.6, 7.9, 0, -4.6, 7.9, 0, -5.1, -9.35, 0.5, 0.15, -9.85, 0.5, -0.6, -10.6, 0.5, -0.6, -10.6, 0.5, 10.65, -4.85, 0.5, 10.65, -4.85, 0.5, 10.15, -4.6, 0.5, 0.15, -3.35, 6.75, 11.4, -3.35, 6.75, 15.15, -0.6, 6.75, 15.15, -0.6, 6.75, 11.4, -3.1, 4.5, 11.65, -3.1, 4.5, 14.9, -0.85, 4.5, 14.9, -0.85, 4.5, 11.65, -1.6, 0.5, 11.65, -2.35, 0.5, 11.65, -2.35, 0.5, 12.65, -2.85, 0.5, 12.9, -2.85, 0.5, 14.9, -1.1, 0.5, 14.9)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 13), PackedInt32Array(13, 10, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(26, 25, 21), PackedInt32Array(21, 25, 24), PackedInt32Array(24, 25, 20), PackedInt32Array(20, 17, 24), PackedInt32Array(29, 28, 27), PackedInt32Array(29, 27, 30), PackedInt32Array(30, 27, 33), PackedInt32Array(30, 33, 32), PackedInt32Array(30, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 34), PackedInt32Array(38, 34, 39), PackedInt32Array(40, 44, 41), PackedInt32Array(41, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(46, 45, 23), PackedInt32Array(49, 48, 47), PackedInt32Array(40, 50, 44), PackedInt32Array(44, 50, 43), PackedInt32Array(52, 51, 50), PackedInt32Array(50, 51, 43), PackedInt32Array(54, 46, 53), PackedInt32Array(53, 46, 23), PackedInt32Array(39, 34, 52), PackedInt32Array(52, 34, 51), PackedInt32Array(56, 55, 45), PackedInt32Array(45, 55, 57), PackedInt32Array(45, 57, 22), PackedInt32Array(45, 22, 23), PackedInt32Array(58, 56, 59), PackedInt32Array(59, 56, 45), PackedInt32Array(54, 61, 46), PackedInt32Array(46, 61, 60), PackedInt32Array(36, 37, 62), PackedInt32Array(62, 37, 22), PackedInt32Array(47, 54, 53), PackedInt32Array(18, 19, 53), PackedInt32Array(53, 19, 47), PackedInt32Array(47, 19, 49), PackedInt32Array(57, 62, 22), PackedInt32Array(65, 64, 63), PackedInt32Array(66, 68, 67), PackedInt32Array(72, 71, 69), PackedInt32Array(69, 71, 70), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(78, 77, 76), PackedInt32Array(78, 76, 55), PackedInt32Array(55, 76, 73), PackedInt32Array(55, 73, 79), PackedInt32Array(79, 57, 55), PackedInt32Array(83, 82, 80), PackedInt32Array(80, 82, 81), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(92, 91, 90), PackedInt32Array(92, 90, 93), PackedInt32Array(93, 90, 88)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_go1ab"]
+size = Vector3(1.89258, 0.723511, 1.98242)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5e8f"]
 size = Vector3(30, 4, 31)
@@ -77,10 +88,6 @@ size = Vector3(1, 20, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r8e4t"]
 size = Vector3(1, 20, 28)
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
-vertices = PackedVector3Array(-11.6, 4.5, -11.6, 11.65, 4.5, -11.85, -11.85, 4.5, -11.85, -11.85, 4.5, 11.9, -4.35, 4.5, 11.9, -11.6, 4.5, 11.4, 12.15, 4.5, 11.65, 11.9, 4.5, -11.6, 11.9, 4.5, 11.4, 0.4, 4.5, 11.65, -9.35, 0.5, -10.1, -6.6, 0.5, -10.1, -6.6, 0.5, -10.85, -10.6, 0.5, -10.85, -10.6, 0.5, -2.1, -10.1, 0.5, -2.1, -10.1, 0.5, -9.35, 8.65, 0.5, -8.35, 8.9, 0.5, -5.85, 10.9, 0.5, -5.85, 10.9, 0.5, -10.85, -3.1, 0.5, -6.35, -3.1, 0.5, -3.6, 4.4, 0.5, -3.6, 4.4, 0.5, -8.35, -4.6, 0.5, -10.85, -4.1, 0.5, -6.6, -9.1, 4.5, -1.35, -8.6, 4.5, -0.85, -5.35, 4.5, -0.85, -4.85, 4.5, -1.85, -5.1, 4.5, -8.85, -8.6, 4.5, -9.1, -9.35, 4.5, -7.6, -6.35, 0.5, -2.85, -6.1, 0.5, -1.85, -5.6, 0.5, -2.85, -5.6, 0.5, -3.1, -5.85, 0.5, -3.6, -6.85, 0.5, -3.6, -6.85, 0.5, -6.85, -5.85, 0.5, -6.85, -5.85, 0.75, -8.1, -8.35, 0.75, -8.1, -7.6, 1, -7.475, 4.65, 0.5, 8.9, 5.65, 0.75, 8.9, 9.9, 0.5, 8.9, 9.9, 0.5, 10.65, 10.9, 0.5, 10.65, -7.6, 0.5, -5.6, -8.35, 0.5, -2.85, -7.6, 0.5, -4.6, 8.65, 0.5, -3.6, 8.9, 0.75, 8.9, -4.1, 0.5, 9.9, 0.65, 0.5, 9.9, -4.35, 0.5, -0.35, 0.9, 0.5, 10.65, 4.65, 0.5, 10.65, 5.65, 1.25, 10.65, 8.9, 1.25, 10.65, -4.35, 0.5, -2.85, 5.15, 0, -7.35, 7.9, 0, -6.85, 7.9, 0, -7.35, -6.35, 1.5, -5.35, -5.85, 1.25, -4.6, -5.85, 1.25, -5.85, 5.15, 0, -5.1, 5.15, 0, -4.6, 7.9, 0, -4.6, 7.9, 0, -5.1, -9.35, 0.5, 0.15, -9.85, 0.5, -0.6, -10.6, 0.5, -0.6, -10.6, 0.5, 10.65, -4.85, 0.5, 10.65, -4.85, 0.5, 10.15, -4.6, 0.5, 0.15, -3.35, 6.75, 11.4, -3.35, 6.75, 15.15, -0.6, 6.75, 15.15, -0.6, 6.75, 11.4, -3.1, 4.5, 11.65, -3.1, 4.5, 14.9, -0.85, 4.5, 14.9, -0.85, 4.5, 11.65, -1.6, 0.5, 11.65, -2.35, 0.5, 11.65, -2.35, 0.5, 12.65, -2.85, 0.5, 12.9, -2.85, 0.5, 14.9, -1.1, 0.5, 14.9)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 13), PackedInt32Array(13, 10, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(26, 25, 21), PackedInt32Array(21, 25, 24), PackedInt32Array(24, 25, 20), PackedInt32Array(20, 17, 24), PackedInt32Array(29, 28, 27), PackedInt32Array(29, 27, 30), PackedInt32Array(30, 27, 33), PackedInt32Array(30, 33, 32), PackedInt32Array(30, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 34), PackedInt32Array(38, 34, 39), PackedInt32Array(40, 44, 41), PackedInt32Array(41, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(46, 45, 23), PackedInt32Array(49, 48, 47), PackedInt32Array(40, 50, 44), PackedInt32Array(44, 50, 43), PackedInt32Array(52, 51, 50), PackedInt32Array(50, 51, 43), PackedInt32Array(54, 46, 53), PackedInt32Array(53, 46, 23), PackedInt32Array(39, 34, 52), PackedInt32Array(52, 34, 51), PackedInt32Array(56, 55, 45), PackedInt32Array(45, 55, 57), PackedInt32Array(45, 57, 22), PackedInt32Array(45, 22, 23), PackedInt32Array(58, 56, 59), PackedInt32Array(59, 56, 45), PackedInt32Array(54, 61, 46), PackedInt32Array(46, 61, 60), PackedInt32Array(36, 37, 62), PackedInt32Array(62, 37, 22), PackedInt32Array(47, 54, 53), PackedInt32Array(18, 19, 53), PackedInt32Array(53, 19, 47), PackedInt32Array(47, 19, 49), PackedInt32Array(57, 62, 22), PackedInt32Array(65, 64, 63), PackedInt32Array(66, 68, 67), PackedInt32Array(72, 71, 69), PackedInt32Array(69, 71, 70), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(78, 77, 76), PackedInt32Array(78, 76, 55), PackedInt32Array(55, 76, 73), PackedInt32Array(55, 73, 79), PackedInt32Array(79, 57, 55), PackedInt32Array(83, 82, 80), PackedInt32Array(80, 82, 81), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(92, 91, 90), PackedInt32Array(92, 90, 93), PackedInt32Array(93, 90, 88)]
 
 [sub_resource type="QuadMesh" id="QuadMesh_y3d22"]
 material = ExtResource("10_nsfwf")
@@ -211,6 +218,9 @@ size = Vector3(2, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3khyi"]
 size = Vector3(1.5, 0.541931, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcb44"]
+size = Vector3(1.7998, 0.748901, 1.93506)
+
 [sub_resource type="QuadMesh" id="QuadMesh_gf8bb"]
 size = Vector2(4, 4)
 
@@ -229,15 +239,17 @@ size = Vector3(1, 1, 2.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
 size = Vector3(1, 1.51624, 1.22208)
 
-[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "TeleportToUnderground", "TeleportToFarm", "CrushableRockToUnderground", "WorldEnvironment", "DirectionalLight")]
+[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "TeleportToUnderground", "TeleportToFarm", "TeleportUndergroundToOtherFarm", "TeleportOtherFarmToUnderground", "CrushableRockToUnderground", "WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_mng5r")
-Trapdoor = NodePath("World/NavigationRegion3D/Farm/Basement/Trapdoor")
-BasementUnlockArea = NodePath("World/NavigationRegion3D/Farm/Basement/BasementUnlockArea")
+Trapdoor = NodePath("World/NavigationRegion3D/Farm/FarmBasementEntrance/Trapdoor")
+BasementUnlockArea = NodePath("World/NavigationRegion3D/Farm/FarmBasementEntrance/BasementUnlockArea")
 Shed_Thorns = NodePath("World/NavigationRegion3D/Farm/Shed/Behind/Shed_Thorns")
 Shed_InventoryItemPosition = NodePath("World/NavigationRegion3D/Farm/Shed/Behind/Shed_InventoryItemPosition")
 InventoryUpgradeItem = ExtResource("2_rf1ug")
 TeleportToUnderground = NodePath("World/NavigationRegion3D/Farm/BrokenGround/Teleport")
 TeleportToFarm = NodePath("World/NavigationRegion3D/Underground/Teleport")
+TeleportUndergroundToOtherFarm = NodePath("World/NavigationRegion3D/Underground/Interior/trapdoor_gltf/TeleportUndergroundToOtherFarm")
+TeleportOtherFarmToUnderground = NodePath("World/NavigationRegion3D/OtherFarm/FarmBasementEntrance/trapdoor_gltf/TeleportOtherFarmToUnderground")
 CrushableRockToUnderground = NodePath("World/NavigationRegion3D/Farm/BrokenGround/CrushableRock")
 WorldEnvironment = NodePath("WorldEnvironment")
 DirectionalLight = NodePath("Sun")
@@ -251,33 +263,6 @@ light_color = Color(0.721569, 0.631373, 1, 1)
 shadow_enabled = true
 
 [node name="World" type="Node3D" parent="."]
-
-[node name="SkyBlock" type="Node3D" parent="World"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/SkyBlock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-collision_layer = 3
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, 0)
-shape = SubResource("BoxShape3D_t5e8f")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7625, 7.6475, 0)
-shape = SubResource("BoxShape3D_daddt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0166, 7.6475, 0)
-shape = SubResource("BoxShape3D_daddt")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37298, 7.6475, -11.8896)
-shape = SubResource("BoxShape3D_2nbm6")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="World/SkyBlock/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37299, 7.6475, 11.8896)
-shape = SubResource("BoxShape3D_r8e4t")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_ijsjf")
@@ -468,6 +453,58 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5.5, 0,
 
 [node name="Bush33" parent="World/NavigationRegion3D/OtherFarm/Hedge" instance=ExtResource("5_wp138")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -9.5, 0, 12)
+
+[node name="FarmBasementEntrance" type="Node3D" parent="World/NavigationRegion3D/OtherFarm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26262, 0, 9.78856)
+
+[node name="Ceiling" parent="World/NavigationRegion3D/OtherFarm/FarmBasementEntrance" instance=ExtResource("9_t030q")]
+transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435, 0)
+
+[node name="StartOtherFarm" type="Marker3D" parent="World/NavigationRegion3D/OtherFarm/FarmBasementEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
+
+[node name="trapdoor_gltf" parent="World/NavigationRegion3D/OtherFarm/FarmBasementEntrance" instance=ExtResource("7_lcb44")]
+transform = Transform3D(1, 0, 0, 0, 0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0.707322, 0.865382)
+
+[node name="TeleportOtherFarmToUnderground" type="StaticBody3D" parent="World/NavigationRegion3D/OtherFarm/FarmBasementEntrance/trapdoor_gltf" node_paths=PackedStringArray("DestinationMarker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.972561)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("42_3khyi")
+DestinationMarker = NodePath("../../../../Underground/UndergroundOtherFarmStart")
+Area = 1
+HoverIcon = ExtResource("44_a3vth")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/FarmBasementEntrance/trapdoor_gltf/TeleportOtherFarmToUnderground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.138244, 1.90735e-06)
+shape = SubResource("BoxShape3D_go1ab")
+
+[node name="SkyBlock" type="Node3D" parent="World/NavigationRegion3D/OtherFarm"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, 0)
+shape = SubResource("BoxShape3D_t5e8f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7625, 7.6475, 0)
+shape = SubResource("BoxShape3D_daddt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0166, 7.6475, 0)
+shape = SubResource("BoxShape3D_daddt")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37298, 7.6475, -11.8896)
+shape = SubResource("BoxShape3D_2nbm6")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37299, 7.6475, 11.8896)
+shape = SubResource("BoxShape3D_r8e4t")
 
 [node name="Farm" type="Node3D" parent="World/NavigationRegion3D"]
 
@@ -675,29 +712,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 14.25)
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 2, 16)
 mesh = SubResource("QuadMesh_y3d22")
 
-[node name="Basement" type="Node3D" parent="World/NavigationRegion3D/Farm"]
+[node name="FarmBasementEntrance" type="Node3D" parent="World/NavigationRegion3D/Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26262, 0, 9.78856)
 
-[node name="Ceiling" parent="World/NavigationRegion3D/Farm/Basement" instance=ExtResource("9_t030q")]
+[node name="Ceiling" parent="World/NavigationRegion3D/Farm/FarmBasementEntrance" instance=ExtResource("9_t030q")]
 transform = Transform3D(1, 0, 0, 0, -0.977412, -0.211342, 0, 0.211342, -0.977412, 0, 0.435, 0)
 
-[node name="Trapdoor" parent="World/NavigationRegion3D/Farm/Basement" instance=ExtResource("8_je3mm")]
+[node name="Trapdoor" parent="World/NavigationRegion3D/Farm/FarmBasementEntrance" instance=ExtResource("8_je3mm")]
 transform = Transform3D(1, 0, 0, 0, 0.975423, 0.22034, 0, -0.22034, 0.975423, 0, 0.452668, -0.317729)
 SceneName = "BasementScene"
 
-[node name="Touchable" parent="World/NavigationRegion3D/Farm/Basement/Trapdoor" index="0"]
+[node name="Touchable" parent="World/NavigationRegion3D/Farm/FarmBasementEntrance/Trapdoor" index="0"]
 HoverText = "Basement"
 
-[node name="StartBasement" type="Marker3D" parent="World/NavigationRegion3D/Farm/Basement"]
+[node name="StartBasement" type="Marker3D" parent="World/NavigationRegion3D/Farm/FarmBasementEntrance"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00038588, -2.8843)
 
-[node name="BasementUnlockArea" type="Area3D" parent="World/NavigationRegion3D/Farm/Basement"]
+[node name="BasementUnlockArea" type="Area3D" parent="World/NavigationRegion3D/Farm/FarmBasementEntrance"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("8_vbfot")
 CustomId = "basement_key"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/Basement/BasementUnlockArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/FarmBasementEntrance/BasementUnlockArea"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.349139, -0.359888)
 shape = SubResource("BoxShape3D_w1bpo")
 
@@ -1043,6 +1080,33 @@ shape = SubResource("BoxShape3D_3khyi")
 [node name="Floor_Grass" parent="World/NavigationRegion3D/Farm/BrokenGround" instance=ExtResource("47_lsuud")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, -6)
 
+[node name="SkyBlock" type="Node3D" parent="World/NavigationRegion3D/Farm"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Farm/SkyBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/SkyBlock/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, 0)
+shape = SubResource("BoxShape3D_t5e8f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/SkyBlock/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7625, 7.6475, 0)
+shape = SubResource("BoxShape3D_daddt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/SkyBlock/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0166, 7.6475, 0)
+shape = SubResource("BoxShape3D_daddt")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/SkyBlock/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37298, 7.6475, -11.8896)
+shape = SubResource("BoxShape3D_2nbm6")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/SkyBlock/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37299, 7.6475, 11.8896)
+shape = SubResource("BoxShape3D_r8e4t")
+
 [node name="Underground" type="Node3D" parent="World/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 0)
 
@@ -1206,37 +1270,37 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 0
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -32)
 
 [node name="Wall24" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -12)
-
-[node name="Wall25" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, -4)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -27.5858, 0, -11.5858)
 
 [node name="Wall26" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -28, 0, -2)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -30.4142, 0, -14.4142)
+
+[node name="Wall25" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -27.5858, 0, -4.41421)
+
+[node name="Wall47" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -30.4142, 0, -1.58579)
 
 [node name="Wall27" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32, 0, -2)
 
-[node name="Wall28" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -36, 0, -2)
-
 [node name="Wall29" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -38, 0, -4)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -37.4142, 0, -5.41421)
+
+[node name="Wall48" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -34.5858, 0, -2.58579)
 
 [node name="Wall30" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -38, 0, -8)
 
 [node name="Wall31" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -38, 0, -12)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -37.4142, 0, -10.5858)
 
 [node name="Wall32" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -36, 0, -14)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -34.5858, 0, -13.4142)
 
 [node name="Wall33" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -32, 0, -14)
-
-[node name="Wall34" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -28, 0, -14)
 
 [node name="Wall23" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("10_70r2i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -36)
@@ -1436,6 +1500,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
 [node name="Pillar_Top" parent="World/NavigationRegion3D/Underground/Walls/Pillar_Bottom5" instance=ExtResource("51_q1avm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
+[node name="Mine_Wall_WoodPlank_001" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("53_go1ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -13.5)
+
+[node name="Mine_Wall_WoodPlank_002" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("53_go1ab")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32, 0, -2.5)
+
+[node name="Mine_Wall_WoodPlank_003" parent="World/NavigationRegion3D/Underground/Walls" instance=ExtResource("53_go1ab")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37.5, 0, -8)
+
 [node name="Ceiling" type="Node3D" parent="World/NavigationRegion3D/Underground"]
 
 [node name="Ceiling" parent="World/NavigationRegion3D/Underground/Ceiling" instance=ExtResource("9_t030q")]
@@ -1551,29 +1624,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
 
 [node name="Interior" type="Node3D" parent="World/NavigationRegion3D/Underground"]
 
-[node name="Rocks_CaveIn" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.1215)
+[node name="trapdoor_gltf" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("7_lcb44")]
+transform = Transform3D(-5.96046e-08, 8.74228e-08, -1, 0, -1, -8.74228e-08, -1, -5.32907e-15, 5.96046e-08, -33, 3.928, -8)
 
-[node name="Rocks_CaveIn2" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 0, -3.24402)
+[node name="TeleportUndergroundToOtherFarm" type="StaticBody3D" parent="World/NavigationRegion3D/Underground/Interior/trapdoor_gltf" node_paths=PackedStringArray("DestinationMarker")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.10588e-22, 0, -3.17637e-22, 1, 0, 0, -0.900223)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("42_3khyi")
+DestinationMarker = NodePath("../../../../OtherFarm/FarmBasementEntrance/StartOtherFarm")
+HoverIcon = ExtResource("44_a3vth")
 
-[node name="Rocks_CaveIn4" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -20.4841, 0, -8.24402)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Underground/Interior/trapdoor_gltf/TeleportUndergroundToOtherFarm"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.10588e-22, 0, -3.17637e-22, 1, -1.90735e-06, -0.12555, -0.0695801)
+shape = SubResource("BoxShape3D_lcb44")
 
-[node name="Rocks_CaveIn3" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("37_daddt")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -12, 0, -33.244)
+[node name="Lights" type="Node3D" parent="World/NavigationRegion3D/Underground/Interior"]
 
-[node name="Lantern" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("25_jyqg2")]
+[node name="Lantern" parent="World/NavigationRegion3D/Underground/Interior/Lights" instance=ExtResource("25_jyqg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -8)
 
-[node name="Lantern2" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("25_jyqg2")]
+[node name="Lantern2" parent="World/NavigationRegion3D/Underground/Interior/Lights" instance=ExtResource("25_jyqg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 4, -8)
 
-[node name="Lantern_Wall" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("52_w3210")]
+[node name="Lantern_Wall" parent="World/NavigationRegion3D/Underground/Interior/Lights" instance=ExtResource("52_w3210")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 4.5, -18)
 
-[node name="Lantern_Wall2" parent="World/NavigationRegion3D/Underground/Interior" instance=ExtResource("52_w3210")]
+[node name="Lantern_Wall2" parent="World/NavigationRegion3D/Underground/Interior/Lights" instance=ExtResource("52_w3210")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.5, -30.5)
+
+[node name="Rocks" type="Node3D" parent="World/NavigationRegion3D/Underground/Interior"]
+
+[node name="Rocks_CaveIn" parent="World/NavigationRegion3D/Underground/Interior/Rocks" instance=ExtResource("37_daddt")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.1215)
+
+[node name="Rocks_CaveIn2" parent="World/NavigationRegion3D/Underground/Interior/Rocks" instance=ExtResource("37_daddt")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 0, -3.24402)
+
+[node name="Rocks_CaveIn3" parent="World/NavigationRegion3D/Underground/Interior/Rocks" instance=ExtResource("37_daddt")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -12, 0, -33.244)
+
+[node name="TeleportRoom" type="Node3D" parent="World/NavigationRegion3D/Underground/Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -8)
+
+[node name="BookcaseWide_Boxes" parent="World/NavigationRegion3D/Underground/Interior/TeleportRoom" instance=ExtResource("55_ri7pm")]
+transform = Transform3D(0.883883, 0, 0.883883, 0, 1.25, 0, -0.883883, 0, 0.883883, 4.00977, 0, 2.63528)
+
+[node name="BookcaseWide_Boxes2" parent="World/NavigationRegion3D/Underground/Interior/TeleportRoom" instance=ExtResource("55_ri7pm")]
+transform = Transform3D(-0.883883, 0, 0.883883, 0, 1.25, 0, -0.883883, 0, -0.883883, 2.78676, 0, -3.85467)
+
+[node name="Barrel" parent="World/NavigationRegion3D/Underground/Interior/TeleportRoom" instance=ExtResource("54_go1ab")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.40501, 0, -3.64052)
+
+[node name="Barrel2" parent="World/NavigationRegion3D/Underground/Interior/TeleportRoom" instance=ExtResource("54_go1ab")]
+transform = Transform3D(0.20187, 0, 1.98979, 0, 2, 0, -1.98979, 0, 0.20187, -3.84561, 0, -2.15206)
+
+[node name="Crate" parent="World/NavigationRegion3D/Underground/Interior/TeleportRoom" instance=ExtResource("31_t1p85")]
+transform = Transform3D(0.788569, 0, -0.614946, 0, 1, 0, 0.614946, 0, 0.788569, 3.97197, 0, -2.2828)
+
+[node name="Barrel3" parent="World/NavigationRegion3D/Underground/Interior/TeleportRoom" instance=ExtResource("30_721ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43332, 0, 3.85046)
 
 [node name="EntranceRocks" type="Node3D" parent="World/NavigationRegion3D/Underground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
@@ -1675,6 +1785,9 @@ bus = &"SFX"
 [node name="UndergroundDownStart" type="Marker3D" parent="World/NavigationRegion3D/Underground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.19237)
 
+[node name="UndergroundOtherFarmStart" type="Marker3D" parent="World/NavigationRegion3D/Underground"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -32, 0, -8)
+
 [node name="Teleport" type="StaticBody3D" parent="World/NavigationRegion3D/Underground" node_paths=PackedStringArray("DestinationMarker")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
 collision_layer = 4
@@ -1700,7 +1813,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -24)
 
 [node name="Note" parent="World/NavigationRegion3D/Underground" instance=ExtResource("57_56e6m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.63359, 1.47938, -21.253)
-Text = "I'm shutting down her down.
+Text = "I'm shutting her down.
 Through our time here, she's been serving us well, but now with so few of us left I think it's for the best.
 Regardless, if you need her back up and running make sure the kiln is properly fueled. She has a ravenous hunger, and must be fed regularly. Three pieces, at least!
 
@@ -1869,7 +1982,7 @@ volume_db = 10.0
 autoplay = true
 bus = &"BGM"
 
-[editable path="World/NavigationRegion3D/Farm/Basement/Trapdoor"]
+[editable path="World/NavigationRegion3D/Farm/FarmBasementEntrance/Trapdoor"]
 [editable path="World/NavigationRegion3D/Farm/Shed/House/Repaired/Lantern"]
 [editable path="World/NavigationRegion3D/Farm/Shed/House/Repaired/Lantern/hanging_lantern_new"]
 [editable path="World/PlantBoxes/PlantBox_001"]

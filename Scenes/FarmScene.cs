@@ -26,6 +26,12 @@ public partial class FarmScene : GameScene
     public InteractTeleport TeleportToFarm;
 
     [Export]
+    public InteractTeleport TeleportUndergroundToOtherFarm;
+
+    [Export]
+    public InteractTeleport TeleportOtherFarmToUnderground;
+
+    [Export]
     public CrushableRock CrushableRockToUnderground;
 
     public List<PlantArea> PlantAreas = new();
@@ -129,7 +135,9 @@ public partial class FarmScene : GameScene
     private void InitializeTeleports()
     {
         TeleportToFarm.OnTouched += Touched_TeleportToFarm;
+        TeleportUndergroundToOtherFarm.OnTouched += Touched_TeleportToFarm;
         TeleportToUnderground.OnTouched += Touched_TeleportToUnderground;
+        TeleportOtherFarmToUnderground.OnTouched += Touched_TeleportToUnderground;
     }
 
     protected override void BeforeSave()

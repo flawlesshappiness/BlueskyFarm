@@ -9,6 +9,12 @@ public partial class InteractTeleport : Touchable
     [Export]
     public AreaNameType Area;
 
+    [Export]
+    public SoundInfo SfxTeleportStart;
+
+    [Export]
+    public SoundInfo SfxTeleportEnd;
+
     protected override void Touched()
     {
         base.Touched();
@@ -22,6 +28,8 @@ public partial class InteractTeleport : Touchable
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            SfxTeleportStart?.Play(GlobalPosition);
+
             var view = View.Get<GameView>();
             yield return view.TransitionStartCr(new TransitionSettings
             {
@@ -38,6 +46,8 @@ public partial class InteractTeleport : Touchable
             {
                 Duration = 1f
             });
+
+            SfxTeleportEnd?.Play();
         }
     }
 

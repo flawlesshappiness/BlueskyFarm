@@ -1,0 +1,210 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmvgvj0pey55g"]
+
+[ext_resource type="PackedScene" uid="uid://dx47k77jlmumj" path="res://Assets/FlawLizArt/Rocks/rock_flat_001.fbx" id="1_08o7g"]
+[ext_resource type="Script" uid="uid://bvhoirk0vw32" path="res://Basement/Assets/Entities/ClockRock.cs" id="1_88t6u"]
+[ext_resource type="Material" uid="uid://bk0kdmxcn0lyj" path="res://Assets/Materials/Crystal_Red.tres" id="2_kv875"]
+[ext_resource type="Script" uid="uid://cr0ycwsjhbonr" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="3_2kwjk"]
+[ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="5_cdvcu"]
+[ext_resource type="Texture2D" uid="uid://j4de0xeenph1" path="res://Assets/KenneyNL/Cursors/transparent.png" id="5_vsmh5"]
+
+[sub_resource type="Animation" id="Animation_6c5du"]
+resource_name = "activate"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/rock_flat_001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/rock_flat_002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/rock_flat_002:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1.25, 1.25, 1.25), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/rock_flat_001:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+
+[sub_resource type="Animation" id="Animation_88t6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/rock_flat_001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/rock_flat_002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/rock_flat_002:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/rock_flat_001:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vsmh5"]
+resource_name = "deactivate"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/rock_flat_001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/rock_flat_002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/rock_flat_001:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1.25, 1.25, 1.25), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/rock_flat_002:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsmh5"]
+_data = {
+&"RESET": SubResource("Animation_88t6u"),
+&"activate": SubResource("Animation_6c5du"),
+&"deactivate": SubResource("Animation_vsmh5")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihvab"]
+size = Vector3(0.293945, 0.226318, 0.477173)
+
+[node name="ClockRock" type="Node3D" node_paths=PackedStringArray("Crushable", "AnimationPlayer")]
+script = ExtResource("1_88t6u")
+Crushable = NodePath("Crushable")
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="rock_flat_001" parent="Model" instance=ExtResource("1_08o7g")]
+
+[node name="rock_flat_002" parent="Model" instance=ExtResource("1_08o7g")]
+visible = false
+
+[node name="rock_flat_001" parent="Model/rock_flat_002" index="0"]
+surface_material_override/0 = ExtResource("2_kv875")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vsmh5")
+}
+
+[node name="Crushable" type="StaticBody3D" parent="." node_paths=PackedStringArray("Particles")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_2kwjk")
+SfxCrush = ExtResource("5_cdvcu")
+Particles = []
+HoverIcon = ExtResource("5_vsmh5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crushable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00088501, 0.103795, -0.0167847)
+shape = SubResource("BoxShape3D_ihvab")
+
+[editable path="Model/rock_flat_002"]

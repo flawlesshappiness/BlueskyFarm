@@ -22,7 +22,7 @@ public partial class CrushableRock : Touchable, ICrushable
             Particles.ForEach(x => x.Emitting = true);
         }
 
-        SfxCrush.Play(GlobalPosition);
+        SfxCrush?.Play(GlobalPosition);
 
         OnCrushed?.Invoke();
     }
@@ -30,6 +30,6 @@ public partial class CrushableRock : Touchable, ICrushable
     protected override void Touched()
     {
         base.Touched();
-        SoundController.Instance.Play(sfx_touch, GlobalPosition);
+        sfx_touch?.Play(GlobalPosition);
     }
 }

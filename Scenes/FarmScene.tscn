@@ -1,8 +1,9 @@
-[gd_scene load_steps=108 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=126 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" uid="uid://cwqycbkuumrom" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
 [ext_resource type="Environment" uid="uid://d4jf7bq3a0x4m" path="res://Environment/Environments/Farm.tres" id="3_lsuud"]
+[ext_resource type="Script" uid="uid://dg6jo44sif2x8" path="res://Farm/OtherFarm.cs" id="4_a6kga"]
 [ext_resource type="PackedScene" uid="uid://daiksy4nsg2do" path="res://Basement/Assets/Floor/Floor_Grass.tscn" id="4_owo44"]
 [ext_resource type="PackedScene" uid="uid://28s5txojc4dn" path="res://Farm/Bush/Bush.tscn" id="5_wp138"]
 [ext_resource type="PackedScene" uid="uid://bgklsk4n0kgrr" path="res://Assets/FlawLizArt/Bush/bush_doorway.fbx" id="6_y4tgu"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bdkodwuco1fd1" path="res://Player/Player.tscn" id="8_u2gl0"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="8_vbfot"]
 [ext_resource type="PackedScene" uid="uid://cyi1fb0cs5vm2" path="res://Basement/Assets/Interior/Ceiling.tscn" id="9_t030q"]
+[ext_resource type="Resource" uid="uid://bgyy18oiyq6r7" path="res://Sound/Resources/sfx_basement_open.tres" id="10_6ak32"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Basement/Wall.tscn" id="10_70r2i"]
 [ext_resource type="Material" uid="uid://cviywgr8k8lo1" path="res://Assets/Materials/Darkness.tres" id="10_nsfwf"]
 [ext_resource type="PackedScene" uid="uid://ushvc4v1oc0j" path="res://Basement/Assets/Basement/Wall_Doorway.tscn" id="11_2axp7"]
@@ -22,23 +24,34 @@
 [ext_resource type="Script" uid="uid://wer4k8t3amg5" path="res://Farm/FarmShed.cs" id="18_t1h8v"]
 [ext_resource type="Script" uid="uid://gurm4x8r3xdv" path="res://Farm/UnlockableGroup.cs" id="19_07ii3"]
 [ext_resource type="PackedScene" uid="uid://dqfefqemw241x" path="res://Farm/WoodenStand/WoodenStand.tscn" id="20_jrme7"]
+[ext_resource type="Script" uid="uid://c4qhqs2x24jr4" path="res://Farm/OtherFarmClock.cs" id="20_m6y21"]
 [ext_resource type="PackedScene" uid="uid://b4lbw5d3ywj2d" path="res://Farm/WoodenStand/WoodenStand_Corner.tscn" id="21_gp4pu"]
 [ext_resource type="Resource" uid="uid://cqb7celmadjfl" path="res://Sound/Resources/sfx_throw_light.tres" id="21_u58xy"]
 [ext_resource type="PackedScene" uid="uid://bal2ut1om714c" path="res://Farm/Shed/Wall_Destroyed.tscn" id="21_w6j06"]
+[ext_resource type="PackedScene" uid="uid://cl6accmjb08lp" path="res://Basement/Assets/Interior/Bed.tscn" id="22_0egb8"]
 [ext_resource type="PackedScene" uid="uid://bmm84whei4j2t" path="res://Farm/Fence/Fence_Short.tscn" id="22_g02v2"]
 [ext_resource type="Resource" uid="uid://dlrb10k5kkdnl" path="res://Particle/Resources/ps_smoke_puff_small.tres" id="22_hg1ce"]
+[ext_resource type="PackedScene" uid="uid://bmvgvj0pey55g" path="res://Basement/Assets/Entities/ClockRock.tscn" id="22_ysle6"]
+[ext_resource type="PackedScene" uid="uid://cgn20stmtmg1l" path="res://Assets/FlawLizArt/Rocks/rock_flat_002.fbx" id="23_0m8t6"]
 [ext_resource type="PackedScene" uid="uid://dovtr6wbl2fo3" path="res://Farm/Shed/Doorway_Destroyed.tscn" id="23_eyhr4"]
 [ext_resource type="PackedScene" uid="uid://bqulk87k5mqt4" path="res://Farm/Shed/Wall.tscn" id="23_n7h8b"]
 [ext_resource type="PackedScene" uid="uid://b1o1knh0ci4n0" path="res://Basement/Assets/Scaffold/Scaffold.tscn" id="24_bxx43"]
 [ext_resource type="PackedScene" uid="uid://cb1i55cd65jtq" path="res://Farm/Shed/Roof.tscn" id="24_cvkvf"]
+[ext_resource type="PackedScene" uid="uid://y8ndxxptkgho" path="res://Assets/FlawLizArt/Wood/wood_plank_4m.fbx" id="24_d8fnk"]
 [ext_resource type="PackedScene" uid="uid://s0ygtfh741wk" path="res://Farm/Shed/Wall_Worn.tscn" id="24_ed7a2"]
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="25_jyqg2"]
+[ext_resource type="PackedScene" uid="uid://bu572od213bhp" path="res://Farm/PlantBox/BrokenPlantBox.tscn" id="25_xs0y8"]
+[ext_resource type="PackedScene" uid="uid://du58iilyh4oo" path="res://Assets/FlawLizArt/Wood/wood_plank_3m.fbx" id="25_ysle6"]
+[ext_resource type="PackedScene" uid="uid://cwsqw6boqqr1n" path="res://Basement/Assets/Scaffold/pillar_wood.tscn" id="26_7vkc4"]
 [ext_resource type="PackedScene" uid="uid://cqnhsdvqlpjs2" path="res://Farm/Shed/Doorway.tscn" id="26_23jav"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="27_3ofo1"]
 [ext_resource type="Script" uid="uid://dfig8w1kd36i8" path="res://Characters/Frog/FrogBlueprintCrafting.cs" id="28_enwrr"]
+[ext_resource type="PackedScene" uid="uid://c23ij5pxy3gpw" path="res://Basement/Assets/Scaffold/pillar_wood_middle.tscn" id="28_raxrc"]
 [ext_resource type="PackedScene" uid="uid://b3g6ahucpex6p" path="res://Blueprint/Prefabs/BlueprintDisplay.tscn" id="29_gcm1x"]
 [ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="29_h6ntv"]
+[ext_resource type="AudioStream" uid="uid://bp2u28hmp6y5i" path="res://Sound/Sounds/sfx_rumble_001.wav" id="29_l783t"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="30_721ta"]
+[ext_resource type="Material" uid="uid://bshhk66t6i80u" path="res://Assets/Materials/Stone.tres" id="30_g3r0v"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="31_t1p85"]
 [ext_resource type="PackedScene" uid="uid://bfbakxow5wdyt" path="res://Farm/Bed/Bed.tscn" id="34_dbjn3"]
 [ext_resource type="PackedScene" uid="uid://ciig6e0ykkhhe" path="res://Basement/Assets/Scaffold/Scaffold_Broken.tscn" id="36_2nbm6"]
@@ -69,6 +82,7 @@
 [ext_resource type="Script" uid="uid://by3yx6fou8law" path="res://Farm/FarmForge.cs" id="54_rs487"]
 [ext_resource type="PackedScene" uid="uid://bwn65vli8d8em" path="res://Basement/Assets/Interior/BookcaseWide_Boxes.tscn" id="55_ri7pm"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="57_56e6m"]
+[ext_resource type="Resource" uid="uid://2f2v4v0ugqce" path="res://Sound/Resources/sfx_basement_close.tres" id="67_vv4xe"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ijsjf"]
 vertices = PackedVector3Array(-11.6, 4.5, -11.6, 11.65, 4.5, -11.85, -11.85, 4.5, -11.85, -11.85, 4.5, 11.9, -4.35, 4.5, 11.9, -11.6, 4.5, 11.4, 12.15, 4.5, 11.65, 11.9, 4.5, -11.6, 11.9, 4.5, 11.4, 0.4, 4.5, 11.65, -9.35, 0.5, -10.1, -6.6, 0.5, -10.1, -6.6, 0.5, -10.85, -10.6, 0.5, -10.85, -10.6, 0.5, -2.1, -10.1, 0.5, -2.1, -10.1, 0.5, -9.35, 8.65, 0.5, -8.35, 8.9, 0.5, -5.85, 10.9, 0.5, -5.85, 10.9, 0.5, -10.85, -3.1, 0.5, -6.35, -3.1, 0.5, -3.6, 4.4, 0.5, -3.6, 4.4, 0.5, -8.35, -4.6, 0.5, -10.85, -4.1, 0.5, -6.6, -9.1, 4.5, -1.35, -8.6, 4.5, -0.85, -5.35, 4.5, -0.85, -4.85, 4.5, -1.85, -5.1, 4.5, -8.85, -8.6, 4.5, -9.1, -9.35, 4.5, -7.6, -6.35, 0.5, -2.85, -6.1, 0.5, -1.85, -5.6, 0.5, -2.85, -5.6, 0.5, -3.1, -5.85, 0.5, -3.6, -6.85, 0.5, -3.6, -6.85, 0.5, -6.85, -5.85, 0.5, -6.85, -5.85, 0.75, -8.1, -8.35, 0.75, -8.1, -7.6, 1, -7.475, 4.65, 0.5, 8.9, 5.65, 0.75, 8.9, 9.9, 0.5, 8.9, 9.9, 0.5, 10.65, 10.9, 0.5, 10.65, -7.6, 0.5, -5.6, -8.35, 0.5, -2.85, -7.6, 0.5, -4.6, 8.65, 0.5, -3.6, 8.9, 0.75, 8.9, -4.1, 0.5, 9.9, 0.65, 0.5, 9.9, -4.35, 0.5, -0.35, 0.9, 0.5, 10.65, 4.65, 0.5, 10.65, 5.65, 1.25, 10.65, 8.9, 1.25, 10.65, -4.35, 0.5, -2.85, 5.15, 0, -7.35, 7.9, 0, -6.85, 7.9, 0, -7.35, -6.35, 1.5, -5.35, -5.85, 1.25, -4.6, -5.85, 1.25, -5.85, 5.15, 0, -5.1, 5.15, 0, -4.6, 7.9, 0, -4.6, 7.9, 0, -5.1, -9.35, 0.5, 0.15, -9.85, 0.5, -0.6, -10.6, 0.5, -0.6, -10.6, 0.5, 10.65, -4.85, 0.5, 10.65, -4.85, 0.5, 10.15, -4.6, 0.5, 0.15, -3.35, 6.75, 11.4, -3.35, 6.75, 15.15, -0.6, 6.75, 15.15, -0.6, 6.75, 11.4, -3.1, 4.5, 11.65, -3.1, 4.5, 14.9, -0.85, 4.5, 14.9, -0.85, 4.5, 11.65, -1.6, 0.5, 11.65, -2.35, 0.5, 11.65, -2.35, 0.5, 12.65, -2.85, 0.5, 12.9, -2.85, 0.5, 14.9, -1.1, 0.5, 14.9)
@@ -88,6 +102,96 @@ size = Vector3(1, 20, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r8e4t"]
 size = Vector3(1, 20, 28)
+
+[sub_resource type="Animation" id="Animation_raxrc"]
+resource_name = "open"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(-2.58816, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4.6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxRumble:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxRumble:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.5, 4),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_l783t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxRumble:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxRumble:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g3r0v"]
+_data = {
+&"RESET": SubResource("Animation_l783t"),
+&"open": SubResource("Animation_raxrc")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_l783t"]
+material = ExtResource("30_g3r0v")
+size = Vector2(5, 5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_y3d22"]
 material = ExtResource("10_nsfwf")
@@ -267,8 +371,12 @@ shadow_enabled = true
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_ijsjf")
 
-[node name="OtherFarm" type="Node3D" parent="World/NavigationRegion3D"]
+[node name="OtherFarm" type="Node3D" parent="World/NavigationRegion3D" node_paths=PackedStringArray("Clock", "AnimationPlayer_SecretRoom", "SecretRoomItemMarker")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+script = ExtResource("4_a6kga")
+Clock = NodePath("Clock")
+AnimationPlayer_SecretRoom = NodePath("SecretRoom/AnimationPlayer")
+SecretRoomItemMarker = NodePath("SecretRoom/SecretRoomItemMarker")
 
 [node name="Ground" type="Node3D" parent="World/NavigationRegion3D/OtherFarm"]
 
@@ -319,9 +427,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2)
 
 [node name="Node3D17" parent="World/NavigationRegion3D/OtherFarm/Ground" instance=ExtResource("4_owo44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 2)
-
-[node name="Node3D18" parent="World/NavigationRegion3D/OtherFarm/Ground" instance=ExtResource("4_owo44")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 6)
 
 [node name="Node3D19" parent="World/NavigationRegion3D/OtherFarm/Ground" instance=ExtResource("4_owo44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 10)
@@ -473,6 +578,8 @@ collision_mask = 0
 script = ExtResource("42_3khyi")
 DestinationMarker = NodePath("../../../../Underground/UndergroundOtherFarmStart")
 Area = 1
+SfxTeleportStart = ExtResource("10_6ak32")
+SfxTeleportEnd = ExtResource("67_vv4xe")
 HoverIcon = ExtResource("44_a3vth")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/FarmBasementEntrance/trapdoor_gltf/TeleportOtherFarmToUnderground"]
@@ -505,6 +612,310 @@ shape = SubResource("BoxShape3D_2nbm6")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="World/NavigationRegion3D/OtherFarm/SkyBlock/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37299, 7.6475, 11.8896)
 shape = SubResource("BoxShape3D_r8e4t")
+
+[node name="Shed" type="Node3D" parent="World/NavigationRegion3D/OtherFarm"]
+
+[node name="House" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/Shed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31536, 0, -4.99753)
+
+[node name="Destroyed" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/Shed/House"]
+
+[node name="Wall_Shed" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Destroyed" instance=ExtResource("21_w6j06")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.25, 0, -2)
+
+[node name="Wall_Shed2" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Destroyed" instance=ExtResource("21_w6j06")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.25, 0, -4)
+
+[node name="Wall_Shed4" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Destroyed" instance=ExtResource("21_w6j06")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.75, 0, -2)
+
+[node name="Wall_Shed5" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Destroyed" instance=ExtResource("21_w6j06")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.250001, 0, 4)
+
+[node name="Wall_Shed6" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Destroyed" instance=ExtResource("23_eyhr4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.25, 0, 2)
+
+[node name="Wall_Shed3" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Destroyed" instance=ExtResource("24_ed7a2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.75, 0, 2)
+
+[node name="Floor" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/Shed/House"]
+
+[node name="Scaffold" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Floor" instance=ExtResource("24_bxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.0921431, 2)
+
+[node name="Scaffold2" parent="World/NavigationRegion3D/OtherFarm/Shed/House/Floor" instance=ExtResource("24_bxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.0921431, -2)
+
+[node name="Interior" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/Shed"]
+
+[node name="Table" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior" instance=ExtResource("27_3ofo1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.94184, 0.0890019, -5.16446)
+
+[node name="Chair" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior" instance=ExtResource("29_h6ntv")]
+transform = Transform3D(-0.271273, 0, -0.962503, 0, 1, 0, 0.962503, 0, -0.271273, -6.59636, 0.0890019, -5.2316)
+
+[node name="Barrel" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior" instance=ExtResource("30_721ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35087, 0.0915053, -1.75)
+
+[node name="Barrel2" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior" instance=ExtResource("30_721ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9437, 0, -5.22223)
+
+[node name="Crate" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior" instance=ExtResource("31_t1p85")]
+transform = Transform3D(0.999071, 0, 0.0431132, 0, 1, 0, -0.0431132, 0, 0.999071, -8.16683, 0.0915053, -2.89495)
+
+[node name="Bed" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior" instance=ExtResource("22_0egb8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.09994, 0.0958969, -7.88527)
+
+[node name="bed_mattress" parent="World/NavigationRegion3D/OtherFarm/Shed/Interior/Bed" index="1"]
+visible = false
+
+[node name="Behind" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/Shed"]
+
+[node name="Fence_Short" parent="World/NavigationRegion3D/OtherFarm/Shed/Behind" instance=ExtResource("22_g02v2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 0, -1.24753)
+
+[node name="Clock" type="Node3D" parent="World/NavigationRegion3D/OtherFarm" node_paths=PackedStringArray("Rocks", "SolutionRocks")]
+script = ExtResource("20_m6y21")
+Rocks = [NodePath("ClockRock 1"), NodePath("ClockRock 2"), NodePath("ClockRock 3"), NodePath("ClockRock 4"), NodePath("ClockRock 5"), NodePath("ClockRock 6"), NodePath("ClockRock 7"), NodePath("ClockRock 8"), NodePath("ClockRock 9"), NodePath("ClockRock 10"), NodePath("ClockRock 11"), NodePath("ClockRock 12")]
+SolutionRocks = [NodePath("ClockRock 2"), NodePath("ClockRock 3"), NodePath("ClockRock 5"), NodePath("ClockRock 7"), NodePath("ClockRock 11")]
+
+[node name="wood_plank_4m" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("24_d8fnk")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1.31134e-07, 0, 1, 1, 4.37114e-08, 1.31134e-07, 3, 5.24537e-07, -4)
+
+[node name="wood_plank_3m" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("25_ysle6")]
+transform = Transform3D(0.518311, 0.855192, 1.41271e-08, 2.80533e-08, -3.35216e-08, 1, 0.855192, -0.518311, -4.13656e-08, 4.21953, 0, -0.103097)
+
+[node name="ClockRock 1" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.729637, 0, 0.683834, 0, 1, 0, -0.683834, 0, 0.729637, 5.53245, 0, -6.86914)
+
+[node name="ClockRock 2" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.961108, 0, -0.276174, 0, 1, 0, 0.276174, 0, 0.961108, 6.80473, 0, -4.71009)
+
+[node name="ClockRock 3" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.881707, 0, -0.471797, 0, 1, 0, 0.471797, 0, 0.881707, 7.89925, 0, -2.39736)
+
+[node name="ClockRock 4" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.961108, 0, -0.276174, 0, 1, 0, 0.276174, 0, 0.961108, 6.88113, 0, -0.0707843)
+
+[node name="ClockRock 5" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.728407, 0, 0.685145, 0, 1, 0, -0.685145, 0, 0.728407, 5.64503, 0, 2.22477)
+
+[node name="ClockRock 6" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(-0.522022, 0, 0.852932, 0, 1, 0, -0.852932, 0, -0.522022, 2.97598, 0, 2.39356)
+
+[node name="ClockRock 7" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.961108, 0, -0.276174, 0, 1, 0, 0.276174, 0, 0.961108, 0.241375, 0, 1.11665)
+
+[node name="ClockRock 8" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.0245194, 0, 0.999699, 0, 1, 0, -0.999699, 0, 0.0245194, -0.730484, 0, -0.716789)
+
+[node name="ClockRock 9" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.596673, 0, 0.802484, 0, 1, 0, -0.802484, 0, 0.596673, -0.628448, 0, -2.65758)
+
+[node name="ClockRock 10" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(-0.688975, 0, 0.724785, 0, 1, 0, -0.724785, 0, -0.688975, -0.477699, 0, -5.21073)
+
+[node name="ClockRock 11" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.742046, 0, 0.670349, 0, 1, 0, -0.670349, 0, 0.742046, 1.17944, 0, -6.64318)
+
+[node name="ClockRock 12" parent="World/NavigationRegion3D/OtherFarm/Clock" instance=ExtResource("22_ysle6")]
+transform = Transform3D(0.881707, 0, -0.471797, 0, 1, 0, 0.471797, 0, 0.881707, 3.15251, 0, -7.20026)
+
+[node name="Debris" type="Node3D" parent="World/NavigationRegion3D/OtherFarm"]
+
+[node name="wood_plank_3m2" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_ysle6")]
+transform = Transform3D(0.983477, 0.181034, 0, 7.91325e-09, -4.29891e-08, 1, 0.181034, -0.983477, -4.37114e-08, -4.13774, -2.4869e-14, 0.583774)
+
+[node name="wood_plank_3m7" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_ysle6")]
+transform = Transform3D(-0.176174, -0.984359, -4.09226e-08, 7.91325e-09, -4.29891e-08, 1, -0.984359, 0.176174, 1.53631e-08, 1.56378, -2.4869e-14, 8.23728)
+
+[node name="wood_plank_3m3" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_ysle6")]
+transform = Transform3D(0.869616, 0.493729, 0, 2.15816e-08, -3.80121e-08, 1, 0.493729, -0.869616, -4.37114e-08, -4.63459, -2.13163e-14, 1.77621)
+
+[node name="wood_plank_3m4" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_ysle6")]
+transform = Transform3D(0.647335, -0.762205, 0, -3.33171e-08, -2.82959e-08, 1, -0.762205, -0.647335, -4.37114e-08, 3.66727, -7.99361e-14, 8.699)
+
+[node name="wood_plank_3m5" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_ysle6")]
+transform = Transform3D(-0.166786, -0.985993, 0, -4.30991e-08, 7.29046e-09, 1, -0.985993, 0.166786, -4.37114e-08, 11.2194, -8.70415e-14, -9.28699)
+
+[node name="wood_plank_4m2" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("24_d8fnk")]
+transform = Transform3D(-0.985166, 0.171602, 0, -2.25029e-08, -1.29189e-07, 1, 0.171602, 0.985166, 1.31134e-07, -4.18777, 5.24537e-07, -10.5253)
+
+[node name="wood_plank_4m3" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("24_d8fnk")]
+transform = Transform3D(-0.044561, 0.999007, 0, -1.31004e-07, -5.84346e-09, 1, 0.999007, 0.044561, 1.31134e-07, -10.4512, 5.24537e-07, -8.68206)
+
+[node name="wood_plank_4m4" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("24_d8fnk")]
+transform = Transform3D(0.0267178, 0.999643, 0, -1.31087e-07, 3.50362e-09, 1, 0.999643, -0.0267178, 1.31134e-07, -9.8929, 5.24537e-07, -6.27262)
+
+[node name="wood_plank_4m5" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("24_d8fnk")]
+transform = Transform3D(-0.280013, 0.959996, 0, -1.25888e-07, -3.67193e-08, 1, 0.959996, 0.280013, 1.31134e-07, -4.81293, 5.24537e-07, 5.15494)
+
+[node name="wood_plank_4m6" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("24_d8fnk")]
+transform = Transform3D(-0.14503, 0.989427, 0, -1.29748e-07, -1.90184e-08, 1, 0.989427, 0.14503, 1.31134e-07, 10.157, 5.24537e-07, 9.07551)
+
+[node name="rock_flat_002" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.45547, 0, 1.72356, 0, 3, 0, -1.72356, 0, 2.45547, -2.42848, 0, 2.24421)
+
+[node name="rock_flat_019" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.623, 0, -1.45599, 0, 3, 0, 1.45599, 0, 2.623, 2.04335, 0, 6.73412)
+
+[node name="rock_flat_020" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(-0.100251, 0, 2.99832, 0, 3, 0, -2.99832, 0, -0.100251, 8.22098, 0, 4.5676)
+
+[node name="rock_flat_021" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.43221, 0, 1.75623, 0, 3, 0, -1.75623, 0, 2.43221, 7.29626, 0, 4.95571)
+
+[node name="rock_flat_003" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.83414, 0, -0.983682, 0, 3, 0, 0.983682, 0, 2.83414, -1.12506, 0, 3.21939)
+
+[node name="rock_flat_005" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.83785, 0, 0.972941, 0, 3, 0, -0.972941, 0, 2.83785, 0.0832596, 0, 10.4492)
+
+[node name="rock_flat_006" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.83785, 0, 0.972941, 0, 3, 0, -0.972941, 0, 2.83785, -4.16906, 0, 7.96022)
+
+[node name="rock_flat_007" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.83785, 0, 0.972941, 0, 3, 0, -0.972941, 0, 2.83785, 9.92397, 0, -0.566587)
+
+[node name="rock_flat_008" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(1.96972, 0, -2.26279, 0, 3, 0, 2.26279, 0, 1.96972, 9.38813, 0, -10.6805)
+
+[node name="rock_flat_009" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(1.96972, 0, -2.26279, 0, 3, 0, 2.26279, 0, 1.96972, -3.90735, 0, -8.97255)
+
+[node name="rock_flat_010" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.46864, 0, 1.70465, 0, 3, 0, -1.70465, 0, 2.46864, -10.3039, 0, -3.21229)
+
+[node name="rock_flat_011" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.46864, 0, 1.70465, 0, 3, 0, -1.70465, 0, 2.46864, -9.09828, 0, -9.94375)
+
+[node name="rock_flat_012" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(1.98414, 0, -0.251359, 0, 2, 0, 0.251359, 0, 1.98414, -8.12708, 0, -9.94375)
+
+[node name="rock_flat_013" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(1.98414, 0, -0.251359, 0, 2, 0, 0.251359, 0, 1.98414, -3.77339, 0, -5.95846)
+
+[node name="rock_flat_014" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(0.731573, 0, -1.8614, 0, 2, 0, 1.8614, 0, 0.731573, -2.73521, 0, -3.98256)
+
+[node name="rock_flat_015" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(-0.183316, 0, -1.99158, 0, 2, 0, 1.99158, 0, -0.183316, 2.72364, 0, -10.8145)
+
+[node name="rock_flat_016" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(-0.183316, 0, -1.99158, 0, 2, 0, 1.99158, 0, -0.183316, -0.792797, 0, 9.045)
+
+[node name="rock_flat_017" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(1.99, 0, 0.199786, 0, 2, 0, -0.199786, 0, 1.99, 5.46981, 0, 7.16957)
+
+[node name="rock_flat_018" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(1.45015, 0, -1.37734, 0, 2, 0, 1.37734, 0, 1.45015, 11.0291, 0, 8.24125)
+
+[node name="BrokenPlantBox" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 8)
+
+[node name="BrokenPlantBox2" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(0.0319689, 0, -0.999489, 0, 1, 0, 0.999489, 0, 0.0319689, -8.5, 0, 6.5)
+
+[node name="BrokenPlantBox3" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(-0.746429, 0, -0.665465, 0, 1, 0, 0.665465, 0, -0.746429, -8.5, 0, 5)
+
+[node name="BrokenPlantBox4" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(0.754721, 0, -0.656046, 0, 1, 0, 0.656046, 0, 0.754721, -8.5, 0, 3.5)
+
+[node name="BrokenPlantBox5" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(-0.91227, 0, 0.409589, 0, 1, 0, -0.409589, 0, -0.91227, -7, 0, 8)
+
+[node name="BrokenPlantBox6" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(0.3222, 0, 0.946672, 0, 1, 0, -0.946672, 0, 0.3222, -7, 0, 6.5)
+
+[node name="BrokenPlantBox7" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(0.743658, 0, -0.66856, 0, 1, 0, 0.66856, 0, 0.743658, -7, 0, 5)
+
+[node name="BrokenPlantBox8" parent="World/NavigationRegion3D/OtherFarm/Debris" instance=ExtResource("25_xs0y8")]
+transform = Transform3D(0.9613, 0, -0.275503, 0, 1, 0, 0.275503, 0, 0.9613, -7, 0, 3.5)
+
+[node name="SecretRoom" type="Node3D" parent="World/NavigationRegion3D/OtherFarm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 6)
+
+[node name="Anim" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom"]
+
+[node name="Floor" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("4_owo44")]
+
+[node name="wood_plank_3m6" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("25_ysle6")]
+transform = Transform3D(0.565471, -0.824768, -3.99308e-08, 7.91325e-09, -4.29891e-08, 1, -0.824768, -0.565471, -1.77825e-08, 0.623081, 0, -0.0180101)
+
+[node name="rock_flat_004" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("23_0m8t6")]
+transform = Transform3D(2.83785, 0, 0.972941, 0, 3, 0, -0.972941, 0, 2.83785, -1.03164, 0, -0.23538)
+
+[node name="Pillar_Wood" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("26_7vkc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -4.5, 1.75)
+
+[node name="Pillar_Wood2" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("26_7vkc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -4.5, 1.75)
+
+[node name="Pillar_Wood3" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("26_7vkc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -4.5, -1.75)
+
+[node name="Pillar_Wood4" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("26_7vkc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -4.5, -1.75)
+
+[node name="Floor_Dirt" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("13_lrpql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+
+[node name="Pillar_Wood5" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, -0.5, 0)
+
+[node name="Pillar_Wood6" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, -0.5, 0)
+
+[node name="Pillar_Wood7" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.75)
+
+[node name="Pillar_Wood8" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.75)
+
+[node name="Pillar_Wood9" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, -1.16604, 0)
+
+[node name="Pillar_Wood10" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, -1.16604, 0)
+
+[node name="Pillar_Wood11" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16604, 1.75)
+
+[node name="Pillar_Wood12" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("28_raxrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16604, -1.75)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/NavigationRegion3D/OtherFarm/SecretRoom"]
+libraries = {
+&"": SubResource("AnimationLibrary_g3r0v")
+}
+
+[node name="SfxRumble" type="AudioStreamPlayer3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom"]
+stream = ExtResource("29_l783t")
+volume_db = -80.0
+max_distance = 15.0
+
+[node name="Walls" type="Node3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -2)
+mesh = SubResource("QuadMesh_l783t")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Walls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -3, 2)
+mesh = SubResource("QuadMesh_l783t")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, -3, 0)
+mesh = SubResource("QuadMesh_l783t")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, -3, 0)
+mesh = SubResource("QuadMesh_l783t")
+
+[node name="SecretRoomItemMarker" type="Marker3D" parent="World/NavigationRegion3D/OtherFarm/SecretRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 
 [node name="Farm" type="Node3D" parent="World/NavigationRegion3D"]
 
@@ -1633,6 +2044,8 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("42_3khyi")
 DestinationMarker = NodePath("../../../../OtherFarm/FarmBasementEntrance/StartOtherFarm")
+SfxTeleportStart = ExtResource("10_6ak32")
+SfxTeleportEnd = ExtResource("67_vv4xe")
 HoverIcon = ExtResource("44_a3vth")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Underground/Interior/trapdoor_gltf/TeleportUndergroundToOtherFarm"]
@@ -1982,6 +2395,7 @@ volume_db = 10.0
 autoplay = true
 bus = &"BGM"
 
+[editable path="World/NavigationRegion3D/OtherFarm/Shed/Interior/Bed"]
 [editable path="World/NavigationRegion3D/Farm/FarmBasementEntrance/Trapdoor"]
 [editable path="World/NavigationRegion3D/Farm/Shed/House/Repaired/Lantern"]
 [editable path="World/NavigationRegion3D/Farm/Shed/House/Repaired/Lantern/hanging_lantern_new"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ceb0oouxb13aw" path="res://Farm/PlantBoxUnlock.cs" id="1_vbjow"]
 [ext_resource type="PackedScene" uid="uid://bvbctpjxk6w4r" path="res://Farm/PlantBox/PlantBox.tscn" id="2_sud6x"]
-[ext_resource type="PackedScene" uid="uid://dpgw067uk2r7g" path="res://Assets/FlawLizArt/Wood/wood_plank_1m.fbx" id="3_l47yx"]
+[ext_resource type="PackedScene" uid="uid://bu572od213bhp" path="res://Farm/PlantBox/BrokenPlantBox.tscn" id="3_l47yx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drhhn"]
 transparency = 1
@@ -17,7 +17,7 @@ size = Vector3(1.18335, 0.325562, 1.21777)
 [node name="PlantBoxUnlock" type="Node3D" node_paths=PackedStringArray("PlantArea", "Broken", "AreaUnlock")]
 script = ExtResource("1_vbjow")
 PlantArea = NodePath("PlantBox")
-Broken = NodePath("Broken")
+Broken = NodePath("BrokenPlantBox")
 AreaUnlock = NodePath("AreaUnlock")
 
 [node name="PlantBox" parent="." instance=ExtResource("2_sud6x")]
@@ -27,16 +27,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0
 visible = false
 mesh = SubResource("QuadMesh_jgfyg")
 
-[node name="Broken" type="Node3D" parent="."]
-
-[node name="wood_plank_1m" parent="Broken" instance=ExtResource("3_l47yx")]
-transform = Transform3D(0.992961, -0.118439, -5.17712e-09, 0, -4.37114e-08, 1, -0.118439, -0.992961, -4.34037e-08, 0, 0, 0.225259)
-
-[node name="wood_plank_1m2" parent="Broken" instance=ExtResource("3_l47yx")]
-transform = Transform3D(0.558854, 0.82875, -0.0292518, 0.143268, -0.0617463, 0.987756, 0.816797, -0.556202, -0.153241, -0.189454, 0.0856996, -0.0516384)
-
-[node name="wood_plank_1m3" parent="Broken" instance=ExtResource("3_l47yx")]
-transform = Transform3D(-0.577179, 0.802552, 0.15091, 0.307331, 0.0422658, 0.950664, 0.756579, 0.595082, -0.271044, 0.0475616, 0.169801, -0.113989)
+[node name="BrokenPlantBox" parent="." instance=ExtResource("3_l47yx")]
 
 [node name="AreaUnlock" type="Area3D" parent="."]
 collision_layer = 0

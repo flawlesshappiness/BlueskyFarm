@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu572od213bhp"]
+
+[ext_resource type="PackedScene" uid="uid://dpgw067uk2r7g" path="res://Assets/FlawLizArt/Wood/wood_plank_1m.fbx" id="1_yoxj1"]
+
+[node name="BrokenPlantBox" type="Node3D"]
+
+[node name="wood_plank_1m" parent="." instance=ExtResource("1_yoxj1")]
+transform = Transform3D(0.992961, -0.118439, -5.17712e-09, 0, -4.37114e-08, 1, -0.118439, -0.992961, -4.34037e-08, 0, 0, 0.225259)
+
+[node name="wood_plank_1m2" parent="." instance=ExtResource("1_yoxj1")]
+transform = Transform3D(0.558854, 0.82875, -0.0292518, 0.143268, -0.0617463, 0.987756, 0.816797, -0.556202, -0.153241, -0.189454, 0.0856996, -0.0516384)
+
+[node name="wood_plank_1m3" parent="." instance=ExtResource("1_yoxj1")]
+transform = Transform3D(-0.577179, 0.802552, 0.15091, 0.307331, 0.0422658, 0.950664, 0.756579, 0.595082, -0.271044, 0.0475616, 0.169801, -0.113989)

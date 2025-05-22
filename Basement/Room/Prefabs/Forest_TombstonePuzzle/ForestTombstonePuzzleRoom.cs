@@ -1,4 +1,6 @@
 using Godot;
+using Godot.Collections;
+using System.Linq;
 
 public partial class ForestTombstonePuzzleRoom : Node3D
 {
@@ -11,6 +13,15 @@ public partial class ForestTombstonePuzzleRoom : Node3D
     [Export]
     public CrushableRock Tombstone;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_SecretRoom;
+
+    [Export]
+    public Array<LightTrigger> SecretRoomTriggers;
+
+    [Export]
+    public Array<LightTrigger> SecretRoomTriggers_Valid;
+
     private Item _inventory_item;
 
     public override void _Ready()
@@ -18,6 +29,7 @@ public partial class ForestTombstonePuzzleRoom : Node3D
         base._Ready();
         InitializeInventoryItem();
         InitializeTombstone();
+        InitializeSecretRoom();
     }
 
     private void InitializeInventoryItem()
@@ -52,5 +64,21 @@ public partial class ForestTombstonePuzzleRoom : Node3D
             Tombstone.SetEnabled(false);
             GameFlagIds.ForestTombstoneCrushed.SetTrue();
         };
+    }
+
+    private void InitializeSecretRoom()
+    {
+        SecretRoomTriggers.ForEach(x => x.OnToggle += ToggleLightTrigger);
+    }
+
+    private void ToggleLightTrigger(bool toggle)
+    {
+        var valid = SecretRoomTriggers.All(x => x.IsToggled == SecretRoomTriggers_Valid.Contains(x));
+
+        if (valid)
+        {
+            AnimationPlayer_SecretRoom.Play("open");
+            SecretRoomTriggers.ForEach(x => x.IsToggleable = false);
+        }
     }
 }

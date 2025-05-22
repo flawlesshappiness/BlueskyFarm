@@ -10,10 +10,9 @@ public partial class LightTrigger : Decal
     public ItemArea ItemArea;
 
     public bool IsToggleable { get; set; } = true;
+    public bool IsToggled { get; private set; }
 
     public Action<bool> OnToggle;
-
-    private bool activated;
 
     public override void _Ready()
     {
@@ -30,10 +29,10 @@ public partial class LightTrigger : Decal
     {
         if (!IsToggleable) return;
 
-        activated = !activated;
-        var anim = activated ? "activate" : "deactivate";
+        IsToggled = !IsToggled;
+        var anim = IsToggled ? "activate" : "deactivate";
         AnimationPlayer.Play(anim);
 
-        OnToggle?.Invoke(activated);
+        OnToggle?.Invoke(IsToggled);
     }
 }

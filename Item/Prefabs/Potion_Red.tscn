@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://jlxaluassjlj"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_ojrep"]
+[ext_resource type="PackedScene" uid="uid://dac7jcc2ebviq" path="res://Assets/Quaternius/RPG/Potion2_Filled.fbx" id="2_ldwih"]
+[ext_resource type="Material" uid="uid://c10pnbbpdmdba" path="res://Assets/Materials/Liquid_Red.tres" id="3_1rqac"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojrep"]
+size = Vector3(0.435303, 0.62085, 0.428711)
+
+[node name="Potion_Red" instance=ExtResource("1_ojrep")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138137, 0)
+shape = SubResource("BoxShape3D_ojrep")
+
+[node name="Potion2_Filled" parent="Model" index="0" instance=ExtResource("2_ldwih")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.171611, 0)
+
+[node name="Potion2_Filled" parent="Model/Potion2_Filled" index="0"]
+surface_material_override/1 = ExtResource("3_1rqac")
+
+[editable path="Model/Potion2_Filled"]

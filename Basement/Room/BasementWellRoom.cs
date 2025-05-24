@@ -23,6 +23,9 @@ public partial class BasementWellRoom : Node3DScript
     public Node3D CrystalOnRope;
 
     [Export]
+    public Node3D PotionOnRope;
+
+    [Export]
     public Touchable MissingHandleTouchable;
 
     [Export]
@@ -38,15 +41,14 @@ public partial class BasementWellRoom : Node3DScript
     public ItemInfo WorkshopKey;
 
     [Export]
-    public ItemInfo VegetableItem;
-
-    [Export]
-    public ItemInfo BoneItem;
-
-    [Export]
-    public ItemInfo CrystalItem;
+    public ItemInfo PotionItem;
 
     private ItemType item_type_on_rope = ItemType.Other;
+
+    public enum RopeItemType { None, Key, Potion }
+    public RopeItemType rope_item_type = RopeItemType.None;
+
+    private bool spawned_potion;
 
     public override void _Ready()
     {
@@ -64,6 +66,7 @@ public partial class BasementWellRoom : Node3DScript
         InitializeHandle();
         InitializeKey();
         InitializeVegetables();
+        InitializePotion();
     }
 
     private void InitializeHandle()
@@ -95,19 +98,22 @@ public partial class BasementWellRoom : Node3DScript
         var used_key = GameFlagIds.BasementWorkshopDoorUnlocked.IsTrue();
         var active_key = !has_key && !used_key;
 
+        Well.AttachObjectToRope(KeyOnRope);
+
         if (active_key)
         {
             Well.CanEnableRopeEndTouchable = true;
             Well.TryEnableRopeEndTouchable();
-            Well.AttachObjectToRope(KeyOnRope);
             KeyOnRope.Enable();
             RopeEndArea.Disable();
+
+            rope_item_type = RopeItemType.Key;
         }
         else
         {
-            KeyOnRope.Disable();
             Well.CanEnableRopeEndTouchable = false;
             Well.DisableRopeEndTouchable();
+            KeyOnRope.Disable();
             RopeEndArea.Enable();
 
             TryAttachSpecialItem();
@@ -125,21 +131,30 @@ public partial class BasementWellRoom : Node3DScript
         CrystalOnRope.Disable();
     }
 
-    private void WellRopeEnd_Touched()
+    private void InitializePotion()
     {
-        KeyOnRope_Touched();
+        Well.AttachObjectToRope(PotionOnRope);
+        PotionOnRope.Disable();
     }
 
-    private void KeyOnRope_Touched()
+    private void WellRopeEnd_Touched()
     {
+        ItemOnRope_Touched();
+    }
+
+    private void ItemOnRope_Touched()
+    {
+        var info = GetRopeItemInfo(rope_item_type);
+        if (info == null) return;
+
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
             yield return Player.Instance.WaitForProgress(2f, KeyOnRope);
 
-            var item = ItemController.Instance.CreateItem(WorkshopKey);
-            item.GlobalPosition = KeyOnRope.GlobalPosition;
-            item.GlobalRotation = KeyOnRope.GlobalRotation;
+            var item = ItemController.Instance.CreateItem(info);
+            item.GlobalPosition = Well.RopeEndPosition.GlobalPosition;
+            item.GlobalRotation = Well.RopeEndPosition.GlobalRotation;
 
             var dir = item.GlobalPosition.DirectionTo(Player.Instance.GlobalPosition);
             var vel = dir * 5f + Vector3.Up * 1.0f;
@@ -149,6 +164,7 @@ public partial class BasementWellRoom : Node3DScript
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
 
             KeyOnRope.Disable();
+            PotionOnRope.Disable();
             RopeEndArea.Enable();
             Well.CanEnableRopeEndTouchable = false;
         }
@@ -196,6 +212,13 @@ public partial class BasementWellRoom : Node3DScript
         _ => null
     };
 
+    private ItemInfo GetRopeItemInfo(RopeItemType type) => type switch
+    {
+        RopeItemType.Key => WorkshopKey,
+        RopeItemType.Potion => PotionItem,
+        _ => null
+    };
+
     private void Well_Lowered()
     {
         VegetableOnRope.Disable();
@@ -228,8 +251,13 @@ public partial class BasementWellRoom : Node3DScript
         if (GameFlagIds.BasementWellVegetableOffered.IsFalse()) return;
         if (GameFlagIds.BasementWellBoneOffered.IsFalse()) return;
         if (GameFlagIds.BasementWellCrystalOffered.IsFalse()) return;
-        // Player has access to item?
+        if (Player.HasAccessToItem(PotionItem)) return;
+        if (spawned_potion) return;
+        spawned_potion = true;
 
-        // Attach item
+        Well.CanEnableRopeEndTouchable = true;
+        PotionOnRope.Enable();
+
+        rope_item_type = RopeItemType.Potion;
     }
 }

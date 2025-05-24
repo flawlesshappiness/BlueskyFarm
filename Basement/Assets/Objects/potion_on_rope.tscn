@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1o0tcxrqvvtc"]
+
+[ext_resource type="PackedScene" uid="uid://dac7jcc2ebviq" path="res://Assets/Quaternius/RPG/Potion2_Filled.fbx" id="1_4la1b"]
+[ext_resource type="Material" uid="uid://5p02hwvxlvb8" path="res://Assets/Materials/Liquid_Green.tres" id="2_qaqch"]
+[ext_resource type="PackedScene" uid="uid://cnw4bpm8rrgqh" path="res://Assets/FlawLizArt/Rope/rope_attachment_segment.fbx" id="3_607eg"]
+
+[node name="Potion_OnRope" type="Node3D"]
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(-3.5894e-08, -2.4946e-08, -1, -0.570699, 0.821159, 0, 0.821159, 0.570699, -4.37114e-08, 0, 0, 0)
+
+[node name="Potion2_Filled" parent="Model" instance=ExtResource("1_4la1b")]
+transform = Transform3D(0.5, -1.49012e-08, 0, 1.49012e-08, 0.5, 0, 0, -1.77636e-15, 0.5, -0.00824174, -0.485298, 5.08813e-10)
+
+[node name="Potion2_Filled" parent="Model/Potion2_Filled" index="0"]
+surface_material_override/1 = ExtResource("2_qaqch")
+
+[node name="rope_attachment_segment" parent="Model" instance=ExtResource("3_607eg")]
+transform = Transform3D(-2.62268e-08, 0.6, -2.98023e-08, 4.44089e-16, -2.98023e-08, -0.6, -0.6, -2.62268e-08, 1.77636e-15, -0.00824175, 0.0247266, 5.08814e-10)
+
+[node name="rope_attachment_segment2" parent="Model" instance=ExtResource("3_607eg")]
+transform = Transform3D(-3.0598e-08, 0.7, -2.98023e-08, 0, -2.98023e-08, -0.7, -0.7, -3.0598e-08, 1.77636e-15, -0.00824174, -0.0400458, 5.08814e-10)
+
+[editable path="Model/Potion2_Filled"]

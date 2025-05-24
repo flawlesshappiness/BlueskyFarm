@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://btp1aaeioslg2"]
+[gd_scene load_steps=43 format=3 uid="uid://btp1aaeioslg2"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_4wkfx"]
 [ext_resource type="PackedScene" uid="uid://dqqfts07rm4oe" path="res://Basement/Assets/Floor/Floor_Dirt.tscn" id="2_bsgfs"]
@@ -23,10 +23,8 @@
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="18_pupgp"]
 [ext_resource type="Resource" uid="uid://lgwuhcjvstoc" path="res://Item/Resources/Key_Workshop.tres" id="19_77ty5"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="19_rtbro"]
-[ext_resource type="Resource" uid="uid://bbilvy881rvb4" path="res://Item/Resources/Crop_Vegetable.tres" id="20_d6vt4"]
-[ext_resource type="Resource" uid="uid://b5qkqrrtkfm20" path="res://Item/Resources/Crop_Bone.tres" id="21_4v2q4"]
+[ext_resource type="Resource" uid="uid://ddmmhs2iydhi" path="res://Item/Resources/Potion_Green.tres" id="20_od3g1"]
 [ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="21_hcsgb"]
-[ext_resource type="Resource" uid="uid://ccyj6pumapoxs" path="res://Item/Resources/Crop_Stone.tres" id="22_0funh"]
 [ext_resource type="Script" uid="uid://b05im8bdn181g" path="res://Basement/Interior/BasementInterior.cs" id="22_x150u"]
 [ext_resource type="PackedScene" uid="uid://b81gq10e1oljm" path="res://Basement/Assets/Objects/key_on_rope.tscn" id="23_2p507"]
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="23_dl8ae"]
@@ -37,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://depx60uxc6k5l" path="res://Basement/Assets/Objects/crystal_on_rope.tscn" id="26_5e0ja"]
 [ext_resource type="PackedScene" uid="uid://cnwm6a53w8iiu" path="res://Basement/Assets/Objects/vegetable_on_rope.tscn" id="27_od3g1"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="28_itp36"]
+[ext_resource type="PackedScene" uid="uid://d1o0tcxrqvvtc" path="res://Basement/Assets/Objects/potion_on_rope.tscn" id="31_4v2q4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idsqn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -592,7 +591,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.334
 [node name="Lantern_Wall2" parent="Lights" index="2" instance=ExtResource("14_75tnw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.66525, 0.353711, 6)
 
-[node name="RoomScript" type="Node3D" parent="." index="11" node_paths=PackedStringArray("Room", "Well", "KeyOnRope", "VegetableOnRope", "BoneOnRope", "CrystalOnRope", "MissingHandleTouchable", "HandleArea", "RopeEndArea")]
+[node name="RoomScript" type="Node3D" parent="." index="11" node_paths=PackedStringArray("Room", "Well", "KeyOnRope", "VegetableOnRope", "BoneOnRope", "CrystalOnRope", "PotionOnRope", "MissingHandleTouchable", "HandleArea", "RopeEndArea")]
 script = ExtResource("15_5a6tu")
 Room = NodePath("..")
 Well = NodePath("Well")
@@ -600,14 +599,13 @@ KeyOnRope = NodePath("KeyOnRope")
 VegetableOnRope = NodePath("Vegetable_OnRope")
 BoneOnRope = NodePath("Bone_OnRope")
 CrystalOnRope = NodePath("Crystal_OnRope")
+PotionOnRope = NodePath("Potion_OnRope")
 MissingHandleTouchable = NodePath("Well/MissingHandleTouchable")
 HandleArea = NodePath("Well/HandleArea")
 RopeEndArea = NodePath("Well/RopeEndItemArea")
 WellHandle = ExtResource("15_pw2rx")
 WorkshopKey = ExtResource("19_77ty5")
-VegetableItem = ExtResource("20_d6vt4")
-BoneItem = ExtResource("21_4v2q4")
-CrystalItem = ExtResource("22_0funh")
+PotionItem = ExtResource("20_od3g1")
 
 [node name="Well" parent="RoomScript" index="0" instance=ExtResource("12_64s6i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -4, 2)
@@ -654,6 +652,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.6509
 
 [node name="Vegetable_OnRope" parent="RoomScript" index="4" instance=ExtResource("27_od3g1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65092, -2.76504, 1.44076)
+
+[node name="Potion_OnRope" parent="RoomScript" index="5" instance=ExtResource("31_4v2q4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59615, -2.64498, 2.78707)
 
 [node name="Interior" type="Node3D" parent="." index="12"]
 

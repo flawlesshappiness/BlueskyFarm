@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://byq3etiatecke"]
+
+[ext_resource type="PackedScene" uid="uid://c4xkcefdml3r" path="res://Item/Prefabs/Potion_Orange.tscn" id="1_u6b7n"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_qxhlm"]
+
+[resource]
+script = ExtResource("2_qxhlm")
+Scene = ExtResource("1_u6b7n")
+ItemName = ""
+CustomId = ""
+Type = 0
+CanUse = false
+Uses = 0
+CanPickUp = true
+PerishesOnFarm = false
+InventoryItemCameraDistance = 0.5
+InventoryItemRotationOffset = 0.0

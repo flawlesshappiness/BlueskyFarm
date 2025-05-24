@@ -317,7 +317,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_hxbpf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_il8le"]
-size = Vector3(2, 1, 2)
+size = Vector3(2, 0.571045, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3khyi"]
 size = Vector3(1.5, 0.541931, 1)
@@ -1448,7 +1448,6 @@ draw_pass_1 = SubResource("PrismMesh_q1avm")
 
 [node name="CrushableRock" type="StaticBody3D" parent="World/NavigationRegion3D/Farm/BrokenGround" node_paths=PackedStringArray("Particles")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95767, 0, -5.97888)
-visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("41_spnyx")
@@ -1458,6 +1457,7 @@ Particles = [NodePath("../ps_dust_break"), NodePath("../ps_bits_break")]
 HoverIcon = ExtResource("44_lsuud")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Farm/BrokenGround/CrushableRock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.214478, 0)
 shape = SubResource("BoxShape3D_il8le")
 
 [node name="rocks18" parent="World/NavigationRegion3D/Farm/BrokenGround/CrushableRock" instance=ExtResource("39_ddmhh")]

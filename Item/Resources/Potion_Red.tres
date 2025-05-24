@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cosn3wnyccuo7"]
+
+[ext_resource type="PackedScene" uid="uid://jlxaluassjlj" path="res://Item/Prefabs/Potion_Red.tscn" id="1_tfdmr"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_jps7h"]
+
+[resource]
+script = ExtResource("2_jps7h")
+Scene = ExtResource("1_tfdmr")
+ItemName = ""
+CustomId = ""
+Type = 0
+CanUse = false
+Uses = 0
+CanPickUp = true
+PerishesOnFarm = false
+InventoryItemCameraDistance = 0.5
+InventoryItemRotationOffset = 0.0

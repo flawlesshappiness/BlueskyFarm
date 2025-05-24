@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\interactteleport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\interactteleport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\room\\basementwellroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\room\\basementwellroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\room\\prefabs\\forest_tombstonepuzzle\\foresttombstonepuzzleroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\room\\prefabs\\forest_tombstonepuzzle\\foresttombstonepuzzleroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\assets\\entities\\clockrock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\assets\\entities\\clockrock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\assets\\basement\\well\\basementwell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\assets\\basement\\well\\basementwell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\farmscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\basementscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:scenes\\basementscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\otherfarm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\otherfarm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,57 +38,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ForestTombstonePuzzleRoom.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Forest_TombstonePuzzle\\ForestTombstonePuzzleRoom.cs",
-              "RelativeDocumentMoniker": "Basement\\Room\\Prefabs\\Forest_TombstonePuzzle\\ForestTombstonePuzzleRoom.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Forest_TombstonePuzzle\\ForestTombstonePuzzleRoom.cs",
-              "RelativeToolTip": "Basement\\Room\\Prefabs\\Forest_TombstonePuzzle\\ForestTombstonePuzzleRoom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T17:36:37.546Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InteractTeleport.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\InteractTeleport.cs",
-              "RelativeDocumentMoniker": "Farm\\InteractTeleport.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\InteractTeleport.cs",
-              "RelativeToolTip": "Farm\\InteractTeleport.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAwwFUAAAA0AAAAAAAAAA==",
+              "Title": "BasementWellRoom.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\BasementWellRoom.cs",
+              "RelativeDocumentMoniker": "Basement\\Room\\BasementWellRoom.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\BasementWellRoom.cs",
+              "RelativeToolTip": "Basement\\Room\\BasementWellRoom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T19:05:52.093Z",
+              "WhenOpened": "2025-05-24T10:04:21.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OtherFarm.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\OtherFarm.cs",
-              "RelativeDocumentMoniker": "Farm\\OtherFarm.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Farm\\OtherFarm.cs",
-              "RelativeToolTip": "Farm\\OtherFarm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "BasementWell.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Basement\\Well\\BasementWell.cs",
+              "RelativeDocumentMoniker": "Basement\\Assets\\Basement\\Well\\BasementWell.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Basement\\Well\\BasementWell.cs",
+              "RelativeToolTip": "Basement\\Assets\\Basement\\Well\\BasementWell.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAmwHEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T18:09:17.316Z"
+              "WhenOpened": "2025-05-24T09:55:14.193Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ClockRock.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Entities\\ClockRock.cs",
-              "RelativeDocumentMoniker": "Basement\\Assets\\Entities\\ClockRock.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Entities\\ClockRock.cs",
-              "RelativeToolTip": "Basement\\Assets\\Entities\\ClockRock.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T14:41:59.697Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "FarmScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
@@ -108,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
@@ -120,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",

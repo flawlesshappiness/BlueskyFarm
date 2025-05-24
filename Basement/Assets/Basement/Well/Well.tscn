@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8pl05r0sc17o"]
+[gd_scene load_steps=21 format=3 uid="uid://b8pl05r0sc17o"]
 
 [ext_resource type="Script" uid="uid://tpq8u2sfofvg" path="res://Basement/Assets/Basement/Well/BasementWell.cs" id="1_uafog"]
 [ext_resource type="PackedScene" uid="uid://daq4rn3tvghd3" path="res://Assets/FlawLizArt/Well/well.fbx" id="2_uygh0"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cu48ee0sfxvpe" path="res://Assets/FlawLizArt/Well/well_handle.fbx" id="4_b5avu"]
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="5_ugx1h"]
 [ext_resource type="PackedScene" uid="uid://c4h66q7ck4yek" path="res://Assets/FlawLizArt/Well/well_rope.fbx" id="6_tff4k"]
+[ext_resource type="AudioStream" uid="uid://dre0ssqqemshh" path="res://Sound/Sounds/sfx_impact_water_med_001.wav" id="7_322ay"]
+[ext_resource type="AudioStream" uid="uid://ge3055a4ypix" path="res://Sound/Sounds/sfx_impact_water_med_002.wav" id="8_64agm"]
+[ext_resource type="AudioStream" uid="uid://bm1aidkekkx7h" path="res://Sound/Sounds/sfx_impact_water_med_003.wav" id="9_jssqw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xq0we"]
 height = 1.0
@@ -17,8 +20,17 @@ size = Vector3(0.385742, 2.88062, 0.378906)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pm1t1"]
 size = Vector3(3.01953, 0.751678, 0.378906)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mr512"]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("3_7txne")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_rs50b"]
 size = Vector3(0.550446, 0.49469, 0.388672)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mr512"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [sub_resource type="Animation" id="Animation_jtyed"]
 length = 0.001
@@ -65,6 +77,18 @@ tracks/3/path = NodePath("Handle/SfxHandle:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSplash:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -121,6 +145,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSplash:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.98),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_uo78a"]
 resource_name = "raise"
@@ -173,6 +209,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, true, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSplash:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ufkos"]
 _data = {
@@ -181,8 +229,21 @@ _data = {
 &"raise": SubResource("Animation_uo78a")
 }
 
-[node name="Well" type="Node3D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2lp7m"]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("7_322ay")
+stream_1/stream = ExtResource("8_64agm")
+stream_2/stream = ExtResource("9_jssqw")
+
+[node name="Well" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Handle", "HandleTouchable", "RopeEndPosition", "RopeEndTouchable")]
 script = ExtResource("1_uafog")
+AnimationPlayer = NodePath("AnimationPlayer")
+Handle = NodePath("Handle")
+HandleTouchable = NodePath("Handle/HandleTouchable")
+RopeEndPosition = NodePath("Rope/RopeEndPosition")
+RopeEndTouchable = NodePath("Rope/RopeEndPosition/RopeEndTouchable")
 
 [node name="well" parent="." instance=ExtResource("2_uygh0")]
 
@@ -210,7 +271,8 @@ shape = SubResource("BoxShape3D_pm1t1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28365, 1.41572, 0)
 
 [node name="SfxHandle" type="AudioStreamPlayer3D" parent="Handle"]
-stream = ExtResource("3_7txne")
+stream = SubResource("AudioStreamRandomizer_mr512")
+max_distance = 8.0
 bus = &"SFX"
 
 [node name="Anim" type="Node3D" parent="Handle"]
@@ -238,7 +300,21 @@ transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 [node name="RopeEndPosition" type="Node3D" parent="Rope"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
+[node name="RopeEndTouchable" type="StaticBody3D" parent="Rope/RopeEndPosition"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_ugx1h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rope/RopeEndPosition/RopeEndTouchable"]
+shape = SubResource("BoxShape3D_mr512")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ufkos")
+&"": SubResource("AnimationLibrary_ufkos")
 }
+
+[node name="SfxSplash" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000917912, 0)
+stream = SubResource("AudioStreamRandomizer_2lp7m")
+volume_db = -20.0
+bus = &"SFX"

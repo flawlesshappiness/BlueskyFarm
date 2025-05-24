@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctsgx6cbg0she"]
+
+[ext_resource type="PackedScene" uid="uid://6dor47tmvqby" path="res://Assets/FlawLizArt/Crops/crop_bone_carrot.fbx" id="1_1epfg"]
+[ext_resource type="PackedScene" uid="uid://cnw4bpm8rrgqh" path="res://Assets/FlawLizArt/Rope/rope_attachment_segment.fbx" id="2_8wf1v"]
+
+[node name="Bone_OnRope" type="Node3D"]
+
+[node name="Carrot" type="Node3D" parent="."]
+
+[node name="crop_bone_carrot" parent="Carrot" instance=ExtResource("1_1epfg")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0932828, 0, 0)
+
+[node name="Rope" type="Node3D" parent="."]
+
+[node name="rope_attachment_segment" parent="Rope" instance=ExtResource("2_8wf1v")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+
+[node name="rope_attachment_segment2" parent="Rope" instance=ExtResource("2_8wf1v")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -0.0511156, 0, 0)
+
+[node name="rope_attachment_segment3" parent="Rope" instance=ExtResource("2_8wf1v")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 0.0605836, 0, 0)

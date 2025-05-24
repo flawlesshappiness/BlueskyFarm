@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b81gq10e1oljm"]
+
+[ext_resource type="PackedScene" uid="uid://dhtudodcvd1bu" path="res://Assets/Quaternius/RPG/key1_on_rope.fbx" id="1_82hei"]
+
+[node name="KeyOnRope" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="key1_on_rope" parent="." instance=ExtResource("1_82hei")]

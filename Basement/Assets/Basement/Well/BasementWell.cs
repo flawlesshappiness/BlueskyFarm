@@ -1,41 +1,46 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class BasementWell : Node3DScript
 {
-    [NodeType]
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [NodeName]
+    [Export]
     public Node3D Handle;
 
-    [NodeName]
+    [Export]
     public Touchable HandleTouchable;
 
-    [NodeName]
+    [Export]
     public Node3D RopeEndPosition;
 
-    public event Action OnRaise;
-    public event Action OnRaiseFinished;
-    public event Action OnLower;
+    [Export]
+    public Touchable RopeEndTouchable;
 
-    private bool _raised;
+    public bool CanEnableRopeEndTouchable { get; set; }
+    public bool IsRaised { get; private set; }
+
+    public event Action OnRaise;
+    public event Action OnLower;
+    public event Action OnRaised;
+    public event Action OnLowered;
+    public event Action OnRopeEndTouched;
+
+    private bool raised;
 
     public override void _Ready()
     {
         base._Ready();
-        AnimationPlayer.AnimationFinished += AnimationFinished;
         HandleTouchable.OnTouched += HandleTouchable_Touched;
+        RopeEndTouchable.OnTouched += RopeEndTouchable_Touched;
     }
 
-    private void AnimationFinished(StringName animation)
+    private void RopeEndTouchable_Touched()
     {
-        HandleTouchable.SetEnabled(true);
-
-        if (animation == "raise")
-        {
-            OnRaiseFinished?.Invoke();
-        }
+        RopeEndTouchable.Disable();
+        OnRopeEndTouched?.Invoke();
     }
 
     private void HandleTouchable_Touched()
@@ -45,42 +50,48 @@ public partial class BasementWell : Node3DScript
 
     public void ToggleRaised()
     {
-        if (_raised)
+        HandleTouchable.Disable();
+        RopeEndTouchable.Disable();
+
+        if (raised)
         {
-            TryLower();
+            AnimateLower();
         }
         else
         {
-            TryRaise();
+            AnimateRaise();
         }
-    }
 
-    public void TryRaise()
-    {
-        if (_raised) return;
-        _raised = true;
-        HandleTouchable.SetEnabled(false);
-        AnimateRaise();
-    }
-
-    public void TryLower()
-    {
-        if (!_raised) return;
-        _raised = false;
-        HandleTouchable.SetEnabled(false);
-        AnimateLower();
+        raised = !raised;
     }
 
     public void AnimateRaise()
     {
-        AnimationPlayer.Play("raise");
-        OnRaise?.Invoke();
+        this.StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            OnRaise?.Invoke();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("raise");
+            TryEnableRopeEndTouchable();
+            HandleTouchable.Enable();
+            OnRaised?.Invoke();
+
+            IsRaised = true;
+        }
     }
 
     public void AnimateLower()
     {
-        AnimationPlayer.Play("lower");
-        OnLower?.Invoke();
+        this.StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            IsRaised = false;
+
+            OnLower?.Invoke();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("lower");
+            HandleTouchable.Enable();
+            OnLowered?.Invoke();
+        }
     }
 
     public void AttachObjectToRope(Node3D node)
@@ -94,5 +105,16 @@ public partial class BasementWell : Node3DScript
     {
         Handle.SetEnabled(enabled);
         HandleTouchable.SetEnabled(enabled);
+    }
+
+    public void TryEnableRopeEndTouchable()
+    {
+        if (!CanEnableRopeEndTouchable) return;
+        RopeEndTouchable.Enable();
+    }
+
+    public void DisableRopeEndTouchable()
+    {
+        RopeEndTouchable.Disable();
     }
 }

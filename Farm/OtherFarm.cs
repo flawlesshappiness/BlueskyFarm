@@ -11,10 +11,26 @@ public partial class OtherFarm : Node3D
     [Export]
     public Marker3D SecretRoomItemMarker;
 
+    [Export]
+    public ItemInfo PotionItem;
+
     public override void _Ready()
     {
         base._Ready();
+
+        InitializePotionItem();
+
         Clock.OnSolved += ClockSolved;
+    }
+
+    private void InitializePotionItem()
+    {
+        if (Player.HasAccessToItem(PotionItem)) return;
+
+        var item = ItemController.Instance.CreateItem(PotionItem);
+        item.SetParent(SecretRoomItemMarker);
+        item.Position = Vector3.Zero;
+        item.Rotation = Vector3.Zero;
     }
 
     private void ClockSolved()

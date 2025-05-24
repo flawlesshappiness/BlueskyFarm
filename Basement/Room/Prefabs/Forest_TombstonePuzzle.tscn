@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dbyxjo7fgl6o3"]
+[gd_scene load_steps=70 format=3 uid="uid://dbyxjo7fgl6o3"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0yggo"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_r0in7"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ckgxoywxbij28" path="res://Basement/Assets/Containers/Prefabs/Grave.tscn" id="16_2mipg"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="16_qegsy"]
 [ext_resource type="PackedScene" uid="uid://dh65tfqa1nwh7" path="res://Particle/Prefabs/ps_mist.tscn" id="17_bn6nq"]
+[ext_resource type="Resource" uid="uid://cosn3wnyccuo7" path="res://Item/Resources/Potion_Red.tres" id="17_vrlkq"]
 [ext_resource type="Script" uid="uid://cr0ycwsjhbonr" path="res://Basement/Room/Prefabs/Basement_RockPuzzle/CrushableRock.cs" id="17_xy0gq"]
 [ext_resource type="Resource" uid="uid://cgpn7oalpd74c" path="res://Sound/Resources/sfx_stone_impact.tres" id="18_3pidp"]
 [ext_resource type="PackedScene" uid="uid://b6jw8n6h38lbx" path="res://Assets/FlawLizArt/Interior/tombstone.fbx" id="18_bux6e"]
@@ -37,7 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://d3qi3iiygfr1b" path="res://Basement/Assets/Floor/Floor_Stone.tscn" id="35_dlxja"]
 [ext_resource type="PackedScene" uid="uid://c23ij5pxy3gpw" path="res://Basement/Assets/Scaffold/pillar_wood_middle.tscn" id="36_otw53"]
 [ext_resource type="Material" uid="uid://bshhk66t6i80u" path="res://Assets/Materials/Stone.tres" id="37_3xn6q"]
+[ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="38_61fnr"]
 [ext_resource type="AudioStream" uid="uid://bp2u28hmp6y5i" path="res://Sound/Sounds/sfx_rumble_001.wav" id="38_qulwi"]
+[ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="39_mhp3y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -163,6 +166,45 @@ material = SubResource("StandardMaterial3D_hxbpf")
 [sub_resource type="QuadMesh" id="QuadMesh_qulwi"]
 size = Vector2(5, 5)
 
+[sub_resource type="Animation" id="Animation_qulwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxRumble:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxRumble:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
 [sub_resource type="Animation" id="Animation_3xn6q"]
 resource_name = "open"
 length = 4.5
@@ -202,45 +244,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(0.5, 1, 2, 1),
 "update": 0,
 "values": [-80.0, 0.0, 0.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_qulwi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxRumble:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxRumble:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vrlkq"]
@@ -963,11 +966,13 @@ Area = 2
 [node name="CollisionShape3D" parent="AmbienceArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("InventoryItemMarker", "Tombstone", "AnimationPlayer_SecretRoom", "SecretRoomTriggers", "SecretRoomTriggers_Valid")]
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("InventoryItemMarker", "SecretItemMarker", "Tombstone", "AnimationPlayer_SecretRoom", "SecretRoomTriggers", "SecretRoomTriggers_Valid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 script = ExtResource("15_m3yki")
 InventoryItemMarker = NodePath("../SecretRoom/Anim/DeadTree/InventoryItemMarker")
+SecretItemMarker = NodePath("../SecretRoom/SecretRoomItemMarker")
 InventoryItem = ExtResource("16_qegsy")
+PotionItem = ExtResource("17_vrlkq")
 Tombstone = NodePath("../SecretRoom/Anim/DeadTree/Tombstone")
 AnimationPlayer_SecretRoom = NodePath("../SecretRoom/AnimationPlayer")
 SecretRoomTriggers = [NodePath("../LightTriggers/LightTrigger_Farmer"), NodePath("../LightTriggers/LightTrigger_Man"), NodePath("../LightTriggers/LightTrigger_Miner"), NodePath("../LightTriggers/LightTrigger_Businessman"), NodePath("../LightTriggers/LightTrigger_Key"), NodePath("../LightTriggers/LightTrigger_Arrow"), NodePath("../LightTriggers/LightTrigger_Sword"), NodePath("../LightTriggers/LightTrigger_X")]
@@ -1118,6 +1123,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.75,
 [node name="Pillar_Wood12" parent="SecretRoom/Anim/Room" index="12" instance=ExtResource("36_otw53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.831511, 1.75)
 
+[node name="Table" parent="SecretRoom/Anim/Room" index="13" instance=ExtResource("38_61fnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="Chair" parent="SecretRoom/Anim/Room" index="14" instance=ExtResource("39_mhp3y")]
+transform = Transform3D(0.993505, 0, -0.113793, 0, 1, 0, 0.113793, 0, 0.993505, 0, -4, 0.621956)
+
 [node name="Floor_Moss8" parent="SecretRoom/Anim" index="3" instance=ExtResource("10_wgqd6")]
 
 [node name="Walls" type="Node3D" parent="SecretRoom" index="1"]
@@ -1154,4 +1165,4 @@ volume_db = -80.0
 max_distance = 12.0
 
 [node name="SecretRoomItemMarker" type="Marker3D" parent="SecretRoom" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72513, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.13506, 0)

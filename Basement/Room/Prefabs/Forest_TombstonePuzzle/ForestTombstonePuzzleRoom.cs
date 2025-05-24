@@ -8,7 +8,13 @@ public partial class ForestTombstonePuzzleRoom : Node3D
     public Marker3D InventoryItemMarker;
 
     [Export]
+    public Marker3D SecretItemMarker;
+
+    [Export]
     public ItemInfo InventoryItem;
+
+    [Export]
+    public ItemInfo PotionItem;
 
     [Export]
     public CrushableRock Tombstone;
@@ -30,6 +36,7 @@ public partial class ForestTombstonePuzzleRoom : Node3D
         InitializeInventoryItem();
         InitializeTombstone();
         InitializeSecretRoom();
+        InitializePotionItem();
     }
 
     private void InitializeInventoryItem()
@@ -69,6 +76,16 @@ public partial class ForestTombstonePuzzleRoom : Node3D
     private void InitializeSecretRoom()
     {
         SecretRoomTriggers.ForEach(x => x.OnToggle += ToggleLightTrigger);
+    }
+
+    private void InitializePotionItem()
+    {
+        if (Player.HasAccessToItem(PotionItem)) return;
+
+        var item = ItemController.Instance.CreateItem(PotionItem);
+        item.SetParent(SecretItemMarker);
+        item.Position = Vector3.Zero;
+        item.Rotation = Vector3.Zero;
     }
 
     private void ToggleLightTrigger(bool toggle)

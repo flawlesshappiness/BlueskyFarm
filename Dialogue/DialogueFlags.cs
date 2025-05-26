@@ -6,6 +6,7 @@ public static class DialogueFlags
     public static string FrogStone = "frog_stone";
     public static string FrogForge = "frog_forge";
     public static string FrogCore = "frog_core";
+    public static string FounderQuest = "founder_quest";
 
     private static string ModifyId(string id) => $"dialogue_flag_{id}";
     public static int GetFlag(string id) => GameFlags.GetFlag(ModifyId(id));

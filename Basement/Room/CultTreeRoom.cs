@@ -10,6 +10,9 @@ public partial class CultTreeRoom : Node3D
     public PlayerArea PlayerAreaEnterHole;
 
     [Export]
+    public ItemArea ItemAreaEnterHole;
+
+    [Export]
     public Touchable TouchableExitCore;
 
     [Export]
@@ -33,6 +36,7 @@ public partial class CultTreeRoom : Node3D
     {
         base._Ready();
         PlayerAreaEnterHole.OnPlayerEntered += PlayerEntered_EnterHole;
+        ItemAreaEnterHole.OnItemEntered += ItemEntered_EnterHole;
         PlayerAreaEnterRoom.OnPlayerEntered += PlayerEntered_EnterRoom;
         TouchableExitCore.OnTouched += OnTouched_ExitCore;
         RootCore.OnSwordEntered += SwordEntered;
@@ -134,5 +138,11 @@ public partial class CultTreeRoom : Node3D
     private void PlayerEntered_EnterRoom(Player player)
     {
         DialogueFlags.SetFlagMin(DialogueFlags.FrogCore, 1);
+    }
+
+    private void ItemEntered_EnterHole(Item item)
+    {
+        item.LinearVelocity = Vector3.Zero;
+        item.GlobalPosition = StartCore.GlobalPosition;
     }
 }

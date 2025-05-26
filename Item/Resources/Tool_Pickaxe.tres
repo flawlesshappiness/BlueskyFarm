@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_63nnm")
 Scene = ExtResource("1_papl2")
-ItemName = "Pickaxe"
+ItemName = ""
 CustomId = "pickaxe"
 Type = 0
 CanUse = true

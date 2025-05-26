@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=58 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dl3u4xamdiefc" path="res://Assets/FlawLizArt/Roots/root_hole_004.fbx" id="19_dapw8"]
 [ext_resource type="Script" uid="uid://b3x2i76j8nok0" path="res://Player/PlayerArea.cs" id="21_k3te6"]
 [ext_resource type="PackedScene" uid="uid://dw7fq6rs1qc2t" path="res://Basement/Assets/Floor/Floor_Roots.tscn" id="21_vfqeo"]
+[ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="22_t1unf"]
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="23_dksqk"]
 [ext_resource type="Texture2D" uid="uid://dhfgb8joq4vnl" path="res://Assets/KenneyNL/Cursors/door.png" id="24_xtf6x"]
 [ext_resource type="PackedScene" uid="uid://c6vua766jxhes" path="res://Basement/Assets/Entities/RootCore.tscn" id="25_2s1e1"]
@@ -102,6 +103,9 @@ material = SubResource("StandardMaterial3D_g7okb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwelh"]
 size = Vector3(12, 4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i4esx"]
+size = Vector3(18, 1, 18)
 
 [sub_resource type="Curve" id="Curve_k8oy3"]
 _data = [Vector2(0, 0), 0.0, 5.43956, 0, 0, Vector2(0.248485, 1), -0.543956, -0.543956, 0, 0, Vector2(1, 0), -1.25196, 0.0, 0, 0]
@@ -1035,14 +1039,23 @@ omni_range = 12.8487
 [node name="StartHole" type="Marker3D" parent="Hole" index="4"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 8, 0)
 
-[node name="PlayerArea" type="Area3D" parent="Hole" index="5"]
+[node name="Hole_PlayerArea" type="Area3D" parent="Hole" index="5"]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("21_k3te6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole/PlayerArea" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole/Hole_PlayerArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_xwelh")
+
+[node name="Hole_ItemArea" type="Area3D" parent="Hole" index="6"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("22_t1unf")
+metadata/_custom_type_script = "uid://doe14a4c4y6oj"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole/Hole_ItemArea" index="0"]
+shape = SubResource("BoxShape3D_i4esx")
 
 [node name="Core" type="Node3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
@@ -1378,10 +1391,11 @@ distance_fade_enabled = true
 distance_fade_begin = 28.0
 omni_range = 8.156
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "Cutscene", "PlayerAreaEnterRoom")]
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "ItemAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "Cutscene", "PlayerAreaEnterRoom")]
 script = ExtResource("25_08e0o")
 Room = NodePath("..")
-PlayerAreaEnterHole = NodePath("../Hole/PlayerArea")
+PlayerAreaEnterHole = NodePath("../Hole/Hole_PlayerArea")
+ItemAreaEnterHole = NodePath("../Hole/Hole_ItemArea")
 TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
 StartHole = NodePath("../Hole/StartHole")
 StartCore = NodePath("../Core/StartCore")

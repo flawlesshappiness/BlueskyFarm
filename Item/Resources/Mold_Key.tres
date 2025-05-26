@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_6mhk8")
 Scene = ExtResource("1_lc3g6")
-ItemName = "Key mold"
+ItemName = ""
 CustomId = "mold_key"
 Type = 5
 CanUse = false

@@ -259,5 +259,7 @@ public partial class BasementWellRoom : Node3DScript
         PotionOnRope.Enable();
 
         rope_item_type = RopeItemType.Potion;
+
+        GameFlagIds.SecretPuzzleWellCompleted.SetTrue();
     }
 }

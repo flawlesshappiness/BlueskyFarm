@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://tyc4j800smrv"]
+
+[ext_resource type="PackedScene" uid="uid://bc3iasw1hwj8n" path="res://Item/Prefabs/Potion_Flammable.tscn" id="1_3tu85"]
+[ext_resource type="Script" uid="uid://ddr7jh75kccon" path="res://Item/ItemInfo.cs" id="2_78h55"]
+
+[resource]
+script = ExtResource("2_78h55")
+Scene = ExtResource("1_3tu85")
+ItemName = ""
+CustomId = ""
+Type = 0
+CanUse = false
+Uses = 0
+CanPickUp = true
+PerishesOnFarm = false
+InventoryItemCameraDistance = 0.5
+InventoryItemRotationOffset = 0.0

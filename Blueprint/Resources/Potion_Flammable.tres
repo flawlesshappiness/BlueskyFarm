@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BlueprintInfo" load_steps=4 format=3 uid="uid://byjrcaaqwy8vq"]
+
+[ext_resource type="Texture2D" uid="uid://kf507gewtpn" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_potion_pink.png" id="1_7qloj"]
+[ext_resource type="Resource" uid="uid://tyc4j800smrv" path="res://Item/Resources/Potion_Flammable.tres" id="2_7qloj"]
+[ext_resource type="Script" uid="uid://yvadtiwc1dyq" path="res://Blueprint/BlueprintInfo.cs" id="3_op6ex"]
+
+[resource]
+script = ExtResource("3_op6ex")
+Id = "potion_flammable"
+ResultIcon = ExtResource("1_7qloj")
+ResultItemInfo = ExtResource("2_7qloj")
+OverrideResultName = "Flammable mixture"
+ResultDialogueNode = ""
+VegetableCount = 0
+BoneCount = 0
+StoneCount = 0
+PotionRedCount = 1
+PotionOrangeCount = 1
+PotionGreenCount = 1
+CanCancel = true
+Areas = null

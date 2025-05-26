@@ -11,6 +11,15 @@ public partial class BlueprintDisplayCounter : Node3DScript
     [Export]
     public Texture2D StoneIcon;
 
+    [Export]
+    public Texture2D PotionRedIcon;
+
+    [Export]
+    public Texture2D PotionOrangeIcon;
+
+    [Export]
+    public Texture2D PotionGreenIcon;
+
     [NodeType]
     public Sprite3D Icon;
 
@@ -24,6 +33,9 @@ public partial class BlueprintDisplayCounter : Node3DScript
         ItemType.Crop_Vegetable => VegetableIcon,
         ItemType.Crop_Bone => BoneIcon,
         ItemType.Crop_Stone => StoneIcon,
+        ItemType.Potion_Red => PotionRedIcon,
+        ItemType.Potion_Orange => PotionOrangeIcon,
+        ItemType.Potion_Green => PotionGreenIcon,
         _ => null
     };
 

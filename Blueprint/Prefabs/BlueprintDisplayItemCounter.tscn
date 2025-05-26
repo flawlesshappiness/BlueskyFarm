@@ -1,15 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbffc4txaji8b"]
+[gd_scene load_steps=8 format=3 uid="uid://dbffc4txaji8b"]
 
 [ext_resource type="Script" uid="uid://d2v8f7k1tdnqb" path="res://Blueprint/BlueprintDisplayCounter.cs" id="1_nnk5s"]
 [ext_resource type="Texture2D" uid="uid://upqdiafpad5r" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_vegetable.png" id="2_i7tgm"]
 [ext_resource type="Texture2D" uid="uid://b8nnejfwvylgb" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_bone.png" id="3_fmuet"]
 [ext_resource type="Texture2D" uid="uid://dimqonltg4v1g" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_stone.png" id="4_3xus3"]
+[ext_resource type="Texture2D" uid="uid://pe23q1cvfpar" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_potion_red.png" id="5_64n8f"]
+[ext_resource type="Texture2D" uid="uid://cs6opav6bc6w1" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_potion_orange.png" id="6_oxt34"]
+[ext_resource type="Texture2D" uid="uid://dtr8wto57je2t" path="res://Assets/FlawLizArt/Blueprint/Textures/blueprint_potion_green.png" id="7_umyja"]
 
 [node name="BlueprintDisplayItemCounter" type="Node3D"]
 script = ExtResource("1_nnk5s")
 VegetableIcon = ExtResource("2_i7tgm")
 BoneIcon = ExtResource("3_fmuet")
 StoneIcon = ExtResource("4_3xus3")
+PotionRedIcon = ExtResource("5_64n8f")
+PotionOrangeIcon = ExtResource("6_oxt34")
+PotionGreenIcon = ExtResource("7_umyja")
 
 [node name="Scale" type="Node3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

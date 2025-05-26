@@ -6,4 +6,7 @@ public enum ItemType
     Seed,
     Crop_Stone,
     ForgeMold,
+    Potion_Red,
+    Potion_Orange,
+    Potion_Green
 }

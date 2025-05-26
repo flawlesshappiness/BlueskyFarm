@@ -36,5 +36,7 @@ public partial class OtherFarm : Node3D
     private void ClockSolved()
     {
         AnimationPlayer_SecretRoom.Play("open");
+
+        GameFlagIds.SecretPuzzleClockCompleted.SetTrue();
     }
 }

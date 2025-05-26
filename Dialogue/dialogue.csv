@@ -57,5 +57,20 @@ keys;en
 ##ENDING_BAD_B_001##;What did you do?
 ##ENDING_BAD_B_002##;Wait, I feel something...
 ##ENDING_BAD_B_003##;They keep talking, but it doesn't matter anymore.
+##FOUNDER_QUEST_001##;You're back.
+##FOUNDER_QUEST_002##;Ready to return to the original plan?
+##FOUNDER_QUEST_003##;Let me help you remember:
+##FOUNDER_POEM_WELL_001##;Seek the abyss of a well.\nIt's a hungry creature's cell.
+##FOUNDER_POEM_WELL_002##;Feed it all which you can grow.\nThen its friendliness will show.
+##FOUNDER_POEM_FOREST_001##;Seek the misty woods,\nand a lonesome grave you'll find.
+##FOUNDER_POEM_FOREST_002##;Let signs and symbols guide your way\nto what was left behind.
+##FOUNDER_POEM_FOREST_003##;The light of those who came before\nwill lead you from distress.
+##FOUNDER_POEM_FOREST_004##;The farmer, and the miner,\nand the businessman no less.
+##FOUNDER_POEM_CLOCK_001##;Seek a farm that's just like yours,\nbut ridden with debris.
+##FOUNDER_POEM_CLOCK_002##;A place where nature took its course,\nproceeding you and me.
+##FOUNDER_POEM_CLOCK_003##;Where rocks and boards are laying flat,\na toll taken by time.
+##FOUNDER_POEM_CLOCK_004##;The golden hour striking at\nthe ones still in their prime.
+##FOUNDER_QUEST_COMPLETE_001##;You have solved the clues, and found the mixtures.
+##FOUNDER_QUEST_COMPLETE_002##;Now do what you set out to do.
 ##FROG_FIRST_DEATH_001##;Woah, you're looking worse for wear.\nYou alright?
 ##FROG_FIRST_DEATH_002##;Listen, most things down there don't want nothing to do with you. Try to keep your distance.

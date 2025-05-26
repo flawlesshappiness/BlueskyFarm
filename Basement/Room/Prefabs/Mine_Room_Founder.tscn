@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://uaeepn4mym64"]
+[gd_scene load_steps=45 format=3 uid="uid://uaeepn4mym64"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_33gtj"]
 [ext_resource type="PackedScene" uid="uid://y8n00kr1ceis" path="res://Basement/Assets/Mine/Rocks_CaveIn.tscn" id="2_c5cxb"]
@@ -23,8 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://b16pbkeiomqfh" path="res://Basement/Assets/Interior/BookcaseShort_Boxes.tscn" id="22_0igc1"]
 [ext_resource type="PackedScene" uid="uid://4ufkuebkpoyd" path="res://Assets/FlawLizArt/Interior/mirror_shards.fbx" id="23_l53fe"]
 [ext_resource type="PackedScene" uid="uid://dyru53g5y47jo" path="res://Basement/Assets/Interior/mirror_broken.tscn" id="23_ucao3"]
+[ext_resource type="PackedScene" uid="uid://h08lktpioj5d" path="res://Note/Prefabs/Note.tscn" id="24_ap2u8"]
 [ext_resource type="Script" uid="uid://wi8mv1w8enpy" path="res://Basement/Room/MineFounderRoom.cs" id="24_l53fe"]
 [ext_resource type="Script" uid="uid://co6ypf5463o51" path="res://Modules/Object/Touchable.cs" id="25_53q1m"]
+[ext_resource type="Resource" uid="uid://bmqubpmvwycxy" path="res://DialogueCharacter/Founder.tres" id="26_ve0ty"]
+[ext_resource type="Resource" uid="uid://byjrcaaqwy8vq" path="res://Blueprint/Resources/Potion_Flammable.tres" id="27_afhd5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o62yi"]
 size = Vector3(20, 1, 20)
@@ -74,7 +77,7 @@ size = Vector3(4, 6, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucao3"]
 size = Vector3(2.58203, 3.11234, 1.31055)
 
-[node name="Room_Base" instance=ExtResource("1_33gtj")]
+[node name="Mine_Room_Founder" instance=ExtResource("1_33gtj")]
 
 [node name="Rocks_CaveIn" parent="North/Closed" index="0" instance=ExtResource("2_c5cxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
@@ -643,9 +646,49 @@ transform = Transform3D(0.726886, 0, -0.686758, 0, 1, 0, 0.686758, 0, 0.726886, 
 [node name="mirror_shards" parent="Interior/Mirror" index="2" instance=ExtResource("23_l53fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062533, 0, 0.786084)
 
-[node name="RoomScript" type="Node3D" parent="." index="15" node_paths=PackedStringArray("DialogueTouchables")]
+[node name="Note" parent="Interior" index="3" instance=ExtResource("24_ap2u8")]
+transform = Transform3D(0.34849, 0.937312, 4.09712e-08, 0, -4.37114e-08, 1, 0.937312, -0.34849, -1.5233e-08, 1.26476, 0, -0.318542)
+Text = "Seek the abyss of a well.
+It's a hungry creature's cell.
+Feed it all which you can grow.
+Then its friendliness will show."
+
+[node name="Note2" parent="Interior" index="4" instance=ExtResource("24_ap2u8")]
+transform = Transform3D(0.723738, -0.690075, -3.01641e-08, -3.21212e-15, -4.37114e-08, 1, -0.690075, -0.723738, -3.16356e-08, -0.90414, 0, -0.788839)
+Text = "Seek the misty woods,
+and a lonesome grave you'll find.
+Let signs and symbols guide your way
+to what was left behind.
+The light of those who came before
+will lead you from distress.
+The farmer, and the miner,
+and the businessman no less."
+
+[node name="Note3" parent="Interior" index="5" instance=ExtResource("24_ap2u8")]
+transform = Transform3D(-0.976364, -0.216133, -9.44747e-09, -1.73187e-15, -4.37114e-08, 1, -0.216133, 0.976364, 4.26782e-08, -0.382851, 0, 1.36274)
+Text = "Seek a farm that's just like yours,
+but ridden with debris.
+A place where nature took its course,
+proceeding you and me.
+Where rocks and boards are laying flat,
+a toll taken by time.
+The golden hour striking at
+the ones still in their prime."
+
+[node name="Note4" parent="Interior" index="6" instance=ExtResource("24_ap2u8")]
+transform = Transform3D(-0.193738, 0.981053, 4.28832e-08, -1.73187e-15, -4.37114e-08, 1, 0.981053, 0.193738, 8.46855e-09, -0.0574297, 0, 0.11342)
+Text = "BURN THE TREE"
+
+[node name="BlueprintMarker" type="Marker3D" parent="Interior" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.666145, 0)
+
+[node name="RoomScript" type="Node3D" parent="." index="15" node_paths=PackedStringArray("BlueprintItemMarker", "DialogueTouchables", "Doors")]
 script = ExtResource("24_l53fe")
+DialogueCharacter = ExtResource("26_ve0ty")
+BlueprintItemMarker = NodePath("../Interior/BlueprintMarker")
+BlueprintInfo = ExtResource("27_afhd5")
 DialogueTouchables = [NodePath("Touchable N"), NodePath("Touchable S"), NodePath("Touchable E"), NodePath("Touchable W")]
+Doors = [NodePath("../North/Open/BasementDoor"), NodePath("../East/Open/BasementDoor"), NodePath("../South/Open/BasementDoor"), NodePath("../West/Open/BasementDoor")]
 
 [node name="Touchable N" type="StaticBody3D" parent="RoomScript" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47594, -6.05428)

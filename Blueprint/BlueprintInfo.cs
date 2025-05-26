@@ -29,6 +29,15 @@ public partial class BlueprintInfo : Resource
     public int StoneCount;
 
     [Export]
+    public int PotionRedCount;
+
+    [Export]
+    public int PotionOrangeCount;
+
+    [Export]
+    public int PotionGreenCount;
+
+    [Export]
     public bool CanCancel;
 
     [Export]

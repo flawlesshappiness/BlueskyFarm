@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_11wnj")
 Scene = ExtResource("1_lyoek")
-ItemName = "Weedcutter"
+ItemName = ""
 CustomId = "weedcutter"
 Type = 0
 CanUse = true

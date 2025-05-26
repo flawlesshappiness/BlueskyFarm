@@ -144,6 +144,21 @@ public partial class FrogBlueprintCrafting : Node3DScript
             Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Crop_Stone, Max = bp_info.StoneCount });
         }
 
+        if (bp_info.PotionRedCount > 0)
+        {
+            Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Potion_Red, Max = bp_info.PotionRedCount });
+        }
+
+        if (bp_info.PotionOrangeCount > 0)
+        {
+            Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Potion_Orange, Max = bp_info.PotionOrangeCount });
+        }
+
+        if (bp_info.PotionGreenCount > 0)
+        {
+            Data.Game.BlueprintCraftingData.Materials.Add(new BlueprintCraftingMaterialData { Type = ItemType.Potion_Green, Max = bp_info.PotionGreenCount });
+        }
+
         Display.UpdateFromData(Data.Game.BlueprintCraftingData);
 
         this.StartCoroutine(Cr, "animate");

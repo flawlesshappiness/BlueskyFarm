@@ -367,6 +367,76 @@
 	},
 	
 	{
+		"id": "##FOUNDER_QUEST_001##",
+		"next": "##FOUNDER_QUEST_002##"
+	},
+	{
+		"id": "##FOUNDER_QUEST_002##",
+		"next": "##FOUNDER_QUEST_003##"
+	},
+	{
+		"id": "##FOUNDER_QUEST_003##",
+		"next": "##FOUNDER_POEM_WELL_001##",
+		"flags": [
+			{
+				"id": "founder_quest",
+				"value": 1
+			}
+		]
+	},
+	
+	{
+		"id": "##FOUNDER_POEM_WELL_001##",
+		"next": "##FOUNDER_POEM_WELL_002##"
+	},
+	{
+		"id": "##FOUNDER_POEM_WELL_002##"
+	},
+	
+	{
+		"id": "##FOUNDER_POEM_FOREST_001##",
+		"next": "##FOUNDER_POEM_FOREST_002##"
+	},
+	{
+		"id": "##FOUNDER_POEM_FOREST_002##",
+		"next": "##FOUNDER_POEM_FOREST_003##"
+	},
+	{
+		"id": "##FOUNDER_POEM_FOREST_003##",
+		"next": "##FOUNDER_POEM_FOREST_004##"
+	},
+	{
+		"id": "##FOUNDER_POEM_FOREST_004##"
+	},
+	
+	{
+		"id": "##FOUNDER_POEM_CLOCK_001##",
+		"next": "##FOUNDER_POEM_CLOCK_002##"
+	},
+	{
+		"id": "##FOUNDER_POEM_CLOCK_002##",
+		"next": "##FOUNDER_POEM_CLOCK_003##"
+	},
+	{
+		"id": "##FOUNDER_POEM_CLOCK_003##",
+		"next": "##FOUNDER_POEM_CLOCK_004##"
+	},
+	{
+		"id": "##FOUNDER_POEM_CLOCK_004##"
+	},
+	
+	{
+		"id": "##FOUNDER_QUEST_COMPLETE_001##",
+		"next": "##FOUNDER_QUEST_COMPLETE_002##"
+	},
+	{
+		"id": "##FOUNDER_QUEST_COMPLETE_002##",
+		"triggers": [
+			"quest_complete"
+		]
+	},
+	
+	{
 		"id": "##FROG_FIRST_DEATH_001##",
 		"next": "##FROG_FIRST_DEATH_002##"
 	},

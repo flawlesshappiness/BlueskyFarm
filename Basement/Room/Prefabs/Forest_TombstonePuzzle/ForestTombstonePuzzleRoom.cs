@@ -96,6 +96,8 @@ public partial class ForestTombstonePuzzleRoom : Node3D
         {
             AnimationPlayer_SecretRoom.Play("open");
             SecretRoomTriggers.ForEach(x => x.IsToggleable = false);
+
+            GameFlagIds.SecretPuzzleForestCompleted.SetTrue();
         }
     }
 }

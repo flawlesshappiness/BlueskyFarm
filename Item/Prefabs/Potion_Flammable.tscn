@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc3iasw1hwj8n"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_xcy00"]
+[ext_resource type="PackedScene" uid="uid://c8srspf8wnrd3" path="res://Assets/Quaternius/RPG/Potion11_Filled.fbx" id="2_r57og"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r57og"]
+size = Vector3(0.435303, 0.413941, 0.428711)
+
+[node name="Potion_Flammable" instance=ExtResource("1_xcy00")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0346823, 0)
+shape = SubResource("BoxShape3D_r57og")
+
+[node name="Potion11_Filled" parent="Model" index="0" instance=ExtResource("2_r57og")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.215396, 0)

@@ -77,6 +77,11 @@ public partial class EnemyController : ResourceController<EnemyInfoCollection, E
         Debug.Indent--;
     }
 
+    public void DespawnEnemies()
+    {
+        _enemies.ForEach(x => x.Despawn());
+    }
+
     private void DebugSpawnEnemy(EnemyInfo info)
     {
         var enemy = CreateEnemy(info);

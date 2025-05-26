@@ -44,6 +44,7 @@ public partial class Cutscene_EndingB : Node3D
         SetPlayerLocked(true);
         Cursor.Hide();
         GameView.Instance.SetBlackOverlayAlpha(1);
+        EnemyController.Instance.DespawnEnemies();
 
         HoleFire.Start();
 

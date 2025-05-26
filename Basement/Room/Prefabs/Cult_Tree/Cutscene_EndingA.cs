@@ -68,6 +68,8 @@ public partial class Cutscene_EndingA : Node3D
     {
         SetPlayerLocked(true);
         Cursor.Hide();
+        EnemyController.Instance.DespawnEnemies();
+
         asp_bgm = BgmCutsceneTense.Play();
 
         this.StartCoroutine(Cr, "Cutscene");

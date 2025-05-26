@@ -437,6 +437,27 @@
 	},
 	
 	{
+		"id": "##CUTSCENE_B_001##",
+		"triggers": [
+			"ending_b_dialogue"
+		]
+	},
+	
+	{
+		"id": "##CUTSCENE_B_002##",
+		"triggers": [
+			"ending_b_dialogue"
+		]
+	},
+	
+	{
+		"id": "##CUTSCENE_B_003##",
+		"triggers": [
+			"ending_b_end"
+		]
+	},
+	
+	{
 		"id": "##FROG_FIRST_DEATH_001##",
 		"next": "##FROG_FIRST_DEATH_002##"
 	},

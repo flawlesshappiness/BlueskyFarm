@@ -92,6 +92,7 @@ public partial class Cutscene_EndingA : Node3D
         Player.Instance.LookLock.SetLock(id, locked);
         Player.Instance.InteractLock.SetLock(id, locked);
         PauseView.Instance.ToggleLock.SetLock(id, locked);
+        InventoryController.Instance.InventoryLock.SetLock(id, locked);
     }
 
     private void StartDialogue(string node)

@@ -7,7 +7,7 @@
 script = ExtResource("2_78h55")
 Scene = ExtResource("1_3tu85")
 ItemName = ""
-CustomId = ""
+CustomId = "flammable_potion"
 Type = 0
 CanUse = false
 Uses = 0

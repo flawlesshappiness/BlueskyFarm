@@ -25,12 +25,17 @@ public partial class CultTreeRoom : Node3D
     public RootCore RootCore;
 
     [Export]
-    public Cutscene_EndingA Cutscene;
+    public Cutscene_EndingA CutsceneA;
+
+    [Export]
+    public Cutscene_EndingB CutsceneB;
 
     [Export]
     public PlayerArea PlayerAreaEnterRoom;
 
     private string DebugId => GetInstanceId().ToString();
+
+    private bool cutscene_started;
 
     public override void _Ready()
     {
@@ -40,6 +45,7 @@ public partial class CultTreeRoom : Node3D
         PlayerAreaEnterRoom.OnPlayerEntered += PlayerEntered_EnterRoom;
         TouchableExitCore.OnTouched += OnTouched_ExitCore;
         RootCore.OnSwordEntered += SwordEntered;
+        RootCore.OnPotionEntered += PotionEntered;
 
         RegisterDebugActions();
     }
@@ -132,7 +138,18 @@ public partial class CultTreeRoom : Node3D
 
     private void SwordEntered()
     {
-        Cutscene.StartEnding();
+        if (cutscene_started) return;
+        cutscene_started = true;
+
+        CutsceneA.StartEnding();
+    }
+
+    private void PotionEntered()
+    {
+        if (cutscene_started) return;
+        cutscene_started = true;
+
+        CutsceneB.StartEnding();
     }
 
     private void PlayerEntered_EnterRoom(Player player)

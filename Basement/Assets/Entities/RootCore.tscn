@@ -72,9 +72,10 @@ _data = {
 &"sword_insert": SubResource("Animation_k5uen")
 }
 
-[node name="RootCore" type="Node3D" node_paths=PackedStringArray("ItemArea", "AnimationPlayer_Sword")]
+[node name="RootCore" type="Node3D" node_paths=PackedStringArray("ItemArea_Sword", "ItemArea_Potion", "AnimationPlayer_Sword")]
 script = ExtResource("1_hutdn")
-ItemArea = NodePath("ItemArea")
+ItemArea_Sword = NodePath("ItemArea_Sword")
+ItemArea_Potion = NodePath("ItemArea_Potion")
 AnimationPlayer_Sword = NodePath("AnimationPlayer_Sword")
 
 [node name="root_core_001" parent="." instance=ExtResource("1_60qnf")]
@@ -85,13 +86,22 @@ AnimationPlayer_Sword = NodePath("AnimationPlayer_Sword")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_kekfh")
 
-[node name="ItemArea" type="Area3D" parent="."]
+[node name="ItemArea_Sword" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_mask = 2
 script = ExtResource("2_ax4p2")
 CustomId = "sword"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea_Sword"]
+shape = SubResource("SphereShape3D_uf2b4")
+
+[node name="ItemArea_Potion" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_mask = 2
+script = ExtResource("2_ax4p2")
+CustomId = "flammable_potion"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea_Potion"]
 shape = SubResource("SphereShape3D_uf2b4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -103,7 +113,7 @@ omni_range = 10.0
 
 [node name="AnimationPlayer_Sword" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qawhp")
+&"": SubResource("AnimationLibrary_qawhp")
 }
 
 [node name="Animation" type="Node3D" parent="."]

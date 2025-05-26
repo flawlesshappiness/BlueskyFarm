@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=64 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -34,6 +34,12 @@
 [ext_resource type="Resource" uid="uid://cq7dwt2w6d6ii" path="res://DialogueCharacter/Frank.tres" id="29_8j1fk"]
 [ext_resource type="Resource" uid="uid://clp0lw7jpn0wy" path="res://Sound/Resources/bgm_cutscene_tense.tres" id="31_arhwr"]
 [ext_resource type="Resource" uid="uid://rgasce75hpvv" path="res://Sound/Resources/bgm_cutscene_death.tres" id="32_1ylrq"]
+[ext_resource type="PackedScene" uid="uid://ddwdp4c237lkb" path="res://Basement/Room/Prefabs/Cult_Tree/cult_hole_fire.tscn" id="35_i4esx"]
+[ext_resource type="Script" uid="uid://cvt5xk235bdck" path="res://Basement/Room/Prefabs/Cult_Tree/Cutscene_EndingB.cs" id="36_ak7o2"]
+[ext_resource type="Resource" uid="uid://cr4xxcb7lurio" path="res://Environment/Resources/Cult_PinkFire.tres" id="37_akopl"]
+[ext_resource type="AudioStream" uid="uid://dgty0bmyc7wrr" path="res://Sound/Sounds/sfx_glass_break_001.wav" id="38_2netd"]
+[ext_resource type="Resource" uid="uid://bmqubpmvwycxy" path="res://DialogueCharacter/Founder.tres" id="38_sis88"]
+[ext_resource type="AudioStream" uid="uid://ldoeldvcycbp" path="res://Sound/Sounds/sfx_flames_loop_001.wav" id="39_akopl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -1391,7 +1397,7 @@ distance_fade_enabled = true
 distance_fade_begin = 28.0
 omni_range = 8.156
 
-[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "ItemAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "Cutscene", "PlayerAreaEnterRoom")]
+[node name="RoomScript" type="Node3D" parent="." index="13" node_paths=PackedStringArray("Room", "PlayerAreaEnterHole", "ItemAreaEnterHole", "TouchableExitCore", "StartHole", "StartCore", "RootCore", "CutsceneA", "CutsceneB", "PlayerAreaEnterRoom")]
 script = ExtResource("25_08e0o")
 Room = NodePath("..")
 PlayerAreaEnterHole = NodePath("../Hole/Hole_PlayerArea")
@@ -1400,7 +1406,8 @@ TouchableExitCore = NodePath("../Core/TouchableOutOfCore")
 StartHole = NodePath("../Hole/StartHole")
 StartCore = NodePath("../Core/StartCore")
 RootCore = NodePath("../Core/RootCore")
-Cutscene = NodePath("../EndingCutscene")
+CutsceneA = NodePath("../EndingCutsceneA")
+CutsceneB = NodePath("../EndingCutsceneB")
 PlayerAreaEnterRoom = NodePath("../PlayerArea_EnterRoom")
 
 [node name="PlayerArea_EnterRoom" type="Area3D" parent="." index="14"]
@@ -1412,7 +1419,9 @@ script = ExtResource("21_k3te6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea_EnterRoom" index="0"]
 shape = SubResource("BoxShape3D_havax")
 
-[node name="EndingCutscene" type="Node3D" parent="." index="15" node_paths=PackedStringArray("Core", "PlayerPositionMarker", "FrenLookMarker", "CultistsLookMarker", "CoreLookMarker", "LookUpMarker", "Fren", "Frida", "Frank", "Fritz")]
+[node name="CultHoleFire" parent="." index="15" instance=ExtResource("35_i4esx")]
+
+[node name="EndingCutsceneA" type="Node3D" parent="." index="16" node_paths=PackedStringArray("Core", "PlayerPositionMarker", "FrenLookMarker", "CultistsLookMarker", "CoreLookMarker", "LookUpMarker", "Fren", "Frida", "Frank", "Fritz")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
 script = ExtResource("27_ms6nv")
 Core = NodePath("../Core/RootCore")
@@ -1431,35 +1440,35 @@ Fritz = NodePath("FrogFritz")
 BgmCutsceneTense = ExtResource("31_arhwr")
 BgmCutsceneDeath = ExtResource("32_1ylrq")
 
-[node name="PlayerPositionMarker" type="Marker3D" parent="EndingCutscene" index="0"]
+[node name="PlayerPositionMarker" type="Marker3D" parent="EndingCutsceneA" index="0"]
 transform = Transform3D(-0.999897, 0, -0.0143287, 0, 1, 0, 0.0143287, 0, -0.999897, 0, 0, 10.5)
 
-[node name="FrenLookMarker" type="Marker3D" parent="EndingCutscene" index="1"]
+[node name="FrenLookMarker" type="Marker3D" parent="EndingCutsceneA" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92083, 1.57999, 11.6763)
 
-[node name="CultistsLookMarker" type="Marker3D" parent="EndingCutscene" index="2"]
+[node name="CultistsLookMarker" type="Marker3D" parent="EndingCutsceneA" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0855954, 1.57999, 7.75447)
 
-[node name="CoreLookMarker" type="Marker3D" parent="EndingCutscene" index="3"]
+[node name="CoreLookMarker" type="Marker3D" parent="EndingCutsceneA" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00725168, 1.53955, 12.8013)
 
-[node name="LookUpMarker" type="Marker3D" parent="EndingCutscene" index="4"]
+[node name="LookUpMarker" type="Marker3D" parent="EndingCutsceneA" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275861, 3.06824, 10.7548)
 
-[node name="FrogFrida" parent="EndingCutscene" index="5" instance=ExtResource("27_4q6kh")]
+[node name="FrogFrida" parent="EndingCutsceneA" index="5" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(0.914381, 0, -0.404854, 0, 1, 0, 0.404854, 0, 0.914381, 1.4094, 0, 7.46234)
 StartAnimation = "Armature|Idle_Cult"
 
-[node name="FrogFritz" parent="EndingCutscene" index="6" instance=ExtResource("27_4q6kh")]
+[node name="FrogFritz" parent="EndingCutsceneA" index="6" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(0.999983, 0, -0.00575953, 0, 1, 0, 0.00575953, 0, 0.999983, 0.122641, 0, 5.51025)
 
-[node name="FrogFrank" parent="EndingCutscene" index="7" instance=ExtResource("27_4q6kh")]
+[node name="FrogFrank" parent="EndingCutsceneA" index="7" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(0.912991, 0, 0.40798, 0, 1, 0, -0.40798, 0, 0.912991, -1.22212, 0, 7.0969)
 
-[node name="FrogFren" parent="EndingCutscene" index="8" instance=ExtResource("27_4q6kh")]
+[node name="FrogFren" parent="EndingCutsceneA" index="8" instance=ExtResource("27_4q6kh")]
 transform = Transform3D(-0.461903, 0, -0.88693, 0, 1, 0, 0.88693, 0, -0.461903, 2.35572, 0, 11.8593)
 
-[node name="Skeleton3D" parent="EndingCutscene/FrogFren/frog/Armature" index="0"]
+[node name="Skeleton3D" parent="EndingCutsceneA/FrogFren/frog/Armature" index="0"]
 bones/1/position = Vector3(8.41591e-06, 0.00839508, 0.0022433)
 bones/3/rotation = Quaternion(0.260243, 4.40859e-07, 3.66643e-08, 0.965543)
 bones/5/rotation = Quaternion(0.441586, 1.00385e-06, -1.66133e-07, 0.897219)
@@ -1493,20 +1502,42 @@ bones/59/position = Vector3(0.00349282, 0.00041052, 0.001312)
 bones/63/position = Vector3(0.00921994, 0.00159529, 0.00615727)
 bones/65/position = Vector3(-0.00353301, -0.0142991, 0.00754896)
 
-[node name="Garb_Body" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="3"]
+[node name="Garb_Body" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="3"]
 visible = false
 
-[node name="Garb_Arms" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="4"]
+[node name="Garb_Arms" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="4"]
 visible = false
 
-[node name="Garb_Belt" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="5"]
+[node name="Garb_Belt" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="5"]
 visible = false
 
-[node name="lantern" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="6"]
+[node name="lantern" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="6"]
 visible = false
 
-[node name="Dagger" parent="EndingCutscene/FrogFren/frog/Armature/Skeleton3D" index="7"]
+[node name="Dagger" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="7"]
 visible = true
 
-[editable path="EndingCutscene/FrogFren"]
-[editable path="EndingCutscene/FrogFren/frog"]
+[node name="EndingCutsceneB" type="Node3D" parent="." index="17" node_paths=PackedStringArray("HoleFire", "SfxGlassBreak", "SfxBackgroundFire", "CameraMarkers")]
+script = ExtResource("36_ak7o2")
+Environment = ExtResource("37_akopl")
+DialogueCharacterInfo = ExtResource("38_sis88")
+HoleFire = NodePath("../CultHoleFire")
+SfxGlassBreak = NodePath("SfxGlassBreak")
+SfxBackgroundFire = NodePath("SfxBackgroundFire")
+CameraMarkers = [NodePath("EndingCamera 1")]
+
+[node name="EndingCamera 1" type="Marker3D" parent="EndingCutsceneB" index="0"]
+transform = Transform3D(-0.354291, -0.376399, 0.856039, 0, 0.915417, 0.402507, -0.935135, 0.142605, -0.324324, 8.48349, 12.0376, -3.47843)
+
+[node name="SfxGlassBreak" type="AudioStreamPlayer" parent="EndingCutsceneB" index="1"]
+stream = ExtResource("38_2netd")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxBackgroundFire" type="AudioStreamPlayer" parent="EndingCutsceneB" index="2"]
+stream = ExtResource("39_akopl")
+volume_db = -20.0
+bus = &"SFX"
+
+[editable path="EndingCutsceneA/FrogFren"]
+[editable path="EndingCutsceneA/FrogFren/frog"]

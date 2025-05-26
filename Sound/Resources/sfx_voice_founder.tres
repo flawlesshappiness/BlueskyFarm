@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=10 format=3 uid="uid://bonl53svt14pm"]
+
+[ext_resource type="AudioStream" uid="uid://umg0smp436b4" path="res://Sound/Sounds/sfx_founder_whisper_001.wav" id="1_7moo4"]
+[ext_resource type="AudioStream" uid="uid://biukyiqnsihqn" path="res://Sound/Sounds/sfx_founder_whisper_002.wav" id="2_1w71m"]
+[ext_resource type="AudioStream" uid="uid://rn8ck8j5rtmr" path="res://Sound/Sounds/sfx_founder_whisper_003.wav" id="3_2pe8o"]
+[ext_resource type="AudioStream" uid="uid://c4h3xp733i2fi" path="res://Sound/Sounds/sfx_founder_whisper_004.wav" id="4_d8l8o"]
+[ext_resource type="AudioStream" uid="uid://em8oscxl1wic" path="res://Sound/Sounds/sfx_founder_whisper_005.wav" id="5_by57i"]
+[ext_resource type="AudioStream" uid="uid://clanfcr7xojx5" path="res://Sound/Sounds/sfx_founder_whisper_006.wav" id="6_4c1lx"]
+[ext_resource type="Script" uid="uid://ywnijyhnjldj" path="res://Sound/SoundInfo.cs" id="7_by57i"]
+[ext_resource type="AudioStream" uid="uid://5aouunj67yt0" path="res://Sound/Sounds/sfx_founder_whisper_007.wav" id="7_wvndb"]
+[ext_resource type="AudioStream" uid="uid://bjuxury0ykksl" path="res://Sound/Sounds/sfx_founder_whisper_008.wav" id="8_y5y7q"]
+
+[resource]
+script = ExtResource("7_by57i")
+AudioStreams = Array[AudioStream]([ExtResource("1_7moo4"), ExtResource("2_1w71m"), ExtResource("3_2pe8o"), ExtResource("4_d8l8o"), ExtResource("5_by57i"), ExtResource("6_4c1lx"), ExtResource("7_wvndb"), ExtResource("8_y5y7q")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1.05)
+Bus = 1
+Distance = 0
+Attenuation = 0

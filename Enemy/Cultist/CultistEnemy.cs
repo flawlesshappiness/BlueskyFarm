@@ -30,7 +30,7 @@ public partial class CultistEnemy : NavEnemy
     public AnimationPlayer AnimationPlayer;
 
     [Export]
-    public SoundInfo SfxAlert;
+    public AudioStreamPlayer3D SfxAlert;
 
     [Export]
     public SoundInfo SfxPlayerDeath;
@@ -207,7 +207,7 @@ public partial class CultistEnemy : NavEnemy
     {
         StopNavigation();
         StartFacingPlayer();
-        SfxAlert.Play(GlobalPosition);
+        SfxAlert.Play();
 
         yield return new WaitForSeconds(1f);
 

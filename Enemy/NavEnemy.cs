@@ -214,7 +214,8 @@ public partial class NavEnemy : Enemy
     {
         if (_facing_player)
         {
-            TurnTowardsDirection(DirectionToPlayer);
+            var dir = ScreenEffects.View.Camera.GlobalPosition.Set(y: 0) - GlobalPosition.Set(y: 0);
+            TurnTowardsDirection(dir);
         }
     }
 }

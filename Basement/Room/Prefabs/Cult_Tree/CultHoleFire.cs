@@ -3,6 +3,9 @@ using Godot;
 public partial class CultHoleFire : Node3D
 {
     [Export]
+    public bool StartActive;
+
+    [Export]
     public AnimationPlayer AnimationPlayer_Light;
 
     [Export]
@@ -21,7 +24,15 @@ public partial class CultHoleFire : Node3D
     {
         base._Ready();
         AnimationPlayer_Light.Play("fire");
-        Stop();
+
+        if (StartActive)
+        {
+            Start();
+        }
+        else
+        {
+            Stop();
+        }
     }
 
     public void Stop()

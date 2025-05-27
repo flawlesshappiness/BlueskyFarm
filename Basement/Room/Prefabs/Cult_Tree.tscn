@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bpb8ligmdhsnp"]
+[gd_scene load_steps=85 format=3 uid="uid://bpb8ligmdhsnp"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_gacrs"]
 [ext_resource type="PackedScene" uid="uid://bqwblilx5imyy" path="res://Basement/Assets/Cult/Wall_Middle.tscn" id="2_33q62"]
@@ -40,6 +40,18 @@
 [ext_resource type="AudioStream" uid="uid://dgty0bmyc7wrr" path="res://Sound/Sounds/sfx_glass_break_001.wav" id="38_2netd"]
 [ext_resource type="Resource" uid="uid://bmqubpmvwycxy" path="res://DialogueCharacter/Founder.tres" id="38_sis88"]
 [ext_resource type="AudioStream" uid="uid://ldoeldvcycbp" path="res://Sound/Sounds/sfx_flames_loop_001.wav" id="39_akopl"]
+[ext_resource type="AudioStream" uid="uid://bbamucxu8a17f" path="res://Sound/Sounds/sfx_endingb_piano_001.wav" id="41_82ikb"]
+[ext_resource type="PackedScene" uid="uid://ememwci25cp3" path="res://Basement/Assets/Basement/Wall_Bottom.tscn" id="41_pxb5b"]
+[ext_resource type="AudioStream" uid="uid://dhxma6oni58so" path="res://Sound/Sounds/sfx_endingb_piano_002.wav" id="42_hwot5"]
+[ext_resource type="PackedScene" uid="uid://b7qspa1jwodd1" path="res://Basement/Assets/Basement/Wall_Top.tscn" id="42_pwp1j"]
+[ext_resource type="PackedScene" uid="uid://i4o8vpd127o" path="res://Basement/Assets/Interior/Carpet_Long.tscn" id="43_2fwdh"]
+[ext_resource type="AudioStream" uid="uid://tox2ju0gr1fa" path="res://Sound/Sounds/sfx_endingb_piano_003.wav" id="43_fvseq"]
+[ext_resource type="PackedScene" uid="uid://dn8kmt3m0m6fy" path="res://Basement/Room/Prefabs/Cult_Room/Roots_Pillar_A.tscn" id="43_wtbl7"]
+[ext_resource type="Texture2D" uid="uid://cdgn8m8oha6ds" path="res://Assets/KenneyNL/Particles/circle_05.png" id="45_vhexl"]
+[ext_resource type="PackedScene" uid="uid://cgh03u7371vnc" path="res://Basement/Assets/Floor/Floor_Moss.tscn" id="46_y8lcw"]
+[ext_resource type="PackedScene" uid="uid://0xkdrmxdxprt" path="res://Basement/Assets/Entities/TallDoor.tscn" id="47_6q4po"]
+[ext_resource type="PackedScene" uid="uid://vf332xuy8kvx" path="res://Basement/Assets/Forest/CommonTree_001.tscn" id="49_cestf"]
+[ext_resource type="PackedScene" uid="uid://vffrsoavok86" path="res://Basement/Assets/Forest/CommonTree_002.tscn" id="50_82ikb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpc6"]
 shading_mode = 0
@@ -156,6 +168,64 @@ size = Vector3(4, 1, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_havax"]
 size = Vector3(20, 4, 20)
+
+[sub_resource type="Curve" id="Curve_vhexl"]
+_data = [Vector2(0, 0), 0.0, 11.9693, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y8lcw"]
+curve = SubResource("Curve_vhexl")
+
+[sub_resource type="Curve" id="Curve_6q4po"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 72), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pwp1j"]
+curve = SubResource("Curve_6q4po")
+
+[sub_resource type="Curve" id="Curve_1a252"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wtbl7"]
+curve = SubResource("Curve_1a252")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cestf"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+angle_min = -0.599989
+angle_max = 0.600011
+angle_curve = SubResource("CurveTexture_pwp1j")
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_wtbl7")
+alpha_curve = SubResource("CurveTexture_y8lcw")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8lcw"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("45_vhexl")
+emission_enabled = true
+emission = Color(1, 0.45, 0.816667, 1)
+emission_energy_multiplier = 2.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_82ikb"]
+material = SubResource("StandardMaterial3D_y8lcw")
 
 [node name="Cult_Tree" instance=ExtResource("1_gacrs")]
 
@@ -1469,38 +1539,47 @@ transform = Transform3D(0.912991, 0, 0.40798, 0, 1, 0, -0.40798, 0, 0.912991, -1
 transform = Transform3D(-0.461903, 0, -0.88693, 0, 1, 0, 0.88693, 0, -0.461903, 2.35572, 0, 11.8593)
 
 [node name="Skeleton3D" parent="EndingCutsceneA/FrogFren/frog/Armature" index="0"]
-bones/1/position = Vector3(8.41591e-06, 0.00839508, 0.0022433)
-bones/3/rotation = Quaternion(0.260243, 4.40859e-07, 3.66643e-08, 0.965543)
-bones/5/rotation = Quaternion(0.441586, 1.00385e-06, -1.66133e-07, 0.897219)
-bones/6/rotation = Quaternion(0.212753, -0.000264062, -0.000110198, 0.977106)
-bones/11/rotation = Quaternion(-0.00313612, 0.0544906, -0.40839, 0.911174)
-bones/12/rotation = Quaternion(0.721051, 0.47644, 0.36913, -0.341809)
-bones/13/rotation = Quaternion(0.00907953, 0.499479, -0.200836, 0.842676)
+bones/1/position = Vector3(8.41591e-06, 0.00835055, -0.000678656)
+bones/2/position = Vector3(-1.47983e-05, 0.000220927, -0.00194505)
+bones/3/rotation = Quaternion(0.0675832, 4.36936e-07, 4.16987e-08, 0.997714)
+bones/5/rotation = Quaternion(0.205488, 1.01371e-06, 8.77978e-08, 0.97866)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.498043, -0.000227231, -0.00018641, 0.867152)
+bones/11/position = Vector3(0.00177194, 0.00199531, 0.00192465)
+bones/11/rotation = Quaternion(0.00732774, 0.0312528, -0.409243, 0.911861)
+bones/12/rotation = Quaternion(0.378976, 0.830322, 0.108179, -0.394004)
+bones/13/rotation = Quaternion(0.046151, 0.271927, -0.121569, 0.953492)
 bones/15/rotation = Quaternion(-0.0283751, -0.00482289, -0.167482, 0.985455)
-bones/16/rotation = Quaternion(-0.106642, -0.000922409, 0.00859773, 0.99426)
-bones/19/rotation = Quaternion(-0.112773, 0.000768064, 0.0145153, 0.993514)
-bones/20/rotation = Quaternion(0.0205605, -0.000987733, -0.00125054, 0.999787)
+bones/16/rotation = Quaternion(-0.106642, -0.000922397, 0.00859773, 0.99426)
+bones/19/rotation = Quaternion(-0.112773, 0.000768101, 0.0145153, 0.993514)
+bones/20/rotation = Quaternion(0.0205605, -0.000987744, -0.00125054, 0.999787)
+bones/24/rotation = Quaternion(-0.0766131, -0.00152699, -0.0198675, 0.996862)
 bones/27/rotation = Quaternion(-0.0116289, 0.00251733, 0.212192, 0.977156)
-bones/29/rotation = Quaternion(-0.00313564, -0.0544901, 0.40839, 0.911174)
-bones/30/rotation = Quaternion(-0.427629, 0.626091, 0.604866, -0.243475)
-bones/31/rotation = Quaternion(-0.204165, -0.142809, 0.00591034, 0.968446)
-bones/33/rotation = Quaternion(-0.458324, -0.0354355, 0.21425, 0.861847)
-bones/34/rotation = Quaternion(-0.49363, -0.136772, 0.0871848, 0.854413)
-bones/37/rotation = Quaternion(-0.644703, 0.0419525, 0.0304606, 0.762673)
-bones/38/rotation = Quaternion(-0.388971, -0.0209378, 0.136609, 0.910824)
-bones/41/rotation = Quaternion(-0.453211, 0.19002, -0.244978, 0.83575)
-bones/42/rotation = Quaternion(-0.385223, 0.0230602, 0.0620045, 0.920449)
-bones/47/rotation = Quaternion(0.991946, 0.00570779, 0.0170103, 0.125382)
-bones/48/rotation = Quaternion(0.100085, 0.00021777, 0.000932813, 0.994978)
-bones/49/rotation = Quaternion(0.00256614, -0.72015, 0.693784, -0.00641671)
-bones/51/rotation = Quaternion(0.987005, -0.00225288, -0.0159716, -0.159876)
-bones/52/rotation = Quaternion(0.00323397, 0.00139206, -4.1339e-05, 0.999994)
-bones/53/rotation = Quaternion(0.000204903, -0.620003, 0.784586, 0.00452542)
-bones/55/position = Vector3(0.0120387, 0.0181788, -0.0099381)
-bones/57/position = Vector3(-0.0150553, 0.0119222, -0.0099381)
-bones/59/position = Vector3(0.00349282, 0.00041052, 0.001312)
-bones/63/position = Vector3(0.00921994, 0.00159529, 0.00615727)
-bones/65/position = Vector3(-0.00353301, -0.0142991, 0.00754896)
+bones/29/position = Vector3(-0.00175917, 0.00199531, 0.00192466)
+bones/29/rotation = Quaternion(0.00732824, -0.0312524, 0.409243, 0.911861)
+bones/30/rotation = Quaternion(-0.387111, 0.861642, 0.0746868, 0.319593)
+bones/31/rotation = Quaternion(0.0246153, -0.271914, 0.127751, 0.953487)
+bones/33/rotation = Quaternion(-0.0283763, 0.00482385, 0.167482, 0.985455)
+bones/34/rotation = Quaternion(-0.10664, 0.00092007, -0.00859788, 0.99426)
+bones/37/rotation = Quaternion(-0.112771, -0.000769835, -0.0145147, 0.993515)
+bones/38/rotation = Quaternion(0.0205565, 0.000991765, 0.00125031, 0.999787)
+bones/42/rotation = Quaternion(-0.0766119, 0.00152574, 0.0198671, 0.996862)
+bones/47/rotation = Quaternion(0.99336, 0.00747625, 0.0145854, 0.113874)
+bones/47/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(0.194994, -0.00358083, 0.00606423, 0.980779)
+bones/48/scale = Vector3(1, 1, 1)
+bones/49/rotation = Quaternion(4.73568e-05, -0.646659, 0.762766, -0.00444863)
+bones/51/rotation = Quaternion(0.99336, -0.00747684, -0.0145855, 0.113875)
+bones/52/rotation = Quaternion(0.194997, 0.00358146, -0.00606504, 0.980779)
+bones/52/scale = Vector3(1, 1, 1)
+bones/53/rotation = Quaternion(-4.72043e-05, -0.646658, 0.762767, 0.00444838)
+bones/55/position = Vector3(0.0120387, 0.0181788, -0.00993809)
+bones/55/scale = Vector3(1, 1, 1)
+bones/57/position = Vector3(-0.0120387, 0.0181788, -0.00993809)
+bones/57/scale = Vector3(1, 1, 1)
+bones/59/position = Vector3(0.00349282, 0.00041052, -0.00280481)
+bones/61/position = Vector3(-0.00349282, 0.00041052, -0.00280481)
+bones/63/rotation = Quaternion(-0.494215, 0.505719, 0.505719, -0.494214)
 
 [node name="Garb_Body" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="3"]
 visible = false
@@ -1517,16 +1596,17 @@ visible = false
 [node name="Dagger" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="7"]
 visible = true
 
-[node name="EndingCutsceneB" type="Node3D" parent="." index="17" node_paths=PackedStringArray("HoleFire", "SfxGlassBreak", "SfxBackgroundFire", "CameraMarkers")]
+[node name="EndingCutsceneB" type="Node3D" parent="." index="17" node_paths=PackedStringArray("SfxGlassBreak", "SfxBackgroundFire", "CameraMarkers", "Fires", "SfxPianos")]
 script = ExtResource("36_ak7o2")
 Environment = ExtResource("37_akopl")
 DialogueCharacterInfo = ExtResource("38_sis88")
-HoleFire = NodePath("../CultHoleFire")
 SfxGlassBreak = NodePath("SfxGlassBreak")
 SfxBackgroundFire = NodePath("SfxBackgroundFire")
-CameraMarkers = [NodePath("EndingCamera 1")]
+CameraMarkers = [NodePath("EndingB_Camera 1"), NodePath("BurningRoom/EndingB_Camera 2"), NodePath("ForestRoom/EndingB_Camera_3")]
+Fires = [NodePath("../CultHoleFire"), NodePath("BurningRoom/Particles/CultHoleFire"), NodePath("ForestRoom/Particles/CultHoleFire")]
+SfxPianos = [NodePath("SfxPiano 1"), NodePath("SfxPiano 2"), NodePath("SfxPiano 3")]
 
-[node name="EndingCamera 1" type="Marker3D" parent="EndingCutsceneB" index="0"]
+[node name="EndingB_Camera 1" type="Marker3D" parent="EndingCutsceneB" index="0"]
 transform = Transform3D(-0.354291, -0.376399, 0.856039, 0, 0.915417, 0.402507, -0.935135, 0.142605, -0.324324, 8.48349, 12.0376, -3.47843)
 
 [node name="SfxGlassBreak" type="AudioStreamPlayer" parent="EndingCutsceneB" index="1"]
@@ -1539,5 +1619,546 @@ stream = ExtResource("39_akopl")
 volume_db = -20.0
 bus = &"SFX"
 
+[node name="SfxPiano 1" type="AudioStreamPlayer" parent="EndingCutsceneB" index="3"]
+stream = ExtResource("41_82ikb")
+bus = &"SFX"
+
+[node name="SfxPiano 2" type="AudioStreamPlayer" parent="EndingCutsceneB" index="4"]
+stream = ExtResource("42_hwot5")
+bus = &"SFX"
+
+[node name="SfxPiano 3" type="AudioStreamPlayer" parent="EndingCutsceneB" index="5"]
+stream = ExtResource("43_fvseq")
+bus = &"SFX"
+
+[node name="BurningRoom" type="Node3D" parent="EndingCutsceneB" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+
+[node name="Floor" type="Node3D" parent="EndingCutsceneB/BurningRoom" index="0"]
+
+[node name="Floor_Dirt" parent="EndingCutsceneB/BurningRoom/Floor" index="0" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+
+[node name="Floor_Dirt2" parent="EndingCutsceneB/BurningRoom/Floor" index="1" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+
+[node name="Floor_Dirt9" parent="EndingCutsceneB/BurningRoom/Floor" index="2" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="Floor_Dirt10" parent="EndingCutsceneB/BurningRoom/Floor" index="3" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="Floor_Dirt7" parent="EndingCutsceneB/BurningRoom/Floor" index="4" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="Floor_Dirt8" parent="EndingCutsceneB/BurningRoom/Floor" index="5" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="Floor_Dirt5" parent="EndingCutsceneB/BurningRoom/Floor" index="6" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="Floor_Dirt6" parent="EndingCutsceneB/BurningRoom/Floor" index="7" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="Floor_Dirt3" parent="EndingCutsceneB/BurningRoom/Floor" index="8" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Floor_Dirt11" parent="EndingCutsceneB/BurningRoom/Floor" index="9" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Floor_Dirt12" parent="EndingCutsceneB/BurningRoom/Floor" index="10" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Floor_Dirt13" parent="EndingCutsceneB/BurningRoom/Floor" index="11" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Floor_Dirt14" parent="EndingCutsceneB/BurningRoom/Floor" index="12" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Floor_Dirt15" parent="EndingCutsceneB/BurningRoom/Floor" index="13" instance=ExtResource("2_lqowf")]
+
+[node name="Floor_Dirt4" parent="EndingCutsceneB/BurningRoom/Floor" index="14" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Walls" type="Node3D" parent="EndingCutsceneB/BurningRoom" index="1"]
+
+[node name="Wall_Bottom" parent="EndingCutsceneB/BurningRoom/Walls" index="0" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom3" parent="EndingCutsceneB/BurningRoom/Walls" index="1" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom3" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom5" parent="EndingCutsceneB/BurningRoom/Walls" index="2" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom5" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom6" parent="EndingCutsceneB/BurningRoom/Walls" index="3" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 8, 0, 6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom6" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom7" parent="EndingCutsceneB/BurningRoom/Walls" index="4" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 4, 0, 6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom7" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom8" parent="EndingCutsceneB/BurningRoom/Walls" index="5" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom8" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom9" parent="EndingCutsceneB/BurningRoom/Walls" index="6" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -4, 0, 6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom9" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom10" parent="EndingCutsceneB/BurningRoom/Walls" index="7" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -8, 0, 6)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom10" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom11" parent="EndingCutsceneB/BurningRoom/Walls" index="8" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-4.56956e-08, 0, 1, 0, 1, 0, -1, 0, -4.56956e-08, -10, 0, 4)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom11" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom12" parent="EndingCutsceneB/BurningRoom/Walls" index="9" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-4.56956e-08, 0, 1, 0, 1, 0, -1, 0, -4.56956e-08, -10, 0, -4)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom12" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom16" parent="EndingCutsceneB/BurningRoom/Walls" index="10" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(-4.56956e-08, 0, 1, 0, 1, 0, -1, 0, -4.56956e-08, -10, 0, 0)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom16" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom13" parent="EndingCutsceneB/BurningRoom/Walls" index="11" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 10, 0, -4)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom13" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom15" parent="EndingCutsceneB/BurningRoom/Walls" index="12" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 10, 0, 0)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom15" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom14" parent="EndingCutsceneB/BurningRoom/Walls" index="13" instance=ExtResource("41_pxb5b")]
+transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 10, 0, 4)
+
+[node name="Wall_Top" parent="EndingCutsceneB/BurningRoom/Walls/Wall_Bottom14" index="3" instance=ExtResource("42_pwp1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Window_Tall" parent="EndingCutsceneB/BurningRoom/Walls" index="14" instance=ExtResource("4_uqha5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="Window_Tall2" parent="EndingCutsceneB/BurningRoom/Walls" index="15" instance=ExtResource("4_uqha5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="Pillar" parent="EndingCutsceneB/BurningRoom/Walls" index="16" instance=ExtResource("5_j0lmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Pillar2" parent="EndingCutsceneB/BurningRoom/Walls" index="17" instance=ExtResource("5_j0lmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+
+[node name="Roots_Pillar_A" parent="EndingCutsceneB/BurningRoom/Walls/Pillar2" index="4" instance=ExtResource("43_wtbl7")]
+script = null
+
+[node name="Pillar3" parent="EndingCutsceneB/BurningRoom/Walls" index="18" instance=ExtResource("5_j0lmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+
+[node name="Roots_Pillar_A" parent="EndingCutsceneB/BurningRoom/Walls/Pillar3" index="4" instance=ExtResource("43_wtbl7")]
+script = null
+
+[node name="Ceiling" type="Node3D" parent="EndingCutsceneB/BurningRoom" index="2"]
+
+[node name="Ceiling" parent="EndingCutsceneB/BurningRoom/Ceiling" index="0" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 0)
+
+[node name="Ceiling2" parent="EndingCutsceneB/BurningRoom/Ceiling" index="1" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, -4)
+
+[node name="Ceiling3" parent="EndingCutsceneB/BurningRoom/Ceiling" index="2" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 4)
+
+[node name="Ceiling13" parent="EndingCutsceneB/BurningRoom/Ceiling" index="3" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, 0)
+
+[node name="Ceiling14" parent="EndingCutsceneB/BurningRoom/Ceiling" index="4" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -4)
+
+[node name="Ceiling15" parent="EndingCutsceneB/BurningRoom/Ceiling" index="5" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, 4)
+
+[node name="Ceiling10" parent="EndingCutsceneB/BurningRoom/Ceiling" index="6" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="Ceiling11" parent="EndingCutsceneB/BurningRoom/Ceiling" index="7" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4)
+
+[node name="Ceiling12" parent="EndingCutsceneB/BurningRoom/Ceiling" index="8" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 4)
+
+[node name="Ceiling7" parent="EndingCutsceneB/BurningRoom/Ceiling" index="9" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, 0)
+
+[node name="Ceiling8" parent="EndingCutsceneB/BurningRoom/Ceiling" index="10" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -4)
+
+[node name="Ceiling9" parent="EndingCutsceneB/BurningRoom/Ceiling" index="11" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, 4)
+
+[node name="Ceiling4" parent="EndingCutsceneB/BurningRoom/Ceiling" index="12" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, 0)
+
+[node name="Ceiling5" parent="EndingCutsceneB/BurningRoom/Ceiling" index="13" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, -4)
+
+[node name="Ceiling6" parent="EndingCutsceneB/BurningRoom/Ceiling" index="14" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, 4)
+
+[node name="Carpet_Long" parent="EndingCutsceneB/BurningRoom" index="3" instance=ExtResource("43_2fwdh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Interior" type="Node3D" parent="EndingCutsceneB/BurningRoom" index="4"]
+
+[node name="Particles" type="Node3D" parent="EndingCutsceneB/BurningRoom" index="5"]
+
+[node name="ps_embers" type="GPUParticles3D" parent="EndingCutsceneB/BurningRoom/Particles" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.67974, 0)
+amount = 100
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_cestf")
+draw_pass_1 = SubResource("QuadMesh_82ikb")
+
+[node name="CultHoleFire" parent="EndingCutsceneB/BurningRoom/Particles" index="1" instance=ExtResource("35_i4esx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04593, -4.09831, -4.18068)
+
+[node name="EndingB_Camera 2" type="Marker3D" parent="EndingCutsceneB/BurningRoom" index="6"]
+transform = Transform3D(0.981009, 0.0780705, -0.177555, -1.00316e-08, 0.915417, 0.402507, 0.19396, -0.394864, 0.898033, -1.77661, 3.55276, 4.09227)
+
+[node name="FrogCutscene" parent="EndingCutsceneB/BurningRoom" index="7" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(-0.0430892, 0.982158, 0.183056, 0.0731817, 0.185836, -0.979851, -0.996387, -0.0288249, -0.0798837, -2.24709, -0.0336571, -1.50064)
+StartAnimation = "Armature|Dead"
+
+[node name="lantern" parent="EndingCutsceneB/BurningRoom/FrogCutscene/frog/Armature/Skeleton3D" index="6"]
+visible = false
+
+[node name="ForestRoom" type="Node3D" parent="EndingCutsceneB" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
+
+[node name="Floor" type="Node3D" parent="EndingCutsceneB/ForestRoom" index="0"]
+
+[node name="Floor_Moss" parent="EndingCutsceneB/ForestRoom/Floor" index="0" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Floor_Moss2" parent="EndingCutsceneB/ForestRoom/Floor" index="1" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="Floor_Moss3" parent="EndingCutsceneB/ForestRoom/Floor" index="2" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="Floor_Moss4" parent="EndingCutsceneB/ForestRoom/Floor" index="3" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="Floor_Moss5" parent="EndingCutsceneB/ForestRoom/Floor" index="4" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 8)
+
+[node name="Floor_Moss11" parent="EndingCutsceneB/ForestRoom/Floor" index="5" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Floor_Moss12" parent="EndingCutsceneB/ForestRoom/Floor" index="6" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="Floor_Moss13" parent="EndingCutsceneB/ForestRoom/Floor" index="7" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 4)
+
+[node name="Floor_Moss14" parent="EndingCutsceneB/ForestRoom/Floor" index="8" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="Floor_Moss15" parent="EndingCutsceneB/ForestRoom/Floor" index="9" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 4)
+
+[node name="Floor_Moss6" parent="EndingCutsceneB/ForestRoom/Floor" index="10" instance=ExtResource("46_y8lcw")]
+
+[node name="Floor_Moss7" parent="EndingCutsceneB/ForestRoom/Floor" index="11" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Floor_Moss8" parent="EndingCutsceneB/ForestRoom/Floor" index="12" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+
+[node name="Floor_Moss28" parent="EndingCutsceneB/ForestRoom/Floor" index="13" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="Floor_Moss29" parent="EndingCutsceneB/ForestRoom/Floor" index="14" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
+
+[node name="Floor_Moss30" parent="EndingCutsceneB/ForestRoom/Floor" index="15" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="Floor_Moss16" parent="EndingCutsceneB/ForestRoom/Floor" index="16" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+
+[node name="Floor_Moss17" parent="EndingCutsceneB/ForestRoom/Floor" index="17" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+
+[node name="Floor_Moss18" parent="EndingCutsceneB/ForestRoom/Floor" index="18" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Floor_Moss9" parent="EndingCutsceneB/ForestRoom/Floor" index="19" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Floor_Moss10" parent="EndingCutsceneB/ForestRoom/Floor" index="20" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Floor_Moss25" parent="EndingCutsceneB/ForestRoom/Floor" index="21" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+
+[node name="Floor_Moss26" parent="EndingCutsceneB/ForestRoom/Floor" index="22" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
+
+[node name="Floor_Moss27" parent="EndingCutsceneB/ForestRoom/Floor" index="23" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="Floor_Moss22" parent="EndingCutsceneB/ForestRoom/Floor" index="24" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="Floor_Moss23" parent="EndingCutsceneB/ForestRoom/Floor" index="25" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="Floor_Moss24" parent="EndingCutsceneB/ForestRoom/Floor" index="26" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Floor_Moss19" parent="EndingCutsceneB/ForestRoom/Floor" index="27" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="Floor_Moss20" parent="EndingCutsceneB/ForestRoom/Floor" index="28" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="Floor_Moss21" parent="EndingCutsceneB/ForestRoom/Floor" index="29" instance=ExtResource("46_y8lcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Floor_Dirt" parent="EndingCutsceneB/ForestRoom/Floor" index="30" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="Floor_Dirt2" parent="EndingCutsceneB/ForestRoom/Floor" index="31" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="Floor_Dirt3" parent="EndingCutsceneB/ForestRoom/Floor" index="32" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="Floor_Dirt7" parent="EndingCutsceneB/ForestRoom/Floor" index="33" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="Floor_Dirt8" parent="EndingCutsceneB/ForestRoom/Floor" index="34" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="Floor_Dirt9" parent="EndingCutsceneB/ForestRoom/Floor" index="35" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="Floor_Dirt4" parent="EndingCutsceneB/ForestRoom/Floor" index="36" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Floor_Dirt5" parent="EndingCutsceneB/ForestRoom/Floor" index="37" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Floor_Dirt6" parent="EndingCutsceneB/ForestRoom/Floor" index="38" instance=ExtResource("2_lqowf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="Walls" type="Node3D" parent="EndingCutsceneB/ForestRoom" index="1"]
+
+[node name="Wall" parent="EndingCutsceneB/ForestRoom/Walls" index="0" instance=ExtResource("4_1njbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Wall4" parent="EndingCutsceneB/ForestRoom/Walls" index="1" instance=ExtResource("4_1njbx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -2)
+
+[node name="Wall5" parent="EndingCutsceneB/ForestRoom/Walls" index="2" instance=ExtResource("4_1njbx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0, -2)
+
+[node name="Wall6" parent="EndingCutsceneB/ForestRoom/Walls" index="3" instance=ExtResource("4_1njbx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, -2)
+
+[node name="Wall2" parent="EndingCutsceneB/ForestRoom/Walls" index="4" instance=ExtResource("4_1njbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="Wall3" parent="EndingCutsceneB/ForestRoom/Walls" index="5" instance=ExtResource("4_1njbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Wall_Bottom" parent="EndingCutsceneB/ForestRoom/Walls" index="6" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom2" parent="EndingCutsceneB/ForestRoom/Walls" index="7" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom2" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom4" parent="EndingCutsceneB/ForestRoom/Walls" index="8" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -4)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom4" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom6" parent="EndingCutsceneB/ForestRoom/Walls" index="9" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -8)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom6" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom7" parent="EndingCutsceneB/ForestRoom/Walls" index="10" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -12)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom7" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom8" parent="EndingCutsceneB/ForestRoom/Walls" index="11" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom8" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom9" parent="EndingCutsceneB/ForestRoom/Walls" index="12" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom9" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom10" parent="EndingCutsceneB/ForestRoom/Walls" index="13" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom10" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom3" parent="EndingCutsceneB/ForestRoom/Walls" index="14" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom3" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom11" parent="EndingCutsceneB/ForestRoom/Walls" index="15" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom11" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom12" parent="EndingCutsceneB/ForestRoom/Walls" index="16" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom12" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom5" parent="EndingCutsceneB/ForestRoom/Walls" index="17" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom5" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Wall_Bottom13" parent="EndingCutsceneB/ForestRoom/Walls" index="18" instance=ExtResource("3_rj1mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -2)
+
+[node name="Wall_Top" parent="EndingCutsceneB/ForestRoom/Walls/Wall_Bottom13" index="3" instance=ExtResource("4_nqb67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Ceiling" type="Node3D" parent="EndingCutsceneB/ForestRoom" index="2"]
+
+[node name="Ceiling" parent="EndingCutsceneB/ForestRoom/Ceiling" index="0" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -4)
+
+[node name="Ceiling2" parent="EndingCutsceneB/ForestRoom/Ceiling" index="1" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -8)
+
+[node name="Ceiling3" parent="EndingCutsceneB/ForestRoom/Ceiling" index="2" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 8, -12)
+
+[node name="Ceiling7" parent="EndingCutsceneB/ForestRoom/Ceiling" index="3" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4)
+
+[node name="Ceiling8" parent="EndingCutsceneB/ForestRoom/Ceiling" index="4" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -8)
+
+[node name="Ceiling9" parent="EndingCutsceneB/ForestRoom/Ceiling" index="5" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -12)
+
+[node name="Ceiling4" parent="EndingCutsceneB/ForestRoom/Ceiling" index="6" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -4)
+
+[node name="Ceiling5" parent="EndingCutsceneB/ForestRoom/Ceiling" index="7" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -8)
+
+[node name="Ceiling6" parent="EndingCutsceneB/ForestRoom/Ceiling" index="8" instance=ExtResource("9_057yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -12)
+
+[node name="Particles" type="Node3D" parent="EndingCutsceneB/ForestRoom" index="3"]
+
+[node name="CultHoleFire" parent="EndingCutsceneB/ForestRoom/Particles" index="0" instance=ExtResource("35_i4esx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -7.114)
+
+[node name="Interior" type="Node3D" parent="EndingCutsceneB/ForestRoom" index="4"]
+
+[node name="TallDoor_Static_Open" parent="EndingCutsceneB/ForestRoom/Interior" index="0" instance=ExtResource("9_pv1fq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2)
+
+[node name="BasementDoor" parent="EndingCutsceneB/ForestRoom/Interior" index="1" instance=ExtResource("47_6q4po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="BasementDoor2" parent="EndingCutsceneB/ForestRoom/Interior" index="2" node_paths=PackedStringArray("Touchables") instance=ExtResource("47_6q4po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+Touchables = [NodePath("../BasementDoor/DoorLeft/StaticBody3D"), NodePath("../BasementDoor/DoorRight/StaticBody3D2")]
+
+[node name="EndingB_Camera_3" type="Marker3D" parent="EndingCutsceneB/ForestRoom" index="5"]
+transform = Transform3D(0.988949, -0.0355379, -0.143936, 0, 0.970846, -0.239703, 0.148258, 0.237054, 0.960117, -3.16053, 1.95079, 7.93911)
+
+[node name="Trees" type="Node3D" parent="EndingCutsceneB/ForestRoom" index="6"]
+
+[node name="CommonTree" parent="EndingCutsceneB/ForestRoom/Trees" index="0" instance=ExtResource("49_cestf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.13279, 0, 0.923616)
+
+[node name="CommonTree4" parent="EndingCutsceneB/ForestRoom/Trees" index="1" instance=ExtResource("49_cestf")]
+transform = Transform3D(-0.702736, 0, -1.87248, 0, 2, 0, 1.87248, 0, -0.702736, -10.0397, 0, 5.15781)
+
+[node name="CommonTree5" parent="EndingCutsceneB/ForestRoom/Trees" index="2" instance=ExtResource("49_cestf")]
+transform = Transform3D(-1.99889, 0, 0.0666244, 0, 2, 0, -0.0666244, 0, -1.99889, -15.8476, 0, 0.605485)
+
+[node name="CommonTree2" parent="EndingCutsceneB/ForestRoom/Trees" index="3" instance=ExtResource("49_cestf")]
+transform = Transform3D(0.967726, 0, -1.75029, 0, 2, 0, 1.75029, 0, 0.967726, 10.8405, 0, 1.239)
+
+[node name="CommonTree3" parent="EndingCutsceneB/ForestRoom/Trees" index="4" instance=ExtResource("50_82ikb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.3193, 0, 5.20705)
+
+[node name="CommonTree6" parent="EndingCutsceneB/ForestRoom/Trees" index="5" instance=ExtResource("50_82ikb")]
+transform = Transform3D(0.634775, 0, -1.89659, 0, 2, 0, 1.89659, 0, 0.634775, 7.23208, 0, 7.12906)
+
+[node name="FrogCutscene" parent="EndingCutsceneB/ForestRoom" index="7" instance=ExtResource("27_4q6kh")]
+transform = Transform3D(0.989858, -0.133486, 0.0486125, 0.0731817, 0.185836, -0.979851, 0.121763, 0.973471, 0.19372, -0.579394, -0.0336609, 0.727688)
+StartAnimation = "Armature|Dead"
+
+[node name="lantern" parent="EndingCutsceneB/ForestRoom/FrogCutscene/frog/Armature/Skeleton3D" index="6"]
+visible = false
+
 [editable path="EndingCutsceneA/FrogFren"]
 [editable path="EndingCutsceneA/FrogFren/frog"]
+[editable path="EndingCutsceneB/BurningRoom/FrogCutscene"]
+[editable path="EndingCutsceneB/BurningRoom/FrogCutscene/frog"]
+[editable path="EndingCutsceneB/ForestRoom/FrogCutscene"]
+[editable path="EndingCutsceneB/ForestRoom/FrogCutscene/frog"]

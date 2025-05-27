@@ -12,9 +12,6 @@ public partial class Cutscene_EndingB : Node3D
     public DialogueCharacterInfo DialogueCharacterInfo;
 
     [Export]
-    public CultHoleFire HoleFire;
-
-    [Export]
     public AudioStreamPlayer SfxGlassBreak;
 
     [Export]
@@ -22,6 +19,12 @@ public partial class Cutscene_EndingB : Node3D
 
     [Export]
     public Array<Marker3D> CameraMarkers;
+
+    [Export]
+    public Array<CultHoleFire> Fires;
+
+    [Export]
+    public Array<AudioStreamPlayer> SfxPianos;
 
     private int idx_sequence;
 
@@ -46,7 +49,7 @@ public partial class Cutscene_EndingB : Node3D
         GameView.Instance.SetBlackOverlayAlpha(1);
         EnemyController.Instance.DespawnEnemies();
 
-        HoleFire.Start();
+        StartFires();
 
         EnvironmentController.Instance.SetEnvironment(Environment);
 
@@ -90,9 +93,11 @@ public partial class Cutscene_EndingB : Node3D
         {
             var camera_marker = GetCameraMarker(idx_sequence);
             var dialogue_node = GetDialogueNode(idx_sequence);
+            var sfx_piano = GetPianoSfx(idx_sequence);
 
             ScreenEffects.View.SetCameraTarget(camera_marker);
             SoundController.Instance.Play("sfx_horror_boom");
+            sfx_piano.Play();
 
             yield return LerpEnumerator.Lerp01(3f, f =>
             {
@@ -115,6 +120,11 @@ public partial class Cutscene_EndingB : Node3D
     private Marker3D GetCameraMarker(int idx)
     {
         return CameraMarkers.GetClamped(idx);
+    }
+
+    private AudioStreamPlayer GetPianoSfx(int idx)
+    {
+        return SfxPianos.GetClamped(idx);
     }
 
     private void SetPlayerLocked(bool locked)
@@ -140,5 +150,10 @@ public partial class Cutscene_EndingB : Node3D
 
         var bus = AudioBus.Get(SoundBus.SFX.ToString());
         bus.SetMuted(false);
+    }
+
+    private void StartFires()
+    {
+        Fires.ForEach(x => x.Start());
     }
 }

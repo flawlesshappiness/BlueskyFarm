@@ -44,7 +44,7 @@ public partial class Cutscene_EndingB : Node3D
 
     public void StartEnding()
     {
-        SetPlayerLocked(true);
+        Player.SetLocked(nameof(Cutscene_EndingB), true);
         Cursor.Hide();
         GameView.Instance.SetBlackOverlayAlpha(1);
         EnemyController.Instance.DespawnEnemies();
@@ -84,7 +84,7 @@ public partial class Cutscene_EndingB : Node3D
             var db_end = SfxBackgroundFire.VolumeDb;
             SfxBackgroundFire.VolumeDb = -80f;
             SfxBackgroundFire.Play();
-            yield return SfxBackgroundFire.FadeIn(2f, SfxBackgroundFire.VolumeDb);
+            yield return SfxBackgroundFire.Fade(2f, SfxBackgroundFire.VolumeDb);
             AnimateNextSequencePosition();
         }
     }
@@ -129,20 +129,9 @@ public partial class Cutscene_EndingB : Node3D
         return SfxPianos.GetClamped(idx);
     }
 
-    private void SetPlayerLocked(bool locked)
-    {
-        var id = nameof(Cutscene_EndingB);
-
-        Player.Instance.MovementLock.SetLock(id, locked);
-        Player.Instance.LookLock.SetLock(id, locked);
-        Player.Instance.InteractLock.SetLock(id, locked);
-        PauseView.Instance.ToggleLock.SetLock(id, locked);
-        InventoryController.Instance.InventoryLock.SetLock(id, locked);
-    }
-
     private void StartCredits()
     {
-        SetPlayerLocked(false);
+        Player.SetLocked(nameof(Cutscene_EndingB), false);
 
         Scene.Goto<CreditsScene>();
         GameView.Instance.SetBlackOverlayAlpha(0);

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwnpxwaecsnms"]
+[gd_scene load_steps=27 format=3 uid="uid://bwnpxwaecsnms"]
 
 [ext_resource type="Script" uid="uid://dvmo6a7if7inh" path="res://Enemy/Wraith/WraithEnemy.cs" id="1_024qk"]
 [ext_resource type="Resource" uid="uid://3jthhnssob4o" path="res://Sound/Resources/sfx_wraith_spawn.tres" id="2_4817f"]
 [ext_resource type="Resource" uid="uid://3bny6bat6j6f" path="res://Sound/Resources/sfx_wraith_loop.tres" id="3_o1kgk"]
+[ext_resource type="PackedScene" uid="uid://jcygc0ev0ady" path="res://Enemy/Wraith/wraith_kill_box.tscn" id="4_oeifl"]
 
 [sub_resource type="Curve" id="Curve_bi8xo"]
 _data = [Vector2(0, 0), 0.0, 23.2479, 0, 0, Vector2(0.03125, 1), 0.0, 0.0, 0, 0, Vector2(0.665179, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -133,6 +134,7 @@ Model = NodePath("Model")
 Eyes = NodePath("Model/Eyes")
 SfxSpawn = ExtResource("2_4817f")
 SfxLoop = ExtResource("3_o1kgk")
+KillBoxPrefab = ExtResource("4_oeifl")
 MoveSpeed = 0.5
 TurnSpeed = 4.0
 

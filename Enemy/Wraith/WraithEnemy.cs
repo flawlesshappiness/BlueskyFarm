@@ -25,6 +25,9 @@ public partial class WraithEnemy : NavEnemy
     [Export]
     public SoundInfo SfxLoop;
 
+    [Export]
+    public PackedScene KillBoxPrefab;
+
     protected override string EnemyName => "Wraith";
     protected override string DefaultState => StateIdle;
     private const string StateIdle = "Idle";
@@ -38,6 +41,9 @@ public partial class WraithEnemy : NavEnemy
     private bool _is_seen;
     private bool _look_at_blur_enabled;
 
+    private static bool kill_box_spawned;
+    private static WraithKillBox kill_box;
+
     public override void _Ready()
     {
         base._Ready();
@@ -45,6 +51,8 @@ public partial class WraithEnemy : NavEnemy
         {
             Volume = -80f
         });
+
+        CreateKillBox();
     }
 
     protected override void RegisterStates()
@@ -161,7 +169,7 @@ public partial class WraithEnemy : NavEnemy
     IEnumerator StateCr_Spawn()
     {
         SfxSpawn.Play(this);
-        _asp_loop.FadeIn(2f, SfxLoop.Volume);
+        _asp_loop.Fade(2f, SfxLoop.Volume);
         ps_spawn.Emitting = true;
         yield return new WaitForSeconds(2f);
 
@@ -216,11 +224,29 @@ public partial class WraithEnemy : NavEnemy
         IEnumerator Cr()
         {
             Player.Instance.Interrupt();
-            Player.Instance.RagdollCamera(DirectionToPlayer.Normalized() * 2);
+            Player.SetLocked(nameof(WraithEnemy), true);
+            kill_box.TeleportPlayer();
 
-            yield return new WaitForSeconds(2.0f);
+            SoundController.Instance.Play("sfx_horror_boom");
 
+            kill_box.SfxBreathe.Play();
+            kill_box.SfxBreathe.VolumeDb = -10f;
+
+            yield return new WaitForSeconds(3.0f);
+            yield return kill_box.SfxBreathe.Fade(0.5f, 0f);
+
+            Player.SetLocked(nameof(WraithEnemy), false);
             GameScene.Current.KillPlayer();
         }
+    }
+
+    private void CreateKillBox()
+    {
+        if (kill_box_spawned) return;
+        kill_box_spawned = true;
+
+        kill_box = KillBoxPrefab.Instantiate<WraithKillBox>();
+        kill_box.SetParent(GetParent());
+        kill_box.GlobalPosition = new Vector3(0, -100, 0);
     }
 }

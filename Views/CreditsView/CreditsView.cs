@@ -80,7 +80,7 @@ public partial class CreditsView : View
         {
             BgmCredits.VolumeDb = -80f;
             BgmCredits.Play();
-            BgmCredits.FadeIn(2f, 0f);
+            BgmCredits.Fade(2f, 0f);
 
             var height = CreditsControl.Size.Y;
             var window_height = Scene.Root.Size.Y;

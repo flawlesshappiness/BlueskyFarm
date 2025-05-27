@@ -597,4 +597,17 @@ public partial class Player : FirstPersonController
     {
         NoteView.Instance.Hide();
     }
+
+    public static void SetLocked(string id, bool locked)
+    {
+        if (Player.Instance != null)
+        {
+            Player.Instance.MovementLock.SetLock(id, locked);
+            Player.Instance.LookLock.SetLock(id, locked);
+            Player.Instance.InteractLock.SetLock(id, locked);
+        }
+
+        PauseView.Instance.ToggleLock.SetLock(id, locked);
+        InventoryController.Instance.InventoryLock.SetLock(id, locked);
+    }
 }

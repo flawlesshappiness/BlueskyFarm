@@ -93,8 +93,8 @@ public partial class ForgeKiln : Node3D
 
     public void StartMachineSfx()
     {
-        SfxMachine_1.FadeIn(4f, -20);
-        SfxMachine_2.FadeIn(4f, 0);
+        SfxMachine_1.Fade(4f, -20);
+        SfxMachine_2.Fade(4f, 0);
     }
 
     private void ShowCoalMissingText()

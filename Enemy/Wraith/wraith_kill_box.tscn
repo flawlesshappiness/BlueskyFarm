@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://jcygc0ev0ady"]
+
+[ext_resource type="Material" uid="uid://cviywgr8k8lo1" path="res://Assets/Materials/Darkness.tres" id="1_5ghqi"]
+[ext_resource type="Script" uid="uid://b8r85batyylkc" path="res://Enemy/Wraith/WraithKillBox.cs" id="1_l21v6"]
+[ext_resource type="AudioStream" uid="uid://bp3vfy2p4rf2u" path="res://Sound/Sounds/sfx_wraith_breath_loop_001.wav" id="3_h4cec"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l21v6"]
+size = Vector2(4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h4cec"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h4cec"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydsh1"]
+shading_mode = 0
+
+[node name="WraithKillBox" type="Node3D" node_paths=PackedStringArray("SpawnMarker", "SfxBreathe")]
+script = ExtResource("1_l21v6")
+SpawnMarker = NodePath("SpawnMarker")
+SfxBreathe = NodePath("SfxBreathe")
+
+[node name="Box" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
+mesh = SubResource("PlaneMesh_l21v6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_5ghqi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2, 2, 0)
+mesh = SubResource("PlaneMesh_l21v6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_5ghqi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 2, 2)
+mesh = SubResource("PlaneMesh_l21v6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_5ghqi")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1, 8.74228e-08, 1.91069e-15, 0, 4, 0)
+mesh = SubResource("PlaneMesh_l21v6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_5ghqi")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -2, 2, 0)
+mesh = SubResource("PlaneMesh_l21v6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_5ghqi")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(-5.73206e-15, -1.31134e-07, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, 1.31134e-07, 0, 2, -2)
+mesh = SubResource("PlaneMesh_l21v6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_5ghqi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_h4cec")
+
+[node name="SpawnMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Wraith" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -1.463)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wraith"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = SubResource("SphereMesh_h4cec")
+surface_material_override/0 = SubResource("StandardMaterial3D_ydsh1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wraith"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+mesh = SubResource("SphereMesh_h4cec")
+surface_material_override/0 = SubResource("StandardMaterial3D_ydsh1")
+
+[node name="SfxBreathe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h4cec")
+bus = &"SFX"

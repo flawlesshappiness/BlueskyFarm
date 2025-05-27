@@ -66,7 +66,7 @@ public partial class Cutscene_EndingA : Node3D
 
     public void StartEnding()
     {
-        SetPlayerLocked(true);
+        Player.SetLocked(nameof(Cutscene_EndingA), true);
         Cursor.Hide();
         EnemyController.Instance.DespawnEnemies();
 
@@ -86,17 +86,6 @@ public partial class Cutscene_EndingA : Node3D
 
             StartDialogue("##ENDING_BAD_A_001##");
         }
-    }
-
-    private void SetPlayerLocked(bool locked)
-    {
-        var id = nameof(Cutscene_EndingA);
-
-        Player.Instance.MovementLock.SetLock(id, locked);
-        Player.Instance.LookLock.SetLock(id, locked);
-        Player.Instance.InteractLock.SetLock(id, locked);
-        PauseView.Instance.ToggleLock.SetLock(id, locked);
-        InventoryController.Instance.InventoryLock.SetLock(id, locked);
     }
 
     private void StartDialogue(string node)
@@ -288,7 +277,7 @@ public partial class Cutscene_EndingA : Node3D
 
     private void StartCredits()
     {
-        SetPlayerLocked(false);
+        Player.SetLocked(nameof(Cutscene_EndingA), false);
 
         Scene.Goto<CreditsScene>();
         GameView.Instance.SetBlackOverlayAlpha(0);

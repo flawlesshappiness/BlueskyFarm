@@ -109,7 +109,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
                 Volume = -80f
             });
 
-            _current_background_asp.FadeIn(FADE_TIME, CurrentInfo.BackgroundSound.Volume);
+            _current_background_asp.Fade(FADE_TIME, CurrentInfo.BackgroundSound.Volume);
         }
     }
 

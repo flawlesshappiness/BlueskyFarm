@@ -107,7 +107,7 @@ public partial class InteractableLever : Node3D
 
     public void SfxScrapingStart()
     {
-        sfx_metal_scraping.FadeIn(0.2f, 0f);
+        sfx_metal_scraping.Fade(0.2f, 0f);
     }
 
     public void SfxScrapingStop()

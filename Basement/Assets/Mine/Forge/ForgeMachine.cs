@@ -178,7 +178,7 @@ public partial class ForgeMachine : Node3D
 
     public void StartPressMoveSfx()
     {
-        SfxPressMove.FadeIn(0.2f, AudioMath.PercentageToDecibel(1));
+        SfxPressMove.Fade(0.2f, AudioMath.PercentageToDecibel(1));
     }
 
     public void StopPressMoveSfx()
@@ -188,7 +188,7 @@ public partial class ForgeMachine : Node3D
 
     public void StartLavaMoveSfx()
     {
-        SfxLavaMove.FadeIn(1f, 30);
+        SfxLavaMove.Fade(1f, 30);
     }
 
     public void StopLavaMoveSfx()

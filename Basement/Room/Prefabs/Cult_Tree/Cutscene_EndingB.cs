@@ -49,6 +49,8 @@ public partial class Cutscene_EndingB : Node3D
         GameView.Instance.SetBlackOverlayAlpha(1);
         EnemyController.Instance.DespawnEnemies();
 
+        CreditsView.Instance.Ending = 2;
+
         StartFires();
 
         EnvironmentController.Instance.SetEnvironment(Environment);

@@ -12,6 +12,11 @@ public partial class CreditsView : View
     [Export]
     public Control CreditsControl;
 
+    [Export]
+    public AudioStreamPlayer BgmCredits;
+
+    public int Ending { get; set; }
+
     private float _mul_speed = 1.0f;
 
     public override void _Ready()
@@ -58,8 +63,9 @@ public partial class CreditsView : View
 
         IEnumerator Cr()
         {
+            var anim_ending = Ending == 1 ? "ending1" : "ending2";
             yield return AnimateCredits();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("ending");
+            yield return AnimationPlayer.PlayAndWaitForAnimation(anim_ending);
             MainMenuView.Instance.AnimateTransitionToMainMenu();
             yield return new WaitForSecondsUnscaled(1f);
             SetLocksEnabled(false);
@@ -72,6 +78,10 @@ public partial class CreditsView : View
         return Coroutine.Start(Cr);
         IEnumerator Cr()
         {
+            BgmCredits.VolumeDb = -80f;
+            BgmCredits.Play();
+            BgmCredits.FadeIn(2f, 0f);
+
             var height = CreditsControl.Size.Y;
             var window_height = Scene.Root.Size.Y;
             var full_height = height + window_height;
@@ -88,6 +98,8 @@ public partial class CreditsView : View
                 time += GameTime.DeltaTime * _mul_speed;
                 yield return null;
             }
+
+            BgmCredits.FadeOut(2f);
         }
     }
 

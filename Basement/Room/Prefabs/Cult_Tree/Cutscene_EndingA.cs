@@ -70,6 +70,8 @@ public partial class Cutscene_EndingA : Node3D
         Cursor.Hide();
         EnemyController.Instance.DespawnEnemies();
 
+        CreditsView.Instance.Ending = 1;
+
         asp_bgm = BgmCutsceneTense.Play();
 
         this.StartCoroutine(Cr, "Cutscene");

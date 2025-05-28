@@ -76,7 +76,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         }
     }
 
-    public void StartAmbienceImmediate(string area)
+    public void StartAmbienceImmediate(string area, bool music = true)
     {
         if (_current_background_asp != null)
         {
@@ -90,7 +90,11 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         _current_background_asp = SoundController.Instance.Play(CurrentInfo.BackgroundSound);
         StartAmbientNoise();
         SetEffectsImmediate();
-        PlayAreaEnterMusic();
+
+        if (music)
+        {
+            PlayAreaEnterMusic();
+        }
     }
 
     // Background ambience

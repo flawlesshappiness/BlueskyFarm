@@ -34,6 +34,9 @@ public partial class FarmScene : GameScene
     [Export]
     public CrushableRock CrushableRockToUnderground;
 
+    [Export]
+    public AudioStreamPlayer Bgm;
+
     public List<PlantArea> PlantAreas = new();
 
     public override void _Ready()
@@ -176,10 +179,12 @@ public partial class FarmScene : GameScene
     private void Touched_TeleportToUnderground()
     {
         GameFlagIds.FarmIsUnderground.SetTrue();
+        Bgm.FadeOut(2f);
     }
 
     private void Touched_TeleportToFarm()
     {
         GameFlagIds.FarmIsUnderground.SetFalse();
+        Bgm.Fade(2f, 10f);
     }
 }

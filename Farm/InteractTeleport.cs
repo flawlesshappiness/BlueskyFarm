@@ -39,7 +39,7 @@ public partial class InteractTeleport : Touchable
             Player.Instance.GlobalPosition = DestinationMarker.GlobalPosition;
             Player.Instance.SetLookRotation(DestinationMarker);
             EnvironmentController.Instance.SetEnvironment(Area);
-            AmbienceController.Instance.StartAmbienceImmediate(Area.ToString());
+            AmbienceController.Instance.StartAmbienceImmediate(Area.ToString(), music: false);
             SetPlayerLockEnabled(false);
 
             yield return view.TransitionEndCr(new TransitionSettings

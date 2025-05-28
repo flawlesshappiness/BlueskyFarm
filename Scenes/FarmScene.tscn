@@ -344,7 +344,7 @@ size = Vector3(1, 1, 2.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dti2c"]
 size = Vector3(1, 1.51624, 1.22208)
 
-[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "TeleportToUnderground", "TeleportToFarm", "TeleportUndergroundToOtherFarm", "TeleportOtherFarmToUnderground", "CrushableRockToUnderground", "WorldEnvironment", "DirectionalLight")]
+[node name="FarmScene" type="Node3D" node_paths=PackedStringArray("Trapdoor", "BasementUnlockArea", "Shed_Thorns", "Shed_InventoryItemPosition", "TeleportToUnderground", "TeleportToFarm", "TeleportUndergroundToOtherFarm", "TeleportOtherFarmToUnderground", "CrushableRockToUnderground", "Bgm", "WorldEnvironment", "DirectionalLight")]
 script = ExtResource("1_mng5r")
 Trapdoor = NodePath("World/NavigationRegion3D/Farm/FarmBasementEntrance/Trapdoor")
 BasementUnlockArea = NodePath("World/NavigationRegion3D/Farm/FarmBasementEntrance/BasementUnlockArea")
@@ -356,6 +356,7 @@ TeleportToFarm = NodePath("World/NavigationRegion3D/Underground/Teleport")
 TeleportUndergroundToOtherFarm = NodePath("World/NavigationRegion3D/Underground/Interior/trapdoor_gltf/TeleportUndergroundToOtherFarm")
 TeleportOtherFarmToUnderground = NodePath("World/NavigationRegion3D/OtherFarm/FarmBasementEntrance/trapdoor_gltf/TeleportOtherFarmToUnderground")
 CrushableRockToUnderground = NodePath("World/NavigationRegion3D/Farm/BrokenGround/CrushableRock")
+Bgm = NodePath("Music")
 WorldEnvironment = NodePath("WorldEnvironment")
 DirectionalLight = NodePath("Sun")
 

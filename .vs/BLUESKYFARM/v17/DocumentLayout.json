@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\views\\creditsview\\creditsview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:views\\creditsview\\creditsview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\farm\\interactteleport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:farm\\interactteleport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\ambience\\ambiencecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:ambience\\ambiencecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\farmscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,19 +30,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreditsView.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Views\\CreditsView\\CreditsView.cs",
-              "RelativeDocumentMoniker": "Views\\CreditsView\\CreditsView.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Views\\CreditsView\\CreditsView.cs",
-              "RelativeToolTip": "Views\\CreditsView\\CreditsView.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAcwCsAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AmbienceController.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Ambience\\AmbienceController.cs",
+              "RelativeDocumentMoniker": "Ambience\\AmbienceController.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Ambience\\AmbienceController.cs",
+              "RelativeToolTip": "Ambience\\AmbienceController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAtwEUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T15:58:12.618Z",
+              "WhenOpened": "2025-05-28T17:36:26.594Z",
               "EditorCaption": ""
             },
             {
@@ -47,19 +51,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "InteractTeleport.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Farm\\InteractTeleport.cs",
+              "RelativeDocumentMoniker": "Farm\\InteractTeleport.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Farm\\InteractTeleport.cs",
+              "RelativeToolTip": "Farm\\InteractTeleport.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwB4AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:33:04.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FarmScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeToolTip": "Scenes\\FarmScene.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAlwIUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAlwKkAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T07:44:28.683Z"
+              "WhenOpened": "2025-05-03T07:44:28.683Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
@@ -71,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",

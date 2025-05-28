@@ -20,13 +20,31 @@ public partial class OptionsView : View
     [NodeName]
     public Slider BrightnessSlider;
 
+    [NodeName]
+    public Label MouseSensitivityLabel;
+
+    [NodeName]
+    public Slider MouseSensitivitySlider;
+
+    [NodeName]
+    public Label HeadbobAmountLabel;
+
+    [NodeName]
+    public Slider HeadbobAmountSlider;
+
     public override void _Ready()
     {
         base._Ready();
 
         BrightnessSlider.Value = Data.Options.Brightness;
-
         BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
+
+        MouseSensitivitySlider.Value = Data.Options.MouseSensitivity;
+        MouseSensitivitySlider.ValueChanged += MouseSensitivitySlider_ValueChanged;
+
+        HeadbobAmountSlider.Value = Data.Options.HeadbobAmount;
+        HeadbobAmountSlider.ValueChanged += HeadbobAmountSlider_ValueChanged;
+
         OptionsControl.OnBack += BackPressed;
 
         InitializeSounds();
@@ -109,5 +127,19 @@ public partial class OptionsView : View
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateBrightness(f);
         Data.Options.Brightness = f;
+    }
+
+    private void MouseSensitivitySlider_ValueChanged(double v)
+    {
+        var f = Convert.ToSingle(v);
+        MouseSensitivityLabel.Text = $"{f.ToString("0.00")}";
+        Data.Options.MouseSensitivity = f;
+    }
+
+    private void HeadbobAmountSlider_ValueChanged(double v)
+    {
+        var f = Convert.ToSingle(v);
+        HeadbobAmountLabel.Text = $"{f.ToString("0.00")}";
+        Data.Options.HeadbobAmount = f;
     }
 }

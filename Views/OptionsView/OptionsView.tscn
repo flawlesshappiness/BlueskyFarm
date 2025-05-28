@@ -115,4 +115,37 @@ max_value = 2.0
 step = 0.01
 value = 0.1
 
+[node name="HeadbobAmount" type="HBoxContainer" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Left" type="HBoxContainer" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer/HeadbobAmount"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer/HeadbobAmount/Left"]
+layout_mode = 2
+text = "Head-bob Amount"
+
+[node name="Middle" type="HBoxContainer" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer/HeadbobAmount"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HeadbobAmountLabel" type="Label" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer/HeadbobAmount/Middle"]
+layout_mode = 2
+text = "1.0"
+
+[node name="Right" type="HBoxContainer" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer/HeadbobAmount"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeadbobAmountSlider" type="HSlider" parent="CenterContainer/OptionsControl/TabContainer/Gameplay/HBoxContainer/HeadbobAmount/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
 [editable path="CenterContainer/OptionsControl"]

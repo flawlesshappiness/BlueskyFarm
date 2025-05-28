@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cgupvy43cxgi0"]
+[gd_scene load_steps=35 format=3 uid="uid://cgupvy43cxgi0"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_bm7a3"]
 [ext_resource type="PackedScene" uid="uid://d1hqy50huk4cy" path="res://Basement/Assets/Basement/Wall.tscn" id="2_kbhrd"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://ck0uqs7j413k6" path="res://Basement/Assets/Interior/Lantern.tscn" id="15_xm8a2"]
 [ext_resource type="PackedScene" uid="uid://dubjb7me16kau" path="res://Basement/Assets/Scaffold/Scaffold_Railing.tscn" id="16_fpk6a"]
 [ext_resource type="Script" uid="uid://mmvc4q15s07k" path="res://Basement/Room/BasementWorkshopRoom.cs" id="18_ca1gp"]
+[ext_resource type="Resource" uid="uid://01u0f5x7p1wd" path="res://Blueprint/Resources/Tool_Weedcutter.tres" id="19_qstck"]
 [ext_resource type="PackedScene" uid="uid://c4y6dw6sr015q" path="res://Basement/Assets/Entities/BasementDoor.tscn" id="19_saebr"]
+[ext_resource type="Resource" uid="uid://b5d7hvbxrmvwk" path="res://Blueprint/Resources/PlantBox_Basement.tres" id="20_4e48h"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="20_d4qit"]
 [ext_resource type="Script" uid="uid://brmft1dhqwmf2" path="res://Basement/Interior/BasementInteriorGroup.cs" id="21_7gnri"]
 [ext_resource type="Script" uid="uid://b05im8bdn181g" path="res://Basement/Interior/BasementInterior.cs" id="22_f7hgq"]
@@ -29,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bwn65vli8d8em" path="res://Basement/Assets/Interior/BookcaseWide_Boxes.tscn" id="28_f53ep"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="29_06ljn"]
 [ext_resource type="PackedScene" uid="uid://wtcw3itwrctc" path="res://Basement/Assets/Interior/BookcaseWide_Broken.tscn" id="30_dgsmy"]
+[ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="30_f53ep"]
 [ext_resource type="PackedScene" uid="uid://empe3yo0pgul" path="res://Note/Prefabs/NoteWithNail.tscn" id="31_b7v20"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1dpj3"]
@@ -522,8 +525,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3.75, -2)
 [node name="Lantern5" parent="Lights" index="4" instance=ExtResource("15_xm8a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.75, 2.5)
 
-[node name="BasementWorkshopRoom" type="Node3D" parent="." index="12"]
+[node name="BasementWorkshopRoom" type="Node3D" parent="." index="12" node_paths=PackedStringArray("WorkshopDoor", "WorkshopDoorItemArea", "WeedcutterBlueprintMarker", "PlantBoxBlueprintMarker")]
 script = ExtResource("18_ca1gp")
+WorkshopDoor = NodePath("WorkshopDoor")
+WorkshopDoorItemArea = NodePath("WorkshopDoorItemArea")
+WeedcutterBlueprintMarker = NodePath("WeedcutterBlueprintPosition")
+PlantBoxBlueprintMarker = NodePath("PlantBoxBlueprintPosition")
+WeedcutterBlueprintInfo = ExtResource("19_qstck")
+PlantBoxBlueprintInfo = ExtResource("20_4e48h")
 
 [node name="WorkshopDoor" parent="BasementWorkshopRoom" index="0" instance=ExtResource("19_saebr")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 6, 4, 0)
@@ -538,8 +547,11 @@ CustomId = "workshop_key"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasementWorkshopRoom/WorkshopDoorItemArea" index="0"]
 shape = SubResource("BoxShape3D_1dpj3")
 
-[node name="BlueprintPosition" type="Node3D" parent="BasementWorkshopRoom" index="2"]
+[node name="WeedcutterBlueprintPosition" type="Marker3D" parent="BasementWorkshopRoom" index="2"]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.827217, 4.93883, -2)
+
+[node name="PlantBoxBlueprintPosition" type="Marker3D" parent="BasementWorkshopRoom" index="3"]
+transform = Transform3D(0.993479, 0, 0.114018, 0, 1, 0, -0.114018, 0, 0.993479, 3.87286, 4.37804, -4.0597)
 
 [node name="Interior" type="Node3D" parent="." index="13"]
 
@@ -697,6 +709,24 @@ transform = Transform3D(-0.292572, 0, -0.956244, 0, 1, 0, 0.956244, 0, -0.292572
 
 [node name="Barrel3" parent="Interior/Workshop" index="6" instance=ExtResource("23_7m6xt")]
 transform = Transform3D(-0.268735, 0, 0.963214, 0, 1, 0, -0.963214, 0, -0.268735, 2.10268, 4, 0.0173244)
+
+[node name="Chair" parent="Interior/Workshop" index="7" instance=ExtResource("30_f53ep")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0.756466, 4, -5.01992)
+
+[node name="Chair2" parent="Interior/Workshop/Chair" index="2" instance=ExtResource("30_f53ep")]
+transform = Transform3D(0.994404, 2.13825e-17, 0.105639, -9.23528e-09, -1, 8.69336e-08, 0.105639, -8.74228e-08, -0.994404, 0.00279236, 0.957839, -0.136304)
+
+[node name="Chair2" parent="Interior/Workshop" index="8" instance=ExtResource("30_f53ep")]
+transform = Transform3D(-0.113932, 0, -0.993489, 0, 1, 0, 0.993489, 0, -0.113932, 1.34177, 4, -4.96077)
+
+[node name="Chair2" parent="Interior/Workshop/Chair2" index="2" instance=ExtResource("30_f53ep")]
+transform = Transform3D(0.994404, 2.13825e-17, 0.105639, -9.23528e-09, -1, 8.69336e-08, 0.105639, -8.74228e-08, -0.994404, 0.00279236, 0.957839, -0.136304)
+
+[node name="Chair3" parent="Interior/Workshop" index="9" instance=ExtResource("30_f53ep")]
+transform = Transform3D(0.0791029, 0, 0.996866, 0, 1, 0, -0.996866, 0, 0.0791029, 3.348, 4, -5.10595)
+
+[node name="Chair2" parent="Interior/Workshop/Chair3" index="2" instance=ExtResource("30_f53ep")]
+transform = Transform3D(0.994404, 2.13825e-17, 0.105639, -9.23528e-09, -1, 8.69336e-08, 0.105639, -8.74228e-08, -0.994404, 0.00279236, 0.957839, -0.136304)
 
 [node name="Other" type="Node3D" parent="." index="14"]
 

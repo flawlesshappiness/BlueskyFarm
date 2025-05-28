@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b1dshl1fu40ee"]
+[gd_scene load_steps=39 format=3 uid="uid://b1dshl1fu40ee"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_2y35n"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_m4p6j"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="29_m1ocy"]
 [ext_resource type="PackedScene" uid="uid://dlt8jrnsotu0u" path="res://Basement/Assets/Interior/Barrel_002.tscn" id="30_2hnyn"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="34_xpdtn"]
+[ext_resource type="Resource" uid="uid://c4y5vevqcfxcx" path="res://Blueprint/Resources/PlantBox_Forest.tres" id="35_s8l2a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -957,11 +958,16 @@ transform = Transform3D(0.894295, 0, -0.447478, 0, 1, 0, 0.447478, 0, 0.894295, 
 [node name="InventoryItemMarker" type="Marker3D" parent="Hut/Items" index="0"]
 transform = Transform3D(0.182802, 0, 0.98315, 0, 1, 0, -0.98315, 0, 0.182802, 0, 0.922945, -3.01334)
 
-[node name="RoomScript" type="Node3D" parent="." index="14" node_paths=PackedStringArray("BlockingWeeds", "InventoryItemMarker")]
+[node name="PlantBoxBlueprintMarker" type="Marker3D" parent="Hut/Items" index="1"]
+transform = Transform3D(-0.250126, 0, 0.968213, 0, 1, 0, -0.968213, 0, -0.250126, 2.08559, 0.512265, 2.46979)
+
+[node name="RoomScript" type="Node3D" parent="." index="14" node_paths=PackedStringArray("BlockingWeeds", "InventoryItemMarker", "PlantBoxBlueprintMarker")]
 script = ExtResource("25_skuty")
 BlockingWeeds = NodePath("../Hut/Weeds/Weed_Thorns")
 InventoryItemMarker = NodePath("../Hut/Items/InventoryItemMarker")
+PlantBoxBlueprintMarker = NodePath("../Hut/Items/PlantBoxBlueprintMarker")
 InventoryItem = ExtResource("34_xpdtn")
+PlantBoxBlueprintInfo = ExtResource("35_s8l2a")
 
 [node name="AmbienceArea" parent="." index="15"]
 Area = 2

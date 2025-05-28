@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\modules\\options\\optionscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:modules\\options\\optionscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\room\\minebedsroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\room\\minebedsroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\views\\optionsview\\optionsview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:views\\optionsview\\optionsview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\room\\prefabs\\forest_founderhut\\forestfounderhutroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\room\\prefabs\\forest_founderhut\\forestfounderhutroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\scenes\\farmscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,27 +39,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OptionsControl.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Modules\\Options\\OptionsControl.cs",
-              "RelativeDocumentMoniker": "Modules\\Options\\OptionsControl.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Modules\\Options\\OptionsControl.cs",
-              "RelativeToolTip": "Modules\\Options\\OptionsControl.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAQwBAAAAAAAAAAAAAAAA==",
+              "Title": "MineBedsRoom.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\MineBedsRoom.cs",
+              "RelativeDocumentMoniker": "Basement\\Room\\MineBedsRoom.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\MineBedsRoom.cs",
+              "RelativeToolTip": "Basement\\Room\\MineBedsRoom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T18:25:49.973Z",
+              "WhenOpened": "2025-05-28T22:33:01.572Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OptionsView.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Views\\OptionsView\\OptionsView.cs",
-              "RelativeDocumentMoniker": "Views\\OptionsView\\OptionsView.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Views\\OptionsView\\OptionsView.cs",
-              "RelativeToolTip": "Views\\OptionsView\\OptionsView.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowBcAAAAnAAAAAAAAAA==",
+              "Title": "ForestFounderHutRoom.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
+              "RelativeDocumentMoniker": "Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
+              "RelativeToolTip": "Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T18:21:23.788Z",
+              "WhenOpened": "2025-05-28T22:25:02.351Z",
               "EditorCaption": ""
             },
             {

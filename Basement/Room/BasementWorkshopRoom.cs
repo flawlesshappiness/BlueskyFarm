@@ -3,14 +3,23 @@ using System.Collections;
 
 public partial class BasementWorkshopRoom : Node3DScript
 {
-    [NodeName]
+    [Export]
     public BasementDoor WorkshopDoor;
 
-    [NodeName]
+    [Export]
     public ItemArea WorkshopDoorItemArea;
 
-    [NodeName]
-    public Node3D BlueprintPosition;
+    [Export]
+    public Marker3D WeedcutterBlueprintMarker;
+
+    [Export]
+    public Marker3D PlantBoxBlueprintMarker;
+
+    [Export]
+    public BlueprintInfo WeedcutterBlueprintInfo;
+
+    [Export]
+    public BlueprintInfo PlantBoxBlueprintInfo;
 
     public override void _Ready()
     {
@@ -23,7 +32,8 @@ public partial class BasementWorkshopRoom : Node3DScript
     protected override void Initialize()
     {
         base.Initialize();
-        CreateBlueprint();
+        InitializeWeedcutterBlueprint();
+        InitializePlantBoxBlueprint();
     }
 
     private void WorkshopDoorItemArea_ItemEntered(Item item)
@@ -49,16 +59,25 @@ public partial class BasementWorkshopRoom : Node3DScript
         WorkshopDoorItemArea.SetEnabled(locked);
     }
 
-    private void CreateBlueprint()
+    private void InitializeWeedcutterBlueprint()
     {
-        var bp_id = "weedcutter";
-        var item_id = "Weedcutter";
+        if (Player.HasAccessToBlueprint(WeedcutterBlueprintInfo.Id)) return;
+        if (Player.HasAccessToItem(WeedcutterBlueprintInfo.ResultItemInfo)) return;
 
-        if (Player.HasAccessToBlueprint(bp_id)) return;
-        if (Player.HasAccessToItem(item_id)) return;
-
-        var item = BlueprintController.Instance.CreateBlueprintRoll(bp_id);
-        item.SetParent(BlueprintPosition);
+        var item = BlueprintController.Instance.CreateBlueprintRoll(WeedcutterBlueprintInfo.Id);
+        item.SetParent(WeedcutterBlueprintMarker);
         item.Position = Vector3.Zero;
+        item.Rotation = Vector3.Zero;
+    }
+
+    private void InitializePlantBoxBlueprint()
+    {
+        if (Player.HasAccessToBlueprint(PlantBoxBlueprintInfo.Id)) return;
+        if (Player.HasCraftedBlueprint(PlantBoxBlueprintInfo.Id)) return;
+
+        var item = BlueprintController.Instance.CreateBlueprintRoll(PlantBoxBlueprintInfo.Id);
+        item.SetParent(PlantBoxBlueprintMarker);
+        item.Position = Vector3.Zero;
+        item.Rotation = Vector3.Zero;
     }
 }

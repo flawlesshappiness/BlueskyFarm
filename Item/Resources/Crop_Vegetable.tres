@@ -13,5 +13,5 @@ CanUse = false
 Uses = 0
 CanPickUp = true
 PerishesOnFarm = false
-InventoryItemCameraDistance = 0.25
+InventoryItemCameraDistance = 0.4
 InventoryItemRotationOffset = 0.0

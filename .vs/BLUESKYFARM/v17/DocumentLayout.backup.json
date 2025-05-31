@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\room\\minebedsroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\room\\minebedsroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\room\\prefabs\\forest_founderhut\\forestfounderhutroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\room\\prefabs\\forest_founderhut\\forestfounderhutroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,19 +39,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MineBedsRoom.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\MineBedsRoom.cs",
+              "RelativeDocumentMoniker": "Basement\\Room\\MineBedsRoom.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\MineBedsRoom.cs",
+              "RelativeToolTip": "Basement\\Room\\MineBedsRoom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T22:33:01.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ForestFounderHutRoom.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
               "RelativeDocumentMoniker": "Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
               "RelativeToolTip": "Basement\\Room\\Prefabs\\Forest_FounderHut\\ForestFounderHutRoom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T22:25:02.351Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FarmScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
@@ -60,7 +77,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
@@ -72,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dbyxjo7fgl6o3"]
+[gd_scene load_steps=71 format=3 uid="uid://dbyxjo7fgl6o3"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_0yggo"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_r0in7"]
@@ -40,6 +40,7 @@
 [ext_resource type="Material" uid="uid://bshhk66t6i80u" path="res://Assets/Materials/Stone.tres" id="37_3xn6q"]
 [ext_resource type="PackedScene" uid="uid://b614h0ho6v8wj" path="res://Basement/Assets/Interior/Table.tscn" id="38_61fnr"]
 [ext_resource type="AudioStream" uid="uid://bp2u28hmp6y5i" path="res://Sound/Sounds/sfx_rumble_001.wav" id="38_qulwi"]
+[ext_resource type="PackedScene" uid="uid://h08lktpioj5d" path="res://Note/Prefabs/Note.tscn" id="39_8c5pr"]
 [ext_resource type="PackedScene" uid="uid://b6vlfgt4dy4o7" path="res://Basement/Assets/Interior/Chair.tscn" id="39_mhp3y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
@@ -1125,6 +1126,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.831511, 1.75)
 
 [node name="Table" parent="SecretRoom/Anim/Room" index="13" instance=ExtResource("38_61fnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="Note" parent="SecretRoom/Anim/Room/Table" index="2" instance=ExtResource("39_8c5pr")]
+transform = Transform3D(0.7, 0, 0, 0, -3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0.706533, 0)
+Text = "The world is cold and unjust, governed by selfishness.
+A selfishness that possesses no care for you or your well-being. A selfishness that needs you to work and if you can't you are replaced.
+In this world we are nothing, so who is anyone to blame you for wanting to escape?
+If the chance arose, if a rift opened to another world, would you not seize the opportunity?
+Here, there is freedom. A wild, sprouting freedom.
+It is unwelcome and much like the selfishness it is unbothered by you.
+I had to tame the freedom to stay  here."
 
 [node name="Chair" parent="SecretRoom/Anim/Room" index="14" instance=ExtResource("39_mhp3y")]
 transform = Transform3D(0.993505, 0, -0.113793, 0, 1, 0, 0.113793, 0, 0.993505, 0, -4, 0.621956)

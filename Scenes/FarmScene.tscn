@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://cdgomd3h4hi00"]
+[gd_scene load_steps=128 format=3 uid="uid://cdgomd3h4hi00"]
 
 [ext_resource type="Script" uid="uid://cwqycbkuumrom" path="res://Scenes/FarmScene.cs" id="1_mng5r"]
 [ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="2_rf1ug"]
@@ -54,6 +54,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1hjuox6f58a" path="res://Basement/Assets/Interior/Barrel_001.tscn" id="30_721ta"]
 [ext_resource type="Material" uid="uid://bshhk66t6i80u" path="res://Assets/Materials/Stone.tres" id="30_g3r0v"]
 [ext_resource type="PackedScene" uid="uid://douwt0nkok02p" path="res://Basement/Assets/Interior/Crate.tscn" id="31_t1p85"]
+[ext_resource type="PackedScene" uid="uid://h08lktpioj5d" path="res://Note/Prefabs/Note.tscn" id="33_xnoso"]
 [ext_resource type="PackedScene" uid="uid://bfbakxow5wdyt" path="res://Farm/Bed/Bed.tscn" id="34_dbjn3"]
 [ext_resource type="PackedScene" uid="uid://ciig6e0ykkhhe" path="res://Basement/Assets/Scaffold/Scaffold_Broken.tscn" id="36_2nbm6"]
 [ext_resource type="PackedScene" uid="uid://d1ns6lhxycaki" path="res://Weeds/Thorns/Weed_Thorns.tscn" id="36_ufagv"]
@@ -885,6 +886,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16604, -1.75)
 
 [node name="Table" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("27_3ofo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+
+[node name="Note" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim/Table" instance=ExtResource("33_xnoso")]
+transform = Transform3D(0.699159, -0.0343047, -1.4995e-09, 0, -3.0598e-08, 0.7, -0.0343047, -0.699159, -3.05612e-08, 0, 0.706271, 0.0600128)
+Text = "The world is cold and unjust, governed by selfishness.
+A selfishness that is unfit to be a leader. A selfishness that just wanted a better life, but created a worse one for others.
+Even if I seek to be different, can I ever change what is part of my core? If our core is selfish how can we be fit to govern others?
+It has become clear to me the mistakes I have made. I must abandon what I have built, to find true freedom. My selfishness deserves to be truly by itself.
+I must go."
 
 [node name="Chair" parent="World/NavigationRegion3D/OtherFarm/SecretRoom/Anim" instance=ExtResource("29_h6ntv")]
 transform = Transform3D(0.992422, 0, 0.122874, 0, 1, 0, -0.122874, 0, 0.992422, 0.0644989, -4.5, 0.606567)

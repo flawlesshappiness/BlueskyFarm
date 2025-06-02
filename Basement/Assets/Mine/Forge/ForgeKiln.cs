@@ -88,6 +88,7 @@ public partial class ForgeKiln : Node3D
         _count_coal++;
 
         item.QueueFree();
+        ItemController.Instance.UntrackItem(item);
         SfxCoalFill.Play(CoalFillMarker);
     }
 

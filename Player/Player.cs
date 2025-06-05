@@ -565,7 +565,7 @@ public partial class Player : FirstPersonController
     {
         var item_path = info.ResourcePath;
         var scene_data = Data.Game.Scenes.FirstOrDefault(x => x.Name == nameof(FarmScene));
-        var item_in_scene = scene_data.Items.Any(x => x.Info == item_path);
+        var item_in_scene = scene_data.Items?.Any(x => x.Info == item_path) ?? false;
         var item_in_inv = Data.Game.InventoryItems.Any(x => x != null && x.Info == item_path);
         return item_in_scene || item_in_inv;
     }

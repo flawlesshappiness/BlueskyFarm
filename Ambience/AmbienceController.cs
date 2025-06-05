@@ -53,7 +53,7 @@ public partial class AmbienceController : ResourceController<AmbienceCollection,
         this.StartCoroutine(Cr, "area_enter");
         IEnumerator Cr()
         {
-            if (IsInstanceValid(_current_area_enter_asp))
+            if (IsInstanceValid(_current_area_enter_asp) && !_current_area_enter_asp.IsQueuedForDeletion())
             {
                 yield return _current_area_enter_asp.FadeOut(2f);
                 _current_area_enter_asp.QueueFree();

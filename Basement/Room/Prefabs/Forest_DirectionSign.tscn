@@ -804,28 +804,23 @@ script = ExtResource("15_dvkgw")
 [node name="Grave" parent="Interior/Group 1/Interior 1" index="0" instance=ExtResource("16_inx0u")]
 transform = Transform3D(0.874975, 0, -0.484168, 0, 1, 0, 0.484168, 0, 0.874975, -4.85945, 0, 3.73652)
 
-[node name="Grave2" parent="Interior/Group 1/Interior 1" index="1" node_paths=PackedStringArray("Models") instance=ExtResource("16_inx0u")]
+[node name="Grave2" parent="Interior/Group 1/Interior 1" index="1" instance=ExtResource("16_inx0u")]
 transform = Transform3D(0.67559, 0, 0.737277, 0, 1, 0, -0.737277, 0, 0.67559, 6.72293, 0, 6.44984)
-Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1"), NodePath("../Grave/Models/State 2"), NodePath("../Grave/Models/State 3")]
 
-[node name="Grave3" parent="Interior/Group 1/Interior 1" index="2" node_paths=PackedStringArray("Models") instance=ExtResource("16_inx0u")]
+[node name="Grave3" parent="Interior/Group 1/Interior 1" index="2" instance=ExtResource("16_inx0u")]
 transform = Transform3D(0.706736, 0, -0.707477, 0, 1, 0, 0.707477, 0, 0.706736, 8.97919, 0, -3.41365)
-Models = [NodePath("../Grave/Models/State 0"), NodePath("../Grave/Models/State 1"), NodePath("../Grave/Models/State 2"), NodePath("../Grave/Models/State 3")]
 
 [node name="Interior 2" type="Node3D" parent="Interior/Group 1" index="1"]
 script = ExtResource("15_dvkgw")
 
-[node name="Grave" parent="Interior/Group 1/Interior 2" index="0" node_paths=PackedStringArray("Models") instance=ExtResource("16_inx0u")]
+[node name="Grave" parent="Interior/Group 1/Interior 2" index="0" instance=ExtResource("16_inx0u")]
 transform = Transform3D(0.200035, 0, -0.979789, 0, 1, 0, 0.979789, 0, 0.200035, 1.43069, 0, -10.5247)
-Models = [NodePath("../../Interior 1/Grave/Models/State 0"), NodePath("../../Interior 1/Grave/Models/State 1"), NodePath("../../Interior 1/Grave/Models/State 2"), NodePath("../../Interior 1/Grave/Models/State 3")]
 
-[node name="Grave2" parent="Interior/Group 1/Interior 2" index="1" node_paths=PackedStringArray("Models") instance=ExtResource("16_inx0u")]
+[node name="Grave2" parent="Interior/Group 1/Interior 2" index="1" instance=ExtResource("16_inx0u")]
 transform = Transform3D(0.599233, 0, -0.800575, 0, 1, 0, 0.800575, 0, 0.599233, 8.88083, 0, -3.49428)
-Models = [NodePath("../../Interior 1/Grave/Models/State 0"), NodePath("../../Interior 1/Grave/Models/State 1"), NodePath("../../Interior 1/Grave/Models/State 2"), NodePath("../../Interior 1/Grave/Models/State 3")]
 
-[node name="Grave3" parent="Interior/Group 1/Interior 2" index="2" node_paths=PackedStringArray("Models") instance=ExtResource("16_inx0u")]
+[node name="Grave3" parent="Interior/Group 1/Interior 2" index="2" instance=ExtResource("16_inx0u")]
 transform = Transform3D(-0.545254, 0, -0.838271, 0, 1, 0, 0.838271, 0, -0.545254, -6.54944, 0, 3.26009)
-Models = [NodePath("../../Interior 1/Grave/Models/State 0"), NodePath("../../Interior 1/Grave/Models/State 1"), NodePath("../../Interior 1/Grave/Models/State 2"), NodePath("../../Interior 1/Grave/Models/State 3")]
 
 [node name="RoomScript" type="Node3D" parent="." index="12" node_paths=PackedStringArray("Sign")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

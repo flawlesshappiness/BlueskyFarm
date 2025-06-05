@@ -249,4 +249,10 @@ public partial class WraithEnemy : NavEnemy
         kill_box.SetParent(GetParent());
         kill_box.GlobalPosition = new Vector3(0, -100, 0);
     }
+
+    public static void KillBoxRemoved()
+    {
+        kill_box = null;
+        kill_box_spawned = false;
+    }
 }

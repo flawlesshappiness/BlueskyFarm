@@ -1542,7 +1542,6 @@ transform = Transform3D(-0.461903, 0, -0.88693, 0, 1, 0, 0.88693, 0, -0.461903, 
 bones/1/position = Vector3(8.41591e-06, 0.00835055, -0.000678656)
 bones/2/position = Vector3(-1.47983e-05, 0.000220927, -0.00194505)
 bones/3/rotation = Quaternion(0.0675832, 4.36936e-07, 4.16987e-08, 0.997714)
-bones/5/rotation = Quaternion(0.205488, 1.01371e-06, 8.77978e-08, 0.97866)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.498043, -0.000227231, -0.00018641, 0.867152)
 bones/11/position = Vector3(0.00177194, 0.00199531, 0.00192465)
@@ -1593,7 +1592,8 @@ visible = false
 [node name="lantern" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="6"]
 visible = false
 
-[node name="Dagger" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="7"]
+[node name="BA_Sword" parent="EndingCutsceneA/FrogFren/frog/Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.0461571, -0.993591, 0.103176, 0.981353, -0.0258097, 0.190471, -0.186588, 0.110044, 0.976256, -0.0104306, 0.00176423, 0.0177401)
 visible = true
 
 [node name="EndingCutsceneB" type="Node3D" parent="." index="17" node_paths=PackedStringArray("SfxGlassBreak", "SfxBackgroundFire", "CameraMarkers", "Fires", "SfxPianos")]
@@ -1860,6 +1860,9 @@ StartAnimation = "Armature|Dead"
 
 [node name="lantern" parent="EndingCutsceneB/BurningRoom/FrogCutscene/frog/Armature/Skeleton3D" index="6"]
 visible = false
+
+[node name="BA_Sword" parent="EndingCutsceneB/BurningRoom/FrogCutscene/frog/Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.566463, -0.399497, -0.720779, 0.820347, -0.190125, -0.539336, 0.0784248, -0.896802, 0.435426, -0.00647487, 0.00290169, 0.0123195)
 
 [node name="ForestRoom" type="Node3D" parent="EndingCutsceneB" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
@@ -2155,6 +2158,9 @@ StartAnimation = "Armature|Dead"
 
 [node name="lantern" parent="EndingCutsceneB/ForestRoom/FrogCutscene/frog/Armature/Skeleton3D" index="6"]
 visible = false
+
+[node name="BA_Sword" parent="EndingCutsceneB/ForestRoom/FrogCutscene/frog/Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.566463, -0.399497, -0.720779, 0.820347, -0.190125, -0.539336, 0.0784248, -0.896802, 0.435426, -0.00647487, 0.00290169, 0.0123195)
 
 [editable path="EndingCutsceneA/FrogFren"]
 [editable path="EndingCutsceneA/FrogFren/frog"]

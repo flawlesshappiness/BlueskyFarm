@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://pty4q5m76x8e" path="res://Assets/FlawLizArt/Roots/root_core_001.fbx" id="1_60qnf"]
 [ext_resource type="Script" uid="uid://b6aestm3vsrov" path="res://Basement/Assets/Entities/RootCore.cs" id="1_hutdn"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="2_ax4p2"]
-[ext_resource type="PackedScene" uid="uid://d2rc3m4i3x64k" path="res://Assets/Quaternius/RPG/dagger_bone.fbx" id="4_tqa16"]
+[ext_resource type="PackedScene" uid="uid://bds6gt2upkhyn" path="res://Assets/FlawLizArt/Forge/sword.fbx" id="4_ppq81"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kekfh"]
 size = Vector3(0.480469, 4, 0.512695)
@@ -120,5 +120,5 @@ libraries = {
 
 [node name="Anim_Sword" type="Node3D" parent="Animation"]
 
-[node name="dagger_bone" parent="Animation/Anim_Sword" instance=ExtResource("4_tqa16")]
-transform = Transform3D(1, 0, 1.77636e-15, 0, 1, 0, -1.24345e-14, 0, 1, 0, 0, 0)
+[node name="sword" parent="Animation/Anim_Sword" instance=ExtResource("4_ppq81")]
+transform = Transform3D(1.19787, -2.53836e-07, -0.0714603, -0.0714603, -1.16675e-07, -1.19787, 2.46438e-07, 1.2, -1.31583e-07, 0.0204257, 0.283731, -0.255576)

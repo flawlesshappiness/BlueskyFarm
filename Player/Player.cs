@@ -95,7 +95,7 @@ public partial class Player : FirstPersonController
         {
             Category = category,
             Text = "Unstuck",
-            Action = Unstuck
+            Action = DebugUnstuck
         });
 
         Debug.RegisterAction(new DebugAction
@@ -123,15 +123,20 @@ public partial class Player : FirstPersonController
             view.Close();
         }
 
-        void Unstuck(DebugView view)
+        void DebugUnstuck(DebugView view)
         {
-            var player = Player.Instance;
-            var agent = player.Agent;
-            var target_position = player.GlobalPosition - player.CameraTarget.GlobalBasis.Z * 2f;
-            var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), target_position) - new Vector3(0, agent.PathHeightOffset, 0);
-            player.GlobalPosition = nav_position;
+            Unstuck();
             view.Close();
         }
+    }
+
+    public void Unstuck()
+    {
+        var player = Player.Instance;
+        var agent = player.Agent;
+        var target_position = player.GlobalPosition - player.CameraTarget.GlobalBasis.Z * 0.5f;
+        var nav_position = NavigationServer3D.MapGetClosestPoint(agent.GetNavigationMap(), target_position) - new Vector3(0, agent.PathHeightOffset, 0);
+        player.GlobalPosition = nav_position;
     }
 
     public void UpdateData()

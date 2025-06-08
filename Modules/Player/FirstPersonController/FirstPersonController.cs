@@ -188,6 +188,8 @@ public partial class FirstPersonController : CharacterBody3D
 
     public void StartLookingAt(Node3D target, float speed)
     {
+        if (target == null) return;
+
         _look_at_target = target;
         _look_at_speed = speed;
     }

@@ -32,18 +32,23 @@ public partial class OptionsView : View
     [NodeName]
     public Slider HeadbobAmountSlider;
 
+    [Export]
+    public Button StuckFixButton;
+
     public override void _Ready()
     {
         base._Ready();
 
-        BrightnessSlider.Value = Data.Options.Brightness;
         BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
+        BrightnessSlider.Value = Data.Options.Brightness;
 
-        MouseSensitivitySlider.Value = Data.Options.MouseSensitivity;
         MouseSensitivitySlider.ValueChanged += MouseSensitivitySlider_ValueChanged;
+        MouseSensitivitySlider.Value = Data.Options.MouseSensitivity;
 
-        HeadbobAmountSlider.Value = Data.Options.HeadbobAmount;
         HeadbobAmountSlider.ValueChanged += HeadbobAmountSlider_ValueChanged;
+        HeadbobAmountSlider.Value = Data.Options.HeadbobAmount;
+
+        StuckFixButton.Pressed += StuckFixButton_Pressed;
 
         OptionsControl.OnBack += BackPressed;
 
@@ -105,6 +110,8 @@ public partial class OptionsView : View
 
         MouseVisibility.Instance.Lock.AddLock(nameof(OptionsView));
 
+        StuckFixButton.Disabled = Player.Instance == null;
+
         UpdateVersionLabel();
     }
 
@@ -141,5 +148,10 @@ public partial class OptionsView : View
         var f = Convert.ToSingle(v);
         HeadbobAmountLabel.Text = $"{f.ToString("0.00")}";
         Data.Options.HeadbobAmount = f;
+    }
+
+    private void StuckFixButton_Pressed()
+    {
+        Player.Instance.Unstuck();
     }
 }

@@ -709,7 +709,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 12, -4)
 
 [node name="EnemySpawn" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77215, 8, 0)
 
 [node name="AmbienceArea" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

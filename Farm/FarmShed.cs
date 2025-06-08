@@ -22,7 +22,9 @@ public partial class FarmShed : Node3D
 
     private void Load()
     {
-        UnlockGroup.SetUnlocked(GameFlagIds.FarmShedRepaired.IsTrue());
+        var unlocked = GameFlagIds.FarmShedRepaired.IsTrue();
+        UnlockGroup.SetUnlocked(unlocked);
+        UnlockItemArea.SetEnabled(!unlocked);
     }
 
     public override void _ExitTree()

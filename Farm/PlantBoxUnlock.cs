@@ -47,6 +47,8 @@ public partial class PlantBoxUnlock : Node3DScript
             SteamController.Instance.SetAchievement(AchievementIds.PLANTBOX);
         }
 
+        AreaUnlock.Disable();
+
         this.StartCoroutine(Cr, "unlock");
         IEnumerator Cr()
         {

@@ -55,6 +55,7 @@ public partial class FarmShed : Node3D
             SoundController.Instance.Play("sfx_throw_light", item.GlobalPosition);
             yield return item.AnimateDisappearAndQueueFree();
             yield return UnlockGroup.AnimateUnlock();
+            SteamController.Instance.SetAchievement(AchievementIds.SHED);
         }
     }
 }

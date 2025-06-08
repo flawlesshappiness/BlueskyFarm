@@ -42,6 +42,11 @@ public partial class PlantBoxUnlock : Node3DScript
             Data.Game.UnlockedPlantBoxes.Add(PlantArea.Id);
         }
 
+        if (Data.Game.UnlockedPlantBoxes.Count >= 6)
+        {
+            SteamController.Instance.SetAchievement(AchievementIds.PLANTBOX);
+        }
+
         this.StartCoroutine(Cr, "unlock");
         IEnumerator Cr()
         {

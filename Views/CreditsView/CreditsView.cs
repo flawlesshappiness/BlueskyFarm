@@ -65,6 +65,7 @@ public partial class CreditsView : View
         {
             var anim_ending = Ending == 1 ? "ending1" : "ending2";
             yield return AnimateCredits();
+            SetAchievement();
             yield return AnimationPlayer.PlayAndWaitForAnimation(anim_ending);
             MainMenuView.Instance.AnimateTransitionToMainMenu();
             yield return new WaitForSecondsUnscaled(1f);
@@ -113,5 +114,17 @@ public partial class CreditsView : View
     {
         GameView.Instance.Hide();
         MainMenuView.Instance.Hide();
+    }
+
+    private void SetAchievement()
+    {
+        if (Ending == 1)
+        {
+            SteamController.Instance.SetAchievement(AchievementIds.ENDING_A);
+        }
+        else if (Ending == 2)
+        {
+            SteamController.Instance.SetAchievement(AchievementIds.ENDING_B);
+        }
     }
 }

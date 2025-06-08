@@ -100,4 +100,14 @@ public partial class SteamController : SingletonController
             return false;
         }
     }
+
+    public void SetAchievement(string id)
+    {
+        Debug.LogMethod(id);
+
+        if (!SteamRunning) return;
+
+        Steam.SetAchievement(id);
+        Steam.StoreStats();
+    }
 }

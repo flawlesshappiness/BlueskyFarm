@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\item\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:item\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\assets\\mine\\forge\\forgemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:basement\\assets\\mine\\forge\\forgemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\basement\\assets\\mine\\forge\\forgekiln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -44,22 +44,22 @@
               "RelativeDocumentMoniker": "Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
               "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
               "RelativeToolTip": "Basement\\Assets\\Mine\\Forge\\ForgeKiln.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAlwFcAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAWwCgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:51:46.827Z",
+              "WhenOpened": "2025-06-08T00:21:34.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ItemController.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Item\\ItemController.cs",
-              "RelativeDocumentMoniker": "Item\\ItemController.cs",
-              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Item\\ItemController.cs",
-              "RelativeToolTip": "Item\\ItemController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAlwCUAAAAJAAAAAAAAAA==",
+              "Title": "ForgeMachine.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "RelativeDocumentMoniker": "Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "RelativeToolTip": "Basement\\Assets\\Mine\\Forge\\ForgeMachine.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAswMIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:51:14.703Z",
+              "WhenOpened": "2025-06-07T23:33:44.082Z",
               "EditorCaption": ""
             },
             {
@@ -70,9 +70,10 @@
               "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeToolTip": "Scenes\\FarmScene.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAADwv6QAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAtwIAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T07:44:28.683Z"
+              "WhenOpened": "2025-05-03T07:44:28.683Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

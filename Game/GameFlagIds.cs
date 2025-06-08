@@ -23,11 +23,12 @@ public static class GameFlagIds
     public static GameFlagId ForestHutInventoryItemPicked = new GameFlagId("forest_hut_inventory_item_picked");
     public static GameFlagId ForestTombstoneCrushed = new GameFlagId("forest_tombstone_crushed");
     public static GameFlagId ForestTombstoneInventoryItemPicked = new GameFlagId("forest_tombstone_inventory_item_picked");
-    public static GameFlagId MineKilnActivated = new GameFlagId("mine_kiln_activated");
     public static GameFlagId SecretPuzzleClockCompleted = new GameFlagId("secret_puzzle_clock_completed");
     public static GameFlagId SecretPuzzleForestCompleted = new GameFlagId("secret_puzzle_forest_completed");
     public static GameFlagId SecretPuzzleWellCompleted = new GameFlagId("secret_puzzle_well_completed");
     public static GameFlagId SecretPuzzleFounderCompleted = new GameFlagId("secret_puzzle_founder_completed");
+    public static GameFlagId ForgeMoldPlaced = new GameFlagId("forge_mold_placed");
+    public static GameFlagId KilnActivated = new GameFlagId("kiln_activated");
 }
 
 public class GameFlagId

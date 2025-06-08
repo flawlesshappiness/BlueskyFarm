@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bl6j88k43qkpp"]
+[gd_scene load_steps=53 format=3 uid="uid://bl6j88k43qkpp"]
 
 [ext_resource type="Script" uid="uid://bg88rmry2s4vb" path="res://Basement/Assets/Mine/Forge/ForgeMachine.cs" id="1_fqhgb"]
 [ext_resource type="PackedScene" uid="uid://dfnotbmshj8j5" path="res://Basement/Assets/Mine/Forge_Bottom.tscn" id="1_u2agg"]
@@ -9,10 +9,16 @@
 [ext_resource type="AudioStream" uid="uid://b0o1vksqkdjqg" path="res://Sound/Sounds/sfx_pipe_water.wav" id="4_02hmc"]
 [ext_resource type="Resource" uid="uid://b5lpsp5su3kc0" path="res://Particle/Resources/ps_forge_dirt_impact.tres" id="4_11xsb"]
 [ext_resource type="PackedScene" uid="uid://byhc1gxfdkmjm" path="res://Basement/Assets/Mine/Lever_Metal.tscn" id="4_s24jo"]
+[ext_resource type="Resource" uid="uid://djdock1w0cdmt" path="res://Item/Resources/Sword.tres" id="5_c85ji"]
 [ext_resource type="AudioStream" uid="uid://b818474gu1yo1" path="res://Sound/Sounds/sfx_metal_scraping_loop_002.wav" id="5_wwwxw"]
 [ext_resource type="PackedScene" uid="uid://cey2wok46nmpk" path="res://Assets/FlawLizArt/Rocks/rock_broken.fbx" id="6_mojxj"]
 [ext_resource type="Material" uid="uid://bk0kdmxcn0lyj" path="res://Assets/Materials/Crystal_Red.tres" id="7_0etkg"]
+[ext_resource type="PackedScene" uid="uid://cqou00jbjs27n" path="res://Assets/FlawLizArt/Forge/mold_sword.fbx" id="8_vlj32"]
+[ext_resource type="AudioStream" uid="uid://ckeiy7o33vsdp" path="res://Sound/Sounds/sfx_stone_drag_long.wav" id="9_38srn"]
+[ext_resource type="AudioStream" uid="uid://b7b4u4ebrovjg" path="res://Sound/Sounds/sfx_stone_impact_001.wav" id="10_c85ji"]
 [ext_resource type="Script" uid="uid://doe14a4c4y6oj" path="res://Item/ItemArea.cs" id="11_gkw6y"]
+[ext_resource type="AudioStream" uid="uid://cbtbkt6arl8s0" path="res://Sound/Sounds/sfx_stone_impact_002.wav" id="11_uluqm"]
+[ext_resource type="AudioStream" uid="uid://kf01qp4st80c" path="res://Sound/Sounds/sfx_stone_impact_003.wav" id="12_0jfdy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed8q2"]
 shading_mode = 0
@@ -117,6 +123,12 @@ scale_min = 0.5
 scale_curve = SubResource("CurveTexture_28fjv")
 scale_over_velocity_max = 40.1
 alpha_curve = SubResource("CurveTexture_isaax")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3bsp8"]
+streams_count = 3
+stream_0/stream = ExtResource("10_c85ji")
+stream_1/stream = ExtResource("11_uluqm")
+stream_2/stream = ExtResource("12_0jfdy")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsn25"]
 shading_mode = 0
@@ -260,6 +272,54 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(0, 0.727751, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Forge_Bottom/Anim_Mold:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Forge_Bottom/Anim_Mold:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.746, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Forge_Bottom/Anim_Mold/SfxMoldImpact:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Forge_Bottom/Anim_Mold/SfxMoldMove:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vlj32"]
 resource_name = "activate"
@@ -344,8 +404,8 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.04133, 1.06667, 1.1, 1.13333, 1.36667, 1.4, 1.4166, 1.43333, 1.6, 2.56667, 2.6, 2.60713, 2.63333, 2.66667, 2.73333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.03333, 1.04133, 1.06667, 1.1, 1.13333, 1.36667, 1.4, 1.4166, 1.43333, 1.6, 2.56667, 2.6, 2.60713, 2.63333, 2.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"StartPressMoveSfx"
@@ -391,9 +451,6 @@ tracks/2/keys = {
 }, {
 "args": [],
 "method": &"PlayDirtImpactPS"
-}, {
-"args": [],
-"method": &"DestroyMold"
 }, {
 "args": [],
 "method": &"CreateMoldItem"
@@ -645,6 +702,111 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0.727751, 0), Vector3(0, 0.727751, 0), Vector3(0, 1.47775, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Forge_Bottom/Anim_Mold:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_38srn"]
+resource_name = "mold_move"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Forge_Bottom/Anim_Mold:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Forge_Bottom/Anim_Mold:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 1.24003, 0), Vector3(0, 0.746, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Forge_Bottom/Anim_Mold/SfxMoldImpact:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Forge_Bottom/Anim_Mold/SfxMoldMove:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_c85ji"]
+resource_name = "mold_idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Forge_Bottom/Anim_Mold:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.746, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Forge_Bottom/Anim_Mold:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim_Press:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.56412, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r1yye"]
 _data = {
@@ -653,6 +815,8 @@ _data = {
 &"deactivated": SubResource("Animation_graba"),
 &"hammer": SubResource("Animation_kso3d"),
 &"lava_fill": SubResource("Animation_fwhci"),
+&"mold_idle": SubResource("Animation_c85ji"),
+&"mold_move": SubResource("Animation_38srn"),
 &"move_down": SubResource("Animation_rv1bx"),
 &"move_up": SubResource("Animation_38mxs")
 }
@@ -660,7 +824,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_uybvh"]
 size = Vector3(2, 1, 2)
 
-[node name="Forge" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "SfxPressMove", "SfxLavaMove", "PressImpactMarker", "ItemArea_Mold", "MoldMarkerStart", "MoldMarkerEnd", "CreatedItemMarker")]
+[node name="Forge" type="Node3D" node_paths=PackedStringArray("Lever", "AnimationPlayer", "SfxPressMove", "SfxLavaMove", "PressImpactMarker", "ItemArea_Mold", "CreatedItemMarker")]
 script = ExtResource("1_fqhgb")
 Lever = NodePath("Lever_Metal")
 AnimationPlayer = NodePath("AnimationPlayer")
@@ -671,9 +835,8 @@ SfxSteam = ExtResource("3_hqx7k")
 PressImpactMarker = NodePath("Anim_Press/Forge_Press/SoundMarker")
 ps_dirt_impact = ExtResource("4_11xsb")
 ItemArea_Mold = NodePath("ItemArea_Mold")
-MoldMarkerStart = NodePath("ItemArea_Mold/MoldMarkerStart")
-MoldMarkerEnd = NodePath("ItemArea_Mold/MoldMarkerEnd")
 CreatedItemMarker = NodePath("ItemArea_Mold/CreatedItemMarker")
+SwordInfo = ExtResource("5_c85ji")
 
 [node name="Forge_Bottom" parent="." instance=ExtResource("1_u2agg")]
 
@@ -710,6 +873,20 @@ transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0.455599, 0)
 
 [node name="Rock_Broken" parent="Forge_Bottom/rock_broken" index="0"]
 surface_material_override/0 = ExtResource("7_0etkg")
+
+[node name="Anim_Mold" type="Node3D" parent="Forge_Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746, 0)
+visible = false
+
+[node name="mold_sword" parent="Forge_Bottom/Anim_Mold" instance=ExtResource("8_vlj32")]
+
+[node name="SfxMoldMove" type="AudioStreamPlayer3D" parent="Forge_Bottom/Anim_Mold"]
+stream = ExtResource("9_38srn")
+bus = &"SFX"
+
+[node name="SfxMoldImpact" type="AudioStreamPlayer3D" parent="Forge_Bottom/Anim_Mold"]
+stream = SubResource("AudioStreamRandomizer_3bsp8")
+bus = &"SFX"
 
 [node name="Anim_Press" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.56412, 0)
@@ -785,16 +962,11 @@ libraries = {
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("11_gkw6y")
+CustomId = "mold_sword"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea_Mold"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_uybvh")
-
-[node name="MoldMarkerStart" type="Marker3D" parent="ItemArea_Mold"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24887, 0)
-
-[node name="MoldMarkerEnd" type="Marker3D" parent="ItemArea_Mold"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727751, 0)
 
 [node name="CreatedItemMarker" type="Marker3D" parent="ItemArea_Mold"]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0.727751, 0)

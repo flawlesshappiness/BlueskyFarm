@@ -11,30 +11,14 @@ public partial class FarmForge : Node3D
     public override void _Ready()
     {
         base._Ready();
-        InitializeKiln();
-
+        Kiln.OnActivated += KilnActivated;
         Forge.Lever.Touchable.OnTouched += Touched_Forge;
         Kiln.Lever.Touchable.OnTouched += Touched_Forge;
     }
 
-    private void InitializeKiln()
-    {
-        var activated = GameFlagIds.MineKilnActivated.IsTrue();
-        Kiln.SetActivated(activated);
-        Forge.SetActivated(activated);
-        Kiln.OnActivated += KilnActivated;
-
-        if (!activated)
-        {
-            Forge.AnimateDeactivated();
-        }
-    }
-
     private void KilnActivated()
     {
-        GameFlagIds.MineKilnActivated.SetTrue();
         DialogueFlags.SetFlagMin(DialogueFlags.FrogForge, 3);
-        Forge.SetActivated(true);
         Forge.AnimateActivate(2f);
     }
 

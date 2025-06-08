@@ -31,22 +31,14 @@ public partial class ForgeMachine : Node3D
     public ItemArea ItemArea_Mold;
 
     [Export]
-    public Marker3D MoldMarkerStart;
-
-    [Export]
-    public Marker3D MoldMarkerEnd;
-
-    [Export]
     public Marker3D CreatedItemMarker;
 
-    private bool HasMold => _current_mold != null;
+    [Export]
+    public ItemInfo SwordInfo;
 
-    private bool _activated;
     private bool _touched;
     private bool _press_down;
-    private Item _current_mold;
     private Item _created_item;
-    private ForgeMoldInfo _current_info;
 
     public override void _Ready()
     {
@@ -57,12 +49,24 @@ public partial class ForgeMachine : Node3D
         Lever.Touchable.OnTouched += LeverTouched;
 
         ItemArea_Mold.OnItemEntered += ItemEntered_Mold;
+
+        InitializeAnimation();
     }
 
-    public void SetActivated(bool activated)
+    private void InitializeAnimation()
     {
-        _activated = activated;
-        ItemArea_Mold.SetEnabled(activated);
+        if (GameFlagIds.ForgeMoldPlaced.IsTrue())
+        {
+            AnimationPlayer.Play("mold_idle");
+        }
+        else if (GameFlagIds.KilnActivated.IsTrue())
+        {
+            AnimationPlayer.Play("activate");
+        }
+        else
+        {
+            AnimationPlayer.Play("deactivated");
+        }
     }
 
     private void LeverStateChanged(int i)
@@ -70,22 +74,15 @@ public partial class ForgeMachine : Node3D
         if (!_touched) return;
         if (i == 1 && !_press_down) // Down
         {
-            if (!_activated)
+            if (CanForge())
             {
-                //ShowNotActivatedText();
-                Lever.Toggle();
-                return;
+                _press_down = true;
+                AnimateForge();
             }
-
-            if (!HasMold)
+            else
             {
-                //ShowMoldMissingText();
                 Lever.Toggle();
-                return;
             }
-
-            _press_down = true;
-            AnimateForge();
         }
         else if (i == 0 && _press_down) // Up
         {
@@ -98,9 +95,9 @@ public partial class ForgeMachine : Node3D
         }
     }
 
-    public void AnimateDeactivated()
+    private bool CanForge()
     {
-        AnimationPlayer.Play("deactivated");
+        return GameFlagIds.ForgeMoldPlaced.IsTrue() && GameFlagIds.KilnActivated.IsTrue();
     }
 
     public Coroutine AnimateActivate(float delay)
@@ -147,26 +144,18 @@ public partial class ForgeMachine : Node3D
 
     private void ItemEntered_Mold(Item item)
     {
-        if (_current_mold != null) return;
-        if (item.Info.Type != ItemType.ForgeMold) return;
+        if (GameFlagIds.KilnActivated.IsFalse()) return;
+        if (GameFlagIds.ForgeMoldPlaced.IsTrue()) return;
+        GameFlagIds.ForgeMoldPlaced.SetTrue();
 
-        _current_info = ForgeMoldController.Instance.GetInfo(item.Data.CustomId);
-        if (_current_info == null) return;
-
-        _current_mold = item;
-
-        item.SetGrabbable(false);
-        item.Freeze = true;
+        ItemController.Instance.UntrackItem(item);
+        item.QueueFree();
 
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
             Lever.Touchable.Disable();
-            SoundController.Instance.Play("sfx_stone_impact", MoldMarkerEnd.GlobalPosition);
-            yield return item.LerpToNode(0.5f, MoldMarkerStart);
-            var asp = SoundController.Instance.Play("sfx_stone_drag_long", item.GlobalPosition);
-            yield return item.LerpToNode(1.0f, MoldMarkerEnd, Curves.EaseInQuad);
-            asp.Stop();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("mold_move");
             Lever.Touchable.Enable();
         }
     }
@@ -206,19 +195,11 @@ public partial class ForgeMachine : Node3D
         Particle.PlayOneShot(ps_dirt_impact, GlobalPosition);
     }
 
-    public void DestroyMold()
-    {
-        if (_current_mold == null) return;
-
-        _current_mold.QueueFree();
-        _current_mold = null;
-    }
-
     public void CreateMoldItem()
     {
-        if (_current_info == null) return;
+        GameFlagIds.ForgeMoldPlaced.SetFalse();
 
-        var item = ItemController.Instance.CreateItem(_current_info.ResultItem);
+        var item = ItemController.Instance.CreateItem(SwordInfo);
         item.SetGrabbable(false);
         item.Freeze = true;
         item.SetParent(CreatedItemMarker);
@@ -237,30 +218,6 @@ public partial class ForgeMachine : Node3D
         _created_item.SetGrabbable(true);
 
         _created_item = null;
-    }
-
-    private void ShowMoldMissingText()
-    {
-        GameView.Instance.CreateText(new CreateTextSettings
-        {
-            Id = "forge_missing_mold_" + GetInstanceId(),
-            Text = "##SOMETHING_MISSING##",
-            Target = MoldMarkerStart,
-            Offset = new Vector3(0, 0, 0),
-            Duration = 3.0f,
-        });
-    }
-
-    private void ShowNotActivatedText()
-    {
-        GameView.Instance.CreateText(new CreateTextSettings
-        {
-            Id = "forge_not_activated_" + GetInstanceId(),
-            Text = "##KILN_NOT_ACTIVATED##",
-            Target = MoldMarkerStart,
-            Offset = new Vector3(0, 0, 0),
-            Duration = 3.0f,
-        });
     }
 
     private void StartImpactScreenShake()

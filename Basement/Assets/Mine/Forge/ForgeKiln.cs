@@ -36,13 +36,21 @@ public partial class ForgeKiln : Node3D
         Lever.OnStateChanged += LeverStateChanged;
         Lever.Touchable.OnTouched += LeverTouched;
         CoalItemArea.OnItemEntered += ItemEntered_Coal;
+
+        InitializeActivated();
     }
 
-    public void SetActivated(bool activated)
+    private void InitializeActivated()
+    {
+        SetActivated(GameFlagIds.KilnActivated.IsTrue());
+    }
+
+    private void SetActivated(bool activated)
     {
         SfxMachine_1.VolumeDb = activated ? -20 : -80;
         SfxMachine_2.VolumeDb = activated ? 0 : -80;
         AnimationPlayer.Play(activated ? "activated" : "RESET");
+        Lever.Touchable.SetEnabled(!activated);
     }
 
     private void LeverStateChanged(int state)
@@ -57,12 +65,11 @@ public partial class ForgeKiln : Node3D
         {
             if (_count_coal < 3)
             {
-                //ShowCoalMissingText();
                 Lever.Toggle();
             }
             else
             {
-                AnimateActivate();
+                Activate();
             }
         }
     }
@@ -73,9 +80,15 @@ public partial class ForgeKiln : Node3D
         Lever.Touchable.Disable();
     }
 
+    public void Activate()
+    {
+        GameFlagIds.KilnActivated.SetTrue();
+        AnimateActivate();
+        OnActivated?.Invoke();
+    }
+
     private Coroutine AnimateActivate()
     {
-        OnActivated?.Invoke();
         return Coroutine.Start(Cr);
         IEnumerator Cr()
         {

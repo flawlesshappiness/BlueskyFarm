@@ -32,9 +32,11 @@ public partial class MineForgeRoom : Node3D
 
     private void InitializeKiln()
     {
-        Kiln.SetActivated(GameFlagIds.MineKilnActivated.IsTrue());
-        Forge.SetActivated(GameFlagIds.MineKilnActivated.IsTrue());
+        /*
+        Kiln.SetActivated(GameFlagIds.KilnActivated.IsTrue());
+        Forge.SetActivated(GameFlagIds.KilnActivated.IsTrue());
         Kiln.OnActivated += KilnActivated;
+        */
     }
 
     public override void _ExitTree()
@@ -72,9 +74,9 @@ public partial class MineForgeRoom : Node3D
 
     private void KilnActivated()
     {
-        GameFlagIds.MineKilnActivated.SetTrue();
+        GameFlagIds.KilnActivated.SetTrue();
         DialogueFlags.SetFlagMin(DialogueFlags.FrogForge, 3);
-        Forge.SetActivated(true);
+        //Forge.SetActivated(true);
     }
 
     private void Touched_Forge()

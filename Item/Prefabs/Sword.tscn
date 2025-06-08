@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bncbgk5a1pw65"]
+
+[ext_resource type="PackedScene" uid="uid://c1sq3croksslg" path="res://Item/Prefabs/Item_Base.tscn" id="1_nm7pt"]
+[ext_resource type="PackedScene" uid="uid://bds6gt2upkhyn" path="res://Assets/FlawLizArt/Forge/sword.fbx" id="3_5bfjp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xv3ng"]
+size = Vector3(0.454834, 1.30859, 0.1)
+
+[node name="Sword" instance=ExtResource("1_nm7pt")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0469039, 0)
+shape = SubResource("BoxShape3D_xv3ng")
+
+[node name="sword" parent="Model" index="0" instance=ExtResource("3_5bfjp")]
+transform = Transform3D(1.2, 0, 0, 0, -5.24537e-08, -1.2, 0, 1.2, -5.24537e-08, 0, 0.00870866, -0.261019)

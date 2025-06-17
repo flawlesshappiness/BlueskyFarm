@@ -90,17 +90,6 @@ public partial class FarmBed : Node3D
         else
         {
             SoundController.Instance.Play("sfx_throw_light");
-
-            /*
-            GameView.Instance.CreateText(new CreateTextSettings
-            {
-                Id = "bed_cant_sleep_" + GetInstanceId(),
-                Text = "##BED_CANT_SLEEP##",
-                Target = Touchable,
-                Offset = new Vector3(0, 0.2f, 0),
-                Duration = 3.0f,
-            });
-            */
         }
     }
 
@@ -110,6 +99,8 @@ public partial class FarmBed : Node3D
         IEnumerator Cr()
         {
             var view = View.Get<GameView>();
+
+            Data.Game.Save();
 
             yield return view.TransitionStartCr(new TransitionSettings
             {

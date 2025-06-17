@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_8pp41")
-Version = "1.0.0"
+Version = "1.0.1"
 Release = true
 StartScene = "MainMenuScene"

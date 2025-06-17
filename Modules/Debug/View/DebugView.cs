@@ -34,6 +34,8 @@ public partial class DebugView : View
     [NodeName]
     public AudioStreamPlayer SfxOpen;
 
+    private bool IsReleaseBuild => ApplicationInfo.Instance.Release;
+
     private Dictionary<string, DebugCategoryControl> _categories = new();
     private Action<Dictionary<string, string>> _onInputPopupSuccess;
 
@@ -70,7 +72,7 @@ public partial class DebugView : View
 
         if (@event is InputEventKey keyEvent && keyEvent.Pressed)
         {
-            if (Input.IsActionJustPressed("ui_text_indent"))
+            if (Input.IsActionJustPressed("ui_text_indent") && !IsReleaseBuild)
             {
                 ToggleVisible();
                 SfxOpen.Play();

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\BlueskyFarm\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\modules\\debug\\view\\debugview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:modules\\debug\\view\\debugview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|c:\\git\\godot\\blueskyfarm\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53678485-3BAF-4B74-8E5D-A82898E89FEF}|BlueskyFarm.csproj|solutionrelative:player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,32 +43,44 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DebugView.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Modules\\Debug\\View\\DebugView.cs",
+              "RelativeDocumentMoniker": "Modules\\Debug\\View\\DebugView.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Modules\\Debug\\View\\DebugView.cs",
+              "RelativeToolTip": "Modules\\Debug\\View\\DebugView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T06:10:34.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Player.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\BLUESKYFARM\\Player\\Player.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\BLUESKYFARM\\Player\\Player.cs",
+              "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Player\\Player.cs",
               "RelativeToolTip": "Player\\Player.cs",
-              "ViewState": "AgIAABoCAAAAAAAAAAD4vycCAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAkwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-08T04:48:25.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "OptionsView.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Views\\OptionsView\\OptionsView.cs",
               "RelativeDocumentMoniker": "Views\\OptionsView\\OptionsView.cs",
               "ToolTip": "C:\\Git\\Godot\\BlueskyFarm\\Views\\OptionsView\\OptionsView.cs",
               "RelativeToolTip": "Views\\OptionsView\\OptionsView.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAuwJcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAA4wJUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T04:42:15.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-08T04:42:15.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FarmScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\FarmScene.cs",
               "RelativeDocumentMoniker": "Scenes\\FarmScene.cs",
@@ -76,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BasementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Basement\\BasementController.cs",
               "RelativeDocumentMoniker": "Basement\\BasementController.cs",
@@ -88,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BasementScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\BlueskyFarm\\Scenes\\BasementScene.cs",
               "RelativeDocumentMoniker": "Scenes\\BasementScene.cs",

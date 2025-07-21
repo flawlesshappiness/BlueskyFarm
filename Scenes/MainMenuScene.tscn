@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bmu3kc1qwst6a" path="res://Particle/Prefabs/ps_rift.tscn" id="4_gmxq7"]
 [ext_resource type="PackedScene" uid="uid://tm2ybbn6v031" path="res://Assets/FlawLizArt/ThornedWeeds/thorned_weeds_up.fbx" id="4_j7hen"]
 
-[node name="MainMenuScene" type="Node3D"]
+[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("WorldEnvironment")]
 script = ExtResource("1_nes0y")
+WorldEnvironment = NodePath("WorldEnvironment")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_76nmt")

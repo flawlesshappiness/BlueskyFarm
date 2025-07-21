@@ -57,7 +57,7 @@ public partial class MineFounderRoom : Node3DScript
     private void InitializeBlueprintItem()
     {
         if (Player.HasAccessToBlueprint(BlueprintInfo.Id)) return;
-        if (!Player.HasAccessToItem(BlueprintInfo.ResultItemInfo)) return;
+        if (Player.HasAccessToItem(BlueprintInfo.ResultItemInfo)) return;
 
         var item = BlueprintController.Instance.CreateBlueprintRoll(BlueprintInfo.Id);
         item.SetParent(BlueprintItemMarker);

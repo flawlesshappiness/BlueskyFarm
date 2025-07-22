@@ -121,13 +121,13 @@ public partial class FarmScene : GameScene
 
     private void InitializeCrushableRock()
     {
-        var crushed = GameFlagIds.BasementRockCrushed.IsTrue();
+        var crushed = GameFlagIds.FarmRocksCrushed.IsTrue();
         CrushableRockToUnderground.SetEnabled(!crushed);
         TeleportToUnderground.SetEnabled(crushed);
 
         CrushableRockToUnderground.OnCrushed += () =>
         {
-            GameFlagIds.BasementRockCrushed.SetTrue();
+            GameFlagIds.FarmRocksCrushed.SetTrue();
             Data.Game.Save();
 
             CrushableRockToUnderground.Disable();

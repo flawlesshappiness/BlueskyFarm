@@ -269,6 +269,8 @@ public partial class InventoryController : SingletonController
         if (!HasFreeSpace()) return;
         if (!item.Info.CanPickUp) return;
 
+        Add(item.Data);
+
         Coroutine.Start(Cr);
         IEnumerator Cr()
         {
@@ -288,8 +290,6 @@ public partial class InventoryController : SingletonController
                 item.GlobalPosition = start_position.Lerp(Player.Instance.MidPosition, f);
                 item.Scale = start_scale.Lerp(end_scale, f);
             });
-
-            Add(item.Data);
 
             ItemController.Instance.UntrackItem(item);
             item.Disable();

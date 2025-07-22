@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cp18kmc58sytt"]
+[gd_scene load_steps=37 format=3 uid="uid://cp18kmc58sytt"]
 
 [ext_resource type="PackedScene" uid="uid://sg081u4ctj3u" path="res://Basement/Room/Prefabs/Room_Base.tscn" id="1_ee41e"]
 [ext_resource type="PackedScene" uid="uid://c5h8atm4i567l" path="res://Basement/Assets/Basement/Wall_Middle.tscn" id="2_ajmcb"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://bp2u28hmp6y5i" path="res://Sound/Sounds/sfx_rumble_001.wav" id="24_3n1k1"]
 [ext_resource type="Script" uid="uid://ghcyomv6tedt" path="res://Basement/Room/ForestEyeRoom.cs" id="25_u0u81"]
 [ext_resource type="Resource" uid="uid://bgn35xhtufwh" path="res://Blueprint/Resources/Glowstick.tres" id="26_7aset"]
+[ext_resource type="Resource" uid="uid://c5n3mux82efe1" path="res://Item/Resources/InventoryUpgrade.tres" id="27_eaxo0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76nj1"]
 albedo_color = Color(0.0235294, 0.278431, 0, 1)
@@ -39,6 +40,9 @@ size = Vector2(28, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4lmo"]
 size = Vector3(28, 1, 28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7aset"]
+size = Vector3(2.02759, 4, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_r68h6"]
 material = ExtResource("21_vsgw2")
@@ -931,6 +935,16 @@ transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0.2, 0, 2.2)
 [node name="Pillar_Wood8" parent="Platform/Anim/Lower" index="12" instance=ExtResource("21_3n1k1")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -2.2, 0, 2.2)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform/Anim/Lower" index="13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Anim/Lower/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 1.5)
+shape = SubResource("BoxShape3D_7aset")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Platform/Anim/Lower/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -1.5)
+shape = SubResource("BoxShape3D_7aset")
+
 [node name="Walls" type="Node3D" parent="Platform" index="1"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform/Walls" index="0"]
@@ -978,9 +992,14 @@ bus = &"SFX"
 [node name="BlueprintMarker" type="Marker3D" parent="Platform" index="4"]
 transform = Transform3D(0.930014, 0, -0.367524, 0, 1, 0, 0.367524, 0, 0.930014, -0.645739, 1.68286, 0)
 
-[node name="RoomScript" type="Node3D" parent="." index="14" node_paths=PackedStringArray("PlatformAnimationPlayer", "PlatformLightTrigger", "BlueprintMarker")]
+[node name="HiddenItemMarker" type="Marker3D" parent="Platform" index="5"]
+transform = Transform3D(0.930014, 0, -0.367524, 0, 1, 0, 0.367524, 0, 0.930014, -0.757679, -3.51352, 0)
+
+[node name="RoomScript" type="Node3D" parent="." index="14" node_paths=PackedStringArray("PlatformAnimationPlayer", "PlatformLightTrigger", "BlueprintMarker", "HiddenItemMarker")]
 script = ExtResource("25_u0u81")
 PlatformAnimationPlayer = NodePath("../Platform/AnimationPlayer")
 PlatformLightTrigger = NodePath("../Platform/Anim/Upper/LightTrigger")
 BlueprintMarker = NodePath("../Platform/BlueprintMarker")
+HiddenItemMarker = NodePath("../Platform/HiddenItemMarker")
 BlueprintInfo = ExtResource("26_7aset")
+InventoryItemInfo = ExtResource("27_eaxo0")

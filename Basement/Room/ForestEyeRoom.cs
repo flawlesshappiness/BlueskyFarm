@@ -12,13 +12,20 @@ public partial class ForestEyeRoom : Node3D
     public Marker3D BlueprintMarker;
 
     [Export]
+    public Marker3D HiddenItemMarker;
+
+    [Export]
     public BlueprintInfo BlueprintInfo;
+
+    [Export]
+    public ItemInfo InventoryItemInfo;
 
     public override void _Ready()
     {
         base._Ready();
 
         InitializeBlueprint();
+        InitializeInventoryItem();
 
         PlatformLightTrigger.OnToggle += LightTriggerToggle;
     }
@@ -41,5 +48,19 @@ public partial class ForestEyeRoom : Node3D
         item.SetParent(BlueprintMarker);
         item.Position = Vector3.Zero;
         item.Rotation = Vector3.Zero;
+    }
+
+    private void InitializeInventoryItem()
+    {
+        if (GameFlagIds.ForestEyeInventoryItemPicked.IsTrue()) return;
+
+        var item = ItemController.Instance.CreateItem(InventoryItemInfo);
+        item.SetParent(HiddenItemMarker);
+        item.ClearPositionAndRotation();
+
+        item.OnPickUp += () =>
+        {
+            GameFlagIds.ForestEyeInventoryItemPicked.SetTrue();
+        };
     }
 }

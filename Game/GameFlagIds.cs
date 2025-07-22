@@ -23,6 +23,7 @@ public static class GameFlagIds
     public static GameFlagId ForestHutInventoryItemPicked = new GameFlagId("forest_hut_inventory_item_picked");
     public static GameFlagId ForestTombstoneCrushed = new GameFlagId("forest_tombstone_crushed");
     public static GameFlagId ForestTombstoneInventoryItemPicked = new GameFlagId("forest_tombstone_inventory_item_picked");
+    public static GameFlagId ForestEyeInventoryItemPicked = new GameFlagId("forest_eye_inventory_item_picked");
     public static GameFlagId SecretPuzzleClockCompleted = new GameFlagId("secret_puzzle_clock_completed");
     public static GameFlagId SecretPuzzleForestCompleted = new GameFlagId("secret_puzzle_forest_completed");
     public static GameFlagId SecretPuzzleWellCompleted = new GameFlagId("secret_puzzle_well_completed");

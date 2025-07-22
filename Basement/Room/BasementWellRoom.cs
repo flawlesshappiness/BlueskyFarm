@@ -248,13 +248,10 @@ public partial class BasementWellRoom : Node3DScript
     private void TryAttachSpecialItem()
     {
         if (item_type_on_rope != ItemType.Other) return;
-        Debug.Log("has made offerings?");
         if (GameFlagIds.BasementWellVegetableOffered.IsFalse()) return;
         if (GameFlagIds.BasementWellBoneOffered.IsFalse()) return;
         if (GameFlagIds.BasementWellCrystalOffered.IsFalse()) return;
-        Debug.Log("has access to potion?");
         if (Player.HasAccessToItem(PotionItem)) return;
-        Debug.Log("spawning potion");
         if (spawned_potion) return;
         spawned_potion = true;
 
